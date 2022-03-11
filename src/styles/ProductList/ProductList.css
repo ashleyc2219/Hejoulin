@@ -1,0 +1,277 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', serif;
+}
+
+.ProductList {
+  background: url("/public/ProductList/Sake-background0310.jpg");
+}
+
+@media (max-width: 768px) {
+  .ProductList {
+    padding: 0 20px;
+  }
+}
+
+.ProductList nav {
+  height: 144px;
+  width: 100%;
+}
+
+.ProductList nav .container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.ProductList .product-container {
+  padding-top: 40px;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+}
+
+.ProductList .product-container .sidebar {
+  max-width: 175px;
+  height: 100%;
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .product-container .sidebar {
+    display: none;
+  }
+}
+
+.ProductList .product-container .sidebar .first {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-top: 2px solid #bbbcbd;
+}
+
+.ProductList .product-container .sidebar .first ul {
+  margin-left: 30px;
+}
+
+.ProductList .product-container .sidebar .first ul li {
+  list-style: none;
+}
+
+.ProductList .product-container .sidebar .first ul li:first-child a {
+  color: #3d4349;
+}
+
+.ProductList .product-container .sidebar .first ul li a {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  color: #7e8082;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 20px !important;
+}
+
+.ProductList .product-container .sidebar .second .filter {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #bbbcbd;
+}
+
+.ProductList .product-container .sidebar .second .filter a {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  color: #3d4349;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.ProductList .product-container .sidebar .second p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+}
+
+.ProductList .product-container .sidebar .second .level {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductList .product-container .sidebar .second .level label {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  color: #7e8082;
+  font-size: 20px;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  position: relative;
+  text-decoration: underline;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.ProductList .product-container .sidebar .second .level input {
+  display: none;
+}
+
+.ProductList .product-container .sidebar .second .level input:checked + label {
+  color: black;
+}
+
+.ProductList .product-container .sidebar .third a {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.ProductList .product-container .sidebar .third p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+}
+
+.ProductList .product-container .sidebar .third .price {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductList .product-container .sidebar .third .price label {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  color: gray;
+  font-size: 20px;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  position: relative;
+  text-decoration: underline;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.ProductList .product-container .sidebar .third .price input {
+  display: none;
+}
+
+.ProductList .product-container .sidebar .third .price input:checked + label {
+  color: black;
+}
+
+.ProductList .product-container .sidebar .other p {
+  font-size: 12px;
+  margin: 20px 0 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+}
+
+.ProductList .product-container .sidebar .other .custum label {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  margin: 0 0 20px 30px;
+  color: gray;
+  font-size: 20px;
+  text-decoration: underline;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.ProductList .product-container .sidebar .other .custum input {
+  display: none;
+}
+
+.ProductList .product-container .sidebar .other .custum input:checked + label {
+  color: black;
+}
+
+.ProductList .product-container .main {
+  border-top: 2px solid #bbbcbd;
+  width: 100%;
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .product-container .main {
+    border: none;
+  }
+}
+
+.ProductList .product-container .main .search-bar {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .ProductList .product-container .main .search-bar {
+    display: none;
+  }
+}
+
+.ProductList .product-container .main .search-bar .select select {
+  margin-right: 10px;
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  border-color: #4d4e4f;
+  padding-left: 10px;
+  font-size: 18px;
+  position: relative;
+  color: #4d4e4f;
+}
+
+.ProductList .product-container .main .search-bar .select select:focus {
+  outline: none;
+}
+
+.ProductList .product-container .main .search-bar .search img {
+  margin-right: 3px;
+  margin-bottom: -10px;
+}
+
+.ProductList .product-container .main .search-bar .search input {
+  border: none;
+  border-bottom: 2px solid #7e8082;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.ProductList .product-container .main .search-bar .search input:focus {
+  outline: none;
+}
+
+.ProductList .product-container .main .mobile-search-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ProductList .product-container .main .mobile-search-bar {
+    display: flex;
+  }
+}
+
+.ProductList .product-container .main .mobile-search-bar div {
+  width: 25%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductList .product-container .main .mobile-search-bar div div {
+  width: 100%;
+}
+
+.ProductList .product-container .main .mobile-search-bar div .title {
+  color: #7e8082;
+  font-size: 13;
+  font-weight: 700;
+}
+/*# sourceMappingURL=ProductList.css.map */
