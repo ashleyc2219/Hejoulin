@@ -1,14 +1,164 @@
 // 變數覆蓋需要在導入 Bootstrap 的 Sass 檔案之前
 // 參考 Bootstrap 的 _variables.scss
-$primary: #3D4349;
-$secondary: #CEB48D;
+
+//
+// Color system
+//
+$primary: #3d4349;
+$secondary: #d26d54;
+$success: #e6c49e;
+$info: #ffdb8a;
+$warning: #af4930;
+$light: #95a4b2;
+$dark: #6b7580;
+
+$white: #f7f7f6;
+$black: #202326;
+
+$gray-100: #e0e0df;
+$gray-200: #bbbcbd;
+$gray-300: #7e8082;
+$gray-400: #4d4e4f;
+
+//
+// btn sizes
+//
+// btn (normal)
+$btn-border-radius: 0%;
+$btn-padding-y: 16px;
+$btn-padding-x: 22px;
+$btn-font-size: 16px;
+$btn-line-height: 16px;
+
+// btn-lg (medium in style guide)
+$btn-border-radius-lg: 0%;
+$btn-padding-y-lg: 18px;
+$btn-padding-x-lg: 24px;
+$btn-font-size-lg: 18px;
+$btn-line-height-lg: 18px;
+
+// btn-sm (medium in style guide)
+$btn-border-radius-sm: 0%;
+$btn-padding-y-sm: 14px;
+$btn-padding-x-sm: 20px;
+$btn-font-size-sm: 14px;
+$btn-line-height-sm: 14px;
+
+
+//
+// input group
+//
+$input-padding-y: 1rem;
+$input-padding-x: 1.375rem;
 
 // 導入 bootstrap 所有的樣式與預設變數
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";
 
 // 其它要導入覆蓋掉原本的預設 bootstrap 樣式要放在這下面
 // 全站都會使用的共同樣式
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+
+//
+// button styles
+//
+.btn:active, .btn:active:focus, .btn:focus{
+    box-shadow: none !important; 
+}
+// btn-primary
+.btn-primary {
+    border-color: $primary;
+}
+.btn-primary:hover {
+  background-color: $light;
+  border-color: $light;
+}
+.btn-primary:focus {
+  background-color: $dark;
+  border-color: $dark
+}
+.btn:disabled {
+  background-color: $gray-200;
+  border-color: $gray-200;
+}
+// btn-secondary
+.btn-secondary{
+    border-color: $secondary;
+}
+.btn-secondary:hover {
+  background-color: $success;
+  border-color: $success;
+}
+.btn-secondary:focus {
+  background-color: $warning;
+  border-color: $warning;
+}
+.btn-secondary:disabled {
+  background-color: $gray-200;
+}
+
+//
+//form-control
+//
+
+.form-control{
+    font-size: 18px;
+    line-height: 18px;
+    color: $gray-400;
+    width: 320px;
+    border-radius: 0%;
+}
+.form-control::placeholder{
+    color: $gray-200;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: $success;
+    box-shadow: none;
+}
+.form-label{
+    font-size: 16px;
+    line-height: 16px;
+    color: $gray-300;
+}
+.form-text{
+    color: $gray-200;
+}
+
+// check-box
+
+.form-check-input[type= "checkbox" ]{
+    display: none;
+}
+
+.check-box-custom {
+    display:inline-block;
+    width:150px;
+    height:16px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url(CheckBox.svg) left top no-repeat;
+    cursor:pointer;
+}
+.form-check-input[type="checkbox"]:checked + .check-box-custom{
+    background:url(CheckBoxChecked.svg) left top no-repeat;
+}
+
+// input[type="checkbox"] {
+//     display:none;
+// }
+// input[type="checkbox"] + label span {
+//     display:inline-block;
+//     width:24px;
+//     height:24px;
+//     margin:-2px 10px 0 0;
+//     vertical-align:middle;
+//     background:url(CheckBox.svg) left top no-repeat;
+//     cursor:pointer;
+// }
+// input[type="checkbox"]:checked + label span {
+//     background:url(CheckBoxChecked.svg) -19px top no-repeat;
+// }
