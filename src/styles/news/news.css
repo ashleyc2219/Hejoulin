@@ -1,0 +1,18 @@
+* {
+  outline: 1 red solid;
+}
+
+body {
+  background-image: url(./../../../public/home/Sake-background0310.jpg);
+}
+
+.newstry {
+  border: 1px solid #ccc;
+  height: 144px;
+}
+
+h1 {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+}
+/*# sourceMappingURL=news.css.map */
