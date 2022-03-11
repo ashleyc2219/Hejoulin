@@ -1,5 +1,5 @@
-import React from "react";
-import "./../styles/ProductList/ProductList.css";
+import React from 'react'
+import './../styles/ProductList/ProductList.css'
 
 const ProductList = () => {
   return (
@@ -99,13 +99,12 @@ const ProductList = () => {
               </div>
             </div>
 
-
             <div className="mobile-search-bar">
               <div className="cat">
                 <div className="title">分類</div>
                 <div className="state">購買清酒</div>
               </div>
-              <div className="fliter">
+              <div className="filter">
                 <div className="title">篩選</div>
                 <div className="state">無</div>
               </div>
@@ -118,13 +117,31 @@ const ProductList = () => {
                 <div className="state">1</div>
               </div>
             </div>
-
-            
+            <div className="compare-block">
+              <div className="product">
+                <img src="/ProductList/product.png" alt="" />
+                <p className="name">篠峯 雄町純米大吟醸</p>
+                <div className="shadow"></div>
+                <img src="/ProductList/remove.svg" alt="" className="remove" />
+              </div>
+              <div className="product">
+                <img src="/ProductList/product.png" alt="" />
+                <p className="name">篠峯 雄町純米大吟醸</p>
+                <div className="shadow"></div>
+                <img src="/ProductList/remove.svg" alt="" className="remove" />
+              </div>
+              <div className="product">
+                <img src="/ProductList/product.png" alt="" />
+                <p className="name">篠峯 雄町純米大吟醸</p>
+                <div className="shadow"></div>
+                <img src="/ProductList/remove.svg" alt="" className="remove" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList
