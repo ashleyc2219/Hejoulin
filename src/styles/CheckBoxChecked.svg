@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <g style="mix-blend-mode:multiply">
+    <path fill="#6B7580" d="M0 0h24v24H0z"/>
+    <path fill="#fff" d="M9.685 17.2c-.24 0-.46-.08-.64-.26l-3.98-3.98a.894.894 0 010-1.28c.36-.36.92-.36 1.28 0l3.36 3.34 7.98-7.96c.36-.36.92-.36 1.28 0s.36.92 0 1.28l-8.62 8.6c-.2.18-.42.26-.66.26z"/>
+  </g>
+</svg>
