@@ -3,3 +3,33 @@
 .text-color{
     color: $secondary
 }
+.pantone-container{
+    margin: 20px;
+}
+.pantone{
+    width: 60px;
+    height: 60px;
+}
+// 如何使用顏色變數
+.primary{
+    background-color: $primary;
+}
+
+.secondary{
+    background-color: $secondary;
+}
+
+.success{
+    background-color: $success;
+}
+
+.info{
+    background-color: $info;
+}
+
+h3{
+    margin-top: 10px;
+}
+h4{
+    margin-top: 5px;
+}

@@ -3,15 +3,40 @@ import './../styles/SomeComponent/SomeComponent.scss'
 
 const SomeComponent = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Some Components</h1>
+      <h3 className="text-color">顏色變數</h3>
+      <p>
+        使用方式: <br />
+        在自己的scss檔中 @import '../mixin.scss'; <br />
+        就可以使用所有的顏色變數 (所有顏色請看mixin.scss) <br />
+        舉例: background-color: $primary
+      </p>
+      <div className="d-flex">
+        <div className="pantone-container">
+          <div className="pantone primary"></div>
+          <p>primary</p>
+        </div>
+        <div className="pantone-container">
+          <div className="pantone secondary"></div>
+          <p>secondary</p>
+        </div>
+        <div className="pantone-container">
+          <div className="pantone success"></div>
+          <p>success</p>
+        </div>
+        <div className="pantone-container">
+          <div className="pantone info"></div>
+          <p>info</p>
+        </div>
+      </div>
       {/* 按鈕 */}
       <h3>按鈕們</h3>
       <button className="btn btn-primary">Primary</button>
       <button className="btn btn-secondary">Secondary</button>
       <button className="btn btn-outline-primary">Outline</button>
       <br />
-      <h4 className="text-color">不同大小</h4>
+      <h4>不同大小</h4>
       <p>btn-sm是style guide中的small</p>
       <p>btn是style guide中的normal</p>
       <p>btn-large是style guide中的medium</p>
