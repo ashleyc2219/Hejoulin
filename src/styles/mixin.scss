@@ -1,3 +1,24 @@
+//
+// Color system
+//
+
+$primary: #3d4349;
+$secondary: #d26d54;
+$success: #e6c49e;
+$info: #ffdb8a;
+$warning: #af4930;
+$light: #95a4b2;
+$dark: #6b7580;
+
+$white: #f7f7f6;
+$black: #202326;
+
+$gray-100: #e0e0df;
+$gray-200: #bbbcbd;
+$gray-300: #7e8082;
+$gray-400: #4d4e4f;
+
+
 @mixin bgimage {
   background: url("/public/Sake-background0310.jpg");
 }
