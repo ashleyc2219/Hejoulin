@@ -1,4 +1,5 @@
 import React from 'react'
+import './../styles/SomeComponent/SomeComponent.scss'
 
 const SomeComponent = () => {
   return (
@@ -10,7 +11,7 @@ const SomeComponent = () => {
       <button className="btn btn-secondary">Secondary</button>
       <button className="btn btn-outline-primary">Outline</button>
       <br />
-      <h4>不同大小</h4>
+      <h4 className="text-color">不同大小</h4>
       <p>btn-sm是style guide中的small</p>
       <p>btn是style guide中的normal</p>
       <p>btn-large是style guide中的medium</p>
