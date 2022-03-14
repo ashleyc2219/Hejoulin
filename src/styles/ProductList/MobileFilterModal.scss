@@ -1,0 +1,160 @@
+@import '../mixin.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', serif;
+}
+
+.MobileFilterModal {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 9;
+  .filter-modal {
+    width: 100%;
+    height: 100%;
+    margin-top: 75px;
+    padding-top: 50px;
+    position: relative;
+    @include bgimage();
+    img.close-black{
+        position: absolute;
+        top: 15px;
+        right:30px;
+        cursor: pointer;
+    }
+    .sidebar {
+      width: 175px;
+      height: fit-content;
+      margin: 0 auto;
+      .second {
+        .filter {
+          padding-bottom: 10px;
+          border-bottom: 2px solid $gray-200;
+          a {
+            @include kleeone();
+            color: $primary;
+            margin-left: 30px;
+            font-size: 20px;
+            text-decoration: none;
+          }
+        }
+        p {
+          font-size: 12px;
+
+          margin: 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .level {
+          display: flex;
+          flex-direction: column;
+          label {
+            @include kleeone();
+            color: $gray-300;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+      .third {
+        a {
+          @include kleeone();
+          margin-left: 30px;
+          font-size: 20px;
+          text-decoration: none;
+          color: $black;
+        }
+        p {
+          font-size: 12px;
+          margin: 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .price {
+          display: flex;
+          flex-direction: column;
+          label {
+            @include kleeone();
+            color: gray;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+      .other {
+        p {
+          font-size: 12px;
+          margin: 20px 0 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .custum {
+          label {
+            @include kleeone();
+            margin: 0 0 20px 30px;
+            color: gray;
+            font-size: 20px;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
