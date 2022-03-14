@@ -70,6 +70,19 @@ const SomeComponent = () => {
           <span></span>Check Box 3
         </label>
       </div>
+      {/* radio */}
+      <div>
+        <input type="radio" id="r1" name="rr" />
+        <label for="r1">
+          <span></span>Radio Button 1
+        </label>
+      </div>
+      <div>
+        <input type="radio" id="r2" name="rr" />
+        <label for="r2">
+          <span></span>Radio Button 2
+        </label>
+      </div>
 
       {/* 下拉選單 */}
       <h3>下拉選單</h3>
