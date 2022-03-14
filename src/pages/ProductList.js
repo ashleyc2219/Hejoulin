@@ -1,142 +1,766 @@
 import React from 'react'
 import './../styles/ProductList/ProductList.css'
+import Sidebar from '../compenents/ProductList/Sidebar'
+import CompareBlock from '../compenents/ProductList/CompareBlock'
+import CompareModal from '../compenents/ProductList/CompareModal'
 
 const ProductList = () => {
   return (
     <>
+    <CompareModal />
       <div className="ProductList">
         <nav>
           <div className="container"></div>
         </nav>
         {/* 商品列表的容器 */}
         <div className="product-container">
-          <div className="sidebar">
-            <div className="first">
-              <ul>
-                <li>
-                  <a href="#/">購買清酒</a>
-                </li>
-                <li>
-                  <a href="#/">清酒禮盒</a>
-                </li>
-              </ul>
-            </div>
-            <div className="second">
-              <div className="filter">
-                <a href="#/">篩選</a>
-              </div>
-              <p>等級</p>
-              <div className="level">
-                <input type="radio" name="level" id="吟釀" value="吟釀" />
-                <label htmlFor="吟釀">吟釀</label>
-                <input type="radio" name="level" id="大吟釀" value="大吟釀" />
-                <label htmlFor="大吟釀">大吟釀</label>
-                <input type="radio" name="level" id="純米酒" value="純米酒" />
-                <label htmlFor="純米酒">純米酒</label>
-                <input
-                  type="radio"
-                  name="level"
-                  id="純米吟釀"
-                  value="純米吟釀"
-                />
-                <label htmlFor="純米吟釀">純米吟釀</label>
-                <input
-                  type="radio"
-                  name="level"
-                  id="純米大吟釀"
-                  value="純米大吟釀"
-                />
-                <label htmlFor="純米大吟釀">純米大吟釀</label>
-                <input type="radio" name="level" id="本釀造" value="本釀造" />
-                <label htmlFor="本釀造">本釀造</label>
-              </div>
-            </div>
-            <div className="third">
-              <p>價格</p>
-              <div className="price">
-                <input type="radio" name="price" id="7" value="7" />
-                <label htmlFor="7">1000以下</label>
-                <input type="radio" name="price" id="8" value="8" />
-                <label htmlFor="8">1000~2000</label>
-                <input type="radio" name="price" id="9" value="9" />
-                <label htmlFor="9">2000~3000</label>
-              </div>
-            </div>
-            <div className="other">
-              <p>其他</p>
-              <div className="custum">
-                <input type="checkbox" name="mark" id="1" value="1" />
-                <label htmlFor="1">可酒標客製</label>
-              </div>
-            </div>
-          </div>
+          <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
+          <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
+          {/* sidebar篩選 */}
+          <Sidebar />
+
           <div className="main">
-            <div className="search-bar">
-              <div className="select">
-                <select name="" id="">
-                  <option value="">預設排序</option>
-                  <option value="">最新上架</option>
-                  <option value="">價錢高至低</option>
-                  <option value="">價錢低至高</option>
-                </select>
-                <select name="" id="">
-                  <option value="">品牌</option>
-                  <option value="">最新上架</option>
-                  <option value="">價錢高至低</option>
-                  <option value="">價錢低至高</option>
-                </select>
-                <select name="" id="">
-                  <option value="">產地</option>
-                  <option value="">最新上架</option>
-                  <option value="">價錢高至低</option>
-                  <option value="">價錢低至高</option>
-                </select>
-              </div>
-              <div className="search">
-                <img src="/ProductList/search.svg" alt="" />
+            <div className="center-container">
+              <div className="search-bar">
+                <div className="select">
+                  <select name="" id="">
+                    <option value="">預設排序</option>
+                    <option value="">最新上架</option>
+                    <option value="">價錢高至低</option>
+                    <option value="">價錢低至高</option>
+                  </select>
+                  <select name="" id="">
+                    <option value="">品牌</option>
+                    <option value="">最新上架</option>
+                    <option value="">價錢高至低</option>
+                    <option value="">價錢低至高</option>
+                  </select>
+                  <select name="" id="">
+                    <option value="">產地</option>
+                    <option value="">最新上架</option>
+                    <option value="">價錢高至低</option>
+                    <option value="">價錢低至高</option>
+                  </select>
+                </div>
+                <div className="search">
+                  <img src="/ProductList/search.svg" alt="" />
 
-                <input type="text" name="" id="" />
+                  <input type="text" name="" id="" />
+                </div>
+              </div>
+              {/* 手機版的篩選 */}
+              <div className="mobile-search-bar">
+                <div className="cat">
+                  <div className="title">分類</div>
+                  <div className="state">購買清酒</div>
+                </div>
+                <div className="filter">
+                  <div className="title">篩選</div>
+                  <div className="state">無</div>
+                </div>
+                <div className="sort">
+                  <div className="title">排序</div>
+                  <div className="state">預設排序</div>
+                </div>
+                <div className="compare">
+                  <div className="title">比較</div>
+                  <div className="state">1</div>
+                </div>
+              </div>
+              {/* 人氣之選 */}
+              <div className="famous-choose">
+                <div className="famous-title">
+                  人氣之選
+                  <img src="/ProductList/rice.svg" alt="" className="rice" />
+                </div>
+                <div className="product-container">
+                  {/* 商品 */}
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        {/* <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        /> */}
+                        <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        />
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 達人推薦 */}
+              <div className="master-recommend">
+                <div className="master-title">
+                  達人推薦
+                  <img src="/ProductList/rice.svg" alt="" className="rice" />
+                </div>
+                <div className="product-container">
+                  {/* 商品 */}
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        {/* <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        /> */}
+                        <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        />
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 商品列表 */}
+              <div className="product-list">
+                <div className="product-title">
+                  全部商品
+                  <img src="/ProductList/rice.svg" alt="" className="rice" />
+                </div>
+                <div className="product-container">
+                  {/* 商品 */}
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        {/* <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        /> */}
+                        <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        />
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        {/* <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        /> */}
+                        <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        />
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        />
+                        {/* <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        /> */}
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                  <div className="product">
+                    <div className="product-wrap">
+                      <img
+                        className="product-img"
+                        src="/ProductList/product.png"
+                        alt=""
+                      />
+                      <div className="tag-img">
+                        {/* 禮盒跟酒標客製化的ttag */}
+                        {/* <img
+                          src="/ProductList/mark.svg"
+                          alt=""
+                          className="pro-gift"
+                        /> */}
+                        <img
+                          src="/ProductList/gift.svg"
+                          alt=""
+                          clasÎsName="pro-mark"
+                        />
+                      </div>
+                      <div className="icon">
+                        <div className="compare">
+                          <img src="/ProductList/add.svg" alt="" />
+                          <p>比較</p>
+                        </div>
+                        <div className="cart-heart">
+                          <img
+                            className="heart"
+                            src="/ProductList/heart.svg"
+                            alt=""
+                          />
+                          <img
+                            className="cart"
+                            src="/ProductList/cart.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="title">
+                      <p className="name">篠峯 雄町純米大吟醸</p>
+                      <p className="price">＄2890</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="mobile-search-bar">
-              <div className="cat">
-                <div className="title">分類</div>
-                <div className="state">購買清酒</div>
-              </div>
-              <div className="filter">
-                <div className="title">篩選</div>
-                <div className="state">無</div>
-              </div>
-              <div className="sort">
-                <div className="title">排序</div>
-                <div className="state">預設排序</div>
-              </div>
-              <div className="compare">
-                <div className="title">比較</div>
-                <div className="state">1</div>
-              </div>
-            </div>
-            <div className="compare-block">
-              <div className="product">
-                <img src="/ProductList/product.png" alt="" />
-                <p className="name">篠峯 雄町純米大吟醸</p>
-                <div className="shadow"></div>
-                <img src="/ProductList/remove.svg" alt="" className="remove" />
-              </div>
-              <div className="product">
-                <img src="/ProductList/product.png" alt="" />
-                <p className="name">篠峯 雄町純米大吟醸</p>
-                <div className="shadow"></div>
-                <img src="/ProductList/remove.svg" alt="" className="remove" />
-              </div>
-              <div className="product">
-                <img src="/ProductList/product.png" alt="" />
-                <p className="name">篠峯 雄町純米大吟醸</p>
-                <div className="shadow"></div>
-                <img src="/ProductList/remove.svg" alt="" className="remove" />
-              </div>
-            </div>
+            {/* 右側比較區塊 */}
+            <CompareBlock />
           </div>
         </div>
       </div>
