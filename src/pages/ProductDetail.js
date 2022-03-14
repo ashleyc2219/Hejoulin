@@ -2,10 +2,12 @@ import React from 'react'
 import './../styles/ProductDetail/ProductDetail.css'
 import Sidebar from '../compenents/ProductList/Sidebar'
 import CompareBlock from '../compenents/ProductList/CompareBlock'
+import CompareModal from '../compenents/ProductList/CompareModal'
 
 const ProductDetail = () => {
   return (
     <>
+    {/* <CompareModal/> */}
       <div className="ProductDetail">
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
