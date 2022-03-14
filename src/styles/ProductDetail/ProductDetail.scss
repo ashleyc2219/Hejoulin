@@ -88,7 +88,7 @@
     // 背景的花紋
 
     // 左側的篩選
-    .sidebar {
+    /* .sidebar {
       width: 175px;
       height: fit-content;
       margin-right: 30px;
@@ -220,7 +220,7 @@
         }
       }
     }
-
+ */
     // 篩選之外的區塊
     .main {
       border-top: 2px solid $gray-200;
@@ -719,7 +719,7 @@
       }
 
       //最右邊比較區塊
-      .compare-block {
+      /* .compare-block {
         @include large() {
           display: none;
         }
@@ -773,7 +773,7 @@
             transform: translateY(50%);
           }
         }
-      }
+      } */
     }
   }
 }

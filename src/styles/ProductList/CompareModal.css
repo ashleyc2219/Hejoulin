@@ -47,8 +47,8 @@
 @media (max-width: 768px) {
   .CompareModal .comparepage .mobile-close {
     display: block;
-    position: absolute;
-    top: 10px;
+    position: fixed;
+    top: 60px;
     right: 10px;
     cursor: pointer;
   }
@@ -229,6 +229,7 @@
   height: 40px;
   font-size: 14px;
   color: #4d4e4f;
+  cursor: pointer;
 }
 
 .CompareModal .comparepage .com-pro .spec-wrap ul li:nth-child(even) {

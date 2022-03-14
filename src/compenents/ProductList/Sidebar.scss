@@ -1,0 +1,289 @@
+@import './../../styles/mixin.scss';
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+.ProductList {
+  .sidebar {
+    width: 175px;
+    height: fit-content;
+    margin-right: 30px;
+    @include medium() {
+      display: none;
+    }
+    .first {
+      padding-top: 20px;
+      padding-bottom: 40px;
+      border-top: 2px solid $gray-200;
+
+      ul {
+        margin-left: 30px;
+        li {
+          list-style: none;
+          &:first-child a {
+            color: $primary;
+          }
+          a {
+            @include kleeone();
+            color: $gray-300;
+            text-decoration: none;
+            margin-bottom: 16px;
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+    .second {
+      .filter {
+        padding-bottom: 10px;
+        border-bottom: 2px solid $gray-200;
+        a {
+          @include kleeone();
+          color: $primary;
+          margin-left: 30px;
+          font-size: 20px;
+          text-decoration: none;
+        }
+      }
+      p {
+        font-size: 12px;
+
+        margin: 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .level {
+        display: flex;
+        flex-direction: column;
+        label {
+          @include kleeone();
+          color: $gray-300;
+          font-size: 20px;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          position: relative;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+    .third {
+      a {
+        @include kleeone();
+        margin-left: 30px;
+        font-size: 20px;
+        text-decoration: none;
+        color: $black;
+      }
+      p {
+        font-size: 12px;
+        margin: 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .price {
+        display: flex;
+        flex-direction: column;
+        label {
+          @include kleeone();
+          color: gray;
+          font-size: 20px;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          position: relative;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+    .other {
+      p {
+        font-size: 12px;
+        margin: 20px 0 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .custum {
+        label {
+          @include kleeone();
+          margin: 0 0 20px 30px;
+          color: gray;
+          font-size: 20px;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+.ProductDetail {
+  .sidebar {
+    width: 175px;
+    height: fit-content;
+    margin-right: 30px;
+    @include medium() {
+      display: none;
+    }
+    .first {
+      padding-top: 20px;
+      padding-bottom: 40px;
+      border-top: 2px solid $gray-200;
+
+      ul {
+        margin-left: 30px;
+        li {
+          list-style: none;
+          &:first-child a {
+            color: $primary;
+          }
+          a {
+            @include kleeone();
+            color: $gray-300;
+            text-decoration: none;
+            margin-bottom: 16px;
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+    .second {
+      .filter {
+        padding-bottom: 10px;
+        border-bottom: 2px solid $gray-200;
+        a {
+          @include kleeone();
+          color: $primary;
+          margin-left: 30px;
+          font-size: 20px;
+          text-decoration: none;
+        }
+      }
+      p {
+        font-size: 12px;
+
+        margin: 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .level {
+        display: flex;
+        flex-direction: column;
+        label {
+          @include kleeone();
+          color: $gray-300;
+          font-size: 20px;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          position: relative;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+    .third {
+      a {
+        @include kleeone();
+        margin-left: 30px;
+        font-size: 20px;
+        text-decoration: none;
+        color: $black;
+      }
+      p {
+        font-size: 12px;
+        margin: 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .price {
+        display: flex;
+        flex-direction: column;
+        label {
+          @include kleeone();
+          color: gray;
+          font-size: 20px;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          position: relative;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+    .other {
+      p {
+        font-size: 12px;
+        margin: 20px 0 20px 30px;
+        color: $gray-400;
+        @include kleeone();
+      }
+      .custum {
+        label {
+          @include kleeone();
+          margin: 0 0 20px 30px;
+          color: gray;
+          font-size: 20px;
+          text-decoration: underline;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+        input:checked + label {
+          color: $black;
+        }
+      }
+    }
+  }
+}

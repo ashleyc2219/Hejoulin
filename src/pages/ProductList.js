@@ -3,11 +3,29 @@ import './../styles/ProductList/ProductList.css'
 import Sidebar from '../compenents/ProductList/Sidebar'
 import CompareBlock from '../compenents/ProductList/CompareBlock'
 import CompareModal from '../compenents/ProductList/CompareModal'
+import MobileFilterModal from '../compenents/ProductList/MobileFilterModal'
+import MobileSortModal from '../compenents/ProductList/MobileSortModal'
+import MobileCatModal from '../compenents/ProductList/MobileCatModal'
 
-const ProductList = () => {
+const ProductList = (props) => {
+  fetch('http://localhost:3000/api/products-condition/brand', {})
+    .then((response) => {
+      return response.json()
+    })
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log('錯誤:', err)
+    })
+    
+
   return (
     <>
       {/* <CompareModal /> */}
+      {/*  <MobileFilterModal /> */}
+      {/* <MobileSortModal /> */}
+      {/* <MobileCatModal /> */}
       <div className="ProductList">
         <nav>
           <div className="container"></div>
@@ -23,19 +41,19 @@ const ProductList = () => {
             <div className="center-container">
               <div className="search-bar">
                 <div className="select">
-                  <select name="" id="">
+                  <select name="sort" id="">
                     <option value="">預設排序</option>
                     <option value="">最新上架</option>
                     <option value="">價錢高至低</option>
                     <option value="">價錢低至高</option>
                   </select>
-                  <select name="" id="">
+                  <select name="brand" id="">
                     <option value="">品牌</option>
                     <option value="">最新上架</option>
                     <option value="">價錢高至低</option>
                     <option value="">價錢低至高</option>
                   </select>
-                  <select name="" id="">
+                  <select name="loca" id="">
                     <option value="">產地</option>
                     <option value="">最新上架</option>
                     <option value="">價錢高至低</option>
@@ -92,7 +110,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -136,7 +154,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -180,7 +198,7 @@ const ProductList = () => {
                         <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         />
                       </div>
                       <div className="icon">
@@ -234,7 +252,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -278,7 +296,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -322,7 +340,7 @@ const ProductList = () => {
                         <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         />
                       </div>
                       <div className="icon">
@@ -376,7 +394,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -420,7 +438,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -464,7 +482,7 @@ const ProductList = () => {
                         <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         />
                       </div>
                       <div className="icon">
@@ -508,7 +526,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -552,7 +570,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -596,7 +614,7 @@ const ProductList = () => {
                         <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         />
                       </div>
                       <div className="icon">
@@ -640,7 +658,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -684,7 +702,7 @@ const ProductList = () => {
                         {/* <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         /> */}
                       </div>
                       <div className="icon">
@@ -728,7 +746,7 @@ const ProductList = () => {
                         <img
                           src="/ProductList/gift.svg"
                           alt=""
-                          clasÎsName="pro-mark"
+                          className="pro-mark"
                         />
                       </div>
                       <div className="icon">

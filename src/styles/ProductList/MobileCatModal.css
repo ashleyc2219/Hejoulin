@@ -1,0 +1,60 @@
+.MobileCatModal {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.MobileCatModal .cat-modal {
+  width: 100%;
+  height: 100%;
+  margin-top: 75px;
+  padding-top: 50px;
+  position: relative;
+  background: url("/public/Sake-background0310.jpg");
+}
+
+.MobileCatModal .cat-modal img.close-black {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.MobileCatModal .cat-modal .title {
+  width: 175px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border-bottom: 2px solid #bbbcbd;
+  padding-bottom: 10px;
+  color: #3d4349;
+  font-family: "Klee One", cursive;
+}
+
+.MobileCatModal .cat-modal .cat {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.MobileCatModal .cat-modal .cat ul li {
+  list-style: none;
+  margin-bottom: 9px;
+}
+
+.MobileCatModal .cat-modal .cat ul li:first-child a {
+  color: #3d4349;
+}
+
+.MobileCatModal .cat-modal .cat ul li a {
+  font-family: "Klee One", cursive;
+  font-size: 20px;
+  color: #7e8082;
+}
+/*# sourceMappingURL=MobileCatModal.css.map */

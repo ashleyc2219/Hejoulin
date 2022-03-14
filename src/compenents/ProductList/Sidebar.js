@@ -1,4 +1,6 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import './Sidebar.scss'
 
 function Sidebar() {
   return (
@@ -7,10 +9,10 @@ function Sidebar() {
         <div className="first">
           <ul>
             <li>
-              <a href="#/">購買清酒</a>
+              <Link to="/product/list">購買清酒</Link>
             </li>
             <li>
-              <a href="#/">清酒禮盒</a>
+              <Link to="/gift">清酒禮盒</Link>
             </li>
           </ul>
         </div>

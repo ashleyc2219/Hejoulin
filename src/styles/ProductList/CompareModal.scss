@@ -60,8 +60,8 @@
         display: none;
         @include medium(){
             display: block;
-            position: absolute;
-            top: 10px;
+            position: fixed;
+            top: 60px;
             right: 10px;
             cursor: pointer;
         }
@@ -201,6 +201,7 @@
             height: 40px;
             font-size: 14px;
             color: $gray-400;
+            cursor: pointer;
             &:nth-child(even) {
               background-color: rgba(230, 196, 158, 0.25);
             }

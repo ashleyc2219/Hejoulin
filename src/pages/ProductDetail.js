@@ -7,7 +7,7 @@ import CompareModal from '../compenents/ProductList/CompareModal'
 const ProductDetail = () => {
   return (
     <>
-    {/* <CompareModal/> */}
+      {/* <CompareModal/> */}
       <div className="ProductDetail">
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
@@ -169,11 +169,11 @@ const ProductDetail = () => {
                 <p className="intro">
                   2015年8月發賣的新產品。革命性的將酒精度降低到了12度的同時，不失整體的平衡。口感輕柔，有淡淡的果實清香。會讓人在不知不覺中一杯一杯的喝下去。非常適合作為午餐佐酒。
                 </p>
-                <input type="radio" name="detail" id="spec2" checked />
+                <input type="radio" name="detail2" id="spec2" checked />
                 <label className="spec2" htmlFor="spec2">
                   商品規格
                 </label>
-                <input type="radio" name="detail" id="tran2" />
+                <input type="radio" name="detail2" id="tran2" />
                 <label className="tran2" htmlFor="tran2">
                   貨運資訊
                 </label>
