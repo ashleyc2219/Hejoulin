@@ -7,7 +7,7 @@ import CompareModal from '../compenents/ProductList/CompareModal'
 const ProductList = () => {
   return (
     <>
-    <CompareModal />
+      {/* <CompareModal /> */}
       <div className="ProductList">
         <nav>
           <div className="container"></div>
