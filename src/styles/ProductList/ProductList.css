@@ -19,17 +19,6 @@
   }
 }
 
-.ProductList nav {
-  height: 144px;
-  width: 100%;
-}
-
-.ProductList nav .container {
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-}
-
 .ProductList .product-container {
   padding-top: 40px;
   max-width: 1200px;

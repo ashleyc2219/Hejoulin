@@ -3,10 +3,13 @@ import './../styles/ProductDetail/ProductDetail.css'
 import Sidebar from '../compenents/ProductList/Sidebar'
 import CompareBlock from '../compenents/ProductList/CompareBlock'
 import CompareModal from '../compenents/ProductList/CompareModal'
+import Header from '../compenents/Shared/Header'
+import Footer from '../compenents/Shared/Footer'
 
 const ProductDetail = () => {
   return (
     <>
+    <Header />
       {/* <CompareModal/> */}
       <div className="ProductDetail">
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
@@ -269,6 +272,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

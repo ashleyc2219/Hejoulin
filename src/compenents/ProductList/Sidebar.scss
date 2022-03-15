@@ -1,24 +1,5 @@
 @import './../../styles/mixin.scss';
-@mixin exlarge {
-  @media (max-width: 1440px) {
-    @content;
-  }
-}
-@mixin large {
-  @media (max-width: 1024px) {
-    @content;
-  }
-}
-@mixin medium {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-@mixin small {
-  @media (max-width: 320px) {
-    @content;
-  }
-}
+
 .ProductList {
   .sidebar {
     width: 175px;
