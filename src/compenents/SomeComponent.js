@@ -3,7 +3,7 @@ import './../styles/SomeComponent/SomeComponent.scss'
 
 const SomeComponent = () => {
   return (
-    <div className="container">
+    <div className="container SomeComponent">
       <h1>Some Components</h1>
       <h3 className="text-color">顏色變數</h3>
       <p>

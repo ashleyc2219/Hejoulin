@@ -1,0 +1,108 @@
+@import '../mixin.scss';
+*{
+  // outline: 1px solid red;
+}
+.Header {
+  width: 100%;
+  
+
+  .Header-container {
+    max-width: 1200px;
+    height: 145px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    .logo-bread {
+      // width: 23%;
+      display: flex;
+      flex-direction: column;
+
+      .logo {
+        // width: 63%;
+        margin-top: 55.7px;
+      }
+      .bread {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        padding: 10px 0;
+        .current {
+          color: $secondary;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .navbar {
+      width: 756px;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      padding: 0;
+
+      .links {
+        width: 599px;
+        display: flex;
+        // margin-top: 44px;
+        margin-bottom: 0px;
+        font-size: 17px;
+        li {
+          letter-spacing: -1.8px;
+          margin: 0px 7.88px;
+          list-style-type: none;
+
+          a {
+            @include kleeone();
+          }
+        }
+        .purchase-sake {
+          position: relative;
+          // display: none;
+          &:hover .dropdown-content {
+            display: block;
+          }
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            left: -7px;
+            background-color: $primary;
+            width: 77px;
+            z-index: 1;
+            li {
+              margin: 4px 0;
+              text-align: center;
+              a {
+                color: $white;
+                // margin: 4px 0;
+              }
+            }
+            li:last-child {
+              margin: 4px 0 8px;
+            }
+          }
+        }
+      }
+      .icons {
+        // width: 16%;
+        // margin-top: 44px;
+        display: flex;
+        .login {
+          width: 37.4%;
+          height: 80px;
+          margin-right: 17px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          span{
+            @include kleeone();
+            font-size: 15px;
+            line-height: 30px;
+          }
+        }
+        .cart {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+}
