@@ -1,0 +1,111 @@
+.Header {
+  width: 100%;
+}
+
+.Header .Header-container {
+  max-width: 1200px;
+  height: 145px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header .Header-container .logo-bread {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header .Header-container .logo-bread .logo {
+  margin-top: 55.7px;
+}
+
+.Header .Header-container .logo-bread .bread {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.Header .Header-container .logo-bread .bread .current {
+  color: #d26d54;
+  font-weight: bold;
+}
+
+.Header .Header-container .navbar {
+  width: 756px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.Header .Header-container .navbar .links {
+  width: 599px;
+  display: flex;
+  margin-bottom: 0px;
+  font-size: 17px;
+}
+
+.Header .Header-container .navbar .links li {
+  letter-spacing: -1.8px;
+  margin: 0px 7.88px;
+  list-style-type: none;
+}
+
+.Header .Header-container .navbar .links li a {
+  font-family: "Klee One", cursive;
+}
+
+.Header .Header-container .navbar .links .purchase-sake {
+  position: relative;
+}
+
+.Header .Header-container .navbar .links .purchase-sake:hover .dropdown-content {
+  display: block;
+}
+
+.Header .Header-container .navbar .links .purchase-sake .dropdown-content {
+  display: none;
+  position: absolute;
+  left: -7px;
+  background-color: #3d4349;
+  width: 77px;
+  z-index: 1;
+}
+
+.Header .Header-container .navbar .links .purchase-sake .dropdown-content li {
+  margin: 4px 0;
+  text-align: center;
+}
+
+.Header .Header-container .navbar .links .purchase-sake .dropdown-content li a {
+  color: #f7f7f6;
+}
+
+.Header .Header-container .navbar .links .purchase-sake .dropdown-content li:last-child {
+  margin: 4px 0 8px;
+}
+
+.Header .Header-container .navbar .icons {
+  display: flex;
+}
+
+.Header .Header-container .navbar .icons .login {
+  width: 37.4%;
+  height: 80px;
+  margin-right: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Header .Header-container .navbar .icons .login span {
+  font-family: "Klee One", cursive;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.Header .Header-container .navbar .icons .cart {
+  margin-right: 7px;
+}
+/*# sourceMappingURL=Header.css.map */

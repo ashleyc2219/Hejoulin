@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -29,18 +51,26 @@
     background-color: #51565a;
     bottom: 0;
     z-index: 2;
+    padding: 20px;
     .info {
-      width: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       padding-bottom: 100px;
       display: flex;
-      column-gap: 20%;
+     column-gap: 15%;
+     @include medium{
+      column-gap: 8%;
+    }
+
     }
     .info ul {
       list-style: none;
       li {
         margin-bottom: 16px;
         font-size: 18px;
+        @include medium{
+          font-size: 14px;
+        }
 
         &:first-child a {
             font-family: 'Klee One', cursive;
@@ -56,7 +86,7 @@
     }
 
     .copy-right {
-      width: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       color: #f7f7f6;
       display: flex;
