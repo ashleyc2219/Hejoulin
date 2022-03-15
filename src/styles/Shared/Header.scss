@@ -1,0 +1,96 @@
+@import '../mixin.scss';
+
+.Header {
+  width: 100%;
+  
+
+  .Header-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    .logo-bread {
+      width: 23%;
+      display: flex;
+      flex-direction: column;
+
+      .logo {
+        width: 63%;
+        margin-top: 59px;
+      }
+      .bread {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        padding: 10px 109px 10px 0;
+        .current {
+          color: $secondary;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .navbar {
+      width: 76.5%;
+      display: flex;
+      justify-content: flex-end;
+
+      .links {
+        width: 65.5%;
+        display: flex;
+        margin-top: 44px;
+        font-size: 17px;
+        a{
+          letter-spacing: -2px;
+          margin: 25px 7.88px 7px;
+          @include kleeone();
+        }
+        .purchase-sake {
+          position: relative;
+          &:hover .dropdown-content {
+            // display: none;
+            position: absolute;
+            background-color: $primary;
+            min-width: 77px;
+            z-index: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            a{
+              color: $white;
+              margin: 2px;
+              text-align: center;
+            }
+            a:last-child{
+              margin-bottom: 4px;
+            }
+          }
+          .dropdown-btn {
+            background-color: transparent;
+            border: none;
+            letter-spacing: -2px;
+            margin: 25px 7.88px 7px;
+            @include kleeone();
+          }
+          
+          
+          .dropdown-content{
+            display: none;
+          }
+        }
+      }
+      .icons {
+        width: 16%;
+        margin-top: 44px;
+        .login {
+          width: 37.4%;
+          height: 52px;
+          margin-right: 17px;
+        }
+        .cart {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+}
