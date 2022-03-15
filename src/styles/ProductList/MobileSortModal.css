@@ -1,0 +1,56 @@
+.MobileSortModal {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.MobileSortModal .sort-modal {
+  width: 100%;
+  height: 100%;
+  margin-top: 75px;
+  padding-top: 50px;
+  position: relative;
+  background: url("/public/Sake-background0310.jpg");
+}
+
+.MobileSortModal .sort-modal img.close-black {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.MobileSortModal .sort-modal .title {
+  width: 175px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border-bottom: 2px solid #bbbcbd;
+  padding-bottom: 10px;
+  color: #3d4349;
+  font-family: "Klee One", cursive;
+}
+
+.MobileSortModal .sort-modal .sort {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.MobileSortModal .sort-modal .sort .radio-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+}
+
+.MobileSortModal .sort-modal .sort .radio-container label {
+  font-size: 20px;
+  font-family: "Klee One", cursive;
+}
+/*# sourceMappingURL=MobileSortModal.css.map */

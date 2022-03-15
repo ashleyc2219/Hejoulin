@@ -147,10 +147,12 @@ input[type='checkbox'] + label span {
   margin: -2px 10px 0 0;
   vertical-align: middle;
   background: url(CheckBox.svg) left top no-repeat;
+  transition: all .3s;
   cursor: pointer;
 }
 input[type='checkbox']:checked + label span {
   background: url(CheckBoxChecked.svg) left top no-repeat;
+  transition: all .3s;
 }
 
 // select
@@ -176,4 +178,31 @@ option {
 }
 .optionBox {
   padding: 14px 16px;
+}
+
+// radio
+
+input[type="radio"] {
+  display:none;
+}
+
+input[type="radio"] + label {
+  color:$gray-400;
+  font-family:Arial, sans-serif;
+  transition: all .3s;
+}
+
+input[type="radio"] + label span {
+  display:inline-block;
+  width:24px;
+  height:24px;
+  margin: -2px 10px 0 0;
+  vertical-align:middle;
+  background:url('./RadioSelected.svg');
+  transition: all .3s;
+  cursor:pointer;
+}
+
+input[type="radio"]:checked + label span {
+  background:url('./Radio.svg');
 }

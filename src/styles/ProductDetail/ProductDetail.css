@@ -83,154 +83,139 @@
   margin: 0 auto;
   display: flex;
   z-index: 3;
-}
+  /* .sidebar {
+      width: 175px;
+      height: fit-content;
+      margin-right: 30px;
+      @include medium() {
+        display: none;
+      }
+      .first {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        border-top: 2px solid $gray-200;
 
-.ProductDetail .product-container .sidebar {
-  width: 175px;
-  height: fit-content;
-  margin-right: 30px;
-}
+        ul {
+          margin-left: 30px;
+          li {
+            list-style: none;
+            &:first-child a {
+              color: $primary;
+            }
+            a {
+              @include kleeone();
+              color: $gray-300;
+              text-decoration: none;
+              margin-bottom: 16px;
+              font-size: 20px !important;
+            }
+          }
+        }
+      }
+      .second {
+        .filter {
+          padding-bottom: 10px;
+          border-bottom: 2px solid $gray-200;
+          a {
+            @include kleeone();
+            color: $primary;
+            margin-left: 30px;
+            font-size: 20px;
+            text-decoration: none;
+          }
+        }
+        p {
+          font-size: 12px;
 
-@media (max-width: 768px) {
-  .ProductDetail .product-container .sidebar {
-    display: none;
-  }
-}
-
-.ProductDetail .product-container .sidebar .first {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  border-top: 2px solid #bbbcbd;
-}
-
-.ProductDetail .product-container .sidebar .first ul {
-  margin-left: 30px;
-}
-
-.ProductDetail .product-container .sidebar .first ul li {
-  list-style: none;
-}
-
-.ProductDetail .product-container .sidebar .first ul li:first-child a {
-  color: #3d4349;
-}
-
-.ProductDetail .product-container .sidebar .first ul li a {
-  font-family: "Klee One", cursive;
-  color: #7e8082;
-  text-decoration: none;
-  margin-bottom: 16px;
-  font-size: 20px !important;
-}
-
-.ProductDetail .product-container .sidebar .second .filter {
-  padding-bottom: 10px;
-  border-bottom: 2px solid #bbbcbd;
-}
-
-.ProductDetail .product-container .sidebar .second .filter a {
-  font-family: "Klee One", cursive;
-  color: #3d4349;
-  margin-left: 30px;
-  font-size: 20px;
-  text-decoration: none;
-}
-
-.ProductDetail .product-container .sidebar .second p {
-  font-size: 12px;
-  margin: 20px 30px;
-  color: #4d4e4f;
-  font-family: "Klee One", cursive;
-}
-
-.ProductDetail .product-container .sidebar .second .level {
-  display: flex;
-  flex-direction: column;
-}
-
-.ProductDetail .product-container .sidebar .second .level label {
-  font-family: "Klee One", cursive;
-  color: #7e8082;
-  font-size: 20px;
-  margin-left: 30px;
-  margin-bottom: 15px;
-  position: relative;
-  text-decoration: underline;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.ProductDetail .product-container .sidebar .second .level input {
-  display: none;
-}
-
-.ProductDetail .product-container .sidebar .second .level input:checked + label {
-  color: #202326;
-}
-
-.ProductDetail .product-container .sidebar .third a {
-  font-family: "Klee One", cursive;
-  margin-left: 30px;
-  font-size: 20px;
-  text-decoration: none;
-  color: #202326;
-}
-
-.ProductDetail .product-container .sidebar .third p {
-  font-size: 12px;
-  margin: 20px 30px;
-  color: #4d4e4f;
-  font-family: "Klee One", cursive;
-}
-
-.ProductDetail .product-container .sidebar .third .price {
-  display: flex;
-  flex-direction: column;
-}
-
-.ProductDetail .product-container .sidebar .third .price label {
-  font-family: "Klee One", cursive;
-  color: gray;
-  font-size: 20px;
-  margin-left: 30px;
-  margin-bottom: 15px;
-  position: relative;
-  text-decoration: underline;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.ProductDetail .product-container .sidebar .third .price input {
-  display: none;
-}
-
-.ProductDetail .product-container .sidebar .third .price input:checked + label {
-  color: #202326;
-}
-
-.ProductDetail .product-container .sidebar .other p {
-  font-size: 12px;
-  margin: 20px 0 20px 30px;
-  color: #4d4e4f;
-  font-family: "Klee One", cursive;
-}
-
-.ProductDetail .product-container .sidebar .other .custum label {
-  font-family: "Klee One", cursive;
-  margin: 0 0 20px 30px;
-  color: gray;
-  font-size: 20px;
-  text-decoration: underline;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-
-.ProductDetail .product-container .sidebar .other .custum input {
-  display: none;
-}
-
-.ProductDetail .product-container .sidebar .other .custum input:checked + label {
-  color: #202326;
+          margin: 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .level {
+          display: flex;
+          flex-direction: column;
+          label {
+            @include kleeone();
+            color: $gray-300;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+      .third {
+        a {
+          @include kleeone();
+          margin-left: 30px;
+          font-size: 20px;
+          text-decoration: none;
+          color: $black;
+        }
+        p {
+          font-size: 12px;
+          margin: 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .price {
+          display: flex;
+          flex-direction: column;
+          label {
+            @include kleeone();
+            color: gray;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+      .other {
+        p {
+          font-size: 12px;
+          margin: 20px 0 20px 30px;
+          color: $gray-400;
+          @include kleeone();
+        }
+        .custum {
+          label {
+            @include kleeone();
+            margin: 0 0 20px 30px;
+            color: gray;
+            font-size: 20px;
+            text-decoration: underline;
+            transition: all 0.5s;
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          input:checked + label {
+            color: $black;
+          }
+        }
+      }
+    }
+ */
 }
 
 .ProductDetail .product-container .main {
@@ -240,6 +225,61 @@
   display: flex;
   justify-content: space-between;
   column-gap: 40px;
+  /* .compare-block {
+        @include large() {
+          display: none;
+        }
+        .compare-wrap {
+          display: flex;
+          flex-direction: column;
+          width: 175px;
+          padding: 35px 30px 30px 30px;
+          height: fit-content;
+          margin-top: 23px;
+          border: 1px solid #828282;
+          align-items: center;
+          position: relative;
+          .product {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            img {
+              height: 100px;
+              z-index: 1;
+            }
+            p {
+              width: 80px;
+              text-align: center;
+              line-height: 28px;
+              font-size: 14px;
+            }
+            .shadow {
+              position: absolute;
+              width: 28px;
+              height: 5px;
+              border-radius: 50%;
+              background-color: $black;
+              top: 96px;
+              filter: blur(3px);
+            }
+            .remove {
+              width: 16px;
+              height: 16px;
+              position: absolute;
+              right: 0;
+              top: 0;
+              cursor: pointer;
+            }
+          }
+          button.compare {
+            position: absolute;
+            bottom: 0;
+            transform: translateY(50%);
+          }
+        }
+      } */
 }
 
 @media (max-width: 768px) {
@@ -860,68 +900,5 @@
   transition: all 0.3s;
   padding-top: 33px;
   color: #3d4349;
-}
-
-@media (max-width: 1024px) {
-  .ProductDetail .product-container .main .compare-block {
-    display: none;
-  }
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 175px;
-  padding: 35px 30px 30px 30px;
-  height: fit-content;
-  margin-top: 23px;
-  border: 1px solid #828282;
-  align-items: center;
-  position: relative;
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap .product {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap .product img {
-  height: 100px;
-  z-index: 1;
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap .product p {
-  width: 80px;
-  text-align: center;
-  line-height: 28px;
-  font-size: 14px;
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap .product .shadow {
-  position: absolute;
-  width: 28px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #202326;
-  top: 96px;
-  filter: blur(3px);
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap .product .remove {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-}
-
-.ProductDetail .product-container .main .compare-block .compare-wrap button.compare {
-  position: absolute;
-  bottom: 0;
-  transform: translateY(50%);
 }
 /*# sourceMappingURL=ProductDetail.css.map */
