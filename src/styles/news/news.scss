@@ -1,20 +1,82 @@
-@mixin kleeone {
-  font-family: "Klee One", cursive;
-  font-weight: 400;
-}
+@import '../mixin.scss';
+
+// @mixin kleeone {
+//   font-family: "Klee One", cursive;
+//   font-weight: 400;
+// }
 
 * {
-  outline: 1 red solid;
+  // padding: 0;
+  // margin: 0;
+  // box-sizing: border-box;
+  // font-family: 'Noto Sans TC', serif;
+  outline: 1px red solid;
 }
 
 body {
-  background-image: url(./../../../public/home/Sake-background0310.jpg);
-}
-.newstry {
-  border: 1px solid #ccc;
-  height: 144px;
+  @include bgimage();
 }
 
-h1 {
-  @include kleeone();
+.news {
+  width: 100%;
+  background: linear-gradient(217deg, $warning), rgba(255, 255, 255, 0) 70.71%;
+
+  h1 {
+    @include kleeone();
+  }
+
+  .news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 50;
+    background-color: rgba(138, 134, 170, 0.589);
+
+    .news-title {
+      @include kleeone();
+      color: $gray-300;
+      margin: 37px 0;
+      z-index: 60;
+    }
+
+    .news-title ::after {
+      position: absolute;
+      z-index: 0;
+      right: -220px;
+      content: '';
+      width: 450px;
+      height: 2000px;
+      background: repeating-linear-gradient(
+        50deg,
+        $secondary,
+        $secondary 3px,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0) 15px
+      );
+      opacity: 0.3;
+    }
+
+    .news-item {
+      background-color: rgba(44, 90, 48, 0.582);
+      z-index: 70;
+      display: flex;
+      .news-item-pic {
+      }
+      .news-item-word {
+        display: flex;
+        flex-direction: column;
+        .news-item-date {
+        }
+        .news-item-title {
+        }
+        .news-item-content {
+        }
+        .news-item-link {
+        }
+      }
+    }
+  }
 }

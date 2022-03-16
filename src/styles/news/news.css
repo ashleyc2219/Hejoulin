@@ -1,18 +1,71 @@
 * {
-  outline: 1 red solid;
+  outline: 1px red solid;
 }
 
 body {
-  background-image: url(./../../../public/home/Sake-background0310.jpg);
+  background: url("/public/Sake-background0310.jpg");
 }
 
-.newstry {
-  border: 1px solid #ccc;
-  height: 144px;
+.news {
+  width: 100%;
+  background: linear-gradient(217deg, #af4930), rgba(255, 255, 255, 0) 70.71%;
 }
 
-h1 {
+.news h1 {
   font-family: "Klee One", cursive;
-  font-weight: 400;
+}
+
+.news .news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  z-index: 50;
+  background-color: rgba(138, 134, 170, 0.589);
+}
+
+.news .news-container .news-title {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  margin: 37px 0;
+  z-index: 60;
+}
+
+.news .news-container .news-title ::after {
+  position: absolute;
+  z-index: 0;
+  right: -220px;
+  content: '';
+  width: 450px;
+  height: 2000px;
+  background: repeating-linear-gradient(50deg, #d26d54, #d26d54 3px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 15px);
+  opacity: 0.3;
+}
+
+.news .news-container .news-item {
+  background-color: rgba(44, 90, 48, 0.582);
+  z-index: 70;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.news .news-container .news-item .news-item-word {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 /*# sourceMappingURL=news.css.map */
