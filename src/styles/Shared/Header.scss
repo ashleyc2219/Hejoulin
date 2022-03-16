@@ -109,9 +109,13 @@
         .cart {
           cursor: pointer;
           margin-right: 7px;
+          display: flex;
+          align-items: center;
         }
         .fav{
           cursor: pointer;
+          display: flex;
+          align-items: center;
         }
       }
     }
