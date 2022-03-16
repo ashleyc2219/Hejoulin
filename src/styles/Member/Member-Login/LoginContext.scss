@@ -1,0 +1,27 @@
+@import "../../mixin.css";
+
+.LoginContext {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+
+  .LoginContextBox {
+    padding-top: 14%;
+    padding-left: 26%;
+    //text-align: center;
+
+    .login-title {
+      text-align: center;
+    }
+
+    .login-form-group {
+      padding-top: 25%;
+
+      .btn {
+        margin-left: 17%;
+        margin-top: 16%;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "../mixin.css";
+
+.MemberOrderList {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  .MemberOrderBox {
+    width: 100%;
+
+    .OrderBar {
+      width: 100%;
+      margin-top: 12%;
+      border-bottom: 2px solid #BBBCBD;
+      display: flex;
+      align-items: center;
+
+      .OrderTabs {
+        width: 100%;
+        padding-bottom: 2%;
+
+        .search-icon-od {
+          padding-left: 3%;
+        }
+
+        .OrderBar-item-box {
+          padding-left: 5.1%;
+        }
+      }
+
+    }
+
+    .order-list-display-box {
+      padding-top: 3%;
+      padding-left: 8%;
+
+
+      .table td {
+        border: none;
+      }
+
+      .listItem-name {
+
+      }
+    }
+  }
+}

@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
+import LoginContext from '../Member/LoginContext'
 
-const Header = () => {
+const Header = (props) => {
+  const { user, setUser } = props
+  const [sidebar, setSidebar] = useState(false)
+
+  const showSidebar = () => setSidebar(!sidebar)
   return (
     <>
       <div className="Header">
@@ -53,7 +58,12 @@ const Header = () => {
             </ul>
             <div className="icons">
               <div className="login">
-                <img className="" alt="" src="/Shared/loginIcon.svg" />
+                <img
+                  className=""
+                  alt=""
+                  src="/Shared/loginIcon.svg"
+                  onClick={showSidebar}
+                />
                 <span>登入</span>
               </div>
               <img className="cart" alt="" src="/Shared/shoppingCart.svg" />
@@ -62,6 +72,15 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <div className={sidebar ? 'block' : 'displayNone'} />
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        <ul className="nav-menu-items">
+          <li className="navbar-toggle">
+            <img src="/Shared/x.svg" onClick={showSidebar} alt="" />
+          </li>
+          <LoginContext user={user} setUser={setUser} />
+        </ul>
+      </nav>
     </>
   )
 }
