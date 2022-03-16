@@ -1,7 +1,3 @@
-* {
-  outline: 1px red solid;
-}
-
 body {
   background: url("/public/Sake-background0310.jpg");
 }
@@ -18,16 +14,9 @@ body {
 .news .news-container {
   max-width: 1200px;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   z-index: 50;
   background-color: rgba(138, 134, 170, 0.589);
@@ -54,18 +43,11 @@ body {
 .news .news-container .news-item {
   background-color: rgba(44, 90, 48, 0.582);
   z-index: 70;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .news .news-container .news-item .news-item-word {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 /*# sourceMappingURL=news.css.map */
