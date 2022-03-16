@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
 
 // 變數覆蓋需要在導入 Bootstrap 的 Sass 檔案之前
 // 參考 Bootstrap 的 _variables.scss
@@ -67,7 +67,7 @@ $input-padding-x: 1.375rem;
 //
 // button styles
 //
-.btn{
+.btn {
   min-width: 108px;
 }
 .btn:active,
@@ -142,6 +142,10 @@ input[type='checkbox'] {
 }
 input[type='checkbox'] + label {
   cursor: pointer;
+  color: $dark;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0;
 }
 input[type='checkbox'] + label span {
   display: inline-block;
@@ -150,12 +154,12 @@ input[type='checkbox'] + label span {
   margin: -2px 10px 0 0;
   vertical-align: middle;
   background: url(CheckBox.svg) left top no-repeat;
-  transition: all .3s;
+  transition: all 0.3s;
   cursor: pointer;
 }
 input[type='checkbox']:checked + label span {
   background: url(CheckBoxChecked.svg) left top no-repeat;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 // select
@@ -173,7 +177,7 @@ select {
   background-position-x: 95%;
   background-position-y: 16.5px;
 }
-select:focus{
+select:focus {
   border: $gray-400 0.5px solid;
   border-radius: 0%;
 }
@@ -190,27 +194,27 @@ option {
 
 // radio
 
-input[type="radio"] {
-  display:none;
+input[type='radio'] {
+  display: none;
 }
 
-input[type="radio"] + label {
-  color:$gray-400;
-  font-family:Arial, sans-serif;
-  transition: all .3s;
+input[type='radio'] + label {
+  color: $gray-400;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s;
 }
 
-input[type="radio"] + label span {
-  display:inline-block;
-  width:24px;
-  height:24px;
+input[type='radio'] + label span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
   margin: -2px 10px 0 0;
-  vertical-align:middle;
-  background:url('./RadioSelected.svg');
-  transition: all .3s;
-  cursor:pointer;
+  vertical-align: middle;
+  background: url('./RadioSelected.svg');
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
-input[type="radio"]:checked + label span {
-  background:url('./Radio.svg');
+input[type='radio']:checked + label span {
+  background: url('./Radio.svg');
 }
