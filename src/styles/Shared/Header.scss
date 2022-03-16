@@ -46,6 +46,9 @@
         // margin-top: 44px;
         margin-bottom: 0px;
         font-size: 17px;
+        @include medium(){
+          display: none;
+        }
         li {
           letter-spacing: -1.8px;
           margin: 0px 7.88px;
