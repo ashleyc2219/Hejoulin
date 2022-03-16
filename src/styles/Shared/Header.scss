@@ -4,7 +4,9 @@
 }
 .Header {
   width: 100%;
-  
+  @include medium(){
+    padding: 0 20px;
+  }
 
   .Header-container {
     max-width: 1200px;
@@ -39,6 +41,7 @@
       flex-wrap: nowrap;
       justify-content: flex-end;
       padding: 0;
+     
 
       .links {
         width: 599px;
@@ -96,6 +99,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          cursor: pointer;
           span{
             @include kleeone();
             font-size: 15px;
@@ -103,7 +107,11 @@
           }
         }
         .cart {
+          cursor: pointer;
           margin-right: 7px;
+        }
+        .fav{
+          cursor: pointer;
         }
       }
     }
@@ -119,6 +127,7 @@
   background-color: #202326;
   opacity: .6;
   transition: 350ms;
+  z-index: 9;
 }
 
 .displayNone {
@@ -141,6 +150,7 @@
   top: 0;
   right: -100%;
   transition: 850ms;
+  z-index: 9;
 
   .nav-menu-items {
     width: 100%;
@@ -152,7 +162,10 @@
       display: flex;
       justify-content: end;
       align-items: center;
-
+      img{
+        margin-right: 30px;
+        cursor: pointer;
+      }
 
       .menu-bar {
         margin-left: 4rem;

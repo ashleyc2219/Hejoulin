@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .Header {
+    padding: 0 20px;
+  }
+}
+
 .Header .Header-container {
   max-width: 1200px;
   height: 145px;
@@ -103,6 +109,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .Header .Header-container .navbar .icons .login span {
@@ -112,6 +119,69 @@
 }
 
 .Header .Header-container .navbar .icons .cart {
+  cursor: pointer;
   margin-right: 7px;
+}
+
+.Header .Header-container .navbar .icons .fav {
+  cursor: pointer;
+}
+
+.block {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 120vh;
+  background-color: #202326;
+  opacity: .6;
+  transition: 350ms;
+  z-index: 9;
+}
+
+.displayNone {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-menu.active {
+  right: 0;
+  transition: 350ms;
+}
+
+.nav-menu {
+  background-image: url("../../../public/Sake-background0310.jpg");
+  width: 647px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  z-index: 9;
+}
+
+.nav-menu .nav-menu-items {
+  width: 100%;
+}
+
+.nav-menu .nav-menu-items .navbar-toggle {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.nav-menu .nav-menu-items .navbar-toggle img {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.nav-menu .nav-menu-items .navbar-toggle .menu-bar {
+  margin-left: 4rem;
+  font-size: 2rem;
+  background: none;
 }
 /*# sourceMappingURL=Header.css.map */

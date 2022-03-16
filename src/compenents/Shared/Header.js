@@ -29,10 +29,10 @@ const Header = (props) => {
                 <Link to="">認識清酒</Link>
               </li>
               <li className="purchase-sake">
-                <Link to="">購買清酒</Link>
+                <Link to="/product/list">購買清酒</Link>
                 <ul className="dropdown-content">
                   <li href="">
-                    <Link to="">選購清酒</Link>
+                    <Link to="/product/list">選購清酒</Link>
                   </li>
                   <li href="">
                     <Link to="">選酒指南</Link>
@@ -76,7 +76,7 @@ const Header = (props) => {
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
-            <img src="/Shared/x.svg" onClick={showSidebar} alt="" />
+            <img src="/ProductList/close-black.svg" onClick={showSidebar} alt="" />
           </li>
           <LoginContext user={user} setUser={setUser} />
         </ul>
