@@ -10,63 +10,8 @@
   .container {
     max-width: 1200px;
     padding: 0%;
-    // progress bar ---
-    .progressBar {
-      width: 454px;
-      height: 60px;
-      margin: 0 auto;
-      li {
-        list-style-type: none;
-        width: 33%;
-        float: left;
-        color: $gray-200;
-        font-size: 14px;
-        font-weight: bold;
-        position: relative;
-        text-align: center;
 
-        &::before {
-          width: 13px;
-          height: 13px;
-          content: '';
-          line-height: 30px;
-          background-color: $gray-200;
-          display: block;
-          text-align: center;
-          margin: 0 auto 10px auto;
-          border-radius: 50%;
-        }
-        &::after {
-          width: 100%;
-          height: 4px;
-          content: '';
-          position: absolute;
-          background-color: $gray-200;
-          top: 5px;
-          left: -50%;
-          z-index: -1;
-          transition: all 0.8s;
-        }
-        &:first-child::after {
-          content: none;
-        }
-      }
-      .active {
-        color: $primary;
-        &::before {
-          content: url('../../../public/Progressbar/cup_dot.png');
-          background-color: transparent;
-          width: 18px;
-          height: 13px;
-          line-height: 16px;
-          display: block;
-          text-align: center;
-          margin: 0 auto 10px auto;
-        }
-      }
-    }
-  }
-  // cart-list table ---
+    // cart-list table ---
   .cart-list {
     // table-title ---
     .table-head {
@@ -344,7 +289,7 @@
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          flex-wrap: wrap;
+          // flex-wrap: wrap;
           margin-bottom: 60px;
           .discount-input {
             width: 73%;
@@ -353,6 +298,9 @@
               width: 100%;
               height: 50px;
             }
+          }
+          button{
+            flex-shrink: 0;
           }
         }
       }
@@ -391,4 +339,6 @@
       }
     }
   }
+  }
+  
 }

@@ -1,22 +1,15 @@
 import React from 'react'
-import Header from '../compenents/Shared/Header'
-import Footer from '../compenents/Shared/Footer'
 
 import '../styles/CartList/CartList.scss'
 import { Link } from 'react-router-dom'
+import ProgressBar from '../compenents/Cart/ProgressBar'
 
 const CartList = () => {
   return (
     <>
       <div className="CartList">
         <div className="container">
-          <div className="progressBar">
-            <ul>
-              <li className="active">購物車</li>
-              <li>填寫資訊</li>
-              <li>訂單成立</li>
-            </ul>
-          </div>
+          <ProgressBar step="one" />
           <div className="cart-list">
             <div className="table-head sake-table-head">
               <span className="title-del">刪除</span>
@@ -36,7 +29,7 @@ const CartList = () => {
                 <h5>篠峯 雄町純米大吟釀</h5>
                 <p>720</p>
                 <p>1880</p>
-                <Link to="" className="true">
+                <Link to="/gift" className="true">
                   製作禮盒
                 </Link>
               </div>
