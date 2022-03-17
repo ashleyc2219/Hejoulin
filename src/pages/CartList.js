@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 
 const CartList = () => {
+  const stepContent = ['購物車', '填寫資訊', '訂單成立'];
   return (
     <>
       <div className="CartList">
         <div className="container">
-          <ProgressBar step="one" />
+          <ProgressBar step="one" content={stepContent}/>
           <div className="cart-list">
             <div className="table-head sake-table-head">
               <span className="title-del">刪除</span>

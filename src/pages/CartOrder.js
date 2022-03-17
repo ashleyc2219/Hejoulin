@@ -4,9 +4,10 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableItem from '../compenents/Cart/OrderTableItem'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 const CartOrder = () => {
+  const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
     <div className="CartOrder">
-      <ProgressBar step="three" />
+      <ProgressBar step="three" content={stepContent} />
       <div className="container">
         <div className="left-list">
           <div className="list-table">

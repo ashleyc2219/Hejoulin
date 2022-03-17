@@ -3,13 +3,18 @@ import './ProgessBar.scss'
 
 const StepBar = (props) => {
   const step = props.step
+  const content = props.content
   return (
     <div className="progressBar">
       <ul>
-        <li className={step === 'one' ? 'className = active' : ''}>購物車</li>
-        <li className={step === 'two' ? 'className = active' : ''}>填寫資訊</li>
+        <li className={step === 'one' ? 'className = active' : ''}>
+          {content[0]}
+        </li>
+        <li className={step === 'two' ? 'className = active' : ''}>
+          {content[1]}
+        </li>
         <li className={step === 'three' ? 'className = active' : ''}>
-          訂單成立
+          {content[2]}
         </li>
       </ul>
     </div>
