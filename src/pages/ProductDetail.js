@@ -10,6 +10,7 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
+  
 
   const minus = () => {
     if (count > 1) {
@@ -34,8 +35,8 @@ const ProductDetail = () => {
 
   const productDetail = detail.map((v, i) => {
     return (
-      <>
-        <div key={i} className="product-wrap">
+      <React.Fragment key={i} >
+        <div  className="product-wrap">
           <div className="product-img">
             <img src={'/ProductList/productimg/' + v.pro_img} alt="" />
           </div>
@@ -263,11 +264,14 @@ const ProductDetail = () => {
             <p>Operation hours : Mon - Fri, 10:00 - 18:00</p>
           </div>
         </div>
-      </>
+      </React.Fragment>
     )
   })
 
   useEffect(() => {
+
+
+
     window.scrollTo(0, 0)
     fetchData()
   }, [])
