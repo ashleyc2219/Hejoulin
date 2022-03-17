@@ -12,10 +12,13 @@ const MemberSubList = () => {
             <div className="row MemberSubBar">
               <div className="none-mes">
                 <h5>您目前未有訂閱方案</h5>
-                <button className="btn btn-primary">點我訂閱去</button>
+                <button className="btn btn-primary btnSub">點我訂閱去</button>
               </div>
             </div>
           </div>
+        </div>
+        <div className="bgItem">
+          <img src="/Member/unSubBg.svg" alt=""/>
         </div>
       </div>
     </>
