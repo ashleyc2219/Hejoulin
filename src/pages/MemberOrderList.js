@@ -45,28 +45,28 @@ const MemberOrderList = (props) => {
               <nav className="OrderTabs row">
                 <img className="search-icon-od" src="/search.svg" alt="" />
                 <div className="OrderBar-item-box">
-                  <Link to="all" className="OrderBar-item-route">
-                    <div className="OrderBar-item">全部</div>
+                  <Link to="all" className="OrderBar-item-route-all">
+                    全部
                   </Link>
                 </div>
                 <div className="OrderBar-item-box">
                   <Link to="readyToGo" className="OrderBar-item-route">
-                    <div className="OrderBar-item">待出貨</div>
+                    待出貨
                   </Link>
                 </div>
                 <div className="OrderBar-item-box">
                   <Link to="readyToGet" className="OrderBar-item-route">
-                    <div className="OrderBar-item">待收貨</div>
+                    待收貨
                   </Link>
                 </div>
                 <div className="OrderBar-item-box">
                   <Link to="finish" className="OrderBar-item-route">
-                    <div className="OrderBar-item">已完成</div>
+                    已完成
                   </Link>
                 </div>
                 <div className="OrderBar-item-box">
                   <Link to="cancel" className="OrderBar-item-route">
-                    <div className="OrderBar-item">已取消</div>
+                    已取消
                   </Link>
                 </div>
               </nav>
@@ -76,13 +76,49 @@ const MemberOrderList = (props) => {
             <table className="table">
               <thead>
                 <tr>
-                  <td className="listItem-name">訂單日期</td>
-                  <td className="listItem-name">訂單編碼</td>
-                  <td className="listItem-name">訂單金額</td>
-                  <td className="listItem-name">訂單狀態</td>
+                  <th className="listItem-name">訂單日期</th>
+                  <th className="listItem-name">訂單編碼</th>
+                  <th className="listItem-name">訂單金額</th>
+                  <th className="listItem-name">訂單狀態</th>
+                  {/*<th className="listItem-btn" />*/}
                 </tr>
               </thead>
-              <tbody>{renderEventItems(getData)}</tbody>
+              {/*<tbody>{renderEventItems(getData)}</tbody>*/}
+              <tbody>
+                <tr>
+                  <td>2022-01-01</td>
+                  <td>0000000000</td>
+                  <td>$5789</td>
+                  <td>已完成</td>
+                  <td className="btn-zone">
+                    {' '}
+                    <button className="btn btn-primary">查看訂單</button>{' '}
+                    <button className="btn btn-secondary">再買一次</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2022-01-01</td>
+                  <td>0000000000</td>
+                  <td>$5789</td>
+                  <td>已完成</td>
+                  <td className="btn-zone">
+                    {' '}
+                    <button className="btn btn-primary">查看訂單</button>{' '}
+                    <button className="btn btn-secondary">再買一次</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2022-01-01</td>
+                  <td>0000000000</td>
+                  <td>$5789</td>
+                  <td>已完成</td>
+                  <td className="btn-zone">
+                    {' '}
+                    <button className="btn btn-primary">查看訂單</button>{' '}
+                    <button className="btn btn-secondary">再買一次</button>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>

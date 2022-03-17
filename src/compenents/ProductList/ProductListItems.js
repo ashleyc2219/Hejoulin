@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Heart from './Heart'
 
 const ProductListItems = () => {
   const [list, setList] = useState([])
+
   const fetchList = async () => {
     const res = await fetch('http://localhost:3000/api/products-sake-filter')
     const fetchedData = await res.json()
@@ -54,14 +56,7 @@ const ProductListItems = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-              <img
-                onClick={() => {
-                  console.log('收藏')
-                }}
-                className="heart"
-                src="/ProductList/heart.svg"
-                alt=""
-              />
+            <Heart id={v.pro_id}/>
               <img
                 onClick={() => {
                   console.log('購物車')

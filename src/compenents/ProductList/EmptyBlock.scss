@@ -1,0 +1,81 @@
+@import './../../styles/mixin.scss';
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.ProductList {
+  .empty-block {
+    opacity: 0;
+    pointer-events: none;
+    @include large() {
+      display: none;
+    }
+    .compare-wrap {
+      display: flex;
+      flex-direction: column;
+      width: 175px;
+      padding: 35px 30px 30px 30px;
+      height: fit-content;
+      margin-top: 23px;
+      border: 1px solid #828282;
+      align-items: center;
+      position: relative;
+      .product {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        img {
+          height: 100px;
+          z-index: 1;
+        }
+        p {
+          width: 80px;
+          text-align: center;
+          line-height: 28px;
+          font-size: 14px;
+        }
+        .shadow {
+          position: absolute;
+          width: 28px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: $black;
+          top: 96px;
+          filter: blur(3px);
+        }
+        .remove {
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          cursor: pointer;
+        }
+      }
+      button.compare {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+      }
+    }
+  }
+}

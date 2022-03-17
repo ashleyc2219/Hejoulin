@@ -154,6 +154,10 @@
   right: -100%;
   transition: 850ms;
   z-index: 9;
+  @include medium(){
+    //內容還沒RWD 只調整區塊尺寸
+    width: 300px;
+  }
 
   .nav-menu-items {
     width: 100%;

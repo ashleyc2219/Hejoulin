@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductMaster.scss'
+import Heart from './Heart'
 
 const ProductMaster = () => {
   const [master, setMaster] = useState([])
+
   const fetchMaster = async () => {
     const res = await fetch(
       'http://localhost:3000/api/products-condition/random-three'
@@ -12,6 +14,7 @@ const ProductMaster = () => {
     const test = fetchedData
     setMaster(test)
   }
+
 
   const mas = master.map((v, i) => {
     return (
@@ -56,14 +59,7 @@ const ProductMaster = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-              <img
-                onClick={() => {
-                  console.log('收藏')
-                }}
-                className="heart"
-                src="/ProductList/heart.svg"
-                alt=""
-              />
+            <Heart id={v.pro_id}/>
               <img
                 onClick={() => {
                   console.log('購物車')

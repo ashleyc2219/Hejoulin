@@ -1,4 +1,4 @@
-@import "../mixin.css";
+@import "../mixin.scss";
 
 .MemberProfile {
   display: flex;
@@ -21,12 +21,22 @@
 
         .ProfileBar-item {
           text-decoration: none;
+          font-family: 'Noto Sans TC', sans-serif;
           //margin-left: 3%;
-
-          .ProfileBar-item:hover {
-            color: #CEB48D;
-            border-bottom: 4px solid #CEB48D;
-          }
+        }
+        .ProfileBar-item:hover {
+          color: #CEB48D;
+          padding-bottom: 29.5%;
+          border-bottom: 4px solid #CEB48D;
+        }
+        .payment {
+          text-decoration: none;
+          font-family: 'Noto Sans TC', sans-serif;
+        }
+        .payment:hover {
+          color: #CEB48D;
+          padding-bottom: 15.3%;
+          border-bottom: 4px solid #CEB48D;
         }
       }
     }

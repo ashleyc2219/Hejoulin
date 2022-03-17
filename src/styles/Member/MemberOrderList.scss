@@ -7,6 +7,7 @@
 
   .MemberOrderBox {
     width: 100%;
+    padding: 0 4%;
 
     .OrderBar {
       width: 100%;
@@ -24,23 +25,66 @@
         }
 
         .OrderBar-item-box {
-          padding-left: 5.1%;
+          padding-left: 5.3%;
+
+          .OrderBar-item-route {
+            text-decoration: none;
+          }
+          .OrderBar-item-route:hover {
+            color: #CEB48D;
+            padding-bottom: 36%;
+            border-bottom: 4px solid #CEB48D;
+          }
+          .OrderBar-item-route-all {
+            text-decoration: none;
+          }
+          .OrderBar-item-route-all:hover {
+            color: #CEB48D;
+            padding-bottom: 55%;
+            border-bottom: 4px solid #CEB48D;
+          }
         }
       }
-
     }
 
     .order-list-display-box {
-      padding-top: 3%;
-      padding-left: 8%;
+      padding-top: 2%;
+      padding-left: 2%;
+      text-align: center;
 
+      .table {
+        width: 95%;
 
-      .table td {
-        border: none;
-      }
+        thead {
+          border: none;
 
-      .listItem-name {
+          th {
+            border: none;
+            width: 18%;
 
+            .listItem-name {
+              border: none;
+            }
+
+            .listItem-btn {
+
+            }
+          }
+
+        }
+
+        tbody {
+
+          tr {
+
+            td {
+
+              .btn-zone {
+                //width: 30%;
+              }
+            }
+          }
+        }
       }
     }
   }

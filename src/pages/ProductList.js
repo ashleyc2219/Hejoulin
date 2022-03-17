@@ -11,6 +11,7 @@ import { ListGroup } from 'react-bootstrap'
 import ProductTop3 from '../compenents/ProductList/ProductTop3'
 import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
+import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 
 const ProductList = () => {
   const [brand, setBrand] = useState([])
@@ -124,6 +125,7 @@ const ProductList = () => {
 
             {/* 右側比較區塊 */}
             <CompareBlock />
+            <EmptyBlock />
           </div>
         </div>
       </div>

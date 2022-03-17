@@ -46,17 +46,17 @@ const MemberEventList = (props) => {
               <nav className="EventTabs row">
                 <img className="search-icon-ev" src="/search.svg" alt="" />
                 <div className="EventBar-item-box">
-                  <Link to="all" className="EventBar-item">
+                  <Link to="coming" className="EventBar-item-coming">
                     即將到來
                   </Link>
                 </div>
                 <div className="EventBar-item-box">
-                  <Link to="readyToGo" className="EventBar-item">
+                  <Link to="already" className="EventBar-item">
                     已參加
                   </Link>
                 </div>
                 <div className="EventBar-item-box">
-                  <Link to="readyToGet" className="EventBar-item">
+                  <Link to="cancel" className="EventBar-item">
                     已取消
                   </Link>
                 </div>

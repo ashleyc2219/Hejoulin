@@ -17,6 +17,7 @@ const ProductTop3 = () => {
     setTop(test)
   }
 
+
   useEffect(() => {
     fetchTop()
   }, [])
@@ -58,7 +59,7 @@ const ProductTop3 = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-              <Heart />
+              <Heart id={v.pro_id}/>
               <img
                 onClick={() => {
                   console.log('購物車')
