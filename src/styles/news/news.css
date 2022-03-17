@@ -59,7 +59,12 @@ body {
   display: flex;
 }
 
+.news .news-container .news-item .news-item-pic img {
+  width: 100%;
+}
+
 .news .news-container .news-item .news-item-word {
+  width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
