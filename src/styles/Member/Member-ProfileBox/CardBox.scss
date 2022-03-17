@@ -1,0 +1,39 @@
+@import "../../mixin.scss";
+
+.CardBox {
+  padding-top: 2.5%;
+  padding-left: 4.5%;
+  display: flex;
+
+  .CardImg {
+    margin-top: 9%;
+  }
+
+  .CardBox-Item-date {
+    margin-left: .8%;
+
+    .card-validity {
+      width: 112px;
+    }
+
+    .safety-code {
+      width: 98px;
+      margin-left: 9.5%;
+    }
+  }
+
+  .CardBox-Items {
+    margin-left: 7%;
+
+    .CardBox-Item {
+
+      .card-number {
+        width: 221px;
+      }
+
+      .owner-name {
+        width: 221px;
+      }
+    }
+  }
+}

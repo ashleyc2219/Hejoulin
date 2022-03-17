@@ -1,0 +1,39 @@
+@import "../../mixin.scss";
+
+.AddressBox {
+  padding-top: 2.5%;
+  padding-left: 4.5%;
+
+  .AddressFileName {
+    font-weight: 700;
+  }
+  .mobileTitle {
+    margin-left: 36%;
+  }
+
+  .AddressBox-Item {
+    display: flex;
+
+    .dropDown-city {
+      margin-left: 1%;
+    }
+    .input-lastName {
+      width: 147px;
+    }
+    .input-firstName {
+      width: 226px;
+      margin-left: 2.5%;
+    }
+    .input-mobile {
+      width: 175px;
+      margin-left: 2.5%;
+    }
+    .input-zip {
+      width: 135px;
+      margin-left: 1%;
+    }
+    .input-address {
+      width: 548px;
+    }
+  }
+}
