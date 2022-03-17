@@ -1,0 +1,47 @@
+@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
+.MemberOrderList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberOrderList .MemberOrderBox {
+  width: 100%;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar {
+  width: 100%;
+  margin-top: 12%;
+  border-bottom: 2px solid #BBBCBD;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs {
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .search-icon-od {
+  padding-left: 3%;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box {
+  padding-left: 5.1%;
+}
+
+.MemberOrderList .MemberOrderBox .order-list-display-box {
+  padding-top: 3%;
+  padding-left: 8%;
+}
+
+.MemberOrderList .MemberOrderBox .order-list-display-box .table td {
+  border: none;
+}
+/*# sourceMappingURL=MemberOrderList.css.map */

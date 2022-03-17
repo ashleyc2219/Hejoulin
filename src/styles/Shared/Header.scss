@@ -1,10 +1,10 @@
 @import '../mixin.scss';
-*{
+* {
   // outline: 1px solid red;
 }
 .Header {
   width: 100%;
-  @include medium(){
+  @include medium() {
     padding: 0 20px;
   }
 
@@ -41,7 +41,6 @@
       flex-wrap: nowrap;
       justify-content: flex-end;
       padding: 0;
-     
 
       .links {
         width: 599px;
@@ -49,7 +48,7 @@
         // margin-top: 44px;
         margin-bottom: 0px;
         font-size: 17px;
-        @include medium(){
+        @include medium() {
           display: none;
         }
         li {
@@ -100,7 +99,7 @@
           flex-direction: column;
           align-items: center;
           cursor: pointer;
-          span{
+          span {
             @include kleeone();
             font-size: 15px;
             line-height: 30px;
@@ -112,7 +111,7 @@
           display: flex;
           align-items: center;
         }
-        .fav{
+        .fav {
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -125,11 +124,11 @@
 .block {
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 120vh;
   background-color: #202326;
-  opacity: .6;
+  opacity: 0.6;
   transition: 350ms;
   z-index: 9;
 }
@@ -145,7 +144,7 @@
 }
 
 .nav-menu {
-  background-image: url("../../../public/Sake-background0310.jpg");
+  background-image: url('../../../public/Sake-background0310.jpg');
   width: 647px;
   height: 100vh;
   display: flex;
@@ -166,7 +165,7 @@
       display: flex;
       justify-content: end;
       align-items: center;
-      img{
+      img {
         margin-right: 30px;
         cursor: pointer;
       }
@@ -179,9 +178,3 @@
     }
   }
 }
-
-
-
-
-
-

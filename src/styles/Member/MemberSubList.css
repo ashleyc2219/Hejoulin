@@ -1,0 +1,25 @@
+@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
+.MemberSubList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberSubList .MemberSubBox {
+  width: 100%;
+}
+
+.MemberSubList .MemberSubBox .MemberSubBar {
+  width: 100%;
+  margin-top: 13.5%;
+  border-top: 2px solid #BBBCBD;
+}
+
+.MemberSubList .MemberSubBox .MemberSubBar .none-mes {
+  text-align: center;
+  padding-top: 17%;
+  padding-left: 40%;
+}
+/*# sourceMappingURL=MemberSubList.css.map */

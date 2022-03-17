@@ -8,7 +8,6 @@ import Footer from '../compenents/Shared/Footer'
 const NewsList = () => {
   return (
     <>
-      <Header />
       <div className="news">
         <div className="news-container">
           <div className="news-title">
@@ -28,7 +27,9 @@ const NewsList = () => {
               </div>
             </div>
             <div className="news-item pic">
-              <div className="news-pic"></div>
+              <div className="news-pic">
+                <img src="/news/news-pic-01.jpg" alt="" />
+              </div>
             </div>
           </div>
         </div>

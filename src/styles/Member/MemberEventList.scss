@@ -32,8 +32,29 @@
         }
       }
     }
-    .table {
-      z-index: -1 !important;
+
+    .EventFileBox {
+      margin-top: 1.8%;
+      margin-left: 1.7%;
+
+      .table {
+        width: 92%;
+
+        .table th {
+          text-align: center;
+          //border: none;
+        }
+        .table tbody {
+          text-align: center;
+
+          .table td {
+            text-align: center;
+            //border: none;
+          }
+        }
+      }
+
+
     }
   }
 }

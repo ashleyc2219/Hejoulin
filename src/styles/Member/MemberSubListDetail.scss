@@ -1,0 +1,26 @@
+@import "../mixin.css";
+
+.MemberSubListDetail {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  .MemberSubListDetailBox {
+    margin-top: 13.5%;
+    padding-left: 10%;
+
+    .subPlanImg {
+      width: 650px;
+      height: 255px;
+    }
+
+    .subPlanDetail {
+      display: flex;
+      margin-left: -15%;
+
+      .detailRight {
+        padding-left: 35%;
+      }
+    }
+  }
+}

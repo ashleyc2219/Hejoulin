@@ -64,8 +64,8 @@ const MemberEventList = (props) => {
             </div>
           </div>
           <div className="container">
-            <div className="row">
-              <div className="col">
+            <div className="row EventFileBox">
+              <div className="col" style={{ zIndex: -1 }}>
                 <table className="table">
                   <thead>
                     <tr>
@@ -73,9 +73,56 @@ const MemberEventList = (props) => {
                       <th scope="col">活動訂單編號</th>
                       <th scope="col">活動名稱</th>
                       <th scope="col">付款時間</th>
+                      <td />
                     </tr>
                   </thead>
-                  <tbody>{renderEventItems(getData)}</tbody>
+                  {/*<tbody>{renderEventItems(getData)}</tbody>*/}
+                  <tbody>
+                    <tr>
+                      <td scope="col">2022-06-01</td>
+                      <td scope="col">0000000000</td>
+                      <td scope="col">日本餐酒晚宴 金子半之助</td>
+                      <td scope="col">2022-01-01</td>
+                      <td>
+                        <button className="btn btn-primary">
+                          查看活動詳情
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">2022-06-01</td>
+                      <td scope="col">0000000000</td>
+                      <td scope="col">日本餐酒晚宴 金子半之助</td>
+                      <td scope="col">2022-01-01</td>
+                      <td>
+                        <button className="btn btn-primary">
+                          查看活動詳情
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">2022-06-01</td>
+                      <td scope="col">0000000000</td>
+                      <td scope="col">日本餐酒晚宴 金子半之助</td>
+                      <td scope="col">2022-01-01</td>
+                      <td>
+                        <button className="btn btn-primary">
+                          查看活動詳情
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">2022-06-01</td>
+                      <td scope="col">0000000000</td>
+                      <td scope="col">日本餐酒晚宴 金子半之助</td>
+                      <td scope="col">2022-01-01</td>
+                      <td>
+                        <button className="btn btn-primary">
+                          查看活動詳情
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>

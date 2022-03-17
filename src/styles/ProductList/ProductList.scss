@@ -1,26 +1,5 @@
 @import '../mixin.scss';
 
-@mixin exlarge {
-  @media (max-width: 1440px) {
-    @content;
-  }
-}
-@mixin large {
-  @media (max-width: 1024px) {
-    @content;
-  }
-}
-@mixin medium {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-@mixin small {
-  @media (max-width: 320px) {
-    @content;
-  }
-}
-
 * {
   padding: 0;
   margin: 0;
@@ -32,14 +11,13 @@
 .ProductList {
   width: 100%;
   overflow: hidden;
-  position: relative;
-  padding-bottom: 300px;
+  //position: relative;
+  padding-bottom: 150px;
   @include bgimage();
   @include medium() {
     padding: 0 20px;
   }
 
- 
   .product-container {
     padding-top: 40px;
     max-width: 1200px;
@@ -49,7 +27,13 @@
     // 背景的花紋
     .bgele1,
     .bgele2 {
-      position: absolute;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      position: fixed;
       z-index: 0;
       @include medium() {
         display: none;
@@ -319,7 +303,7 @@
           }
         }
 
-        //達人推薦
+        /*  //達人推薦
         .famous-choose {
           padding-top: 20px;
           .famous-title {
@@ -351,8 +335,8 @@
               align-items: center;
               height: fit-content;
               column-gap: 20px;
-              &:last-child{
-                @include medium(){
+              &:last-child {
+                @include medium() {
                   display: none;
                 }
               }
@@ -369,14 +353,16 @@
                 @include medium() {
                   padding: 10px 5px 5px 5px;
                 }
+                .img-wrap {
+                  width: 100%;
+                  img.product-img {
+                    height: 190px;
+                    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
 
-                img.product-img {
-                  height: 190px;
-                  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
-
-                  @include medium() {
-                    height: 120px;
-                    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+                    @include medium() {
+                      height: 120px;
+                      filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+                    }
                   }
                 }
                 .tag-img {
@@ -468,8 +454,8 @@
               }
             }
           }
-        }
-        .master-recommend {
+        } */
+        /* .master-recommend {
           padding-top: 20px;
           .master-title {
             @include kleeone();
@@ -500,8 +486,8 @@
               align-items: center;
               height: fit-content;
               column-gap: 20px;
-              &:last-child{
-                @include medium(){
+              &:last-child {
+                @include medium() {
                   display: none;
                 }
               }
@@ -617,9 +603,9 @@
               }
             }
           }
-        }
+        } */
 
-        // 全部商品
+       /*  // 全部商品
         .product-list {
           padding-top: 20px;
           .product-title {
@@ -659,20 +645,25 @@
                 width: 100%;
                 text-align: center;
                 background-color: rgba(247, 247, 246, 0.63);
-                //border: 1px solid red;
-                padding: 10px;
+                order: 1px solid re                padding: 10px;
                 position: relative;
                 @include medium() {
                   padding: 10px 5px 5px 5px;
                 }
+                &:hover .img-wrap > img {
+                  transform: scale(1.1) translateY(5px);
+                }
+                .img-wrap {
+                  width: 100%;
+                  img.product-img {
+                    height: 190px;
+                    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+                    transition: all 0.3s;
 
-                img.product-img {
-                  height: 190px;
-                  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
-
-                  @include medium() {
-                    height: 120px;
-                    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+                    @include medium() {
+                      height: 120px;
+                      filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+                    }
                   }
                 }
                 .tag-img {
@@ -764,7 +755,7 @@
               }
             }
           }
-        }
+        } */
       }
 
       //最右邊比較區塊
