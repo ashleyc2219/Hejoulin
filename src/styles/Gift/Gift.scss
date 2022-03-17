@@ -33,23 +33,10 @@
 //最外面的div
 .Gift {
   max-width: 100%;
-  overflow: hidden;
   position: relative;
   padding-bottom: 300px;
   @include medium() {
     padding: 0 20px;
-  }
-
-  // navbar
-  nav {
-    height: 144px;
-    width: 100%;
-
-    .container {
-      max-width: 1200px;
-      height: 100%;
-      margin: 0 auto;
-    }
   }
 
   //navbar下方的body
@@ -58,9 +45,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    // flex-wrap: wrap;
     z-index: 3;
-    overflow: hidden;
 
     // background patten
     .bgelement01,
@@ -90,7 +75,7 @@
     }
     .bgelement04{
       top: 300vh;
-      transform: translateX(-20px),rotateZ(40deg);
+      transform: rotateZ(40deg);
     }
 
     // 在sidebar旁的主體
@@ -102,7 +87,7 @@
       flex-direction: column;
       justify-content: space-between;
       column-gap: 40px;
-      position: relative;
+
       @include medium() {
         border: none;
         display: block;
@@ -111,9 +96,11 @@
       //stepbar
       .stepbar {
         width: 100%;
-        height: 144px;
+        height: 100px;
         position: sticky;
         top: 0;
+        z-index: 5;
+        background-color: antiquewhite;
       }
 
       // main
