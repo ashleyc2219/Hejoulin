@@ -63,8 +63,8 @@ const MemberEventList = (props) => {
               </nav>
             </div>
           </div>
-          <div className="container">
-            <div className="row EventFileBox">
+          <div className="container EventFileBox">
+            <div className="row">
               <div className="col" style={{ zIndex: -1 }}>
                 <table className="table">
                   <thead>
