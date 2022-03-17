@@ -27,7 +27,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans TC', serif;
-  outline: 1px solid $secondary;
+  // outline: 1px solid $secondary;
 }
 
 body {
@@ -261,13 +261,16 @@ body {
               small {
                 display: none;
                 margin-top: 10px;
-                color: $gray-200;
+                color: $gray-300;
               }
             }
           }
 
-          .gift_img{
+          .gift_image{
+            width: 100%;
             position: relative;
+            display: flex;
+
 
             img{
               height: 45vh;

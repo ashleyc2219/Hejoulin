@@ -9,9 +9,6 @@ import Sidebar from '../compenents/Gift/Sidebar'
 const Gift = () => {
   return (
     <div className="Gift">
-      <nav>
-        <div className="container"></div>
-      </nav>
       <div className="gift_container">
         {/* background-patten */}
         {/* <img src="/Gift/bgelement.svg" alt="" className="bgelement01" />
@@ -126,12 +123,12 @@ const Gift = () => {
                 </button>
               </div>
               <div className="gift_image">
-                <img src="#" alt="box" className="box" />
-                <img src="#" alt="sake" className="sake" />
-                <img src="#" alt="container" className="container" />
+                <img src="/Gift/gift.png" alt="box" className="box" />
+                <img src="/Gift/gift.png" alt="sake" className="sake" />
+                <img src="/Gift/gift.png" alt="container" className="other" />
               </div>
             </section>
-            {/* <section id="gift_detail">
+            <section id="gift_detail">
               <h4>請確認禮盒明細數量</h4>
               <div className="detail">
                 <img src="#" alt="final" />
@@ -152,7 +149,7 @@ const Gift = () => {
                   <button className="btn btn-primary btn-sm">加入購物車</button>
                 </div>
               </div>
-            </section> */}
+            </section>
           </main>
         </div>
       </div>
