@@ -130,11 +130,11 @@
 .block {
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 120vh;
   background-color: #202326;
-  opacity: .6;
+  opacity: 0.6;
   transition: 350ms;
   z-index: 9;
 }

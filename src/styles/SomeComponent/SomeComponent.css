@@ -1,0 +1,37 @@
+.SomeComponent .text-color {
+  color: #d26d54;
+}
+
+.SomeComponent .pantone-container {
+  margin: 20px;
+}
+
+.SomeComponent .pantone {
+  width: 60px;
+  height: 60px;
+}
+
+.SomeComponent .primary {
+  background-color: #3d4349;
+}
+
+.SomeComponent .secondary {
+  background-color: #d26d54;
+}
+
+.SomeComponent .success {
+  background-color: #e6c49e;
+}
+
+.SomeComponent .info {
+  background-color: #ffdb8a;
+}
+
+.SomeComponent h3 {
+  margin-top: 10px;
+}
+
+.SomeComponent h4 {
+  margin-top: 5px;
+}
+/*# sourceMappingURL=SomeComponent.css.map */
