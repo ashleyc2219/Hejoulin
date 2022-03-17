@@ -50,25 +50,18 @@
       margin-top: 1.8%;
       margin-left: 1.7%;
 
-      .table {
+      table {
         width: 92%;
 
-        .table th {
+        thead th {
           text-align: center;
-          //border: none;
+          border: none;
         }
 
-        .table tbody {
+        tbody tr {
           text-align: center;
-
-          .table td {
-            text-align: center;
-            //border: none;
-          }
         }
       }
-
-
     }
   }
 }

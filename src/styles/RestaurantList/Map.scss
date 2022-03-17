@@ -1,0 +1,21 @@
+@import '../mixin.scss';
+.RestaurantList {
+  .cluster-marker {
+    color: #fff;
+    background: $success;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .single-marker {
+    background: none;
+    border: none;
+  }
+
+  .single-marker img {
+    width: 25px;
+  }
+}

@@ -1,5 +1,4 @@
 @import '../mixin.scss';
-@import '../global.scss';
 
 @mixin exlarge {
   @media (max-width: 1440px) {
@@ -30,31 +29,14 @@
   // outline: 1px solid $secondary;
 }
 
-body {
-  background: url(./../../../public/home/Sake-background0310.jpg);
-}
 
 //最外面的div
 .Gift {
   max-width: 100%;
-  overflow: hidden;
   position: relative;
   padding-bottom: 300px;
-  // @include bgimage()
   @include medium() {
     padding: 0 20px;
-  }
-
-  // navbar
-  nav {
-    height: 144px;
-    width: 100%;
-
-    .container {
-      max-width: 1200px;
-      height: 100%;
-      margin: 0 auto;
-    }
   }
 
   //navbar下方的body
@@ -63,9 +45,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    // flex-wrap: wrap;
     z-index: 3;
-    overflow: hidden;
 
     // background patten
     .bgelement01,
@@ -88,7 +68,14 @@ body {
       transform: rotateZ(30deg);
     }
     .bgelement03 {
-      top: 275vh;
+      top: 210vh;
+      right: -100px;
+      width: 600px;
+      transform: rotateZ(50deg);
+    }
+    .bgelement04{
+      top: 300vh;
+      transform: rotateZ(40deg);
     }
 
     // 在sidebar旁的主體
@@ -100,7 +87,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
       column-gap: 40px;
-      position: relative;
+
       @include medium() {
         border: none;
         display: block;
@@ -109,9 +96,11 @@ body {
       //stepbar
       .stepbar {
         width: 100%;
-        height: 144px;
+        height: 100px;
         position: sticky;
         top: 0;
+        z-index: 5;
+        background-color: antiquewhite;
       }
 
       // main
@@ -140,6 +129,7 @@ body {
             flex-direction: column;
             align-items: center;
             position: relative;
+            cursor: pointer;
             &:hover {
               transform: translateY(-40px);
               transition: 0.5s;
@@ -182,7 +172,7 @@ body {
             grid-template-columns: 1fr 1fr 1fr;
             gap: 30px;
             padding: 0 110px;
-            margin-top: 10vh;
+            margin-top: 5vh;
 
             .gift_sake {
               padding: 0 10px;
@@ -194,9 +184,22 @@ body {
                 align-items: center;
                 background-color: rgba(255, 255, 255, 0.5);
                 padding: 20px 0;
+                cursor: pointer;
+                &:hover {
+                  .original {
+                    display: none;
+                  }
+                  .trans {
+                    display: block;
+                  }
+                }
 
-                img {
+                .original {
                   width: 50px;
+                }
+                .trans {
+                  display: none;
+                  height: 187.96px;
                 }
 
                 .name {
@@ -239,14 +242,18 @@ body {
             height: 88px;
             display: flex;
             justify-content: center;
-            margin-top: 10vh;
+            margin-top: 5vh;
 
             .color_btn {
               display: flex;
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              // margin: 0 5px;
+              background-color: transparent;
+              border: none;
+              padding: 8px 16px;
+              margin: 0 5px;
+
               &:hover {
                 transform: translateY(-15px);
                 transition: 0.5s;
@@ -266,18 +273,133 @@ body {
             }
           }
 
-          .gift_image{
+          .gift_image {
             width: 100%;
+            height: 65vh;
             position: relative;
             display: flex;
+            justify-content: center;
+            align-items: center;
 
-
-            img{
-              height: 45vh;
+            img {
+              height: 63vh;
               position: absolute;
+              margin: auto;
             }
-            
+          }
 
+          .confirm {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+        }
+
+        // section04
+        #gift_detail {
+          width: 100%;
+          height: fit-content;
+          margin-top: 20px;
+
+          .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 5vh;
+          }
+
+          h4 {
+            @include kleeone();
+            text-align: center;
+            margin-top: -35px;
+          }
+
+          .detail {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 5vh 110px;
+            overflow: hidden;
+
+            .final {
+              width: 400px;
+            }
+
+            .content {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              // padding: 5vh 0;
+
+              .title {
+                color: $gray-300;
+                font-weight: bold;
+                line-height: 90px;
+              }
+
+              .sheet {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 7fr 2fr 3fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                overflow: hidden;
+
+                .color {
+                  font-size: 18px;
+                  line-height: 30px;
+                  color: $gray-300;
+                  margin: 0;
+                }
+                .quality,
+                .price {
+                  text-align: right;
+                }
+                .text {
+                  overflow: hidden;
+                  white-space: nowrap;
+                  &::after {
+                    content: '……………………';
+                  }
+                }
+                .price {
+                  &::before {
+                    content: '$';
+                  }
+                }
+                .total {
+                  font-size: 18px;
+                  line-height: 30px;
+                  font-weight: bold;
+                  color: $warning;
+                }
+                .text_total {
+                  text-align: center;
+                }
+              }
+
+              .laststep {
+                font-weight: bold;
+                line-height: 60px;
+                margin-top: 15px;
+              }
+
+              .add-minus {
+                width: 100px;
+                display: flex;
+                justify-content: space-between;
+                img {
+                  cursor: pointer;
+                }
+              }
+
+              .gift_cart {
+                margin-top: 40px;
+                .cart {
+                  margin: 0 5px;
+                }
+              }
+            }
           }
         }
       }

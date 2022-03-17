@@ -5,6 +5,7 @@ import CompareBlock from '../compenents/ProductList/CompareBlock'
 import CompareModal from '../compenents/ProductList/CompareModal'
 import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Heart from '../compenents/ProductList/Heart'
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -50,7 +51,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="like-compare">
                   <div className="like">
-                    <img src="/ProductList/heart.svg" alt="" />
+                  <Heart id={v.pro_id}/>
                     <p>收藏</p>
                   </div>
                   <div className="compare">

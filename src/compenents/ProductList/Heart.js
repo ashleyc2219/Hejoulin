@@ -16,9 +16,26 @@ const Heart = (props) => {
     active = false
   }
 
+  const click = () => {
+    if (active === true) {
+      ;(async function add() {
+        await insertFav()
+        await getFav()
+      })()
+
+      active = false
+    } else {
+      ;(async function del() {
+        await deleteFav()
+        await getFav()
+      })()
+
+      active = true
+    }
+  }
+
   const insertFav = async () => {
-    
-    const data = { pro_id: `${props.id}` }
+    const data = { member_id: 1, pro_id: `${props.id}` }
     console.log(data)
     const settings = {
       method: 'POST',
@@ -30,7 +47,29 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3000/api/products-fav/search',
+        'http://localhost:3000/api/products-fav/insert',
+        settings
+      )
+      const data = await fetchResponse.json()
+    } catch (e) {
+      return e
+    }
+  }
+
+  const deleteFav = async () => {
+    const data = { member_id: 1, pro_id: `${props.id}` }
+    console.log(data)
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:3000/api/products-fav/delete',
         settings
       )
       const data = await fetchResponse.json()
@@ -40,7 +79,7 @@ const Heart = (props) => {
   }
 
   const getFav = async () => {
-    const data = { member_id: '4' }
+    const data = { member_id: '1' }
     const settings = {
       method: 'POST',
       headers: {
@@ -71,6 +110,7 @@ const Heart = (props) => {
   return (
     <>
       <svg
+        onClick={click}
         className={active ? 'heart' : 'heart-click'}
         width="25"
         height="24"

@@ -4,6 +4,15 @@
   display: flex;
   width: 1200px;
   margin: 0 auto;
+  position: relative;
+
+  .bgItem {
+    position: absolute;
+    left: 68%;
+    right: 15.21%;
+    top: 25%;
+    bottom: 7.61%;
+  }
 
   .MemberProfileBox {
     width: 100%;

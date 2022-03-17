@@ -73,7 +73,7 @@ const MemberEventList = (props) => {
                       <th scope="col">活動訂單編號</th>
                       <th scope="col">活動名稱</th>
                       <th scope="col">付款時間</th>
-                      <td />
+                      <th />
                     </tr>
                   </thead>
                   {/*<tbody>{renderEventItems(getData)}</tbody>*/}

@@ -1,0 +1,13 @@
+@import "../../mixin.scss";
+
+.PassBox {
+  padding-top: 3.5%;
+  padding-left: 4.5%;
+
+  .PassBox-Item {
+
+    .form-control {
+      margin-bottom: 2.8%;
+    }
+  }
+}
