@@ -1,0 +1,283 @@
+@import '../mixin.scss';
+@import '../global.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', serif;
+  outline: 1px solid $secondary;
+}
+
+body {
+  background: url(./../../../public/home/Sake-background0310.jpg);
+}
+
+//最外面的div
+.Gift {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 300px;
+  // @include bgimage()
+  @include medium() {
+    padding: 0 20px;
+  }
+
+  // navbar
+  nav {
+    height: 144px;
+    width: 100%;
+
+    .container {
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  //navbar下方的body
+  .gift_container {
+    padding-top: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    // flex-wrap: wrap;
+    z-index: 3;
+    overflow: hidden;
+
+    // background patten
+    .bgelement01,
+    .bgelement02,
+    .bgelement03,
+    .bgelement04 {
+      position: absolute;
+      z-index: 0;
+      @include medium() {
+        display: none;
+      }
+    }
+    .bgelement01 {
+      top: 5vh;
+      right: -300px;
+    }
+    .bgelement02 {
+      top: 100vh;
+      width: 550px;
+      transform: rotateZ(30deg);
+    }
+    .bgelement03 {
+      top: 275vh;
+    }
+
+    // 在sidebar旁的主體
+    .all {
+      border-top: 2px solid $gray-200;
+      height: fit-content;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      column-gap: 40px;
+      position: relative;
+      @include medium() {
+        border: none;
+        display: block;
+      }
+
+      //stepbar
+      .stepbar {
+        width: 100%;
+        height: 144px;
+        position: sticky;
+        top: 0;
+      }
+
+      // main
+      main {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        column-gap: 40px;
+        @include medium() {
+          border: none;
+          display: block;
+        }
+
+        //section01
+        #gift_kind {
+          width: 100%;
+          height: calc(100vh - 175px - 144px);
+
+          .kind {
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 1rem;
+            padding: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            &:hover {
+              transform: translateY(-40px);
+              transition: 0.5s;
+            }
+
+            img {
+              height: 40vh;
+              filter: drop-shadow(0 0 0.5rem $gray-300);
+            }
+
+            .title {
+              color: $primary;
+              font-size: 20px;
+              margin-top: 2rem;
+            }
+          }
+        }
+
+        // section02
+        #gift_sake {
+          width: 100%;
+          height: fit-content;
+          margin-top: 20px;
+
+          .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 5vh;
+          }
+
+          h4 {
+            @include kleeone();
+            text-align: center;
+            margin-top: -35px;
+          }
+
+          .gift_grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 0 110px;
+            margin-top: 10vh;
+
+            .gift_sake {
+              padding: 0 10px;
+
+              .sake_card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.5);
+                padding: 20px 0;
+
+                img {
+                  width: 50px;
+                }
+
+                .name {
+                  font-size: 18px;
+                  margin-top: 10px;
+                }
+
+                small {
+                  font-size: 14px;
+                  font-weight: 700;
+                  color: $gray-200;
+                  margin-top: 5px;
+                }
+              }
+            }
+          }
+        }
+
+        // section03
+        #gift_color {
+          width: 100%;
+          height: fit-content;
+          margin-top: 20px;
+
+          .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 5vh;
+          }
+
+          h4 {
+            @include kleeone();
+            text-align: center;
+            margin-top: -35px;
+          }
+
+          .color_group {
+            width: 100%;
+            height: 88px;
+            display: flex;
+            justify-content: center;
+            margin-top: 10vh;
+
+            .color_btn {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              // margin: 0 5px;
+              &:hover {
+                transform: translateY(-15px);
+                transition: 0.5s;
+                img {
+                  filter: drop-shadow(4px 4px 0.15rem $gray-300);
+                }
+                small {
+                  display: block;
+                }
+              }
+
+              small {
+                display: none;
+                margin-top: 10px;
+                color: $gray-200;
+              }
+            }
+          }
+
+          .gift_img{
+            position: relative;
+
+            img{
+              height: 45vh;
+              position: absolute;
+            }
+            
+
+          }
+        }
+      }
+    }
+  }
+}

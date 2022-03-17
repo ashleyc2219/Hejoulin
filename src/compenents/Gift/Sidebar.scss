@@ -1,0 +1,54 @@
+@import './../../styles/mixin.scss';
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+.Gift {
+  .sidebar {
+    width: 175px;
+    height: fit-content;
+    margin-right: 30px;
+    // display: sticky;
+    @include medium() {
+      display: none;
+    }
+    .first {
+      padding-top: 20px;
+      padding-bottom: 40px;
+      border-top: 2px solid $gray-200;
+
+      ul {
+        margin-left: 30px;
+        li {
+          list-style: none;
+          &:last-child a {
+            color: $primary;
+          }
+          a {
+            @include kleeone();
+            color: $gray-300;
+            text-decoration: none;
+            margin-bottom: 16px;
+            font-size: 20px !important;
+          }
+        }
+      }
+    }
+  }
+}
