@@ -23,7 +23,20 @@
           margin-left: 5%;
 
           .EventBar-item {
-
+            text-decoration: none;
+          }
+          .EventBar-item:hover {
+            color: #CEB48D;
+            padding-bottom: 40%;
+            border-bottom: 4px solid #CEB48D;
+          }
+          .EventBar-item-coming {
+            text-decoration: none;
+          }
+          .EventBar-item-coming:hover {
+            color: #CEB48D;
+            padding-bottom: 30%;
+            border-bottom: 4px solid #CEB48D;
           }
         }
 
@@ -44,6 +57,7 @@
           text-align: center;
           //border: none;
         }
+
         .table tbody {
           text-align: center;
 

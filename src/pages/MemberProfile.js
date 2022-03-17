@@ -29,12 +29,13 @@ const MemberProfile = (props) => {
                 </Link>
               </div>
               <div className="ProfileBar-item-box">
-                <Link to="payment" className="ProfileBar-item">
+                <Link to="payment" className="payment">
                   信用卡 / 付款方式
                 </Link>
               </div>
             </div>
-            {user ? <ProfileBox /> : <div>請先登入</div>}
+            {/*{user ? <ProfileBox /> : <div>請先登入</div>}*/}
+            <ProfileBox />
           </div>
         </div>
       </div>
