@@ -1,0 +1,231 @@
+@import '../mixin.scss';
+* {
+  // border: 1px blue solid;
+  margin: 0;
+  padding: 0;
+}
+.CartInfo {
+  width: 100%;
+  .container {
+    max-width: 1200px;
+    padding: 0%;
+
+    display: flex;
+    column-gap: 110px;
+  }
+  .left-list {
+    width: 37.75%;
+    //   display: flex;
+    //   flex-direction: column;
+    .list-table {
+      width: 100%;
+      .table-head {
+        width: 100%;
+        background-color: rgba(187, 188, 189, 0.5);
+        padding: 10px;
+
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          font-size: 14px;
+          font-weight: bold;
+          text-align: center;
+        }
+        .title-product {
+          width: 75.4%;
+        }
+        .title-subtotal {
+          width: 22.35%;
+        }
+      }
+      .table-item {
+        height: 140px;
+        padding: 5px 0;
+        display: flex;
+        column-gap: 10px;
+        .item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .item-product-img {
+          width: 28.7%;
+          background-color: $white;
+          mix-blend-mode: multiply;
+        }
+        .item-product-info {
+          width: 44.18%;
+          flex-direction: column;
+          align-items: flex-start;
+          h5 {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 36px;
+            margin: 0;
+            color: $primary;
+          }
+          p {
+            font-size: 16px;
+            line-height: 20px;
+            margin: 0;
+            color: $primary;
+            &:first-of-type::after {
+              content: ' ml';
+            }
+            &:nth-of-type(2)::before {
+              content: '$ ';
+            }
+            &:last-of-type {
+              visibility: hidden;
+              color: $secondary;
+              text-decoration: underline;
+              line-height: 42px;
+            }
+            //   如果有客製化酒標
+            &:last-of-type.true {
+              visibility: visible;
+            }
+          }
+        }
+        .item-subtotal {
+          width: 22.35%;
+          padding-top: 93px;
+          p::before {
+            content: '$ ';
+          }
+        }
+      }
+      hr {
+        border: $gray-100 1px solid;
+        margin: 6px 0;
+      }
+    }
+    .list-summary {
+      width: 100%;
+      .table-row {
+        display: flex;
+        justify-content: space-between;
+        color: $gray-400;
+        line-height: 32px;
+        p {
+          margin-bottom: 0%;
+        }
+        p.dollar-sign::before {
+          content: '$ ';
+        }
+        p.total {
+          font-size: 20px;
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .right-info {
+    
+    .form-text {
+      visibility: hidden;
+    }
+    width: 48.75%;
+    hr {
+      border: $gray-100 1px solid;
+      margin: 40px 0;
+    }
+    .info-title {
+      display: flex;
+      align-items: center;
+      column-gap: 30px;
+      margin-bottom: 30px;
+      h5 {
+        font-size: 18px;
+        font-weight: 500;
+        color: $gray-300;
+        margin: 0;
+      }
+    }
+    .buyer {
+      .buyer-name-mobile,
+      .buyer-email-check {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        .buyer-name,
+        .buyer-mobile {
+          input {
+            width: 100%;
+          }
+        }
+        .buyer-email {
+          flex-grow: 2;
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .receiver {
+      .receiver-name-mobile {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        .receiver-name,
+        .receiver-mobile {
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .receiver-address {
+        .address-row {
+          display: flex;
+          align-items: flex-start;
+          column-gap: 8px;
+          .district-code input {
+            width: 120px;
+            height: 57px;
+          }
+        }
+        .full-address input {
+          width: 100%;
+        }
+      }
+    }
+    .credit-card {
+      width: 100%;
+      .credit-card-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .card-img {
+          width: 57.26%;
+        }
+        .card-info {
+          width: 37.6%;
+          input {
+            width: 100%;
+          }
+          .date-code-container {
+            display: flex;
+            justify-content: space-between;
+            .expire-date {
+              width: 50%;
+            }
+            .security-code {
+              width: 47%;
+            }
+          }
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      column-gap: 10px;
+      justify-content: flex-end;
+
+      margin-top: 40px;
+    }
+  }
+}
