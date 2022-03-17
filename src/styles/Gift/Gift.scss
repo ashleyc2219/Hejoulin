@@ -89,7 +89,7 @@
       transform: rotateZ(50deg);
     }
     .bgelement04{
-      top: 320vh;
+      top: 300vh;
       transform: translateX(-20px),rotateZ(40deg);
     }
 
@@ -332,7 +332,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            padding: 5vh 8vw;
+            padding: 5vh 110px;
             overflow: hidden;
 
             .final {
