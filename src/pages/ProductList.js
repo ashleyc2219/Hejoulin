@@ -12,10 +12,26 @@ import ProductTop3 from '../compenents/ProductList/ProductTop3'
 import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
+import { Spinner } from 'react-bootstrap'
 
 const ProductList = () => {
   const [brand, setBrand] = useState([])
   const [loca, setLoca] = useState([])
+  const [top, setTop] = useState(true)
+  const [master, setMaster] = useState(true)
+  const [load, setLoad] = useState(true)
+  const [spin, setSpin] = useState(false)
+  const [perpage, setPerpage] = useState(9)
+
+  const spinner = () => {
+    setLoad(false)
+    setSpin(true)
+    setTimeout(() => {
+      setLoad(true)
+      setSpin(false)
+      setPerpage(perpage + 9)
+    }, 1000)
+  }
 
   /* 品牌 */
   const fetchBrand = async () => {
@@ -116,11 +132,31 @@ const ProductList = () => {
                 </div>
               </div>
               {/* 人氣之選 */}
-              <ProductTop3 />
+              {top ? <ProductTop3 /> : ''}
               {/* 達人推薦 */}
-              <ProductMaster />
+              {master ? <ProductMaster /> : ''}
+
               {/* 商品列表 */}
-              <ProductListItems />
+              <ProductListItems page={perpage} load={setLoad} />
+              {load ? (
+                <div className="load">
+                  <button onClick={spinner} className="btn btn-outline-primary">
+                    載入更多
+                  </button>
+                </div>
+              ) : (
+                ''
+              )}
+
+              {spin ? (
+                <div className="spin">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
 
             {/* 右側比較區塊 */}

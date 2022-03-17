@@ -3,13 +3,17 @@ import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
 
-const ProductListItems = () => {
+const ProductListItems = (props) => {
   const [list, setList] = useState([])
+  console.log(props.load)
+
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}`
 
   const fetchList = async () => {
-    const res = await fetch('http://localhost:3000/api/products-sake-filter')
+    const res = await fetch(url)
     const fetchedData = await res.json()
     const test = fetchedData
+    console.log(test)
     setList(test.rows)
   }
 
@@ -56,7 +60,7 @@ const ProductListItems = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-            <Heart id={v.pro_id}/>
+              <Heart id={v.pro_id} />
               <img
                 onClick={() => {
                   console.log('購物車')
@@ -81,6 +85,9 @@ const ProductListItems = () => {
   useEffect(() => {
     fetchList()
   }, [])
+  useEffect(() => {
+    fetchList()
+  }, [props.page])
   return (
     <>
       <div className="product-list">
