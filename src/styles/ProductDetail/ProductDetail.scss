@@ -34,7 +34,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding-bottom: 300px;
+  padding-bottom: 150px;
   @include bgimage();
   @include medium() {
     padding: 0 20px;
@@ -219,6 +219,7 @@
       display: flex;
       justify-content: space-between;
       column-gap: 40px;
+      position: relative;
       @include medium() {
         border: none;
         display: block;
@@ -392,21 +393,34 @@
                   margin-right: 0;
                 }
               }
-              .product-mark {
+              .gift a{
                 font-size: 16px;
-                color: $success;
+                color: $gray-200;
                 text-decoration: underline;
+                margin-right: 17px;
+                @include medium() {
+                  margin-right: 0;
+                }
+              }
+              .product-mark {
+                
                 margin-right: 45px;
                 cursor: pointer;
                 @include medium() {
                   margin-right: 0;
                   order: -1;
                 }
+                a{
+                  font-size: 16px;
+                color: $success;
+                text-decoration: underline;
+                }
                 img {
                   margin-bottom: 4px;
                 }
               }
               .price {
+                margin-left: auto;
                 font-size: 36px;
                 font-weight: 400;
                 z-index: 3;
@@ -433,7 +447,7 @@
                   display: flex;
                   align-items: center;
                   margin-left: 61px;
-                  margin-right: 27px;
+                  //margin-right: 27px;
                   cursor: pointer;
                   img {
                     width: 18px;
@@ -441,17 +455,22 @@
                   }
                 }
                 .number {
-                  display: flex;
+                  text-align: center;
+                  width: 80px;
+                  //display: flex;
                   align-items: center;
                   font-size: 16px;
                   color: $primary;
                   margin-bottom: 3px;
-                  margin-right: 27px;
+                  //margin-right: 27px;
+                  @include medium() {
+                    width: 40px;
+                  }
                 }
                 .plus {
                   display: flex;
                   align-items: center;
-                  margin-right: 80px;
+                  //margin-right: 80px;
                   cursor: pointer;
                   @include medium() {
                     margin-right: 0;
@@ -467,6 +486,7 @@
                 display: flex;
                 align-items: center;
                 z-index: 3;
+                margin-left: auto;
                 img {
                   width: 18px;
                   height: 18px;
@@ -481,7 +501,7 @@
               }
 
               p {
-                width: 248px;
+                width: 100%;
                 font-size: 14px;
                 line-height: 28px;
                 color: $gray-300;

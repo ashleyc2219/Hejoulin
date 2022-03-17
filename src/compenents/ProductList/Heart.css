@@ -1,0 +1,50 @@
+.heart {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.heart:hover path {
+  stroke: #3d4349;
+}
+
+@media (max-width: 768px) {
+  .heart {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.heart path {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.heart-click {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.heart-click:hover path {
+  fill: transparent;
+}
+
+@media (max-width: 768px) {
+  .heart-click {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.heart-click path {
+  fill: #d26d54;
+  stroke: #d26d54;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+/*# sourceMappingURL=Heart.css.map */

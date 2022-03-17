@@ -1,0 +1,24 @@
+@import "../mixin.css";
+
+.MemberSubList {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  .MemberSubBox {
+    width: 100%;
+
+    .MemberSubBar {
+      width: 100%;
+      margin-top: 13.5%;
+      border-top: 2px solid #BBBCBD;
+
+      .none-mes {
+        text-align: center;
+        padding-top: 17%;
+        padding-left: 40%;
+      }
+    }
+  }
+}
+

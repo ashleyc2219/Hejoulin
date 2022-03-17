@@ -1,0 +1,52 @@
+@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
+.MemberFav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberFav .MemberFavBox {
+  width: 100%;
+}
+
+.MemberFav .MemberFavBox .MemberFavBar {
+  width: 100%;
+  margin-top: 13.5%;
+  border-top: 2px solid #BBBCBD;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.MemberFav .MemberFavBox .MemberFavBar .search-icon-fav {
+  margin-left: 3%;
+}
+
+.MemberFav .MemberFavBox .MemberFavBar .MemberFavBar-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.MemberFav .MemberFavBox .MemberFavBar .MemberFavBar-right .countItemsTotal {
+  text-align: center;
+  width: 120px;
+  margin-right: 4%;
+}
+
+.MemberFav .MemberFavBox .MemberFavBar .MemberFavBar-right .ItemsSort {
+  margin-top: 1.5%;
+  margin-right: 3%;
+}
+/*# sourceMappingURL=MemberFav.css.map */

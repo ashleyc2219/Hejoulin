@@ -1,0 +1,39 @@
+@import "../mixin.css";
+
+.MemberEventList {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  .MemberEventBox {
+    width: 100%;
+
+    .EventBar {
+      width: 100%;
+      margin-top: 12%;
+      border-bottom: 2px solid #BBBCBD;
+      display: flex;
+      align-items: center;
+
+      .EventTabs {
+        width: 100%;
+        margin-bottom: 2%;
+
+        .EventBar-item-box {
+          margin-left: 5%;
+
+          .EventBar-item {
+
+          }
+        }
+
+        .search-icon-ev {
+          margin-left: 3%;
+        }
+      }
+    }
+    .table {
+      z-index: -1 !important;
+    }
+  }
+}

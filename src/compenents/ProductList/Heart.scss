@@ -1,0 +1,37 @@
+@import './../../styles/mixin.scss';
+
+.heart {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s;
+  &:hover path {
+    stroke: $primary;
+  }
+  @include medium() {
+    width: 21px;
+    height: 21px;
+  }
+}
+.heart path {
+  transition: all 0.3s;
+}
+
+.heart-click {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s;
+  &:hover path {
+    fill: transparent;
+  }
+  @include medium() {
+    width: 21px;
+    height: 21px;
+  }
+}
+.heart-click path {
+  fill: $secondary;
+  stroke: $secondary;
+  transition: all 0.3s;
+}

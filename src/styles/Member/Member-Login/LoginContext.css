@@ -1,0 +1,28 @@
+@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
+.LoginContext {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+}
+
+.LoginContext .LoginContextBox {
+  padding-top: 14%;
+  padding-left: 26%;
+}
+
+.LoginContext .LoginContextBox .login-title {
+  text-align: center;
+}
+
+.LoginContext .LoginContextBox .login-form-group {
+  padding-top: 25%;
+}
+
+.LoginContext .LoginContextBox .login-form-group .btn {
+  margin-left: 17%;
+  margin-top: 16%;
+}
+/*# sourceMappingURL=LoginContext.css.map */

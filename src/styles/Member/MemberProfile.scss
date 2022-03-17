@@ -1,0 +1,36 @@
+@import "../mixin.css";
+
+.MemberProfile {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+
+  .MemberProfileBox {
+    width: 100%;
+
+    .MemberProfileBar {
+      width: 100%;
+      margin-top: 12%;
+      border-bottom: 2px solid #BBBCBD;
+      display: flex;
+      align-items: center;
+
+      .ProfileBar-item-box {
+        margin-left: 5%;
+        margin-bottom: 2%;
+
+        .ProfileBar-item {
+          text-decoration: none;
+          //margin-left: 3%;
+
+          .ProfileBar-item:hover {
+            color: #CEB48D;
+            border-bottom: 4px solid #CEB48D;
+          }
+        }
+      }
+    }
+  }
+}
+
+
