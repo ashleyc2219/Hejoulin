@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@import url(/Users/chenjunhan/Documents/專案/大專-禾酒林/Hejoulin/src/styles/mixin.css);
+.MemberProfile {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberProfile .MemberProfileBox {
+  width: 100%;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar {
+  width: 100%;
+  margin-top: 12%;
+  border-bottom: 2px solid #BBBCBD;
+  display: flex;
+  align-items: center;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box {
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .ProfileBar-item {
+  text-decoration: none;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .ProfileBar-item .ProfileBar-item:hover {
+  color: #CEB48D;
+  border-bottom: 4px solid #CEB48D;
+}
+/*# sourceMappingURL=MemberProfile.css.map */

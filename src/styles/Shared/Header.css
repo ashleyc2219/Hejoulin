@@ -121,10 +121,14 @@
 .Header .Header-container .navbar .icons .cart {
   cursor: pointer;
   margin-right: 7px;
+  display: flex;
+  align-items: center;
 }
 
 .Header .Header-container .navbar .icons .fav {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .block {

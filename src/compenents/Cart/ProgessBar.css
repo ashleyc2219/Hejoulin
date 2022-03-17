@@ -1,0 +1,76 @@
+.progressBar {
+  width: 454px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.progressBar li {
+  list-style-type: none;
+  width: 33%;
+  float: left;
+  color: #3d4349;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+}
+
+.progressBar li::before {
+  width: 13px;
+  height: 13px;
+  content: '';
+  line-height: 30px;
+  background-color: #3d4349;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+}
+
+.progressBar li::after {
+  width: 100%;
+  height: 4px;
+  content: '';
+  position: absolute;
+  background-color: #3d4349;
+  top: 5px;
+  left: -50%;
+  z-index: -1;
+  transition: all 0.8s;
+}
+
+.progressBar li:first-child::after {
+  content: none;
+}
+
+.progressBar .active {
+  color: #3d4349;
+}
+
+.progressBar .active::before {
+  content: url("../../../public/Progressbar/cup_dot.png");
+  background-color: transparent;
+  width: 18px;
+  height: 13px;
+  line-height: 16px;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+}
+
+.progressBar .active::after {
+  background-color: #3d4349;
+}
+
+.progressBar .active ~ li {
+  color: #bbbcbd;
+}
+
+.progressBar .active ~ li::before {
+  background-color: #bbbcbd;
+}
+
+.progressBar .active ~ li::after {
+  background-color: #bbbcbd;
+}
+/*# sourceMappingURL=ProgessBar.css.map */

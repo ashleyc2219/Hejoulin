@@ -1,0 +1,17 @@
+.Sidebar {
+  height: 100vh;
+  padding-top: 12%;
+  padding-left: 10%;
+  width: 25%;
+}
+
+.Sidebar .SidebarItem {
+  padding-top: 15%;
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.Sidebar .SidebarItem:hover {
+  color: #e6c49e;
+}
+/*# sourceMappingURL=Sidebar.css.map */

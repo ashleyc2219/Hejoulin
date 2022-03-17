@@ -1,0 +1,375 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.CartList {
+  width: 100%;
+}
+
+.CartList .container {
+  max-width: 1200px;
+  padding: 0%;
+}
+
+.CartList .container .cart-list .table-head {
+  width: 100%;
+  background-color: rgba(187, 188, 189, 0.5);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+
+.CartList .container .cart-list .table-head span {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.CartList .container .cart-list .sake-table-head .title-del {
+  width: 6.16%;
+}
+
+.CartList .container .cart-list .sake-table-head .title-product {
+  width: 46.25%;
+}
+
+.CartList .container .cart-list .sake-table-head .title-mark {
+  width: 20.08%;
+}
+
+.CartList .container .cart-list .sake-table-head .title-quantity {
+  width: 13.75%;
+}
+
+.CartList .container .cart-list .sake-table-head .title-subtotal {
+  width: 8.25%;
+}
+
+.CartList .container .cart-list .gift-table-head .title-del {
+  width: 6.16%;
+}
+
+.CartList .container .cart-list .gift-table-head .title-gift {
+  width: 11.166%;
+}
+
+.CartList .container .cart-list .gift-table-head .title-gift-detail {
+  width: 34.25%;
+  padding-left: 113px;
+  text-align: left;
+}
+
+.CartList .container .cart-list .gift-table-head .title-color {
+  width: 20%;
+}
+
+.CartList .container .cart-list .gift-table-head .title-quantity {
+  width: 13.75%;
+}
+
+.CartList .container .cart-list .gift-table-head .title-subtotal {
+  width: 8.25%;
+}
+
+.CartList .container .cart-list .table-item {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  column-gap: 10px;
+  justify-content: space-between;
+}
+
+.CartList .container .cart-list .table-item .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CartList .container .cart-list .sake-table-item {
+  height: 150px;
+}
+
+.CartList .container .cart-list .sake-table-item .item-del {
+  width: 6.16%;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-img {
+  width: 11%;
+  background-color: #f7f7f6;
+  mix-blend-mode: multiply;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info {
+  width: 34.416%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info h5 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 36px;
+  margin: 0;
+  color: #3d4349;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info p {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
+  color: #3d4349;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info p:first-of-type::after {
+  content: ' ml';
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info p:last-of-type::before {
+  content: '$ ';
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info a {
+  text-decoration: underline;
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info a.false {
+  color: #bbbcbd;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info a.true {
+  color: #d26d54;
+  position: relative;
+}
+
+.CartList .container .cart-list .sake-table-item .item-product-info a.true::after {
+  content: url("../../../public/CartList/go-right.svg");
+  position: absolute;
+  top: 4px;
+}
+
+.CartList .container .cart-list .sake-table-item .item-mark {
+  width: 20.08%;
+  background-color: #f7f7f6;
+  mix-blend-mode: multiply;
+}
+
+.CartList .container .cart-list .sake-table-item .item-quantity {
+  width: 13.75%;
+}
+
+.CartList .container .cart-list .sake-table-item .item-quantity .quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+.CartList .container .cart-list .sake-table-item .item-quantity p {
+  width: 32px;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+.CartList .container .cart-list .sake-table-item .item-subtotal {
+  width: 8.25%;
+}
+
+.CartList .container .cart-list .sake-table-item .item-subtotal p {
+  margin: 0;
+}
+
+.CartList .container .cart-list .sake-table-item .item-subtotal p:before {
+  content: '$ ';
+}
+
+.CartList .container .cart-list .gift-table-item {
+  height: 208px;
+}
+
+.CartList .container .cart-list .gift-table-item .item-del {
+  width: 6.16%;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-img {
+  width: 11.166%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f7f7f6;
+  mix-blend-mode: multiply;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-img p {
+  margin: 0;
+  color: #3d4349;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-detail {
+  width: 34.25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-detail h5 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 36px;
+  margin: 0;
+  color: #3d4349;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-detail p {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
+  color: #3d4349;
+}
+
+.CartList .container .cart-list .gift-table-item .item-gift-detail p::after {
+  content: ' ml';
+}
+
+.CartList .container .cart-list .gift-table-item .item-color {
+  width: 20%;
+  font-weight: 500;
+}
+
+.CartList .container .cart-list .gift-table-item .item-quantity {
+  width: 13.75%;
+}
+
+.CartList .container .cart-list .gift-table-item .item-quantity .quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+.CartList .container .cart-list .gift-table-item .item-quantity p {
+  width: 32px;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+.CartList .container .cart-list .gift-table-item .item-subtotal {
+  width: 8.25%;
+}
+
+.CartList .container .cart-list .gift-table-item .item-subtotal p {
+  margin: 0;
+}
+
+.CartList .container .cart-list .gift-table-item .item-subtotal p:before {
+  content: '$ ';
+}
+
+.CartList .container .cart-list hr {
+  border: #e0e0df 1px solid;
+  margin: 12px 0;
+}
+
+.CartList .container .cart-form {
+  padding-left: 8%;
+  padding-right: 0.833%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CartList .container .cart-form h5 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #7e8082;
+  margin: 0 0 35px 0;
+}
+
+.CartList .container .cart-form .form-left {
+  width: 45.75%;
+}
+
+.CartList .container .cart-form .form-left .shipment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.CartList .container .cart-form .form-left .district {
+  margin-bottom: 16px;
+}
+
+.CartList .container .cart-form .form-left .city {
+  margin-bottom: 28px;
+}
+
+.CartList .container .cart-form .form-left .method {
+  margin-bottom: 56px;
+}
+
+.CartList .container .cart-form .form-left .discount {
+  width: 100%;
+}
+
+.CartList .container .cart-form .form-left .discount .discount-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.CartList .container .cart-form .form-left .discount .discount-container .discount-input {
+  width: 73%;
+}
+
+.CartList .container .cart-form .form-left .discount .discount-container .discount-input input {
+  width: 100%;
+  height: 50px;
+}
+
+.CartList .container .cart-form .form-left .discount .discount-container button {
+  flex-shrink: 0;
+}
+
+.CartList .container .cart-form .form-right {
+  width: 35.75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.CartList .container .cart-form .form-right .order-summary {
+  width: 100%;
+}
+
+.CartList .container .cart-form .form-right .order-summary .order-summary-table .table-row {
+  display: flex;
+  justify-content: space-between;
+  color: #4d4e4f;
+  line-height: 32px;
+}
+
+.CartList .container .cart-form .form-right .order-summary .order-summary-table .table-row p {
+  margin-bottom: 0%;
+}
+
+.CartList .container .cart-form .form-right .order-summary .order-summary-table .table-row p.dollar-sign::before {
+  content: '$ ';
+}
+
+.CartList .container .cart-form .form-right .order-summary .order-summary-table .table-row p.total {
+  font-size: 20px;
+  color: #d26d54;
+}
+
+.CartList .container .cart-form .form-right .buttons .btn:first-child {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=CartList.css.map */

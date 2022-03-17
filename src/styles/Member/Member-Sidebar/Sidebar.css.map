@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,KAAK;EACb,WAAW,EAAE,GAAG;EAChB,YAAY,EAAE,GAAG;EACjB,KAAK,EAAE,GAAG;CAYX;;AAhBD,AAME,QANM,CAMN,YAAY,CAAC;EACX,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;CAClB;;AAVH,AAYE,QAZM,CAYN,YAAY,AAAA,MAAM,CAAC;EACjB,KAAK,EAAE,OAAO;CACf",
+    "sources": [
+        "Sidebar.scss",
+        "../../mixin.scss"
+    ],
+    "names": [],
+    "file": "Sidebar.css"
+}
