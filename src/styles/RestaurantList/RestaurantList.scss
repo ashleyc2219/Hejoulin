@@ -1,0 +1,83 @@
+@import '../mixin.scss';
+
+.RestaurantList {
+  .menu {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: rgba(187, 188, 189, 0.3);
+    .menu-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    select.decorated {
+      height: 40px;
+      font-size: 16px;
+      padding: 0;
+      padding-left: 1rem;
+      padding-right: 2rem;
+      background-position-y: 7.5px;
+    }
+  }
+
+  .toggle {
+    p {
+      color: $gray-400;
+    }
+    input[type='checkbox'] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    label {
+      cursor: pointer;
+      text-indent: -9999px;
+      width: 44px;
+      height: 24px;
+      background: transparent;
+      border: 1px solid $gray-300;
+      display: block;
+      border-radius: 100px;
+      position: relative;
+    }
+
+    label:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 1px;
+      width: 18px;
+      height: 18px;
+      background: $gray-300;
+      border-radius: 90px;
+      transition: 0.3s;
+    }
+
+    input:checked + label {
+      background: transparent;
+      border: 1px solid $gray-300;
+    }
+
+    input:checked + label:after {
+      left: calc(100% - 10px);
+      transform: translateX(-50%);
+    }
+
+    label:active:after {
+      width: 40px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .menu {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      select.decorated {
+        height: 52px;
+        font-size: 18px;
+        background-position-y: 12.5px;
+      }
+    }
+  }
+}
