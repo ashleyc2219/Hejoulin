@@ -1,9 +1,5 @@
 import React from 'react'
-import './../styles/news/news.css'
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
-import SomeComponent from '../compenents/SomeComponent'
-import Header from '../compenents/Shared/Header'
-import Footer from '../compenents/Shared/Footer'
+import './../styles/News/News.css'
 
 const NewsList = () => {
   return (

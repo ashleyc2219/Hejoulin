@@ -2,8 +2,7 @@
 * {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Noto Sans TC', serif;
 }
 
@@ -24,8 +23,6 @@
   padding-top: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   z-index: 3;
   /* .sidebar {
@@ -217,18 +214,12 @@
 
 .ProductList .product-container .main {
   border-top: 2px solid #bbbcbd;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-column-gap: 40px;
-          column-gap: 40px;
+  justify-content: space-between;
+  column-gap: 40px;
+  position: relative;
 }
 
 @media (max-width: 768px) {
@@ -240,8 +231,6 @@
 
 .ProductList .product-container .main .center-container {
   width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   /*  //達人推薦
         .famous-choose {
@@ -700,15 +689,9 @@
 .ProductList .product-container .main .center-container .search-bar {
   width: 100%;
   height: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -760,8 +743,6 @@
 
 @media (max-width: 768px) {
   .ProductList .product-container .main .center-container .mobile-search-bar {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
   }
 }
@@ -769,16 +750,9 @@
 .ProductList .product-container .main .center-container .mobile-search-bar div {
   width: 25%;
   margin-bottom: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .ProductList .product-container .main .center-container .mobile-search-bar div div {
@@ -815,8 +789,7 @@
   background-color: #bbbcbd;
   right: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .ProductList .product-container .main .center-container .mobile-search-bar .compare::before {
@@ -830,38 +803,22 @@
 }
 
 .ProductList .product-container .main .compare-block .compare-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 175px;
   padding: 35px 30px 30px 30px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   margin-top: 23px;
   border: 1px solid #828282;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   position: relative;
 }
 
 .ProductList .product-container .main .compare-block .compare-wrap .product {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
 }
 
@@ -884,8 +841,7 @@
   border-radius: 50%;
   background-color: #202326;
   top: 96px;
-  -webkit-filter: blur(3px);
-          filter: blur(3px);
+  filter: blur(3px);
 }
 
 .ProductList .product-container .main .compare-block .compare-wrap .product .remove {
@@ -899,7 +855,6 @@
 .ProductList .product-container .main .compare-block .compare-wrap button.compare {
   position: absolute;
   bottom: 0;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+  transform: translateY(50%);
 }
 /*# sourceMappingURL=ProductList.css.map */

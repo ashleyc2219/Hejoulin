@@ -68,7 +68,6 @@
     }
   }
 
- 
   .product-container {
     padding-top: 40px;
     max-width: 1200px;
@@ -219,7 +218,8 @@
       display: flex;
       justify-content: space-between;
       column-gap: 40px;
-      position: relative;
+
+    position: relative !important;
       @include medium() {
         border: none;
         display: block;
@@ -231,6 +231,8 @@
         height: fit-content;
         display: flex;
         flex-direction: column;
+
+        
         .mobile-search-bar {
           display: none;
           justify-content: center;
@@ -393,7 +395,7 @@
                   margin-right: 0;
                 }
               }
-              .gift a{
+              .gift a {
                 font-size: 16px;
                 color: $gray-200;
                 text-decoration: underline;
@@ -403,17 +405,16 @@
                 }
               }
               .product-mark {
-                
                 margin-right: 45px;
                 cursor: pointer;
                 @include medium() {
                   margin-right: 0;
                   order: -1;
                 }
-                a{
+                a {
                   font-size: 16px;
-                color: $success;
-                text-decoration: underline;
+                  color: $success;
+                  text-decoration: underline;
                 }
                 img {
                   margin-bottom: 4px;
@@ -496,7 +497,7 @@
             }
             .intro {
               margin-top: 30px;
-              @include medium(){
+              @include medium() {
                 display: none;
               }
 
@@ -593,7 +594,7 @@
               }
               .tran-detail {
                 width: 100%;
-                
+
                 height: 600px;
                 display: none;
                 border-top: 2px solid $gray-100;
@@ -607,7 +608,7 @@
         .mobile-bookmark {
           width: 100%;
           display: none;
-          p.intro{
+          p.intro {
             margin-top: 60px;
             font-size: 14;
             line-height: 28px;
@@ -617,7 +618,6 @@
           }
           @include medium() {
             display: block;
-            
           }
           #spec2:checked ~ .product-detail1 {
             display: block;
@@ -692,26 +692,26 @@
                   margin: 0;
                   line-height: 40px;
                   color: $gray-400;
-                  span{
+                  span {
                     font-weight: 700;
                     color: $gray-400;
                   }
                 }
               }
             }
-            .detail-rice .detail-img img{
+            .detail-rice .detail-img img {
               height: 40px;
               margin-left: 35px;
             }
-            .detail-sake .detail-img img{
+            .detail-sake .detail-img img {
               height: 50px;
               margin-left: 35px;
             }
-            .detail-japan .detail-img img{
+            .detail-japan .detail-img img {
               height: 40px;
               margin-left: 35px;
             }
-            .detail-cup .detail-img img{
+            .detail-cup .detail-img img {
               height: 40px;
               margin-left: 35px;
             }

@@ -1,12 +1,77 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Heart.scss'
 
-const heart = () => {
-    let heart = true
+const Heart = (props) => {
+  const [favorites, setFavorite] = useState('')
+  let active = true
+  let proid = ''
+
+  if (favorites.length > 0) {
+    proid = favorites.filter((v, i) => {
+      return v === props.id
+    })
+  }
+
+  if (proid.length > 0) {
+    active = false
+  }
+
+  const insertFav = async () => {
+    
+    const data = { pro_id: `${props.id}` }
+    console.log(data)
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:3000/api/products-fav/search',
+        settings
+      )
+      const data = await fetchResponse.json()
+    } catch (e) {
+      return e
+    }
+  }
+
+  const getFav = async () => {
+    const data = { member_id: '4' }
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:3000/api/products-fav/search',
+        settings
+      )
+      const data = await fetchResponse.json()
+      const fav = data.result.map((v, i) => {
+        return v.pro_id
+      })
+      setFavorite(fav)
+    } catch (e) {
+      return e
+    }
+  }
+
+  useEffect(() => {
+    getFav()
+  }, [])
+
   return (
     <>
       <svg
-        className={heart ? 'heart' : 'heart-click'}
+        className={active ? 'heart' : 'heart-click'}
         width="25"
         height="24"
         viewBox="0 0 25 24"
@@ -25,4 +90,4 @@ const heart = () => {
   )
 }
 
-export default heart
+export default Heart

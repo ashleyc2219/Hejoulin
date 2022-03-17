@@ -4,9 +4,10 @@ import '../styles/CartInfo/CartInfo.scss'
 import InfoTableItem from '../compenents/Cart/InfoTableItem'
 
 const CartInfo = () => {
+  const stepContent = ['購物車', '填寫資訊', '訂單成立'];
   return (
     <div className="CartInfo">
-      <ProgressBar step="two" />
+      <ProgressBar step="two" content={stepContent} />
       <div className="container">
         <div className="left-list">
           <div className="list-table">

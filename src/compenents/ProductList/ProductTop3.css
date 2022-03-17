@@ -21,44 +21,25 @@
 
 .ProductList .famous-choose .product-container {
   border-bottom: 1px solid #bbbcbd;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
   row-gap: 25px;
 }
 
 .ProductList .famous-choose .product-container .product {
   width: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
+  flex-direction: column;
+  align-items: center;
   height: fit-content;
-  -webkit-column-gap: 20px;
-          column-gap: 20px;
+  column-gap: 20px;
 }
 
 .ProductList .famous-choose .product-container .product:hover > .product-wrap {
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.146);
-          box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.146);
+  transform: translateY(-5px);
+  box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.146);
 }
 
 @media (max-width: 768px) {
@@ -79,7 +60,6 @@
   background-color: rgba(247, 247, 246, 0.63);
   padding: 10px;
   position: relative;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   /* &:hover .img-wrap > img {
             transform: scale(1.1) translateY(5px);
@@ -98,17 +78,14 @@
 
 .ProductList .famous-choose .product-container .product .product-wrap .img-wrap img.product-img {
   height: 190px;
-  -webkit-filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
-  -webkit-transition: all 0.3s;
+  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
   transition: all 0.3s;
 }
 
 @media (max-width: 768px) {
   .ProductList .famous-choose .product-container .product .product-wrap .img-wrap img.product-img {
     height: 120px;
-    -webkit-filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
-            filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
   }
 }
 
@@ -127,25 +104,16 @@
 
 .ProductList .famous-choose .product-container .product .product-wrap .icon {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ProductList .famous-choose .product-container .product .product-wrap .icon .compare {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding-top: 5px;
+  cursor: pointer;
 }
 
 .ProductList .famous-choose .product-container .product .product-wrap .icon .compare img {
@@ -176,12 +144,8 @@
 }
 
 .ProductList .famous-choose .product-container .product .product-wrap .icon .cart-heart {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   /* .heart {
                 cursor: pointer;
                 width: 30px;
@@ -240,7 +204,6 @@
 }
 
 .ProductList .famous-choose .product-container .product .title a {
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   text-decoration: none;
   text-align: center;

@@ -201,6 +201,7 @@
       display: flex;
       justify-content: space-between;
       column-gap: 40px;
+      position: relative;
       @include medium() {
         border: none;
         display: block;
