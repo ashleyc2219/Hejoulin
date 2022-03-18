@@ -1,21 +1,20 @@
 @import "../../mixin.scss";
 
-.LoginContext {
+.RegisterContext {
   display: flex;
   margin: 0 auto;
   width: 650px;
   height: 900px;
 
-  .LoginContextBox {
+  .RegisterContextBox {
     padding-top: 14%;
     padding-left: 26%;
-    //text-align: center;
 
-    .login-title {
+    .register-title {
       text-align: center;
     }
 
-    .login-form-group {
+    .register-form-group {
       padding-top: 25%;
 
       .btn {
