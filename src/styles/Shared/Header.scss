@@ -110,6 +110,9 @@
           @include large() {
             width: 25%;
           }
+          @include medium(){
+            display: none;
+          }
           cursor: pointer;
           span {
             @include kleeone();
@@ -118,15 +121,36 @@
           }
         }
         .cart {
+          
+
           cursor: pointer;
           margin-right: 7px;
           display: flex;
           align-items: center;
+          img{
+            width: 30px;
+          height: 30px;
+          }
         }
         .fav {
           cursor: pointer;
           display: flex;
           align-items: center;
+          @include medium(){
+            display: none;
+          }
+          img{
+            width: 25px;
+            height: 25px;
+            margin-left: 5px;
+          }
+        }
+        .menu{
+          display: none;
+          @include medium(){
+            display: block;
+            margin-left: 20px;
+          }
         }
       }
     }

@@ -72,6 +72,7 @@ const Header = (props) => {
               <Link to="/member/fav" className="fav">
                 <img alt="" src="/Shared/heart.svg" />
               </Link>
+              <img src="/Shared/menu.svg" alt="" className="menu" />
             </div>
           </div>
         </div>

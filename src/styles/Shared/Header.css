@@ -136,6 +136,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .Header .Header-container .navbar .icons .login {
+    display: none;
+  }
+}
+
 .Header .Header-container .navbar .icons .login span {
   font-family: "Klee One", cursive;
   font-size: 15px;
@@ -149,10 +155,38 @@
   align-items: center;
 }
 
+.Header .Header-container .navbar .icons .cart img {
+  width: 30px;
+  height: 30px;
+}
+
 .Header .Header-container .navbar .icons .fav {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .Header .Header-container .navbar .icons .fav {
+    display: none;
+  }
+}
+
+.Header .Header-container .navbar .icons .fav img {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+.Header .Header-container .navbar .icons .menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .Header .Header-container .navbar .icons .menu {
+    display: block;
+    margin-left: 20px;
+  }
 }
 
 .block {
