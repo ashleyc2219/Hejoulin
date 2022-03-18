@@ -19,12 +19,37 @@ const SakeIntro = () => {
               </div>
             </div>
           </div>
+          {/* 產地 */}
           <div className="sakeintro-title">
             <h2>產地</h2>
             <p>產地對於清酒而言，就是各式不同的組成元素代表。</p>
           </div>
 
-          <div className="sakeintro-title">
+          <div className="sakeintro-content2">
+            <div className="box1 weather">
+              <div className="pic"></div>
+              <h3>氣候</h3>
+              <p>
+                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+              </p>
+            </div>
+            <div className="box1 weather">
+              <div className="pic"></div>
+              <h3>氣候</h3>
+              <p>
+                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+              </p>
+            </div>
+            <div className="box1 weather">
+              <div className="pic"></div>
+              <h3>氣候</h3>
+              <p>
+                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+              </p>
+            </div>
+          </div>
+
+          {/* <div className="sakeintro-title">
             <h2>等級</h2>
             <p>
               分級標準有二第一樣是<b>「釀造酒精」</b>，而第二樣是
@@ -53,7 +78,7 @@ const SakeIntro = () => {
               同一時間，要考慮的是其酸度，因酸度結合日本酒度，才會真正反映酒釀風格。酸度的基準數為「1.5〜1.7」，若數值高於此，即酸度高，為濃醇型；若數值低於此，即酸度低，為淡麗型。所以，日本清酒常會聽到如「淡麗‧辛口」的形容，意即為酒度低，而含糖少。以來福大吟釀
               「雫」為例，日本酒度 : +2，即為辛口，酸度 : 1.1，即為淡麗。
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
