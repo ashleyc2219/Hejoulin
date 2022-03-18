@@ -1,5 +1,5 @@
 import React from 'react'
-import './../styles/Sakeintro/Sakeintro.css'
+import './../styles/Sakeintro/Sakeintro.scss'
 
 const SakeIntro = () => {
   return (
