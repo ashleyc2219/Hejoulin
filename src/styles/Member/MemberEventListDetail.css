@@ -1,0 +1,136 @@
+.MemberEventListDetail {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox {
+  width: 90%;
+  margin-top: 8%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail {
+  width: 92%;
+  background-color: #F7F7F6;
+  box-shadow: -0.3px 2px 4px rgba(187, 188, 189, 0.5);
+  margin-left: 7.8%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 25%;
+  position: relative;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft {
+  width: 40%;
+  margin-top: 4.5%;
+  margin-left: 5%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .detailTitle {
+  font-weight: 700;
+  color: #7E8082;
+  font-size: 20px;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .signInfo {
+  font-size: 16px;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid #BBBCBD;
+  padding-bottom: 8%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .signInfo .infoTitle {
+  font-weight: 500;
+  color: #7E8082;
+  flex-grow: 2;
+  margin-top: 5%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .signInfo .infoItems {
+  flex-grow: 2;
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 6%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .eventInfo {
+  width: 95%;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid #BBBCBD;
+  padding-bottom: 8%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .eventInfo .infoTitle {
+  font-weight: 500;
+  color: #7E8082;
+  flex-grow: 2;
+  margin-top: 5%;
+  width: 30%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .eventInfo .infoItems {
+  flex-grow: 2;
+  width: 70%;
+  margin-top: 5%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .paymentInfo {
+  width: 90%;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 8%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .paymentInfo .infoTitle {
+  font-weight: 500;
+  color: #7E8082;
+  flex-grow: 2;
+  margin-top: 5%;
+  width: 30%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoLeft .paymentInfo .infoItems {
+  flex-grow: 2;
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 1.8%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoRight {
+  width: 42%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoRight .infoImg {
+  width: 118%;
+  height: 62.5%;
+  margin-top: 10%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoRight .orderInfo {
+  width: 90%;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoRight .orderInfo .infoTitle {
+  width: 30%;
+  font-weight: 500;
+  color: #7E8082;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .infoRight .orderInfo .infoItems {
+  width: 70%;
+}
+
+.MemberEventListDetail .MemberEventListDetailBox .bgImg-eventDetail .goBackBtn {
+  position: absolute;
+  right: 4%;
+  bottom: 10%;
+}
+/*# sourceMappingURL=MemberEventListDetail.css.map */

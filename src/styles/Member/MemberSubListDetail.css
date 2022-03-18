@@ -1,0 +1,25 @@
+.MemberSubListDetail {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.MemberSubListDetail .MemberSubListDetailBox {
+  margin-top: 13.5%;
+  padding-left: 10%;
+}
+
+.MemberSubListDetail .MemberSubListDetailBox .subPlanImg {
+  width: 650px;
+  height: 255px;
+}
+
+.MemberSubListDetail .MemberSubListDetailBox .subPlanDetail {
+  display: flex;
+  margin-left: -15%;
+}
+
+.MemberSubListDetail .MemberSubListDetailBox .subPlanDetail .detailRight {
+  padding-left: 35%;
+}
+/*# sourceMappingURL=MemberSubListDetail.css.map */

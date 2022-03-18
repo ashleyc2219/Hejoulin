@@ -1,0 +1,81 @@
+.RestaurantList .menu {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgba(187, 188, 189, 0.3);
+}
+
+.RestaurantList .menu .menu-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.RestaurantList .menu select.decorated {
+  height: 40px;
+  font-size: 16px;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  background-position-y: 7.5px;
+}
+
+.RestaurantList .toggle p {
+  color: #4d4e4f;
+}
+
+.RestaurantList .toggle input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.RestaurantList .toggle label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 44px;
+  height: 24px;
+  background: transparent;
+  border: 1px solid #7e8082;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.RestaurantList .toggle label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  background: #7e8082;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.RestaurantList .toggle input:checked + label {
+  background: transparent;
+  border: 1px solid #7e8082;
+}
+
+.RestaurantList .toggle input:checked + label:after {
+  left: calc(100% - 10px);
+  transform: translateX(-50%);
+}
+
+.RestaurantList .toggle label:active:after {
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .RestaurantList .menu {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .RestaurantList .menu select.decorated {
+    height: 52px;
+    font-size: 18px;
+    background-position-y: 12.5px;
+  }
+}
+/*# sourceMappingURL=RestaurantList.css.map */

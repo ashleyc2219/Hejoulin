@@ -1,0 +1,67 @@
+.planChoice-card {
+  width: 169px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f6;
+  box-shadow: -0.30000001192092896px 2px 4px 0px #bbbcbd80;
+  transition: .3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+
+.planChoice-card svg {
+  position: absolute;
+  bottom: 0;
+}
+
+.planChoice-card svg path {
+  margin-top: auto;
+}
+
+.planChoice-card:hover {
+  transform: translateY(-4%);
+  transition: .3s ease-in-out;
+}
+
+.planChoice-card .planImg-container {
+  height: 169px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.planChoice-card .planInfo-container {
+  text-align: center;
+  width: 90%;
+}
+
+.planChoice-card .planInfo-container h6 {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 28px;
+}
+
+.planChoice-card .planInfo-container p {
+  margin-bottom: 14px;
+}
+
+.planChoice-card .planInfo-container p:first-of-type {
+  font-size: 14px;
+  color: #4d4e4f;
+}
+
+.planChoice-card .planInfo-container p:nth-of-type(2) {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #b39c7a;
+  text-align: end;
+}
+
+.planChoice-card .planInfo-container p:nth-of-type(2)::before {
+  content: '$ ';
+}
+/*# sourceMappingURL=SubPlanCard.css.map */

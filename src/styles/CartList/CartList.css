@@ -16,14 +16,9 @@
   width: 100%;
   background-color: rgba(187, 188, 189, 0.5);
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
+  justify-content: space-between;
+  column-gap: 10px;
 }
 
 .CartList .container .cart-list .table-head span {
@@ -81,26 +76,15 @@
 .CartList .container .cart-list .table-item {
   width: 100%;
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  column-gap: 10px;
+  justify-content: space-between;
 }
 
 .CartList .container .cart-list .table-item .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .CartList .container .cart-list .sake-table-item {
@@ -119,13 +103,8 @@
 
 .CartList .container .cart-list .sake-table-item .item-product-info {
   width: 34.416%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .CartList .container .cart-list .sake-table-item .item-product-info h5 {
@@ -184,12 +163,8 @@
 }
 
 .CartList .container .cart-list .sake-table-item .item-quantity .quantity-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .CartList .container .cart-list .sake-table-item .item-quantity p {
@@ -221,16 +196,9 @@
 
 .CartList .container .cart-list .gift-table-item .item-gift-img {
   width: 11.166%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  justify-content: center;
   background-color: #f7f7f6;
   mix-blend-mode: multiply;
 }
@@ -244,19 +212,10 @@
 
 .CartList .container .cart-list .gift-table-item .item-gift-detail {
   width: 34.25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding-top: 10px;
 }
 
@@ -289,12 +248,8 @@
 }
 
 .CartList .container .cart-list .gift-table-item .item-quantity .quantity-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .CartList .container .cart-list .gift-table-item .item-quantity p {
@@ -324,12 +279,8 @@
 .CartList .container .cart-form {
   padding-left: 8%;
   padding-right: 0.833%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .CartList .container .cart-form h5 {
@@ -345,13 +296,8 @@
 
 .CartList .container .cart-form .form-left .shipment {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .CartList .container .cart-form .form-left .district {
@@ -372,15 +318,9 @@
 
 .CartList .container .cart-form .form-left .discount .discount-container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 60px;
 }
 
@@ -394,25 +334,15 @@
 }
 
 .CartList .container .cart-form .form-left .discount .discount-container button {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .CartList .container .cart-form .form-right {
   width: 35.75%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .CartList .container .cart-form .form-right .order-summary {
@@ -420,12 +350,8 @@
 }
 
 .CartList .container .cart-form .form-right .order-summary .order-summary-table .table-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   color: #4d4e4f;
   line-height: 32px;
 }

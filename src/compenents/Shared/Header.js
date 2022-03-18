@@ -87,6 +87,8 @@ const Header = (props) => {
             />
           </li>
           <LoginContext user={user} setUser={setUser} />
+          {/*<EmailVerify />*/}
+          {/*<PassForget />*/}
         </ul>
       </nav>
     </>
