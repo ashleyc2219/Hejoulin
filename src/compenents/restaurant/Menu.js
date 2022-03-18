@@ -39,7 +39,7 @@ const Menu = ({
             <option value="Sake Bar">Sake Bar</option>
           </select>
         </div>
-        <div className="toggle align-items-center d-none d-sm-flex">
+        <div className="toggle align-items-center d-none d-lg-flex">
           <p className="mr-2 mb-0">地圖</p>
           <input
             type="checkbox"

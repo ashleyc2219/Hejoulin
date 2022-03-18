@@ -4,7 +4,7 @@ const List = ({ isMap, setIsMap }) => {
   return (
     <div className="container">
       {' '}
-      <div className="mt-3 toggle align-items-center d-flex d-sm-none justify-content-end">
+      <div className="mt-3 toggle align-items-center d-flex d-lg-none justify-content-end">
         <p className="mr-2 mb-0">地圖</p>
         <input
           type="checkbox"
