@@ -1,8 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Noto Sans TC', serif;
 }
 
@@ -41,8 +40,6 @@
 
 .MobileFilterModal .filter-modal .sidebar {
   width: 175px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   margin: 0 auto;
 }
@@ -68,13 +65,8 @@
 }
 
 .MobileFilterModal .filter-modal .sidebar .second .level {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .MobileFilterModal .filter-modal .sidebar .second .level label {
@@ -85,7 +77,6 @@
   margin-bottom: 15px;
   position: relative;
   text-decoration: underline;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
 }
@@ -114,13 +105,8 @@
 }
 
 .MobileFilterModal .filter-modal .sidebar .third .price {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .MobileFilterModal .filter-modal .sidebar .third .price label {
@@ -131,7 +117,6 @@
   margin-bottom: 15px;
   position: relative;
   text-decoration: underline;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
 }
@@ -157,7 +142,6 @@
   color: gray;
   font-size: 20px;
   text-decoration: underline;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   cursor: pointer;
 }

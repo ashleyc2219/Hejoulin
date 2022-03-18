@@ -1,7 +1,4 @@
-@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
 .MemberOrderList {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 1200px;
   margin: 0 auto;
@@ -9,18 +6,15 @@
 
 .MemberOrderList .MemberOrderBox {
   width: 100%;
+  padding: 0 4%;
 }
 
 .MemberOrderList .MemberOrderBox .OrderBar {
   width: 100%;
   margin-top: 12%;
   border-bottom: 2px solid #BBBCBD;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .MemberOrderList .MemberOrderBox .OrderBar .OrderTabs {
@@ -33,15 +27,49 @@
 }
 
 .MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box {
-  padding-left: 5.1%;
+  padding-left: 5.3%;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box .OrderBar-item-route {
+  text-decoration: none;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box .OrderBar-item-route:hover {
+  color: #CEB48D;
+  padding-bottom: 36%;
+  border-bottom: 4px solid #CEB48D;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box .OrderBar-item-route-all {
+  text-decoration: none;
+}
+
+.MemberOrderList .MemberOrderBox .OrderBar .OrderTabs .OrderBar-item-box .OrderBar-item-route-all:hover {
+  color: #CEB48D;
+  padding-bottom: 55%;
+  border-bottom: 4px solid #CEB48D;
 }
 
 .MemberOrderList .MemberOrderBox .order-list-display-box {
-  padding-top: 3%;
-  padding-left: 8%;
+  padding-top: 2%;
+  padding-left: 2%;
+  text-align: center;
 }
 
-.MemberOrderList .MemberOrderBox .order-list-display-box .table td {
+.MemberOrderList .MemberOrderBox .order-list-display-box .table {
+  width: 95%;
+}
+
+.MemberOrderList .MemberOrderBox .order-list-display-box .table thead {
+  border: none;
+}
+
+.MemberOrderList .MemberOrderBox .order-list-display-box .table thead th {
+  border: none;
+  width: 18%;
+}
+
+.MemberOrderList .MemberOrderBox .order-list-display-box .table thead th .listItem-name {
   border: none;
 }
 /*# sourceMappingURL=MemberOrderList.css.map */

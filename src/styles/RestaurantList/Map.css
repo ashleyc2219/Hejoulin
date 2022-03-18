@@ -1,0 +1,19 @@
+.RestaurantList .cluster-marker {
+  color: #fff;
+  background: #e6c49e;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RestaurantList .single-marker {
+  background: none;
+  border: none;
+}
+
+.RestaurantList .single-marker img {
+  width: 25px;
+}
+/*# sourceMappingURL=Map.css.map */

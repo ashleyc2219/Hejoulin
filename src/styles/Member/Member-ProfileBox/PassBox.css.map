@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;CAQnB;;AAVD,AAMI,QANI,CAIN,aAAa,CAEX,aAAa,CAAC;EACZ,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "PassBox.scss",
+        "../../mixin.scss"
+    ],
+    "names": [],
+    "file": "PassBox.css"
+}

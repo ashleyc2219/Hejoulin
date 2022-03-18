@@ -1,0 +1,38 @@
+.Gift .sidebar {
+  width: 175px;
+  height: fit-content;
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .Gift .sidebar {
+    display: none;
+  }
+}
+
+.Gift .sidebar .first {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-top: 2px solid #bbbcbd;
+}
+
+.Gift .sidebar .first ul {
+  margin-left: 30px;
+}
+
+.Gift .sidebar .first ul li {
+  list-style: none;
+}
+
+.Gift .sidebar .first ul li:last-child a {
+  color: #3d4349;
+}
+
+.Gift .sidebar .first ul li a {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 20px !important;
+}
+/*# sourceMappingURL=Sidebar.css.map */

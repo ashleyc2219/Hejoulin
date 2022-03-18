@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginContext'
+import EmailVerify from '../Member/EmailVerify'
 
 const Header = (props) => {
   const { user, setUser } = props
@@ -86,7 +87,8 @@ const Header = (props) => {
               alt=""
             />
           </li>
-          <LoginContext user={user} setUser={setUser} />
+          {/*<LoginContext user={user} setUser={setUser} />*/}
+          <EmailVerify />
         </ul>
       </nav>
     </>

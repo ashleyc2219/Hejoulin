@@ -1,0 +1,35 @@
+.CardBox {
+  padding-top: 2.5%;
+  padding-left: 4.5%;
+  display: flex;
+}
+
+.CardBox .CardImg {
+  margin-top: 9%;
+}
+
+.CardBox .CardBox-Item-date {
+  margin-left: .8%;
+}
+
+.CardBox .CardBox-Item-date .card-validity {
+  width: 112px;
+}
+
+.CardBox .CardBox-Item-date .safety-code {
+  width: 98px;
+  margin-left: 9.5%;
+}
+
+.CardBox .CardBox-Items {
+  margin-left: 7%;
+}
+
+.CardBox .CardBox-Items .CardBox-Item .card-number {
+  width: 221px;
+}
+
+.CardBox .CardBox-Items .CardBox-Item .owner-name {
+  width: 221px;
+}
+/*# sourceMappingURL=CardBox.css.map */
