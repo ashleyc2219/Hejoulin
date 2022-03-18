@@ -17,7 +17,7 @@
   min-height: 300px;
   background-position: center;
   background-size: cover;
-  background-image: url("./../../../public/sakeintro/sakepic271.jpg");
+  background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
 }
 
 .sake-intro .sake-intro-container {
@@ -35,6 +35,8 @@
 
 .sake-intro .sake-intro-container .sakeintro-content {
   outline: 1px solid blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: absolute;
   top: -123px;
@@ -52,7 +54,9 @@
   width: 106px;
   padding-top: 50px;
   background-color: #f7f7f6;
-  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
 }
 
 .sake-intro .sake-intro-container .sakeintro-content .big-title h1 {
@@ -88,7 +92,7 @@
 
 .sake-intro .sakeintro-content2 .box1 .pic {
   max-width: 270px;
-  height: 100px;
+  height: 190px;
   background-position: center;
   background-size: cover;
   background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
