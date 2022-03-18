@@ -8,8 +8,7 @@ import ResultTitle from './ResultTitle'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-  const [title, setTitle] = useState(true)
-  console.log(props.search)
+  console.log(props.resultTitle)
 
   let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}&search=${props.search}`
 
@@ -17,19 +16,16 @@ const ProductListItems = (props) => {
     const res = await fetch(url)
     const fetchedData = await res.json()
     const test = fetchedData
-    console.log(test)
     setRows(test.totalRows)
     setList(test.rows)
 
     // 後端摟出的資料大於等於所有資料 按鈕就消失
     if (props.page >= test.totalRows) {
-      console.log(rows)
       props.load(false)
     }
   }
 
   const product = list.map((v, i) => {
-    console.log(i)
     return (
       <div key={i} className="product">
         <div className="product-wrap">
@@ -104,7 +100,7 @@ const ProductListItems = (props) => {
   return (
     <>
       <div className="product-list">
-        {title ? <ProductTitle /> : <ResultTitle />}
+        {props.resultTitle ? <ProductTitle /> : <ResultTitle />}
 
         <div className="product-container">
           {/* 商品 */}

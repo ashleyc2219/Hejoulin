@@ -177,9 +177,9 @@ select {
   background-position-x: 95%;
   background-position-y: 16.5px;
 }
-select:focus {
-  border: $gray-400 0.5px solid;
-  border-radius: 0%;
+select:focus-visible {
+  border: $gray-400 0.5px solid !important;
+  border-radius: 0% !important;
 }
 option[value=''][disabled] {
   display: none;

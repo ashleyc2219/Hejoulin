@@ -11,8 +11,8 @@ const SubTime = () => {
     <div className="SubTime">
       <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
 
-      <ProgressBar step="two" content={stepContent} />
       <div className="container">
+        <ProgressBar step="two" content={stepContent} />
         <div className="main">
           <div className="left-planInfo">
             <h4>
@@ -36,7 +36,7 @@ const SubTime = () => {
             <SubTimeCard />
           </div>
         </div>
-        <div className='buttons'>
+        <div className="buttons">
           <Link to="/sub/plan">
             <button className="btn btn-primary">上一步</button>
           </Link>
