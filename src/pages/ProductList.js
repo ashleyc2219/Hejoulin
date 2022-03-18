@@ -15,14 +15,18 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import { Spinner } from 'react-bootstrap'
 
 const ProductList = () => {
-  const [brand, setBrand] = useState([])
-  const [loca, setLoca] = useState([])
-  const [title, setTitle] = useState(true)
-  const [load, setLoad] = useState(true)
-  const [spin, setSpin] = useState(false)
-  const [perpage, setPerpage] = useState(18)
-  const [search, setSearch] = useState('')
+  const [brand, setBrand] = useState([]) //品牌
+  const [loca, setLoca] = useState([]) // 產地
+  const [title, setTitle] = useState(true) // 設定人氣跟達人推薦出現或消失
+  const [load, setLoad] = useState(true) //載入更多的按鈕
+  const [spin, setSpin] = useState(false) // 最下面的spinner
+  const [spinTop, setSpinTop] = useState(false) // 最上面搜尋時會出現的spinner
+  const [perpage, setPerpage] = useState(18) // 這訂每次載入商品的比數
+  const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表
+  const [prolist, setProlist] = useState(true) // 設定全部商品的列表是否要出現
+  const [resultTitle, setResultTitle] = useState(true) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
 
+  // 按下載入更多會觸發的spinner 
   const spinner = () => {
     setLoad(false)
     setSpin(true)
@@ -33,14 +37,29 @@ const ProductList = () => {
     }, 1000)
   }
 
+  // search input onchange時候會出發的搜尋功能
   const searchHandler = (e) => {
+    const searchword = e.target.value
+    setProlist(false)
+    setSearch(searchword)
+    setTitle(false)
+    setSpinTop(true)
+    setLoad(false)
+    setResultTitle(true)
     setTimeout(() => {
-      if (e.target.value.length > 0) {
-        const searchword = e.target.value
-        setTitle(false)
-        setSearch(searchword)
+      // 如果搜尋文字長度大於0會執行以下動作
+      if (searchword.length > 0) {
+        setSpinTop(false)
+        setResultTitle(false)
+        setProlist(true)
+        //setLoad(true)
       } else {
+        const searchword = e.target.value
+        setLoad(true)
         setTitle(true)
+        setProlist(true)
+        setSpinTop(false)
+        setSearch(searchword)
       }
     }, 1500)
   }
@@ -143,13 +162,32 @@ const ProductList = () => {
                   <div className="state">1</div>
                 </div>
               </div>
+              {spinTop ? (
+                <div className="spin">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner>
+                </div>
+              ) : (
+                ''
+              )}
               {/* 人氣之選 */}
               {title ? <ProductTop3 /> : ''}
               {/* 達人推薦 */}
               {title ? <ProductMaster /> : ''}
 
               {/* 商品列表 */}
-              <ProductListItems page={perpage} load={setLoad} search={search} />
+              {prolist ? (
+                <ProductListItems
+                  page={perpage}
+                  load={setLoad}
+                  search={search}
+                  resultTitle={resultTitle}
+                />
+              ) : (
+                ''
+              )}
+
               {load ? (
                 <div className="load">
                   <button onClick={spinner} className="btn btn-outline-primary">
