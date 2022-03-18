@@ -1,0 +1,58 @@
+@import '../../styles/mixin.scss';
+.planChoice-card {
+  width: 169px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  box-shadow: -0.30000001192092896px 2px 4px 0px #bbbcbd80;
+  transition: .3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  svg{
+    position: absolute;
+    bottom: 0;
+    path{
+      margin-top: auto;
+    }
+  }
+  &:hover{
+    transform: translateY(-4%);
+    transition: .3s ease-in-out;
+  }
+
+  .planImg-container {
+    height: 169px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .planInfo-container {
+    text-align: center;
+    width: 90%;
+    h6 {
+      @include kleeone;
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 28px;
+    }
+    p {
+      margin-bottom: 14px;
+      &:first-of-type {
+        font-size: 14px;
+        color: $gray-400;
+      }
+      &:nth-of-type(2) {
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #b39c7a;
+        text-align: end;
+        &::before {
+          content: '$ ';
+        }
+      }
+    }
+  }
+}

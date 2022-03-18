@@ -1,4 +1,16 @@
 @import './../../styles/mixin.scss';
+
+@keyframes ani {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 .ProductList {
   .product-list {
     padding-top: 40px;
@@ -8,6 +20,8 @@
       font-weight: 600;
       margin-left: 43px;
       position: relative;
+      opacity: 0;
+      animation: ani 1s forwards;
       img {
         width: 80px;
         position: absolute;
@@ -21,15 +35,21 @@
       height: fit-content;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      row-gap: 25px;
+      //justify-content: space-between;
+      //flex-grow: 1;
+      row-gap: 40px;
+      @include medium(){
+        justify-content:flex-start
+      }
       .product {
-        width: 30%;
+        width: 33.333333333%;
         display: flex;
         flex-direction: column;
         align-items: center;
         height: fit-content;
         column-gap: 20px;
+        opacity: 0;
+        animation: ani 1s forwards;
         &:hover > .product-wrap {
           transform: translateY(-5px);
           box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.146);
@@ -139,7 +159,7 @@
             text-decoration: none;
             text-align: center;
           }
-          
+
           p {
             text-align: center;
             margin: 0;

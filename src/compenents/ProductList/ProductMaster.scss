@@ -1,5 +1,14 @@
 @import './../../styles/mixin.scss';
-
+@keyframes ani {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
 .ProductList {
   .master-recommend {
     padding-top: 40px;
@@ -9,6 +18,8 @@
       font-weight: 600;
       margin-left: 43px;
       position: relative;
+      opacity: 0;
+      animation: ani 1s forwards;
       img {
         width: 80px;
         position: absolute;
@@ -32,6 +43,8 @@
         align-items: center;
         height: fit-content;
         column-gap: 20px;
+        opacity: 0;
+        animation: ani 1s forwards .3s;
         &:last-child {
           @include medium() {
             display: none;

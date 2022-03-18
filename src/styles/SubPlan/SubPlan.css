@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.SubPlan {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.SubPlan img.LineBg {
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  top: 66px;
+}
+
+.SubPlan .container {
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.SubPlan .container .main {
+  min-width: 1130px;
+  min-height: 475px;
+  background-color: rgba(247, 247, 246, 0.75);
+  padding: 48px 58px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 38px;
+}
+
+.SubPlan .container .main .left-planInfo {
+  width: 34%;
+}
+
+.SubPlan .container .main .left-planInfo h4 {
+  font-family: "Klee One", cursive;
+  color: #6b7580;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.SubPlan .container .main .left-planInfo h5 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #3d4349;
+}
+
+.SubPlan .container .main .left-planInfo p {
+  width: 72%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #7e8082;
+}
+
+.SubPlan .container .main .right-planChoices {
+  width: 53.36%;
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+}
+/*# sourceMappingURL=SubPlan.css.map */

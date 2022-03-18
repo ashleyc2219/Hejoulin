@@ -1,0 +1,64 @@
+@import '../mixin.scss';
+* {
+  // border: 1px blue solid;
+  margin: 0;
+  padding: 0;
+}
+.SubPlan {
+  margin-bottom: 100px;
+  position: relative;
+  img.LineBg {
+    width: 100%;
+    position: absolute;
+    z-index: -2;
+    top: 66px;
+  }
+
+  .container {
+    min-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .main {
+      min-width: 1130px;
+      min-height: 475px;
+      background-color: rgba(247, 247, 246, 0.75);
+      padding: 48px 58px;
+
+      display: flex;
+      justify-content: space-between;
+      column-gap: 38px;
+
+      .left-planInfo {
+        width: 34%;
+        h4 {
+          @include kleeone;
+          color: $dark;
+          font-size: 30px;
+          font-weight: 600;
+        }
+        h5 {
+          font-weight: 500;
+          font-size: 18px;
+          color: $primary;
+        }
+        p {
+          width: 72%;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 32px;
+          color: $gray-300;
+        }
+      }
+      .right-planChoices {
+        width: 53.36%;
+
+        display: flex;
+        column-gap: 20px;
+        justify-content: space-between;
+        //   planChoice Card ---
+      }
+    }
+  }
+}

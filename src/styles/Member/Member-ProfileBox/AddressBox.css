@@ -1,0 +1,44 @@
+.AddressBox {
+  padding-top: 2.5%;
+  padding-left: 4.5%;
+}
+
+.AddressBox .AddressFileName {
+  font-weight: 700;
+}
+
+.AddressBox .mobileTitle {
+  margin-left: 36%;
+}
+
+.AddressBox .AddressBox-Item {
+  display: flex;
+}
+
+.AddressBox .AddressBox-Item .dropDown-city {
+  margin-left: 1%;
+}
+
+.AddressBox .AddressBox-Item .input-lastName {
+  width: 147px;
+}
+
+.AddressBox .AddressBox-Item .input-firstName {
+  width: 226px;
+  margin-left: 2.5%;
+}
+
+.AddressBox .AddressBox-Item .input-mobile {
+  width: 175px;
+  margin-left: 2.5%;
+}
+
+.AddressBox .AddressBox-Item .input-zip {
+  width: 135px;
+  margin-left: 1%;
+}
+
+.AddressBox .AddressBox-Item .input-address {
+  width: 548px;
+}
+/*# sourceMappingURL=AddressBox.css.map */

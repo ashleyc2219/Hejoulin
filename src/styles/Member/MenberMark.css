@@ -1,7 +1,4 @@
-@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
 .MemberMark {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 1200px;
   margin: 0 auto;
@@ -9,10 +6,60 @@
 
 .MemberMark .MemberMarkBox {
   width: 100%;
+  margin-top: 11%;
+  height: 622px;
 }
 
 .MemberMark .MemberMarkBox .MemberMarkBar {
   width: 80%;
-  margin-top: 13.5%;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems {
+  width: 100%;
+  display: flex;
+  margin-top: 10%;
+  align-items: center;
+  position: relative;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .bgImg img {
+  position: absolute;
+  left: 41%;
+  top: -55%;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItemAdd {
+  width: 343px;
+  height: 214px;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItemAdd .MarkPicAdd {
+  width: 100%;
+  height: 156px;
+  border: 1px solid rgba(110, 113, 115, 0.66);
+  text-align: center;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItemAdd .MarkPicAdd img {
+  padding-top: 17%;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItemAdd .MarkAddText {
+  padding-top: 5%;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItem {
+  width: 343px;
+  height: 214px;
+  margin-left: 5%;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItem .MarkPicDisplay {
+  width: 100%;
+  height: 156px;
+}
+
+.MemberMark .MemberMarkBox .MemberMarkItems .MarkItem .MarkName {
+  padding-top: 5%;
 }
 /*# sourceMappingURL=MenberMark.css.map */

@@ -1,3 +1,14 @@
+@keyframes ani {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 .ProductList .famous-choose {
   padding-top: 20px;
 }
@@ -8,6 +19,8 @@
   font-weight: 600;
   margin-left: 43px;
   position: relative;
+  opacity: 0;
+  animation: ani 1s forwards;
 }
 
 .ProductList .famous-choose .famous-title img {
@@ -35,6 +48,8 @@
   align-items: center;
   height: fit-content;
   column-gap: 20px;
+  opacity: 0;
+  animation: ani 1s forwards .3s;
 }
 
 .ProductList .famous-choose .product-container .product:hover > .product-wrap {

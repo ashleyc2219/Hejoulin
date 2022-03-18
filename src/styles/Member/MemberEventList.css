@@ -1,7 +1,6 @@
-@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
+@charset "UTF-8";
+@import url(/Users/chenjunhan/Documents/專案/大專-禾酒林/Hejoulin/src/styles/mixin.css);
 .MemberEventList {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 1200px;
   margin: 0 auto;
@@ -15,12 +14,8 @@
   width: 100%;
   margin-top: 12%;
   border-bottom: 2px solid #BBBCBD;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .MemberEventList .MemberEventBox .EventBar .EventTabs {
@@ -32,11 +27,45 @@
   margin-left: 5%;
 }
 
+.MemberEventList .MemberEventBox .EventBar .EventTabs .EventBar-item-box .EventBar-item {
+  text-decoration: none;
+}
+
+.MemberEventList .MemberEventBox .EventBar .EventTabs .EventBar-item-box .EventBar-item:hover {
+  color: #CEB48D;
+  padding-bottom: 40%;
+  border-bottom: 4px solid #CEB48D;
+}
+
+.MemberEventList .MemberEventBox .EventBar .EventTabs .EventBar-item-box .EventBar-item-coming {
+  text-decoration: none;
+}
+
+.MemberEventList .MemberEventBox .EventBar .EventTabs .EventBar-item-box .EventBar-item-coming:hover {
+  color: #CEB48D;
+  padding-bottom: 30%;
+  border-bottom: 4px solid #CEB48D;
+}
+
 .MemberEventList .MemberEventBox .EventBar .EventTabs .search-icon-ev {
   margin-left: 3%;
 }
 
-.MemberEventList .MemberEventBox .table {
-  z-index: -1 !important;
+.MemberEventList .MemberEventBox .EventFileBox {
+  margin-top: 1.8%;
+  margin-left: 1.7%;
+}
+
+.MemberEventList .MemberEventBox .EventFileBox table {
+  width: 92%;
+}
+
+.MemberEventList .MemberEventBox .EventFileBox table thead th {
+  text-align: center;
+  border: none;
+}
+
+.MemberEventList .MemberEventBox .EventFileBox table tbody tr {
+  text-align: center;
 }
 /*# sourceMappingURL=MemberEventList.css.map */

@@ -12,10 +12,38 @@ import ProductTop3 from '../compenents/ProductList/ProductTop3'
 import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
+import { Spinner } from 'react-bootstrap'
 
 const ProductList = () => {
   const [brand, setBrand] = useState([])
   const [loca, setLoca] = useState([])
+  const [title, setTitle] = useState(true)
+  const [load, setLoad] = useState(true)
+  const [spin, setSpin] = useState(false)
+  const [perpage, setPerpage] = useState(18)
+  const [search, setSearch] = useState('')
+
+  const spinner = () => {
+    setLoad(false)
+    setSpin(true)
+    setTimeout(() => {
+      setLoad(true)
+      setSpin(false)
+      setPerpage(perpage + 18)
+    }, 1000)
+  }
+
+  const searchHandler = (e) => {
+    setTimeout(() => {
+      if (e.target.value.length > 0) {
+        const searchword = e.target.value
+        setTitle(false)
+        setSearch(searchword)
+      } else {
+        setTitle(true)
+      }
+    }, 1500)
+  }
 
   /* 品牌 */
   const fetchBrand = async () => {
@@ -93,7 +121,7 @@ const ProductList = () => {
                 <div className="search">
                   <img src="/ProductList/search.svg" alt="" />
 
-                  <input type="text" name="" id="" />
+                  <input onChange={searchHandler} type="text" name="" id="" />
                 </div>
               </div>
               {/* 手機版的篩選 */}
@@ -116,11 +144,31 @@ const ProductList = () => {
                 </div>
               </div>
               {/* 人氣之選 */}
-              <ProductTop3 />
+              {title ? <ProductTop3 /> : ''}
               {/* 達人推薦 */}
-              <ProductMaster />
+              {title ? <ProductMaster /> : ''}
+
               {/* 商品列表 */}
-              <ProductListItems />
+              <ProductListItems page={perpage} load={setLoad} search={search} />
+              {load ? (
+                <div className="load">
+                  <button onClick={spinner} className="btn btn-outline-primary">
+                    載入更多
+                  </button>
+                </div>
+              ) : (
+                ''
+              )}
+
+              {spin ? (
+                <div className="spin">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
 
             {/* 右側比較區塊 */}
