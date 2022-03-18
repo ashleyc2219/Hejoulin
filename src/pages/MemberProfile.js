@@ -4,8 +4,8 @@ import ProfileBox from '../compenents/Member/ProfileBox'
 import '../styles/Member/MemberProfile.scss'
 import { Link } from 'react-router-dom'
 import AddressBox from '../compenents/Member/AddressBox'
-import PassBox from "../compenents/Member/PassBox";
-import CardBox from "../compenents/Member/CardBox";
+import PassBox from '../compenents/Member/PassBox'
+import CardBox from '../compenents/Member/CardBox'
 
 const MemberProfile = (props) => {
   const { user, setUser } = props

@@ -76,7 +76,10 @@ const Header = (props) => {
           </div>
         </div>
       </div>
-      <div className={sidebar ? 'block' : 'displayNone'} />
+      <div
+        className={sidebar ? 'block' : 'displayNone'}
+        onClick={showSidebar}
+      />
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
