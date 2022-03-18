@@ -1,0 +1,22 @@
+@import "../../mixin.scss";
+
+.PassForget {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+
+  .PassForgetBox {
+    padding-top: 18%;
+    padding-left: 26%;
+
+    input {
+      margin-top: 3%;
+    }
+
+    .btn {
+      margin-top: 20%;
+      margin-left: 35%;
+    }
+  }
+}

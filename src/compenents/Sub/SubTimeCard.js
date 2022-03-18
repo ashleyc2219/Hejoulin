@@ -1,9 +1,9 @@
 import React from 'react'
-import './SubPlanCard.scss'
+import './SubTimeCard.scss'
 import { motion, useAnimation } from 'framer-motion'
 import { useState } from 'react'
 
-const SubPlanCard = (props) => {
+const SubTimeCard = (props) => {
   const controls = useAnimation()
 
   function onTap(event, info) {
@@ -18,14 +18,14 @@ const SubPlanCard = (props) => {
   }
 
   return (
-    <motion.div className="planChoice-card" onTap={onTap}>
-      <div className="planImg-container">
-        <img src="/Sub/riceOne.svg" alt="" />
+    <motion.div className="timeChoice-card" onTap={onTap}>
+      <div className="timeImg-container">
+        <img src="/Sub/oneMonth.png" alt="" />
       </div>
-      <div className="planInfo-container">
-        <h6>純米</h6>
-        <p>精米步合度約70%</p>
-        <p>1200</p>
+      <div className="timeInfo-container">
+        <p>1</p>
+        <h6>1800</h6>
+        <p>1800</p>
       </div>
 
       <svg
@@ -35,7 +35,6 @@ const SubPlanCard = (props) => {
         }}
       >
         <motion.path
-
           // initial={false}
           style={{
             fill: '#E6C49E',
@@ -55,4 +54,4 @@ const SubPlanCard = (props) => {
   )
 }
 
-export default SubPlanCard
+export default SubTimeCard

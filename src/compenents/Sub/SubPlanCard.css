@@ -9,6 +9,16 @@
   box-shadow: -0.30000001192092896px 2px 4px 0px #bbbcbd80;
   transition: .3s ease-in-out;
   overflow: hidden;
+  position: relative;
+}
+
+.planChoice-card svg {
+  position: absolute;
+  bottom: 0;
+}
+
+.planChoice-card svg path {
+  margin-top: auto;
 }
 
 .planChoice-card:hover {
