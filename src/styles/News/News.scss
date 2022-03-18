@@ -1,5 +1,9 @@
 @import '../mixin.scss';
 
+* {
+  outline: 0px solid #ccc !important;
+}
+
 body {
   @include bgimage();
   padding: 0;
@@ -12,11 +16,19 @@ body {
 .news {
   width: 100%;
 
-  h1 {
-    @include kleeone();
+  p {
+    color: $gray-300;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Klee One', cursive;
+    color: $primary;
   }
 
   .news-container {
+    mix-blend-mode: multiply;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -26,20 +38,22 @@ body {
     z-index: 50;
     // background-color: rgba(138, 134, 170, 0.589);
 
+    //超大標最新消息
     .news-title {
+      outline: 2px solid #6b1a0f;
       @include kleeone();
       color: $gray-300;
       margin: 37px 0;
       z-index: 60;
     }
-
+    //斜線背景
     .news-title ::after {
       position: absolute;
       z-index: 0;
-      right: -220px;
+      right: -120px;
       content: '';
       width: 450px;
-      height: 2000px;
+      height: 100%;
       background: repeating-linear-gradient(
         50deg,
         $secondary,
@@ -49,47 +63,101 @@ body {
       );
       opacity: 0.3;
     }
-
+    //最新消息元件
     .news-item {
+      outline: 2px solid #d0d31a;
       // background-color: rgba(44, 90, 48, 0.582);
       z-index: 70;
       display: flex;
+
+      //圖片區塊
+
       .news-item-pic {
-        width: 30%;
-        img {
-          width: 100%;
+        mix-blend-mode: multiply;
+        outline: 2px solid #dd6c8e;
+        flex-grow: 1;
+
+        .news-pic {
+          outline: 2px solid #237c17;
+          height: 300px;
+          margin-top: 70px;
+          position: relative;
+
+          .news-item-pic-box {
+            outline: 2px solid #381c25;
+            // overflow: hidden;
+            width: 80%;
+
+            position: absolute;
+            z-index: 50;
+
+            img {
+              width: 100%;
+              height: 170px;
+              object-fit: cover;
+              z-index: 55;
+              isolation: isolate;
+            }
+
+            &::before {
+              content: '';
+              background-color: $success;
+              width: 100%;
+              height: 170px;
+              position: absolute;
+              right: -31px;
+              bottom: -28px;
+              z-index: -1;
+
+              mix-blend-mode: multiply;
+            }
+          }
         }
       }
 
+      //文字區塊
       .news-item-word {
+        outline: 2px solid #0f6b1e;
         width: 60%;
         padding: 70px 100px;
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
         .news-item-date {
+          //厲害的功能
+          width: fit-content;
           p {
             align-items: center;
-            margin-bottom: 5px;
-            padding: 3px 10px;
+            margin-bottom: 15px;
+            padding: 0px 15px;
             background-color: $primary;
             color: $gray-100;
           }
         }
         .news-item-title {
+          outline: 2px solid #0f186b;
+          margin-bottom: 5px;
           h3 {
+            outline: 2px solid #17b4db;
             font-family: 'Klee One', cursive;
             font-size: 24px;
             color: $primary;
           }
         }
         .news-item-content {
+          outline: 2px solid #6d19a5;
           color: $primary;
           p {
             margin-bottom: 5px;
+            font-size: 16px;
+            line-height: 32px;
           }
         }
         .news-item-link {
           a {
+            color: $gray-100;
+            font-size: 14px;
+          }
+          p {
             color: $gray-200;
             font-size: 14px;
           }
