@@ -1,10 +1,16 @@
-@import url(/Library/cce_script/bhw/hejolin_0310/Hejoulin/src/styles/mixin.css);
 .MemberProfile {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 1200px;
   margin: 0 auto;
+  position: relative;
+}
+
+.MemberProfile .bgItem {
+  position: absolute;
+  left: 68%;
+  right: 15.21%;
+  top: 25%;
+  bottom: 7.61%;
 }
 
 .MemberProfile .MemberProfileBox {
@@ -15,12 +21,8 @@
   width: 100%;
   margin-top: 12%;
   border-bottom: 2px solid #BBBCBD;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box {
@@ -30,10 +32,23 @@
 
 .MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .ProfileBar-item {
   text-decoration: none;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .ProfileBar-item .ProfileBar-item:hover {
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .ProfileBar-item:hover {
   color: #CEB48D;
+  padding-bottom: 29.5%;
+  border-bottom: 4px solid #CEB48D;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .payment {
+  text-decoration: none;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.MemberProfile .MemberProfileBox .MemberProfileBar .ProfileBar-item-box .payment:hover {
+  color: #CEB48D;
+  padding-bottom: 15.3%;
   border-bottom: 4px solid #CEB48D;
 }
 /*# sourceMappingURL=MemberProfile.css.map */

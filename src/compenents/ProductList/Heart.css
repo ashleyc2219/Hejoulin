@@ -2,7 +2,6 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -18,7 +17,6 @@
 }
 
 .heart path {
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -26,7 +24,6 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -44,7 +41,6 @@
 .heart-click path {
   fill: #d26d54;
   stroke: #d26d54;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 /*# sourceMappingURL=Heart.css.map */

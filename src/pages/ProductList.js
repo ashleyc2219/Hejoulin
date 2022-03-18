@@ -17,11 +17,11 @@ import { Spinner } from 'react-bootstrap'
 const ProductList = () => {
   const [brand, setBrand] = useState([])
   const [loca, setLoca] = useState([])
-  const [top, setTop] = useState(true)
-  const [master, setMaster] = useState(true)
+  const [title, setTitle] = useState(true)
   const [load, setLoad] = useState(true)
   const [spin, setSpin] = useState(false)
-  const [perpage, setPerpage] = useState(9)
+  const [perpage, setPerpage] = useState(18)
+  const [search, setSearch] = useState('')
 
   const spinner = () => {
     setLoad(false)
@@ -29,8 +29,20 @@ const ProductList = () => {
     setTimeout(() => {
       setLoad(true)
       setSpin(false)
-      setPerpage(perpage + 9)
+      setPerpage(perpage + 18)
     }, 1000)
+  }
+
+  const searchHandler = (e) => {
+    setTimeout(() => {
+      if (e.target.value.length > 0) {
+        const searchword = e.target.value
+        setTitle(false)
+        setSearch(searchword)
+      } else {
+        setTitle(true)
+      }
+    }, 1500)
   }
 
   /* 品牌 */
@@ -109,7 +121,7 @@ const ProductList = () => {
                 <div className="search">
                   <img src="/ProductList/search.svg" alt="" />
 
-                  <input type="text" name="" id="" />
+                  <input onChange={searchHandler} type="text" name="" id="" />
                 </div>
               </div>
               {/* 手機版的篩選 */}
@@ -132,12 +144,12 @@ const ProductList = () => {
                 </div>
               </div>
               {/* 人氣之選 */}
-              {top ? <ProductTop3 /> : ''}
+              {title ? <ProductTop3 /> : ''}
               {/* 達人推薦 */}
-              {master ? <ProductMaster /> : ''}
+              {title ? <ProductMaster /> : ''}
 
               {/* 商品列表 */}
-              <ProductListItems page={perpage} load={setLoad} />
+              <ProductListItems page={perpage} load={setLoad} search={search} />
               {load ? (
                 <div className="load">
                   <button onClick={spinner} className="btn btn-outline-primary">

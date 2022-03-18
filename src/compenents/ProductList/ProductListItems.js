@@ -2,22 +2,34 @@ import React, { useState, useEffect } from 'react'
 import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
+import ProductTitle from './ProductTitle'
+import ResultTitle from './ResultTitle'
 
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
-  console.log(props.load)
+  const [rows, setRows] = useState('')
+  const [title, setTitle] = useState(true)
+  console.log(props.search)
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}`
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}&search=${props.search}`
 
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
     const test = fetchedData
     console.log(test)
+    setRows(test.totalRows)
     setList(test.rows)
+
+    // 後端摟出的資料大於等於所有資料 按鈕就消失
+    if (props.page >= test.totalRows) {
+      console.log(rows)
+      props.load(false)
+    }
   }
 
   const product = list.map((v, i) => {
+    console.log(i)
     return (
       <div key={i} className="product">
         <div className="product-wrap">
@@ -85,16 +97,15 @@ const ProductListItems = (props) => {
   useEffect(() => {
     fetchList()
   }, [])
+
   useEffect(() => {
     fetchList()
-  }, [props.page])
+  }, [props.page, props.search])
   return (
     <>
       <div className="product-list">
-        <div className="product-title">
-          全部商品
-          <img src="/ProductList/rice.svg" alt="" className="rice" />
-        </div>
+        {title ? <ProductTitle /> : <ResultTitle />}
+
         <div className="product-container">
           {/* 商品 */}
           {product}

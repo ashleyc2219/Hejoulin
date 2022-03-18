@@ -1,0 +1,402 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', serif;
+}
+
+.Gift {
+  max-width: 100%;
+  position: relative;
+  padding-bottom: 300px;
+}
+
+@media (max-width: 768px) {
+  .Gift {
+    padding: 0 20px;
+  }
+}
+
+.Gift .gift_container {
+  padding-top: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  z-index: 3;
+}
+
+.Gift .gift_container .bgelement01,
+.Gift .gift_container .bgelement02,
+.Gift .gift_container .bgelement03,
+.Gift .gift_container .bgelement04 {
+  position: absolute;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .Gift .gift_container .bgelement01,
+  .Gift .gift_container .bgelement02,
+  .Gift .gift_container .bgelement03,
+  .Gift .gift_container .bgelement04 {
+    display: none;
+  }
+}
+
+.Gift .gift_container .bgelement01 {
+  top: 5vh;
+  right: -300px;
+}
+
+.Gift .gift_container .bgelement02 {
+  top: 100vh;
+  width: 550px;
+  transform: rotateZ(30deg);
+}
+
+.Gift .gift_container .bgelement03 {
+  top: 210vh;
+  right: -100px;
+  width: 600px;
+  transform: rotateZ(50deg);
+}
+
+.Gift .gift_container .bgelement04 {
+  top: 300vh;
+  transform: rotateZ(40deg);
+}
+
+.Gift .gift_container .all {
+  border-top: 2px solid #bbbcbd;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  column-gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .Gift .gift_container .all {
+    border: none;
+    display: block;
+  }
+}
+
+.Gift .gift_container .all .stepbar {
+  width: 100%;
+  height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: antiquewhite;
+}
+
+.Gift .gift_container .all main {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .Gift .gift_container .all main {
+    border: none;
+    display: block;
+  }
+}
+
+.Gift .gift_container .all main #gift_kind {
+  width: 100%;
+  height: calc(100vh - 175px - 144px);
+}
+
+.Gift .gift_container .all main #gift_kind .kind {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 1rem;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.Gift .gift_container .all main #gift_kind .kind:hover {
+  transform: translateY(-40px);
+  transition: 0.5s;
+}
+
+.Gift .gift_container .all main #gift_kind .kind img {
+  height: 40vh;
+  filter: drop-shadow(0 0 0.5rem #7e8082);
+}
+
+.Gift .gift_container .all main #gift_kind .kind .title {
+  color: #3d4349;
+  font-size: 20px;
+  margin-top: 2rem;
+}
+
+.Gift .gift_container .all main #gift_sake {
+  width: 100%;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+.Gift .gift_container .all main #gift_sake .header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.Gift .gift_container .all main #gift_sake h4 {
+  font-family: "Klee One", cursive;
+  text-align: center;
+  margin-top: -35px;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 0 110px;
+  margin-top: 5vh;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake {
+  padding: 0 10px;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card:hover .original {
+  display: none;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card:hover .trans {
+  display: block;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card .original {
+  width: 50px;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card .trans {
+  display: none;
+  height: 187.96px;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card .name {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.Gift .gift_container .all main #gift_sake .gift_grid .gift_sake .sake_card small {
+  font-size: 14px;
+  font-weight: 700;
+  color: #bbbcbd;
+  margin-top: 5px;
+}
+
+.Gift .gift_container .all main #gift_color {
+  width: 100%;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+.Gift .gift_container .all main #gift_color .header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.Gift .gift_container .all main #gift_color h4 {
+  font-family: "Klee One", cursive;
+  text-align: center;
+  margin-top: -35px;
+}
+
+.Gift .gift_container .all main #gift_color .color_group {
+  width: 100%;
+  height: 88px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.Gift .gift_container .all main #gift_color .color_group .color_btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+}
+
+.Gift .gift_container .all main #gift_color .color_group .color_btn:hover {
+  transform: translateY(-15px);
+  transition: 0.5s;
+}
+
+.Gift .gift_container .all main #gift_color .color_group .color_btn:hover img {
+  filter: drop-shadow(4px 4px 0.15rem #7e8082);
+}
+
+.Gift .gift_container .all main #gift_color .color_group .color_btn:hover small {
+  display: block;
+}
+
+.Gift .gift_container .all main #gift_color .color_group .color_btn small {
+  display: none;
+  margin-top: 10px;
+  color: #7e8082;
+}
+
+.Gift .gift_container .all main #gift_color .gift_image {
+  width: 100%;
+  height: 65vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Gift .gift_container .all main #gift_color .gift_image img {
+  height: 63vh;
+  position: absolute;
+  margin: auto;
+}
+
+.Gift .gift_container .all main #gift_color .confirm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Gift .gift_container .all main #gift_detail {
+  width: 100%;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+.Gift .gift_container .all main #gift_detail .header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.Gift .gift_container .all main #gift_detail h4 {
+  font-family: "Klee One", cursive;
+  text-align: center;
+  margin-top: -35px;
+}
+
+.Gift .gift_container .all main #gift_detail .detail {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 5vh 110px;
+  overflow: hidden;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .final {
+  width: 400px;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .title {
+  color: #7e8082;
+  font-weight: bold;
+  line-height: 90px;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 7fr 2fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  overflow: hidden;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .color {
+  font-size: 18px;
+  line-height: 30px;
+  color: #7e8082;
+  margin: 0;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .quality,
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .price {
+  text-align: right;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .text {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .text::after {
+  content: '……………………';
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .price::before {
+  content: '$';
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .total {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: bold;
+  color: #af4930;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .sheet .text_total {
+  text-align: center;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .laststep {
+  font-weight: bold;
+  line-height: 60px;
+  margin-top: 15px;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .add-minus {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .add-minus img {
+  cursor: pointer;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .gift_cart {
+  margin-top: 40px;
+}
+
+.Gift .gift_container .all main #gift_detail .detail .content .gift_cart .cart {
+  margin: 0 5px;
+}
+/*# sourceMappingURL=Gift.css.map */
