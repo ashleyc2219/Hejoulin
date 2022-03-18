@@ -1,5 +1,5 @@
 import React from 'react'
-import './../styles/news/news.css'
+import './../styles/News/News.css'
 
 const NewsList = () => {
   return (
@@ -23,7 +23,7 @@ const NewsList = () => {
                 </p>
               </div>
               <div className="news-item-link">
-                <a href="#">
+                <a href="#/">
                   <p>了解詳情...</p>
                 </a>
               </div>
