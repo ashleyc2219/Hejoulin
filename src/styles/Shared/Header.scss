@@ -110,7 +110,7 @@
           @include large() {
             width: 25%;
           }
-          @include medium(){
+          @include medium() {
             display: none;
           }
           cursor: pointer;
@@ -121,33 +121,31 @@
           }
         }
         .cart {
-          
-
           cursor: pointer;
           margin-right: 7px;
           display: flex;
           align-items: center;
-          img{
+          img {
             width: 30px;
-          height: 30px;
+            height: 30px;
           }
         }
         .fav {
           cursor: pointer;
           display: flex;
           align-items: center;
-          @include medium(){
+          @include medium() {
             display: none;
           }
-          img{
+          img {
             width: 25px;
             height: 25px;
             margin-left: 5px;
           }
         }
-        .menu{
+        .menu {
           display: none;
-          @include medium(){
+          @include medium() {
             display: block;
             margin-left: 20px;
           }
@@ -215,6 +213,69 @@
         font-size: 2rem;
         background: none;
       }
+    }
+  }
+}
+
+.mobile-menu {
+  width: 100%;
+  display: none;
+  .blockbg {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 120vh;
+    background-color: #202326;
+    opacity: 0.6;
+    transition: 350ms;
+    z-index: 9;
+  }
+  .menu {
+    background-image: url('../../../public/Sake-background0310.jpg');
+    width: 70vw;
+    height: 100vh;
+    
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: 850ms;
+    z-index: 9;
+    .icons{
+      display: flex;
+      align-items: center;
+      .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        span {
+          @include kleeone();
+          font-size: 15px;
+          line-height: 30px;
+        }
+      }
+      img{
+        margin: 0;
+      }
+    }
+    ul {
+      li {
+        list-style: none;
+        a {
+          @include kleeone;
+          font-size: 17px;
+        }
+      }
+    }
+    img.closed {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 20px;
+      right: 20px;
     }
   }
 }

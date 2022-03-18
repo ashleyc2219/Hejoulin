@@ -252,4 +252,73 @@
   font-size: 2rem;
   background: none;
 }
+
+.mobile-menu {
+  width: 100%;
+  display: none;
+}
+
+.mobile-menu .blockbg {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 120vh;
+  background-color: #202326;
+  opacity: 0.6;
+  transition: 350ms;
+  z-index: 9;
+}
+
+.mobile-menu .menu {
+  background-image: url("../../../public/Sake-background0310.jpg");
+  width: 70vw;
+  height: 100vh;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: 850ms;
+  z-index: 9;
+}
+
+.mobile-menu .menu .icons {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu .menu .icons .login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-menu .menu .icons .login span {
+  font-family: "Klee One", cursive;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.mobile-menu .menu .icons img {
+  margin: 0;
+}
+
+.mobile-menu .menu ul li {
+  list-style: none;
+}
+
+.mobile-menu .menu ul li a {
+  font-family: "Klee One", cursive;
+  font-size: 17px;
+}
+
+.mobile-menu .menu img.closed {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 20px;
+}
 /*# sourceMappingURL=Header.css.map */
