@@ -1,0 +1,40 @@
+@import '../../styles/mixin.scss';
+.confirm-card {
+  width: 169px;
+  height: 184px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $white;
+  box-shadow: -0.30000001192092896px 2px 4px 0px #bbbcbd80;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  svg {
+    position: absolute;
+    bottom: 0;
+    path {
+      margin-top: auto;
+    }
+  }
+
+
+  .confirmImg-container {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .confirmInfo-container {
+    text-align: center;
+    width: 90%;
+    h6 {
+      @include kleeone;
+      font-weight: 400;
+      font-size: 24px;
+      // margin-bottom: 28px;
+      color: #b29c7a;
+    }
+  }
+}
