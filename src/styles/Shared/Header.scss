@@ -48,6 +48,9 @@
         // margin-top: 44px;
         margin-bottom: 0px;
         font-size: 17px;
+        @include large() {
+          width: 500px;
+        }
         @include medium() {
           display: none;
         }
@@ -55,9 +58,15 @@
           letter-spacing: -1.8px;
           margin: 0px 7.88px;
           list-style-type: none;
+          @include large() {
+            margin: 0px 5px;
+          }
 
           a {
             @include kleeone();
+            @include large() {
+              font-size: 16px;
+            }
           }
         }
         .purchase-sake {
@@ -98,6 +107,9 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          @include large() {
+            width: 25%;
+          }
           cursor: pointer;
           span {
             @include kleeone();
@@ -154,7 +166,7 @@
   right: -100%;
   transition: 850ms;
   z-index: 9;
-  @include medium(){
+  @include medium() {
     //內容還沒RWD 只調整區塊尺寸
     width: 300px;
   }
