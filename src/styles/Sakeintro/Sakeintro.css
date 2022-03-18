@@ -2,6 +2,17 @@
   width: 100%;
 }
 
+.sake-intro p {
+  color: #7e8082;
+}
+
+.sake-intro h1,
+.sake-intro h2,
+.sake-intro h3 {
+  font-family: 'Klee One', cursive;
+  color: #3d4349;
+}
+
 .sake-intro .img-box {
   min-height: 300px;
   background-position: center;
@@ -10,14 +21,13 @@
 }
 
 .sake-intro .sake-intro-container {
+  outline: 3px solid purple;
   position: relative;
-}
-
-.sake-intro .sake-intro-container h2 {
-  text-color: red;
+  height: 250px;
 }
 
 .sake-intro .sake-intro-container .sakeintro-content {
+  outline: 1px solid blue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,12 +36,14 @@
 }
 
 .sake-intro .sake-intro-container .sakeintro-content .word-box {
+  outline: 1px solid #c416a7;
   width: 70%;
   padding-top: 182px;
-  padding-right: 10%;
+  padding-right: 8%;
 }
 
 .sake-intro .sake-intro-container .sakeintro-content .big-title {
+  outline: 1px solid blue;
   width: 106px;
   padding-top: 50px;
   background-color: #f7f7f6;
@@ -44,10 +56,18 @@
   margin: 30px;
   font-family: 'Klee One', cursive;
   font-size: 40px;
-  color: #3d4349;
 }
 
-.sake-intro .sake-intro-container .sakeintro-title1 {
-  height: 800px;
+.sake-intro .sakeintro-title {
+  outline: 1px solid black;
+}
+
+.sake-intro .sakeintro-title h2 {
+  outline: 1px solid #c416a7;
+  font-size: 36px;
+}
+
+.sake-intro .sakeintro-title p {
+  outline: 1px solid #116409;
 }
 /*# sourceMappingURL=Sakeintro.css.map */

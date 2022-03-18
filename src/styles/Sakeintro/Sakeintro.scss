@@ -10,6 +10,17 @@
 // }
 
 .sake-intro {
+  p {
+    color: $gray-300;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Klee One', cursive;
+    color: $primary;
+  }
+
   width: 100%;
   .img-box {
     min-height: 300px;
@@ -19,23 +30,25 @@
   }
 
   .sake-intro-container {
+    outline: 3px solid purple;
     // max-width: 1200px;
     position: relative;
+    height: 250px;
 
-    h2 {
-      text-color: red;
-    }
     .sakeintro-content {
+      outline: 1px solid blue;
       display: flex;
       position: absolute;
       top: -123px;
 
       .word-box {
+        outline: 1px solid rgb(196, 22, 167);
         width: 70%;
         padding-top: 182px;
-        padding-right: 10%;
+        padding-right: 8%;
       }
       .big-title {
+        outline: 1px solid blue;
         width: 106px;
         padding-top: 50px;
         background-color: $white;
@@ -44,12 +57,20 @@
           margin: 30px;
           font-family: 'Klee One', cursive;
           font-size: 40px;
-          color: $primary;
         }
       }
     }
-    .sakeintro-title1 {
-      height: 800px;
+  }
+  .sakeintro-title {
+    outline: 1px solid black;
+
+    h2 {
+      outline: 1px solid rgb(196, 22, 167);
+
+      font-size: 36px;
+    }
+    p {
+      outline: 1px solid rgb(17, 100, 9);
     }
   }
 }
