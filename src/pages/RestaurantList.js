@@ -99,7 +99,7 @@ const RestaurantList = () => {
         {isMap ? (
           <>
             <div
-              className="d-none d-sm-block col-6"
+              className="d-none d-lg-block col-6"
               style={{ paddingRight: '0' }}
             >
               <MapList
@@ -107,7 +107,7 @@ const RestaurantList = () => {
                 displayPlaces={displayPlaces}
               />
             </div>
-            <div className="col-12 col-sm-6" style={{ paddingLeft: '0' }}>
+            <div className="col-12 col-lg-6" style={{ paddingLeft: '0' }}>
               {' '}
               <Map
                 coordinates={coordinates}
