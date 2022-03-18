@@ -35,6 +35,7 @@ const SubPlanCard = (props) => {
         }}
       >
         <motion.path
+
           // initial={false}
           style={{
             fill: '#E6C49E',
