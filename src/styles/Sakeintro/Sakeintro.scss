@@ -33,7 +33,11 @@
     outline: 3px solid purple;
     // max-width: 1200px;
     position: relative;
-    height: 250px;
+    height: 220px;
+    @include medium() {
+      outline: 3px solid rgb(28, 92, 28);
+      height: 350px;
+    }
 
     .sakeintro-content {
       outline: 1px solid blue;
@@ -68,9 +72,39 @@
       outline: 1px solid rgb(196, 22, 167);
 
       font-size: 36px;
+      //產地那兒 差裝飾線
     }
     p {
       outline: 1px solid rgb(17, 100, 9);
+    }
+  }
+  .sakeintro-content2 {
+    outline: 3px solid rgb(122, 9, 94);
+    display: flex;
+
+    .box1 {
+      outline: 3px solid rgb(12, 180, 82);
+      // position: relative;
+      max-width: 390px;
+      .pic {
+        max-width: 270px;
+        height: 190px;
+        background-position: center;
+        background-size: cover;
+        background-image: url('./../../../public/Sakeintro/sakepic271.jpg');
+        outline: 3px solid purple;
+        // position: absolute;
+        //陰影
+      }
+      h3 {
+        outline: 3px solid rgb(0, 13, 128);
+        // position: absolute;
+      }
+      p {
+        outline: 3px solid rgb(155, 98, 24);
+        // position: absolute;
+        max-width: 230px;
+      }
     }
   }
 }
