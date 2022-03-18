@@ -1,0 +1,25 @@
+.RegisterContext {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+}
+
+.RegisterContext .RegisterContextBox {
+  padding-top: 14%;
+  padding-left: 26%;
+}
+
+.RegisterContext .RegisterContextBox .register-title {
+  text-align: center;
+}
+
+.RegisterContext .RegisterContextBox .register-form-group {
+  padding-top: 25%;
+}
+
+.RegisterContext .RegisterContextBox .register-form-group .btn {
+  margin-left: 17%;
+  margin-top: 16%;
+}
+/*# sourceMappingURL=RegisterContext.css.map */
