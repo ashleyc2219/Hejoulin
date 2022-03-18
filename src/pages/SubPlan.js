@@ -10,8 +10,8 @@ const SubPlan = () => {
     <div className="SubPlan">
       <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
 
-      <ProgressBar step="one" content={stepContent} />
       <div className="container">
+        <ProgressBar step="one" content={stepContent} />
         <div className="main">
           <div className="left-planInfo">
             <h4>

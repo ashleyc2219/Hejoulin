@@ -23,7 +23,14 @@
 .sake-intro .sake-intro-container {
   outline: 3px solid purple;
   position: relative;
-  height: 250px;
+  height: 220px;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .sake-intro-container {
+    outline: 3px solid #1c5c1c;
+    height: 350px;
+  }
 }
 
 .sake-intro .sake-intro-container .sakeintro-content {
@@ -65,5 +72,35 @@
 
 .sake-intro .sakeintro-title p {
   outline: 1px solid #116409;
+}
+
+.sake-intro .sakeintro-content2 {
+  outline: 3px solid #7a095e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sake-intro .sakeintro-content2 .box1 {
+  outline: 3px solid #0cb452;
+  max-width: 390px;
+}
+
+.sake-intro .sakeintro-content2 .box1 .pic {
+  max-width: 270px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
+  outline: 3px solid purple;
+}
+
+.sake-intro .sakeintro-content2 .box1 h3 {
+  outline: 3px solid #000d80;
+}
+
+.sake-intro .sakeintro-content2 .box1 p {
+  outline: 3px solid #9b6218;
+  max-width: 230px;
 }
 /*# sourceMappingURL=Sakeintro.css.map */
