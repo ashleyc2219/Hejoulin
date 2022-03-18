@@ -21,6 +21,7 @@ const ProductTop3 = () => {
   useEffect(() => {
     fetchTop()
   }, [])
+  
   const top3 = top.map((v, i) => {
     return (
       <div key={i} className="product">

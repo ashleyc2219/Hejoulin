@@ -34,7 +34,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 11;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +48,7 @@
     position: relative;
     @include medium() {
       overflow-x: scroll;
+      position: relative;
       padding: 40px 17px 40px;
     }
     .close-white {
@@ -60,8 +61,8 @@
         display: none;
         @include medium(){
             display: block;
-            position: fixed;
-            top: 60px;
+            position: absolute;
+            top: 10px;
             right: 10px;
             cursor: pointer;
         }

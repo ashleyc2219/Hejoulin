@@ -8,7 +8,6 @@ import ResultTitle from './ResultTitle'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-  console.log(props.resultTitle)
 
   let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}&search=${props.search}`
 
