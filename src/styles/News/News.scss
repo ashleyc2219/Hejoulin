@@ -1,8 +1,8 @@
 @import '../mixin.scss';
 
-// * {
-//   outline: 0px solid #ccc !important;
-// }
+* {
+  outline: 0px solid #ccc !important;
+}
 
 body {
   @include bgimage();
@@ -26,6 +26,10 @@ body {
   h3 {
     font-family: 'Klee One', cursive;
     color: $primary;
+  }
+
+  .row {
+    flex-direction: column;
   }
 
   .news-container {
@@ -67,6 +71,9 @@ body {
         rgba(255, 255, 255, 0) 15px
       );
       opacity: 0.3;
+      @include medium() {
+        opacity: 0;
+      }
     }
     //最新消息元件
     .news-item {
@@ -78,7 +85,7 @@ body {
       @include medium() {
         flex-direction: column;
       }
-
+      //---------------------------------------------------------
       //圖片區塊
 
       .news-item-pic {
@@ -87,16 +94,27 @@ body {
         flex-grow: 1;
 
         .news-pic {
-          outline: 2px solid #237c17;
+          outline: 4px solid #ca8910;
           height: 300px;
+          @include medium() {
+            height: 75px;
+          }
           margin-top: 70px;
           position: relative;
+          @include medium() {
+            margin-top: 0px;
+          }
 
           .news-item-pic-box {
-            outline: 2px solid #381c25;
+            outline: 3px solid #381c25;
             width: 80%;
             position: absolute;
             z-index: 50;
+            left: 0;
+            @include medium() {
+              width: 90%;
+              left: -10%;
+            }
 
             img {
               width: 100%;
@@ -113,6 +131,12 @@ body {
               height: 170px;
               position: absolute;
               right: -31px;
+              @include medium() {
+                height: 100px;
+                width: 120%;
+                right: -10%;
+              }
+
               bottom: -28px;
               z-index: -1;
 
@@ -127,11 +151,16 @@ body {
         outline: 2px solid #0f6b1e;
         width: 60%;
         padding: 70px 100px;
+        @include medium() {
+          width: 100%;
+          padding: 80px 10px;
+        }
         // display: flex;
         // flex-direction: column;
         .news-item-date {
           //厲害的功能
           width: fit-content;
+          isolation: isolate;
           p {
             align-items: center;
             margin-bottom: 15px;
@@ -139,10 +168,15 @@ body {
             background-color: $primary;
             color: $gray-100;
           }
+          margin-bottom: 0px;
+          @include medium() {
+            margin-bottom: 40px;
+          }
         }
         .news-item-title {
           outline: 2px solid #0f186b;
           margin-bottom: 5px;
+
           h3 {
             outline: 2px solid #17b4db;
             font-family: 'Klee One', cursive;

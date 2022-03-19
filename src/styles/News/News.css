@@ -1,8 +1,13 @@
+* {
+  outline: 0px solid #ccc !important;
+}
+
 body {
   background: url("/public/Sake-background0310.jpg");
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: 'Noto Sans TC';
   color: #3d4349;
 }
@@ -23,13 +28,27 @@ body {
   color: #3d4349;
 }
 
+.news .row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .news .news-container {
   mix-blend-mode: multiply;
   max-width: 1200px;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: relative;
   z-index: 50;
 }
@@ -60,43 +79,80 @@ body {
   opacity: 0.3;
 }
 
+@media (max-width: 768px) {
+  .news .news-container .news-title ::after {
+    opacity: 0;
+  }
+}
+
 .news .news-container .news-item {
   outline: 2px solid #d0d31a;
   z-index: 70;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {
   .news .news-container .news-item {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
 .news .news-container .news-item .news-item-pic {
   mix-blend-mode: multiply;
   outline: 2px solid #dd6c8e;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .news .news-container .news-item .news-item-pic .news-pic {
-  outline: 2px solid #237c17;
+  outline: 4px solid #ca8910;
   height: 300px;
   margin-top: 70px;
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-pic .news-pic {
+    height: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-pic .news-pic {
+    margin-top: 0px;
+  }
+}
+
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box {
-  outline: 2px solid #381c25;
+  outline: 3px solid #381c25;
   width: 80%;
   position: absolute;
   z-index: 50;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box {
+    width: 90%;
+    left: -10%;
+  }
 }
 
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box img {
   width: 100%;
   height: 170px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 55;
   isolation: isolate;
 }
@@ -113,22 +169,49 @@ body {
   mix-blend-mode: multiply;
 }
 
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box::before {
+    height: 100px;
+    width: 120%;
+    right: -10%;
+  }
+}
+
 .news .news-container .news-item .news-item-word {
   outline: 2px solid #0f6b1e;
   width: 60%;
   padding: 70px 100px;
 }
 
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-word {
+    width: 100%;
+    padding: 80px 10px;
+  }
+}
+
 .news .news-container .news-item .news-item-word .news-item-date {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  isolation: isolate;
+  margin-bottom: 0px;
 }
 
 .news .news-container .news-item .news-item-word .news-item-date p {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 15px;
   padding: 0px 15px;
   background-color: #3d4349;
   color: #e0e0df;
+}
+
+@media (max-width: 768px) {
+  .news .news-container .news-item .news-item-word .news-item-date {
+    margin-bottom: 40px;
+  }
 }
 
 .news .news-container .news-item .news-item-word .news-item-title {
