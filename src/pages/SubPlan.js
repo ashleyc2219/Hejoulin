@@ -14,9 +14,10 @@ const SubPlan = () => {
         <ProgressBar step="one" content={stepContent} />
         <div className="main">
           <div className="left-planInfo">
+          <div className="title">名譽清酒唎酒師為你精選季節性限定清酒。</div>
             <h4>
               名譽清酒唎酒師 <br />
-              為你精選季節性限定清酒
+              為你精選季節性限定清酒。
             </h4>
             <hr />
             <h5>選擇方案</h5>
@@ -32,9 +33,12 @@ const SubPlan = () => {
             <SubPlanCard />
           </div>
         </div>
+        <div className="button">
+
         <Link to="/sub/time">
           <button className="btn btn-secondary">下一步</button>
         </Link>
+        </div>
       </div>
     </div>
   )

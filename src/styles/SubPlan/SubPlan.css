@@ -8,6 +8,12 @@
   position: relative;
 }
 
+@media (max-width: 1024px) {
+  .SubPlan {
+    margin-bottom: 100px;
+  }
+}
+
 .SubPlan img.LineBg {
   width: 100%;
   position: absolute;
@@ -16,24 +22,62 @@
 }
 
 .SubPlan .container {
-  min-width: 1200px;
+  max-width: 1200px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .SubPlan .container .progressBar {
+    width: 300px;
+  }
 }
 
 .SubPlan .container .main {
-  min-width: 1130px;
-  min-height: 475px;
   background-color: rgba(247, 247, 246, 0.75);
   padding: 48px 58px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   column-gap: 38px;
 }
 
+@media (max-width: 1024px) {
+  .SubPlan .container .main {
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
 .SubPlan .container .main .left-planInfo {
   width: 34%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .SubPlan .container .main .left-planInfo {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.SubPlan .container .main .left-planInfo .title {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .SubPlan .container .main .left-planInfo .title {
+    font-family: "Klee One", cursive;
+    color: #6b7580;
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    text-align: start;
+  }
 }
 
 .SubPlan .container .main .left-planInfo h4 {
@@ -41,6 +85,12 @@
   color: #6b7580;
   font-size: 30px;
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .SubPlan .container .main .left-planInfo h4 {
+    display: none;
+  }
 }
 
 .SubPlan .container .main .left-planInfo h5 {
@@ -57,10 +107,44 @@
   color: #7e8082;
 }
 
+@media (max-width: 1024px) {
+  .SubPlan .container .main .left-planInfo p {
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+}
+
 .SubPlan .container .main .right-planChoices {
   width: 53.36%;
   display: flex;
   column-gap: 20px;
   justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .SubPlan .container .main .right-planChoices {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+  }
+}
+
+.SubPlan .container .button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .SubPlan .container .button {
+    justify-content: center;
+    margin-top: 70px;
+  }
+  .SubPlan .container .button button {
+    width: 220px;
+    height: 40px;
+    line-height: 0;
+    font-size: 17px;
+  }
 }
 /*# sourceMappingURL=SubPlan.css.map */

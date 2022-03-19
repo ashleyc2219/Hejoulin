@@ -2,8 +2,7 @@ body {
   background: url("/public/Sake-background0310.jpg");
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Noto Sans TC';
   color: #3d4349;
 }
@@ -28,16 +27,9 @@ body {
   mix-blend-mode: multiply;
   max-width: 1200px;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   z-index: 50;
 }
@@ -71,30 +63,20 @@ body {
 .news .news-container .news-item {
   outline: 2px solid #d0d31a;
   z-index: 70;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {
   .news .news-container .news-item {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
 
 .news .news-container .news-item .news-item-pic {
   mix-blend-mode: multiply;
   outline: 2px solid #dd6c8e;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 
 .news .news-container .news-item .news-item-pic .news-pic {
@@ -114,8 +96,7 @@ body {
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box img {
   width: 100%;
   height: 170px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 55;
   isolation: isolate;
 }
@@ -139,15 +120,11 @@ body {
 }
 
 .news .news-container .news-item .news-item-word .news-item-date {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
 .news .news-container .news-item .news-item-word .news-item-date p {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 15px;
   padding: 0px 15px;
   background-color: #3d4349;
