@@ -14,15 +14,21 @@
     top: 66px;
   }
   .container {
-    min-width: 1200px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    .progressBar {
+      @include medium() {
+        width: 300px;
+      }
+    }
     .main {
-      min-width: 1130px;
-      min-height: 475px;
+      //max-width: 1130px;
+      //min-height: 446px;
+      width: 100%;
       background-color: rgba(247, 247, 246, 0.75);
-      padding: 48px 58px;
+      padding: 39px 58px;
 
       display: flex;
       flex-direction: column;
@@ -33,6 +39,11 @@
         display: flex;
         justify-content: center;
         column-gap: 15px;
+        @include medium() {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 50px;
+        }
       }
       .bottom-order-summary {
         p {
@@ -40,6 +51,9 @@
           font-size: 16px;
           line-height: 32px;
           color: $gray-300;
+          &:first-child {
+            padding-top: 40px;
+          }
           span {
             font-weight: 700;
             color: $dark;
@@ -49,8 +63,23 @@
       }
     }
     .buttons {
+      width: 100%;
       display: flex;
+
       column-gap: 16px;
+      justify-content: flex-end;
+      @include large() {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+        row-gap: 20px;
+        button {
+          width: 220px;
+          height: 40px;
+          line-height: 0;
+          font-size: 17px;
+        }
+      }
     }
   }
 }

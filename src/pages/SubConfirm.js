@@ -34,7 +34,7 @@ const SubConfirm = () => {
             <button className="btn btn-primary">上一步</button>
           </Link>
           <Link to="/sub/cart-list">
-            <button className="btn btn-secondary">下一步</button>
+            <button className="btn btn-secondary">前往結賬</button>
           </Link>
         </div>
       </div>
