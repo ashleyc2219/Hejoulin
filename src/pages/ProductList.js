@@ -25,8 +25,9 @@ const ProductList = () => {
   const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表
   const [prolist, setProlist] = useState(true) // 設定全部商品的列表是否要出現
   const [resultTitle, setResultTitle] = useState(true) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [noresult, setNoresult] = useState(true)
 
-  // 按下載入更多會觸發的spinner 
+  // 按下載入更多會觸發的spinner
   const spinner = () => {
     setLoad(false)
     setSpin(true)
@@ -37,31 +38,60 @@ const ProductList = () => {
     }, 1000)
   }
 
+  const keypress = (e) => {
+    const searchword = e.target.value.trim()
+    if (e.key === 'Enter') {
+      if (searchword.length > 0) {
+        setProlist(false)
+        setTitle(false)
+        setSpinTop(true)
+        setLoad(false)
+        setResultTitle(true)
+        setSearch(searchword)
+        setTimeout(() => {
+          // 如果搜尋文字長度大於0會執行以下動作
+          setSpinTop(false)
+          setResultTitle(false)
+          setProlist(true)
+        }, 1000)
+      } else if (searchword.length <= 0) {
+        setProlist(false)
+        setSearch(searchword)
+        setTitle(false)
+        setSpinTop(true)
+        setLoad(false)
+        setResultTitle(true)
+        setTimeout(() => {
+          const searchword = e.target.value
+          setLoad(true)
+          setTitle(true)
+          setProlist(true)
+          setSpinTop(false)
+          setSearch(searchword)
+        }, 1500)
+      }
+    }
+  }
+
   // search input onchange時候會出發的搜尋功能
   const searchHandler = (e) => {
-    const searchword = e.target.value
-    setProlist(false)
-    setSearch(searchword)
-    setTitle(false)
-    setSpinTop(true)
-    setLoad(false)
-    setResultTitle(true)
+    /*  const searchword = e.target.value.trim()
+    if (searchword.length <= 0) {
+      setProlist(false)
+      setSearch(searchword)
+      setTitle(false)
+      setSpinTop(true)
+      setLoad(false)
+      setResultTitle(true)
+    }
     setTimeout(() => {
-      // 如果搜尋文字長度大於0會執行以下動作
-      if (searchword.length > 0) {
-        setSpinTop(false)
-        setResultTitle(false)
-        setProlist(true)
-        //setLoad(true)
-      } else {
-        const searchword = e.target.value
-        setLoad(true)
-        setTitle(true)
-        setProlist(true)
-        setSpinTop(false)
-        setSearch(searchword)
-      }
-    }, 1500)
+      const searchword = e.target.value
+      setLoad(true)
+      setTitle(true)
+      setProlist(true)
+      setSpinTop(false)
+      setSearch(searchword)
+    }, 1500) */
   }
 
   /* 品牌 */
@@ -104,6 +134,7 @@ const ProductList = () => {
     fetchLoca()
     fetchBrand()
   }, [])
+
   return (
     <>
       {/* <CompareModal /> */}
@@ -140,7 +171,13 @@ const ProductList = () => {
                 <div className="search">
                   <img src="/ProductList/search.svg" alt="" />
 
-                  <input onChange={searchHandler} type="text" name="" id="" />
+                  <input
+                    onKeyPress={keypress}
+                    onChange={searchHandler}
+                    type="text"
+                    name=""
+                    id=""
+                  />
                 </div>
               </div>
               {/* 手機版的篩選 */}
@@ -206,6 +243,14 @@ const ProductList = () => {
                 </div>
               ) : (
                 ''
+              )}
+
+              {noresult ? (
+                ''
+              ) : (
+                <div className="noresult ">
+                  <h1>沒有搜尋結果</h1>
+                </div>
               )}
             </div>
 

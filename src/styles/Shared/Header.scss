@@ -1,7 +1,5 @@
 @import '../mixin.scss';
-* {
-  // outline: 1px solid red;
-}
+
 .Header {
   width: 100%;
   @include medium() {
@@ -48,6 +46,9 @@
         // margin-top: 44px;
         margin-bottom: 0px;
         font-size: 17px;
+        @include large() {
+          width: 500px;
+        }
         @include medium() {
           display: none;
         }
@@ -55,9 +56,15 @@
           letter-spacing: -1.8px;
           margin: 0px 7.88px;
           list-style-type: none;
+          @include large() {
+            margin: 0px 5px;
+          }
 
           a {
             @include kleeone();
+            @include large() {
+              font-size: 16px;
+            }
           }
         }
         .purchase-sake {
@@ -98,6 +105,12 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          @include large() {
+            width: 25%;
+          }
+          @include medium() {
+            display: none;
+          }
           cursor: pointer;
           span {
             @include kleeone();
@@ -110,11 +123,30 @@
           margin-right: 7px;
           display: flex;
           align-items: center;
+          img {
+            width: 30px;
+            height: 30px;
+          }
         }
         .fav {
           cursor: pointer;
           display: flex;
           align-items: center;
+          @include medium() {
+            display: none;
+          }
+          img {
+            width: 25px;
+            height: 25px;
+            margin-left: 5px;
+          }
+        }
+        .menu {
+          display: none;
+          @include medium() {
+            display: block;
+            margin-left: 20px;
+          }
         }
       }
     }
@@ -154,7 +186,7 @@
   right: -100%;
   transition: 850ms;
   z-index: 9;
-  @include medium(){
+  @include medium() {
     //內容還沒RWD 只調整區塊尺寸
     width: 300px;
   }
@@ -180,5 +212,121 @@
         background: none;
       }
     }
+  }
+}
+
+.mobile-menu {
+  width: 100%;
+  display: none;
+  z-index: 99;
+  @include medium() {
+    display: block;
+  }
+  .blockbg {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    background-color: #202326;
+    opacity: 0.6;
+    transition: all 350ms;
+    z-index: 9;
+  }
+  .displayNone {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .menu {
+    background-image: url('../../../public/Sake-background0310.jpg');
+    width: 70%;
+    height: 100%;
+    padding-top: 33px;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: 0.3s;
+    z-index: 99;
+    .icons {
+      padding-left: 32px;
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+      .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        span {
+          @include kleeone();
+          font-size: 15px;
+          line-height: 30px;
+        }
+      }
+      .closed {
+        padding-left: 40px;
+        cursor: pointer;
+        @include small() {
+          padding-left: 15px;
+        }
+      }
+    }
+    ul {
+      padding-top: 40px;
+      padding-left: 35px;
+      li {
+        list-style: none;
+        margin-bottom: 18px;
+        position: relative;
+
+        a {
+          @include kleeone;
+          font-size: 17px;
+          font-weight: 600;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      .purchase-sake {
+        transition: all 0.3s;
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          padding: 15px 0 5px 20px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 5px;
+          top: 20px;
+          left: 0;
+          li {
+            opacity: 0;
+            pointer-events: none;
+            margin: 0;
+            transition: all .3s;
+            a {
+              font-weight: 400;
+              text-decoration: none;
+            }
+          }
+          .showLi{
+            opacity: 1;
+            pointer-events: all;
+          }
+        }
+      }
+      .open {
+        margin-bottom: 110px;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .menudisplaynone {
+    right: -100%;
   }
 }

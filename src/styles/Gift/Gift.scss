@@ -26,9 +26,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans TC', serif;
-  // outline: 1px solid $secondary;
 }
-
 
 //最外面的div
 .Gift {
@@ -46,36 +44,45 @@
     margin: 0 auto;
     display: flex;
     z-index: 3;
+    position: relative;
 
     // background patten
-    .bgelement01,
-    .bgelement02,
-    .bgelement03,
-    .bgelement04 {
+    .patten {
+      width: 100%;
+      height: 120%;
+      overflow: hidden;
       position: absolute;
-      z-index: 0;
-      @include medium() {
-        display: none;
+      // z-index: 0;
+
+      .bgelement01,
+      .bgelement02,
+      .bgelement03,
+      .bgelement04 {
+        position: absolute;
+        z-index: 0;
+        @include medium() {
+          display: none;
+        }
       }
-    }
-    .bgelement01 {
-      top: 5vh;
-      right: -300px;
-    }
-    .bgelement02 {
-      top: 100vh;
-      width: 550px;
-      transform: rotateZ(30deg);
-    }
-    .bgelement03 {
-      top: 210vh;
-      right: -100px;
-      width: 600px;
-      transform: rotateZ(50deg);
-    }
-    .bgelement04{
-      top: 300vh;
-      transform: rotateZ(40deg);
+      .bgelement01 {
+        top: 5vh;
+        right: -300px;
+      }
+      .bgelement02 {
+        top: 100vh;
+        width: 550px;
+        transform: rotateZ(30deg);
+      }
+      .bgelement03 {
+        top: 210vh;
+        right: -100px;
+        width: 600px;
+        transform: rotateZ(50deg);
+      }
+      .bgelement04 {
+        top: 300vh;
+        transform: rotateZ(40deg);
+      }
     }
 
     // 在sidebar旁的主體
@@ -324,6 +331,7 @@
 
             .final {
               width: 400px;
+              z-index: 3;
             }
 
             .content {

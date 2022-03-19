@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.SubTime {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .SubTime {
+    margin-bottom: 100px;
+  }
+}
+
+.SubTime img.LineBg {
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  top: 66px;
+}
+
+.SubTime .container {
+  max-width: 1200px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .SubTime .container .progressBar {
+    width: 300px;
+  }
+}
+
+.SubTime .container .main {
+  width: 100%;
+  background-color: rgba(247, 247, 246, 0.75);
+  padding: 48px 58px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 38px;
+}
+
+@media (max-width: 1024px) {
+  .SubTime .container .main {
+    align-items: center;
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
+.SubTime .container .main .left-planInfo {
+  width: 34%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .SubTime .container .main .left-planInfo {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.SubTime .container .main .left-planInfo h4 {
+  font-family: "Klee One", cursive;
+  color: #6b7580;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.SubTime .container .main .left-planInfo h5 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #3d4349;
+}
+
+.SubTime .container .main .left-planInfo p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #7e8082;
+}
+
+.SubTime .container .main .left-planInfo p span {
+  color: #6b7580;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.SubTime .container .main .right-planChoices {
+  width: 53.36%;
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .SubTime .container .main .right-planChoices {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+  }
+}
+
+.SubTime .container .buttons {
+  width: 100%;
+  display: flex;
+  column-gap: 16px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .SubTime .container .buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    row-gap: 20px;
+  }
+  .SubTime .container .buttons button {
+    width: 220px;
+    height: 40px;
+    line-height: 0;
+    font-size: 17px;
+  }
+}
+/*# sourceMappingURL=SubTime.css.map */

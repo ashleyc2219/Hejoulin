@@ -11,10 +11,12 @@ const Gift = () => {
     <div className="Gift">
       <div className="gift_container">
         {/* background-patten */}
-        <img src="/Gift/bgelement.svg" alt="" className="bgelement01" />
-        <img src="/Gift/bgelement.svg" alt="" className="bgelement02" />
-        <img src="/Gift/bgelement.svg" alt="" className="bgelement03" />
-        <img src="/Gift/bgelement.svg" alt="" className="bgelement04" />
+        <div className="patten">
+          <img src="/Gift/bgelement.svg" alt="" className="bgelement01" />
+          <img src="/Gift/bgelement.svg" alt="" className="bgelement02" />
+          <img src="/Gift/bgelement.svg" alt="" className="bgelement03" />
+          <img src="/Gift/bgelement.svg" alt="" className="bgelement04" />
+        </div>
         <Sidebar />
 
         {/*內容*/}

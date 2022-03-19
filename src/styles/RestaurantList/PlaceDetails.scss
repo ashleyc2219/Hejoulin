@@ -1,0 +1,31 @@
+@import '../mixin.scss';
+.RestaurantList {
+  a:hover {
+    text-decoration: none;
+  }
+  .list-container {
+    width: 80%;
+    margin: auto;
+  }
+  .res-card {
+    border-bottom: 1px solid $gray-200;
+    .detail {
+      h6 {
+        color: $gray-400;
+      }
+      div {
+        color: $gray-300;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .list-container {
+      max-width: 530px;
+    }
+  }
+  @media (min-width: 1300px) {
+    .list-container {
+      margin-right: 3.5rem;
+    }
+  }
+}

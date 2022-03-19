@@ -8,7 +8,7 @@ import ResultTitle from './ResultTitle'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-  console.log(props.resultTitle)
+  const { page, search } = props
 
   let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}&search=${props.search}`
 
@@ -96,7 +96,7 @@ const ProductListItems = (props) => {
 
   useEffect(() => {
     fetchList()
-  }, [props.page, props.search])
+  }, [page, search])
   return (
     <>
       <div className="product-list">

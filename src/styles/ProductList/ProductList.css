@@ -822,6 +822,14 @@
   animation: ani2 1s forwards;
 }
 
+.ProductList .product-container .main .center-container .noresult {
+  margin-top: 100px;
+}
+
+.ProductList .product-container .main .center-container .noresult h1 {
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   .ProductList .product-container .main .compare-block {
     display: none;

@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.timeChoice-card {
+  width: 169px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f6;
+  box-shadow: -0.30000001192092896px 2px 4px 0px #bbbcbd80;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .timeChoice-card {
+    width: 220px;
+    height: 300px;
+  }
+}
+
+.timeChoice-card svg {
+  position: absolute;
+  bottom: 0;
+}
+
+.timeChoice-card svg path {
+  margin-top: auto;
+}
+
+.timeChoice-card:hover {
+  transform: translateY(-4%);
+  transition: 0.3s ease-in-out;
+}
+
+.timeChoice-card .timeImg-container {
+  height: 169px;
+}
+
+@media (max-width: 1024px) {
+  .timeChoice-card .timeImg-container {
+    width: 100%;
+    height: 172px;
+    overflow: hidden;
+  }
+  .timeChoice-card .timeImg-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.timeChoice-card .timeInfo-container {
+  text-align: center;
+  width: 90%;
+}
+
+.timeChoice-card .timeInfo-container h6 {
+  font-family: "Klee One", cursive;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.timeChoice-card .timeInfo-container h6::before {
+  content: '$';
+}
+
+.timeChoice-card .timeInfo-container h6::after {
+  content: '/月';
+  font-size: 14px;
+}
+
+.timeChoice-card .timeInfo-container p {
+  margin-bottom: 10px;
+}
+
+.timeChoice-card .timeInfo-container p:first-of-type {
+  font-size: 14px;
+  color: #4d4e4f;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .timeChoice-card .timeInfo-container p:first-of-type {
+    margin-bottom: 3px;
+    font-size: 17px;
+  }
+}
+
+.timeChoice-card .timeInfo-container p:first-of-type::after {
+  content: '個月';
+}
+
+.timeChoice-card .timeInfo-container p:nth-of-type(2) {
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: #b39c7a;
+}
+
+@media (max-width: 768px) {
+  .timeChoice-card .timeInfo-container p:nth-of-type(2) {
+    font-size: 17px;
+  }
+}
+
+.timeChoice-card .timeInfo-container p:nth-of-type(2)::before {
+  content: '總計$';
+}
+
+.timeChoice-card .timeInfo-container p:nth-of-type(2)::after {
+  content: '元';
+}
+/*# sourceMappingURL=SubTimeCard.css.map */

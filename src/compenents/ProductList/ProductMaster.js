@@ -84,6 +84,8 @@ const ProductMaster = () => {
   useEffect(() => {
     fetchMaster()
   }, [])
+
+
   return (
     <>
       <div className="master-recommend">
