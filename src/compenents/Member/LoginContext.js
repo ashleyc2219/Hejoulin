@@ -5,7 +5,7 @@ import '../../styles/Member/Member-Login/LoginContext.scss'
 const LoginContext = (props) => {
   const { user, setUser } = props
   const [row, setRow] = useState({})
-  const API = 'http://wilson:3001/login'
+  const API = 'http://wilson:3001/login/login'
   let history = useHistory()
   const whenSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
@@ -19,10 +19,12 @@ const LoginContext = (props) => {
     const obj = await r.json()
     // TODO: is success
     console.log(obj)
+    console.log(history)
 
     localStorage.setItem('token', obj.token)
     localStorage.setItem('account', obj.info.user_account)
     setUser(obj.info.user_account)
+    history.push('/',{from:'login-success'})
     // const token = localStorage.getItem('token')
 
     // const r2 = await fetch('http://wilson:3001/user/api/auth-list', {

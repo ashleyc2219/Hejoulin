@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginContext'
+import {useLocation} from "react-router-dom";
 
 const Header = (props) => {
   const { user, setUser } = props
   const [sidebar, setSidebar] = useState(false)
+
+  const location  = useLocation()
+
+  //console.log(location)
+  useEffect(()=>{
+    if(!location.state) return
+
+    if(location.state.from==='login-success' && sidebar){
+      setSidebar(false)
+    }
+  },[location.state])
 
   const showSidebar = () => setSidebar(!sidebar)
   return (
