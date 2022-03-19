@@ -5,11 +5,19 @@ const NewsList = () => {
   return (
     <>
       <div className="news">
-        <div className="news-container">
+        {/* news-container 這層是我在想要下斷點的樣子 */}
+        <div className="container news-container">
           <div className="news-title">
             <h1>最新消息</h1>
           </div>
           <div className="news-item">
+            <div className="news-item-pic">
+              <div className="news-pic">
+                <div className="news-item-pic-box">
+                  <img src="/news/news-pic-01.jpg" alt="" />
+                </div>
+              </div>
+            </div>
             <div className="news-item-word">
               <div className="news-item-date">
                 <p>2022-01-04</p>
@@ -26,13 +34,6 @@ const NewsList = () => {
                 <a href="#/">
                   <p>了解詳情...</p>
                 </a>
-              </div>
-            </div>
-            <div className="news-item-pic">
-              <div className="news-pic">
-                <div className="news-item-pic-box">
-                  <img src="/news/news-pic-01.jpg" alt="" />
-                </div>
               </div>
             </div>
           </div>
