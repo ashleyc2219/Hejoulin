@@ -7,6 +7,9 @@
 .SubTime {
   margin-bottom: 100px;
   position: relative;
+  @include large() {
+    margin-bottom: 100px;
+  }
   img.LineBg {
     width: 100%;
     position: absolute;
@@ -15,23 +18,41 @@
   }
 
   .container {
-    min-width: 1200px;
+    max-width: 1200px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    .progressBar {
+      @include medium() {
+        width: 300px;
+      }
+    }
 
     .main {
-      min-width: 1130px;
-      min-height: 475px;
+      //min-width: 1130px;
+      //min-height: 475px;
+      width: 100%;
       background-color: rgba(247, 247, 246, 0.75);
       padding: 48px 58px;
 
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       column-gap: 38px;
-
+      @include large() {
+        align-items: center;
+        padding: 0;
+        flex-direction: column;
+      }
       .left-planInfo {
         width: 34%;
+        display: flex;
+        flex-direction: column;
+        @include large() {
+          width: 100%;
+          text-align: center;
+        }
         h4 {
           @include kleeone;
           color: $dark;
@@ -44,12 +65,12 @@
           color: $primary;
         }
         p {
-          width: 72%;
+          //width: 72%;
           font-weight: 400;
           font-size: 16px;
           line-height: 32px;
           color: $gray-300;
-          span{
+          span {
             color: $dark;
             font-weight: 700;
             text-decoration: underline;
@@ -58,16 +79,35 @@
       }
       .right-planChoices {
         width: 53.36%;
-
         display: flex;
         column-gap: 20px;
         justify-content: space-between;
         //   planChoice Card ---
+        @include large() {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 50px;
+        }
       }
     }
-    .buttons{
+    .buttons {
+      width: 100%;
       display: flex;
+      
       column-gap: 16px;
+      justify-content: flex-end;
+      @include large(){
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+        row-gap: 20px;
+        button{
+          width: 220px;
+          height: 40px;
+          line-height: 0;
+          font-size: 17px;
+        }
+      }
     }
   }
 }

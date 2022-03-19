@@ -3,25 +3,25 @@
   padding: 0;
 }
 
-.SubPlan {
+.SubTime {
   margin-bottom: 100px;
   position: relative;
 }
 
 @media (max-width: 1024px) {
-  .SubPlan {
+  .SubTime {
     margin-bottom: 100px;
   }
 }
 
-.SubPlan img.LineBg {
+.SubTime img.LineBg {
   width: 100%;
   position: absolute;
   z-index: -2;
   top: 66px;
 }
 
-.SubPlan .container {
+.SubTime .container {
   max-width: 1200px;
   height: fit-content;
   display: flex;
@@ -30,12 +30,12 @@
 }
 
 @media (max-width: 768px) {
-  .SubPlan .container .progressBar {
+  .SubTime .container .progressBar {
     width: 300px;
   }
 }
 
-.SubPlan .container .main {
+.SubTime .container .main {
   width: 100%;
   background-color: rgba(247, 247, 246, 0.75);
   padding: 48px 58px;
@@ -46,77 +46,53 @@
 }
 
 @media (max-width: 1024px) {
-  .SubPlan .container .main {
+  .SubTime .container .main {
     align-items: center;
     padding: 0;
     flex-direction: column;
   }
 }
 
-.SubPlan .container .main .left-planInfo {
+.SubTime .container .main .left-planInfo {
   width: 34%;
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 1024px) {
-  .SubPlan .container .main .left-planInfo {
+  .SubTime .container .main .left-planInfo {
     width: 100%;
     text-align: center;
   }
 }
 
-.SubPlan .container .main .left-planInfo .title {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .SubPlan .container .main .left-planInfo .title {
-    font-family: "Klee One", cursive;
-    color: #6b7580;
-    font-size: 30px;
-    font-weight: 600;
-    line-height: 40px;
-    display: block;
-    text-align: start;
-  }
-}
-
-.SubPlan .container .main .left-planInfo h4 {
+.SubTime .container .main .left-planInfo h4 {
   font-family: "Klee One", cursive;
   color: #6b7580;
   font-size: 30px;
   font-weight: 600;
 }
 
-@media (max-width: 768px) {
-  .SubPlan .container .main .left-planInfo h4 {
-    display: none;
-  }
-}
-
-.SubPlan .container .main .left-planInfo h5 {
+.SubTime .container .main .left-planInfo h5 {
   font-weight: 500;
   font-size: 18px;
   color: #3d4349;
 }
 
-.SubPlan .container .main .left-planInfo p {
-  width: 72%;
+.SubTime .container .main .left-planInfo p {
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
   color: #7e8082;
 }
 
-@media (max-width: 1024px) {
-  .SubPlan .container .main .left-planInfo p {
-    margin: 0 auto;
-    margin-bottom: 50px;
-  }
+.SubTime .container .main .left-planInfo p span {
+  color: #6b7580;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
-.SubPlan .container .main .right-planChoices {
+.SubTime .container .main .right-planChoices {
   width: 53.36%;
   display: flex;
   column-gap: 20px;
@@ -124,29 +100,32 @@
 }
 
 @media (max-width: 1024px) {
-  .SubPlan .container .main .right-planChoices {
+  .SubTime .container .main .right-planChoices {
     flex-direction: column;
     align-items: center;
     row-gap: 50px;
   }
 }
 
-.SubPlan .container .button {
+.SubTime .container .buttons {
   width: 100%;
   display: flex;
+  column-gap: 16px;
   justify-content: flex-end;
 }
 
 @media (max-width: 1024px) {
-  .SubPlan .container .button {
-    justify-content: center;
+  .SubTime .container .buttons {
+    flex-direction: column;
+    align-items: center;
     margin-top: 70px;
+    row-gap: 20px;
   }
-  .SubPlan .container .button button {
+  .SubTime .container .buttons button {
     width: 220px;
     height: 40px;
     line-height: 0;
     font-size: 17px;
   }
 }
-/*# sourceMappingURL=SubPlan.css.map */
+/*# sourceMappingURL=SubTime.css.map */

@@ -32,6 +32,7 @@
       //max-width: 1130px;
       //max-height: 475px;
       //border: 1px solid red;
+      width: 100%;
       background-color: rgba(247, 247, 246, 0.75);
       padding: 48px 58px;
 
@@ -60,6 +61,7 @@
             color: $dark;
             font-size: 30px;
             font-weight: 600;
+            line-height: 40px;
             display: block;
             text-align: start;
           }
@@ -92,7 +94,6 @@
       }
       .right-planChoices {
         width: 53.36%;
-
         display: flex;
         column-gap: 20px;
         justify-content: space-between;
