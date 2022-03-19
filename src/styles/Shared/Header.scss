@@ -1,7 +1,5 @@
 @import '../mixin.scss';
-* {
-  // outline: 1px solid red;
-}
+
 .Header {
   width: 100%;
   @include medium() {
@@ -220,31 +218,42 @@
 .mobile-menu {
   width: 100%;
   display: none;
+  z-index: 99;
+  @include medium() {
+    display: block;
+  }
   .blockbg {
     top: 0;
     left: 0;
     position: fixed;
     width: 100vw;
-    height: 120vh;
+    height: 100%;
     background-color: #202326;
     opacity: 0.6;
-    transition: 350ms;
+    transition: all 350ms;
     z-index: 9;
   }
+  .displayNone {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .menu {
     background-image: url('../../../public/Sake-background0310.jpg');
-    width: 70vw;
-    height: 100vh;
-    
+    width: 70%;
+    height: 100%;
+    padding-top: 33px;
     justify-content: center;
     position: fixed;
     top: 0;
     right: 0;
-    transition: 850ms;
-    z-index: 9;
-    .icons{
+    transition: 0.3s;
+    z-index: 99;
+    .icons {
+      padding-left: 32px;
       display: flex;
       align-items: center;
+      column-gap: 15px;
       .login {
         display: flex;
         flex-direction: column;
@@ -257,25 +266,67 @@
           line-height: 30px;
         }
       }
-      img{
-        margin: 0;
-      }
-    }
-    ul {
-      li {
-        list-style: none;
-        a {
-          @include kleeone;
-          font-size: 17px;
+      .closed {
+        padding-left: 40px;
+        cursor: pointer;
+        @include small() {
+          padding-left: 15px;
         }
       }
     }
-    img.closed {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 20px;
-      right: 20px;
+    ul {
+      padding-top: 40px;
+      padding-left: 35px;
+      li {
+        list-style: none;
+        margin-bottom: 18px;
+        position: relative;
+
+        a {
+          @include kleeone;
+          font-size: 17px;
+          font-weight: 600;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+      .purchase-sake {
+        transition: all 0.3s;
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          padding: 15px 0 5px 20px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 5px;
+          top: 20px;
+          left: 0;
+          li {
+            opacity: 0;
+            pointer-events: none;
+            margin: 0;
+            transition: all .3s;
+            a {
+              font-weight: 400;
+              text-decoration: none;
+            }
+          }
+          .showLi{
+            opacity: 1;
+            pointer-events: all;
+          }
+        }
+      }
+      .open {
+        margin-bottom: 110px;
+        a {
+          text-decoration: underline;
+        }
+      }
     }
+  }
+  .menudisplaynone {
+    right: -100%;
   }
 }

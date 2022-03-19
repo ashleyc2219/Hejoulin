@@ -256,6 +256,13 @@
 .mobile-menu {
   width: 100%;
   display: none;
+  z-index: 99;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
 }
 
 .mobile-menu .blockbg {
@@ -263,28 +270,36 @@
   left: 0;
   position: fixed;
   width: 100vw;
-  height: 120vh;
+  height: 100%;
   background-color: #202326;
   opacity: 0.6;
-  transition: 350ms;
+  transition: all 350ms;
   z-index: 9;
+}
+
+.mobile-menu .displayNone {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .mobile-menu .menu {
   background-image: url("../../../public/Sake-background0310.jpg");
-  width: 70vw;
-  height: 100vh;
+  width: 70%;
+  height: 100%;
+  padding-top: 33px;
   justify-content: center;
   position: fixed;
   top: 0;
   right: 0;
-  transition: 850ms;
-  z-index: 9;
+  transition: 0.3s;
+  z-index: 99;
 }
 
 .mobile-menu .menu .icons {
+  padding-left: 32px;
   display: flex;
   align-items: center;
+  column-gap: 15px;
 }
 
 .mobile-menu .menu .icons .login {
@@ -301,24 +316,79 @@
   line-height: 30px;
 }
 
-.mobile-menu .menu .icons img {
-  margin: 0;
+.mobile-menu .menu .icons .closed {
+  padding-left: 40px;
+  cursor: pointer;
+}
+
+@media (max-width: 320px) {
+  .mobile-menu .menu .icons .closed {
+    padding-left: 15px;
+  }
+}
+
+.mobile-menu .menu ul {
+  padding-top: 40px;
+  padding-left: 35px;
 }
 
 .mobile-menu .menu ul li {
   list-style: none;
+  margin-bottom: 18px;
+  position: relative;
 }
 
 .mobile-menu .menu ul li a {
   font-family: "Klee One", cursive;
   font-size: 17px;
+  font-weight: 600;
 }
 
-.mobile-menu .menu img.closed {
+.mobile-menu .menu ul li a:hover {
+  text-decoration: none;
+}
+
+.mobile-menu .menu ul .purchase-sake {
+  transition: all 0.3s;
+}
+
+.mobile-menu .menu ul .purchase-sake .dropdown-content {
+  display: none;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  padding: 15px 0 5px 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
   top: 20px;
-  right: 20px;
+  left: 0;
+}
+
+.mobile-menu .menu ul .purchase-sake .dropdown-content li {
+  opacity: 0;
+  pointer-events: none;
+  margin: 0;
+  transition: all .3s;
+}
+
+.mobile-menu .menu ul .purchase-sake .dropdown-content li a {
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.mobile-menu .menu ul .purchase-sake .dropdown-content .showLi {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu .menu ul .open {
+  margin-bottom: 110px;
+}
+
+.mobile-menu .menu ul .open a {
+  text-decoration: underline;
+}
+
+.mobile-menu .menudisplaynone {
+  right: -100%;
 }
 /*# sourceMappingURL=Header.css.map */
