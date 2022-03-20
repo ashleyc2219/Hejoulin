@@ -14,19 +14,22 @@
 
   .MemberFavBox {
     width: 100%;
+
     .container {
       margin: 0 auto;
+
       .MemberFavBar {
         padding-top: 22px;
         width: 100%;
-        margin-top: 13.5%;
+        margin-top: 10%;
         border-top: 2px solid #bbbcbd;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        @include medium(){
+        @include medium() {
           display: none;
         }
+
         .search-icon-fav {
           margin-left: 3%;
         }
@@ -47,41 +50,49 @@
           }
         }
       }
-      .MobileMemberFavBar{
+
+      .MobileMemberFavBar {
         display: none;
         width: 100%;
-        @include medium(){
+        @include medium() {
           display: flex;
           flex-direction: column;
 
         }
-        .MemberFavBar-left{
+
+        .MemberFavBar-left {
           display: flex;
           justify-content: space-between;
           padding: 18px 23px;
           margin-top: -23px;
-          .countItemsTotal{
+
+          .countItemsTotal {
             color: $primary;
             font-size: 17px;
             font-weight: 700;
           }
         }
-        .MemberFavBar-right{
+
+        .MemberFavBar-right {
           width: 100%;
-          select{
+
+          select {
             width: 100%;
           }
         }
       }
+
       .MemberFavItems {
         .product-list {
           padding-top: 20px;
+
           .product-title {
             @include kleeone();
             font-size: 24px;
             font-weight: 600;
             margin-left: 43px;
             position: relative;
+
             img {
               width: 80px;
               position: absolute;
@@ -91,12 +102,14 @@
               top: -14px;
             }
           }
+
           .product-container {
             height: fit-content;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             row-gap: 25px;
+
             .product {
               width: 30%;
               display: flex;
@@ -109,6 +122,7 @@
               @include medium() {
                 width: 48%;
               }
+
               .product-wrap {
                 width: 100%;
                 text-align: center;
@@ -129,6 +143,7 @@
                     filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
                   }
                 }
+
                 .tag-img {
                   img {
                     position: absolute;
@@ -151,6 +166,7 @@
                     display: flex;
                     align-items: center;
                     padding-top: 5px;
+
                     img {
                       width: 20px;
                       height: 20px;
@@ -161,6 +177,7 @@
                         margin-right: 2px;
                       }
                     }
+
                     p {
                       color: $gray-200;
                       margin: 0;
@@ -171,12 +188,14 @@
                       }
                     }
                   }
+
                   .cart-heart {
                     display: flex;
                     align-items: center;
                     @include medium() {
                       margin-top: 5px;
                     }
+
                     img {
                       margin-left: 8px;
                       width: 24px;
@@ -187,6 +206,7 @@
                         margin-left: 12px;
                       }
                     }
+
                     .heart {
                       width: 30px;
                       height: 30px;
@@ -198,6 +218,7 @@
                   }
                 }
               }
+
               .title {
                 p {
                   text-align: center;
@@ -207,6 +228,7 @@
                     font-size: 15px;
                   }
                 }
+
                 p.price {
                   margin-bottom: 10px;
                   font-size: 16px;

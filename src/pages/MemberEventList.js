@@ -60,6 +60,11 @@ const MemberEventList = (props) => {
                     已取消
                   </Link>
                 </div>
+                <div className="pageTags">
+                  <div className="page">1</div>
+                  <div className="page">2</div>
+                  <div className="page">3</div>
+                </div>
               </nav>
             </div>
           </div>
