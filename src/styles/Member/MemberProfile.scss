@@ -20,32 +20,40 @@
     .MemberProfileBar {
       width: 100%;
       margin-top: 5%;
-      border-bottom: 2px solid #BBBCBD;
+      border-bottom: 2px solid #bbbcbd;
       display: flex;
-      align-items: center;
+      @include large() {
+        justify-content: center;
+        column-gap: 10px;
+      }
 
       .ProfileBar-item-box {
-        margin-left: 5%;
-        margin-bottom: 2%;
+        margin-left: 35px;
+        margin-bottom: 20px;
+        @include large() {
+          margin: 0 auto 20px auto;
+        }
 
         .ProfileBar-item {
           text-decoration: none;
           font-family: 'Noto Sans TC', sans-serif;
+          color: $gray-300;
           //margin-left: 3%;
         }
         .ProfileBar-item:hover {
-          color: #CEB48D;
-          padding-bottom: 29.5%;
-          border-bottom: 4px solid #CEB48D;
+          color: #ceb48d;
+          padding-bottom: 20px;
+          border-bottom: 4px solid #ceb48d;
         }
         .payment {
+          color: $gray-300;
           text-decoration: none;
           font-family: 'Noto Sans TC', sans-serif;
         }
         .payment:hover {
-          color: #CEB48D;
+          color: #ceb48d;
           padding-bottom: 15.3%;
-          border-bottom: 4px solid #CEB48D;
+          border-bottom: 4px solid #ceb48d;
         }
       }
     }
