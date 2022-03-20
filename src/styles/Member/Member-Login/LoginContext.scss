@@ -17,10 +17,24 @@
 
     .login-form-group {
       padding-top: 25%;
+      position: relative;
 
-      .btn {
-        margin-left: 17%;
-        margin-top: 16%;
+      .passwordInputBox {
+
+        .passForget {
+          position: absolute;
+          right: 0;
+        }
+      }
+
+      .login-btn {
+        margin-left: 7%;
+        margin-top: 8%;
+      }
+
+      .register-btn {
+        margin-left: 13%;
+        margin-top: 8%;
       }
     }
   }
