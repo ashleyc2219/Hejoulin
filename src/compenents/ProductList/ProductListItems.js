@@ -4,13 +4,15 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
 import ProductTitle from './ProductTitle'
 import ResultTitle from './ResultTitle'
+import ProductMaster from './ProductMaster'
 
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-  const { page, search } = props
+  const { page, search, setLoad, resultTitle, setNoresult, locasort } = props
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${props.page}&search=${props.search}`
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}`
+  console.log(url)
 
   const fetchList = async () => {
     const res = await fetch(url)
@@ -20,8 +22,8 @@ const ProductListItems = (props) => {
     setList(test.rows)
 
     // 後端摟出的資料大於等於所有資料 按鈕就消失
-    if (props.page >= test.totalRows) {
-      props.load(false)
+    if (page >= test.totalRows) {
+      setLoad(false)
     }
   }
 
@@ -90,17 +92,24 @@ const ProductListItems = (props) => {
     )
   })
 
+  if (product.length === 0) {
+    setNoresult(false)
+  } else {
+    setNoresult(true)
+  }
+
   useEffect(() => {
     fetchList()
   }, [])
 
   useEffect(() => {
     fetchList()
-  }, [page, search])
+    console.log(locasort)
+  }, [page, search, locasort])
   return (
     <>
       <div className="product-list">
-        {props.resultTitle ? <ProductTitle /> : <ResultTitle />}
+        {resultTitle ? <ProductTitle /> : <ResultTitle />}
 
         <div className="product-container">
           {/* 商品 */}

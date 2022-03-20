@@ -11,6 +11,11 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
+  const [linkFav , setlinkFav] = useState(0)
+  const linkFavhandler= ()=>{
+    setlinkFav(linkFav+1)
+    console.log(linkFav)
+  }
   
 
   const minus = () => {
@@ -30,7 +35,6 @@ const ProductDetail = () => {
     const res = await fetch(url)
     const data = await res.json()
     const pro = data
-    console.log(pro)
     setDetail(pro)
   }
 
@@ -52,7 +56,7 @@ const ProductDetail = () => {
                 <div className="like-compare">
                   <div className="like">
                   <Heart id={v.pro_id}/>
-                    <p>收藏</p>
+                    <p onClick={linkFavhandler} >收藏</p>
                   </div>
                   <div className="compare">
                     <img src="/ProductList/add.svg" alt="" />

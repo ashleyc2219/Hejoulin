@@ -1,7 +1,8 @@
 @import '../../mixin.scss';
 
 .Sidebar {
-  height: 100vh;
+  //height: 100vh;
+  height: fit-content;
   padding-top: 6%;
   padding-left: 3%;
   width: 17%;
