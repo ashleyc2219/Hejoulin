@@ -5,6 +5,9 @@
   padding-top: 6%;
   padding-left: 3%;
   width: 17%;
+  @include large(){
+    display: none;
+  }
 
   .SidebarItem {
     padding-top: 15%;

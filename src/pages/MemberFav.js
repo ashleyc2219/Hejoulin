@@ -16,7 +16,27 @@ const MemberFav = () => {
                 alt=""
               />
               <div className="MemberFavBar-right">
-                <div className="countItemsTotal">收藏商品</div>
+                <div className="countItemsTotal">收藏商品8</div>
+                <select className="decorated ItemsSort" name="drinks" required>
+                  <option value="" disabled selected hidden>
+                    商品排序
+                  </option>
+                  <option value="coffee">Coffee</option>
+                  <option value="tea">Tea</option>
+                  <option value="milk">Milk</option>
+                </select>
+              </div>
+            </div>
+            <div className="MobileMemberFavBar">
+              <div className="MemberFavBar-left">
+                <div className="countItemsTotal">收藏商品8</div>
+                <img
+                  className="search-icon-fav"
+                  src="/ProductList/search.svg"
+                  alt=""
+                />
+              </div>
+              <div className="MemberFavBar-right">
                 <select className="decorated ItemsSort" name="drinks" required>
                   <option value="" disabled selected hidden>
                     商品排序
