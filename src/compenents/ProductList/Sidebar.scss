@@ -198,20 +198,28 @@
         display: flex;
         flex-direction: column;
         label {
-          @include kleeone();
-          color: $gray-300;
-          font-size: 20px;
           margin-left: 30px;
           margin-bottom: 15px;
           position: relative;
-          text-decoration: underline;
-          transition: all 0.5s;
           cursor: pointer;
+          p{
+            pointer-events: none;
+            transition: all 0.5s;
+            @include kleeone();
+            color: $gray-300;
+            font-size: 20px;
+            border-bottom: 1px solid $gray-300;
+            width: fit-content;
+            margin: 0;
+            &:hover{
+              text-decoration: none;
+            }
+          }
         }
         input {
           display: none;
         }
-        input:checked + label {
+        input:checked + label p{
           color: $black;
         }
       }
@@ -235,19 +243,22 @@
         flex-direction: column;
         label {
           @include kleeone();
-          color: gray;
-          font-size: 20px;
-          margin-left: 30px;
-          margin-bottom: 15px;
           position: relative;
-          text-decoration: underline;
-          transition: all 0.5s;
           cursor: pointer;
+          p{
+            color: $gray-300;
+            font-size: 20px;
+            margin: 0;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            transition: all 0.5s;
+            border-bottom: 1px solid $gray-300;
+          }
         }
         input {
           display: none;
         }
-        input:checked + label {
+        input:checked + label p{
           color: $black;
         }
       }
