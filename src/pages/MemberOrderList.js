@@ -43,7 +43,7 @@ const MemberOrderList = (props) => {
           <div className="container">
             <div className="OrderBar row">
               <nav className="OrderTabs row">
-                <img className="search-icon-od" src="/search.svg" alt="" />
+                <img className="search-icon-od" src="/ProductList/search.svg" alt="" />
                 <div className="OrderBar-item-box">
                   <Link to="all" className="OrderBar-item-route-all">
                     全部
@@ -68,6 +68,11 @@ const MemberOrderList = (props) => {
                   <Link to="cancel" className="OrderBar-item-route">
                     已取消
                   </Link>
+                </div>
+                <div className="pageTags">
+                  <div className="page">1</div>
+                  <div className="page">2</div>
+                  <div className="page">3</div>
                 </div>
               </nav>
             </div>

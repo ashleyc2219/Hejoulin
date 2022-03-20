@@ -17,6 +17,7 @@
   .MemberProfileBox {
     width: 100%;
 
+<<<<<<< HEAD
     .container {
       margin: 0;
       overflow-x: hidden;
@@ -50,6 +51,37 @@
             padding-bottom: 15.3%;
             border-bottom: 4px solid #ceb48d;
           }
+=======
+    .MemberProfileBar {
+      width: 100%;
+      margin-top: 5%;
+      border-bottom: 2px solid #BBBCBD;
+      display: flex;
+      align-items: center;
+
+      .ProfileBar-item-box {
+        margin-left: 5%;
+        margin-bottom: 2%;
+
+        .ProfileBar-item {
+          text-decoration: none;
+          font-family: 'Noto Sans TC', sans-serif;
+          //margin-left: 3%;
+        }
+        .ProfileBar-item:hover {
+          color: #CEB48D;
+          padding-bottom: 29.5%;
+          border-bottom: 4px solid #CEB48D;
+        }
+        .payment {
+          text-decoration: none;
+          font-family: 'Noto Sans TC', sans-serif;
+        }
+        .payment:hover {
+          color: #CEB48D;
+          padding-bottom: 15.3%;
+          border-bottom: 4px solid #CEB48D;
+>>>>>>> 51e12151b1fd55daad401f67304c42ccdc3a3e66
         }
       }
     }

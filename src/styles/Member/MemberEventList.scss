@@ -9,15 +9,15 @@
     width: 100%;
 
     .EventBar {
-      width: 100%;
-      margin-top: 12%;
+      width: 95%;
+      margin-top: 5.5%;
       border-bottom: 2px solid #BBBCBD;
       display: flex;
-      align-items: center;
 
       .EventTabs {
         width: 100%;
         margin-bottom: 2%;
+        position: relative;
 
         .EventBar-item-box {
           margin-left: 5%;
@@ -25,14 +25,17 @@
           .EventBar-item {
             text-decoration: none;
           }
+
           .EventBar-item:hover {
             color: #CEB48D;
             padding-bottom: 40%;
             border-bottom: 4px solid #CEB48D;
           }
+
           .EventBar-item-coming {
             text-decoration: none;
           }
+
           .EventBar-item-coming:hover {
             color: #CEB48D;
             padding-bottom: 30%;
@@ -43,24 +46,51 @@
         .search-icon-ev {
           margin-left: 3%;
         }
+        .pageTags {
+          width: 110px;
+          position: absolute;
+          right: 0;
+          display: flex;
+
+          .page {
+            margin-left: 18%;
+            padding: 10% 3% 0;
+          }
+
+          .page:hover {
+            border-bottom: 2px solid #3D4349;
+          }
+        }
       }
     }
 
     .EventFileBox {
       width: 100%;
-      margin-top: 1.8%;
-      margin-left: 1.2%;
+      padding-left: 2.5%;
+      text-align: center;
 
       table {
-        width: 92%;
+        width: 90%;
 
-        thead th {
-          text-align: center;
-          border: none;
+
+        thead {
+          height: 65px;
+
+          tr th {
+            vertical-align: middle;
+            border: none;
+          }
         }
 
-        tbody tr {
-          text-align: center;
+
+        tbody tr td {
+          font-family: 'Noto Sans TC', sans-serif;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 14px;
+          padding-bottom: -15%;
+          vertical-align: middle;
         }
       }
     }
