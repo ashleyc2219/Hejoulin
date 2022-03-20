@@ -44,6 +44,7 @@ const MemberMark = () => {
               </div>
               <Modal showModal={modalShow} setShowModal={setModalShow} />
               <GlobalStyles />
+              <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt="" />
             </div>
           </div>
         </div>

@@ -4,6 +4,13 @@
   display: flex;
   width: 1200px;
   margin: 0 auto;
+  position: relative;
+
+  .SakeBg {
+    position: absolute;
+    right: 5%;
+    top: -25%;
+  }
 
   .MemberMarkBox {
     width: 100%;
