@@ -21,18 +21,15 @@
 
     .SubBar {
       width: 100%;
-<<<<<<< HEAD
       margin-top: 13.5%;
       border-top: 2px solid #BBBCBD;
       @include large(){
         margin: 0;
       }
-=======
       margin-top: 5%;
       border-bottom: 2px solid #BBBCBD;
       display: flex;
       align-items: center;
->>>>>>> 51e12151b1fd55daad401f67304c42ccdc3a3e66
 
       .SubTabs {
         width: 100%;
