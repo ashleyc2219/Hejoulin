@@ -38,7 +38,7 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    main {
+    .main {
       width: 100%;
       padding: 140px 110px 0;
 
@@ -106,45 +106,82 @@
         }
       }
     }
-    #result {
-    }
   }
 
-    #result {
+  #result {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .result_container {
+      display: grid;
+      max-width: 1440px;
+      position: relative;
+
+      .guide_img {
+        width: 1440px;
+      }
+    }
+    .over {
+      position: absolute;
+      max-width: 1200px;
+      height: 995px;
       display: flex;
       justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      align-items: center;
 
-      .result_container {
+      .grid {
+        width: 100%;
+        height: 100%;
         display: grid;
-        max-width: 1440px;
-        position: relative;
-
-        .guide_img {
-          width: 1440px;
-        }
-
-        .over {
-          position: absolute;
-          max-width: 1440px;
+        grid-template-columns: 120px 1fr 1fr 1fr 120px;
+        // gap: 30px;
+        .recommand {
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
+          justify-content: center;
+          width: 300px;
+          height: 100%;
 
-          .grid {
-            max-width: 1440px;
-            display: grid;
-            grid-template-columns: 220px 1fr 1fr 1fr 220px;
-            // gap: 30px;
-            .recommand {
-              width: 300px;
-              .sake {
-                width: 50px;
-              }
+          .result_card {
+            width: 250px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+              transform: translateY(-10px);
+              transition: .5s;
+            }
+
+            .sake {
+              height: 300px;
+              filter: drop-shadow(0 4px 0.1rem $gray-300);
+            }
+            .name {
+              font-size: 20px;
+              line-height: 40px;
+              margin-top: 10px;
+            }
+            .result_circle{
+              width: 305px;
+              height: 305px;
+              border-radius: 50%;
+              z-index: 0;
+              position: absolute;
+            }
+            .left{
+              background-color: $warning;
+              opacity: 70%;
             }
           }
         }
       }
     }
+  }
 }

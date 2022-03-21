@@ -24,7 +24,7 @@
     position: fixed;
     top: 180px;
     right: 25px;
-    z-index: 9;
+    z-index: 8;
     @include large() {
       display: none;
     }

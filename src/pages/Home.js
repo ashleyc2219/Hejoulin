@@ -7,6 +7,7 @@ import Footer from './../compenents/Shared/Footer'
 
 const Home = () => {
   return (
+<<<<<<< HEAD
     <>
       <div className="home">
         <div className="homeimg"></div>
@@ -100,6 +101,11 @@ const Home = () => {
         </div>
         <Button variant="primary">Save Changes</Button>
         <SomeComponent />
+=======
+    <div>
+      <div className="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+>>>>>>> 48fd8010ef96574c13de3d5631435f4c432f1d03
       </div>
     </>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import './../../compenents/ProductList/CompareBlock.scss'
+import './../../compenents/ProductList/CompareBlock.css'
 
 const CompareBlock = () => {
   return (

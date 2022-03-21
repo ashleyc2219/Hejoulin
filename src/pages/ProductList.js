@@ -22,10 +22,12 @@ const ProductList = () => {
   const [spin, setSpin] = useState(false) // 最下面的spinner
   const [spinTop, setSpinTop] = useState(false) // 最上面搜尋時會出現的spinner
   const [perpage, setPerpage] = useState(18) // 這訂每次載入商品的比數
-  const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表
   const [prolist, setProlist] = useState(true) // 設定全部商品的列表是否要出現
   const [resultTitle, setResultTitle] = useState(true) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
-  const [noresult, setNoresult] = useState(true)
+  const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
+
+  const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表
+  const [locasort, setLocasort] = useState('')
 
   // 按下載入更多會觸發的spinner
   const spinner = () => {
@@ -48,6 +50,7 @@ const ProductList = () => {
         setLoad(false)
         setResultTitle(true)
         setSearch(searchword)
+        setNoresult(true)
         setTimeout(() => {
           // 如果搜尋文字長度大於0會執行以下動作
           setSpinTop(false)
@@ -61,6 +64,8 @@ const ProductList = () => {
         setSpinTop(true)
         setLoad(false)
         setResultTitle(true)
+        setNoresult(true)
+        setPerpage(18)
         setTimeout(() => {
           const searchword = e.target.value
           setLoad(true)
@@ -73,25 +78,43 @@ const ProductList = () => {
     }
   }
 
-  // search input onchange時候會出發的搜尋功能
-  const searchHandler = (e) => {
-    /*  const searchword = e.target.value.trim()
-    if (searchword.length <= 0) {
+  const locahandler = (e) => {
+    const loca = e.target.value
+    if (loca === '') {
+      setTitle(false)
       setProlist(false)
-      setSearch(searchword)
+      setSpinTop(true)
+      setLoad(false)
+      setResultTitle(true)
+      setNoresult(true)
+      setPerpage(18)
+      setLocasort('')
+      setTimeout(() => {
+        const searchword = e.target.value
+        setLoad(true)
+        setTitle(true)
+        setProlist(true)
+        setSpinTop(false)
+        setSearch(searchword)
+      }, 1500)
+    } else {
+      setLocasort(loca)
+      setProlist(false)
       setTitle(false)
       setSpinTop(true)
       setLoad(false)
       setResultTitle(true)
+      setTimeout(() => {
+        setSpinTop(false)
+        setResultTitle(false)
+        setProlist(true)
+      }, 1000)
     }
-    setTimeout(() => {
-      const searchword = e.target.value
-      setLoad(true)
-      setTitle(true)
-      setProlist(true)
-      setSpinTop(false)
-      setSearch(searchword)
-    }, 1500) */
+  }
+
+  const brandhandler = (e) => {
+    const brand = e.target.value
+    console.log(brand)
   }
 
   /* 品牌 */
@@ -159,11 +182,11 @@ const ProductList = () => {
                     <option value="">價錢高至低</option>
                     <option value="">價錢低至高</option>
                   </select>
-                  <select name="brand" id="">
+                  <select name="brand" id="" onChange={brandhandler}>
                     <option value="">品牌</option>
                     {brandData}
                   </select>
-                  <select name="loca" id="">
+                  <select name="loca" id="" onChange={locahandler}>
                     <option value="">產地</option>
                     {brandLoca}
                   </select>
@@ -171,13 +194,7 @@ const ProductList = () => {
                 <div className="search">
                   <img src="/ProductList/search.svg" alt="" />
 
-                  <input
-                    onKeyPress={keypress}
-                    onChange={searchHandler}
-                    type="text"
-                    name=""
-                    id=""
-                  />
+                  <input onKeyPress={keypress} type="text" name="" id="" />
                 </div>
               </div>
               {/* 手機版的篩選 */}
@@ -217,9 +234,11 @@ const ProductList = () => {
               {prolist ? (
                 <ProductListItems
                   page={perpage}
-                  load={setLoad}
+                  setLoad={setLoad}
                   search={search}
                   resultTitle={resultTitle}
+                  setNoresult={setNoresult}
+                  locasort={locasort}
                 />
               ) : (
                 ''

@@ -4,12 +4,20 @@
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .CardBox {
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .CardBox .CardImg {
   margin-top: 9%;
 }
 
 .CardBox .CardBox-Item-date {
-  margin-left: .8%;
+  margin-left: 0.8%;
 }
 
 .CardBox .CardBox-Item-date .card-validity {
@@ -18,18 +26,55 @@
 
 .CardBox .CardBox-Item-date .safety-code {
   width: 98px;
-  margin-left: 9.5%;
+}
+
+.CardBox .CardBox-Item-date div:last-child {
+  margin-left: 10px;
 }
 
 .CardBox .CardBox-Items {
   margin-left: 7%;
 }
 
+@media (max-width: 768px) {
+  .CardBox .CardBox-Items {
+    margin: 0;
+    width: 335px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+}
+
 .CardBox .CardBox-Items .CardBox-Item .card-number {
   width: 221px;
 }
 
+@media (max-width: 768px) {
+  .CardBox .CardBox-Items .CardBox-Item .card-number {
+    width: 95%;
+  }
+}
+
 .CardBox .CardBox-Items .CardBox-Item .owner-name {
   width: 221px;
+}
+
+@media (max-width: 768px) {
+  .CardBox .CardBox-Items .CardBox-Item-date div {
+    margin-right: 19px;
+  }
+  .CardBox .CardBox-Items .CardBox-Item-date div:first-child input {
+    width: 139px;
+  }
+  .CardBox .CardBox-Items .CardBox-Item-date div:last-child input {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .CardBox .CardBox-Items .CardBox-Item .owner-name {
+    width: 95%;
+  }
 }
 /*# sourceMappingURL=CardBox.css.map */

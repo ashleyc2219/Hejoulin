@@ -3,13 +3,20 @@ import '../styles/CartOrder/CartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableItem from '../compenents/Cart/OrderTableItem'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { useEffect } from 'react'
 const CartOrder = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
     <div className="CartOrder">
       <ProgressBar step="three" content={stepContent} />
       <div className="container">
         <div className="left-list">
+          <div className="mobile-table-btn ">
+            <span className="total">訂單總計: $ 5700</span>
+          </div>
           <div className="list-table">
             <div className="table-head ">
               <span className="title-product">商品</span>
@@ -36,6 +43,9 @@ const CartOrder = () => {
               <p>總計</p>
               <p className="dollar-sign total">5700</p>
             </div>
+          </div>
+          <div className="mobile-table-btn ">
+            <span className="product-count">&darr; 共4件商品</span>
           </div>
         </div>
         <div className="right-order">
