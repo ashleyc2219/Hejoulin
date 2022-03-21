@@ -1,0 +1,114 @@
+@import '../mixin.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC';
+  color: $primary;
+}
+
+.home {
+  p {
+    color: $gray-300;
+    font-family: 'Klee One', cursive;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Klee One', cursive;
+    color: $primary;
+  }
+
+  .news-box,
+  .intro-box,
+  .sub-box {
+    .home-title {
+      margin-left: 20px;
+      writing-mode: vertical-lr;
+      padding-right: 20px;
+      font-size: 40px;
+      // news-title
+
+      h3 {
+      }
+    }
+  }
+
+  .homeimg {
+    width: 100%;
+    height: 800px;
+    background-image: url('../../../public/Home/Home-w01.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    @include medium() {
+      height: 900px;
+      background-image: url('../../../public/Home/Home-m01.png');
+    }
+  }
+  .news-box {
+    margin-top: 140px;
+    display: flex;
+    .news-img {
+      max-width: 513px;
+      width: 50%;
+      height: 351px;
+      background-color: #562;
+      margin-right: 30px;
+      @include large() {
+        width: 0px;
+        height: 0px;
+        margin-right: 0px;
+      }
+    }
+
+    .news-content {
+      flex-grow: 1;
+      .news-item {
+        display: flex;
+        font-size: 18px;
+        .news-item-date {
+          margin-right: 30px;
+        }
+        .news-item-title {
+          width: 100px;
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .news-title {
+      margin-left: 20px;
+      writing-mode: vertical-lr;
+      padding-right: 20px;
+      font-size: 40px;
+
+      h3 {
+      }
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-right: 100px;
+  }
+
+  .intro-box {
+    margin-top: 100px;
+    .intro-img {
+      width: 100%;
+      height: 800px;
+      background-image: url('../../../public/Home/Home-w02.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+
+      @include medium() {
+        height: 900px;
+        background-image: url('../../../public/Home/Home-m02.png');
+      }
+    }
+  }
+}
