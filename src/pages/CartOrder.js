@@ -14,6 +14,9 @@ const CartOrder = () => {
       <ProgressBar step="three" content={stepContent} />
       <div className="container">
         <div className="left-list">
+          <div className="mobile-table-btn ">
+            <span className="total">訂單總計: $ 5700</span>
+          </div>
           <div className="list-table">
             <div className="table-head ">
               <span className="title-product">商品</span>
@@ -40,6 +43,9 @@ const CartOrder = () => {
               <p>總計</p>
               <p className="dollar-sign total">5700</p>
             </div>
+          </div>
+          <div className="mobile-table-btn ">
+            <span className="product-count">&darr; 共4件商品</span>
           </div>
         </div>
         <div className="right-order">
