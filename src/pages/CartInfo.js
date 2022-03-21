@@ -16,20 +16,16 @@ const CartInfo = () => {
       {/* <ProgressBar step="two" content={stepContent} /> */}
       <div className="container">
         <div className="left-list">
+          <div className="mobile-table-btn ">
+            <span className="total">訂單總計: $ 5700</span>
+          </div>
           <div className="list-table">
-            <div className="mobile-table-btn ">
-              <span className="total">訂單總計: $ 5700</span>
-            </div>
             <div className="table-head ">
               <span className="title-product">商品</span>
               <span className="title-subtotal">小計</span>
             </div>
             <InfoTableItem mark="true" />
             <InfoTableItem mark="false" />
-
-            <div className="mobile-table-btn ">
-              <span className="product-count">&darr; 共4件商品</span>
-            </div>
           </div>
           <div className="list-summary">
             <div className="table-row">
@@ -48,6 +44,9 @@ const CartInfo = () => {
               <p>總計</p>
               <p className="dollar-sign total">5700</p>
             </div>
+          </div>
+          <div className="mobile-table-btn ">
+            <span className="product-count">&darr; 共4件商品</span>
           </div>
         </div>
         <div className="right-info">
@@ -206,8 +205,12 @@ const CartInfo = () => {
             </div>
           </div>
           <div className="buttons">
-            <Link to='/cart/list'><button className="btn btn-primary">上一步</button></Link>
-            <Link to='/cart/order'><button className="btn btn-secondary">確認付款</button></Link>
+            <Link to="/cart/list">
+              <button className="btn btn-primary">上一步</button>
+            </Link>
+            <Link to="/cart/order">
+              <button className="btn btn-secondary">確認付款</button>
+            </Link>
           </div>
         </div>
       </div>
