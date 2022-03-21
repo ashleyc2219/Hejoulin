@@ -10,9 +10,9 @@ const InfoTableItem = (props) => {
         </div>
         <div className="item item-product-info">
           <h5>篠峯 雄町純米大吟釀</h5>
-          <p>720</p>
-          <p>1880</p>
-          <p className={mark}>客製化酒標 A</p>
+          <p className='ml'>720</p>
+          <p className='price'>1880</p>
+          <p className={mark + ' cmark'}>客製化酒標 A</p>
         </div>
         <div className="item item-subtotal">
           <p>1880</p>

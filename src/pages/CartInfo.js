@@ -3,7 +3,7 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
 import InfoTableItem from '../compenents/Cart/InfoTableItem'
 import { useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
@@ -13,16 +13,23 @@ const CartInfo = () => {
   }, [])
   return (
     <div className="CartInfo">
-      <ProgressBar step="two" content={stepContent} />
+      {/* <ProgressBar step="two" content={stepContent} /> */}
       <div className="container">
         <div className="left-list">
           <div className="list-table">
+            <div className="mobile-table-btn ">
+              <span className="total">訂單總計: $ 5700</span>
+            </div>
             <div className="table-head ">
               <span className="title-product">商品</span>
               <span className="title-subtotal">小計</span>
             </div>
             <InfoTableItem mark="true" />
             <InfoTableItem mark="false" />
+
+            <div className="mobile-table-btn ">
+              <span className="product-count">&darr; 共4件商品</span>
+            </div>
           </div>
           <div className="list-summary">
             <div className="table-row">
@@ -80,12 +87,12 @@ const CartInfo = () => {
                 <input type="text" className="form-control" />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
-              <div>
+              <di className="sub-check">
                 <input type="checkbox" id="c5" name="cc" />
                 <label htmlFor="c5">
                   <span></span> 訂閱優惠月報
                 </label>
-              </div>
+              </di>
             </div>
           </div>
           <hr />
@@ -153,7 +160,7 @@ const CartInfo = () => {
             </div>
 
             <div className="credit-card-container">
-              <div className="card-img">
+              <div className="credit-card-img">
                 <img src="/CartList/card.svg" alt="" />
               </div>
               <div className="card-info">
