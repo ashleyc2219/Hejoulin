@@ -67,7 +67,6 @@
   margin-bottom: 15px !important;
   position: relative;
   cursor: pointer;
-  pointer-events: none;
   transition: all 0.5s;
   font-family: "Klee One", cursive;
   color: #7e8082;

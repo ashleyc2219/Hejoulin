@@ -14,7 +14,6 @@ function Sidebar() {
     console.log('1')
   }
 
-
   return (
     <>
       <div className="sidebar">
@@ -35,11 +34,11 @@ function Sidebar() {
           <p>等級</p>
           <div className="level">
             <p onClick={click1}>吟釀</p>
-            <p onClick={click1}>大吟釀</p>
-            <p onClick={click1}>純米酒</p>
-            <p onClick={click1}>純米吟釀</p>
-            <p onClick={click1}>純米大吟釀</p>
-            <p onClick={click1}>吟釀</p>
+            <p>大吟釀</p>
+            <p>純米酒</p>
+            <p>純米吟釀</p>
+            <p>純米大吟釀</p>
+            <p>吟釀</p>
           </div>
         </div>
         <div className="third">
