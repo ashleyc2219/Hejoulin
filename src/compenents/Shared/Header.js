@@ -162,7 +162,7 @@ const Header = (props) => {
               className={open ? 'open purchase-sake' : 'purchase-sake'}
               onClick={openMenu}
             >
-              <Link>購買清酒</Link>
+              <Link to="/product/list">購買清酒</Link>
               <ul className="dropdown-content">
                 <li className={open ? 'showLi ' : ''}>
                   <Link onClick={setmobilemenu} to="/product/list">
