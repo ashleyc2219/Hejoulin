@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Member/Member-ProfileBox/AddressBox.scss'
+import '../../../../styles/Member/Member-ProfileBox/AddressBox.scss'
 
 const AddressBox = () => {
   return (

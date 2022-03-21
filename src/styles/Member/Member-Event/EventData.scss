@@ -1,0 +1,35 @@
+@import '../../mixin.scss';
+
+table {
+  width: 90%;
+  margin-left: 1.5%;
+
+  thead {
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid #BBBCBD;
+
+    tr {
+      width: 100%;
+      vertical-align: middle;
+
+      th {
+        width: 10%;
+        padding: 0 0 2% 6%;
+
+      }
+    }
+  }
+
+  tbody {
+    width: 100%;
+
+    tr {
+      vertical-align: middle;
+
+      td {
+        padding: 3% 5% 0 7%;
+      }
+    }
+  }
+}

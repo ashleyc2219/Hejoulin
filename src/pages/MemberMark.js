@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Sidebar from '../compenents/Member/Sidebar'
 import '../styles/Member/MenberMark.scss'
-import { Modal } from '../compenents/Member/Modal'
-import { GlobalStyles } from '../compenents/Member/GlobalStyles'
+import MarkModal from '../compenents/Member/MarkModal'
+import MarkData from '../compenents/Member/MarkData'
 
 const MemberMark = () => {
   const [modalShow, setModalShow] = useState(false)
@@ -32,20 +32,8 @@ const MemberMark = () => {
               </div>
               <div className="MarkAddText">立即新增您的專屬酒標</div>
             </div>
-            <div className="MarkItem">
-              <div className="MarkPicDisplay" onClick={openModal}>
-                <img src="/Member/MarkEX.svg" alt="" />
-              </div>
-              <div className="MarkName">
-                <input type="checkbox" id="c1" name="cc" />
-                <label htmlFor="c1">
-                  <span></span>酒標名稱 : 我的酒標一
-                </label>
-              </div>
-              <Modal showModal={modalShow} setShowModal={setModalShow} />
-              <GlobalStyles />
-              <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt="" />
-            </div>
+            <MarkData />
+            <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt="" />
           </div>
         </div>
       </div>

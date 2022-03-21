@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import sideBarItem from './sideBarItem'
+import SideBarItem from './SideBarItem'
 import '../../styles/Member/Member-Sidebar/Sidebar.scss'
 
 function Sidebar() {
@@ -15,7 +15,7 @@ function Sidebar() {
   return (
     <>
       <div className="Sidebar">
-        <nav className="side-nav">{renderItem(sideBarItem)}</nav>
+        <nav className="side-nav">{renderItem(SideBarItem)}</nav>
       </div>
     </>
   )

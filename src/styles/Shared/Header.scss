@@ -191,7 +191,7 @@
   top: 0;
   right: -100%;
   transition: 850ms;
-  z-index: 9;
+  z-index: 99;
   @include medium() {
     //內容還沒RWD 只調整區塊尺寸
     width: 300px;

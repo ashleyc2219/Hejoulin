@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileItem from './ProfileItems'
-import '../../styles/Member/Member-ProfileBox/ProfileBox.scss'
+import '../../../../styles/Member/Member-ProfileBox/ProfileBox.scss'
 
 const ProfileBox = () => {
   const birthOption = (items) =>
@@ -39,7 +39,7 @@ const ProfileBox = () => {
         </div>
         <br />
         <div className="mb-3 ProfileBox-Item ProfileBox-Item-Last">
-        {/* 這裡我多包了一層div 提示訊息拉到外面 改成項figma那樣 */}
+          {/* 這裡我多包了一層div 提示訊息拉到外面 改成項figma那樣 */}
           <div className="birthday">
             <label className="form-label">生日</label>
             <select className="decorated" required>
@@ -76,7 +76,7 @@ const ProfileBox = () => {
           {/*  <option value="milk">Milk</option>*/}
           {/*</select>*/}
         </div>
-          <div className="form-text">錯誤/提示訊息</div>
+        <div className="form-text">錯誤/提示訊息</div>
         <br />
         <button className="btn btn-primary profile-btn">確認修改資料</button>
       </div>

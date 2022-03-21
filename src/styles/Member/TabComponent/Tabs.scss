@@ -1,0 +1,18 @@
+@import '../../mixin.scss';
+
+.Tabs {
+  width: 90%;
+  margin-left: 3.5%;
+  margin-top: 4.5%;
+
+  .nav {
+    width: 95%;
+    border-bottom: 2px solid #bbbcbd;
+    padding-left: 4%;
+  }
+
+  .outlet {
+    margin-top: 3%;
+    margin-left: 2.5%;
+  }
+}

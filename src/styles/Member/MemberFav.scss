@@ -30,9 +30,25 @@
           display: none;
         }
 
+        
+
         .search-icon-fav {
-          margin-left: 3%;
+          img {
+            margin-right: 3px;
+            margin-bottom: -10px;
+          }
+          input {
+            width: 150px;
+            border: none;
+            border-bottom: 2px solid #7e8082;
+            background-color: transparent;
+            font-size: 18px;
+            &:focus {
+              outline: none;
+            }
+          }
         }
+      }
 
         .MemberFavBar-right {
           display: flex;
@@ -49,7 +65,6 @@
             margin-right: 3%;
           }
         }
-      }
 
       .MobileMemberFavBar {
         display: none;

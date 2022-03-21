@@ -1,0 +1,14 @@
+@import '../../mixin.scss';
+
+.tabInput:checked + label {
+  color: #ceb48d;
+  border-bottom: 4px solid #ceb48d;
+  cursor: pointer;
+}
+
+.tabLabel {
+  margin-left: 5%;
+  padding-bottom: 20px;
+  margin-bottom: -.35%;
+}
+

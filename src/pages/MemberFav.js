@@ -1,8 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Sidebar from '../compenents/Member/Sidebar'
 import '../styles/Member/MemberFav.scss'
 
 const MemberFav = () => {
+  const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
+  const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表
+
+  const keypress = (e) => {
+    const searchword = e.target.value.trim()
+    if (e.key === 'Enter') {
+      if (searchword.length > 0) {
+        setSearch(searchword)
+        setNoresult(true)
+        setTimeout(() => {
+          // 如果搜尋文字長度大於0會執行以下動作
+        }, 1000)
+      } else if (searchword.length <= 0) {
+        setSearch(searchword)
+        setNoresult(true)
+        setTimeout(() => {
+          const searchword = e.target.value
+          setSearch(searchword)
+        }, 1500)
+      }
+    }
+  }
   return (
     <>
       <div className="MemberFav">
@@ -10,11 +32,11 @@ const MemberFav = () => {
         <div className="MemberFavBox">
           <div className="container">
             <div className="MemberFavBar">
-              <img
-                className="search-icon-fav"
-                src="/ProductList/search.svg"
-                alt=""
-              />
+              <div className="search-icon-fav">
+                <img src="/ProductList/search.svg" alt="" />
+
+                <input onKeyPress={keypress} type="text" name="" id="" />
+              </div>
               <div className="MemberFavBar-right">
                 <div className="countItemsTotal">收藏商品8</div>
                 <select className="decorated ItemsSort" name="drinks" required>

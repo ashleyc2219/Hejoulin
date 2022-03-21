@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Member/Member-ProfileBox/PassBox.scss'
+import '../../../../styles/Member/Member-ProfileBox/PassBox.scss'
 
 const PassBox = () => {
   return (

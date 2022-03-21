@@ -23,7 +23,7 @@ const ProductList = () => {
   const [spinTop, setSpinTop] = useState(false) // 最上面搜尋時會出現的spinner
   const [perpage, setPerpage] = useState(18) // 這訂每次載入商品的比數
   const [prolist, setProlist] = useState(true) // 設定全部商品的列表是否要出現
-  const [resultTitle, setResultTitle] = useState(true) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle, setResultTitle] = useState(true) // 設定商品列表的標題的樣式 直會傳到子層三元作判斷
   const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
 
   const [search, setSearch] = useState('') // 設定搜尋的文字傳到子曾重新fetch商品列表

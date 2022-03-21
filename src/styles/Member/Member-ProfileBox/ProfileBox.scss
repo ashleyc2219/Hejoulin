@@ -3,13 +3,14 @@
 .ProfileBox {
   padding-top: 2.5%;
   padding-left: 4.5%;
+  height: 600px;
   @include medium() {
     padding-left: 0;
   }
 
   .ProfileBox-Item {
     height: 74px;
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important;
     
 
     @include large() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Member/Member-ProfileBox/CardBox.scss'
+import '../../../../styles/Member/Member-ProfileBox/CardBox.scss'
 
 const CardBox = () => {
   return (
