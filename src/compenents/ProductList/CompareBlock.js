@@ -1,10 +1,11 @@
 import React from 'react'
-import './../../compenents/ProductList/CompareBlock.css'
+import './../../compenents/ProductList/CompareBlock.scss'
 
-const CompareBlock = () => {
+const CompareBlock = (props) => {
+  const { up } = props
   return (
     <>
-      <div className="compare-block">
+      <div className={up ? 'compare-block up' : 'compare-block'}>
         <div className="compare-wrap">
           <div className="product">
             <img src="/ProductList/product.png" alt="" />
@@ -24,7 +25,7 @@ const CompareBlock = () => {
             <div className="shadow"></div>
             <img src="/ProductList/remove.svg" alt="" className="remove" />
           </div>
-        <button className="compare btn-primary btn-sm btn">比較</button>
+          <button className="compare btn-primary btn-sm btn">比較</button>
         </div>
       </div>
     </>

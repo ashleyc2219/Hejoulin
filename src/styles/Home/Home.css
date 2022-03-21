@@ -1,0 +1,133 @@
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Noto Sans TC';
+  color: #3d4349;
+}
+
+.home p {
+  color: #7e8082;
+  font-family: 'Klee One', cursive;
+}
+
+.home h1,
+.home h2,
+.home h3 {
+  font-family: 'Klee One', cursive;
+  color: #3d4349;
+}
+
+.home .news-box .home-title,
+.home .intro-box .home-title,
+.home .sub-box .home-title {
+  margin-left: 20px;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  padding-right: 20px;
+  font-size: 40px;
+}
+
+.home .homeimg {
+  width: 100%;
+  height: 800px;
+  background-image: url("../../../public/Home/Home-w01.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .home .homeimg {
+    height: 900px;
+    background-image: url("../../../public/Home/Home-m01.png");
+  }
+}
+
+.home .news-box {
+  margin-top: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .news-box .news-img {
+  max-width: 513px;
+  width: 50%;
+  height: 351px;
+  background-color: #562;
+  margin-right: 30px;
+}
+
+@media (max-width: 1024px) {
+  .home .news-box .news-img {
+    width: 0px;
+    height: 0px;
+    margin-right: 0px;
+  }
+}
+
+.home .news-box .news-content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.home .news-box .news-content .news-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 18px;
+}
+
+.home .news-box .news-content .news-item .news-item-date {
+  margin-right: 30px;
+}
+
+.home .news-box .news-content .news-item .news-item-title {
+  width: 100px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.home .news-box .news-title {
+  margin-left: 20px;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  padding-right: 20px;
+  font-size: 40px;
+}
+
+.home .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 30px;
+  padding-right: 100px;
+}
+
+.home .intro-box {
+  margin-top: 100px;
+}
+
+.home .intro-box .intro-img {
+  width: 100%;
+  height: 800px;
+  background-image: url("../../../public/Home/Home-w02.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .home .intro-box .intro-img {
+    height: 900px;
+    background-image: url("../../../public/Home/Home-m02.png");
+  }
+}
+/*# sourceMappingURL=Home.css.map */

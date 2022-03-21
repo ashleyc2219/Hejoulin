@@ -1,9 +1,4 @@
-* {
-  outline: 0px solid #ccc !important;
-}
-
 body {
-  background: url("/public/Sake-background0310.jpg");
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -60,7 +55,6 @@ body {
 }
 
 .news .news-container .news-title {
-  outline: 2px solid #6b1a0f;
   font-family: "Klee One", cursive;
   color: #7e8082;
   margin: 37px 0;
@@ -86,7 +80,6 @@ body {
 }
 
 .news .news-container .news-item {
-  outline: 2px solid #d0d31a;
   z-index: 70;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -108,14 +101,12 @@ body {
 
 .news .news-container .news-item .news-item-pic {
   mix-blend-mode: multiply;
-  outline: 2px solid #dd6c8e;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
 .news .news-container .news-item .news-item-pic .news-pic {
-  outline: 4px solid #ca8910;
   height: 300px;
   margin-top: 70px;
   position: relative;
@@ -134,7 +125,6 @@ body {
 }
 
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box {
-  outline: 3px solid #381c25;
   width: 80%;
   position: absolute;
   z-index: 50;
@@ -178,7 +168,6 @@ body {
 }
 
 .news .news-container .news-item .news-item-word {
-  outline: 2px solid #0f6b1e;
   width: 60%;
   padding: 70px 100px;
 }
@@ -215,19 +204,16 @@ body {
 }
 
 .news .news-container .news-item .news-item-word .news-item-title {
-  outline: 2px solid #0f186b;
   margin-bottom: 5px;
 }
 
 .news .news-container .news-item .news-item-word .news-item-title h3 {
-  outline: 2px solid #17b4db;
   font-family: 'Klee One', cursive;
   font-size: 24px;
   color: #3d4349;
 }
 
 .news .news-container .news-item .news-item-word .news-item-content {
-  outline: 2px solid #6d19a5;
   color: #3d4349;
 }
 

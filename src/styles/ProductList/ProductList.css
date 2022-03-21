@@ -8,13 +8,6 @@
   }
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Noto Sans TC', serif;
-}
-
 .ProductList {
   width: 100%;
   overflow: hidden;
@@ -890,5 +883,10 @@
   position: absolute;
   bottom: 0;
   transform: translateY(50%);
+}
+
+.noresult {
+  border: 1px soid red;
+  animation: ani2 1s forwards;
 }
 /*# sourceMappingURL=ProductList.css.map */

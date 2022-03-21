@@ -3,6 +3,7 @@ import './Heart.scss'
 
 const Heart = (props) => {
   const [favorites, setFavorite] = useState('')
+  const { id, linkFav } = props
   let active = true
   let proid = ''
 
@@ -35,7 +36,7 @@ const Heart = (props) => {
   }
 
   const insertFav = async () => {
-    const data = { member_id: 1, pro_id: `${props.id}` }
+    const data = { member_id: 1, pro_id: `${id}` }
     console.log(data)
     const settings = {
       method: 'POST',
@@ -57,7 +58,7 @@ const Heart = (props) => {
   }
 
   const deleteFav = async () => {
-    const data = { member_id: 1, pro_id: `${props.id}` }
+    const data = { member_id: 1, pro_id: `${id}` }
     console.log(data)
     const settings = {
       method: 'POST',
@@ -106,6 +107,10 @@ const Heart = (props) => {
   useEffect(() => {
     getFav()
   }, [])
+
+  useEffect(() => {
+    if (linkFav > 0) click()
+  }, [linkFav])
 
   return (
     <>

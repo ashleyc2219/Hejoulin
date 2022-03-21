@@ -12,17 +12,39 @@
 
     display: flex;
     column-gap: 110px;
+    @include medium {
+      flex-direction: column;
+      width: 100%;
+    }
   }
   .left-list {
     width: 37.75%;
-    //   display: flex;
-    //   flex-direction: column;
+    @include medium {
+      width: 100%;
+    }
+    .mobile-table-btn {
+      display: none;
+      @include medium {
+        width: 100%;
+        background-color: rgba(187, 188, 189, 0.5);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        span {
+          font-size: 17px;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+    }
     .list-table {
       width: 100%;
+
       .table-head {
         width: 100%;
         background-color: rgba(187, 188, 189, 0.5);
         padding: 10px;
+        margin-top: 2px;
 
         display: flex;
         justify-content: space-between;
@@ -34,6 +56,10 @@
         }
         .title-product {
           width: 75.4%;
+          @include medium {
+            padding-left: 45px;
+            text-align: left;
+          }
         }
         .title-subtotal {
           width: 22.35%;
@@ -44,6 +70,10 @@
         padding: 5px 0;
         display: flex;
         column-gap: 10px;
+        @include medium {
+          padding: 10px;
+          height: 130px;
+        }
         .item {
           display: flex;
           justify-content: center;
@@ -53,46 +83,71 @@
           width: 28.7%;
           background-color: $white;
           mix-blend-mode: multiply;
+          @include medium {
+            width: 90px;
+            height: 90px;
+            img {
+              height: 80px;
+            }
+          }
         }
         .item-product-info {
           width: 44.18%;
           flex-direction: column;
           align-items: flex-start;
+          flex-grow: 1;
+          @include medium {
+            justify-content: flex-start;
+          }
           h5 {
             font-size: 18px;
             font-weight: bold;
-            line-height: 36px;
+            line-height: 18px;
             margin: 0;
+            margin-bottom: 10px;
             color: $primary;
+            @include medium {
+              font-size: 16px;
+              line-height: 18px;
+            }
           }
           p {
             font-size: 16px;
             line-height: 20px;
             margin: 0;
             color: $primary;
-            &:first-of-type::after {
-              content: ' ml';
+          }
+          p.ml::after {
+            content: ' ml';
+          }
+          p.price {
+            @include medium {
+              display: none;
             }
-            &:nth-of-type(2)::before {
+            &::before {
               content: '$ ';
             }
-            &:last-of-type {
-              visibility: hidden;
-              color: $secondary;
-              text-decoration: underline;
-              line-height: 42px;
-            }
-            //   如果有客製化酒標
-            &:last-of-type.true {
-              visibility: visible;
-            }
+          }
+          p.cmark {
+            visibility: hidden;
+            color: $secondary;
+            text-decoration: underline;
+            line-height: 42px;
+          }
+          p.cmark.true {
+            visibility: visible;
           }
         }
         .item-subtotal {
           width: 22.35%;
-          padding-top: 93px;
+          // padding-top: 93px;
           p::before {
             content: '$ ';
+          }
+          @include medium {
+            // padding-top: 80px;
+            align-self: flex-end;
+            justify-self: end;
           }
         }
       }
@@ -103,6 +158,9 @@
     }
     .list-summary {
       width: 100%;
+      @include medium {
+        padding: 10px;
+      }
       .table-row {
         display: flex;
         justify-content: space-between;
@@ -122,11 +180,14 @@
     }
   }
   .right-info {
-    
     .form-text {
       visibility: hidden;
     }
     width: 48.75%;
+    @include medium {
+      width: 100%;
+      padding: 10px;
+    }
     hr {
       border: $gray-100 1px solid;
       margin: 40px 0;
@@ -161,6 +222,18 @@
             width: 100%;
           }
         }
+        @include medium {
+          flex-direction: column;
+          column-gap: 0px;
+          .buyer-name,
+          .buyer-mobile,
+          .buyer-email {
+            width: 100%;
+          }
+          .sub-check {
+            align-self: flex-end;
+          }
+        }
       }
     }
     .receiver {
@@ -168,9 +241,16 @@
         display: flex;
         column-gap: 20px;
         align-items: center;
+        @include medium {
+          flex-direction: column;
+          column-gap: 0px;
+        }
         .receiver-name,
         .receiver-mobile {
           input {
+            width: 100%;
+          }
+          @include medium {
             width: 100%;
           }
         }
@@ -197,12 +277,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        column-gap: 10px;
 
-        .card-img {
-          width: 57.26%;
+        .credit-card-img {
+          width: 335px;
+          @include medium {
+            display: none;
+          }
         }
         .card-info {
-          width: 37.6%;
+          width: 219px;
+          @include medium {
+            width: 100%;
+          }
           input {
             width: 100%;
           }

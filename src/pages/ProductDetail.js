@@ -11,12 +11,10 @@ const ProductDetail = () => {
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
-  const [linkFav , setlinkFav] = useState(0)
-  const linkFavhandler= ()=>{
-    setlinkFav(linkFav+1)
-    console.log(linkFav)
+  const [linkFav, setlinkFav] = useState(0)
+  const linkFavhandler = () => {
+    setlinkFav(linkFav + 1)
   }
-  
 
   const minus = () => {
     if (count > 1) {
@@ -40,8 +38,8 @@ const ProductDetail = () => {
 
   const productDetail = detail.map((v, i) => {
     return (
-      <React.Fragment key={i} >
-        <div  className="product-wrap">
+      <React.Fragment key={i}>
+        <div className="product-wrap">
           <div className="product-img">
             <img src={'/ProductList/productimg/' + v.pro_img} alt="" />
           </div>
@@ -55,8 +53,8 @@ const ProductDetail = () => {
                 </div>
                 <div className="like-compare">
                   <div className="like">
-                  <Heart id={v.pro_id}/>
-                    <p onClick={linkFavhandler} >收藏</p>
+                    <Heart id={v.pro_id} linkFav={linkFav}/>
+                    <p onClick={linkFavhandler}>收藏</p>
                   </div>
                   <div className="compare">
                     <img src="/ProductList/add.svg" alt="" />
@@ -274,9 +272,6 @@ const ProductDetail = () => {
   })
 
   useEffect(() => {
-
-
-
     window.scrollTo(0, 0)
     fetchData()
   }, [])

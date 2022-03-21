@@ -1,86 +1,55 @@
-@import '../mixin.scss';
+@import '../../styles/mixin.scss';
 
-// * {
-//   //outline: 0px solid #ccc !important;
-// }
-
-body {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans TC';
-  color: $primary;
+  ////outline: 0.5px solid gray;
 }
 
-.news {
-  width: 100%;
-  overflow: hidden;
+.DetailModal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  p {
-    color: $gray-300;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: 'Klee One', cursive;
-    color: $primary;
-  }
-
-  .row {
-    flex-direction: column;
-  }
-
-  .news-container {
-    mix-blend-mode: multiply;
-    max-width: 1200px;
-    @include medium() {
-      width: 100%;
-    }
-    margin: 0 auto;
+  .comparepage {
+    width: 800px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include bgimage();
+    // padding: 20px 48px 20px;
+    box-shadow: 0px 0px 10px rgba(61, 67, 73, 0.623);
     position: relative;
-    z-index: 50;
-    // background-color: rgba(138, 134, 170, 0.589);
 
-    //超大標最新消息
-    .news-title {
-      //outline: 2px solid #6b1a0f;
-      @include kleeone();
-      color: $gray-300;
-      margin: 37px 0;
-      z-index: 60;
-    }
-    //斜線背景
-    .news-title ::after {
+    .close-white {
       position: absolute;
-      z-index: 0;
-      right: -120px;
-      content: '';
-      max-width: 450px;
-      width: 45%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        50deg,
-        $secondary,
-        $secondary 3px,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0) 15px
-      );
-      opacity: 0.3;
+      top: -30px;
+      right: -30px;
+      cursor: pointer;
+    }
+    .mobile-close {
+      display: none;
       @include medium() {
-        opacity: 0;
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
       }
     }
-    //最新消息元件
     .news-item {
       //outline: 2px solid #d0d31a;
       // background-color: rgba(44, 90, 48, 0.582);
       z-index: 70;
       display: flex;
-      flex-direction: row-reverse;
+      //   flex-direction: row-reverse;
+      flex-direction: column;
       @include medium() {
         flex-direction: column;
       }
@@ -96,13 +65,10 @@ body {
           //outline: 4px solid #ca8910;
           height: 300px;
           @include medium() {
-            height: 75px;
+            height: 150px;
           }
-          margin-top: 70px;
+
           position: relative;
-          @include medium() {
-            margin-top: 0px;
-          }
 
           .news-item-pic-box {
             //outline: 3px solid #381c25;
@@ -110,14 +76,10 @@ body {
             position: absolute;
             z-index: 50;
             left: 0;
-            @include medium() {
-              width: 90%;
-              left: -10%;
-            }
 
             img {
               width: 100%;
-              height: 170px;
+              height: 300px;
               object-fit: cover;
               z-index: 55;
               isolation: isolate;
@@ -126,15 +88,9 @@ body {
             &::before {
               content: '';
               background-color: $success;
-              width: 100%;
-              height: 170px;
+              width: 110%;
+              height: 250px;
               position: absolute;
-              right: -31px;
-              @include medium() {
-                height: 100px;
-                width: 120%;
-                right: -10%;
-              }
 
               bottom: -28px;
               z-index: -1;
@@ -148,14 +104,9 @@ body {
       //文字區塊
       .news-item-word {
         //outline: 2px solid #0f6b1e;
-        width: 60%;
+        width: 100%;
         padding: 70px 100px;
-        @include medium() {
-          width: 100%;
-          padding: 80px 10px;
-        }
-        // display: flex;
-        // flex-direction: column;
+
         .news-item-date {
           //厲害的功能
           width: fit-content;
@@ -191,16 +142,7 @@ body {
             font-size: 16px;
             line-height: 32px;
           }
-        }
-        .news-item-link {
-          a {
-            color: $gray-100;
-            font-size: 14px;
-          }
-          p {
-            color: $gray-200;
-            font-size: 14px;
-          }
+          margin-left: 15%;
         }
       }
     }
