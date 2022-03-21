@@ -26,6 +26,7 @@
             text-decoration: none;
             margin-bottom: 16px;
             font-size: 20px !important;
+            cursor: pointer;
           }
         }
       }
@@ -52,30 +53,23 @@
       .level {
         display: flex;
         flex-direction: column;
-        label {
-          margin-left: 30px;
-          margin-bottom: 15px;
+        p {
+          margin-left: 30px !important;
+          margin-bottom: 15px !important;
           position: relative;
           cursor: pointer;
-          p{
-            pointer-events: none;
-            transition: all 0.5s;
-            @include kleeone();
-            color: $gray-300;
-            font-size: 20px;
-            border-bottom: 1px solid $gray-300;
-            width: fit-content;
-            margin: 0;
-            &:hover{
-              text-decoration: none;
-            }
-          }
+          pointer-events: none;
+          transition: all 0.5s;
+          @include kleeone();
+          color: $gray-300;
+          font-size: 20px;
+          border-bottom: 1px solid $gray-300;
+          width: fit-content;
+          margin: 0;
         }
-        input {
-          display: none;
-        }
-        input:checked + label p{
+        .checked{
           color: $black;
+          border-color: $black;
         }
       }
     }
@@ -100,7 +94,7 @@
           @include kleeone();
           position: relative;
           cursor: pointer;
-          p{
+          p {
             color: $gray-300;
             font-size: 20px;
             margin: 0;
@@ -113,7 +107,7 @@
         input {
           display: none;
         }
-        input:checked + label p{
+        input:checked + label p {
           color: $black;
         }
       }
@@ -171,6 +165,7 @@
             text-decoration: none;
             margin-bottom: 16px;
             font-size: 20px !important;
+            cursor: pointer;
           }
         }
       }
@@ -197,30 +192,19 @@
       .level {
         display: flex;
         flex-direction: column;
-        label {
-          margin-left: 30px;
-          margin-bottom: 15px;
+        p {
+          margin-left: 30px !important;
+          margin-bottom: 15px !important;
           position: relative;
           cursor: pointer;
-          p{
-            pointer-events: none;
-            transition: all 0.5s;
-            @include kleeone();
-            color: $gray-300;
-            font-size: 20px;
-            border-bottom: 1px solid $gray-300;
-            width: fit-content;
-            margin: 0;
-            &:hover{
-              text-decoration: none;
-            }
-          }
-        }
-        input {
-          display: none;
-        }
-        input:checked + label p{
-          color: $black;
+          pointer-events: none;
+          transition: all 0.5s;
+          @include kleeone();
+          color: $gray-300;
+          font-size: 20px;
+          border-bottom: 1px solid $gray-300;
+          width: fit-content;
+          margin: 0;
         }
       }
     }
@@ -245,7 +229,7 @@
           @include kleeone();
           position: relative;
           cursor: pointer;
-          p{
+          p {
             color: $gray-300;
             font-size: 20px;
             margin: 0;
@@ -258,7 +242,7 @@
         input {
           display: none;
         }
-        input:checked + label p{
+        input:checked + label p {
           color: $black;
         }
       }

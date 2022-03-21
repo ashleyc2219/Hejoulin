@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './Sidebar.scss'
 
 function Sidebar() {
+  let history = useHistory()
+
+  function toList() {
+    history.push('/product/list')
+    history.go(0)
+  }
+  const click1 = () => {
+    console.log('1')
+  }
+
+
   return (
     <>
       <div className="sidebar">
         <div className="first">
           <ul>
             <li>
-              <Link to="/product/list">購買清酒</Link>
+              <a onClick={toList}>購買清酒</a>
             </li>
             <li>
               <Link to="/gift">清酒禮盒</Link>
@@ -22,35 +34,12 @@ function Sidebar() {
           </div>
           <p>等級</p>
           <div className="level">
-            <input type="radio" name="level" id="吟釀" value="吟釀" />
-            <label htmlFor="吟釀">
-              <p>吟釀</p>
-            </label>
-            <input type="radio" name="level" id="大吟釀" value="大吟釀" />
-            <label htmlFor="大吟釀">
-              <p>大吟釀</p>
-            </label>
-            <input type="radio" name="level" id="純米酒" value="純米酒" />
-            <label htmlFor="純米酒">
-              <p>純米酒</p>
-            </label>
-            <input type="radio" name="level" id="純米吟釀" value="純米吟釀" />
-            <label htmlFor="純米吟釀">
-              <p>純米吟釀</p>
-            </label>
-            <input
-              type="radio"
-              name="level"
-              id="純米大吟釀"
-              value="純米大吟釀"
-            />
-            <label htmlFor="純米大吟釀">
-              <p>純米大吟釀</p>
-            </label>
-            <input type="radio" name="level" id="本釀造" value="本釀造" />
-            <label htmlFor="本釀造">
-              <p>吟釀</p>
-            </label>
+            <p onClick={click1}>吟釀</p>
+            <p onClick={click1}>大吟釀</p>
+            <p onClick={click1}>純米酒</p>
+            <p onClick={click1}>純米吟釀</p>
+            <p onClick={click1}>純米大吟釀</p>
+            <p onClick={click1}>吟釀</p>
           </div>
         </div>
         <div className="third">

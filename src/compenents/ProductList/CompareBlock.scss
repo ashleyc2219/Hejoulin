@@ -87,6 +87,7 @@
     top: 180px;
     right: 25px;
     z-index: 9;
+    transition: all 0.3s;
     @include large() {
       display: none;
     }
@@ -140,5 +141,8 @@
         transform: translateY(50%);
       }
     }
+  }
+  .up{
+    top: -190px;
   }
 }

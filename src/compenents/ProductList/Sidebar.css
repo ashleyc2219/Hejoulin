@@ -1,0 +1,301 @@
+.ProductList .sidebar {
+  width: 175px;
+  height: fit-content;
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .sidebar {
+    display: none;
+  }
+}
+
+.ProductList .sidebar .first {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-top: 2px solid #bbbcbd;
+}
+
+.ProductList .sidebar .first ul {
+  margin-left: 30px;
+}
+
+.ProductList .sidebar .first ul li {
+  list-style: none;
+}
+
+.ProductList .sidebar .first ul li:first-child a {
+  color: #3d4349;
+}
+
+.ProductList .sidebar .first ul li a {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+
+.ProductList .sidebar .second .filter {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #bbbcbd;
+}
+
+.ProductList .sidebar .second .filter a {
+  font-family: "Klee One", cursive;
+  color: #3d4349;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.ProductList .sidebar .second p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductList .sidebar .second .level {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductList .sidebar .second .level p {
+  margin-left: 30px !important;
+  margin-bottom: 15px !important;
+  position: relative;
+  cursor: pointer;
+  pointer-events: none;
+  transition: all 0.5s;
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 20px;
+  border-bottom: 1px solid #7e8082;
+  width: fit-content;
+  margin: 0;
+}
+
+.ProductList .sidebar .second .level .checked {
+  color: #202326;
+  border-color: #202326;
+}
+
+.ProductList .sidebar .third a {
+  font-family: "Klee One", cursive;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #202326;
+}
+
+.ProductList .sidebar .third p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductList .sidebar .third .price {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductList .sidebar .third .price label {
+  font-family: "Klee One", cursive;
+  position: relative;
+  cursor: pointer;
+}
+
+.ProductList .sidebar .third .price label p {
+  color: #7e8082;
+  font-size: 20px;
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  transition: all 0.5s;
+  border-bottom: 1px solid #7e8082;
+}
+
+.ProductList .sidebar .third .price input {
+  display: none;
+}
+
+.ProductList .sidebar .third .price input:checked + label p {
+  color: #202326;
+}
+
+.ProductList .sidebar .other p {
+  font-size: 12px;
+  margin: 20px 0 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductList .sidebar .other .custum label {
+  font-family: "Klee One", cursive;
+  margin: 0 0 20px 30px;
+  color: gray;
+  font-size: 20px;
+  text-decoration: underline;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.ProductList .sidebar .other .custum input {
+  display: none;
+}
+
+.ProductList .sidebar .other .custum input:checked + label {
+  color: #202326;
+}
+
+.ProductDetail .sidebar {
+  width: 175px;
+  height: fit-content;
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .ProductDetail .sidebar {
+    display: none;
+  }
+}
+
+.ProductDetail .sidebar .first {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-top: 2px solid #bbbcbd;
+}
+
+.ProductDetail .sidebar .first ul {
+  margin-left: 30px;
+}
+
+.ProductDetail .sidebar .first ul li {
+  list-style: none;
+}
+
+.ProductDetail .sidebar .first ul li:first-child a {
+  color: #3d4349;
+}
+
+.ProductDetail .sidebar .first ul li a {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+
+.ProductDetail .sidebar .second .filter {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #bbbcbd;
+}
+
+.ProductDetail .sidebar .second .filter a {
+  font-family: "Klee One", cursive;
+  color: #3d4349;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.ProductDetail .sidebar .second p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductDetail .sidebar .second .level {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductDetail .sidebar .second .level p {
+  margin-left: 30px !important;
+  margin-bottom: 15px !important;
+  position: relative;
+  cursor: pointer;
+  pointer-events: none;
+  transition: all 0.5s;
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 20px;
+  border-bottom: 1px solid #7e8082;
+  width: fit-content;
+  margin: 0;
+}
+
+.ProductDetail .sidebar .third a {
+  font-family: "Klee One", cursive;
+  margin-left: 30px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #202326;
+}
+
+.ProductDetail .sidebar .third p {
+  font-size: 12px;
+  margin: 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductDetail .sidebar .third .price {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductDetail .sidebar .third .price label {
+  font-family: "Klee One", cursive;
+  position: relative;
+  cursor: pointer;
+}
+
+.ProductDetail .sidebar .third .price label p {
+  color: #7e8082;
+  font-size: 20px;
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  transition: all 0.5s;
+  border-bottom: 1px solid #7e8082;
+}
+
+.ProductDetail .sidebar .third .price input {
+  display: none;
+}
+
+.ProductDetail .sidebar .third .price input:checked + label p {
+  color: #202326;
+}
+
+.ProductDetail .sidebar .other p {
+  font-size: 12px;
+  margin: 20px 0 20px 30px;
+  color: #4d4e4f;
+  font-family: "Klee One", cursive;
+}
+
+.ProductDetail .sidebar .other .custum label {
+  font-family: "Klee One", cursive;
+  margin: 0 0 20px 30px;
+  color: gray;
+  font-size: 20px;
+  text-decoration: underline;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.ProductDetail .sidebar .other .custum input {
+  display: none;
+}
+
+.ProductDetail .sidebar .other .custum input:checked + label {
+  color: #202326;
+}
+/*# sourceMappingURL=Sidebar.css.map */

@@ -9,10 +9,21 @@ import ProductMaster from './ProductMaster'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-  const { page, search, setLoad, resultTitle, setNoresult, locasort } = props
+  const {
+    page,
+    search,
+    setLoad,
+    resultTitle,
+    resultTitle2,
+    resultTitle3,
+    setNoresult,
+    locasort,
+    brandsort,
+    sort,
+    setLocasort
+  } = props
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}`
-  console.log(url)
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}`
 
   const fetchList = async () => {
     const res = await fetch(url)
@@ -21,10 +32,16 @@ const ProductListItems = (props) => {
     setRows(test.totalRows)
     setList(test.rows)
 
+    if (test.rows.length === 0) {
+      setNoresult(false)
+    } else {
+      setNoresult(true)
+    }
     // 後端摟出的資料大於等於所有資料 按鈕就消失
     if (page >= test.totalRows) {
       setLoad(false)
     }
+    console.log(test.rows)
   }
 
   const product = list.map((v, i) => {
@@ -34,7 +51,6 @@ const ProductListItems = (props) => {
           <Link to={'/product/detail/' + v.pro_id}>
             <div
               onClick={() => {
-                console.log('img-wrap')
               }}
               className="img-wrap"
             >
@@ -92,24 +108,30 @@ const ProductListItems = (props) => {
     )
   })
 
-  if (product.length === 0) {
-    setNoresult(false)
-  } else {
-    setNoresult(true)
-  }
+ 
+  
 
   useEffect(() => {
     fetchList()
+    return ()=>{
+
+      setLocasort('')
+    }
   }, [])
 
   useEffect(() => {
+    console.log(page,search,locasort)
     fetchList()
-    console.log(locasort)
   }, [page, search, locasort])
+
   return (
     <>
       <div className="product-list">
-        {resultTitle ? <ProductTitle /> : <ResultTitle />}
+        {resultTitle || resultTitle2 || resultTitle3 ? (
+          <ResultTitle />
+        ) : (
+          <ProductTitle />
+        )}
 
         <div className="product-container">
           {/* 商品 */}

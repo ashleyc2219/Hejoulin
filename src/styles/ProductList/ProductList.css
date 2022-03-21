@@ -891,4 +891,9 @@
   bottom: 0;
   transform: translateY(50%);
 }
+
+.noresult {
+  border: 1px soid red;
+  animation: ani2 1s forwards;
+}
 /*# sourceMappingURL=ProductList.css.map */

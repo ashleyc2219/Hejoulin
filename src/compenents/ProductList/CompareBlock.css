@@ -73,6 +73,7 @@
   top: 180px;
   right: 25px;
   z-index: 9;
+  transition: all 0.3s;
 }
 
 @media (max-width: 1024px) {
@@ -136,5 +137,9 @@
   position: absolute;
   bottom: 0;
   transform: translateY(50%);
+}
+
+.ProductList .up {
+  top: -190px;
 }
 /*# sourceMappingURL=CompareBlock.css.map */
