@@ -4,7 +4,11 @@ import '../../styles/Member/Member-ProfileBox/ProfileBox.scss'
 
 const ProfileBox = () => {
   const birthOption = (items) =>
-    items.map((item, i) => <option value={item.itemName} key={i}>{item.itemName}</option>)
+    items.map((item, i) => (
+      <option value={item.itemName} key={i}>
+        {item.itemName}
+      </option>
+    ))
   return (
     <>
       <div className="ProfileBox">
@@ -34,15 +38,35 @@ const ProfileBox = () => {
           <div className="form-text">錯誤/提示訊息</div>
         </div>
         <br />
-        <div className="mb-3 ProfileBox-Item">
-          <label className="form-label">生日</label>
-          <br />
-          <select className="decorated" required>
-            <option value="" disabled selected hidden>
-              月
-            </option>
-            {birthOption(ProfileItem)}
-          </select>
+        <div className="mb-3 ProfileBox-Item ProfileBox-Item-Last">
+        {/* 這裡我多包了一層div 提示訊息拉到外面 改成項figma那樣 */}
+          <div className="birthday">
+            <label className="form-label">生日</label>
+            <select className="decorated" required>
+              <option value="" disabled selected hidden>
+                月
+              </option>
+              {birthOption(ProfileItem)}
+            </select>
+          </div>
+          <div className="birthday">
+            <label className="form-label">生日</label>
+            <select className="decorated" required>
+              <option value="" disabled selected hidden>
+                月
+              </option>
+              {birthOption(ProfileItem)}
+            </select>
+          </div>
+          <div className="birthday">
+            <label className="form-label">生日</label>
+            <select className="decorated" required>
+              <option value="" disabled selected hidden>
+                月
+              </option>
+              {birthOption(ProfileItem)}
+            </select>
+          </div>
           {/*<select className="decorated" name="drinks" required>*/}
           {/*  <option value="" disabled selected hidden>*/}
           {/*    年*/}
@@ -51,8 +75,8 @@ const ProfileBox = () => {
           {/*  <option value="tea">Tea</option>*/}
           {/*  <option value="milk">Milk</option>*/}
           {/*</select>*/}
-          <div className="form-text">錯誤/提示訊息</div>
         </div>
+          <div className="form-text">錯誤/提示訊息</div>
         <br />
         <button className="btn btn-primary profile-btn">確認修改資料</button>
       </div>

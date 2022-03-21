@@ -1,16 +1,22 @@
-@import "../../mixin.scss";
+@import '../../mixin.scss';
 
 .CardBox {
   padding-top: 2.5%;
   padding-left: 4.5%;
   display: flex;
+  //justify-content: center;
+  @include medium() {
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .CardImg {
     margin-top: 9%;
   }
 
   .CardBox-Item-date {
-    margin-left: .8%;
+    margin-left: 0.8%;
 
     .card-validity {
       width: 112px;
@@ -18,21 +24,55 @@
 
     .safety-code {
       width: 98px;
-      margin-left: 9.5%;
+      //margin-left: 9.5%;
+    }
+    div {
+      &:last-child {
+        margin-left: 10px;
+      }
     }
   }
 
   .CardBox-Items {
     margin-left: 7%;
+    @include medium() {
+      margin: 0;
+      width: 335px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
 
     .CardBox-Item {
-
       .card-number {
         width: 221px;
+        @include medium() {
+          width: 95%;
+        }
       }
 
       .owner-name {
         width: 221px;
+      }
+    }
+    .CardBox-Item-date {
+      @include medium() {
+        div {
+          margin-right: 19px;
+          &:first-child input {
+            width: 139px;
+          }
+          &:last-child input {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    .CardBox-Item {
+      .owner-name {
+        @include medium() {
+          width: 95%;
+        }
       }
     }
   }
