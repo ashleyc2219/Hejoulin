@@ -69,24 +69,24 @@
           @include medium() {
             font-family: 'Noto Sans TC', serif;
           }
-          .title_bottom {
-            padding-bottom: 25px;
-            border-bottom: 1px solid $gray-200;
-          }
-          .mark_content {
-            font-size: 16px;
-            line-height: 32px;
-            color: $gray-300;
-            margin-top: 30px;
-          }
-          .edit {
-            position: absolute;
-            right: 60px;
-            bottom: 50px;
-            @include medium() {
-              right: 25px;
-              bottom: 25px;
-            }
+        }
+        .title_bottom {
+          padding-bottom: 25px;
+          border-bottom: 1px solid $gray-200;
+        }
+        .mark_content {
+          font-size: 16px;
+          line-height: 32px;
+          color: $gray-300;
+          margin-top: 30px;
+        }
+        .edit {
+          position: absolute;
+          right: 60px;
+          bottom: 50px;
+          @include medium() {
+            right: 25px;
+            bottom: 25px;
           }
         }
       }
