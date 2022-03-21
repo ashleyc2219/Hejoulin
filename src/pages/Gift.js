@@ -4,9 +4,10 @@ import './../styles/Gift/Gift.scss'
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
 // import ImgCard from '../compenents/Gift/ImgCard'
-// import Stepbar from '../compenents/Gift/StepBar'
+import StepBar from '../compenents/Gift/StepBar'
 
 const Gift = () => {
+  const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
   return (
     <div className="Gift">
       <div className="gift_container">
@@ -22,8 +23,7 @@ const Gift = () => {
         {/*內容*/}
 
         <div className="all">
-          {/* <Stepbar /> */}
-          <div className="stepbar"></div>
+          <StepBar content={stepContent} />
           <main>
             <section id="gift_kind">
               <div className="gift_kind">

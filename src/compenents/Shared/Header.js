@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginContext'
-import {useLocation} from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 
 const Header = (props) => {
   const { user, setUser } = props
@@ -10,16 +10,16 @@ const Header = (props) => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
-  const location  = useLocation()
+  const location = useLocation()
 
   //console.log(location)
-  useEffect(()=>{
-    if(!location.state) return
+  useEffect(() => {
+    if (!location.state) return
 
-    if(location.state.from==='login-success' && sidebar){
+    if (location.state.from === 'login-success' && sidebar) {
       setSidebar(false)
     }
-  },[location.state])
+  }, [location.state])
 
   const showSidebar = () => setSidebar(!sidebar)
   const setmobilemenu = () => {
