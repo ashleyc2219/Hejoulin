@@ -3,7 +3,11 @@ import '../styles/CartOrder/CartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableItem from '../compenents/Cart/OrderTableItem'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { useEffect } from 'react'
 const CartOrder = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
     <div className="CartOrder">

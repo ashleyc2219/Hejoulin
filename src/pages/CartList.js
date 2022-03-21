@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 
 const CartList = () => {
-  const stepContent = ['購物車', '填寫資訊', '訂單成立'];
+  const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
     <>
       <div className="CartList">
-        <div className="container">
-          <ProgressBar step="one" content={stepContent}/>
+        <div className="CartList-container">
+          <ProgressBar step="one" content={stepContent} />
           <div className="cart-list">
             <div className="table-head sake-table-head">
               <span className="title-del">刪除</span>
@@ -28,11 +28,17 @@ const CartList = () => {
               </div>
               <div className="item item-product-info">
                 <h5>篠峯 雄町純米大吟釀</h5>
-                <p>720</p>
-                <p>1880</p>
+                <p className="ml">720</p>
+                <p className="price">1880</p>
                 <Link to="/gift" className="true">
                   製作禮盒
                 </Link>
+                <div className="quantity-container">
+                  <img src="/CartList/plus-circle.svg" alt="" />
+                  <p>1</p>
+                  <img src="/CartList/minus-circle.svg" alt="" />
+                  <img className="trash" src="/CartList/trash.png" alt="" />
+                </div>
               </div>
               <div className="item item-mark">
                 <img src="/CartList/fakeMark.png" alt="" />
@@ -66,8 +72,14 @@ const CartList = () => {
               </div>
               <div className="item item-gift-detail">
                 <h5>篠峯 雄町純米大吟釀</h5>
-                <p>720</p>
+                <p className='ml'>720</p>
                 <h5>津輕金箔玻璃清酒杯</h5>
+                <div className="quantity-container">
+                  <img src="/CartList/plus-circle.svg" alt="" />
+                  <p>1</p>
+                  <img src="/CartList/minus-circle.svg" alt="" />
+                  <img className="trash" src="/CartList/trash.png" alt="" />
+                </div>
               </div>
               <div className="item item-color">
                 <p>黑色</p>
@@ -145,8 +157,12 @@ const CartList = () => {
                 </div>
               </div>
               <div className="buttons">
-                <button className="btn btn-primary">繼續購物</button>
-                <button className="btn btn-secondary">結帳</button>
+                <Link to="/product/list">
+                  <button className="btn btn-primary">繼續購物</button>
+                </Link>
+                <Link to="/cart/info">
+                  <button className="btn btn-secondary">結帳</button>
+                </Link>
               </div>
             </div>
           </div>

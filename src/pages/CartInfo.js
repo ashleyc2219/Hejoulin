@@ -2,9 +2,15 @@ import React from 'react'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
 import InfoTableItem from '../compenents/Cart/InfoTableItem'
+import { useEffect } from 'react'
+import {Link} from 'react-router-dom'
 
 const CartInfo = () => {
-  const stepContent = ['購物車', '填寫資訊', '訂單成立'];
+  const stepContent = ['購物車', '填寫資訊', '訂單成立']
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="CartInfo">
       <ProgressBar step="two" content={stepContent} />
@@ -193,8 +199,8 @@ const CartInfo = () => {
             </div>
           </div>
           <div className="buttons">
-            <button className="btn btn-primary">上一步</button>
-            <button className="btn btn-secondary">確認付款</button>
+            <Link to='/cart/list'><button className="btn btn-primary">上一步</button></Link>
+            <Link to='/cart/order'><button className="btn btn-secondary">確認付款</button></Link>
           </div>
         </div>
       </div>
