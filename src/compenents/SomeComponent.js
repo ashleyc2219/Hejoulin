@@ -54,32 +54,32 @@ const SomeComponent = () => {
       <h3>checkbox</h3>
       <div>
         <input type="checkbox" id="c1" name="cc" />
-        <label for="c1">
+        <label htmlFor="c1">
           <span></span>Check Box 1
         </label>
       </div>
       <div>
         <input type="checkbox" id="c2" name="cc" />
-        <label for="c2">
+        <label htmlFor="c2">
           <span></span>Check Box 2
         </label>
       </div>
       <div>
         <input type="checkbox" id="c3" name="cc" />
-        <label for="c3">
+        <label htmlFor="c3">
           <span></span>Check Box 3
         </label>
       </div>
       {/* radio */}
       <div>
         <input type="radio" id="r1" name="rr" />
-        <label for="r1">
+        <label htmlFor="r1">
           <span></span>Radio Button 1
         </label>
       </div>
       <div>
         <input type="radio" id="r2" name="rr" />
-        <label for="r2">
+        <label htmlFor="r2">
           <span></span>Radio Button 2
         </label>
       </div>
@@ -87,7 +87,7 @@ const SomeComponent = () => {
       {/* 下拉選單 */}
       <h3>下拉選單</h3>
       <select className="decorated" name="drinks" required>
-        <option value="" disabled selected hidden>
+        <option defaultValue="" disabled hidden>
           Choose a drink
         </option>
         <option value="coffee">Coffee</option>
