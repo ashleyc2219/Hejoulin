@@ -15,7 +15,7 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 
-const ProductList = () => {
+const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
   const [title, setTitle] = useState(false) // 設定人氣跟達人推薦出現或消失
@@ -37,6 +37,12 @@ const ProductList = () => {
   const locavalue = useRef(null)
   const brandvalue = useRef(null)
   const searchvalue = useRef(null)
+
+  const [level, setLevel] = useState('')
+  const [price, setPrice] = useState('')
+  const [mark, setMark] = useState('')
+
+ 
 
   // 按下載入更多會觸發的spinner
   const spinner = () => {
@@ -240,7 +246,6 @@ const ProductList = () => {
     fetchLoca()
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
-
   }, [])
   const handleScroll = () => {
     if (
@@ -254,7 +259,7 @@ const ProductList = () => {
   }
   return (
     <>
-     {/*  <CompareModal /> */}
+      {/*  <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
@@ -264,7 +269,14 @@ const ProductList = () => {
           <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
-          <Sidebar />
+          <Sidebar
+            level={level}
+            setLevel={setLevel}
+            price={price}
+            setPrice={setPrice}
+            mark={mark}
+            setMark={setMark}
+          />
 
           <div className="main">
             <div className="center-container">
@@ -281,6 +293,7 @@ const ProductList = () => {
                     name="brand"
                     id=""
                     onChange={brandhandler}
+                    defaultValue={''}
                   >
                     <option value="">品牌</option>
                     {brandData}
@@ -354,6 +367,7 @@ const ProductList = () => {
                   brandsort={brandsort}
                   sort={sort}
                   setLocasort={setLocasort}
+                  level={level}
                 />
               ) : (
                 ''
