@@ -1,0 +1,93 @@
+@import './../../styles/mixin.scss';
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(720deg);
+  }
+}
+
+.Guide {
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  z-index: 10;
+  @include medium() {
+    display: none;
+  }
+
+  .loca {
+    position: absolute;
+    right: -70vw;
+
+    .arround {
+      display: flex;
+      p {
+        @include kleeone();
+        color: $gray-300;
+        font-size: 23px;
+        line-height: 33px;
+        position: absolute;
+      }
+      .first {
+        top: 15px;
+        right: 95px;
+      }
+      .sen {
+        top: 0;
+        right: 65px;
+      }
+      .thr {
+        right: 35px;
+      }
+      .four {
+        top: 15px;
+        right: 5px;
+      }
+      .trian {
+        position: absolute;
+        top: 55px;
+        right: -10px;
+      }
+    }
+    .round {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid $primary;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: url('../../../public/Sake-background0310.jpg');
+
+      .sake {
+        animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.75s
+          infinite normal none;
+      }
+    }
+  }
+}

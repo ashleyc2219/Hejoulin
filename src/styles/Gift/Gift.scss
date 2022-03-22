@@ -129,9 +129,11 @@
             align-items: center;
             position: relative;
             cursor: pointer;
+            
             &:hover {
               transform: translateY(-40px);
               transition: 0.5s;
+              z-index: 5;
             }
 
             img {

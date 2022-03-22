@@ -24,7 +24,7 @@ const LoginContext = (props) => {
     localStorage.setItem('token', obj.token)
     localStorage.setItem('account', obj.info.user_account)
     setUser(obj.info.user_account)
-    history.push('/', { from: 'login-success' })
+    history.push('/member/profile', { from: 'login-success' })
     const token = localStorage.getItem('token')
 
     const r2 = await fetch('http://wilson:3001/user/api/auth-list', {
@@ -32,9 +32,9 @@ const LoginContext = (props) => {
         authorization: `Bearer ${token}`,
       },
     })
-    // const info2 = await r2.json()
-    // console.log({info2})
-    // setUser(info2.obj)
+    const info2 = await r2.json()
+    console.log({ info2 })
+    setUser(info2.obj)
 
     // const
     //   .then((res) => res.json())

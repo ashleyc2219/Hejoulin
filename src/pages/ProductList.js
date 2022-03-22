@@ -15,7 +15,9 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 
-const ProductList = (props) => {
+import GuideButton from '../compenents/SakeGuide/Guide'
+
+const ProductList = () => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
   const [title, setTitle] = useState(false) // 設定人氣跟達人推薦出現或消失
@@ -263,20 +265,15 @@ const ProductList = (props) => {
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
+      
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
           <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
-          <Sidebar
-            level={level}
-            setLevel={setLevel}
-            price={price}
-            setPrice={setPrice}
-            mark={mark}
-            setMark={setMark}
-          />
+          <Sidebar />
+          <GuideButton />
 
           <div className="main">
             <div className="center-container">

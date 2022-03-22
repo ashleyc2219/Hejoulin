@@ -5,11 +5,6 @@ import MarkModal from '../compenents/Member/MarkModal'
 import MarkData from '../compenents/Member/MarkData'
 
 const MemberMark = () => {
-  const [modalShow, setModalShow] = useState(false)
-
-  const openModal = () => {
-    setModalShow((prev) => !prev)
-  }
   return (
     <>
       <div className="MemberMark">
