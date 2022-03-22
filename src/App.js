@@ -42,7 +42,6 @@ import { createContext, useState } from 'react'
 function App() {
   const AuthContext = createContext(null)
   const [user, setUser] = useState(false)
-  const [level , setLevel] = useState('')
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -59,10 +58,10 @@ function App() {
             <Route exact path="/sake-intro">
               <SakeIntro />
             </Route>
-            <Route exact level={level} setLevel={setLevel} path="/product/detail/:id">
+            <Route exact path="/product/detail/:id">
               <ProductDetail />
             </Route>
-            <Route exact level={level} setLevel={setLevel} path="/product/list">
+            <Route exact path="/product/list">
               <ProductList />
             </Route>
             <Route exact path="/sake-guide">

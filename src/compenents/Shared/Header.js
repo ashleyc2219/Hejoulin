@@ -48,7 +48,7 @@ const Header = (props) => {
                 <Link to="/sake-intro">認識清酒</Link>
               </li>
               <li className="purchase-sake">
-                <Link >購買清酒</Link>
+                <a href="#/">購買清酒</a>
                 <ul className="dropdown-content">
                   <li href="">
                     <Link to="/product/list">選購清酒</Link>

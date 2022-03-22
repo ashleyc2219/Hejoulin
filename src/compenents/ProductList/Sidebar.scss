@@ -65,8 +65,9 @@
           border-bottom: 1px solid $gray-300;
           width: fit-content;
           margin: 0;
+          transition: all 0.3s;
         }
-        .checked{
+        .checked {
           color: $black;
           border-color: $black;
         }
@@ -89,25 +90,20 @@
       .price {
         display: flex;
         flex-direction: column;
-        label {
+        p {
           @include kleeone();
-          position: relative;
           cursor: pointer;
-          p {
-            color: $gray-300;
-            font-size: 20px;
-            margin: 0;
-            margin-left: 30px;
-            margin-bottom: 15px;
-            transition: all 0.5s;
-            border-bottom: 1px solid $gray-300;
-          }
+          color: $gray-300;
+          font-size: 20px;
+          margin: 0;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          transition: all 0.5s;
+          border-bottom: 1px solid $gray-300;
         }
-        input {
-          display: none;
-        }
-        input:checked + label p {
+        .checked {
           color: $black;
+          border-color: $black;
         }
       }
     }
@@ -119,7 +115,7 @@
         @include kleeone();
       }
       .custum {
-        label {
+        p {
           @include kleeone();
           margin: 0 0 20px 30px;
           color: gray;
@@ -128,10 +124,7 @@
           transition: all 0.5s;
           cursor: pointer;
         }
-        input {
-          display: none;
-        }
-        input:checked + label {
+        .checked {
           color: $black;
         }
       }
@@ -196,7 +189,6 @@
           margin-bottom: 15px !important;
           position: relative;
           cursor: pointer;
-          pointer-events: none;
           transition: all 0.5s;
           @include kleeone();
           color: $gray-300;
@@ -204,6 +196,11 @@
           border-bottom: 1px solid $gray-300;
           width: fit-content;
           margin: 0;
+          transition: all 0.3s;
+        }
+        .checked {
+          color: $black;
+          border-color: $black;
         }
       }
     }
@@ -224,25 +221,20 @@
       .price {
         display: flex;
         flex-direction: column;
-        label {
+        p {
           @include kleeone();
-          position: relative;
           cursor: pointer;
-          p {
-            color: $gray-300;
-            font-size: 20px;
-            margin: 0;
-            margin-left: 30px;
-            margin-bottom: 15px;
-            transition: all 0.5s;
-            border-bottom: 1px solid $gray-300;
-          }
+          color: $gray-300;
+          font-size: 20px;
+          margin: 0;
+          margin-left: 30px;
+          margin-bottom: 15px;
+          transition: all 0.5s;
+          border-bottom: 1px solid $gray-300;
         }
-        input {
-          display: none;
-        }
-        input:checked + label p {
+        .checked {
           color: $black;
+          border-color: $black;
         }
       }
     }
@@ -254,7 +246,7 @@
         @include kleeone();
       }
       .custum {
-        label {
+        p {
           @include kleeone();
           margin: 0 0 20px 30px;
           color: gray;
@@ -263,10 +255,7 @@
           transition: all 0.5s;
           cursor: pointer;
         }
-        input {
-          display: none;
-        }
-        input:checked + label {
+        .checked {
           color: $black;
         }
       }

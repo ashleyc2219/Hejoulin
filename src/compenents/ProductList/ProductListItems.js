@@ -9,6 +9,7 @@ import ProductMaster from './ProductMaster'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
+
   const {
     page,
     search,
@@ -20,11 +21,14 @@ const ProductListItems = (props) => {
     locasort,
     brandsort,
     sort,
-    setLocasort
+    setLocasort,
+    level,
   } = props
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}`
+  console.log(level)
 
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}`
+  console.log(url)
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
@@ -41,7 +45,6 @@ const ProductListItems = (props) => {
     if (page >= test.totalRows) {
       setLoad(false)
     }
-    console.log(test.rows)
   }
 
   const product = list.map((v, i) => {
@@ -49,11 +52,7 @@ const ProductListItems = (props) => {
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
-            <div
-              onClick={() => {
-              }}
-              className="img-wrap"
-            >
+            <div onClick={() => {}} className="img-wrap">
               <img
                 className="product-img"
                 src={'/ProductList/productimg/' + v.pro_img}
@@ -108,21 +107,23 @@ const ProductListItems = (props) => {
     )
   })
 
- 
-  
-
   useEffect(() => {
     fetchList()
-    return ()=>{
-
-      setLocasort('')
-    }
   }, [])
 
   useEffect(() => {
-    console.log(page,search,locasort)
-    fetchList()
-  }, [page, search, locasort])
+    (async () => {
+      await fetchList()
+      await clear()
+    })()
+  }, [page, search, locasort, level])
+
+  const clear = () => {
+    console.log('clear')
+    return () => {
+      setLocasort('')
+    }
+  }
 
   return (
     <>
