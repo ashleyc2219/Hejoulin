@@ -29,10 +29,14 @@
   }
 }
 
+// .Guide 和 .loca都是為了解決位置的問題，在這2個地方改就可以了，記得順便看 mobile的版本
+// position: sticky 會因為父層用 overflow:hidden等問題不能用
+
 .Guide {
   position: sticky;
   top: 100px;
-  width: 100%;
+  width: fit-content;
+  height: 150px;
   z-index: 10;
   @include medium() {
     display: none;
@@ -40,7 +44,7 @@
 
   .loca {
     position: absolute;
-    right: -1150px;
+    right: -70vw;
 
     .arround {
       display: flex;
@@ -85,8 +89,10 @@
       background: url('../../../public/Sake-background0310.jpg');
 
       .sake {
-        animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.75s
-          infinite normal none;
+        &:hover {
+          animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s
+            infinite normal none;
+        }
       }
     }
   }
