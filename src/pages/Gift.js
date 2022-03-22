@@ -10,7 +10,6 @@ import StepBar from '../compenents/Gift/StepBar'
 const Gift = () => {
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
   return (
-<<<<<<< HEAD
     <>
       <div className="Gift">
         <div className="gift_container">
@@ -23,19 +22,6 @@ const Gift = () => {
           </div>
           <Sidebar />
           {/*內容*/}
-=======
-    <div className="Gift">
-      <div className="gift_container">
-        {/* background-patten */}
-        <div className="patten">
-          <img src="/Gift/bgelement.svg" alt="" className="bgelement01" />
-          <img src="/Gift/bgelement.svg" alt="" className="bgelement02" />
-          <img src="/Gift/bgelement.svg" alt="" className="bgelement03" />
-          <img src="/Gift/bgelement.svg" alt="" className="bgelement04" />
-        </div>
-        <Sidebar />
-        {/*內容*/}
->>>>>>> ed995d7ceab305a26fd87aa3b9ddf034220665c1
 
           <div className="all">
             <StepBar content={stepContent} />
