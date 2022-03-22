@@ -17,18 +17,21 @@ const ProductListItems = (props) => {
     resultTitle,
     resultTitle2,
     resultTitle3,
+    resultTitle4,
+    resultTitle5,
+    resultTitle6,
     setNoresult,
     locasort,
     brandsort,
     sort,
-    setLocasort,
     level,
+    price,
+    mark,
+    clear
   } = props
 
-  console.log(level)
-
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}`
-  console.log(url)
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
+console.log(url)
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
@@ -108,27 +111,24 @@ const ProductListItems = (props) => {
   })
 
   useEffect(() => {
-    fetchList()
+    //fetchList()
   }, [])
 
   useEffect(() => {
-    (async () => {
+    //clear()
+
+    ;(async () => {
       await fetchList()
       await clear()
     })()
-  }, [page, search, locasort, level])
+  }, [page, search, locasort, level, price, mark])
 
-  const clear = () => {
-    console.log('clear')
-    return () => {
-      setLocasort('')
-    }
-  }
+  
 
   return (
     <>
       <div className="product-list">
-        {resultTitle || resultTitle2 || resultTitle3 ? (
+        {resultTitle || resultTitle2 || resultTitle3 || resultTitle4|| resultTitle5|| resultTitle6 ? (
           <ResultTitle />
         ) : (
           <ProductTitle />

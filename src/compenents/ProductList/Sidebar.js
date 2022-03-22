@@ -4,7 +4,18 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './Sidebar.scss'
 
 function Sidebar(props) {
-  const { level, setLevel, price, setPrice, mark, setMark } = props
+  const {
+    level,
+    setLevel,
+    price,
+    setPrice,
+    sidebarToLoad,
+    levelToLoad,
+    priceToLoad,
+    markToLoad,
+    mark,
+    setMark,
+  } = props
 
   const history = useHistory()
   const linkTo = () => {
@@ -12,84 +23,119 @@ function Sidebar(props) {
   }
 
   const click1 = () => {
-    if (level === '1') {
-      setLevel('')
-    } else {
-      const a = '1'
-      setLevel(a)
+    try {
+      if (level === '1') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '1'
+        setLevel(a)
+        sidebarToLoad()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click2 = () => {
     if (level === '2') {
       setLevel('')
+      levelToLoad()
     } else {
       const a = '2'
       setLevel(a)
+      sidebarToLoad()
     }
   }
   const click3 = () => {
     if (level === '3') {
       setLevel('')
+      levelToLoad()
     } else {
       const a = '3'
       setLevel(a)
+      sidebarToLoad()
     }
   }
   const click4 = () => {
     if (level === '4') {
       setLevel('')
+      levelToLoad()
     } else {
       const a = '4'
       setLevel(a)
+      sidebarToLoad()
     }
   }
   const click5 = () => {
     if (level === '5') {
       setLevel('')
+      levelToLoad()
     } else {
       const a = '5'
       setLevel(a)
+      sidebarToLoad()
     }
   }
   const click6 = () => {
     if (level === '6') {
       setLevel('')
+      levelToLoad()
     } else {
       const a = '6'
       setLevel(a)
+      sidebarToLoad()
     }
   }
 
   const price1 = () => {
     if (price === '1') {
       setPrice('')
+      priceToLoad()
     } else {
       const a = '1'
       setPrice(a)
+      sidebarToLoad()
     }
   }
   const price2 = () => {
     if (price === '2') {
       setPrice('')
+      priceToLoad()
     } else {
       const a = '2'
       setPrice(a)
+      sidebarToLoad()
     }
   }
   const price3 = () => {
     if (price === '3') {
       setPrice('')
+      priceToLoad()
     } else {
       const a = '3'
       setPrice(a)
+      sidebarToLoad()
+    }
+  }
+  const price4 = () => {
+    if (price === '4') {
+      setPrice('')
+      priceToLoad()
+    } else {
+      const a = '4'
+      setPrice(a)
+      sidebarToLoad()
     }
   }
   const mark1 = () => {
     if (mark === '1') {
       setMark('')
+      markToLoad()
     } else {
       const a = '1'
+
       setMark(a)
+      sidebarToLoad()
     }
   }
   return (
@@ -135,13 +181,16 @@ function Sidebar(props) {
           <p>價格</p>
           <div className="price">
             <p className={price === '1' ? 'checked' : ''} onClick={price1}>
-              1000以下
+              $1000以下
             </p>
             <p className={price === '2' ? 'checked' : ''} onClick={price2}>
-              1000~2000
+              $1000~$2000
             </p>
             <p className={price === '3' ? 'checked' : ''} onClick={price3}>
-              2000~3000
+              $2000~$3000
+            </p>
+            <p className={price === '4' ? 'checked' : ''} onClick={price4}>
+              $3000以上
             </p>
           </div>
         </div>

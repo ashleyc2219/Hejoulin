@@ -29,6 +29,9 @@ const ProductList = () => {
   const [resultTitle, setResultTitle] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle2, setResultTitle2] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle3, setResultTitle3] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle4, setResultTitle4] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle5, setResultTitle5] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle6, setResultTitle6] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
   const [up, setUp] = useState(false)
 
@@ -42,9 +45,77 @@ const ProductList = () => {
 
   const [level, setLevel] = useState('')
   const [price, setPrice] = useState('')
-  const [mark, setMark] = useState('')
+  const [mark , setMark] = useState('')
 
- 
+
+  const clear = () => {
+    return () => {
+      setLocasort('')
+      setSearch('')
+      setBrandsort('')
+      setLevel('')
+      setPrice('')
+      setMark('')
+    }
+  }
+  const preToLoad = () => {
+    setProlist(false)
+    setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+  }
+
+  const sidebarToLoad = () => {
+    setProlist(false)
+    setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle4(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+
+  const levelToLoad = () => {
+    setProlist(false)
+    setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle4(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+
+  const priceToLoad = () => {
+    setProlist(false)
+    setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle5(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const markToLoad = () => {
+    setProlist(false)
+    setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle6(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
 
   // 按下載入更多會觸發的spinner
   const spinner = () => {
@@ -62,10 +133,13 @@ const ProductList = () => {
     if (e.key === 'Enter') {
       locavalue.current.value = ''
       brandvalue.current.value = ''
-      setProlist(false)
+      setLevel('')
+      setPrice('')
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setResultTitle(false)
       if (searchword.length > 0) {
         setSearch(searchword)
@@ -94,10 +168,11 @@ const ProductList = () => {
     searchvalue.current.value = ''
     setSearch('')
     if (loca === '') {
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
-      setProlist(false)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setResultTitle(false)
       setPerpage(18)
       setLocasort('')
@@ -109,14 +184,16 @@ const ProductList = () => {
       }, 1500)
     } else {
       //setNoresult(true)
-      ;(async function del() {
+      setLocasort(loca)
+      preToLoad()
+      setNoresult(true)
+      setResultTitle(false)
+      /* ;(async function del() {
         await setLocasort(loca)
-        await setProlist(false)
-        await setTitle(true)
-        await setSpinTop(true)
-        await setLoad(false)
+        await preToLoad()
+        await setNoresult(true)
         await setResultTitle(false)
-      })()
+      })() */
       setTimeout(() => {
         setSpinTop(false)
         setResultTitle(true)
@@ -130,10 +207,11 @@ const ProductList = () => {
     searchvalue.current.value = ''
     setSearch('')
     if (brand === '') {
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
-      setProlist(false)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setResultTitle2(false)
       setNoresult(true)
       setPerpage(18)
@@ -145,10 +223,11 @@ const ProductList = () => {
       }, 1500)
     } else {
       setBrandsort(brand)
-      setProlist(false)
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setResultTitle2(false)
       setTimeout(() => {
         setSpinTop(false)
@@ -162,10 +241,11 @@ const ProductList = () => {
     const sort = e.target.value
     if (sort === '1') {
       setResultTitle3(false)
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
-      setProlist(false)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setNoresult(true)
       setPerpage(18)
       setSort('')
@@ -177,10 +257,11 @@ const ProductList = () => {
       }, 1500)
     } else {
       setSort(sort)
-      setProlist(false)
+      preToLoad()
+      /* setProlist(false)
       setTitle(true)
       setSpinTop(true)
-      setLoad(false)
+      setLoad(false) */
       setResultTitle3(false)
       setPerpage(18)
       setTimeout(() => {
@@ -245,18 +326,29 @@ const ProductList = () => {
   }
   return (
     <>
-      {/*  <CompareModal /> */}
+       {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
-      
+
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
           <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
-          <Sidebar />
+          <Sidebar
+            level={level}
+            setLevel={setLevel}
+            sidebarToLoad={sidebarToLoad}
+            levelToLoad={levelToLoad}
+            price={price}
+            setPrice={setPrice}
+            priceToLoad={priceToLoad}
+            markToLoad={markToLoad}
+            mark={mark}
+            setMark={setMark}
+          />
           <GuideButton />
 
           <div className="main">
@@ -343,12 +435,17 @@ const ProductList = () => {
                   resultTitle={resultTitle}
                   resultTitle2={resultTitle2}
                   resultTitle3={resultTitle3}
+                  resultTitle4={resultTitle4}
+                  resultTitle5={resultTitle5}
+                  resultTitle6={resultTitle6}
                   setNoresult={setNoresult}
                   locasort={locasort}
                   brandsort={brandsort}
                   sort={sort}
-                  setLocasort={setLocasort}
                   level={level}
+                  price={price}
+                  mark={mark}
+                  clear={clear}
                 />
               ) : (
                 ''
