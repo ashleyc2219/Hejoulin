@@ -15,6 +15,8 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 
+import GuideButton from '../compenents/SakeGuide/Guide'
+
 const ProductList = () => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
@@ -37,6 +39,12 @@ const ProductList = () => {
   const locavalue = useRef(null)
   const brandvalue = useRef(null)
   const searchvalue = useRef(null)
+
+  const [level, setLevel] = useState('')
+  const [price, setPrice] = useState('')
+  const [mark, setMark] = useState('')
+
+ 
 
   // 按下載入更多會觸發的spinner
   const spinner = () => {
@@ -69,21 +77,13 @@ const ProductList = () => {
           setProlist(true)
         }, 1000)
       } else if (searchword.length <= 0) {
-        //setProlist(false)
         setSearch('')
-        //setTitle(true)
-        //setSpinTop(true)
-        //setLoad(false)
-        //setResultTitle(false)
         setNoresult(true)
         setPerpage(18)
         setTimeout(() => {
-          //const searchword = e.target.value
           setLoad(true)
-          //setTitle(false)
           setProlist(true)
           setSpinTop(false)
-          //setSearch(searchword)
         }, 1500)
       }
     }
@@ -104,7 +104,6 @@ const ProductList = () => {
       setNoresult(true)
       setTimeout(() => {
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
       }, 1500)
@@ -118,12 +117,6 @@ const ProductList = () => {
         await setLoad(false)
         await setResultTitle(false)
       })()
-      /* setLocasort(loca)
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle(false) */
       setTimeout(() => {
         setSpinTop(false)
         setResultTitle(true)
@@ -147,7 +140,6 @@ const ProductList = () => {
       setBrandsort('')
       setTimeout(() => {
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
       }, 1500)
@@ -240,7 +232,6 @@ const ProductList = () => {
     fetchLoca()
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
-
   }, [])
   const handleScroll = () => {
     if (
@@ -254,10 +245,11 @@ const ProductList = () => {
   }
   return (
     <>
-     {/*  <CompareModal /> */}
+      {/*  <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
+      
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
@@ -265,6 +257,7 @@ const ProductList = () => {
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
           <Sidebar />
+          <GuideButton />
 
           <div className="main">
             <div className="center-container">
@@ -281,6 +274,7 @@ const ProductList = () => {
                     name="brand"
                     id=""
                     onChange={brandhandler}
+                    defaultValue={''}
                   >
                     <option value="">品牌</option>
                     {brandData}
@@ -354,6 +348,7 @@ const ProductList = () => {
                   brandsort={brandsort}
                   sort={sort}
                   setLocasort={setLocasort}
+                  level={level}
                 />
               ) : (
                 ''

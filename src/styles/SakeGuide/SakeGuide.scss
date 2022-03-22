@@ -21,12 +21,22 @@
   }
 }
 
+@keyframes move{
+  0%{
+    margin-left: 0px;
+  }
+  100%{
+    margin-left: -1550px;
+  }
+}
+
 * {
   // outline: 1px solid $secondary;
 }
 
 .SakeGuide {
   max-width: 100%;
+  overflow: hidden;
   position: relative;
   padding-bottom: 300px;
   @include medium() {
@@ -37,6 +47,7 @@
     padding-top: 40px;
     max-width: 1200px;
     margin: 0 auto;
+    height: 95vh;
 
     .main {
       width: 100%;
@@ -106,7 +117,199 @@
         }
       }
     }
+    
+    .price{
+      @mixin track() {
+        background: none;
+        height: 100%;
+        width: 100%;
+      }
+      
+      @mixin thumb($w: 20px, $h: $w) {
+        background-color: #fff;
+        border: none; /* get rid of Firefox thumb border */
+        border-radius: 5px;
+        pointer-events: auto; /* catch clicks */
+        width: $w;
+        height: $h;
+      
+        -webkit-appearance: none;
+      
+        &:hover {
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        }
+      
+        &:active {
+          outline: 2px solid #83b3d3;
+          box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.4);
+        }
+      }
+      
+      .filter-headline {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.3;
+      }
+      
+      .cost {
+        width: 288px;
+        display: grid;
+        gap: 20px;
+        &__inputs {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 23px 0 0;
+          font-size: 18px;
+          line-height: 1.28;
+          text-transform: uppercase;
+          color: transparentize(#fff, 0.7);
+          position: relative;
+        }
+      
+        &__label {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: baseline;
+          padding-right: 16px;
+          border: 2px solid #ffffff;
+          // box-sizing: border-box;
+      
+          &:focus-within {
+            box-shadow: 0px 0px 0px 3px #81b3d2, inset 0px 0px 0px 3px #81b3d2;
+          }
+      
+          &:not(:focus-within):hover {
+            border-color: transparentize(#fff, 0.4);
+          }
+      
+          &:active {
+            background-color: crimson;
+          }
+      
+          &:first-child {
+            border-radius: 4px 0 0 4px;
+            border-right-width: 0;
+            margin-right: 2px;
+      
+            &:hover {
+              border-right-width: 2px;
+              margin-right: 0;
+            }
+          }
+          &:hover + &:not(:focus-within) {
+            border-left: 0;
+            margin-left: 0;
+          }
+          &:last-child {
+            position: relative;
+            z-index: 1;
+            margin-left: -2px;
+            border-radius: 0 4px 4px 0;
+          }
+        }
+      
+        &__input {
+          all: unset;
+          color: #fff;
+          order: -1;
+          padding: 11px 0 11px 18px;
+          width: 65px;
+          outline: none;
+        }
+      }
+      
+      .range-slider {
+        margin: 0;
+        width: 100%;
+        background: {
+          image: linear-gradient(
+            to right,
+            transparentize(#fff, 0.7) var(--first-val),
+            #fff var(--first-val),
+            #fff var(--second-val),
+            transparentize(#fff, 0.7) var(--second-val)
+          );
+          size: 100% 4px;
+          repeat: no-repeat;
+          position: center;
+        }
+        display: flex;
+        position: relative;
+        z-index: 1;
+        height: 20px;
+        &__input {
+          cursor: grab;
+          width: 100%;
+          height: 100%;
+          -webkit-appearance: none;
+          background-color: transparent;
+      
+          &::-webkit-slider-runnable-track {
+            @include track;
+          }
+          &::-moz-range-track {
+            @include track;
+          }
+      
+          &::-webkit-slider-thumb {
+            @include thumb;
+          }
+          &::-moz-range-thumb {
+            @include thumb;
+          }
+          &:last-of-type {
+            position: absolute;
+          }
+      
+          &:focus {
+            outline: none;
+          }
+      
+          &:focus {
+            &::-webkit-slider-thumb {
+              outline: 3px solid #83b3d3;
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+            }
+            &::-moz-range-thumb {
+              outline: 3px solid #83b3d3;
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+            }
+          }
+      
+          &:not(:only-of-type) {
+            pointer-events: none;
+            right: 0;
+          }
+        }
+      }
+      
+    }
+  .wave{
+    position: absolute;
+    // z-index: 0;
+    overflow: hidden;
+    // bottom: 20vh;
+    height: 198px;
+    .upper{
+      background: url(../../../public/SakeGuide/bg.svg) repeat-x;
+      top: 0;
+      width: 6200px;
+      height: 198px;
+      animation: move 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) 0s infinite normal none running;
+      transform: translate3d(0px, 0px ,0px);
+      
+    }
+
+    .down{
+      width: 100vw;
+      height: 2000px;
+      background-color: #ceb48d70;
+      // position: inherit;
+      bottom: 0px;
+    }
   }
+  }
+
 
   #result {
     display: flex;

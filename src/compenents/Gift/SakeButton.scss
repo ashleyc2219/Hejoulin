@@ -1,0 +1,61 @@
+@import './../../styles/mixin.scss';
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.SakeButton {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  margin: 10px auto;
+  position: relative;
+
+  .one,
+  .full,
+  .cancel {
+    display: none;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .sake {
+      height: 41px;
+      width: 18px;
+    }
+    .single{
+        margin-right: 10px;
+    }
+    .dou{
+        margin-right: 3px;
+    }
+    span{
+        margin-left: 5px;
+    }
+  }
+  .cancel{
+      position: absolute;
+      top:8px;
+      right: 16px;
+  }
+}

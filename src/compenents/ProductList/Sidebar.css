@@ -219,7 +219,6 @@
   margin-bottom: 15px !important;
   position: relative;
   cursor: pointer;
-  pointer-events: none;
   transition: all 0.5s;
   font-family: "Klee One", cursive;
   color: #7e8082;
@@ -227,6 +226,11 @@
   border-bottom: 1px solid #7e8082;
   width: fit-content;
   margin: 0;
+}
+
+.ProductDetail .sidebar .second .level .checked {
+  color: #202326;
+  border-color: #202326;
 }
 
 .ProductDetail .sidebar .third a {

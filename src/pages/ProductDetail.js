@@ -7,11 +7,15 @@ import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 
-const ProductDetail = () => {
+const ProductDetail = (props) => {
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
+
+
+  const { level, setLevel } = props
+
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
   }
