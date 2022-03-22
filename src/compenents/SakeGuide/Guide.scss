@@ -87,9 +87,8 @@
       align-items: center;
       cursor: pointer;
       background: url('../../../public/Sake-background0310.jpg');
-
-      .sake {
-        &:hover {
+      &:hover {
+        .sake {
           animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s
             infinite normal none;
         }
