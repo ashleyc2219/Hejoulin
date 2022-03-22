@@ -15,6 +15,8 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 
+import GuideButton from '../compenents/SakeGuide/Guide'
+
 const ProductList = () => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
@@ -258,6 +260,7 @@ const ProductList = () => {
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
+      
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
@@ -265,6 +268,7 @@ const ProductList = () => {
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
           <Sidebar />
+          <GuideButton />
 
           <div className="main">
             <div className="center-container">
