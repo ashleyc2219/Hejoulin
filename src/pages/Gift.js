@@ -5,6 +5,8 @@ import './../styles/Gift/Gift.scss'
 import Sidebar from '../compenents/Gift/Sidebar'
 // import ImgCard from '../compenents/Gift/ImgCard'
 import StepBar from '../compenents/Gift/StepBar'
+// import SakeButton from '../compenents/Gift/SakeButton'
+import GuideButton from '../compenents/SakeGuide/Guide'
 
 const Gift = () => {
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
@@ -19,7 +21,7 @@ const Gift = () => {
           <img src="/Gift/bgelement.svg" alt="" className="bgelement04" />
         </div>
         <Sidebar />
-
+        <GuideButton />
         {/*內容*/}
 
         <div className="all">
@@ -56,8 +58,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
                 <div className="gift_sake">
                   <div className="col sake_card">
@@ -66,8 +67,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
                 <div className="gift_sake">
                   <div className="col sake_card">
@@ -76,8 +76,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
                 <div className="gift_sake">
                   <div className="col sake_card">
@@ -86,8 +85,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
                 <div className="gift_sake">
                   <div className="col sake_card">
@@ -96,8 +94,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
                 <div className="gift_sake">
                   <div className="col sake_card">
@@ -106,8 +103,7 @@ const Gift = () => {
                     <span className="name">水芭蕉　鼠年限定</span>
                     <small>$2890</small>
                   </div>
-                  <button className="btn">點擊小酒瓶選擇商品</button>
-                  {/* <BUTTON/> */}
+                  {/* <SakeButton /> */}
                 </div>
               </div>
             </section>
