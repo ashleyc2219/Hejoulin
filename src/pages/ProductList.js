@@ -77,21 +77,13 @@ const ProductList = () => {
           setProlist(true)
         }, 1000)
       } else if (searchword.length <= 0) {
-        //setProlist(false)
         setSearch('')
-        //setTitle(true)
-        //setSpinTop(true)
-        //setLoad(false)
-        //setResultTitle(false)
         setNoresult(true)
         setPerpage(18)
         setTimeout(() => {
-          //const searchword = e.target.value
           setLoad(true)
-          //setTitle(false)
           setProlist(true)
           setSpinTop(false)
-          //setSearch(searchword)
         }, 1500)
       }
     }
@@ -112,7 +104,6 @@ const ProductList = () => {
       setNoresult(true)
       setTimeout(() => {
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
       }, 1500)
@@ -126,12 +117,6 @@ const ProductList = () => {
         await setLoad(false)
         await setResultTitle(false)
       })()
-      /* setLocasort(loca)
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle(false) */
       setTimeout(() => {
         setSpinTop(false)
         setResultTitle(true)
@@ -155,7 +140,6 @@ const ProductList = () => {
       setBrandsort('')
       setTimeout(() => {
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
       }, 1500)
