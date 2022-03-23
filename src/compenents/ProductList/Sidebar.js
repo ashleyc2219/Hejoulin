@@ -4,7 +4,21 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './Sidebar.scss'
 
 function Sidebar(props) {
-  const { level, setLevel, price, setPrice, mark, setMark } = props
+  const {
+    level,
+    setLevel,
+    price,
+    setPrice,
+    sidebarToLoad1,
+    sidebarToLoad2,
+    sidebarToLoad3,
+    levelToLoad,
+    priceToLoad,
+    markToLoad,
+    mark,
+    setMark,
+    reset,
+  } = props
 
   const history = useHistory()
   const linkTo = () => {
@@ -12,84 +26,159 @@ function Sidebar(props) {
   }
 
   const click1 = () => {
-    if (level === '1') {
-      setLevel('')
-    } else {
-      const a = '1'
-      setLevel(a)
+    try {
+      if (level === '1') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '1'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click2 = () => {
-    if (level === '2') {
-      setLevel('')
-    } else {
-      const a = '2'
-      setLevel(a)
+    try {
+      if (level === '2') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '2'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click3 = () => {
-    if (level === '3') {
-      setLevel('')
-    } else {
-      const a = '3'
-      setLevel(a)
+    try {
+      if (level === '3') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '3'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click4 = () => {
-    if (level === '4') {
-      setLevel('')
-    } else {
-      const a = '4'
-      setLevel(a)
+    try {
+      if (level === '4') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '4'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click5 = () => {
-    if (level === '5') {
-      setLevel('')
-    } else {
-      const a = '5'
-      setLevel(a)
+    try {
+      if (level === '5') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '5'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click6 = () => {
-    if (level === '6') {
-      setLevel('')
-    } else {
-      const a = '6'
-      setLevel(a)
+    try {
+      if (level === '6') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '6'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
 
   const price1 = () => {
-    if (price === '1') {
-      setPrice('')
-    } else {
-      const a = '1'
-      setPrice(a)
+    try {
+      if (price === '1') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '1'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const price2 = () => {
-    if (price === '2') {
-      setPrice('')
-    } else {
-      const a = '2'
-      setPrice(a)
+    try {
+      if (price === '2') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '2'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const price3 = () => {
-    if (price === '3') {
-      setPrice('')
-    } else {
-      const a = '3'
-      setPrice(a)
+    try {
+      if (price === '3') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '3'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
+    }
+  }
+  const price4 = () => {
+    try {
+      if (price === '4') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '4'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const mark1 = () => {
-    if (mark === '1') {
-      setMark('')
-    } else {
-      const a = '1'
-      setMark(a)
+    try {
+      if (mark === '1') {
+        setMark('')
+        markToLoad()
+      } else {
+        const a = '1'
+
+        setMark(a)
+        sidebarToLoad3()
+      }
+    } catch {
+      linkTo()
     }
   }
   return (
@@ -135,13 +224,16 @@ function Sidebar(props) {
           <p>價格</p>
           <div className="price">
             <p className={price === '1' ? 'checked' : ''} onClick={price1}>
-              1000以下
+              $1000以下
             </p>
             <p className={price === '2' ? 'checked' : ''} onClick={price2}>
-              1000~2000
+              $1000~$2000
             </p>
             <p className={price === '3' ? 'checked' : ''} onClick={price3}>
-              2000~3000
+              $2000~$3000
+            </p>
+            <p className={price === '4' ? 'checked' : ''} onClick={price4}>
+              $3000以上
             </p>
           </div>
         </div>
@@ -151,6 +243,7 @@ function Sidebar(props) {
             <p className={mark === '1' ? 'checked' : ''} onClick={mark1}>
               可酒標客製
             </p>
+            <p onClick={reset}>重設</p>
           </div>
         </div>
       </div>

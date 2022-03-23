@@ -104,13 +104,19 @@
         // width: 16%;
         // margin-top: 44px;
         display: flex;
-        .login {
+        margin-bottom: 15px;
+        .loginHover {
           width: 37.4%;
           height: 80px;
           margin-right: 17px;
           display: flex;
           flex-direction: column;
           align-items: center;
+          position: relative;
+          &:hover  span{
+            opacity: 1;
+            bottom: -10px
+          }
           @include large() {
             width: 25%;
           }
@@ -119,11 +125,19 @@
           }
           cursor: pointer;
           span {
+            transition: all .5s;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
             @include kleeone();
+            line-height: 28px;
             font-size: 15px;
-            line-height: 30px;
+            bottom: -5px;
+            border-top: 2px solid $primary;
           }
         }
+        
+        
         .cart {
           cursor: pointer;
           margin-right: 7px;

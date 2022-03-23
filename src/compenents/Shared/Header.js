@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginContext'
 import { useLocation } from 'react-router-dom'
+import LoginHover from './LoginHover'
 
 const Header = (props) => {
   const { user, setUser } = props
@@ -76,15 +77,7 @@ const Header = (props) => {
               </li>
             </ul>
             <div className="icons">
-              <div className="login">
-                <img
-                  className=""
-                  alt=""
-                  src="/Shared/loginIcon.svg"
-                  onClick={showSidebar}
-                />
-                <span>登入</span>
-              </div>
+              <LoginHover showSidebar={showSidebar} />
               <Link to="/cart/list" className="cart">
                 <img alt="" src="/Shared/shoppingCart.svg" />
               </Link>

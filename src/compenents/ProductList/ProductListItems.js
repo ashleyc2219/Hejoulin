@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect } from 'react'
 import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
@@ -17,18 +17,27 @@ const ProductListItems = (props) => {
     resultTitle,
     resultTitle2,
     resultTitle3,
+    resultTitle4,
+    resultTitle5,
+    resultTitle6,
     setNoresult,
     locasort,
     brandsort,
     sort,
-    setLocasort,
     level,
+    price,
+    mark,
+    clear,
+    compare,
+    setCompare,
   } = props
 
-  console.log(level)
+  const test = ()=>{
+    setCompare(compare+1)
+  }
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}`
-  console.log(url)
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
+
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
@@ -76,9 +85,7 @@ const ProductListItems = (props) => {
           </div>
           <div className="icon">
             <div
-              onClick={() => {
-                console.log('比較')
-              }}
+              onClick={()=>{test()}}
               className="compare"
             >
               <img src="/ProductList/add.svg" alt="" />
@@ -108,27 +115,27 @@ const ProductListItems = (props) => {
   })
 
   useEffect(() => {
-    fetchList()
+    //fetchList()
   }, [])
 
   useEffect(() => {
-    (async () => {
+    //clear()
+
+    ;(async () => {
       await fetchList()
       await clear()
     })()
-  }, [page, search, locasort, level])
-
-  const clear = () => {
-    console.log('clear')
-    return () => {
-      setLocasort('')
-    }
-  }
+  }, [page, search, locasort, level, price, mark])
 
   return (
     <>
       <div className="product-list">
-        {resultTitle || resultTitle2 || resultTitle3 ? (
+        {resultTitle ||
+        resultTitle2 ||
+        resultTitle3 ||
+        resultTitle4 ||
+        resultTitle5 ||
+        resultTitle6 ? (
           <ResultTitle />
         ) : (
           <ProductTitle />

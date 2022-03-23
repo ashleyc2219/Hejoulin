@@ -10,7 +10,6 @@
 
 .ProductList {
   width: 100%;
-  overflow: hidden;
   padding-bottom: 100px;
   background: url("/public/Sake-background0310.jpg");
 }
