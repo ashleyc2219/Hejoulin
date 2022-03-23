@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
@@ -28,15 +28,9 @@ const ProductListItems = (props) => {
     price,
     mark,
     clear,
-    compare,
-    setCompare,
   } = props
 
-  const test = ()=>{
-    setCompare(compare+1)
-  }
-
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
+  let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
 
   const fetchList = async () => {
     const res = await fetch(url)
@@ -61,7 +55,7 @@ const ProductListItems = (props) => {
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
-            <div onClick={() => {}} className="img-wrap">
+            <div className="img-wrap">
               <img
                 className="product-img"
                 src={'/ProductList/productimg/' + v.pro_img}
@@ -84,10 +78,7 @@ const ProductListItems = (props) => {
             )}
           </div>
           <div className="icon">
-            <div
-              onClick={()=>{test()}}
-              className="compare"
-            >
+            <div className="compare">
               <img src="/ProductList/add.svg" alt="" />
               <p>比較</p>
             </div>

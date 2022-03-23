@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
 
-const ProductTop3 = () => {
+const ProductTop3 = ({ compare, setCompare }) => {
   const [top, setTop] = useState([])
-
+  console.log(compare)
   /* 人氣之選 */
   const fetchTop = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/top-three'
+      'http://localhost:3001/api/products-condition/top-three'
     )
     const fetchedData = await res.json()
     const test = fetchedData
@@ -17,11 +17,21 @@ const ProductTop3 = () => {
     setTop(test)
   }
 
+  const test = (a) => {
+    if (compare.length < 3 && compare.indexOf(a) === -1) {
+      setCompare([...compare, a])
+      console.log(compare)
+    }
+  }
 
   useEffect(() => {
     fetchTop()
   }, [])
-  
+
+  useEffect(() => {
+    console.log('useEffect')
+  }, [compare])
+
   const top3 = top.map((v, i) => {
     return (
       <div key={i} className="product">
@@ -52,7 +62,7 @@ const ProductTop3 = () => {
           <div className="icon">
             <div
               onClick={() => {
-                console.log('比較')
+                test(v.pro_id)
               }}
               className="compare"
             >
@@ -60,7 +70,7 @@ const ProductTop3 = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-              <Heart id={v.pro_id}/>
+              <Heart id={v.pro_id} />
               <img
                 onClick={() => {
                   console.log('購物車')

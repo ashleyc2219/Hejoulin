@@ -15,9 +15,7 @@ const EventData = (props) => {
 
   const getData = async () => {
     const obj = await (
-      await fetch(
-        'https://localhost:3001/user/member/MemberEventList'
-      )
+      await fetch('https://localhost:3001/user/member/MemberEventList')
     ).json()
     console.log(obj)
     setData(obj)

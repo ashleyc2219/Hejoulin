@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './../../compenents/ProductList/CompareBlock.scss'
 
-const CompareBlock = (props) => {
-  const { up } = props
+const CompareBlock = ({ up, compare }) => {
+  useEffect(() => {
+    console.log('test')
+  }, [])
+
   return (
     <>
       <div className={up ? 'compare-block up' : 'compare-block'}>

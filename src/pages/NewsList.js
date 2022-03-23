@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 
 const NewsList = () => {
   const [detail, setDetail] = useState([])
-  const url = 'http://localhost:3000/api/news'
+  const url = 'http://localhost:3001/api/news'
 
   const fetchData = async () => {
     const res = await fetch(url)
