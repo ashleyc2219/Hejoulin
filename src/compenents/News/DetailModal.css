@@ -57,7 +57,8 @@
 }
 
 .DetailModal .comparepage .news-item {
-  z-index: 70;
+  mix-blend-mode: multiply;
+  z-index: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,7 +78,6 @@
 }
 
 .DetailModal .comparepage .news-item .news-item-pic {
-  mix-blend-mode: multiply;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -111,13 +111,15 @@
 }
 
 .DetailModal .comparepage .news-item .news-item-pic .news-pic .news-item-pic-box::before {
+  mix-blend-mode: multiply;
   content: '';
   background-color: #e6c49e;
+  z-index: -10;
   width: 110%;
   height: 250px;
   position: absolute;
-  bottom: -28px;
-  z-index: -1;
+  bottom: -30px;
+  left: 0px;
   mix-blend-mode: multiply;
 }
 

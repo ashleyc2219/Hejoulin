@@ -44,9 +44,10 @@
       }
     }
     .news-item {
+      mix-blend-mode: multiply;
       //outline: 2px solid #d0d31a;
       // background-color: rgba(44, 90, 48, 0.582);
-      z-index: 70;
+      z-index: 0;
       display: flex;
       //   flex-direction: row-reverse;
       flex-direction: column;
@@ -57,7 +58,6 @@
       //圖片區塊
 
       .news-item-pic {
-        mix-blend-mode: multiply;
         //outline: 2px solid #dd6c8e;
         flex-grow: 1;
 
@@ -86,14 +86,15 @@
             }
 
             &::before {
+              mix-blend-mode: multiply;
               content: '';
               background-color: $success;
+              z-index: -10;
               width: 110%;
               height: 250px;
               position: absolute;
-
-              bottom: -28px;
-              z-index: -1;
+              bottom: -30px;
+              left: 0px;
 
               mix-blend-mode: multiply;
             }

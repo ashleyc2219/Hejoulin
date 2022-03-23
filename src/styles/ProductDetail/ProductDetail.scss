@@ -48,6 +48,7 @@
     }
   }
   .bgele1 {
+    pointer-events: none;
     top: 10%;
     right: -200px;
     @include exlarge() {
@@ -58,6 +59,7 @@
     }
   }
   .bgele2 {
+    pointer-events: none;
     top: 50%;
     left: -20%;
     @include exlarge() {

@@ -1,6 +1,8 @@
 import React from 'react'
 import './../styles/SakeGuide/SakeGuide.scss'
 
+
+
 const SakeGuide = () => {
   return (
     <div className="SakeGuide">
@@ -31,7 +33,7 @@ const SakeGuide = () => {
             <p className="answer">兩者皆可</p>
           </div>
         </section>
-        {/* <section className="price">
+        <section className="price">
           <fiedlset class="cost">
             <legend class="filter-headline">Cost, $:</legend>
             <p class="cost__inputs">
@@ -80,12 +82,13 @@ const SakeGuide = () => {
               />
             </p>
           </fiedlset>
-        </section> */}
+        </section>
         <div className="wave">
-          <img src="" alt="" className="upper" />
-          <img src="" alt="" className="down" />
+          <div className="upper"></div>
+          <div className="down"></div>
         </div>
       </div>
+
       <section id="result">
         <div className="result_container">
           <img src="/SakeGuide/guidebg.png" alt="" className="guide_img" />

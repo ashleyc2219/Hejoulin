@@ -15,10 +15,11 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 
-const ProductList = () => {
+import GuideButton from '../compenents/SakeGuide/Guide'
+
+const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
-  const [title, setTitle] = useState(false) // 設定人氣跟達人推薦出現或消失
   const [load, setLoad] = useState(true) //載入更多的按鈕
   const [spin, setSpin] = useState(false) // 最下面的spinner
   const [spinTop, setSpinTop] = useState(false) // 最上面搜尋時會出現的spinner
@@ -27,6 +28,10 @@ const ProductList = () => {
   const [resultTitle, setResultTitle] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle2, setResultTitle2] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle3, setResultTitle3] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle4, setResultTitle4] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle5, setResultTitle5] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle6, setResultTitle6] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle7, setResultTitle7] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
   const [up, setUp] = useState(false)
 
@@ -37,6 +42,140 @@ const ProductList = () => {
   const locavalue = useRef(null)
   const brandvalue = useRef(null)
   const searchvalue = useRef(null)
+  const sortvalue = useRef(null)
+
+  const [level, setLevel] = useState('')
+  const [price, setPrice] = useState('')
+  const [mark, setMark] = useState('')
+
+  const { compare, setCompare } = props
+
+  const reset = () => {
+    locavalue.current.value = ''
+    brandvalue.current.value = ''
+    sortvalue.current.value = '1'
+    searchvalue.current.value = ''
+    setBrandsort('')
+    setLocasort('')
+    setSort('')
+    setLevel('')
+    setPrice('')
+    setMark('')
+    preToLoad()
+    setSearch('')
+    setNoresult(true)
+    setPerpage(18)
+    setResultTitle7(true)
+    setResultTitle(false)
+    setTimeout(() => {
+      setResultTitle(false)
+      setResultTitle2(false)
+      setResultTitle3(false)
+      setResultTitle4(false)
+      setResultTitle5(false)
+      setResultTitle6(false)
+      setResultTitle7(false)
+      setLoad(true)
+      setProlist(true)
+      setSpinTop(false)
+    }, 1000)
+  }
+
+  const clear = () => {
+    return () => {
+      setLocasort('')
+      setSearch('')
+      setBrandsort('')
+      setLevel('')
+      setPrice('')
+      setMark('')
+    }
+  }
+  const preToLoad = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+  }
+
+  const sidebarToLoad1 = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setResultTitle4(true)
+    setTimeout(() => {
+      setProlist(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const sidebarToLoad2 = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setResultTitle5(true)
+    setTimeout(() => {
+      setProlist(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const sidebarToLoad3 = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setResultTitle6(true)
+    setTimeout(() => {
+      setProlist(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+
+  const levelToLoad = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      //setTitle(false)
+      setProlist(true)
+      setResultTitle4(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+
+  const priceToLoad = () => {
+    setProlist(false)
+    // setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle5(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const markToLoad = () => {
+    setProlist(false)
+    // setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setTimeout(() => {
+      setProlist(true)
+      setResultTitle6(false)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
 
   // 按下載入更多會觸發的spinner
   const spinner = () => {
@@ -54,13 +193,15 @@ const ProductList = () => {
     if (e.key === 'Enter') {
       locavalue.current.value = ''
       brandvalue.current.value = ''
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
+      sortvalue.current.value = '1'
+      setLevel('')
+      setPrice('')
+      setMark('')
+      preToLoad()
       setResultTitle(false)
       if (searchword.length > 0) {
         setSearch(searchword)
+        setResultTitle7(true)
         setTimeout(() => {
           setNoresult(true)
           // 如果搜尋文字長度大於0會執行以下動作
@@ -69,22 +210,22 @@ const ProductList = () => {
           setProlist(true)
         }, 1000)
       } else if (searchword.length <= 0) {
-        //setProlist(false)
         setSearch('')
-        //setTitle(true)
-        //setSpinTop(true)
-        //setLoad(false)
-        //setResultTitle(false)
         setNoresult(true)
         setPerpage(18)
+        setResultTitle7(true)
         setTimeout(() => {
-          //const searchword = e.target.value
+          setResultTitle(false)
+          setResultTitle2(false)
+          setResultTitle3(false)
+          setResultTitle4(false)
+          setResultTitle5(false)
+          setResultTitle6(false)
+          setResultTitle7(false)
           setLoad(true)
-          //setTitle(false)
           setProlist(true)
           setSpinTop(false)
-          //setSearch(searchword)
-        }, 1500)
+        }, 1000)
       }
     }
   }
@@ -94,39 +235,24 @@ const ProductList = () => {
     searchvalue.current.value = ''
     setSearch('')
     if (loca === '') {
-      setTitle(true)
-      setProlist(false)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle(false)
+      preToLoad()
       setPerpage(18)
       setLocasort('')
       setNoresult(true)
       setTimeout(() => {
+        setResultTitle(false)
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
-      //setNoresult(true)
-      ;(async function del() {
-        await setLocasort(loca)
-        await setProlist(false)
-        await setTitle(true)
-        await setSpinTop(true)
-        await setLoad(false)
-        await setResultTitle(false)
-      })()
-      /* setLocasort(loca)
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle(false) */
+      setLocasort(loca)
+      preToLoad()
+      setNoresult(true)
+      setResultTitle(true)
       setTimeout(() => {
         setSpinTop(false)
-        setResultTitle(true)
+        //setResultTitle(true)
         setProlist(true)
       }, 1000)
     }
@@ -137,30 +263,23 @@ const ProductList = () => {
     searchvalue.current.value = ''
     setSearch('')
     if (brand === '') {
-      setTitle(true)
-      setProlist(false)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle2(false)
+      preToLoad()
       setNoresult(true)
       setPerpage(18)
       setBrandsort('')
       setTimeout(() => {
+        setResultTitle2(false)
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
       setBrandsort(brand)
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle2(false)
+      preToLoad()
+      setResultTitle2(true)
       setTimeout(() => {
         setSpinTop(false)
-        setResultTitle2(true)
+        //setResultTitle2(true)
         setProlist(true)
       }, 1000)
     }
@@ -169,32 +288,25 @@ const ProductList = () => {
   const sorthandler = (e) => {
     const sort = e.target.value
     if (sort === '1') {
-      setResultTitle3(false)
-      setTitle(true)
-      setProlist(false)
-      setSpinTop(true)
-      setLoad(false)
+      preToLoad()
       setNoresult(true)
       setPerpage(18)
       setSort('')
       setTimeout(() => {
+        setResultTitle3(false)
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
       setSort(sort)
-      setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false)
-      setResultTitle3(false)
+      preToLoad()
+      setResultTitle3(true)
       setPerpage(18)
       setTimeout(() => {
         setLoad(true)
         setSpinTop(false)
-        setResultTitle3(true)
+        //setResultTitle3(true)
         setProlist(true)
       }, 1000)
     }
@@ -240,7 +352,6 @@ const ProductList = () => {
     fetchLoca()
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
-
   }, [])
   const handleScroll = () => {
     if (
@@ -254,23 +365,44 @@ const ProductList = () => {
   }
   return (
     <>
-     {/*  <CompareModal /> */}
+      {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
+
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
           <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
           <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
           {/* sidebar篩選 */}
-          <Sidebar />
+          <Sidebar
+            level={level}
+            setLevel={setLevel}
+            sidebarToLoad1={sidebarToLoad1}
+            sidebarToLoad2={sidebarToLoad2}
+            sidebarToLoad3={sidebarToLoad3}
+            levelToLoad={levelToLoad}
+            price={price}
+            setPrice={setPrice}
+            priceToLoad={priceToLoad}
+            markToLoad={markToLoad}
+            mark={mark}
+            setMark={setMark}
+            reset={reset}
+          />
+          <GuideButton />
 
           <div className="main">
             <div className="center-container">
               <div className="search-bar">
                 <div className="select">
-                  <select name="sort" id="" onChange={sorthandler}>
+                  <select
+                    ref={sortvalue}
+                    name="sort"
+                    id=""
+                    onChange={sorthandler}
+                  >
                     <option value="1">預設排序</option>
                     <option value="2">最新上架</option>
                     <option value="5">價錢高至低</option>
@@ -281,6 +413,7 @@ const ProductList = () => {
                     name="brand"
                     id=""
                     onChange={brandhandler}
+                    defaultValue={''}
                   >
                     <option value="">品牌</option>
                     {brandData}
@@ -336,9 +469,29 @@ const ProductList = () => {
                 ''
               )}
               {/* 人氣之選 */}
-              {title ? '' : <ProductTop3 />}
+              {resultTitle ||
+              resultTitle2 ||
+              resultTitle3 ||
+              resultTitle4 ||
+              resultTitle5 ||
+              resultTitle6 ||
+              resultTitle7 ? (
+                ''
+              ) : (
+                <ProductTop3 />
+              )}
               {/* 達人推薦 */}
-              {title ? '' : <ProductMaster />}
+              {resultTitle ||
+              resultTitle2 ||
+              resultTitle3 ||
+              resultTitle4 ||
+              resultTitle5 ||
+              resultTitle6 ||
+              resultTitle7 ? (
+                ''
+              ) : (
+                <ProductMaster />
+              )}
 
               {/* 商品列表 */}
               {prolist ? (
@@ -349,11 +502,19 @@ const ProductList = () => {
                   resultTitle={resultTitle}
                   resultTitle2={resultTitle2}
                   resultTitle3={resultTitle3}
+                  resultTitle4={resultTitle4}
+                  resultTitle5={resultTitle5}
+                  resultTitle6={resultTitle6}
                   setNoresult={setNoresult}
                   locasort={locasort}
                   brandsort={brandsort}
                   sort={sort}
-                  setLocasort={setLocasort}
+                  level={level}
+                  price={price}
+                  mark={mark}
+                  clear={clear}
+                  compare={compare}
+                  setCompare={setCompare}
                 />
               ) : (
                 ''
@@ -383,7 +544,7 @@ const ProductList = () => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock up={up} />
+            <CompareBlock up={up}/>
             <EmptyBlock />
           </div>
         </div>

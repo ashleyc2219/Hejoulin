@@ -42,6 +42,29 @@
       width: 100%;
       padding: 140px 110px 0;
       display: flex;
+      @include medium() {
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .mobile {
+        @media only screen and (min-width: 768px) {
+          display: none;
+        }
+        @include medium() {
+          display: block;
+        }
+        h2 {
+          font-family: 'Noto Sans TC', serif;
+          font-size: 32px;
+          line-height: 48px;
+          color: $dark;
+        }
+        .title_bottom {
+          margin-bottom: 40px;
+        }
+      }
 
       .anime {
         width: 50%;
@@ -50,6 +73,9 @@
         align-items: center;
         .fake {
           height: 550px;
+          @include medium() {
+            height: 350px;
+          }
         }
       }
 
@@ -60,14 +86,20 @@
         background-color: rgba(255, 255, 255, 0.75);
         position: relative;
         @include medium() {
-          padding: 30px;
+          padding: 30px 0;
+          margin: 0;
+          background-color: transparent;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .mark_title {
           @include kleeone();
           color: $dark;
           @include medium() {
-            font-family: 'Noto Sans TC', serif;
+            display: none;
           }
         }
         .title_bottom {
@@ -85,8 +117,7 @@
           right: 60px;
           bottom: 50px;
           @include medium() {
-            right: 25px;
-            bottom: 25px;
+            position: static;
           }
         }
       }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect } from 'react'
 import './ProductListItems.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
@@ -9,6 +9,7 @@ import ProductMaster from './ProductMaster'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
+
   const {
     page,
     search,
@@ -16,14 +17,26 @@ const ProductListItems = (props) => {
     resultTitle,
     resultTitle2,
     resultTitle3,
+    resultTitle4,
+    resultTitle5,
+    resultTitle6,
     setNoresult,
     locasort,
     brandsort,
     sort,
-    setLocasort
+    level,
+    price,
+    mark,
+    clear,
+    compare,
+    setCompare,
   } = props
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}`
+  const test = ()=>{
+    setCompare(compare+1)
+  }
+
+  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
 
   const fetchList = async () => {
     const res = await fetch(url)
@@ -41,7 +54,6 @@ const ProductListItems = (props) => {
     if (page >= test.totalRows) {
       setLoad(false)
     }
-    console.log(test.rows)
   }
 
   const product = list.map((v, i) => {
@@ -49,11 +61,7 @@ const ProductListItems = (props) => {
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
-            <div
-              onClick={() => {
-              }}
-              className="img-wrap"
-            >
+            <div onClick={() => {}} className="img-wrap">
               <img
                 className="product-img"
                 src={'/ProductList/productimg/' + v.pro_img}
@@ -77,9 +85,7 @@ const ProductListItems = (props) => {
           </div>
           <div className="icon">
             <div
-              onClick={() => {
-                console.log('比較')
-              }}
+              onClick={()=>{test()}}
               className="compare"
             >
               <img src="/ProductList/add.svg" alt="" />
@@ -108,26 +114,28 @@ const ProductListItems = (props) => {
     )
   })
 
- 
-  
-
   useEffect(() => {
-    fetchList()
-    return ()=>{
-
-      setLocasort('')
-    }
+    //fetchList()
   }, [])
 
   useEffect(() => {
-    console.log(page,search,locasort)
-    fetchList()
-  }, [page, search, locasort])
+    //clear()
+
+    ;(async () => {
+      await fetchList()
+      await clear()
+    })()
+  }, [page, search, locasort, level, price, mark])
 
   return (
     <>
       <div className="product-list">
-        {resultTitle || resultTitle2 || resultTitle3 ? (
+        {resultTitle ||
+        resultTitle2 ||
+        resultTitle3 ||
+        resultTitle4 ||
+        resultTitle5 ||
+        resultTitle6 ? (
           <ResultTitle />
         ) : (
           <ProductTitle />
