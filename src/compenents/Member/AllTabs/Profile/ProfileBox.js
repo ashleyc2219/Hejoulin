@@ -123,6 +123,7 @@ const ProfileBox = () => {
               {birthOption(ProfileItem)}
             </select>
           </div>
+
         </div>
         <div className="form-text displayNone">錯誤/提示訊息</div>
         <br />
