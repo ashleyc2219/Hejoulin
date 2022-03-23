@@ -118,7 +118,7 @@
         //section01
         #gift_kind {
           width: 100%;
-          height: calc(100vh - 175px - 144px);
+          height: fit-content;
 
           .kind {
             background-color: rgba(255, 255, 255, 0.5);
