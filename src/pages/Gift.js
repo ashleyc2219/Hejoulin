@@ -13,7 +13,7 @@ const Gift = () => {
   return (
     <>
       <div className="Gift">
-      {/* <ProductModal /> */}
+      <ProductModal />
         <div className="gift_container">
           {/* background-patten */}
           <div className="patten">
