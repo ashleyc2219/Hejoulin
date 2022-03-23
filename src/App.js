@@ -42,6 +42,7 @@ import { createContext, useState } from 'react'
 function App() {
   const AuthContext = createContext(null)
   const [user, setUser] = useState(false)
+  const [compare, setCompare] = useState([])
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -62,7 +63,7 @@ function App() {
               <ProductDetail />
             </Route>
             <Route exact path="/product/list">
-              <ProductList />
+              <ProductList compare={compare} setCompare={setCompare} />
             </Route>
             <Route exact path="/sake-guide">
               <SakeGuide />

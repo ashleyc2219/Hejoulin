@@ -48,7 +48,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3000/api/products-fav/insert',
+        'http://localhost:3001/api/products-fav/insert',
         settings
       )
       const data = await fetchResponse.json()
@@ -70,7 +70,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3000/api/products-fav/delete',
+        'http://localhost:3001/api/products-fav/delete',
         settings
       )
       const data = await fetchResponse.json()
@@ -91,7 +91,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3000/api/products-fav/search',
+        'http://localhost:3001/api/products-fav/search',
         settings
       )
       const data = await fetchResponse.json()

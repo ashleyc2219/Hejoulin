@@ -1,0 +1,314 @@
+@import './../../styles/mixin.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.ProductModal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .page {
+    @include medium() {
+      display: flex;
+      justify-content: center;
+    }
+
+    #modal {
+      position: relative;
+      width: 1080px;
+      height: 575px;
+      background: url('../../../public/Sake-background0310.jpg');
+      padding: 60px 60px 0;
+      @include large() {
+        width: 750px;
+        height: fit-content;
+        padding: 15px 20px;
+      }
+      @include medium() {
+        width: 85%;
+        height: 75%;
+        position: absolute;
+        top: 15vh;
+        padding: 30px 32px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      .close {
+        background: url('../../../public/Gift/close-white.svg');
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        cursor: pointer;
+        @include medium() {
+          background: url('../../../public/Gift/close-black.svg');
+          top: 10px;
+          right: 10px;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+
+        @include medium() {
+          display: contents;
+        }
+        //關於左邊的部分(圖片)
+        .image {
+          position: relative;
+          height: 400px;
+          @include medium() {
+            height: fit-content;
+            width: fit-content;
+          }
+          .left,
+          .right {
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            @include medium() {
+              display: none;
+            }
+          }
+          .right {
+            top: 0;
+            right: 0;
+          }
+
+          .slider {
+            width: 100%;
+            overflow: hidden;
+            .wrap {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              @include medium() {
+                display: contents;
+              }
+              img {
+                height: 350px;
+                @include medium() {
+                  height: 200px;
+                }
+              }
+            }
+            .dos {
+              display: none;
+            }
+          }
+
+          .sake_button {
+            width: 100%;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @include medium() {
+              display: none;
+            }
+          }
+        }
+
+        // 關於右邊的部分
+        .info {
+          width: 100%;
+          padding: 0px 20px;
+          @include medium() {
+            position: relative;
+            padding: 0;
+
+            .name,
+            .tag {
+              position: absolute;
+            }
+            .name {
+              top: -200px;
+              left: calc(50% - 20px);
+              font-size: 34px;
+              font-weight: bold;
+              line-height: 51px;
+            }
+            .tag {
+              left: calc(50% - 20px);
+              top: -150px;
+              .level {
+                position: inherit;
+                left: -65px;
+                top: 30px;
+              }
+              .like {
+                position: inherit;
+                left: -45px;
+              }
+              .price {
+                position: inherit;
+                top: 100px;
+                left: 45px;
+              }
+            }
+          }
+          .name {
+            font-size: 24px;
+            line-height: 36px;
+            color: $gray-400;
+          }
+          .tag {
+            display: flex;
+            margin-top: 7px;
+            position: relative;
+            .brand,
+            .level {
+              font-size: 14px;
+              line-height: 18px;
+              color: $gray-300;
+              margin-right: 7px;
+              padding: 1px 7px;
+              border: 1px solid $gray-300;
+            }
+            // TODO:收藏
+            .price {
+              font-size: 36px;
+              line-height: 40px;
+              color: $warning;
+              position: absolute;
+              right: 0;
+              &::before {
+                content: '$';
+              }
+            }
+          }
+          .content {
+            margin-top: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(180, 180, 180, 0.5);
+            .text {
+              font-size: 14px;
+              line-height: 28px;
+              color: $gray-300;
+            }
+            @include medium() {
+              margin-top: 0px;
+              padding: 0 0 20px;
+            }
+          }
+          .table_grid {
+            width: fit-content;
+            margin: 30px auto 0;
+            display: grid;
+            grid-template-columns: 60px 190px 110px 140px;
+            border: 1px solid $gray-200;
+            ul {
+              list-style: none;
+              margin: 0;
+              &:nth-child(3) {
+                border-left: 1px solid $gray-200;
+                @include medium() {
+                  border: transparent;
+                }
+              }
+              .computer {
+                @include medium() {
+                  display: none;
+                }
+              }
+              .mobile {
+                display: none;
+                @include medium() {
+                  display: block;
+                }
+              }
+              li {
+                font-size: 16px;
+                line-height: 32px;
+                color: $gray-400;
+                padding: 3px 10px;
+                &:nth-child(1) {
+                  background-color: rgba(230, 196, 158, 0.25);
+                }
+              }
+              .temp {
+                background-color: rgba(230, 196, 158, 0.25);
+              }
+            }
+            ul {
+              &:nth-child(1),
+              &:nth-child(2),
+              &:nth-child(4) {
+                li {
+                  &:nth-child(3) {
+                    background-color: rgba(230, 196, 158, 0.25);
+                  }
+                }
+              }
+            }
+            @include medium() {
+              grid-template-columns: 75px 165px;
+              grid-template-rows: 1fr 1fr;
+              border: transparent;
+              ul {
+                &:last-child {
+                  li {
+                    &:nth-child(odd) {
+                      background-color: transparent;
+                    }
+                    &:nth-child(even) {
+                      background-color: rgba(230, 196, 158, 0.25);
+                    }
+                  }
+                }
+                .temp {
+                  background-color: transparent;
+                }
+              }
+              .alco {
+                background-color: rgba(230, 196, 158, 0.25);
+              }
+            }
+          }
+        }
+      }
+
+      .mobile_sake_button {
+        @media only screen and (min-width: 768px) {
+          display: none;
+        }
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}

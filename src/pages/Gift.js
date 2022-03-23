@@ -5,6 +5,7 @@ import './../styles/Gift/Gift.scss'
 import Sidebar from '../compenents/Gift/Sidebar'
 // import ImgCard from '../compenents/Gift/ImgCard'
 import StepBar from '../compenents/Gift/StepBar'
+import ProductModal from '../compenents/Gift/ProductModal'
 // import SakeButton from '../compenents/Gift/SakeButton'
 
 const Gift = () => {
@@ -12,6 +13,7 @@ const Gift = () => {
   return (
     <>
       <div className="Gift">
+        {/* <ProductModal /> */}
         <div className="gift_container">
           {/* background-patten */}
           <div className="patten">

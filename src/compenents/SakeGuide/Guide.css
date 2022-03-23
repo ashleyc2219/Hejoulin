@@ -1,0 +1,82 @@
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(720deg);
+  }
+}
+
+.Guide {
+  position: sticky;
+  top: 100px;
+  width: fit-content;
+  height: 150px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .Guide {
+    display: none;
+  }
+}
+
+.Guide .loca {
+  position: absolute;
+  right: -60vw;
+}
+
+.Guide .loca .arround {
+  display: flex;
+}
+
+.Guide .loca .arround p {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 23px;
+  line-height: 33px;
+  position: absolute;
+}
+
+.Guide .loca .arround .first {
+  top: 15px;
+  right: 95px;
+}
+
+.Guide .loca .arround .sen {
+  top: 0;
+  right: 65px;
+}
+
+.Guide .loca .arround .thr {
+  right: 35px;
+}
+
+.Guide .loca .arround .four {
+  top: 15px;
+  right: 5px;
+}
+
+.Guide .loca .arround .trian {
+  position: absolute;
+  top: 55px;
+  right: -10px;
+}
+
+.Guide .loca .round {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #3d4349;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: url("../../../public/Sake-background0310.jpg");
+}
+
+.Guide .loca .round:hover .sake {
+  animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
+}
+/*# sourceMappingURL=Guide.css.map */

@@ -25,6 +25,18 @@
   margin-top: 55.7px;
 }
 
+@media (max-width: 1024px) {
+  .Header .Header-container .logo-bread .logo {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Header .Header-container .logo-bread .logo {
+    width: max-content;
+  }
+}
+
 .Header .Header-container .logo-bread .bread {
   display: flex;
   align-items: center;
@@ -118,34 +130,47 @@
 
 .Header .Header-container .navbar .icons {
   display: flex;
+  margin-bottom: 15px;
 }
 
-.Header .Header-container .navbar .icons .login {
+.Header .Header-container .navbar .icons .loginHover {
   width: 37.4%;
   height: 80px;
   margin-right: 17px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   cursor: pointer;
 }
 
+.Header .Header-container .navbar .icons .loginHover:hover span {
+  opacity: 1;
+  bottom: -10px;
+}
+
 @media (max-width: 1024px) {
-  .Header .Header-container .navbar .icons .login {
+  .Header .Header-container .navbar .icons .loginHover {
     width: 25%;
   }
 }
 
 @media (max-width: 768px) {
-  .Header .Header-container .navbar .icons .login {
+  .Header .Header-container .navbar .icons .loginHover {
     display: none;
   }
 }
 
-.Header .Header-container .navbar .icons .login span {
+.Header .Header-container .navbar .icons .loginHover span {
+  transition: all .5s;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
   font-family: "Klee One", cursive;
+  line-height: 28px;
   font-size: 15px;
-  line-height: 30px;
+  bottom: -5px;
+  border-top: 2px solid #3d4349;
 }
 
 .Header .Header-container .navbar .icons .cart {
@@ -221,7 +246,7 @@
   top: 0;
   right: -100%;
   transition: 850ms;
-  z-index: 9;
+  z-index: 99;
 }
 
 @media (max-width: 768px) {
@@ -350,6 +375,10 @@
 
 .mobile-menu .menu ul .purchase-sake {
   transition: all 0.3s;
+}
+
+.mobile-menu .menu ul .purchase-sake a:hover {
+  border-bottom: 1px solid black;
 }
 
 .mobile-menu .menu ul .purchase-sake .dropdown-content {

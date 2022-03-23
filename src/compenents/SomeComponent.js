@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion, useAnimation } from 'framer-motion'
 import './../styles/SomeComponent/SomeComponent.scss'
 
 const SomeComponent = () => {
@@ -14,7 +15,8 @@ const SomeComponent = () => {
       </p>
       <div className="d-flex">
         <div className="pantone-container">
-          <div className="pantone primary"></div>
+          <motion.div onHoverStart={e => {console.log('enter')}}
+  onHoverEnd={e => {console.log('leave')}} className="pantone primary"></motion.div>
           <p>primary</p>
         </div>
         <div className="pantone-container">

@@ -27,11 +27,11 @@ const ProductListItems = (props) => {
     level,
     price,
     mark,
-    clear
+    clear,
   } = props
 
-  let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
-console.log(url)
+  let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
+
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
@@ -55,7 +55,7 @@ console.log(url)
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
-            <div onClick={() => {}} className="img-wrap">
+            <div className="img-wrap">
               <img
                 className="product-img"
                 src={'/ProductList/productimg/' + v.pro_img}
@@ -78,12 +78,7 @@ console.log(url)
             )}
           </div>
           <div className="icon">
-            <div
-              onClick={() => {
-                console.log('比較')
-              }}
-              className="compare"
-            >
+            <div className="compare">
               <img src="/ProductList/add.svg" alt="" />
               <p>比較</p>
             </div>
@@ -123,12 +118,15 @@ console.log(url)
     })()
   }, [page, search, locasort, level, price, mark])
 
-  
-
   return (
     <>
       <div className="product-list">
-        {resultTitle || resultTitle2 || resultTitle3 || resultTitle4|| resultTitle5|| resultTitle6 ? (
+        {resultTitle ||
+        resultTitle2 ||
+        resultTitle3 ||
+        resultTitle4 ||
+        resultTitle5 ||
+        resultTitle6 ? (
           <ResultTitle />
         ) : (
           <ProductTitle />

@@ -17,10 +17,9 @@ import { Spinner } from 'react-bootstrap'
 
 import GuideButton from '../compenents/SakeGuide/Guide'
 
-const ProductList = () => {
+const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
-  const [title, setTitle] = useState(false) // 設定人氣跟達人推薦出現或消失
   const [load, setLoad] = useState(true) //載入更多的按鈕
   const [spin, setSpin] = useState(false) // 最下面的spinner
   const [spinTop, setSpinTop] = useState(false) // 最上面搜尋時會出現的spinner
@@ -32,6 +31,7 @@ const ProductList = () => {
   const [resultTitle4, setResultTitle4] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle5, setResultTitle5] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [resultTitle6, setResultTitle6] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
+  const [resultTitle7, setResultTitle7] = useState(false) // 設定商品列表的標題的樣式 直會傳到子層三原作判斷
   const [noresult, setNoresult] = useState(true) //如果沒有搜尋結果會顯示的文字
   const [up, setUp] = useState(false)
 
@@ -42,11 +42,44 @@ const ProductList = () => {
   const locavalue = useRef(null)
   const brandvalue = useRef(null)
   const searchvalue = useRef(null)
+  const sortvalue = useRef(null)
 
   const [level, setLevel] = useState('')
   const [price, setPrice] = useState('')
-  const [mark , setMark] = useState('')
+  const [mark, setMark] = useState('')
 
+  const { compare, setCompare } = props
+
+  const reset = () => {
+    locavalue.current.value = ''
+    brandvalue.current.value = ''
+    sortvalue.current.value = '1'
+    searchvalue.current.value = ''
+    setBrandsort('')
+    setLocasort('')
+    setSort('')
+    setLevel('')
+    setPrice('')
+    setMark('')
+    preToLoad()
+    setSearch('')
+    setNoresult(true)
+    setPerpage(18)
+    setResultTitle7(true)
+    setResultTitle(false)
+    setTimeout(() => {
+      setResultTitle(false)
+      setResultTitle2(false)
+      setResultTitle3(false)
+      setResultTitle4(false)
+      setResultTitle5(false)
+      setResultTitle6(false)
+      setResultTitle7(false)
+      setLoad(true)
+      setProlist(true)
+      setSpinTop(false)
+    }, 1000)
+  }
 
   const clear = () => {
     return () => {
@@ -60,20 +93,46 @@ const ProductList = () => {
   }
   const preToLoad = () => {
     setProlist(false)
-    setTitle(true)
+    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
   }
 
-  const sidebarToLoad = () => {
+  const sidebarToLoad1 = () => {
     setProlist(false)
-    setTitle(true)
+    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setNoresult(true)
+    setResultTitle4(true)
     setTimeout(() => {
       setProlist(true)
-      setResultTitle4(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const sidebarToLoad2 = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setResultTitle5(true)
+    setTimeout(() => {
+      setProlist(true)
+      setSpinTop(false)
+      setLoad(true)
+    }, 1000)
+  }
+  const sidebarToLoad3 = () => {
+    setProlist(false)
+    //setTitle(true)
+    setSpinTop(true)
+    setLoad(false)
+    setNoresult(true)
+    setResultTitle6(true)
+    setTimeout(() => {
+      setProlist(true)
       setSpinTop(false)
       setLoad(true)
     }, 1000)
@@ -81,10 +140,11 @@ const ProductList = () => {
 
   const levelToLoad = () => {
     setProlist(false)
-    setTitle(true)
+    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
+      //setTitle(false)
       setProlist(true)
       setResultTitle4(false)
       setSpinTop(false)
@@ -94,7 +154,7 @@ const ProductList = () => {
 
   const priceToLoad = () => {
     setProlist(false)
-    setTitle(true)
+    // setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
@@ -106,7 +166,7 @@ const ProductList = () => {
   }
   const markToLoad = () => {
     setProlist(false)
-    setTitle(true)
+    // setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
@@ -133,16 +193,15 @@ const ProductList = () => {
     if (e.key === 'Enter') {
       locavalue.current.value = ''
       brandvalue.current.value = ''
+      sortvalue.current.value = '1'
       setLevel('')
       setPrice('')
+      setMark('')
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
       setResultTitle(false)
       if (searchword.length > 0) {
         setSearch(searchword)
+        setResultTitle7(true)
         setTimeout(() => {
           setNoresult(true)
           // 如果搜尋文字長度大於0會執行以下動作
@@ -154,11 +213,19 @@ const ProductList = () => {
         setSearch('')
         setNoresult(true)
         setPerpage(18)
+        setResultTitle7(true)
         setTimeout(() => {
+          setResultTitle(false)
+          setResultTitle2(false)
+          setResultTitle3(false)
+          setResultTitle4(false)
+          setResultTitle5(false)
+          setResultTitle6(false)
+          setResultTitle7(false)
           setLoad(true)
           setProlist(true)
           setSpinTop(false)
-        }, 1500)
+        }, 1000)
       }
     }
   }
@@ -169,34 +236,23 @@ const ProductList = () => {
     setSearch('')
     if (loca === '') {
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
-      setResultTitle(false)
       setPerpage(18)
       setLocasort('')
       setNoresult(true)
       setTimeout(() => {
+        setResultTitle(false)
         setLoad(true)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
-      //setNoresult(true)
       setLocasort(loca)
       preToLoad()
       setNoresult(true)
-      setResultTitle(false)
-      /* ;(async function del() {
-        await setLocasort(loca)
-        await preToLoad()
-        await setNoresult(true)
-        await setResultTitle(false)
-      })() */
+      setResultTitle(true)
       setTimeout(() => {
         setSpinTop(false)
-        setResultTitle(true)
+        //setResultTitle(true)
         setProlist(true)
       }, 1000)
     }
@@ -208,30 +264,22 @@ const ProductList = () => {
     setSearch('')
     if (brand === '') {
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
-      setResultTitle2(false)
       setNoresult(true)
       setPerpage(18)
       setBrandsort('')
       setTimeout(() => {
+        setResultTitle2(false)
         setLoad(true)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
       setBrandsort(brand)
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
-      setResultTitle2(false)
+      setResultTitle2(true)
       setTimeout(() => {
         setSpinTop(false)
-        setResultTitle2(true)
+        //setResultTitle2(true)
         setProlist(true)
       }, 1000)
     }
@@ -240,34 +288,25 @@ const ProductList = () => {
   const sorthandler = (e) => {
     const sort = e.target.value
     if (sort === '1') {
-      setResultTitle3(false)
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
       setNoresult(true)
       setPerpage(18)
       setSort('')
       setTimeout(() => {
+        setResultTitle3(false)
         setLoad(true)
-        //setTitle(false)
         setProlist(true)
         setSpinTop(false)
-      }, 1500)
+      }, 1000)
     } else {
       setSort(sort)
       preToLoad()
-      /* setProlist(false)
-      setTitle(true)
-      setSpinTop(true)
-      setLoad(false) */
-      setResultTitle3(false)
+      setResultTitle3(true)
       setPerpage(18)
       setTimeout(() => {
         setLoad(true)
         setSpinTop(false)
-        setResultTitle3(true)
+        //setResultTitle3(true)
         setProlist(true)
       }, 1000)
     }
@@ -276,7 +315,7 @@ const ProductList = () => {
   /* 品牌 */
   const fetchBrand = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/brand'
+      'http://localhost:3001/api/products-condition/brand'
     )
     const fetchedData = await res.json()
     setBrand(fetchedData)
@@ -293,7 +332,7 @@ const ProductList = () => {
   /* 產地 */
   const fetchLoca = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/location'
+      'http://localhost:3001/api/products-condition/location'
     )
     const fetchedData = await res.json()
     const test = fetchedData
@@ -326,7 +365,7 @@ const ProductList = () => {
   }
   return (
     <>
-       {/* <CompareModal /> */}
+      {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
@@ -340,7 +379,9 @@ const ProductList = () => {
           <Sidebar
             level={level}
             setLevel={setLevel}
-            sidebarToLoad={sidebarToLoad}
+            sidebarToLoad1={sidebarToLoad1}
+            sidebarToLoad2={sidebarToLoad2}
+            sidebarToLoad3={sidebarToLoad3}
             levelToLoad={levelToLoad}
             price={price}
             setPrice={setPrice}
@@ -348,6 +389,7 @@ const ProductList = () => {
             markToLoad={markToLoad}
             mark={mark}
             setMark={setMark}
+            reset={reset}
           />
           <GuideButton />
 
@@ -355,7 +397,12 @@ const ProductList = () => {
             <div className="center-container">
               <div className="search-bar">
                 <div className="select">
-                  <select name="sort" id="" onChange={sorthandler}>
+                  <select
+                    ref={sortvalue}
+                    name="sort"
+                    id=""
+                    onChange={sorthandler}
+                  >
                     <option value="1">預設排序</option>
                     <option value="2">最新上架</option>
                     <option value="5">價錢高至低</option>
@@ -422,9 +469,29 @@ const ProductList = () => {
                 ''
               )}
               {/* 人氣之選 */}
-              {title ? '' : <ProductTop3 />}
+              {resultTitle ||
+              resultTitle2 ||
+              resultTitle3 ||
+              resultTitle4 ||
+              resultTitle5 ||
+              resultTitle6 ||
+              resultTitle7 ? (
+                ''
+              ) : (
+                <ProductTop3 compare={compare} setCompare={setCompare} />
+              )}
               {/* 達人推薦 */}
-              {title ? '' : <ProductMaster />}
+              {resultTitle ||
+              resultTitle2 ||
+              resultTitle3 ||
+              resultTitle4 ||
+              resultTitle5 ||
+              resultTitle6 ||
+              resultTitle7 ? (
+                ''
+              ) : (
+                <ProductMaster />
+              )}
 
               {/* 商品列表 */}
               {prolist ? (
@@ -446,6 +513,8 @@ const ProductList = () => {
                   price={price}
                   mark={mark}
                   clear={clear}
+                  compare={compare}
+                  setCompare={setCompare}
                 />
               ) : (
                 ''
@@ -475,7 +544,7 @@ const ProductList = () => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock up={up} />
+            <CompareBlock up={up} compare={compare} />
             <EmptyBlock />
           </div>
         </div>

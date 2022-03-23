@@ -4,16 +4,25 @@ import './../styles/News/News.css'
 import { useEffect, useState } from 'react'
 // import { useParams } from 'react-router-dom'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import DetailModal from './../compenents/News/DetailModal.js'
 
 const NewsList = () => {
   const [detail, setDetail] = useState([])
-  const url = 'http://localhost:3000/api/news'
+  const url = 'http://localhost:3001/api/news'
 
   const fetchData = async () => {
     const res = await fetch(url)
     const data = await res.json()
     const pro = data
     setDetail(pro)
+  }
+  //光箱的設定
+  const [modalShow, setModalShow] = useState(false)
+
+  const [id, setId] = useState('')
+
+  const openModal = () => {
+    setModalShow((prev) => !prev)
   }
 
   const newslist = detail.map((v, i) => {
@@ -29,7 +38,7 @@ const NewsList = () => {
           </div>
           <div className="news-item-word">
             <div className="news-item-date">
-              <p>{v.create_at}</p>
+              <p>{v.create_at.slice(0, 10)}</p>
             </div>
             <div className="news-item-title">
               <h3>{v.title}</h3>
@@ -37,7 +46,13 @@ const NewsList = () => {
             <div className="news-item-content mu-ellipsis">
               <p>{v.content}</p>
             </div>
-            <div className="news-item-link">
+            <div
+              className="news-item-link"
+              onClick={() => {
+                setId(v.news_id)
+                openModal()
+              }}
+            >
               <a href="#/">
                 <p>了解詳情...</p>
               </a>
@@ -54,6 +69,11 @@ const NewsList = () => {
     fetchData()
   }, [])
 
+  // useEffect(() => {
+  //   // openModal()
+  //   console.log(id)
+  // }, [id])
+
   return (
     <>
       <div className="news">
@@ -63,9 +83,16 @@ const NewsList = () => {
             <div className="news-title">
               <h1>最新消息</h1>
             </div>
-            <div className="container">
-              <button className="btn btn-primary">最新消息</button>
-            </div>
+            <div className="container"></div>
+            {modalShow ? (
+              <DetailModal
+                modalShow={modalShow}
+                setModalShow={setModalShow}
+                id={id}
+              />
+            ) : (
+              ''
+            )}
             {/* 元件 */}
             {newslist}
           </div>
