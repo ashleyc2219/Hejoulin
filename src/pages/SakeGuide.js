@@ -89,7 +89,7 @@ const SakeGuide = () => {
         </div>
       </div>
 
-      {/* <section id="result">
+      <section id="result">
         <div className="result_container">
           <img src="/SakeGuide/guidebg.png" alt="" className="guide_img" />
           <div className="over">
@@ -111,7 +111,7 @@ const SakeGuide = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   )
 }

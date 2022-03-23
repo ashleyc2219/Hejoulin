@@ -13,6 +13,7 @@ const Gift = () => {
   return (
     <>
       <div className="Gift">
+      {/* <ProductModal /> */}
         <div className="gift_container">
           {/* background-patten */}
           <div className="patten">
@@ -27,7 +28,7 @@ const Gift = () => {
           <div className="all">
             <StepBar content={stepContent} />
             <main>
-              <ProductModal />
+              
               <section id="gift_kind">
                 <div className="gift_kind">
                   <div className="row">
