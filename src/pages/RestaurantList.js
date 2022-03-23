@@ -4,11 +4,12 @@ import Menu from '../compenents/restaurant/Menu'
 import List from '../compenents/restaurant/List'
 import Map from '../compenents/restaurant/Map'
 import MapList from '../compenents/restaurant/MapList'
+import ClickMobile from '../compenents/restaurant/ClickMobile'
 
 import './../styles/RestaurantList/RestaurantList.scss'
 
 const RestaurantList = () => {
-  const [isMap, setIsMap] = useState(false)
+  const [isMap, setIsMap] = useState(true)
   const [places, setPlaces] = useState([])
   const [displayPlaces, setDisplayPlaces] = useState([])
   const [placesPics, setPlacesPics] = useState([])
@@ -94,6 +95,9 @@ const RestaurantList = () => {
         setArea={setArea}
         type={type}
         setType={setType}
+        setCoordinates={setCoordinates}
+        setZoom={setZoom}
+        setBounds={setBounds}
       />
       <div className="row">
         {isMap ? (
@@ -105,6 +109,7 @@ const RestaurantList = () => {
               <MapList
                 childClicked={childClicked}
                 displayPlaces={displayPlaces}
+                placesPics={placesPics}
               />
             </div>
             <div className="col-12 col-lg-6" style={{ paddingLeft: '0' }}>
@@ -119,11 +124,37 @@ const RestaurantList = () => {
                 setChildClicked={setChildClicked}
                 displayPlaces={displayPlaces}
               />
+              <button
+                onClick={() => {
+                  setIsMap(false)
+                  setZoom(7)
+                  setBounds([
+                    115.75459226462789, 19.920955983933112, 125.74116453025289,
+                    27.877216817234554,
+                  ])
+                }}
+                className="btn btn-primary d-flex justify-content-center position-absolute list-button mt-3 d-lg-none"
+              >
+                <img src="/restaurant/menu.svg" className="mr-2" alt="" />
+                清單
+              </button>
+              <ClickMobile
+                childClicked={childClicked}
+                displayPlaces={displayPlaces}
+                resPic={placesPics}
+              />
             </div>
           </>
         ) : (
           <div className="col-12">
-            <List isMap={isMap} setIsMap={setIsMap} />
+            <List
+              isMap={isMap}
+              setIsMap={setIsMap}
+              setZoom={setZoom}
+              setBounds={setBounds}
+              displayPlaces={displayPlaces}
+              placesPics={placesPics}
+            />
           </div>
         )}
       </div>
