@@ -1,14 +1,65 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileItem from './ProfileItems'
 import '../../../../styles/Member/Member-ProfileBox/ProfileBox.scss'
 
 const ProfileBox = () => {
+  const [memberData, setMemberData] = useState({})
   const birthOption = (items) =>
     items.map((item, i) => (
       <option value={item.itemName} key={i}>
         {item.itemName}
       </option>
     ))
+  useEffect(() => {
+    ;(async () => {
+      const obj = await (
+        await fetch('http://localhost:3001/user/member', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + localStorage.token,
+          },
+        })
+      ).json()
+      console.log(obj)
+      setMemberData(obj)
+    })()
+  }, [])
+  const userAccount = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.user_account)
+    }
+  }
+  const memberName = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.member_name)
+    }
+  }
+  const memberMobile = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.member_mob)
+    }
+  }
+  const memberBirthdayY = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.member_bir.slice(0, 4))
+    }
+  }
+  const memberBirthdayM = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.member_bir.slice(5, 7))
+    }
+  }
+  const memberBirthdayD = (memberData) => {
+    if (memberData && memberData.length) {
+      console.log(memberData)
+      return memberData.map((el) => el.member_bir.slice(8, 10))
+    }
+  }
   return (
     <>
       <div className="ProfileBox">
@@ -17,14 +68,19 @@ const ProfileBox = () => {
           <input
             type="email"
             className="form-control"
-            placeholder="test001@test001"
+            value={userAccount(memberData)}
+            readOnly
           />
-          <div className="form-text">錯誤/提示訊息</div>
+          <div className="form-text displayNone">錯誤/提示訊息</div>
         </div>
         <br />
         <div className="mb-3 ProfileBox-Item">
           <label className="form-label">姓名</label>
-          <input type="text" className="form-control" placeholder="test" />
+          <input
+            type="text"
+            className="form-control"
+            value={memberName(memberData)}
+          />
           <div className="form-text">錯誤/提示訊息</div>
         </div>
         <br />
@@ -33,7 +89,7 @@ const ProfileBox = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="0912332145"
+            value={memberMobile(memberData)}
           />
           <div className="form-text">錯誤/提示訊息</div>
         </div>
@@ -44,39 +100,31 @@ const ProfileBox = () => {
             <label className="form-label">生日</label>
             <select className="decorated" required>
               <option value="" disabled selected hidden>
-                月
+                {memberBirthdayY(memberData)}
               </option>
               {birthOption(ProfileItem)}
             </select>
           </div>
           <div className="birthday">
-            <label className="form-label">生日</label>
+            <label className="form-label displayNone">生日</label>
             <select className="decorated" required>
               <option value="" disabled selected hidden>
-                月
+                {memberBirthdayM(memberData)}
               </option>
               {birthOption(ProfileItem)}
             </select>
           </div>
           <div className="birthday">
-            <label className="form-label">生日</label>
+            <label className="form-label displayNone">生日</label>
             <select className="decorated" required>
               <option value="" disabled selected hidden>
-                月
+                {memberBirthdayD(memberData)}
               </option>
               {birthOption(ProfileItem)}
             </select>
           </div>
-          {/*<select className="decorated" name="drinks" required>*/}
-          {/*  <option value="" disabled selected hidden>*/}
-          {/*    年*/}
-          {/*  </option>*/}
-          {/*  <option value="coffee">Coffee</option>*/}
-          {/*  <option value="tea">Tea</option>*/}
-          {/*  <option value="milk">Milk</option>*/}
-          {/*</select>*/}
         </div>
-        <div className="form-text">錯誤/提示訊息</div>
+        <div className="form-text displayNone">錯誤/提示訊息</div>
         <br />
         <button className="btn btn-primary profile-btn">確認修改資料</button>
       </div>

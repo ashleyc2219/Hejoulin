@@ -1,35 +1,54 @@
 @import '../../mixin.scss';
 
-table {
-  width: 90%;
-  margin-left: 1.5%;
+.eventData {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
 
-  thead {
+  table {
     width: 100%;
-    display: flex;
-    border-bottom: 2px solid #BBBCBD;
 
-    tr {
+
+    thead {
       width: 100%;
-      vertical-align: middle;
+      border-bottom: 2px solid #bbbcbd;
 
-      th {
-        width: 10%;
-        padding: 0 0 2% 6%;
-
+      tr {
+        width: 100%;
+        //vertical-align: center;
+        th {
+          padding-left: 50px;
+          padding-right: 50px;
+          width: 25%;
+          font-size: 14px;
+          padding-bottom: 24px;
+        }
       }
     }
-  }
 
-  tbody {
-    width: 100%;
+    tbody {
+      width: 100%;
 
-    tr {
-      vertical-align: middle;
+      tr {
+        //width: 80%;
+        border-bottom: 2px solid #bbbcbd;
 
-      td {
-        padding: 3% 5% 0 7%;
+        td {
+          text-align: center;
+          //width: 140px;
+          font-size: 14px;
+          //padding-left: 50px;
+          //padding-right: 50px;
+          width: 20%;
+         // padding-bottom: 24px;
+
+        }
+
+        button {
+          margin: 8px 8px;
+        }
       }
     }
+
   }
 }

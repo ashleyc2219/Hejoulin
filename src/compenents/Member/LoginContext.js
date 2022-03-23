@@ -24,7 +24,7 @@ const LoginContext = (props) => {
     localStorage.setItem('token', obj.token)
     localStorage.setItem('account', obj.info.user_account)
     setUser(obj.info.user_account)
-    history.push('/member/profile', { from: 'login-success' })
+    history.push('/', { from: 'login-success' })
     const token = localStorage.getItem('token')
 
     const r2 = await fetch('http://wilson:3001/user/api/auth-list', {
