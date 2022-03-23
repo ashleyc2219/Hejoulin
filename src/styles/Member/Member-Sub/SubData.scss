@@ -1,35 +1,52 @@
 @import '../../mixin.scss';
 
-table {
-  width: 90%;
-  margin-left: 1.5%;
+.subData {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
 
-  thead {
+  table {
     width: 100%;
-    display: flex;
-    border-bottom: 2px solid #BBBCBD;
 
-    tr {
+
+    thead {
       width: 100%;
-      vertical-align: middle;
+      border-bottom: 2px solid #bbbcbd;
 
-      th {
-        width: 10%;
-        padding: 0 0 2% 6%;
-
+      tr {
+        //width: 100%;
+        //vertical-align: center;
+        th {
+          padding-left: 32px;
+          padding-right: 50px;
+          //width: 25%;
+          //font-size: 14px;
+          padding-bottom: 24px;
+        }
       }
     }
-  }
 
-  tbody {
-    width: 100%;
+    tbody {
+      width: 100%;
 
-    tr {
-      vertical-align: middle;
+      tr {
+        //width: 907px;
+        padding: 20px;
+        border-bottom: 2px solid #bbbcbd;
 
-      td {
-        padding: 3% 5% 0 7%;
+        td {
+          max-width: 150px;
+          text-align: center;
+          font-size: 14px;
+          height: 62px;
+        }
+
+        button {
+         // width: 108%;
+         // margin: 8px 8px;
+        }
       }
     }
+
   }
 }

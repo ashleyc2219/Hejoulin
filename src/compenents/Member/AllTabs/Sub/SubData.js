@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../../../styles/Member/Member-Sub/SubData.scss'
 
 const SubData = (props) => {
   const { user, setUser } = props
-  const [data, setData] = useState({})
+  const [subData, setSubData] = useState({})
   const listNames = [
     { listName: '訂閱開始時間' },
     { listName: '訂閱名稱' },
@@ -13,40 +13,52 @@ const SubData = (props) => {
   const listType = (items) =>
     items.map((item, i) => <th key={i}>{item.listName}</th>)
 
-  const getData = async () => {
-    const obj = await (
-      await fetch('https://localhost:3001/user/member/MemberEventList')
-    ).json()
-    console.log(obj)
-    setData(obj)
-  }
-  const renderSubItems = () => {
-    if (data.rows && data.rows.length) {
-      return data.rows.map((el) => (
+  useEffect(() => {
+    ;(async () => {
+      const obj = await (
+        await fetch('http://localhost:3001/user/member/MemberSublist', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + localStorage.token,
+          },
+        })
+      ).json()
+      console.log(obj)
+      setSubData(obj)
+    })()
+  }, [])
+  const renderSubItems = (...subData) => {
+    if (subData && subData.length) {
+      console.log(subData)
+      return subData.map((el) => (
         <tr key={'test' + el.member_id}>
-          <td>{el.event_time_start}</td>
-          <td>{el.order_id}</td>
-          <td>{el.event_name}</td>
-          <td>{el.expire_date}</td>
-          <button className="btn btn-primary">管理訂閱</button>
+          <td>{el.data1.order_d_id.slice(0, 8)}</td>
+          <td>{el.data2.sub_plan}</td>
+          <td>{el.data2.sub_price}</td>
+          <td>{el.data1.order_state}</td>
+          <td>
+            <button className="btn btn-primary">管理訂閱</button>
+          </td>
         </tr>
       ))
     } else {
       return (
-        <tr>
-          <td>請先登入</td>
-        </tr>
+        <tr></tr>
+        // <div className="none-mes">
+        //   <h5>您目前未有訂閱方案</h5>
+        //   <button className="btn btn-primary btnSub">點我訂閱去</button>
+        // </div>
       )
     }
   }
   return (
     <>
-      <table>
-        <thead>
-          <tr>{listType(listNames)}</tr>
-        </thead>
-        <tbody>{renderSubItems(getData)}</tbody>
-      </table>
+      <div className="subData">
+        <table>
+          <thead>{subData ? <tr>{listType(listNames)}</tr> : <tr></tr>}</thead>
+          <tbody>{renderSubItems(subData)}</tbody>
+        </table>
+      </div>
     </>
   )
 }

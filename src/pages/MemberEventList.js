@@ -5,7 +5,6 @@ import TabsEvent from '../compenents/Member/AllTabs/EventList/TabsEvent'
 
 const MemberEventList = (props) => {
   const { user, setUser } = props
-  const [data, setData] = useState({})
 
   return (
     <>
