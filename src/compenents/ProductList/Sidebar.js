@@ -40,105 +40,145 @@ function Sidebar(props) {
     }
   }
   const click2 = () => {
-    if (level === '2') {
-      setLevel('')
-      levelToLoad()
-    } else {
-      const a = '2'
-      setLevel(a)
-      sidebarToLoad1()
+    try {
+      if (level === '2') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '2'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click3 = () => {
-    if (level === '3') {
-      setLevel('')
-      levelToLoad()
-    } else {
-      const a = '3'
-      setLevel(a)
-      sidebarToLoad1()
+    try {
+      if (level === '3') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '3'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click4 = () => {
-    if (level === '4') {
-      setLevel('')
-      levelToLoad()
-    } else {
-      const a = '4'
-      setLevel(a)
-      sidebarToLoad1()
+    try {
+      if (level === '4') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '4'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click5 = () => {
-    if (level === '5') {
-      setLevel('')
-      levelToLoad()
-    } else {
-      const a = '5'
-      setLevel(a)
-      sidebarToLoad1()
+    try {
+      if (level === '5') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '5'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
   const click6 = () => {
-    if (level === '6') {
-      setLevel('')
-      levelToLoad()
-    } else {
-      const a = '6'
-      setLevel(a)
-      sidebarToLoad1()
+    try {
+      if (level === '6') {
+        setLevel('')
+        levelToLoad()
+      } else {
+        const a = '6'
+        setLevel(a)
+        sidebarToLoad1()
+      }
+    } catch (e) {
+      linkTo()
     }
   }
 
   const price1 = () => {
-    if (price === '1') {
-      setPrice('')
-      priceToLoad()
-    } else {
-      const a = '1'
-      setPrice(a)
-      sidebarToLoad2()
+    try {
+      if (price === '1') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '1'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const price2 = () => {
-    if (price === '2') {
-      setPrice('')
-      priceToLoad()
-    } else {
-      const a = '2'
-      setPrice(a)
-      sidebarToLoad2()
+    try {
+      if (price === '2') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '2'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const price3 = () => {
-    if (price === '3') {
-      setPrice('')
-      priceToLoad()
-    } else {
-      const a = '3'
-      setPrice(a)
-      sidebarToLoad2()
+    try {
+      if (price === '3') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '3'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const price4 = () => {
-    if (price === '4') {
-      setPrice('')
-      priceToLoad()
-    } else {
-      const a = '4'
-      setPrice(a)
-      sidebarToLoad2()
+    try {
+      if (price === '4') {
+        setPrice('')
+        priceToLoad()
+      } else {
+        const a = '4'
+        setPrice(a)
+        sidebarToLoad2()
+      }
+    } catch {
+      linkTo()
     }
   }
   const mark1 = () => {
-    if (mark === '1') {
-      setMark('')
-      markToLoad()
-    } else {
-      const a = '1'
+    try {
+      if (mark === '1') {
+        setMark('')
+        markToLoad()
+      } else {
+        const a = '1'
 
-      setMark(a)
-      sidebarToLoad3()
+        setMark(a)
+        sidebarToLoad3()
+      }
+    } catch {
+      linkTo()
     }
   }
   return (
