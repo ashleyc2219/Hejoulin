@@ -257,8 +257,22 @@
                 line-height: 32px;
                 color: $gray-400;
                 padding: 3px 10px;
-                &:nth-child(odd) {
+                &:nth-child(1) {
                   background-color: rgba(230, 196, 158, 0.25);
+                }
+              }
+              .temp {
+                background-color: rgba(230, 196, 158, 0.25);
+              }
+            }
+            ul {
+              &:nth-child(1),
+              &:nth-child(2),
+              &:nth-child(4) {
+                li {
+                  &:nth-child(3) {
+                    background-color: rgba(230, 196, 158, 0.25);
+                  }
                 }
               }
             }
@@ -277,6 +291,12 @@
                     }
                   }
                 }
+                .temp {
+                  background-color: transparent;
+                }
+              }
+              .alco {
+                background-color: rgba(230, 196, 158, 0.25);
               }
             }
           }
