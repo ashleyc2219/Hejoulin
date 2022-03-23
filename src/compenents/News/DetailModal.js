@@ -7,7 +7,7 @@ const DetailModal = (props) => {
   console.log(id)
 
   const [detail, setDetail] = useState([])
-  const url = 'http://localhost:3000/api/news?newsId=' + id
+  const url = 'http://localhost:3001/api/news?newsId=' + id
 
   const fetchData = async () => {
     const res = await fetch(url)
