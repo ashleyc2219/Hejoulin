@@ -130,6 +130,7 @@
 
 .Header .Header-container .navbar .icons {
   display: flex;
+  margin-bottom: 15px;
 }
 
 .Header .Header-container .navbar .icons .loginHover {
@@ -139,32 +140,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   cursor: pointer;
 }
 
-.Header .Header-container .navbar .icons .loginHover .loginFont {
-  display: none;
-}
-
-.Header .Header-container .navbar .icons .loginHover .logindefault {
-  width: 52px;
-  height: 48px;
-}
-
-.Header .Header-container .navbar .icons .loginHover:hover .loginFont {
-  display: block;
-}
-
-.Header .Header-container .navbar .icons .loginHover:hover > img.loginIcon {
-  display: block;
-}
-
-.Header .Header-container .navbar .icons .loginHover:hover > img.logindefault {
-  display: none;
-}
-
-.Header .Header-container .navbar .icons .loginHover img.loginIcon {
-  display: none;
+.Header .Header-container .navbar .icons .loginHover:hover span {
+  opacity: 1;
+  bottom: -10px;
 }
 
 @media (max-width: 1024px) {
@@ -180,9 +162,15 @@
 }
 
 .Header .Header-container .navbar .icons .loginHover span {
+  transition: all .5s;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
   font-family: "Klee One", cursive;
+  line-height: 28px;
   font-size: 15px;
-  line-height: 30px;
+  bottom: -5px;
+  border-top: 2px solid #3d4349;
 }
 
 .Header .Header-container .navbar .icons .cart {

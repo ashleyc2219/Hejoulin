@@ -104,6 +104,7 @@
         // width: 16%;
         // margin-top: 44px;
         display: flex;
+        margin-bottom: 15px;
         .loginHover {
           width: 37.4%;
           height: 80px;
@@ -111,28 +112,11 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          .loginFont{
-            display: none;
+          position: relative;
+          &:hover  span{
+            opacity: 1;
+            bottom: -10px
           }
-          .logindefault{
-            width: 52px;
-            height: 48px;
-          }
-          &:hover .loginFont{
-            display: block;
-          }
-          &:hover > img.loginIcon{
-            
-            display: block;
-          }
-         
-          &:hover > img.logindefault{
-            display: none;
-          }
-          img.loginIcon{
-            display: none;
-          }
-          
           @include large() {
             width: 25%;
           }
@@ -141,9 +125,15 @@
           }
           cursor: pointer;
           span {
+            transition: all .5s;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
             @include kleeone();
+            line-height: 28px;
             font-size: 15px;
-            line-height: 30px;
+            bottom: -5px;
+            border-top: 2px solid $primary;
           }
         }
         
