@@ -44,7 +44,7 @@ const ProductDetail = (props) => {
       <React.Fragment key={i}>
         <div className="product-wrap">
           <div className="product-img">
-            <img src={'/ProductList/productimg/' + v.pro_img} alt="" />
+            <img src={'http://localhost:3001/images/pro_img/' + v.pro_img} alt="" />
           </div>
           <div className="product-info">
             <div className="product-title">

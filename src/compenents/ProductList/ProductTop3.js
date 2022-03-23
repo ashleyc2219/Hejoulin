@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
+import CompareBtn from './CompareBtn'
 
 const ProductTop3 = ({ compare, setCompare }) => {
   const [top, setTop] = useState([])
-  console.log(compare)
   /* 人氣之選 */
   const fetchTop = async () => {
     const res = await fetch(
@@ -17,20 +17,9 @@ const ProductTop3 = ({ compare, setCompare }) => {
     setTop(test)
   }
 
-  const test = (a) => {
-    if (compare.length < 3 && compare.indexOf(a) === -1) {
-      setCompare([...compare, a])
-      console.log(compare)
-    }
-  }
-
   useEffect(() => {
     fetchTop()
   }, [])
-
-  useEffect(() => {
-    console.log('useEffect')
-  }, [compare])
 
   const top3 = top.map((v, i) => {
     return (
@@ -40,7 +29,7 @@ const ProductTop3 = ({ compare, setCompare }) => {
             <div className="img-wrap">
               <img
                 className="product-img"
-                src={'/ProductList/productimg/' + v.pro_img}
+                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
                 alt=""
               />
             </div>
@@ -60,15 +49,11 @@ const ProductTop3 = ({ compare, setCompare }) => {
             )}
           </div>
           <div className="icon">
-            <div
-              onClick={() => {
-                test(v.pro_id)
-              }}
-              className="compare"
-            >
-              <img src="/ProductList/add.svg" alt="" />
-              <p>比較</p>
-            </div>
+            <CompareBtn
+              id={v.pro_id}
+              compare={compare}
+              setCompare={setCompare}
+            />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
               <img

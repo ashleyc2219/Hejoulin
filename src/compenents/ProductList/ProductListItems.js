@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from './Heart'
 import ProductTitle from './ProductTitle'
 import ResultTitle from './ResultTitle'
-import ProductMaster from './ProductMaster'
+import CompareBtn from './CompareBtn'
 
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
@@ -28,6 +28,8 @@ const ProductListItems = (props) => {
     price,
     mark,
     clear,
+    compare,
+    setCompare
   } = props
 
   let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
@@ -58,7 +60,7 @@ const ProductListItems = (props) => {
             <div className="img-wrap">
               <img
                 className="product-img"
-                src={'/ProductList/productimg/' + v.pro_img}
+                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
                 alt=""
               />
             </div>
@@ -78,10 +80,11 @@ const ProductListItems = (props) => {
             )}
           </div>
           <div className="icon">
-            <div className="compare">
-              <img src="/ProductList/add.svg" alt="" />
-              <p>比較</p>
-            </div>
+          <CompareBtn
+              id={v.pro_id}
+              compare={compare}
+              setCompare={setCompare}
+            />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
               <img

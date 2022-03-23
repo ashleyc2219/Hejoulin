@@ -490,7 +490,7 @@ const ProductList = (props) => {
               resultTitle7 ? (
                 ''
               ) : (
-                <ProductMaster />
+                <ProductMaster compare={compare} setCompare={setCompare} />
               )}
 
               {/* 商品列表 */}

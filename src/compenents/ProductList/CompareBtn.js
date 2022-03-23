@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const CompareBtn = () => {
+const CompareBtn = ({ id, compare, setCompare }) => {
+  const pushCompare = (a) => {
+    let arr = compare
+
+    if (arr.length < 3 && arr.indexOf(a) === -1) {
+      setCompare([...arr, a])
+    }
+  }
+
   return (
     <>
       <div
         onClick={() => {
+          pushCompare(id)
         }}
         className="compare"
       >

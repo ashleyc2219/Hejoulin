@@ -1,10 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState } from 'react'
 import './../../compenents/ProductList/CompareBlock.scss'
 
 const CompareBlock = ({ up, compare }) => {
-  useEffect(() => {
-    console.log('test')
-  }, [])
+const [comparePro , setComparePro] = useState([])
+
+  /* const fetchCompare = async () => {
+    const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + 
+    const res = await fetch(
+      'http://localhost:3001/api/products-condition/random-three'
+    )
+    const fetchedData = await res.json()
+    const test = fetchedData
+    setComparePro(test)
+  } */
+
+useEffect(() => {
+  console.log(compare)
+}, [compare])
 
   return (
     <>

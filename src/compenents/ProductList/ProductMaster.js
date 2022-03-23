@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductMaster.scss'
 import Heart from './Heart'
+import CompareBtn from './CompareBtn'
 
-const ProductMaster = () => {
+const ProductMaster = ({compare , setCompare}) => {
   const [master, setMaster] = useState([])
 
   const fetchMaster = async () => {
@@ -28,7 +29,7 @@ const ProductMaster = () => {
             >
               <img
                 className="product-img"
-                src={'/ProductList/productimg/' + v.pro_img}
+                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
                 alt=""
               />
             </div>
@@ -48,15 +49,11 @@ const ProductMaster = () => {
             )}
           </div>
           <div className="icon">
-            <div
-              onClick={() => {
-                console.log('比較')
-              }}
-              className="compare"
-            >
-              <img src="/ProductList/add.svg" alt="" />
-              <p>比較</p>
-            </div>
+          <CompareBtn
+              id={v.pro_id}
+              compare={compare}
+              setCompare={setCompare}
+            />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
               <img
