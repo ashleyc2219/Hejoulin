@@ -42,8 +42,7 @@ import { createContext, useState } from 'react'
 function App() {
   const AuthContext = createContext(null)
   const [user, setUser] = useState(false)
-  const [compare, setCompare] = useState(1)
-  
+  const [compare, setCompare] = useState([])
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

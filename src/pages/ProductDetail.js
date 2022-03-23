@@ -13,7 +13,6 @@ const ProductDetail = (props) => {
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
 
-
   const { level, setLevel } = props
 
   const linkFavhandler = () => {
@@ -31,7 +30,7 @@ const ProductDetail = (props) => {
     }
   }
 
-  const url = 'http://localhost:3000/api/products-sake/item-detail?pro_id=' + id
+  const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
 
   const fetchData = async () => {
     const res = await fetch(url)
@@ -57,7 +56,7 @@ const ProductDetail = (props) => {
                 </div>
                 <div className="like-compare">
                   <div className="like">
-                    <Heart id={v.pro_id} linkFav={linkFav}/>
+                    <Heart id={v.pro_id} linkFav={linkFav} />
                     <p onClick={linkFavhandler}>收藏</p>
                   </div>
                   <div className="compare">

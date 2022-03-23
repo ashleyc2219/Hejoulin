@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ResPicSwiper from './../../compenents/restaurant/ResPicSwiper'
-import './../../styles/RestaurantList/PlaceDetails.scss'
 
-const PlaceDetails = ({ place, selected, placesPics }) => {
+const ListPlaceCard = ({ place, selected, placesPics }) => {
   return (
     <Link
       to={'/restaurant/detail/' + place.res_id}
-      className="list-container d-flex res-card py-3 justify-content-start"
+      className="d-flex flex-column res-card py-3 justify-content-start align-items-center"
     >
       <ResPicSwiper
         resPic={placesPics}
@@ -15,8 +14,8 @@ const PlaceDetails = ({ place, selected, placesPics }) => {
         style={{ maxWidth: '250px' }}
         className="res-list-swiper"
       />
-      <div className="ml-3 detail">
-        <h6 className="mb-2" style={{ fontSize: '20px' }}>
+      <div className="detail d-flex flex-column justify-content-center">
+        <h6 className="my-2" style={{ fontSize: '20px' }}>
           {place.res_name}
         </h6>
         <div className="mb-2">{place.res_address}</div>
@@ -28,4 +27,4 @@ const PlaceDetails = ({ place, selected, placesPics }) => {
   )
 }
 
-export default PlaceDetails
+export default ListPlaceCard

@@ -105,7 +105,11 @@ export default function Map({
                   setChildClicked(cluster.properties.id)
                 }}
               >
-                <img src="/restaurant/marker.svg" alt="marker" />
+                <img
+                  style={{ height: '40px' }}
+                  src="/restaurant/sake.svg"
+                  alt="marker"
+                />
               </button>
             </Marker>
           )

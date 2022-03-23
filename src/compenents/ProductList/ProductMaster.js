@@ -8,13 +8,12 @@ const ProductMaster = () => {
 
   const fetchMaster = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/random-three'
+      'http://localhost:3001/api/products-condition/random-three'
     )
     const fetchedData = await res.json()
     const test = fetchedData
     setMaster(test)
   }
-
 
   const mas = master.map((v, i) => {
     return (
@@ -59,7 +58,7 @@ const ProductMaster = () => {
               <p>比較</p>
             </div>
             <div className="cart-heart">
-            <Heart id={v.pro_id}/>
+              <Heart id={v.pro_id} />
               <img
                 onClick={() => {
                   console.log('購物車')
@@ -84,7 +83,6 @@ const ProductMaster = () => {
   useEffect(() => {
     fetchMaster()
   }, [])
-
 
   return (
     <>

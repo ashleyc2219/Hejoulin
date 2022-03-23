@@ -315,7 +315,7 @@ const ProductList = (props) => {
   /* 品牌 */
   const fetchBrand = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/brand'
+      'http://localhost:3001/api/products-condition/brand'
     )
     const fetchedData = await res.json()
     setBrand(fetchedData)
@@ -332,7 +332,7 @@ const ProductList = (props) => {
   /* 產地 */
   const fetchLoca = async () => {
     const res = await fetch(
-      'http://localhost:3000/api/products-condition/location'
+      'http://localhost:3001/api/products-condition/location'
     )
     const fetchedData = await res.json()
     const test = fetchedData
@@ -478,7 +478,7 @@ const ProductList = (props) => {
               resultTitle7 ? (
                 ''
               ) : (
-                <ProductTop3 />
+                <ProductTop3 compare={compare} setCompare={setCompare} />
               )}
               {/* 達人推薦 */}
               {resultTitle ||
@@ -544,7 +544,7 @@ const ProductList = (props) => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock up={up}/>
+            <CompareBlock up={up} compare={compare} />
             <EmptyBlock />
           </div>
         </div>
