@@ -9,12 +9,15 @@ function Sidebar(props) {
     setLevel,
     price,
     setPrice,
-    sidebarToLoad,
+    sidebarToLoad1,
+    sidebarToLoad2,
+    sidebarToLoad3,
     levelToLoad,
     priceToLoad,
     markToLoad,
     mark,
     setMark,
+    reset,
   } = props
 
   const history = useHistory()
@@ -30,7 +33,7 @@ function Sidebar(props) {
       } else {
         const a = '1'
         setLevel(a)
-        sidebarToLoad()
+        sidebarToLoad1()
       }
     } catch (e) {
       linkTo()
@@ -43,7 +46,7 @@ function Sidebar(props) {
     } else {
       const a = '2'
       setLevel(a)
-      sidebarToLoad()
+      sidebarToLoad1()
     }
   }
   const click3 = () => {
@@ -53,7 +56,7 @@ function Sidebar(props) {
     } else {
       const a = '3'
       setLevel(a)
-      sidebarToLoad()
+      sidebarToLoad1()
     }
   }
   const click4 = () => {
@@ -63,7 +66,7 @@ function Sidebar(props) {
     } else {
       const a = '4'
       setLevel(a)
-      sidebarToLoad()
+      sidebarToLoad1()
     }
   }
   const click5 = () => {
@@ -73,7 +76,7 @@ function Sidebar(props) {
     } else {
       const a = '5'
       setLevel(a)
-      sidebarToLoad()
+      sidebarToLoad1()
     }
   }
   const click6 = () => {
@@ -83,7 +86,7 @@ function Sidebar(props) {
     } else {
       const a = '6'
       setLevel(a)
-      sidebarToLoad()
+      sidebarToLoad1()
     }
   }
 
@@ -94,7 +97,7 @@ function Sidebar(props) {
     } else {
       const a = '1'
       setPrice(a)
-      sidebarToLoad()
+      sidebarToLoad2()
     }
   }
   const price2 = () => {
@@ -104,7 +107,7 @@ function Sidebar(props) {
     } else {
       const a = '2'
       setPrice(a)
-      sidebarToLoad()
+      sidebarToLoad2()
     }
   }
   const price3 = () => {
@@ -114,7 +117,7 @@ function Sidebar(props) {
     } else {
       const a = '3'
       setPrice(a)
-      sidebarToLoad()
+      sidebarToLoad2()
     }
   }
   const price4 = () => {
@@ -124,7 +127,7 @@ function Sidebar(props) {
     } else {
       const a = '4'
       setPrice(a)
-      sidebarToLoad()
+      sidebarToLoad2()
     }
   }
   const mark1 = () => {
@@ -135,7 +138,7 @@ function Sidebar(props) {
       const a = '1'
 
       setMark(a)
-      sidebarToLoad()
+      sidebarToLoad3()
     }
   }
   return (
@@ -200,6 +203,7 @@ function Sidebar(props) {
             <p className={mark === '1' ? 'checked' : ''} onClick={mark1}>
               可酒標客製
             </p>
+            <p onClick={reset}>重設</p>
           </div>
         </div>
       </div>

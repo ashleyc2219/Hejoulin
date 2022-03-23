@@ -27,11 +27,11 @@ const ProductListItems = (props) => {
     level,
     price,
     mark,
-    clear
+    clear,
   } = props
 
   let url = `http://localhost:3000/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
-console.log(url)
+ console.log(url)
   const fetchList = async () => {
     const res = await fetch(url)
     const fetchedData = await res.json()
@@ -123,12 +123,15 @@ console.log(url)
     })()
   }, [page, search, locasort, level, price, mark])
 
-  
-
   return (
     <>
       <div className="product-list">
-        {resultTitle || resultTitle2 || resultTitle3 || resultTitle4|| resultTitle5|| resultTitle6 ? (
+        {resultTitle ||
+        resultTitle2 ||
+        resultTitle3 ||
+        resultTitle4 ||
+        resultTitle5 ||
+        resultTitle6 ? (
           <ResultTitle />
         ) : (
           <ProductTitle />
