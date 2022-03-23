@@ -65,7 +65,7 @@ const ProductModal = () => {
                   <ul>
                     <li className="computer">精米步合度</li>
                     <li className="mobile">步合度</li>
-                    <li>酒經度</li>
+                    <li>酒精度</li>
                     <li>溫度</li>
                   </ul>
                   <ul>
