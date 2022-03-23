@@ -104,13 +104,35 @@
         // width: 16%;
         // margin-top: 44px;
         display: flex;
-        .login {
+        .loginHover {
           width: 37.4%;
           height: 80px;
           margin-right: 17px;
           display: flex;
           flex-direction: column;
           align-items: center;
+          .loginFont{
+            display: none;
+          }
+          .logindefault{
+            width: 52px;
+            height: 48px;
+          }
+          &:hover .loginFont{
+            display: block;
+          }
+          &:hover > img.loginIcon{
+            
+            display: block;
+          }
+         
+          &:hover > img.logindefault{
+            display: none;
+          }
+          img.loginIcon{
+            display: none;
+          }
+          
           @include large() {
             width: 25%;
           }
@@ -124,6 +146,8 @@
             line-height: 30px;
           }
         }
+        
+        
         .cart {
           cursor: pointer;
           margin-right: 7px;

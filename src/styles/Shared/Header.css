@@ -25,6 +25,18 @@
   margin-top: 55.7px;
 }
 
+@media (max-width: 1024px) {
+  .Header .Header-container .logo-bread .logo {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Header .Header-container .logo-bread .logo {
+    width: max-content;
+  }
+}
+
 .Header .Header-container .logo-bread .bread {
   display: flex;
   align-items: center;
@@ -120,7 +132,7 @@
   display: flex;
 }
 
-.Header .Header-container .navbar .icons .login {
+.Header .Header-container .navbar .icons .loginHover {
   width: 37.4%;
   height: 80px;
   margin-right: 17px;
@@ -130,19 +142,44 @@
   cursor: pointer;
 }
 
+.Header .Header-container .navbar .icons .loginHover .loginFont {
+  display: none;
+}
+
+.Header .Header-container .navbar .icons .loginHover .logindefault {
+  width: 52px;
+  height: 48px;
+}
+
+.Header .Header-container .navbar .icons .loginHover:hover .loginFont {
+  display: block;
+}
+
+.Header .Header-container .navbar .icons .loginHover:hover > img.loginIcon {
+  display: block;
+}
+
+.Header .Header-container .navbar .icons .loginHover:hover > img.logindefault {
+  display: none;
+}
+
+.Header .Header-container .navbar .icons .loginHover img.loginIcon {
+  display: none;
+}
+
 @media (max-width: 1024px) {
-  .Header .Header-container .navbar .icons .login {
+  .Header .Header-container .navbar .icons .loginHover {
     width: 25%;
   }
 }
 
 @media (max-width: 768px) {
-  .Header .Header-container .navbar .icons .login {
+  .Header .Header-container .navbar .icons .loginHover {
     display: none;
   }
 }
 
-.Header .Header-container .navbar .icons .login span {
+.Header .Header-container .navbar .icons .loginHover span {
   font-family: "Klee One", cursive;
   font-size: 15px;
   line-height: 30px;
@@ -221,7 +258,7 @@
   top: 0;
   right: -100%;
   transition: 850ms;
-  z-index: 9;
+  z-index: 99;
 }
 
 @media (max-width: 768px) {
@@ -350,6 +387,10 @@
 
 .mobile-menu .menu ul .purchase-sake {
   transition: all 0.3s;
+}
+
+.mobile-menu .menu ul .purchase-sake a:hover {
+  border-bottom: 1px solid black;
 }
 
 .mobile-menu .menu ul .purchase-sake .dropdown-content {

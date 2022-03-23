@@ -17,7 +17,7 @@ import { Spinner } from 'react-bootstrap'
 
 import GuideButton from '../compenents/SakeGuide/Guide'
 
-const ProductList = () => {
+const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
   const [load, setLoad] = useState(true) //載入更多的按鈕
@@ -48,15 +48,7 @@ const ProductList = () => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
-  console.log(
-    resultTitle &&
-      resultTitle2 &&
-      resultTitle3 &&
-      resultTitle4 &&
-      resultTitle5 &&
-      resultTitle6 &&
-      resultTitle7
-  )
+  const { compare, setCompare } = props
 
   const reset = () => {
     locavalue.current.value = ''
@@ -521,6 +513,8 @@ const ProductList = () => {
                   price={price}
                   mark={mark}
                   clear={clear}
+                  compare={compare}
+                  setCompare={setCompare}
                 />
               ) : (
                 ''
@@ -550,7 +544,7 @@ const ProductList = () => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock up={up} />
+            <CompareBlock up={up}/>
             <EmptyBlock />
           </div>
         </div>
