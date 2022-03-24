@@ -11,7 +11,10 @@ body {
 .home {
   p {
     color: $gray-300;
-    font-family: 'Klee One', cursive;
+    font-family: 'Klee One';
+    b {
+      font-family: 'Klee One';
+    }
   }
 
   h1,
@@ -125,6 +128,9 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
+    @include medium() {
+      justify-content: space-evenly;
+    }
   }
 
   .intro-box {
@@ -144,5 +150,53 @@ body {
   }
 
   .sub-box {
+    //outline: 2px solid #707;
+    margin-top: 100px;
+    .sub-img {
+      //outline: 2px solid #700;
+      position: relative;
+      width: 100%;
+      @include medium() {
+        overflow: hidden;
+      }
+      .sub-img-box {
+        position: absolute;
+        width: 50%;
+        height: 400px;
+        overflow: hidden;
+        @include medium() {
+          position: relative;
+          width: 150%;
+          height: 370px;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .sub-word {
+      //outline: 2px solid #357;
+      height: 400px;
+      display: flex;
+      .sub-word-content-1 {
+        width: 53%;
+        @include medium() {
+          width: 0px;
+        }
+      }
+      .sub-word-content {
+        //outline: 2px solid rgb(119, 51, 113);
+        padding-left: 33px;
+        p {
+          padding-left: 6px;
+          font-size: 23px;
+          b {
+            text-combine-upright: all;
+          }
+        }
+        writing-mode: vertical-rl;
+      }
+    }
   }
 }
