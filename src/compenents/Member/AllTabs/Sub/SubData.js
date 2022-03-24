@@ -29,7 +29,6 @@ const SubData = (props) => {
   }, [])
   const renderSubItems = (...subData) => {
     if (subData && subData.length) {
-      console.log(subData)
       return subData.map((el) => (
         <tr key={'test' + el.member_id}>
           <td>{el.data1.order_d_id.slice(0, 8)}</td>
