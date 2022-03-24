@@ -4,8 +4,9 @@ import './ProductTop3.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
 
-const ProductTop3 = ({ compare, setCompare }) => {
+const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
+
   /* 人氣之選 */
   const fetchTop = async () => {
     const res = await fetch(
@@ -57,9 +58,7 @@ const ProductTop3 = ({ compare, setCompare }) => {
             <div className="cart-heart">
               <Heart id={v.pro_id} />
               <img
-                onClick={() => {
-                  console.log('購物車')
-                }}
+                onClick={() => {}}
                 className="cart"
                 src="/ProductList/cart.svg"
                 alt=""

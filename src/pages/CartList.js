@@ -1,11 +1,42 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 
 import '../styles/CartList/CartList.scss'
 import { Link } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
+import ListTableSake from '../compenents/Cart/ListTableSake'
+import ListTableGift from '../compenents/Cart/ListTableGift'
 
 const CartList = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
+  const [sakeIncart, setSakeIncart] = useState([])
+  useEffect(() => {
+    ;(async () => {
+      const member_id = 4
+      const r1 = await fetch(
+        `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await r1.json()
+      setSakeIncart(obj)
+    })()
+  }, [])
+
+  const renderSakeItems = (sakeIncart) => {
+    if (sakeIncart.length) {
+      return sakeIncart.map((sake, i) => {
+        return <ListTableSake key={i} sakeInfo={sake}/>
+      })
+    } else {
+      return ''
+    }
+  }
+
   return (
     <>
       <div className="CartList">
@@ -19,41 +50,8 @@ const CartList = () => {
               <span className="title-quantity">數量</span>
               <span className="title-subtotal">小計</span>
             </div>
-            <div className="table-item sake-table-item">
-              <div className="item item-del">
-                <img src="/CartList/trash.png" alt="" />
-              </div>
-              <div className="item item-product-img">
-                <img src="/CartList/M0023.png" alt="" />
-              </div>
-              <div className="item item-product-info">
-                <h5>篠峯 雄町純米大吟釀</h5>
-                <p className="ml">720</p>
-                <p className="price">1880</p>
-                <Link to="/gift" className="true">
-                  製作禮盒
-                </Link>
-                <div className="quantity-container">
-                  <img src="/CartList/plus-circle.svg" alt="" />
-                  <p>1</p>
-                  <img src="/CartList/minus-circle.svg" alt="" />
-                  <img className="trash" src="/CartList/trash.png" alt="" />
-                </div>
-              </div>
-              <div className="item item-mark">
-                <img src="/CartList/fakeMark.png" alt="" />
-              </div>
-              <div className="item item-quantity">
-                <div className="quantity-container">
-                  <img src="/CartList/plus-circle.svg" alt="" />
-                  <p>1</p>
-                  <img src="/CartList/minus-circle.svg" alt="" />
-                </div>
-              </div>
-              <div className="item item-subtotal">
-                <p>1880</p>
-              </div>
-            </div>
+            {console.log('list: ', sakeIncart)}
+            {renderSakeItems(sakeIncart)}
             <div className="table-head gift-table-head">
               <span className="title-del">刪除</span>
               <span className="title-gift">禮盒</span>
@@ -62,40 +60,8 @@ const CartList = () => {
               <span className="title-quantity">數量</span>
               <span className="title-subtotal">小計</span>
             </div>
-            <div className="table-item gift-table-item">
-              <div className="item item-del">
-                <img src="/CartList/trash.png" alt="" />
-              </div>
-              <div className="item item-gift-img">
-                <img src="/CartList/fakeGift.png" alt="" />
-                <p>1+1 禮盒</p>
-              </div>
-              <div className="item item-gift-detail">
-                <h5>篠峯 雄町純米大吟釀</h5>
-                <p className='ml'>720</p>
-                <h5>津輕金箔玻璃清酒杯</h5>
-                <div className="quantity-container">
-                  <img src="/CartList/plus-circle.svg" alt="" />
-                  <p>1</p>
-                  <img src="/CartList/minus-circle.svg" alt="" />
-                  <img className="trash" src="/CartList/trash.png" alt="" />
-                </div>
-              </div>
-              <div className="item item-color">
-                <p>黑色</p>
-              </div>
-              <div className="item item-quantity">
-                <div className="quantity-container">
-                  <img src="/CartList/plus-circle.svg" alt="" />
-                  <p>1</p>
-                  <img src="/CartList/minus-circle.svg" alt="" />
-                </div>
-              </div>
-              <div className="item item-subtotal">
-                <p>1880</p>
-              </div>
-            </div>
-            <hr></hr>
+            <ListTableGift />
+            <ListTableGift />
           </div>
           <div className="cart-form">
             <div className="form-left">

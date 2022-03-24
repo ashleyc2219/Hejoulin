@@ -109,7 +109,7 @@ const Header = (props) => {
               alt=""
             />
           </li>
-          <LoginContext user={user} setUser={setUser} />
+          <LoginContext user={user} setUser={setUser} sidebar={sidebar} setSidebar={setSidebar} />
           {/*<EmailVerify />*/}
           {/*<PassForget />*/}
         </ul>

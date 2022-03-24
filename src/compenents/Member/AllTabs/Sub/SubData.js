@@ -27,19 +27,19 @@ const SubData = (props) => {
       setSubData(obj)
     })()
   }, [])
-  const renderSubItems = (...subData) => {
-    if (subData && subData.length) {
-      return subData.map((el) => (
-        <tr key={'test' + el.member_id}>
-          <td>{el.data1.order_d_id.slice(0, 8)}</td>
-          <td>{el.data2.sub_plan}</td>
-          <td>{el.data2.sub_price}</td>
-          <td>{el.data1.order_state}</td>
+  const renderSubItems = (subData) => {
+    if (subData.data1) {
+      return (
+        <tr key={'test' + subData.member_id}>
+          <td>{subData.data1.order_d_id.slice(0, 8)}</td>
+          <td>{subData.data2.sub_plan}</td>
+          <td>{subData.data2.sub_price}</td>
+          <td>{subData.data1.order_state}</td>
           <td>
             <button className="btn btn-primary">管理訂閱</button>
           </td>
         </tr>
-      ))
+      )
     } else {
       return (
         <tr></tr>
@@ -55,7 +55,7 @@ const SubData = (props) => {
       <div className="subData">
         <table>
           <thead>{subData ? <tr>{listType(listNames)}</tr> : <tr></tr>}</thead>
-          <tbody>{renderSubItems(subData)}</tbody>
+          <tbody>{subData.data1 && renderSubItems(subData)}</tbody>
         </table>
       </div>
     </>
