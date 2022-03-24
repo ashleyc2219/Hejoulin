@@ -19,6 +19,10 @@
     @content;
   }
 }
+@keyframes compare {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
 .ProductDetail {
   .compare-block {
     position: fixed;
@@ -107,6 +111,7 @@
         flex-direction: column;
         align-items: center;
         position: relative;
+        animation: compare 1s forwards;
         img {
           height: 100px;
           z-index: 1;

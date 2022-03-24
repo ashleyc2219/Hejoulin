@@ -1,15 +1,134 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './../../styles/ProductList/CompareModal.css'
+import Heart from './Heart'
 
-const CompareModal = () => {
+const CompareModal = ({
+  setComparemodel,
+  compare,
+  comparemodal,
+  reload,
+  comparePro1,
+  setComparePro1,
+  comparePro2,
+  setComparePro2,
+  comparePro3,
+  setComparePro3,
+}) => {
+  let product1 = comparePro1.map(function (v, i) {
+    return (
+      <div className="com-pro">
+        <div className="pro-wrap">
+          <img
+            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            alt=""
+          />
+          <div className="pro-name">{v.pro_name}</div>
+        </div>
+        <div className="spec-wrap">
+          <ul>
+            <li className="like">
+              <Heart id={v.pro_id} />
+            </li>
+            <li>{v.pro_level}</li>
+            <li>{v.pro_essence}%</li>
+            <li>{v.pro_alco}%</li>
+            <li>{v.pro_loca}</li>
+            <li>{v.rice}</li>
+            <li>{v.pro_brand}</li>
+            <li>{v.pro_marker}</li>
+            <li>${v.pro_price}</li>
+          </ul>
+        </div>
+        <div className="button">
+          <button className="btn btn-primary">加入購物車</button>
+        </div>
+      </div>
+    )
+  })
+  let product2 = comparePro2.map(function (v, i) {
+    return (
+      <div className="com-pro">
+        <div className="pro-wrap">
+          <img
+            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            alt=""
+          />
+          <div className="pro-name">{v.pro_name}</div>
+        </div>
+        <div className="spec-wrap">
+          <ul>
+            <li className="like">
+              <Heart id={v.pro_id} />
+            </li>
+            <li>{v.pro_level}</li>
+            <li>{v.pro_essence}%</li>
+            <li>{v.pro_alco}%</li>
+            <li>{v.pro_loca}</li>
+            <li>{v.rice}</li>
+            <li>{v.pro_brand}</li>
+            <li>{v.pro_marker}</li>
+            <li>${v.pro_price}</li>
+          </ul>
+        </div>
+        <div className="button">
+          <button className="btn btn-primary">加入購物車</button>
+        </div>
+      </div>
+    )
+  })
+  let product3 = comparePro3.map(function (v, i) {
+    return (
+      <div className="com-pro">
+        <div className="pro-wrap">
+          <img
+            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            alt=""
+          />
+          <div className="pro-name">{v.pro_name}</div>
+        </div>
+        <div className="spec-wrap">
+          <ul>
+            <li className="like">
+              <Heart id={v.pro_id} />
+            </li>
+            <li>{v.pro_level}</li>
+            <li>{v.pro_essence}%</li>
+            <li>{v.pro_alco}%</li>
+            <li>{v.pro_loca}</li>
+            <li>{v.rice}</li>
+            <li>{v.pro_brand}</li>
+            <li>{v.pro_marker}</li>
+            <li>${v.pro_price}</li>
+          </ul>
+        </div>
+        <div className="button">
+          <button className="btn btn-primary">加入購物車</button>
+        </div>
+      </div>
+    )
+  })
+
+  useEffect(() => {
+    console.log('reload at modal')
+  }, [reload])
   return (
     <>
       <div className="CompareModal">
         <div className="comparepage">
-          <div className="close-white">
+          <div
+            onClick={() => {
+              setComparemodel(false)
+            }}
+            className="close-white"
+          >
             <img src="/ProductList/close-white.svg" alt="" />
           </div>
-          <div className="mobile-close">
+          <div
+            onClick={() => {
+              setComparemodel(false)
+            }}
+            className="mobile-close"
+          >
             <img src="/ProductList/close-black.svg" alt="" />
           </div>
           <div className="side-box">
@@ -46,78 +165,9 @@ const CompareModal = () => {
               </ul>
             </div>
           </div>
-          <div className="com-pro">
-            <div className="pro-wrap">
-              <img src="/ProductList/product.png" alt="" />
-              <div className="pro-name">水芭蕉 牛年限定 純米大吟釀</div>
-            </div>
-            <div className="spec-wrap">
-              <ul>
-                <li className="like">
-                  <img src="/ProductList/heart-solid.svg" alt="" />
-                </li>
-                <li>純米大吟釀</li>
-                <li>50%</li>
-                <li>20%</li>
-                <li>群馬縣</li>
-                <li>山田錦</li>
-                <li>水芭蕉</li>
-                <li>永井酒造</li>
-                <li>$1280</li>
-              </ul>
-            </div>
-            <div className="button">
-              <button className="btn btn-primary">加入購物車</button>
-            </div>
-          </div>
-          <div className="com-pro">
-            <div className="pro-wrap">
-              <img src="/ProductList/product.png" alt="" />
-              <div className="pro-name">水芭蕉 牛年限定 純米大吟釀</div>
-            </div>
-            <div className="spec-wrap">
-              <ul>
-                <li className="like">
-                  <img src="/ProductList/heart-solid.svg" alt="" />
-                </li>
-                <li>純米大吟釀</li>
-                <li>50%</li>
-                <li>20%</li>
-                <li>群馬縣</li>
-                <li>山田錦</li>
-                <li>水芭蕉</li>
-                <li>永井酒造</li>
-                <li>$1280</li>
-              </ul>
-            </div>
-            <div className="button">
-              <button className="btn btn-primary">加入購物車</button>
-            </div>
-          </div>
-          <div className="com-pro">
-            <div className="pro-wrap">
-              <img src="/ProductList/product.png" alt="" />
-              <div className="pro-name">水芭蕉 牛年限定 純米大吟釀</div>
-            </div>
-            <div className="spec-wrap">
-              <ul>
-                <li className="like">
-                  <img src="/ProductList/heart-redline.svg" alt="" />
-                </li>
-                <li>純米大吟釀</li>
-                <li>50%</li>
-                <li>20%</li>
-                <li>群馬縣</li>
-                <li>山田錦</li>
-                <li>水芭蕉</li>
-                <li>永井酒造</li>
-                <li>$1280</li>
-              </ul>
-            </div>
-            <div className="button">
-              <button className="btn btn-primary">加入購物車</button>
-            </div>
-          </div>
+          {product1}
+          {product2}
+          {product3}
         </div>
       </div>
     </>

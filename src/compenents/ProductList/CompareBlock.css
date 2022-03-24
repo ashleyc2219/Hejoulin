@@ -1,3 +1,12 @@
+@keyframes compare {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .ProductDetail .compare-block {
   position: fixed;
   top: 180px;
@@ -100,6 +109,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  animation: compare 1s forwards;
 }
 
 .ProductList .compare-block .compare-wrap .product img {
