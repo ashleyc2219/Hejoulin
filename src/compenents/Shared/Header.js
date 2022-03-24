@@ -33,7 +33,9 @@ const Header = (props) => {
       <div className="Header">
         <div className="Header-container">
           <div className="logo-bread">
-            <img className="logo" src="/Shared/logo.svg" alt="" />
+            <Link to="/">
+              <img className="logo" src="/Shared/logo.svg" alt="" />
+            </Link>
             <div className="bread">
               <span>首頁</span>
               <img src="/Shared/rightArrow.svg" alt="" />
