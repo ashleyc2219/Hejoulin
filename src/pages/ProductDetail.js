@@ -307,7 +307,7 @@ const ProductDetail = (props) => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock />
+            {/* <CompareBlock /> */}
           </div>
         </div>
       </div>

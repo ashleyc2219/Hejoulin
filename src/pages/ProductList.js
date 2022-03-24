@@ -48,7 +48,12 @@ const ProductList = (props) => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
+  const [comparePro1, setComparePro1] = useState([])
+  const [comparePro2, setComparePro2] = useState([])
+  const [comparePro3, setComparePro3] = useState([])
   const { compare, setCompare } = props
+  const [comparemodal, setComparemodel] = useState(false)
+  const [reload, setReload] = useState(0)
 
   const reset = () => {
     locavalue.current.value = ''
@@ -349,18 +354,22 @@ const ProductList = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setUp()
     fetchLoca()
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
   }, [])
   const handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 300
-    ) {
-      setUp(true)
-    } else {
-      setUp(false)
+    if (compare.length > 1) {
+      console.log(compare.length)
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 300
+      ) {
+        setUp(true)
+      } else {
+        setUp(false)
+      }
     }
   }
   return (
@@ -369,7 +378,22 @@ const ProductList = (props) => {
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
       {/*  <MobileCatModal /> */}
-
+      {comparemodal ? (
+        <CompareModal
+          setComparemodel={setComparemodel}
+          compare={compare}
+          comparemodal={comparemodal}
+          reload={reload}
+          comparePro1={comparePro1}
+          setComparePro1={setComparePro1}
+          comparePro2={comparePro2}
+          setComparePro2={setComparePro2}
+          comparePro3={comparePro3}
+          setComparePro3={setComparePro3}
+        />
+      ) : (
+        ''
+      )}
       <div className="ProductList">
         {/* 商品列表的容器 */}
         <div className="product-container">
@@ -544,7 +568,21 @@ const ProductList = (props) => {
             </div>
 
             {/* 右側比較區塊 */}
-            <CompareBlock up={up} compare={compare} />
+            <CompareBlock
+              up={up}
+              compare={compare}
+              setCompare={setCompare}
+              comparemodal={comparemodal}
+              setComparemodel={setComparemodel}
+              reload={reload}
+              setReload={setReload}
+              comparePro1={comparePro1}
+              setComparePro1={setComparePro1}
+              comparePro2={comparePro2}
+              setComparePro2={setComparePro2}
+              comparePro3={comparePro3}
+              setComparePro3={setComparePro3}
+            />
             <EmptyBlock />
           </div>
         </div>
