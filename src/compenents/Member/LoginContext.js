@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import '../../styles/Member/Member-Login/LoginContext.scss'
 
 const LoginContext = (props) => {
-  const { user, setUser } = props
+  const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState({})
   const API = 'http://localhost:3001/login/login'
   let history = useHistory()
@@ -25,7 +25,6 @@ const LoginContext = (props) => {
     localStorage.setItem('token', obj.token)
     localStorage.setItem('account', obj.info.user_account)
     setUser(obj.info.user_account)
-    history.push('/', { from: 'login-success' })
     const token = localStorage.getItem('token')
 
     const r2 = await fetch('http://localhost:3001/user/api/auth-list', {
@@ -36,6 +35,7 @@ const LoginContext = (props) => {
     const info2 = await r2.json()
     console.log({ info2 })
     setUser(info2.obj)
+    history.push('/', { from: 'login-success' })
 
     // const
     //   .then((res) => res.json())
@@ -43,6 +43,13 @@ const LoginContext = (props) => {
     //     setUser(response.obj)
     //     history.push('/')
     //   })
+  }
+  function jump() {
+    localStorage.clear()
+    if (localStorage.hasOwnProperty('token') === false) {
+      history.push('/')
+      setSidebar(false)
+    }
   }
 
   return (
@@ -55,6 +62,9 @@ const LoginContext = (props) => {
                 歡迎回到禾酒林 <br /> {user ? '已登入' : '未登入'}
               </h1>
               <br />
+              <h5>
+                <button onClick={jump}>登出</button>
+              </h5>
               <div className="login-form-group">
                 <form name="form1" onSubmit={whenSubmit}>
                   <div className="mb-4">
