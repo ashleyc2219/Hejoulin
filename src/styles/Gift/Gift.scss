@@ -26,6 +26,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans TC', serif;
+  // outline: 1px solid $secondary;
 }
 
 //最外面的div
@@ -52,7 +53,9 @@
       height: 120%;
       overflow: hidden;
       position: absolute;
-      // z-index: 0;
+      @include medium() {
+        display: none;
+      }
 
       .bgelement01,
       .bgelement02,
@@ -119,32 +122,52 @@
         #gift_kind {
           width: 100%;
           height: fit-content;
+          .gift_kind {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
 
-          .kind {
-            background-color: rgba(255, 255, 255, 0.5);
-            margin: 0 1rem;
-            padding: 1.5rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            cursor: pointer;
-            
-            &:hover {
-              transform: translateY(-40px);
-              transition: 0.5s;
-              z-index: 5;
+            .kind {
+              background-color: rgba(255, 255, 255, 0.5);
+              margin: 0 1rem;
+              padding: 1.5rem 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              position: relative;
+              cursor: pointer;
+
+              &:hover {
+                transform: translateY(-40px);
+                transition: 0.5s;
+                z-index: 5;
+              }
+
+              img {
+                height: 40vh;
+                filter: drop-shadow(0 0 0.5rem $gray-300);
+              }
+
+              .title {
+                color: $primary;
+                font-size: 20px;
+                margin-top: 2rem;
+              }
             }
-
-            img {
-              height: 40vh;
-              filter: drop-shadow(0 0 0.5rem $gray-300);
-            }
-
-            .title {
-              color: $primary;
-              font-size: 20px;
-              margin-top: 2rem;
+            @include medium() {
+              gap: 15px;
+              .kind {
+                margin: 0;
+                padding: 15px 0;
+                img {
+                  height: 20vh;
+                }
+                .title {
+                  font-size: 14px;
+                  line-height: 28px;
+                  margin-top: 10px;
+                }
+              }
             }
           }
         }
@@ -174,9 +197,17 @@
             gap: 30px;
             padding: 0 110px;
             margin-top: 5vh;
+            @include medium() {
+              grid-template-columns: 1fr 1fr;
+              gap: 15px;
+              padding: 0;
+            }
 
             .gift_sake {
-              padding: 0 10px;
+              // padding: 0 10px;
+              @include medium() {
+                padding: 0;
+              }
 
               .sake_card {
                 display: flex;
@@ -186,6 +217,10 @@
                 background-color: rgba(255, 255, 255, 0.5);
                 padding: 20px 0;
                 cursor: pointer;
+                @include medium(){
+                  padding: 0%;
+                }
+                
                 &:hover {
                   .original {
                     display: none;
@@ -214,7 +249,33 @@
                   color: $gray-200;
                   margin-top: 5px;
                 }
+                @include medium() {
+                  .original {
+                    width: 40px;
+                  }
+                  .trans {
+                    height: 20vh;
+                  }
+                  .name {
+                    color: $primary;
+                    font-size: 17px;
+                    line-height: 30px;
+                  }
+                  small {
+                    font-size: 13px;
+                    line-height: 20px;
+                    font-weight: 500;
+                  }
+                }
               }
+            }
+          }
+          @include medium() {
+            margin-top: 40px;
+            h4 {
+              font-family: 'Noto Sans TC', serif;
+              font-size: 17px;
+              line-height: 30px;
             }
           }
         }
