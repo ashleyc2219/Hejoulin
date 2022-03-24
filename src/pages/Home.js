@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import SomeComponent from '../compenents/SomeComponent'
 import './../styles/Home/Home.css'
 
@@ -76,7 +77,9 @@ const Home = () => {
           </div>
         </div>
         <div className="container">
-          <button className="btn btn-primary">最新消息</button>
+          <Link to="/news/list">
+            <button className="btn btn-primary">最新消息</button>
+          </Link>
         </div>
 
         <div className="container intro-box">
@@ -100,7 +103,9 @@ const Home = () => {
         </div>
 
         <div className="container">
-          <button className="btn btn-primary">認識清酒</button>
+          <Link to="/sake-intro">
+            <button className="btn btn-primary">認識清酒</button>
+          </Link>
         </div>
 
         <div className="container sub-box">
@@ -123,7 +128,9 @@ const Home = () => {
         </div>
 
         <div className="container">
-          <button className="btn btn-primary">訂閱清酒</button>
+          <Link to="/sub/plan">
+            <button className="btn btn-primary">訂閱清酒</button>
+          </Link>
         </div>
       </div>
 
