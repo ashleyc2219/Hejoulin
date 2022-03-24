@@ -31,7 +31,6 @@ body {
 }
 
 .news .news-container {
-  mix-blend-mode: multiply;
   max-width: 1200px;
   margin: 0 auto;
   display: -webkit-box;
@@ -45,7 +44,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: relative;
-  z-index: 50;
 }
 
 @media (max-width: 768px) {
@@ -58,12 +56,11 @@ body {
   font-family: "Klee One", cursive;
   color: #7e8082;
   margin: 37px 0;
-  z-index: 60;
 }
 
 .news .news-container .news-title ::after {
   position: absolute;
-  z-index: 0;
+  z-index: -5;
   right: -120px;
   content: '';
   max-width: 450px;
@@ -80,7 +77,6 @@ body {
 }
 
 .news .news-container .news-item {
-  z-index: 70;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,14 +96,13 @@ body {
 }
 
 .news .news-container .news-item .news-item-pic {
-  mix-blend-mode: multiply;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
 .news .news-container .news-item .news-item-pic .news-pic {
-  height: 300px;
+  height: 200px;
   margin-top: 70px;
   position: relative;
 }
@@ -125,9 +120,8 @@ body {
 }
 
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box {
-  width: 80%;
+  width: 70%;
   position: absolute;
-  z-index: 50;
   left: 0;
 }
 
@@ -143,20 +137,18 @@ body {
   height: 170px;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 55;
-  isolation: isolate;
 }
 
 .news .news-container .news-item .news-item-pic .news-pic .news-item-pic-box::before {
+  mix-blend-mode: multiply;
   content: '';
   background-color: #e6c49e;
+  z-index: -10;
   width: 100%;
   height: 170px;
   position: absolute;
   right: -31px;
   bottom: -28px;
-  z-index: -1;
-  mix-blend-mode: multiply;
 }
 
 @media (max-width: 768px) {
@@ -213,14 +205,17 @@ body {
   color: #3d4349;
 }
 
-.news .news-container .news-item .news-item-word .news-item-content {
-  color: #3d4349;
-}
-
 .news .news-container .news-item .news-item-word .news-item-content p {
   margin-bottom: 5px;
   font-size: 16px;
   line-height: 32px;
+}
+
+.news .news-container .news-item .news-item-word .mu-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .news .news-container .news-item .news-item-word .news-item-link a {
