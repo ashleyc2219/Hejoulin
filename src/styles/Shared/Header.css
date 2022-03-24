@@ -178,11 +178,27 @@
   margin-right: 7px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .Header .Header-container .navbar .icons .cart img {
   width: 30px;
   height: 30px;
+}
+
+.Header .Header-container .navbar .icons .cart span {
+  position: absolute;
+  top: 17px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 12px;
+  background-color: #d26d54;
 }
 
 .Header .Header-container .navbar .icons .fav {

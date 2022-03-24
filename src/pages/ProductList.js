@@ -14,10 +14,9 @@ import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
-
 import GuideButton from '../compenents/SakeGuide/Guide'
 
-const ProductList = (props) => {
+const ProductList = ({ setCartCount }) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
   const [load, setLoad] = useState(true) //載入更多的按鈕
@@ -48,10 +47,11 @@ const ProductList = (props) => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
+  //const { compare, setCompare } = props
+  const [compare, setCompare] = useState([])
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
-  const { compare, setCompare } = props
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
 
@@ -503,6 +503,7 @@ const ProductList = (props) => {
                 ''
               ) : (
                 <ProductTop3 compare={compare} setCompare={setCompare} />
+
               )}
               {/* 達人推薦 */}
               {resultTitle ||

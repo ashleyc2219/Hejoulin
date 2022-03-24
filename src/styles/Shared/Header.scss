@@ -143,9 +143,24 @@
           margin-right: 7px;
           display: flex;
           align-items: center;
+          position: relative;
           img {
             width: 30px;
             height: 30px;
+          }
+          span{
+            position: absolute;
+            top: 17px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 700;
+            line-height: 20px;
+            font-size: 12px;
+            background-color: $secondary;
           }
         }
         .fav {
@@ -184,7 +199,6 @@
   transition: 350ms;
   z-index: 9;
 }
-
 .displayNone {
   opacity: 0;
   pointer-events: none;

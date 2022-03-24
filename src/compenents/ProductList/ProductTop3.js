@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
+import { Count } from '../../App'
 
-const ProductTop3 = ({ compare, setCompare }) => {
+const ProductTop3 = ({ compare, setCompare,setCartCount }) => {
   const [top, setTop] = useState([])
+
   /* 人氣之選 */
   const fetchTop = async () => {
     const res = await fetch(
@@ -23,6 +25,7 @@ const ProductTop3 = ({ compare, setCompare }) => {
 
   const top3 = top.map((v, i) => {
     return (
+      
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
@@ -56,14 +59,14 @@ const ProductTop3 = ({ compare, setCompare }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
+              <Count.Consumer>{cartCount =>
               <img
-                onClick={() => {
-                  console.log('購物車')
-                }}
+                onClick={() => {setCartCount(cartCount+1)}}
                 className="cart"
                 src="/ProductList/cart.svg"
                 alt=""
-              />
+              />}
+              </Count.Consumer>
             </div>
           </div>
         </div>
