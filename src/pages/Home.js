@@ -147,7 +147,7 @@ const Home = () => {
         </div>
         <div className="container">
           <Link to="/news/detail/1">
-            <button class="btn btn-secondary">somecomponent 在這裏</button>
+            <button class="btn btn-secondary">警示頁光箱測試</button>
           </Link>
         </div>
       </div>

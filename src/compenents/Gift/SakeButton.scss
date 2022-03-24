@@ -27,12 +27,6 @@
   margin: 10px auto;
   position: relative;
 
-  .one,
-  .full,
-  .cancel {
-    display: none;
-  }
-
   button {
     background-color: transparent;
     border: none;
@@ -49,9 +43,15 @@
     .dou{
         margin-right: 3px;
     }
+    .none{
+      display: none;
+    }
     span{
         margin-left: 5px;
     }
+  }
+  .full{
+    cursor: not-allowed;
   }
   .cancel{
       position: absolute;

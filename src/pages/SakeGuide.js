@@ -33,7 +33,7 @@ const SakeGuide = () => {
             </div>
           </section>
           <section className="price">
-            <fiedlset className="cost">
+            {/* <div className="cost">
               <div className="qus">
                 <legend className="filter-headline">價錢預算</legend>
                 <p className="cost__inputs">
@@ -44,6 +44,7 @@ const SakeGuide = () => {
                       value="0"
                       min="0"
                       max="12000"
+                      readOnly
                     />
                   </label>
                   <span>~</span>
@@ -54,21 +55,22 @@ const SakeGuide = () => {
                       value="3000"
                       min="0"
                       max="12000"
+                      readOnly
                     />
                   </label>
                 </p>
               </div>
 
-              <p
+              <div
                 className="range-slider cost__range"
-                // style="--first-val: 0%; --second-val: 75%;"
+                // style={{--first-val: 0%, --second-val: 75%}}
               >
                 <input
                   className="range-slider__input"
                   type="range"
                   min="0"
                   max="12000"
-                  value="0"
+                  // value="0"
                   step="100"
                   aria-label="Min range"
                 />
@@ -77,12 +79,12 @@ const SakeGuide = () => {
                   type="range"
                   min="0"
                   max="12000"
-                  value="9000"
+                  // value="9000"
                   step="100"
                   aria-label="Max range"
                 />
-              </p>
-            </fiedlset>
+              </div>
+            </div> */}
           </section>
           <section className="wave_loca">
             <div className="wave">

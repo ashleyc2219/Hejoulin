@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './../styles/Gift/Gift.scss'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
-// import ImgCard from '../compenents/Gift/ImgCard'
 import StepBar from '../compenents/Gift/StepBar'
 import ProductModal from '../compenents/Gift/ProductModal'
-// import SakeButton from '../compenents/Gift/SakeButton'
+// import ImgCard from '../compenents/Gift/ImgCard'
+import SakeButton from '../compenents/Gift/SakeButton'
 
-const Gift = () => {
+const Gift = (props) => {
+  // const url = 'http://localhost:3001/api/gift'
+
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
+
+  // const kind = [{ gift_id: 2 }, { gift_id: 3 }, { guft_id: 4 }]
+  const [kind, setKind] = useState(0) //決定禮盒種類
+
   return (
     <>
       <div className="Gift">
@@ -30,19 +36,22 @@ const Gift = () => {
             <main>
               <section id="gift_kind">
                 <div className="gift_kind">
-                  <div className="row">
-                    <div className="kind col">
-                      <img src="/Gift/1.png" alt="" />
-                      <span className="title">1入禮盒</span>
-                    </div>
-                    <div className="kind col">
-                      <img src="/Gift/2.png" alt="" />
-                      <span className="title">2入禮盒</span>
-                    </div>
-                    <div className="kind col">
-                      <img src="/Gift/3.png" alt="" />
-                      <span className="title">1+1 禮盒</span>
-                    </div>
+                  <div
+                    className="kind"
+                    onClick={() => {
+                      setKind(2)
+                    }}
+                  >
+                    <img src="/Gift/1.png" alt="" />
+                    <span className="title">1入禮盒</span>
+                  </div>
+                  <div className="kind" onClick={() => {}}>
+                    <img src="/Gift/2.png" alt="" />
+                    <span className="title">2入禮盒</span>
+                  </div>
+                  <div className="kind" onClick={() => {}}>
+                    <img src="/Gift/3.png" alt="" />
+                    <span className="title">1+1 禮盒</span>
                   </div>
                 </div>
               </section>
@@ -53,58 +62,58 @@ const Gift = () => {
                 <h4>請選擇一瓶清酒商品</h4>
                 <div className="grid gift_grid">
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                   <div className="gift_sake">
-                    <div className="col sake_card">
+                    <div className="sake_card">
                       <img src="/Gift/4.png" alt="" className="original" />
                       <img src="/Gift/1.png" alt="" className="trans" />
                       <span className="name">水芭蕉　鼠年限定</span>
                       <small>$2890</small>
                     </div>
-                    {/* <SakeButton /> */}
+                    <SakeButton />
                   </div>
                 </div>
               </section>
