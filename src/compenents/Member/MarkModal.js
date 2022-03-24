@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './../../styles/Member/MarkModal.scss'
 
 const MarkModal = (props) => {
-  const { modalShow, setModalShow } = props
+  const { modalShow, setModalShow, markData, setMarkData } = props
   console.log(props)
 
   const openModal = () => {
@@ -18,7 +18,10 @@ const MarkModal = (props) => {
           <div className="mobile-close">
             <img src="/ProductList/close-black.svg" alt="" />
           </div>
-          <img src="/Member/MarkEX.svg" alt="" />
+          <img
+            src="http://localhost:3001/images/member-mark-pic/4-1.png"
+            alt=""
+          />
         </div>
       </div>
     </>
