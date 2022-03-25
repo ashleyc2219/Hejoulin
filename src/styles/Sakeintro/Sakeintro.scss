@@ -10,9 +10,6 @@
 // }
 
 .sake-intro {
-  .container {
-    outline: 1px solid red;
-  }
   p {
     color: $gray-300;
   }
@@ -197,6 +194,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    @include medium() {
+      justify-content: flex-start;
+    }
+
     div {
       background-color: rgba(255, 255, 255, 0.548);
     }
@@ -207,9 +208,13 @@
         font-size: 18px;
       }
       .ball {
-        width: 140px;
+        min-width: 140px;
         height: 140px;
         margin: 10px 5px 5px 5px;
+        border-radius: 50%;
+        @include medium() {
+          border-radius: 70px;
+        }
       }
       .L1,
       .L2,
@@ -256,10 +261,16 @@
       }
     }
     .level-box-r {
+      @include medium() {
+        min-width: 200px;
+        overflow-x: scroll;
+      }
+
       div {
         display: flex;
       }
       .L0 {
+        margin-top: 9px;
         height: 15px;
         background-color: $gray-100;
         border-radius: 30px;
@@ -270,7 +281,7 @@
       }
       .L1 {
         .L1-2 {
-          width: 140px;
+          min-width: 140px;
           height: 80px;
           margin: 24px 5px 0px 5px;
           img {
@@ -280,17 +291,16 @@
       }
       .L2 {
         .L2-2 {
-          width: 140px;
+          min-width: 140px;
           margin: 10px 5px 0px 5px;
         }
       }
       .L3 {
         .L3-2 {
           background-color: $info;
-          border-radius: 50%;
         }
         .L3-3 {
-          width: 280px;
+          min-width: 280px;
           background-color: #3d4349a6;
           border-radius: 150px;
           margin: 5px;
@@ -302,11 +312,9 @@
       .L4 {
         .L4-2 {
           background-color: $success;
-          border-radius: 50%;
         }
         .L4-3 {
           background-color: $gray-100;
-          border-radius: 50%;
         }
       }
     }
