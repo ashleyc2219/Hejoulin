@@ -202,6 +202,9 @@ const ProductList = (props) => {
       setLevel('')
       setPrice('')
       setMark('')
+      setBrandsort('')
+      setLocasort('')
+      setSort('1')
       preToLoad()
       setResultTitle(false)
       if (searchword.length > 0) {
@@ -317,15 +320,6 @@ const ProductList = (props) => {
     }
   }
 
-  /* 品牌 */
-  const fetchBrand = async () => {
-    const res = await fetch(
-      'http://localhost:3001/api/products-condition/brand'
-    )
-    const fetchedData = await res.json()
-    setBrand(fetchedData)
-  }
-
   const brandData = brand.map((v, i) => {
     return (
       <option key={i} value={v.pro_brand}>
@@ -333,18 +327,6 @@ const ProductList = (props) => {
       </option>
     )
   })
-
-  /* 產地 */
-  const fetchLoca = async (a) => {
-    const res = await fetch(
-      'http://localhost:3001/api/products-condition/location'
-    )
-    const fetchedData = await res.json()
-    const test = fetchedData
-    if (a) {
-      setLoca(test)
-    }
-  }
 
   const brandLoca = loca.map((v, i) => {
     return (
@@ -358,7 +340,28 @@ const ProductList = (props) => {
     let a = true
     window.scrollTo(0, 0)
     setUp()
-    fetchLoca(a)
+    /* 產地 */
+    const fetchLoca = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/location'
+      )
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setLoca(test)
+      }
+    }
+    /* 品牌 */
+    const fetchBrand = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/brand'
+      )
+      const fetchedData = await res.json()
+      if (a) {
+        setBrand(fetchedData)
+      }
+    }
+    fetchLoca()
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
     return () => {

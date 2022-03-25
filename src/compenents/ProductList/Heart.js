@@ -103,7 +103,6 @@ const Heart = (props) => {
       return e
     }
   }
-
   useEffect(() => {
     getFav()
   }, [])
