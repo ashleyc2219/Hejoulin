@@ -215,10 +215,13 @@
 @media (max-width: 768px) {
   .CompareModal .comparepage .com-pro .pro-wrap img {
     height: 100px;
+    margin-top: -20px;
   }
 }
 
 .CompareModal .comparepage .com-pro .pro-wrap .pro-name {
+  width: 160px;
+  text-align: center;
   font-size: 14px;
   margin-top: 15px;
 }

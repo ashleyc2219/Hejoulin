@@ -193,10 +193,11 @@
           filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
           @include medium() {
             height: 100px;
+            margin-top: -20px;
           }
         }
         .pro-name {
-          width: 100px;
+          width: 160px;
           text-align: center;
           font-size: 14px;
           margin-top: 15px;
