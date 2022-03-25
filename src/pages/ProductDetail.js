@@ -316,15 +316,11 @@ const ProductDetail = (props) => {
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
-          //compare={compare}
-          //comparemodal={comparemodal}
           reload={reload}
           comparePro1={comparePro1}
-          //setComparePro1={setComparePro1}
           comparePro2={comparePro2}
-          //setComparePro2={setComparePro2}
           comparePro3={comparePro3}
-          //setComparePro3={setComparePro3}
+          setCartCount={setCartCount}
         />
       ) : (
         ''

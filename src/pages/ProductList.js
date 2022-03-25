@@ -47,7 +47,7 @@ const ProductList = (props) => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
-  const { compare, setCompare , setCartCount} = props
+  const { compare, setCompare, setCartCount } = props
   //const [compare, setCompare] = useState([])
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
@@ -380,15 +380,11 @@ const ProductList = (props) => {
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
-          //compare={compare}
-          //comparemodal={comparemodal}
           reload={reload}
           comparePro1={comparePro1}
-          //setComparePro1={setComparePro1}
           comparePro2={comparePro2}
-          //setComparePro2={setComparePro2}
           comparePro3={comparePro3}
-          //setComparePro3={setComparePro3}
+          setCartCount={setCartCount}
         />
       ) : (
         ''
@@ -501,8 +497,11 @@ const ProductList = (props) => {
               resultTitle7 ? (
                 ''
               ) : (
-                <ProductTop3 compare={compare} setCompare={setCompare} setCartCount={setCartCount}/>
-
+                <ProductTop3
+                  compare={compare}
+                  setCompare={setCompare}
+                  setCartCount={setCartCount}
+                />
               )}
               {/* 達人推薦 */}
               {resultTitle ||
@@ -514,7 +513,11 @@ const ProductList = (props) => {
               resultTitle7 ? (
                 ''
               ) : (
-                <ProductMaster compare={compare} setCompare={setCompare} setCartCount={setCartCount}/>
+                <ProductMaster
+                  compare={compare}
+                  setCompare={setCompare}
+                  setCartCount={setCartCount}
+                />
               )}
 
               {/* 商品列表 */}
