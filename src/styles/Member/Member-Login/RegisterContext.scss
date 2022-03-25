@@ -16,10 +16,46 @@
 
     .register-form-group {
       padding-top: 25%;
+      position: relative;
+      .account-g {
 
-      .btn {
-        margin-left: 17%;
-        margin-top: 16%;
+      }
+      .pass-g {
+
+        .passHideIcon {
+          right: 8px;
+          top: 238px;
+          position: absolute;
+          img {
+            width: 40px;
+            height: 30px;
+          }
+        }
+        .errorMsg {
+
+        }
+      }
+
+      .passConf-g {
+
+        .passHideIcon {
+          right: 8px;
+          bottom: 114px;
+          position: absolute;
+          img {
+            width: 40px;
+            height: 30px;
+          }
+        }
+      }
+      .login-btn {
+        margin-left: 7%;
+        margin-top: 8%;
+      }
+
+      .register-btn {
+        margin-left: 13%;
+        margin-top: 8%;
       }
     }
   }

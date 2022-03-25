@@ -37,7 +37,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -65,7 +65,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -93,7 +93,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -103,7 +103,7 @@ const CompareBlock = ({
     )
   })
 
-  const test = (a) => {
+  const remove = (a) => {
     const arr = compare
     const arr1 = []
     arr.splice(arr.indexOf(a), 1)
