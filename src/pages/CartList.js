@@ -43,18 +43,41 @@ const CartList = () => {
 
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
-      return sakeIncart.map((sake, i) => {
-        return <ListTableSake key={i} sakeInfo={sake} />
-      })
+      return (
+        <>
+          <div className="table-head sake-table-head">
+            <span className="title-del">刪除</span>
+            <span className="title-product">商品</span>
+            <span className="title-mark">客製化酒標</span>
+            <span className="title-quantity">數量</span>
+            <span className="title-subtotal">小計</span>
+          </div>
+          {sakeIncart.map((sake, i) => {
+            return <ListTableSake key={i} sakeInfo={sake} />
+          })}
+        </>
+      )
     } else {
       return ''
     }
   }
   const renderGiftItems = (giftIncart) => {
     if (giftIncart.length) {
-      return giftIncart.map((gift, i) => {
-        return <ListTableGift key={i} giftInfo={gift} />
-      })
+      return (
+        <>
+          <div className="table-head gift-table-head">
+            <span className="title-del">刪除</span>
+            <span className="title-gift">禮盒</span>
+            <span className="title-gift-detail">內容物</span>
+            <span className="title-color">顏色</span>
+            <span className="title-quantity">數量</span>
+            <span className="title-subtotal">小計</span>
+          </div>
+          {giftIncart.map((gift, i) => {
+            return <ListTableGift key={i} giftInfo={gift} />
+          })}
+        </>
+      )
     } else {
       return ''
     }
@@ -66,23 +89,9 @@ const CartList = () => {
         <div className="CartList-container">
           <ProgressBar step="one" content={stepContent} />
           <div className="cart-list">
-            <div className="table-head sake-table-head">
-              <span className="title-del">刪除</span>
-              <span className="title-product">商品</span>
-              <span className="title-mark">客製化酒標</span>
-              <span className="title-quantity">數量</span>
-              <span className="title-subtotal">小計</span>
-            </div>
             {console.log('list: ', sakeIncart)}
             {renderSakeItems(sakeIncart)}
-            <div className="table-head gift-table-head">
-              <span className="title-del">刪除</span>
-              <span className="title-gift">禮盒</span>
-              <span className="title-gift-detail">內容物</span>
-              <span className="title-color">顏色</span>
-              <span className="title-quantity">數量</span>
-              <span className="title-subtotal">小計</span>
-            </div>
+
             {renderGiftItems(giftIncart)}
           </div>
           <div className="cart-form">
