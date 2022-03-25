@@ -149,7 +149,7 @@ const RegisterContext = (props) => {
                       id="user_pass"
                       name="password"
                       key="password"
-                      placeholder="請輸入密碼"
+                      placeholder="請輸入8個英數字大小寫混合密碼"
                       onChange={handleInputChangePwd}
                       required
                     />
@@ -168,7 +168,13 @@ const RegisterContext = (props) => {
                       className="form-text errorMsg"
                       id="checkPass"
                       style={{
-                        color: 'red',
+                        color:
+                          isSimplePwd(newPwd) === false &&
+                          isLowerLetter(newPwd) === false &&
+                          isNum(newPwd) === false &&
+                          isUpperLetter(newPwd) === false
+                            ? 'grey'
+                            : 'red',
                         display:
                           isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
                       }}
@@ -248,7 +254,7 @@ const RegisterContext = (props) => {
                       </div>
                     </div>
                   </div>
-                  {newPwd > 0 && confPwd ? (
+                  {newPwd === confPwd ? (
                     <button
                       type="submit"
                       className="btn btn-primary register-btn"
