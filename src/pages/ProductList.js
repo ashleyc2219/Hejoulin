@@ -16,7 +16,7 @@ import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 import GuideButton from '../compenents/SakeGuide/Guide'
 
-const ProductList = ({ setCartCount }) => {
+const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
   const [loca, setLoca] = useState([]) // 產地
   const [load, setLoad] = useState(true) //載入更多的按鈕
@@ -47,8 +47,8 @@ const ProductList = ({ setCartCount }) => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
-  //const { compare, setCompare } = props
-  const [compare, setCompare] = useState([])
+  const { compare, setCompare } = props
+  //const [compare, setCompare] = useState([])
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
@@ -361,7 +361,6 @@ const ProductList = ({ setCartCount }) => {
   }, [])
   const handleScroll = () => {
     if (compare.length > 1) {
-      console.log(compare.length)
       if (
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 300
@@ -381,15 +380,15 @@ const ProductList = ({ setCartCount }) => {
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
-          compare={compare}
-          comparemodal={comparemodal}
+          //compare={compare}
+          //comparemodal={comparemodal}
           reload={reload}
           comparePro1={comparePro1}
-          setComparePro1={setComparePro1}
+          //setComparePro1={setComparePro1}
           comparePro2={comparePro2}
-          setComparePro2={setComparePro2}
+          //setComparePro2={setComparePro2}
           comparePro3={comparePro3}
-          setComparePro3={setComparePro3}
+          //setComparePro3={setComparePro3}
         />
       ) : (
         ''

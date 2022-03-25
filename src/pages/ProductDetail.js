@@ -6,6 +6,7 @@ import CompareModal from '../compenents/ProductList/CompareModal'
 import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
+import CompareBtn from '../compenents/ProductList/CompareBtn'
 
 const ProductDetail = (props) => {
   const { id } = useParams()
@@ -14,6 +15,14 @@ const ProductDetail = (props) => {
   const [linkFav, setlinkFav] = useState(0)
 
   const { level, setLevel } = props
+
+  const { compare, setCompare } = props
+  //const [compare, setCompare] = useState([])
+  const [comparePro1, setComparePro1] = useState([])
+  const [comparePro2, setComparePro2] = useState([])
+  const [comparePro3, setComparePro3] = useState([])
+  const [comparemodal, setComparemodel] = useState(false)
+  const [reload, setReload] = useState(0)
 
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
@@ -44,7 +53,10 @@ const ProductDetail = (props) => {
       <React.Fragment key={i}>
         <div className="product-wrap">
           <div className="product-img">
-            <img src={'http://localhost:3001/images/pro_img/' + v.pro_img} alt="" />
+            <img
+              src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+              alt=""
+            />
           </div>
           <div className="product-info">
             <div className="product-title">
@@ -59,10 +71,11 @@ const ProductDetail = (props) => {
                     <Heart id={v.pro_id} linkFav={linkFav} />
                     <p onClick={linkFavhandler}>收藏</p>
                   </div>
-                  <div className="compare">
-                    <img src="/ProductList/add.svg" alt="" />
-                    <p>比較</p>
-                  </div>
+                  <CompareBtn
+                    id={v.pro_id}
+                    compare={compare}
+                    setCompare={setCompare}
+                  />
                 </div>
               </div>
             </div>
@@ -281,7 +294,22 @@ const ProductDetail = (props) => {
 
   return (
     <>
-      {/* <CompareModal/> */}
+      {comparemodal ? (
+        <CompareModal
+          setComparemodel={setComparemodel}
+          //compare={compare}
+          //comparemodal={comparemodal}
+          reload={reload}
+          comparePro1={comparePro1}
+          //setComparePro1={setComparePro1}
+          comparePro2={comparePro2}
+          //setComparePro2={setComparePro2}
+          comparePro3={comparePro3}
+          //setComparePro3={setComparePro3}
+        />
+      ) : (
+        ''
+      )}
       <div className="ProductDetail">
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
@@ -307,7 +335,21 @@ const ProductDetail = (props) => {
             </div>
 
             {/* 右側比較區塊 */}
-            {/* <CompareBlock /> */}
+            <CompareBlock
+              //up={up}
+              compare={compare}
+              setCompare={setCompare}
+              comparemodal={comparemodal}
+              setComparemodel={setComparemodel}
+              reload={reload}
+              setReload={setReload}
+              comparePro1={comparePro1}
+              setComparePro1={setComparePro1}
+              comparePro2={comparePro2}
+              setComparePro2={setComparePro2}
+              comparePro3={comparePro3}
+              setComparePro3={setComparePro3}
+            />
           </div>
         </div>
       </div>

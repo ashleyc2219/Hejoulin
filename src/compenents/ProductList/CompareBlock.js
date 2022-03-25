@@ -19,7 +19,7 @@ const CompareBlock = ({
 }) => {
   const fetch1 = async () => {
     if (compare[0] === undefined || compare[0] === []) return false
-  
+
     const url =
       'http://localhost:3001/api/products-sake/item-detail?pro_id=' + compare[0]
 
@@ -108,7 +108,6 @@ const CompareBlock = ({
     const arr1 = []
     arr.splice(arr.indexOf(a), 1)
     //setCompare([])
-    console.log([...arr1, arr][0])
     setCompare([...arr1, arr][0])
     setReload(reload + 1)
   }
@@ -126,12 +125,17 @@ const CompareBlock = ({
       fetch2()
       fetch3()
     } */
-    ;(async () => {
+
+    clear()
+    fetch1()
+    fetch2()
+    fetch3()
+    /* ;(async () => {
       await clear()
       await fetch1()
       await fetch2()
       await fetch3()
-    })()
+    })() */
   }, [compare, reload])
 
   return (

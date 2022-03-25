@@ -4,19 +4,14 @@ import Heart from './Heart'
 
 const CompareModal = ({
   setComparemodel,
-  compare,
-  comparemodal,
   reload,
   comparePro1,
-  setComparePro1,
   comparePro2,
-  setComparePro2,
   comparePro3,
-  setComparePro3,
 }) => {
   let product1 = comparePro1.map(function (v, i) {
     return (
-      <div className="com-pro">
+      <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
             src={'http://localhost:3001/images/pro_img/' + v.pro_img}
@@ -47,7 +42,7 @@ const CompareModal = ({
   })
   let product2 = comparePro2.map(function (v, i) {
     return (
-      <div className="com-pro">
+      <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
             src={'http://localhost:3001/images/pro_img/' + v.pro_img}
@@ -78,7 +73,7 @@ const CompareModal = ({
   })
   let product3 = comparePro3.map(function (v, i) {
     return (
-      <div className="com-pro">
+      <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
             src={'http://localhost:3001/images/pro_img/' + v.pro_img}
