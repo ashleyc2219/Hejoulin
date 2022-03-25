@@ -118,53 +118,69 @@
   }
 }
 // medium sake-item---
-@include medium{.sake-table-item {
-  .item-del,
-  .item-mark,
-  .item-quantity {
-    display: none;
-  }
-  .item-product-img {
-    width: 90px;
-    height: 90px;
-    flex-grow: 0.5;
-    margin-right: 10px;
+@include medium {
+  .table-item {
+    width: 100%;
+    padding: 10px;
 
-    background-color: $white;
-    mix-blend-mode: multiply;
-    img {
-      height: 80px;
+    display: flex;
+    column-gap: 0px;
+    justify-content: space-between;
+
+    .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
-  .item-product-info {
-    width: 46.66%;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    h5 {
-      font-size: 16px;
-    }
-    p.price {
+  .sake-table-item {
+    .item-del,
+    .item-mark,
+    .item-quantity {
       display: none;
     }
-    .quantity-container {
-      display: flex;
-      align-items: center;
-      p {
-        display: block;
-        width: 32px;
-        margin: 0;
-        text-align: center;
-        font-size: 16px;
-      }
-      .trash {
-        margin-left: 30px;
+    .item-product-img {
+      width: 90px;
+      height: 90px;
+      flex-grow: 0.5;
+      margin-right: 10px;
+
+      background-color: $white;
+      mix-blend-mode: multiply;
+      img {
+        height: 80px;
       }
     }
-  }
+    .item-product-info {
+      width: 46.66%;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+      h5 {
+        font-size: 16px;
+      }
+      p.price {
+        display: none;
+      }
+      .quantity-container {
+        display: flex;
+        align-items: center;
+        p {
+          display: block;
+          width: 32px;
+          margin: 0;
+          text-align: center;
+          font-size: 16px;
+        }
+        .trash {
+          margin-left: 30px;
+        }
+      }
+    }
 
-  .item-subtotal {
-    width: 20%;
+    .item-subtotal {
+      width: 20%;
+    }
   }
-}}
+}

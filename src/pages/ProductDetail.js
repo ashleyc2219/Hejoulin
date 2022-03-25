@@ -170,24 +170,33 @@ const ProductDetail = (props) => {
                 </div>
               </div>
               <div className="tran-detail">
-                <p>Shipping fee:</p>
-                <p>~799HKD : 70HKD per order</p>
-                <p>800HKD~ : Free shipping</p>
-                <br />
-                <p>Shipping time:</p>
-                <p>Mon - Fri(before 12:00pm) : 1 day shipping available</p>
-                <p>Mon - Fri(after 12:00pm) : Choose 2 days after order date</p>
-                <p>Sat(All time) : Choose 3 days after order date</p>
-                <p>Sun(All time) : Choose 2 days after order date</p>
-                <br />
-                <p>Returns :</p>
                 <p>
-                  We will make refund if delivered items are broken. Within 3
-                  days after arrival, please kindly contact us with the pictures
-                  of broken bottles and order number.
+                  <b>運費：</b>
                 </p>
-                <p>Mail to : zoe@kyoto-trading.com / yumi@kyoto-trading.com</p>
-                <p>Operation hours : Mon - Fri, 10:00 - 18:00</p>
+                <p>
+                  為保持清酒品質，禾酒林的所有商品皆以低溫宅配配送，若擔心運送過程造成破瓶，可選擇門市取貨。
+                </p>
+                <p>滿 NT$ 1000 可享免費低溫宅配</p>
+                <p>NT$ 1000 以下 每單低溫宅配運費NT$60</p>
+                <br />
+                <p>
+                  <b>出貨時間：</b>
+                </p>
+                <p>週一至週五（中午 12:00 前）：1 天發貨</p>
+                <p>週一至週五（12:00 後）：選擇下單後 2 天</p>
+                <p>週末（所有時間）：選擇訂單日期後 的下週一</p>
+                <br />
+                <p>
+                  <b>退貨權益須知：</b>
+                </p>
+                <p>
+                  請於到貨後立即檢查。若有瑕疵或因運送造成之包裝破損，消費者於收受商品後7天內，應保持退回之商品於全新且完整包裝之狀態，請勿缺漏任何配件、贈品、原廠包裝、發票或附隨文件。
+                </p>
+                <p>
+                  若您對以上內容有任何問題或是疑慮，歡迎透過以下方式聯絡我們：
+                </p>
+                <p>電話: 02-23670050</p>
+                <p>營業時間 : 週一至週五 \10:00 - 18:00</p>
               </div>
             </div>
           </div>

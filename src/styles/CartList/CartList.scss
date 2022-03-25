@@ -192,21 +192,21 @@
         margin: 12px 0;
       }
       @include medium {
-        // medium table-item ---
-        .table-item {
-          width: 100%;
-          padding: 10px;
+        // // medium table-item ---
+        // .table-item {
+        //   width: 100%;
+        //   padding: 10px;
 
-          display: flex;
-          column-gap: 0px;
-          justify-content: space-between;
+        //   display: flex;
+        //   column-gap: 0px;
+        //   justify-content: space-between;
 
-          .item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
+        //   .item {
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //   }
+        // }
         
         // medium gift-item---
         .gift-table-item {
