@@ -51,7 +51,7 @@ function App() {
       <Router>
         <>
           <CartCount.Provider value={cartCount}>
-            <Header user={user} setUser={setUser} />
+            <Header user={user} setUser={setUser} setCartCount={setCartCount}/>
           </CartCount.Provider>
           <Switch>
             <Route exact path="/news/detail/:id">
