@@ -10,6 +10,9 @@
 // }
 
 .sake-intro {
+  .container {
+    outline: 1px solid red;
+  }
   p {
     color: $gray-300;
   }
@@ -30,29 +33,30 @@
   }
 
   .sake-intro-container {
-    // outline: 3px solid purple;
+    //outline: 3px solid purple;
     // max-width: 1200px;
+
     position: relative;
     height: 220px;
     @include medium() {
-      // outline: 3px solid rgb(28, 92, 28);
+      //outline: 3px solid rgb(28, 92, 28);
       height: 350px;
     }
 
     .sakeintro-content {
-      // outline: 1px solid blue;
+      //outline: 1px solid blue;
       display: flex;
       position: absolute;
       top: -123px;
 
       .word-box {
-        // outline: 1px solid rgb(196, 22, 167);
-        width: 70%;
+        //outline: 1px solid rgb(196, 22, 167);
+        width: 80%;
         padding-top: 182px;
         padding-right: 8%;
       }
       .big-title {
-        // outline: 1px solid blue;
+        //outline: 1px solid blue;
         width: 106px;
         padding-top: 50px;
         background-color: $white;
@@ -66,44 +70,123 @@
     }
   }
   .sakeintro-title {
-    // outline: 1px solid black;
+    //outline: 1px solid black;
 
     h2 {
-      // outline: 1px solid rgb(196, 22, 167);
+      //outline: 1px solid rgb(196, 22, 167);
 
       font-size: 36px;
       //產地那兒 差裝飾線
     }
     p {
-      // outline: 1px solid rgb(17, 100, 9);
+      //outline: 1px solid rgb(17, 100, 9);
     }
   }
-  .sakeintro-content2 {
-    // outline: 3px solid rgb(122, 9, 94);
+  .origin-content {
+    //outline: 3px solid rgb(122, 9, 94);
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    //暫定高度900px
 
-    .box1 {
-      // outline: 3px solid rgb(12, 180, 82);
-      // position: relative;
-      max-width: 390px;
+    .ori-card {
+      //outline: 3px solid rgb(180, 12, 12);
+      position: relative;
+      margin: 3% 6%;
+
+      height: 400px;
       .pic {
-        max-width: 270px;
+        //outline: 3px solid rgb(230, 107, 6);
+        width: 70%;
         height: 190px;
         background-position: center;
         background-size: cover;
-        background-image: url('./../../../public/Sakeintro/sakepic271.jpg');
-        // outline: 3px solid purple;
-        // position: absolute;
+
+        position: absolute;
+        z-index: 2;
+        left: 0;
+
         //陰影
+        box-shadow: 3px 3px 5px #95a4b2d9;
       }
-      h3 {
-        // outline: 3px solid rgb(0, 13, 128);
-        // position: absolute;
+      .title {
+        width: 25%;
+        //outline: 3px solid rgb(255, 238, 4);
+        position: absolute;
+        font-size: 35px;
+        margin-right: 5%;
+        height: 190px;
+        z-index: 1;
+        right: 0;
+        top: 0px;
+
+        h3 {
+          //outline: 3px solid rgb(119, 112, 10);
+          line-height: 100%;
+          writing-mode: vertical-lr;
+          margin-top: 50px;
+          margin: 55px auto;
+          font-size: 40px;
+          color: $gray-400;
+        }
       }
+
       p {
-        // outline: 3px solid rgb(155, 98, 24);
-        // position: absolute;
-        max-width: 230px;
+        //outline: 3px solid rgb(2, 98, 26);
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        top: 190px;
+        left: 0;
+        padding: 15px 15%;
+      }
+      .card-bg {
+        //outline: 3px solid rgb(1, 70, 231);
+        position: absolute;
+        width: 95%;
+        height: 360px;
+        z-index: -1;
+        bottom: 0;
+        right: 0;
+
+        .front {
+          position: absolute;
+
+          width: 95%;
+          height: 95%;
+          top: 0;
+          left: 0;
+          z-index: -2;
+        }
+        .back {
+          position: absolute;
+
+          width: 90%;
+          height: 90%;
+          bottom: 0;
+          right: 0;
+          z-index: -3;
+        }
+      }
+    }
+    .weather {
+      .pic {
+        background-image: url('./../../../public/Sakeintro/sakepic271.jpg');
+      }
+      .card-bg {
+        mix-blend-mode: multiply;
+        .front {
+          background: #e2ebf3;
+        }
+        .back {
+          background: repeating-linear-gradient(
+            315deg,
+            #505c68,
+            #505c68 2px,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0) 11px
+          );
+        }
       }
     }
   }
