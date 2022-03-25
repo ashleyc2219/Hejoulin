@@ -34,17 +34,25 @@ export default function Map({
     options: { radius: 75, maxZoom: 20 },
   })
 
+  function createMapOptions(maps) {
+    return {
+      disableDefaultUI: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: maps.ControlPosition.RIGHT_TOP,
+        style: maps.ZoomControlStyle.SMALL,
+      },
+      styles: mapStyles,
+    }
+  }
+
   return (
     <div style={{ height: '90vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KET }}
         center={coordinates}
         zoom={zoom}
-        options={{
-          disableDefaultUI: true,
-          zoomControl: true,
-          styles: mapStyles,
-        }}
+        options={createMapOptions}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map
@@ -75,8 +83,8 @@ export default function Map({
                 <div
                   className="cluster-marker"
                   style={{
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`,
+                    width: `${20 + (pointCount / points.length) * 20}px`,
+                    height: `${20 + (pointCount / points.length) * 20}px`,
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(

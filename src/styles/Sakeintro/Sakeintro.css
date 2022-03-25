@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.sake-intro .container {
+  outline: 1px solid red;
+}
+
 .sake-intro p {
   color: #7e8082;
 }
@@ -21,20 +25,17 @@
 }
 
 .sake-intro .sake-intro-container {
-  outline: 3px solid purple;
   position: relative;
   height: 220px;
 }
 
 @media (max-width: 768px) {
   .sake-intro .sake-intro-container {
-    outline: 3px solid #1c5c1c;
     height: 350px;
   }
 }
 
 .sake-intro .sake-intro-container .sakeintro-content {
-  outline: 1px solid blue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -43,14 +44,12 @@
 }
 
 .sake-intro .sake-intro-container .sakeintro-content .word-box {
-  outline: 1px solid #c416a7;
-  width: 70%;
+  width: 80%;
   padding-top: 182px;
   padding-right: 8%;
 }
 
 .sake-intro .sake-intro-container .sakeintro-content .big-title {
-  outline: 1px solid blue;
   width: 106px;
   padding-top: 50px;
   background-color: #f7f7f6;
@@ -65,46 +64,172 @@
   font-size: 40px;
 }
 
-.sake-intro .sakeintro-title {
-  outline: 1px solid black;
-}
-
 .sake-intro .sakeintro-title h2 {
-  outline: 1px solid #c416a7;
   font-size: 36px;
 }
 
-.sake-intro .sakeintro-title p {
-  outline: 1px solid #116409;
+.sake-intro .origin-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.sake-intro .sakeintro-content2 {
-  outline: 3px solid #7a095e;
+.sake-intro .origin-content .ori-card {
+  position: relative;
+  margin: 3% 6%;
+  height: 400px;
+}
+
+.sake-intro .origin-content .ori-card .pic {
+  width: 70%;
+  height: 190px;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  -webkit-box-shadow: 3px 3px 5px #95a4b2d9;
+          box-shadow: 3px 3px 5px #95a4b2d9;
+}
+
+.sake-intro .origin-content .ori-card .title {
+  width: 25%;
+  position: absolute;
+  font-size: 35px;
+  margin-right: 5%;
+  height: 190px;
+  z-index: 1;
+  right: 0;
+  top: 0px;
+}
+
+.sake-intro .origin-content .ori-card .title h3 {
+  line-height: 100%;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  margin-top: 50px;
+  margin: 55px auto;
+  font-size: 40px;
+  color: #4d4e4f;
+}
+
+.sake-intro .origin-content .ori-card p {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 190px;
+  left: 0;
+  padding: 15px 15%;
+}
+
+.sake-intro .origin-content .ori-card .card-bg {
+  position: absolute;
+  width: 95%;
+  height: 360px;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+}
+
+.sake-intro .origin-content .ori-card .card-bg .front {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.sake-intro .origin-content .ori-card .card-bg .back {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  bottom: 0;
+  right: 0;
+  z-index: -3;
+}
+
+.sake-intro .origin-content .weather .pic {
+  background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
+}
+
+.sake-intro .origin-content .weather .card-bg {
+  mix-blend-mode: multiply;
+}
+
+.sake-intro .origin-content .weather .card-bg .front {
+  background: #e2ebf3;
+}
+
+.sake-intro .origin-content .weather .card-bg .back {
+  background: repeating-linear-gradient(315deg, #505c68, #505c68 2px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 11px);
+}
+
+.sake-intro .level-container {
+  mix-blend-mode: multiply;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.sake-intro .sakeintro-content2 .box1 {
-  outline: 3px solid #0cb452;
-  max-width: 390px;
+.sake-intro .level-container .level-box-l .ball,
+.sake-intro .level-container .level-box-r .ball {
+  width: 100px;
 }
 
-.sake-intro .sakeintro-content2 .box1 .pic {
-  max-width: 270px;
-  height: 190px;
-  background-position: center;
-  background-size: cover;
-  background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
-  outline: 3px solid purple;
+.sake-intro .level-container .level-box-l .L1 .ball,
+.sake-intro .level-container .level-box-l .L2 .ball,
+.sake-intro .level-container .level-box-l .L3 .ball,
+.sake-intro .level-container .level-box-l .L4 .ball,
+.sake-intro .level-container .level-box-r .L1 .ball,
+.sake-intro .level-container .level-box-r .L2 .ball,
+.sake-intro .level-container .level-box-r .L3 .ball,
+.sake-intro .level-container .level-box-r .L4 .ball {
+  width: 100px;
 }
 
-.sake-intro .sakeintro-content2 .box1 h3 {
-  outline: 3px solid #000d80;
+.sake-intro .level-container .level-box-l {
+  outline: 3 solid red;
 }
 
-.sake-intro .sakeintro-content2 .box1 p {
-  outline: 3px solid #9b6218;
-  max-width: 230px;
+.sake-intro .level-container .level-box-l .L3-1 {
+  background-color: #ffdb8a;
+  border-radius: 50%;
+}
+
+.sake-intro .level-container .level-box-r {
+  outline: 3 solid red;
+}
+
+.sake-intro .level-container .level-box-r div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  height: 200px;
+}
+
+.sake-intro .level-container .level-box-r .L1 .L1-2 {
+  height: 80px;
+}
+
+.sake-intro .level-container .level-box-r .L1 .L1-2 img {
+  height: 100%;
+}
+
+.sake-intro .level-container .level-box-r .L3 .L3-2 {
+  background-color: #ffdb8a;
+  border-radius: 50%;
+}
+
+.sake-intro .level-container .level-box-r .L3 .L3-3 {
+  background-color: #3d4349;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=Sakeintro.css.map */

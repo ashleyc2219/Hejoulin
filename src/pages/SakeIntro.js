@@ -24,28 +24,48 @@ const SakeIntro = () => {
             <h2>產地</h2>
             <p>產地對於清酒而言，就是各式不同的組成元素代表。</p>
           </div>
+          {/* 產地內容 */}
+          <div className="origin-content">
+            <div className="ori-card weather col-md-4 col-sm-12">
+              <div className="pic"></div>
+              <div className="title">
+                <h3>氣候</h3>
+              </div>
+              <p>
+                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+              </p>
+              <div className="card-bg">
+                <div className="front"></div>
+                <div className="back"></div>
+              </div>
+            </div>
 
-          <div className="sakeintro-content2">
-            <div className="box1 weather">
+            <div className="ori-card weather col-md-4 col-sm-12">
               <div className="pic"></div>
-              <h3>氣候</h3>
+              <div className="title">
+                <h3>水質</h3>
+              </div>
               <p>
-                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+                水質的影響如宮城縣的墨迺江酒造在江戶時代曾流淌著北上川的支流——墨迺江川。該酒造以北上川的伏流水（也叫潛水，水質大體介於地下水和地表水之間）與宮城縣酵母釀造上等佳釀，釀出的清酒帶有低調的果實香氣，回味清爽，透明清澈。
               </p>
+              <div className="card-bg">
+                <div className="front"></div>
+                <div className="back"></div>
+              </div>
             </div>
-            <div className="box1 weather">
+
+            <div className="ori-card weather col-md-4 col-sm-12">
               <div className="pic"></div>
-              <h3>氣候</h3>
+              <div className="title">
+                <h3>酒米</h3>
+              </div>
               <p>
-                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
+                酒米的影響如亀の尾這款過往因為太難種植而接近絕跡的米種，近代農業科技的進步讓它重出江湖。用這種酒米釀造出的清酒，口味的複雜性遠高於其他品種的酒米;口感豐醇但餘韻酸澀。
               </p>
-            </div>
-            <div className="box1 weather">
-              <div className="pic"></div>
-              <h3>氣候</h3>
-              <p>
-                氣候的影響如北海道的十分寒冷釀造清酒的過程較為緩慢，能讓酒慢慢地醞釀出香氣與鮮度，環境條件相當適合釀酒。北海道的清酒經過長時間自然發酵而熟成，總體來說，酒質清爽且柔和。
-              </p>
+              <div className="card-bg">
+                <div className="front"></div>
+                <div className="back"></div>
+              </div>
             </div>
           </div>
 
@@ -55,6 +75,82 @@ const SakeIntro = () => {
               分級標準有二第一樣是<b>「釀造酒精」</b>，而第二樣是
               <b>「精米步合」。</b>
             </p>
+          </div>
+
+          <div className="level-container">
+            <div className="level-box-l">
+              <div className="L2-1">
+                <p>釀造酒精</p>
+              </div>
+              <div className="L1-1"></div>
+
+              <div className="L3-1 ball">
+                <p>米・米麴</p>
+              </div>
+              <div className="L3-1 ball">
+                <p>米・米麴</p>
+                <p>＋</p>
+                <p>釀造酒精</p>
+              </div>
+            </div>
+            <div className="level-box-r">
+              <div className="L0">
+                <p>精米步合</p>
+              </div>
+              <div className="L1">
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-1.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-2.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-3.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-4.svg" alt="" />
+                </div>
+              </div>
+              <div className="L2">
+                <div className="L2-2">
+                  <p>50%</p>
+                </div>
+                <div className="L2-2">
+                  <p>60%</p>
+                </div>
+                <div className="L2-2">
+                  <p>70%</p>
+                </div>
+                <div className="L2-2">
+                  <p>無規定</p>
+                </div>
+              </div>
+              <div className="L3">
+                <div className="L3-2 ball">
+                  <p>純米大吟釀</p>
+                </div>
+                <div className="L3-2 ball">
+                  <p>純米吟釀</p>
+                </div>
+                <div className="L3-3">
+                  <p>純米酒</p>
+                </div>
+              </div>
+              <div className="L4">
+                <div className="L4-2 ball">
+                  <p>大吟釀</p>
+                </div>
+                <div className="L4-2 ball">
+                  <p>吟釀</p>
+                </div>
+                <div className="L4-2 ball">
+                  <p>本釀造</p>
+                </div>
+                <div className="L4-3 ball">
+                  <p>普通酒</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="sakeintro-title">

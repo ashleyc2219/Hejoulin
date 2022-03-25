@@ -10,9 +10,10 @@ import ListTableGift from '../compenents/Cart/ListTableGift'
 const CartList = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   const [sakeIncart, setSakeIncart] = useState([])
+  const [giftIncart, setGiftIncart] = useState([])
   useEffect(() => {
+    const member_id = 4
     ;(async () => {
-      const member_id = 4
       const r1 = await fetch(
         `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
         {
@@ -25,13 +26,58 @@ const CartList = () => {
       const obj = await r1.json()
       setSakeIncart(obj)
     })()
+    ;(async () => {
+      const rGift = await fetch(
+        `http://localhost:3001/api/cart-list/gift?member_id=${member_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await rGift.json()
+      setGiftIncart(obj)
+    })()
   }, [])
 
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
-      return sakeIncart.map((sake, i) => {
-        return <ListTableSake key={i} sakeInfo={sake}/>
-      })
+      return (
+        <>
+          <div className="table-head sake-table-head">
+            <span className="title-del">刪除</span>
+            <span className="title-product">商品</span>
+            <span className="title-mark">客製化酒標</span>
+            <span className="title-quantity">數量</span>
+            <span className="title-subtotal">小計</span>
+          </div>
+          {sakeIncart.map((sake, i) => {
+            return <ListTableSake key={i} sakeInfo={sake} />
+          })}
+        </>
+      )
+    } else {
+      return ''
+    }
+  }
+  const renderGiftItems = (giftIncart) => {
+    if (giftIncart.length) {
+      return (
+        <>
+          <div className="table-head gift-table-head">
+            <span className="title-del">刪除</span>
+            <span className="title-gift">禮盒</span>
+            <span className="title-gift-detail">內容物</span>
+            <span className="title-color">顏色</span>
+            <span className="title-quantity">數量</span>
+            <span className="title-subtotal">小計</span>
+          </div>
+          {giftIncart.map((gift, i) => {
+            return <ListTableGift key={i} giftInfo={gift} />
+          })}
+        </>
+      )
     } else {
       return ''
     }
@@ -43,25 +89,10 @@ const CartList = () => {
         <div className="CartList-container">
           <ProgressBar step="one" content={stepContent} />
           <div className="cart-list">
-            <div className="table-head sake-table-head">
-              <span className="title-del">刪除</span>
-              <span className="title-product">商品</span>
-              <span className="title-mark">客製化酒標</span>
-              <span className="title-quantity">數量</span>
-              <span className="title-subtotal">小計</span>
-            </div>
             {console.log('list: ', sakeIncart)}
             {renderSakeItems(sakeIncart)}
-            <div className="table-head gift-table-head">
-              <span className="title-del">刪除</span>
-              <span className="title-gift">禮盒</span>
-              <span className="title-gift-detail">內容物</span>
-              <span className="title-color">顏色</span>
-              <span className="title-quantity">數量</span>
-              <span className="title-subtotal">小計</span>
-            </div>
-            <ListTableGift />
-            <ListTableGift />
+
+            {renderGiftItems(giftIncart)}
           </div>
           <div className="cart-form">
             <div className="form-left">

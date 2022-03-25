@@ -1,0 +1,14 @@
+.modal-dialog {
+  max-width: 50%;
+  .modal-content {
+    border: 0;
+    .now-img {
+      box-shadow: 0px 0px 10px rgb(61 67 73 / 62%);
+    }
+  }
+}
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 85%;
+  }
+}

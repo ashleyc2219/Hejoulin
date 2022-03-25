@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './../styles/RestaurantDetail/RestaurantDetail.scss'
 import { Carousel } from 'react-bootstrap'
+import Modal from 'react-bootstrap/Modal'
 import Swiper from '../compenents/restaurant/Swiper'
 import { useParams } from 'react-router-dom'
 
@@ -10,6 +11,11 @@ const RestaurantDetail = () => {
   const [spMenu, setSpMenu] = useState([])
   const [menuPic, setMenuPic] = useState([])
   const { id } = useParams()
+
+  const [show, setShow] = useState(false)
+  const [tempImg, setTempImg] = useState('')
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   //to top
   useEffect(() => {
@@ -83,9 +89,18 @@ const RestaurantDetail = () => {
       <Carousel.Item key={v.menu_pic_id} style={{ maxHeight: '500px' }}>
         <img
           className="d-block w-100"
+          style={{ cursor: 'pointer' }}
           src={
             process.env.REACT_APP_SERVER + 'images/menu_pic/' + v.menu_pic_name
           }
+          onClick={() => {
+            setTempImg(
+              process.env.REACT_APP_SERVER +
+                'images/menu_pic/' +
+                v.menu_pic_name
+            )
+            handleShow()
+          }}
           alt=""
         />
       </Carousel.Item>
@@ -96,7 +111,7 @@ const RestaurantDetail = () => {
     <div className="RestaurantDetail">
       <Carousel>{renderRestaurantPics}</Carousel>
       <div className="res-info">
-        <h5 className="text-center">{restaurant.res_name}</h5>
+        <h5 className="mb-3 pl-sm-4">{restaurant.res_name}</h5>
         <div className="px-3">
           {' '}
           <div>
@@ -194,7 +209,24 @@ const RestaurantDetail = () => {
         </div>
       </div>
       <div className="menu-pic">
-        <h6>菜單圖片</h6>
+        <h6 className="mb-3">菜單圖片</h6>
+        <Modal show={show} onHide={handleClose} animation={false}>
+          <img className="now-img" src={tempImg} alt="" />
+          <img
+            onClick={() => {
+              handleClose()
+            }}
+            src="/ProductList/close-white.svg"
+            alt=""
+            style={{
+              width: '29px',
+              height: '29px',
+              right: '-36px',
+              cursor: 'pointer',
+            }}
+            className="position-absolute"
+          />
+        </Modal>
         <Carousel className="mobile">{renderMenuPics}</Carousel>
         <div className="container desktop">
           <Swiper menuPic={menuPic} className="menu-pic-swiper" />
@@ -202,7 +234,7 @@ const RestaurantDetail = () => {
       </div>
 
       <div className="res-map">
-        <h6>餐廳地圖</h6>
+        <h6 className="mb-3">餐廳地圖</h6>
         <iframe
           title="map"
           style={{ minHeight: '360px' }}
@@ -214,6 +246,22 @@ const RestaurantDetail = () => {
           src={`https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${restaurant.lat},${restaurant.lng}&z=16&output=embed&t=`}
         ></iframe>
       </div>
+
+      <img
+        className="pattern1 d-none d-md-block"
+        src="/restaurant/1.svg"
+        alt=""
+      />
+      <img
+        className="pattern2 d-none d-md-block"
+        src="/restaurant/2.svg"
+        alt=""
+      />
+      <img
+        className="pattern3 d-none d-md-block"
+        src="/restaurant/3.svg"
+        alt=""
+      />
     </div>
   )
 }
