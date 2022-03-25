@@ -7,7 +7,7 @@ const SubConfirmCard = (props) => {
   return (
     <div className="confirm-card">
       <div className="confirmImg-container">
-        <img src="/Sub/riceOne.svg" alt="" />
+        <img src="/Sub/rice_1.svg" alt="" />
       </div>
       <div className="confirmInfo-container">
         <h6>純米</h6>

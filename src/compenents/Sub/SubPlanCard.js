@@ -4,8 +4,19 @@ import { motion, useAnimation } from 'framer-motion'
 import { useState } from 'react'
 
 const SubPlanCard = (props) => {
+  const { planInfo } = props
+  let ricePercent = 0
+  if (planInfo.sub_plan === '純米') {
+    ricePercent = 70
+  }
+  if (planInfo.sub_plan === '純米吟釀') {
+    ricePercent = 60
+  }
+  if (planInfo.sub_plan === '純米大吟釀') {
+    ricePercent = 50
+  }
   const controls = useAnimation()
-
+  const [planSelections, setPlanSelections] = useState([''])
   function onTap(event, info) {
     controls.start({
       d: [
@@ -15,17 +26,18 @@ const SubPlanCard = (props) => {
         'M220 101.972H0V1c71 33 68.576 8.827 126.5 4 12-1 79.5 5.735 93.5 21v75.972z',
       ],
     })
+    console.log(event.target)
   }
 
   return (
     <motion.div className="planChoice-card" onTap={onTap}>
       <div className="planImg-container">
-        <img src="/Sub/riceOne.svg" alt="" />
+        <img src={`/Sub/rice_${planInfo.sub_id}.svg`} alt="" />
       </div>
       <div className="planInfo-container">
-        <h6>純米</h6>
-        <p>精米步合度約70%</p>
-        <p>1200</p>
+        <h6>{planInfo.sub_plan}</h6>
+        <p>精米步合度約{ricePercent}%</p>
+        <p>{planInfo.sub_price}</p>
       </div>
 
       <svg
@@ -35,7 +47,6 @@ const SubPlanCard = (props) => {
         }}
       >
         <motion.path
-
           // initial={false}
           style={{
             fill: '#E6C49E',
