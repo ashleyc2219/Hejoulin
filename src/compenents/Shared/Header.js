@@ -14,10 +14,8 @@ const Header = (props) => {
 
   const location = useLocation()
 
-
-
   const getQuantity = async () => {
-    const data = { member_id: 4}
+    const data = { member_id: 4 }
     const settings = {
       method: 'POST',
       headers: {
@@ -40,7 +38,6 @@ const Header = (props) => {
   }
 
   getQuantity()
-
 
   useEffect(() => {
     if (!location.state) return
