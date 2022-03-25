@@ -38,17 +38,21 @@ import MemberMark from './pages/MemberMark'
 import Header from './compenents/Shared/Header'
 import Footer from './compenents/Shared/Footer'
 import { createContext, useState } from 'react'
+export const CartCount = createContext('defaultvalue')
 
 function App() {
   const AuthContext = createContext(null)
   const [user, setUser] = useState(false)
   const [compare, setCompare] = useState([])
+  const [cartCount, setCartCount] = useState(0)
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Router>
         <>
-          <Header user={user} setUser={setUser} />
+          <CartCount.Provider value={cartCount}>
+            <Header user={user} setUser={setUser} />
+          </CartCount.Provider>
           <Switch>
             <Route exact path="/news/detail/:id">
               <NewsDetail />
@@ -60,10 +64,16 @@ function App() {
               <SakeIntro />
             </Route>
             <Route exact path="/product/detail/:id">
-              <ProductDetail compare={compare} setCompare={setCompare}/>
+              <ProductDetail compare={compare} setCompare={setCompare} />
             </Route>
             <Route exact path="/product/list">
-              <ProductList compare={compare} setCompare={setCompare} />
+              <CartCount.Provider value={cartCount}>
+                <ProductList
+                  compare={compare}
+                  setCompare={setCompare}
+                  setCartCount={setCartCount}
+                />
+              </CartCount.Provider>
             </Route>
             <Route exact path="/sake-guide">
               <SakeGuide />
