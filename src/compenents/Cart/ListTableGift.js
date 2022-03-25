@@ -1,10 +1,12 @@
 import React from 'react'
+import './ListTableGift.scss'
 
 const ListTableGift = (props) => {
   const { giftInfo } = props
-  console.log(giftInfo)
+  let price = 0
   function renderGiftInfo(giftInfo) {
     if (giftInfo.gift_id === 3) {
+      price = giftInfo.pro_one.pro_price + giftInfo.pro_two.pro_price + 200
       return (
         <>
           <h5>{giftInfo.pro_one.pro_name}</h5>
@@ -21,6 +23,7 @@ const ListTableGift = (props) => {
       )
     }
     if (giftInfo.gift_id === 2) {
+      price = giftInfo.pro_price + 200
       return (
         <>
           <h5>{giftInfo.pro_name}</h5>
@@ -35,6 +38,7 @@ const ListTableGift = (props) => {
       )
     }
     if (giftInfo.gift_id === 4) {
+      price = giftInfo.pro_price + 200 + 600
       return (
         <>
           <h5>{giftInfo.pro_name}</h5>
@@ -68,7 +72,7 @@ const ListTableGift = (props) => {
           <img src="/CartList/trash.png" alt="" />
         </div>
         <div className="item item-gift-img">
-          <img src="/CartList/fakeGift.png" alt="" />
+          <img src={'/CartList/Gift_' + giftInfo.gift_id + '.png'} alt="" />
           <p>{giftInfo.gift_name} 禮盒</p>
         </div>
         <div className="item item-gift-detail">{renderGiftInfo(giftInfo)}</div>
@@ -83,7 +87,7 @@ const ListTableGift = (props) => {
           </div>
         </div>
         <div className="item item-subtotal">
-          <p>1880</p>
+          <p>{price * giftInfo.cart_quantity}</p>
         </div>
       </div>
       <hr></hr>
