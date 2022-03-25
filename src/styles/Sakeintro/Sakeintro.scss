@@ -190,4 +190,125 @@
       }
     }
   }
+
+  .level-container {
+    margin: 90px 0px;
+    mix-blend-mode: multiply;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    div {
+      background-color: rgba(255, 255, 255, 0.548);
+    }
+
+    .level-box-l,
+    .level-box-r {
+      p {
+        font-size: 18px;
+      }
+      .ball {
+        width: 140px;
+        height: 140px;
+        margin: 10px 5px 5px 5px;
+      }
+      .L1,
+      .L2,
+      .L3,
+      .L4 {
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .ball {
+          width: 140px;
+          height: 140px;
+          margin: 5px 5px;
+        }
+      }
+    }
+
+    .level-box-l {
+      width: 150px;
+      margin-right: 20px;
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .L1-1 {
+        margin-top: 5px;
+        height: 147px;
+      }
+      .L2-1 {
+        height: 15px;
+        background-color: $info;
+        border-radius: 30px;
+      }
+      .L3-1 {
+        background-color: $info;
+        border-radius: 50%;
+        line-height: 15px;
+        padding-top: 10px;
+      }
+    }
+    .level-box-r {
+      div {
+        display: flex;
+      }
+      .L0 {
+        height: 15px;
+        background-color: $gray-100;
+        border-radius: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .L1 {
+        .L1-2 {
+          width: 140px;
+          height: 80px;
+          margin: 24px 5px 0px 5px;
+          img {
+            height: 100%;
+          }
+        }
+      }
+      .L2 {
+        .L2-2 {
+          width: 140px;
+          margin: 10px 5px 0px 5px;
+        }
+      }
+      .L3 {
+        .L3-2 {
+          background-color: $info;
+          border-radius: 50%;
+        }
+        .L3-3 {
+          width: 280px;
+          background-color: #3d4349a6;
+          border-radius: 150px;
+          margin: 5px;
+          p {
+            color: white;
+          }
+        }
+      }
+      .L4 {
+        .L4-2 {
+          background-color: $success;
+          border-radius: 50%;
+        }
+        .L4-3 {
+          background-color: $gray-100;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 }
