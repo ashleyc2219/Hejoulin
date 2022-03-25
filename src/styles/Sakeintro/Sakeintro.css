@@ -170,4 +170,66 @@
 .sake-intro .origin-content .weather .card-bg .back {
   background: repeating-linear-gradient(315deg, #505c68, #505c68 2px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 11px);
 }
+
+.sake-intro .level-container {
+  mix-blend-mode: multiply;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sake-intro .level-container .level-box-l .ball,
+.sake-intro .level-container .level-box-r .ball {
+  width: 100px;
+}
+
+.sake-intro .level-container .level-box-l .L1 .ball,
+.sake-intro .level-container .level-box-l .L2 .ball,
+.sake-intro .level-container .level-box-l .L3 .ball,
+.sake-intro .level-container .level-box-l .L4 .ball,
+.sake-intro .level-container .level-box-r .L1 .ball,
+.sake-intro .level-container .level-box-r .L2 .ball,
+.sake-intro .level-container .level-box-r .L3 .ball,
+.sake-intro .level-container .level-box-r .L4 .ball {
+  width: 100px;
+}
+
+.sake-intro .level-container .level-box-l {
+  outline: 3 solid red;
+}
+
+.sake-intro .level-container .level-box-l .L3-1 {
+  background-color: #ffdb8a;
+  border-radius: 50%;
+}
+
+.sake-intro .level-container .level-box-r {
+  outline: 3 solid red;
+}
+
+.sake-intro .level-container .level-box-r div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  height: 200px;
+}
+
+.sake-intro .level-container .level-box-r .L1 .L1-2 {
+  height: 80px;
+}
+
+.sake-intro .level-container .level-box-r .L1 .L1-2 img {
+  height: 100%;
+}
+
+.sake-intro .level-container .level-box-r .L3 .L3-2 {
+  background-color: #ffdb8a;
+  border-radius: 50%;
+}
+
+.sake-intro .level-container .level-box-r .L3 .L3-3 {
+  background-color: #3d4349;
+  border-radius: 50%;
+}
 /*# sourceMappingURL=Sakeintro.css.map */

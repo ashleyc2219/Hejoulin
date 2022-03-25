@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import '../../styles/Member/Member-Login/RegisterContext.scss'
+import '../../../styles/Member/Member-Login/RegisterContext.scss'
 
 const RegisterContext = (props) => {
   const { user, setUser, row, setRow } = props

@@ -77,6 +77,82 @@ const SakeIntro = () => {
             </p>
           </div>
 
+          <div className="level-container">
+            <div className="level-box-l">
+              <div className="L2-1">
+                <p>釀造酒精</p>
+              </div>
+              <div className="L1-1"></div>
+
+              <div className="L3-1 ball">
+                <p>米・米麴</p>
+              </div>
+              <div className="L3-1 ball">
+                <p>米・米麴</p>
+                <p>＋</p>
+                <p>釀造酒精</p>
+              </div>
+            </div>
+            <div className="level-box-r">
+              <div className="L0">
+                <p>精米步合</p>
+              </div>
+              <div className="L1">
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-1.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-2.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-3.svg" alt="" />
+                </div>
+                <div className="L1-2">
+                  <img src="Sakeintro/mi-4.svg" alt="" />
+                </div>
+              </div>
+              <div className="L2">
+                <div className="L2-2">
+                  <p>50%</p>
+                </div>
+                <div className="L2-2">
+                  <p>60%</p>
+                </div>
+                <div className="L2-2">
+                  <p>70%</p>
+                </div>
+                <div className="L2-2">
+                  <p>無規定</p>
+                </div>
+              </div>
+              <div className="L3">
+                <div className="L3-2 ball">
+                  <p>純米大吟釀</p>
+                </div>
+                <div className="L3-2 ball">
+                  <p>純米吟釀</p>
+                </div>
+                <div className="L3-3">
+                  <p>純米酒</p>
+                </div>
+              </div>
+              <div className="L4">
+                <div className="L4-2 ball">
+                  <p>大吟釀</p>
+                </div>
+                <div className="L4-2 ball">
+                  <p>吟釀</p>
+                </div>
+                <div className="L4-2 ball">
+                  <p>本釀造</p>
+                </div>
+                <div className="L4-3 ball">
+                  <p>普通酒</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="sakeintro-title">
             <h2>釀造製成</h2>
             <p>
