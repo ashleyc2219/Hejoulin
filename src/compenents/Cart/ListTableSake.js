@@ -12,9 +12,7 @@ const ListTableSake = (props) => {
   }
   const mark_pic = sakeInfo.pics
   const markRender = (mark_pic) => {
-    console.log(mark_pic)
     if (mark_pic && sakeInfo.pro_mark === 1) {
-      console.log(mark_pic, sakeInfo.mark_id)
       return (
         <div className="item item-mark true">
           <img
@@ -34,7 +32,6 @@ const ListTableSake = (props) => {
       return <div className="item item-mark"></div>
     }
   }
-  console.log('sakeItem', sakeInfo)
   return (
     <>
       <div className="table-item sake-table-item">
