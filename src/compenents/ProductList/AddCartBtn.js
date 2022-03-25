@@ -3,6 +3,7 @@ import './AddCartBtn.scss'
 import { CartCount } from '../../App'
 
 const AddCartBtn = ({ id, setCartCount, count }) => {
+  console.log(count)
   const addcart = async (num, id) => {
     const a = count + num
     setCartCount(a)
