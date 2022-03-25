@@ -7,14 +7,41 @@ import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 
 const Header = (props) => {
-  const { user, setUser } = props
+  const { user, setUser, setCartCount } = props
   const [sidebar, setSidebar] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
   const location = useLocation()
 
-  //console.log(location)
+
+
+  const getQuantity = async () => {
+    const data = { member_id: 4}
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:3001/api/products-cart-quantity',
+        settings
+      )
+      const data = await fetchResponse.json()
+      console.log(data)
+      setCartCount(data)
+    } catch (e) {
+      return e
+    }
+  }
+
+  getQuantity()
+
+
   useEffect(() => {
     if (!location.state) return
 
