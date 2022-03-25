@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
-import LoginContext from '../Member/LoginContext'
+import LoginContext from '../Member/LoginPages/LoginContext'
 import { useLocation } from 'react-router-dom'
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'

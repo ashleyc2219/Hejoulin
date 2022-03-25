@@ -1,0 +1,23 @@
+@import "../../mixin.scss";
+
+.AccountCheck {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+
+  .AccountCheckBox {
+    padding-top: 24%;
+    padding-left: 26%;
+
+    label {
+      text-align: center;
+
+    }
+
+    .btn {
+      margin-left: 19%;
+      margin-top: 10%;
+    }
+  }
+}

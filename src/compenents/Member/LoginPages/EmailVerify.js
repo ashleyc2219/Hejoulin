@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Member/Member-Login/EmailVerify.scss'
+import '../../../styles/Member/Member-Login/EmailVerify.scss'
 
 const EmailVerify = () => {
   return (

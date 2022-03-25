@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import '../../styles/Member/Member-Login/LoginContext.scss'
+import '../../../styles/Member/Member-Login/LoginContext.scss'
 import RegisterContext from './RegisterContext'
+import EmailVerify from './EmailVerify'
+import AccountCheck from './AccountCheck'
 
 const LoginContext = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
@@ -49,7 +51,7 @@ const LoginContext = (props) => {
   function jump() {
     localStorage.clear()
     if (localStorage.hasOwnProperty('token') === false) {
-      history.push('/')
+      history.push('/', { from: 'login-success' })
       setSidebar(false)
     }
   }
@@ -98,14 +100,17 @@ const LoginContext = (props) => {
                         name="user_pass"
                         required
                       />
-                      <Link to="/#" className="passForget">
+                      <div
+                        className="passForget"
+                        onClick={() => setRow('forgetPass')}
+                      >
                         忘記密碼?
-                      </Link>
+                      </div>
                     </div>
                     <button
                       type="button"
                       className="btn btn-outline-primary register-btn"
-                      onClick={rowTo}
+                      onClick={() => rowTo('forgetPass')}
                     >
                       註冊
                     </button>
@@ -120,6 +125,8 @@ const LoginContext = (props) => {
         </div>
       ) : row === 'register' ? (
         <RegisterContext row={row} setRow={setRow} />
+      ) : row === 'forgetPass' ? (
+        <AccountCheck row={row} setRow={setRow} />
       ) : null}
     </>
   )
