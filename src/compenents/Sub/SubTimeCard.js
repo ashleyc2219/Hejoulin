@@ -4,6 +4,8 @@ import { motion, useAnimation } from 'framer-motion'
 import { useState } from 'react'
 
 const SubTimeCard = (props) => {
+  const {timeInfo} = props
+  console.log(timeInfo)
   const controls = useAnimation()
 
   function onTap(event, info) {
@@ -20,12 +22,13 @@ const SubTimeCard = (props) => {
   return (
     <motion.div className="timeChoice-card" onTap={onTap}>
       <div className="timeImg-container">
-        <img src="/Sub/oneMonth.png" alt="" />
+        <img src={`/Sub/Month_${timeInfo.sub_time_month}.png`} alt="" />
       </div>
       <div className="timeInfo-container">
-        <p>1</p>
-        <h6>1800</h6>
-        <p>1800</p>
+        <p>{timeInfo.sub_time_month}</p>
+        {/* TODO: 價錢(1800要從 Subplan 的方案傳過來) */}
+        <h6>{1800 * timeInfo.sub_discount}</h6>
+        <p>{1800 * timeInfo.sub_discount * timeInfo.sub_time_month}</p>
       </div>
 
       <svg
