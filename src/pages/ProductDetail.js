@@ -41,13 +41,6 @@ const ProductDetail = (props) => {
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
 
-  const fetchData = async () => {
-    const res = await fetch(url)
-    const data = await res.json()
-    const pro = data
-    setDetail(pro)
-  }
-
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -125,7 +118,11 @@ const ProductDetail = (props) => {
                   </button>
                 )}
               </CartCount.Consumer> */}
-              <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
+              <AddCartBtn
+                id={v.pro_id}
+                setCartCount={setCartCount}
+                count={count}
+              />
             </div>
             <div className="intro">
               <p>{v.pro_intro}</p>
@@ -307,8 +304,23 @@ const ProductDetail = (props) => {
   })
 
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
+
+    const fetchData = async () => {
+      const res = await fetch(url)
+      const data = await res.json()
+      const pro = data
+      if (a) {
+        setDetail(pro)
+      }
+    }
+
     fetchData()
+
+    return () => {
+      a = false
+    }
   }, [])
 
   return (

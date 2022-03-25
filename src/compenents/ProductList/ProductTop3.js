@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
 import AddCartIcon from './AddCartIcon'
+import { cleanup } from '@testing-library/react'
 
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
@@ -19,8 +20,24 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
     setTop(test)
   }
 
+  const isMounted = useRef(true)
+
   useEffect(() => {
+    let a = true
+    const fetchTop = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/top-three'
+      )
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setTop(test)
+      }
+    }
     fetchTop()
+    return () => {
+      a = false
+    }
   }, [])
 
   const top3 = top.map((v, i) => {

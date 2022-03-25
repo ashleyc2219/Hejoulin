@@ -335,13 +335,15 @@ const ProductList = (props) => {
   })
 
   /* 產地 */
-  const fetchLoca = async () => {
+  const fetchLoca = async (a) => {
     const res = await fetch(
       'http://localhost:3001/api/products-condition/location'
     )
     const fetchedData = await res.json()
     const test = fetchedData
-    setLoca(test)
+    if (a) {
+      setLoca(test)
+    }
   }
 
   const brandLoca = loca.map((v, i) => {
@@ -353,11 +355,15 @@ const ProductList = (props) => {
   })
 
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
     setUp()
-    fetchLoca()
+    fetchLoca(a)
     fetchBrand()
     window.addEventListener('scroll', handleScroll)
+    return () => {
+      a = false
+    }
   }, [])
   const handleScroll = () => {
     if (compare.length > 1) {
