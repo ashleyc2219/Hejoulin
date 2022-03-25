@@ -8,16 +8,16 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 import CompareBtn from '../compenents/ProductList/CompareBtn'
 
+//import AddCartIcon from '../compenents/ProductList/AddCartIcon'
+import AddCartBtn from '../compenents/ProductList/AddCartBtn'
+
 const ProductDetail = (props) => {
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
 
-  const { level, setLevel } = props
-
-  const { compare, setCompare } = props
-  //const [compare, setCompare] = useState([])
+  const { compare, setCompare, setCartCount } = props
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
@@ -112,10 +112,20 @@ const ProductDetail = (props) => {
                   <img src="/ProductList/plus-circle.svg" alt="" />
                 </div>
               </div>
-              <button className="btn-sm btn-primary btn">
-                <img src="/ProductList/cart-white.svg" alt="" />
-                加入購物車
-              </button>
+              {/* <CartCount.Consumer>
+                {(cartCount) => (
+                  <button
+                    onClick={() => {
+                      addcart(cartCount, v.pro_id)
+                    }}
+                    className="btn-sm btn-primary btn"
+                  >
+                    <img src="/ProductList/cart-white.svg" alt="" />
+                    加入購物車
+                  </button>
+                )}
+              </CartCount.Consumer> */}
+              <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
             </div>
             <div className="intro">
               <p>{v.pro_intro}</p>

@@ -4,6 +4,7 @@ import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginContext'
 import { useLocation } from 'react-router-dom'
 import LoginHover from './LoginHover'
+import { CartCount } from '../../App'
 
 const Header = (props) => {
   const { user, setUser } = props
@@ -82,6 +83,11 @@ const Header = (props) => {
               <LoginHover showSidebar={showSidebar} />
               <Link to="/cart/list" className="cart">
                 <img alt="" src="/Shared/shoppingCart.svg" />
+                <CartCount.Consumer>
+                  {(cartCount) =>
+                    cartCount === 0 ? '' : <span>{cartCount}</span>
+                  }
+                </CartCount.Consumer>
               </Link>
               <Link to="/member/fav" className="fav">
                 <img alt="" src="/Shared/heart.svg" />
@@ -109,7 +115,12 @@ const Header = (props) => {
               alt=""
             />
           </li>
-          <LoginContext user={user} setUser={setUser} sidebar={sidebar} setSidebar={setSidebar} />
+          <LoginContext
+            user={user}
+            setUser={setUser}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
+          />
           {/*<EmailVerify />*/}
           {/*<PassForget />*/}
         </ul>

@@ -37,7 +37,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -65,7 +65,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -93,7 +93,7 @@ const CompareBlock = ({
         <div className="shadow"></div>
         <img
           onClick={() => {
-            test(v.pro_id)
+            remove(v.pro_id)
           }}
           src="/ProductList/remove.svg"
           alt=""
@@ -103,7 +103,13 @@ const CompareBlock = ({
     )
   })
 
-  const test = (a) => {
+  const setModal = () => {
+    if (compare.length > 0) {
+      setComparemodel(!comparemodal)
+    }
+  }
+
+  const remove = (a) => {
     const arr = compare
     const arr1 = []
     arr.splice(arr.indexOf(a), 1)
@@ -153,12 +159,10 @@ const CompareBlock = ({
           {product3}
           <button
             onClick={() => {
-              setComparemodel(!comparemodal)
+              setModal()
             }}
             className="compare btn-primary btn-sm btn"
-          >
-            比較
-          </button>
+          >比較</button>
         </div>
       </div>
     </>

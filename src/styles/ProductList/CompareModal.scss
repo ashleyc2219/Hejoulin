@@ -76,8 +76,8 @@
       display: none;
       @include medium() {
         display: block;
-        position: absolute;
-        top: 10px;
+        position: fixed;
+        top: 120px;
         right: 10px;
         cursor: pointer;
       }

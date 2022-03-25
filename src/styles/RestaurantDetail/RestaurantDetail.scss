@@ -1,236 +1,244 @@
 @import '../global.scss';
 
 .RestaurantDetail {
-    .carousel-control-prev-icon {
-        background-image: url('../../../public/restaurant/prev.svg');
-        width: 32px;
-        height: 32px;
-    }
+  .carousel-control-prev-icon {
+    background-image: url('../../../public/restaurant/prev.svg');
+    width: 32px;
+    height: 32px;
+  }
 
-    .carousel-control-next-icon {
-        background-image: url('../../../public/restaurant/next.svg');
-        width: 32px;
-        height: 32px;
-    }
+  .carousel-control-next-icon {
+    background-image: url('../../../public/restaurant/next.svg');
+    width: 32px;
+    height: 32px;
+  }
 
+  .res-info {
+    background-color: #f7f7f6;
+    box-shadow: -0.3px 2px 4px rgba(187, 188, 189, 0.5);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    h5 {
+      font-family: 'Klee One', cursive;
+      font-weight: 900;
+      text-align: center;
+    }
+    div {
+      color: $gray-300;
+    }
+    a:link,
+    a:visited {
+      color: $gray-300;
+      text-decoration: none;
+    }
+  }
+
+  .res-intro {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    h6 {
+      color: $gray-400;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    p {
+      color: $gray-300;
+    }
+  }
+
+  .sp-menu {
+    .title {
+      margin: auto;
+      background-color: #e6c49e;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      h6 {
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+    .sake {
+      margin: auto;
+      background-color: #e0e0df;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transform: translateY(-10%);
+      opacity: 0.9;
+      position: relative;
+      img {
+        height: 80%;
+        transform: translateY(-5%);
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #3d4349;
+      }
+    }
+    .dish {
+      margin: auto;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      overflow: hidden;
+      transform: translateY(-15%);
+      opacity: 0.9;
+      position: relative;
+      img {
+        height: 100%;
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+      }
+    }
+  }
+
+  .menu-pic {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    position: relative;
+    h6 {
+      color: $gray-400;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .desktop {
+      display: none !important;
+    }
+    .swiper {
+      margin-left: auto;
+      margin-right: auto;
+      --swiper-navigation-size: 22px;
+      --swiper-theme-color: #fff;
+    }
+    .menu-pic-swiper {
+      position: relative;
+    }
+  }
+
+  #previousButton,
+  #nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+  }
+  #nextButton {
+    right: 0;
+  }
+
+  .res-map {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    h6 {
+      color: $gray-400;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 768px) {
     .res-info {
-        background-color: #f7f7f6;
-        box-shadow: -0.3px 2px 4px rgba(187, 188, 189, 0.5);
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        div {
-            color: $gray-300;
-        }
-        a:link,
-        a:visited {
-            color: $gray-300;
-            text-decoration: none;
-        }
+      position: absolute;
+      width: 40%;
+      left: 4%;
+      transform: translateY(-25%);
+      h5 {
+        text-align: left;
+      }
     }
-
     .res-intro {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        h6 {
-            color: $gray-400;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        p {
-            color: $gray-300;
-        }
+      position: absolute;
+      width: 40%;
+      right: 10%;
+      h6 {
+        text-align: left;
+      }
     }
-
     .sp-menu {
-        .title {
-            margin: auto;
-            background-color: #e6c49e;
-            border-radius: 50%;
-            width: 280px;
-            height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.9;
-            h6 {
-                font-size: 1.5rem;
-                color: white;
-            }
-        }
-        .sake {
-            margin: auto;
-            background-color: #e0e0df;
-            border-radius: 50%;
-            width: 280px;
-            height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            transform: translateY(-10%);
-            opacity: 0.9;
-            position: relative;
-            img {
-                height: 80%;
-                transform: translateY(-5%);
-            }
-            p {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                text-align: center;
-                color: #3d4349;
-            }
-        }
-        .dish {
-            margin: auto;
-            border-radius: 50%;
-            width: 280px;
-            height: 280px;
-            overflow: hidden;
-            transform: translateY(-15%);
-            opacity: 0.9;
-            position: relative;
-            img {
-                height: 100%;
-            }
-            p {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                text-align: center;
-                color: white;
-            }
-        }
+      margin-top: 20rem;
+      margin-bottom: 5rem;
+      display: flex;
+      justify-content: center;
+
+      .title {
+        margin: 0;
+        width: 230px;
+        height: 230px;
+        transform: translateX(10%);
+      }
+      .sake {
+        margin: 0;
+        width: 230px;
+        height: 230px;
+        transform: translateY(0%);
+      }
+      .dish {
+        margin: 0;
+        width: 230px;
+        height: 230px;
+        transform: translateY(0%);
+        transform: translateX(-10%);
+      }
+    }
+    .menu-pic {
+      margin-bottom: 2rem;
+      .mobile {
+        display: none;
+      }
+      .desktop {
+        display: block !important;
+      }
+      &::after {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(15%);
+        content: '';
+        display: block;
+        width: 100%;
+        height: 7rem;
+        background-color: rgba(187, 188, 189, 0.5);
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .sp-menu {
+      .title {
+        width: 320px;
+        height: 320px;
+      }
+      .sake {
+        width: 320px;
+        height: 320px;
+      }
+      .dish {
+        width: 320px;
+        height: 320px;
+      }
     }
 
     .menu-pic {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-
-        position: relative;
-        h6 {
-            color: $gray-400;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        .desktop {
-            display: none !important;
-        }
-        .swiper {
-            margin-left: auto;
-            margin-right: auto;
-            --swiper-navigation-size: 22px;
-            --swiper-theme-color: #fff;
-        }
-        .menu-pic-swiper {
-            position: relative;
-        }
+      &::after {
+        height: 18rem;
+      }
     }
-
-    #previousButton,
-    #nextButton {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 999;
-    }
-    #nextButton {
-        right: 0;
-    }
-
-    .res-map {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        h6 {
-            color: $gray-400;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .res-info {
-            position: absolute;
-            width: 40%;
-            left: 4%;
-            transform: translateY(-25%);
-        }
-        .res-intro {
-            position: absolute;
-            width: 40%;
-            right: 10%;
-            h6 {
-                text-align: left;
-            }
-        }
-        .sp-menu {
-            margin-top: 20rem;
-            margin-bottom: 5rem;
-            display: flex;
-            justify-content: center;
-
-            .title {
-                margin: 0;
-                width: 230px;
-                height: 230px;
-                transform: translateX(10%);
-            }
-            .sake {
-                margin: 0;
-                width: 230px;
-                height: 230px;
-                transform: translateY(0%);
-            }
-            .dish {
-                margin: 0;
-                width: 230px;
-                height: 230px;
-                transform: translateY(0%);
-                transform: translateX(-10%);
-            }
-        }
-        .menu-pic {
-            margin-bottom: 2rem;
-            .mobile {
-                display: none;
-            }
-            .desktop {
-                display: block !important;
-            }
-            &::after {
-                position: absolute;
-                bottom: 0;
-                transform: translateY(15%);
-                content: '';
-                display: block;
-                width: 100%;
-                height: 7rem;
-                background-color: rgba(187, 188, 189, 0.5);
-            }
-        }
-    }
-
-    @media (min-width: 992px) {
-        .sp-menu {
-            .title {
-                width: 320px;
-                height: 320px;
-            }
-            .sake {
-                width: 320px;
-                height: 320px;
-            }
-            .dish {
-                width: 320px;
-                height: 320px;
-            }
-        }
-
-        .menu-pic {
-            &::after {
-                height: 10rem;
-            }
-        }
-    }
+  }
 }

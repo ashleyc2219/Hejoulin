@@ -75,8 +75,8 @@ export default function Map({
                 <div
                   className="cluster-marker"
                   style={{
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`,
+                    width: `${20 + (pointCount / points.length) * 20}px`,
+                    height: `${20 + (pointCount / points.length) * 20}px`,
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(
