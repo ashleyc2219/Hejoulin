@@ -1,8 +1,8 @@
 import React from 'react'
 import { CartCount } from '../../App'
+import './AddCartIcon.scss'
 
 const AddCartIcon = ({ setCartCount }) => {
-  console.log(setCartCount)
   return (
     <>
       <CartCount.Consumer>
