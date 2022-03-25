@@ -1,0 +1,113 @@
+@import './../../styles/mixin.scss';
+.table-item.sake-item {
+  height: 140px;
+  padding: 5px 0;
+  display: flex;
+  column-gap: 10px;
+  @include medium {
+    padding: 10px;
+    height: 130px;
+  }
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item-product-img {
+    width: 28.7%;
+    background-color: $white;
+    mix-blend-mode: multiply;
+    position: relative;
+    @include medium {
+      width: 90px;
+      height: 90px;
+      img {
+        height: 80px;
+      }
+    }
+    .quantity {
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      width: 23px;
+      height: 22px;
+      font-size: 18px;
+      line-height: 20px;
+      text-align: center;
+      color: $white;
+      background-color: $secondary;
+      border-radius: 50%;
+      margin: 0;
+      padding: 0;
+    }
+     img {
+        height: 110px;
+      }
+  }
+  .item-product-info {
+    width: 44.18%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    @include medium {
+      justify-content: flex-start;
+    }
+    h5 {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 20px;
+      margin: 0;
+      margin-bottom: 10px;
+      color: $primary;
+      @include medium {
+        font-size: 16px;
+        line-height: 18px;
+      }
+    }
+    p {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 0;
+      color: $primary;
+    }
+    p.ml::after {
+      content: ' ml';
+    }
+    p.price {
+      @include medium {
+        display: none;
+      }
+      &::before {
+        content: '$ ';
+      }
+    }
+    p.cmark {
+      visibility: hidden;
+      color: $secondary;
+      text-decoration: underline;
+      line-height: 42px;
+    }
+    p.cmark.true {
+      visibility: visible;
+    }
+  }
+  .item-subtotal {
+    width: 22.35%;
+    // padding-top: 93px;
+    p::before {
+      content: '$ ';
+    }
+    @include medium {
+      // padding-top: 80px;
+      align-self: flex-end;
+      justify-self: end;
+    }
+  }
+}
+hr {
+  border: $gray-100 1px solid;
+  margin: 4px 0;
+}

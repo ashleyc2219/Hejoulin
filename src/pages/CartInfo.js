@@ -1,19 +1,68 @@
 import React from 'react'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
-import InfoTableItem from '../compenents/Cart/InfoTableItem'
-import { useEffect } from 'react'
+import InfoTableSake from '../compenents/Cart/InfoTableSake'
+import InfoTableGift from '../compenents/Cart/InfoTableGift'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
+  // TODO: 可能要換狀態名稱，不然會跟CartList相撞
+  const [sakeIncart, setSakeIncart] = useState([])
+  const [giftIncart, setGiftIncart] = useState([])
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    const member_id = 4
+    ;(async () => {
+      const r1 = await fetch(
+        `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await r1.json()
+      setSakeIncart(obj)
+    })()
+    ;(async () => {
+      const rGift = await fetch(
+        `http://localhost:3001/api/cart-list/gift?member_id=${member_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await rGift.json()
+      setGiftIncart(obj)
+    })()
   }, [])
+  const renderSakeItems = (sakeIncart) => {
+    if (sakeIncart.length) {
+      return sakeIncart.map((sake, i) => {
+        return <InfoTableSake key={i} sakeInfo={sake} />
+      })
+    } else {
+      return ''
+    }
+  }
+  const renderGiftItems = (giftIncart) => {
+    if (giftIncart.length) {
+      return giftIncart.map((gift, i) => {
+        return <InfoTableGift key={i} giftInfo={gift} />
+      })
+    } else {
+      return ''
+    }
+  }
   return (
     <div className="CartInfo">
-      {/* <ProgressBar step="two" content={stepContent} /> */}
+      <ProgressBar step="two" content={stepContent} />
       <div className="container">
         <div className="left-list">
           <div className="mobile-table-btn ">
@@ -24,8 +73,8 @@ const CartInfo = () => {
               <span className="title-product">商品</span>
               <span className="title-subtotal">小計</span>
             </div>
-            <InfoTableItem mark="true" />
-            <InfoTableItem mark="false" />
+            {renderSakeItems(sakeIncart)}
+            {renderGiftItems(giftIncart)}
           </div>
           <div className="list-summary">
             <div className="table-row">
@@ -86,12 +135,12 @@ const CartInfo = () => {
                 <input type="text" className="form-control" />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
-              <di className="sub-check">
+              <div className="sub-check">
                 <input type="checkbox" id="c5" name="cc" />
                 <label htmlFor="c5">
                   <span></span> 訂閱優惠月報
                 </label>
-              </di>
+              </div>
             </div>
           </div>
           <hr />
