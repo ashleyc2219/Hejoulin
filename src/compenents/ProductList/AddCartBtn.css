@@ -1,0 +1,28 @@
+.ProductDetail button.cart {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  margin-left: auto;
+}
+
+.ProductDetail button.cart img {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.CompareModal button img {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .CompareModal button {
+    width: 96px;
+    height: 40px;
+    font-size: 14;
+    font-weight: 500;
+    padding: 0 5px 0 5px;
+  }
+}
+/*# sourceMappingURL=AddCartBtn.css.map */

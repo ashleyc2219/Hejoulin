@@ -21,6 +21,9 @@
 
 .CompareModal {
   button {
+    img{
+      display: none;
+    }
     @include medium() {
       width: 96px;
       height: 40px;
