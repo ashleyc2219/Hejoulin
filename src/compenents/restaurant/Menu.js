@@ -39,7 +39,7 @@ const Menu = ({
             name="area"
             required
           >
-            <option value="all">地區</option>
+            <option value="all">全部地區</option>
             <option value="北部">北部</option>
             <option value="中部">中部</option>
             <option value="南部">南部</option>
@@ -51,7 +51,7 @@ const Menu = ({
             name="type"
             required
           >
-            <option value="all">餐廳類型</option>
+            <option value="all">全部類型</option>
             <option value="Fine Dining">Fine Dining</option>
             <option value="居酒屋">居酒屋</option>
             <option value="Sake Bar">Sake Bar</option>
