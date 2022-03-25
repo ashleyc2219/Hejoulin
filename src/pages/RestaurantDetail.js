@@ -246,6 +246,22 @@ const RestaurantDetail = () => {
           src={`https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${restaurant.lat},${restaurant.lng}&z=16&output=embed&t=`}
         ></iframe>
       </div>
+
+      <img
+        className="pattern1 d-none d-md-block"
+        src="/restaurant/1.svg"
+        alt=""
+      />
+      <img
+        className="pattern2 d-none d-md-block"
+        src="/restaurant/2.svg"
+        alt=""
+      />
+      <img
+        className="pattern3 d-none d-md-block"
+        src="/restaurant/3.svg"
+        alt=""
+      />
     </div>
   )
 }
