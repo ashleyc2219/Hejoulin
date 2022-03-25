@@ -60,7 +60,7 @@ function App() {
               <SakeIntro />
             </Route>
             <Route exact path="/product/detail/:id">
-              <ProductDetail />
+              <ProductDetail compare={compare} setCompare={setCompare}/>
             </Route>
             <Route exact path="/product/list">
               <ProductList compare={compare} setCompare={setCompare} />
