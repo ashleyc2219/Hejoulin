@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
+import AddCartIcon from './AddCartIcon'
 
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
@@ -57,12 +58,7 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <img
-                onClick={() => {}}
-                className="cart"
-                src="/ProductList/cart.svg"
-                alt=""
-              />
+              <AddCartIcon setCartCount={setCartCount} />
             </div>
           </div>
         </div>
