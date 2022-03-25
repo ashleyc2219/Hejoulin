@@ -64,7 +64,13 @@ function App() {
               <SakeIntro />
             </Route>
             <Route exact path="/product/detail/:id">
-              <ProductDetail compare={compare} setCompare={setCompare} />
+              <CartCount.Provider value={cartCount}>
+                <ProductDetail
+                  compare={compare}
+                  setCompare={setCompare}
+                  setCartCount={setCartCount}
+                />
+              </CartCount.Provider>
             </Route>
             <Route exact path="/product/list">
               <CartCount.Provider value={cartCount}>

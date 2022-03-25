@@ -5,6 +5,7 @@ import Heart from './Heart'
 import ProductTitle from './ProductTitle'
 import ResultTitle from './ResultTitle'
 import CompareBtn from './CompareBtn'
+import AddCartIcon from './AddCartIcon'
 
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
@@ -29,7 +30,8 @@ const ProductListItems = (props) => {
     mark,
     clear,
     compare,
-    setCompare
+    setCompare,
+    setCartCount,
   } = props
 
   let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
@@ -87,14 +89,7 @@ const ProductListItems = (props) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <img
-                onClick={() => {
-                  console.log('購物車')
-                }}
-                className="cart"
-                src="/ProductList/cart.svg"
-                alt=""
-              />
+              <AddCartIcon setCartCount={setCartCount}/>
             </div>
           </div>
         </div>
