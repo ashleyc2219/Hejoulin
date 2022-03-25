@@ -1,0 +1,14 @@
+.ProductDetail {
+  button.cart {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    margin-left: auto;
+    img {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
+  }
+}

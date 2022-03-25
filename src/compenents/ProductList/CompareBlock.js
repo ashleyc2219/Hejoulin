@@ -103,6 +103,12 @@ const CompareBlock = ({
     )
   })
 
+  const setModal = () => {
+    if (compare.length > 0) {
+      setComparemodel(!comparemodal)
+    }
+  }
+
   const remove = (a) => {
     const arr = compare
     const arr1 = []
@@ -153,12 +159,10 @@ const CompareBlock = ({
           {product3}
           <button
             onClick={() => {
-              setComparemodel(!comparemodal)
+              setModal()
             }}
             className="compare btn-primary btn-sm btn"
-          >
-            比較
-          </button>
+          >比較</button>
         </div>
       </div>
     </>

@@ -30,6 +30,11 @@
     a:visited {
       color: $gray-300;
       text-decoration: none;
+      transition: 0.3s;
+    }
+    a:hover {
+      color: $gray-200;
+      opacity: 0.5;
     }
   }
 
@@ -152,6 +157,23 @@
       font-size: 1.5rem;
       text-align: center;
     }
+  }
+
+  .pattern1 {
+    position: absolute;
+    top: 15%;
+    z-index: -9999;
+  }
+  .pattern2 {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: -9999;
+  }
+  .pattern3 {
+    position: absolute;
+    top: 200%;
+    z-index: -9999;
   }
 
   @media (min-width: 768px) {

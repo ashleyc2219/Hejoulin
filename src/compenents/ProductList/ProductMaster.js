@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductMaster.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
+import AddCartIcon from './AddCartIcon'
 
-const ProductMaster = ({compare , setCompare}) => {
+const ProductMaster = ({ compare, setCompare, setCartCount }) => {
   const [master, setMaster] = useState([])
 
   const fetchMaster = async () => {
@@ -49,21 +50,14 @@ const ProductMaster = ({compare , setCompare}) => {
             )}
           </div>
           <div className="icon">
-          <CompareBtn
+            <CompareBtn
               id={v.pro_id}
               compare={compare}
               setCompare={setCompare}
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <img
-                onClick={() => {
-                  console.log('購物車')
-                }}
-                className="cart"
-                src="/ProductList/cart.svg"
-                alt=""
-              />
+              <AddCartIcon setCartCount={setCartCount} />
             </div>
           </div>
         </div>
