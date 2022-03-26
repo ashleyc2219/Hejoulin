@@ -1,0 +1,22 @@
+@import "../../mixin.scss";
+
+.SetNewPass {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+
+  .SetNewPassBox {
+    padding-top: 25%;
+    padding-left: 26%;
+
+    .setPassForm {
+
+      button {
+        margin-top: 8%;
+        margin-left: 33%;
+      }
+    }
+
+  }
+}
