@@ -48,7 +48,7 @@ const ProductMaster = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} />
+              <AddCartIcon setCartCount={setCartCount} id={v.pro_id}/>
             </div>
           </div>
         </div>

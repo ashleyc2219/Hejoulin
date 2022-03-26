@@ -8,6 +8,7 @@ import { cleanup } from '@testing-library/react'
 
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
+  const [count, setCount] = useState(1)
 
   /* 人氣之選 */
   const fetchTop = async () => {
@@ -19,8 +20,6 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
 
     setTop(test)
   }
-
-  const isMounted = useRef(true)
 
   useEffect(() => {
     let a = true
@@ -75,7 +74,11 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} />
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>

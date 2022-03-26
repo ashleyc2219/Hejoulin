@@ -55,6 +55,7 @@ const ProductList = (props) => {
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
 
+
   const reset = () => {
     locavalue.current.value = ''
     brandvalue.current.value = ''
@@ -338,7 +339,11 @@ const ProductList = (props) => {
 
   useEffect(() => {
     let a = true
-    window.scrollTo(0, 0)
+    const scroll = () => {
+      if (a) {
+        //window.scrollTo(0, 0)
+      }
+    }
     setUp()
     /* 產地 */
     const fetchLoca = async () => {
@@ -361,13 +366,21 @@ const ProductList = (props) => {
         setBrand(fetchedData)
       }
     }
+    scroll()
     fetchLoca()
     fetchBrand()
-    window.addEventListener('scroll', handleScroll)
+
+    window.addEventListener('scroll', () => {
+      if (a) {
+        handleScroll()
+      }
+    })
+
     return () => {
       a = false
     }
   }, [])
+
   const handleScroll = () => {
     if (compare.length > 1) {
       if (
@@ -380,6 +393,7 @@ const ProductList = (props) => {
       }
     }
   }
+
   return (
     <>
       {/* <CompareModal /> */}
