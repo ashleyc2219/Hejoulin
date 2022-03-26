@@ -98,6 +98,7 @@ const Heart = (props) => {
       const fav = data.result.map((v, i) => {
         return v.pro_id
       })
+      console.log(fav)
       setFavorite(fav)
     } catch (e) {
       return e

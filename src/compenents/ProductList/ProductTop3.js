@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, memo } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
@@ -9,9 +9,9 @@ import { cleanup } from '@testing-library/react'
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
   const [count, setCount] = useState(1)
- 
+
   /* 人氣之選 */
-  const fetchTop = async () => {
+  /* const fetchTop = async () => {
     const res = await fetch(
       'http://localhost:3001/api/products-condition/top-three'
     )
@@ -20,6 +20,7 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
 
     setTop(test)
   }
+ */
 
   useEffect(() => {
     let a = true

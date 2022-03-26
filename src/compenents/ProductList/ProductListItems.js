@@ -94,7 +94,6 @@ const ProductListItems = (props) => {
     let a = true
     const fetchList = async () => {
       const res = await fetch(url)
-      console.log(url)
       const fetchedData = await res.json()
       const test = fetchedData
 
