@@ -26,7 +26,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id}/>
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>

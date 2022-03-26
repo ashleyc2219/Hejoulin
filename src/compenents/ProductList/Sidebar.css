@@ -1,7 +1,19 @@
+@keyframes sideani {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .ProductList .sidebar {
   width: 175px;
   height: fit-content;
   margin-right: 30px;
+  animation: sideani 1s;
 }
 
 @media (max-width: 768px) {
@@ -74,6 +86,7 @@
   border-bottom: 1px solid #7e8082;
   width: fit-content;
   margin: 0;
+  transition: all 0.3s;
 }
 
 .ProductList .sidebar .second .level .checked {
@@ -90,6 +103,7 @@
 }
 
 .ProductList .sidebar .third p {
+  width: fit-content;
   font-size: 12px;
   margin: 20px 30px;
   color: #4d4e4f;
@@ -101,13 +115,9 @@
   flex-direction: column;
 }
 
-.ProductList .sidebar .third .price label {
+.ProductList .sidebar .third .price p {
   font-family: "Klee One", cursive;
-  position: relative;
   cursor: pointer;
-}
-
-.ProductList .sidebar .third .price label p {
   color: #7e8082;
   font-size: 20px;
   margin: 0;
@@ -117,12 +127,9 @@
   border-bottom: 1px solid #7e8082;
 }
 
-.ProductList .sidebar .third .price input {
-  display: none;
-}
-
-.ProductList .sidebar .third .price input:checked + label p {
+.ProductList .sidebar .third .price .checked {
   color: #202326;
+  border-color: #202326;
 }
 
 .ProductList .sidebar .other p {
@@ -132,7 +139,7 @@
   font-family: "Klee One", cursive;
 }
 
-.ProductList .sidebar .other .custum label {
+.ProductList .sidebar .other .custum p {
   font-family: "Klee One", cursive;
   margin: 0 0 20px 30px;
   color: gray;
@@ -142,11 +149,7 @@
   cursor: pointer;
 }
 
-.ProductList .sidebar .other .custum input {
-  display: none;
-}
-
-.ProductList .sidebar .other .custum input:checked + label {
+.ProductList .sidebar .other .custum .checked {
   color: #202326;
 }
 
@@ -154,6 +157,7 @@
   width: 175px;
   height: fit-content;
   margin-right: 30px;
+  animation: sideani 1s;
 }
 
 @media (max-width: 768px) {
@@ -226,6 +230,7 @@
   border-bottom: 1px solid #7e8082;
   width: fit-content;
   margin: 0;
+  transition: all 0.3s;
 }
 
 .ProductDetail .sidebar .second .level .checked {
@@ -242,6 +247,7 @@
 }
 
 .ProductDetail .sidebar .third p {
+  width: fit-content;
   font-size: 12px;
   margin: 20px 30px;
   color: #4d4e4f;
@@ -253,13 +259,9 @@
   flex-direction: column;
 }
 
-.ProductDetail .sidebar .third .price label {
+.ProductDetail .sidebar .third .price p {
   font-family: "Klee One", cursive;
-  position: relative;
   cursor: pointer;
-}
-
-.ProductDetail .sidebar .third .price label p {
   color: #7e8082;
   font-size: 20px;
   margin: 0;
@@ -269,12 +271,9 @@
   border-bottom: 1px solid #7e8082;
 }
 
-.ProductDetail .sidebar .third .price input {
-  display: none;
-}
-
-.ProductDetail .sidebar .third .price input:checked + label p {
+.ProductDetail .sidebar .third .price .checked {
   color: #202326;
+  border-color: #202326;
 }
 
 .ProductDetail .sidebar .other p {
@@ -284,7 +283,7 @@
   font-family: "Klee One", cursive;
 }
 
-.ProductDetail .sidebar .other .custum label {
+.ProductDetail .sidebar .other .custum p {
   font-family: "Klee One", cursive;
   margin: 0 0 20px 30px;
   color: gray;
@@ -294,11 +293,7 @@
   cursor: pointer;
 }
 
-.ProductDetail .sidebar .other .custum input {
-  display: none;
-}
-
-.ProductDetail .sidebar .other .custum input:checked + label {
+.ProductDetail .sidebar .other .custum .checked {
   color: #202326;
 }
 /*# sourceMappingURL=Sidebar.css.map */

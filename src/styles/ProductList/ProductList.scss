@@ -9,6 +9,39 @@
   }
 }
 
+@keyframes searchani {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes bg1 {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes bg2 {
+  0% {
+    transform: translateX(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 
 // 最外面的容器
 .ProductList {
@@ -45,6 +78,7 @@
     .bgele1 {
       top: 10%;
       right: -200px;
+      animation: bg1 2s infinite alternate ease-in-out;
       @include exlarge() {
         right: -42%;
       }
@@ -55,6 +89,7 @@
     .bgele2 {
       top: 50%;
       left: -20%;
+      animation: bg1 1.5s infinite alternate ease-in-out;
       @include exlarge() {
         left: -40%;
       }
@@ -217,6 +252,7 @@
         //下拉選單加上搜尋的區塊
         .search-bar {
           width: 100%;
+          animation: searchani 1s;
           @include medium() {
             display: none;
           }

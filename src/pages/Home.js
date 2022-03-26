@@ -147,7 +147,7 @@ const Home = () => {
         </div>
         <div className="container">
           <Link to="/news/detail/1">
-            <button class="btn btn-secondary">警示頁光箱測試</button>
+            <button className="btn btn-secondary">警示頁光箱測試</button>
           </Link>
         </div>
       </div>

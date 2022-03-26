@@ -30,7 +30,6 @@ const Header = (props) => {
         settings
       )
       const data = await fetchResponse.json()
-      console.log(data)
       setCartCount(data)
     } catch (e) {
       return e

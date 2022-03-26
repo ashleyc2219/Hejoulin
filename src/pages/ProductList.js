@@ -55,6 +55,8 @@ const ProductList = (props) => {
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
 
+  const [catModal, setCatModal] = useState(false)
+
   const reset = () => {
     locavalue.current.value = ''
     brandvalue.current.value = ''
@@ -202,6 +204,9 @@ const ProductList = (props) => {
       setLevel('')
       setPrice('')
       setMark('')
+      setBrandsort('')
+      setLocasort('')
+      setSort('1')
       preToLoad()
       setResultTitle(false)
       if (searchword.length > 0) {
@@ -317,15 +322,6 @@ const ProductList = (props) => {
     }
   }
 
-  /* 品牌 */
-  const fetchBrand = async () => {
-    const res = await fetch(
-      'http://localhost:3001/api/products-condition/brand'
-    )
-    const fetchedData = await res.json()
-    setBrand(fetchedData)
-  }
-
   const brandData = brand.map((v, i) => {
     return (
       <option key={i} value={v.pro_brand}>
@@ -333,18 +329,6 @@ const ProductList = (props) => {
       </option>
     )
   })
-
-  /* 產地 */
-  const fetchLoca = async (a) => {
-    const res = await fetch(
-      'http://localhost:3001/api/products-condition/location'
-    )
-    const fetchedData = await res.json()
-    const test = fetchedData
-    if (a) {
-      setLoca(test)
-    }
-  }
 
   const brandLoca = loca.map((v, i) => {
     return (
@@ -356,15 +340,48 @@ const ProductList = (props) => {
 
   useEffect(() => {
     let a = true
-    window.scrollTo(0, 0)
+    const scroll = () => {
+      if (a) {
+        //window.scrollTo(0, 0)
+      }
+    }
     setUp()
-    fetchLoca(a)
+    /* 產地 */
+    const fetchLoca = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/location'
+      )
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setLoca(test)
+      }
+    }
+    /* 品牌 */
+    const fetchBrand = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/brand'
+      )
+      const fetchedData = await res.json()
+      if (a) {
+        setBrand(fetchedData)
+      }
+    }
+    scroll()
+    fetchLoca()
     fetchBrand()
-    window.addEventListener('scroll', handleScroll)
+
+    window.addEventListener('scroll', () => {
+      if (a) {
+        handleScroll()
+      }
+    })
+
     return () => {
       a = false
     }
   }, [])
+
   const handleScroll = () => {
     if (compare.length > 1) {
       if (
@@ -377,12 +394,22 @@ const ProductList = (props) => {
       }
     }
   }
+
+  const mobilecat = () => {
+    setCatModal(!catModal)
+  }
+
   return (
     <>
       {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
-      {/*  <MobileCatModal /> */}
+
+      {catModal ? (
+        <MobileCatModal setCatModal={setCatModal} catModal={catModal} />
+      ) : (
+        ''
+      )}
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
@@ -467,7 +494,7 @@ const ProductList = (props) => {
               </div>
               {/* 手機版的篩選 */}
               <div className="mobile-search-bar">
-                <div className="cat">
+                <div className="cat" onClick={mobilecat}>
                   <div className="title">分類</div>
                   <div className="state">購買清酒</div>
                 </div>
