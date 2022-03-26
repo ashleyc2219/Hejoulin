@@ -12,7 +12,7 @@ const Heart = (props) => {
       return v === props.id
     })
   }
-
+ 
   if (proid.length > 0) {
     active = false
   }
@@ -103,8 +103,44 @@ const Heart = (props) => {
       return e
     }
   }
+
   useEffect(() => {
-    getFav()
+    let a = true
+
+    const getFav1 = async () => {
+      const data = { member_id: '1' }
+      const settings = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+      try {
+        const fetchResponse = await fetch(
+          'http://localhost:3001/api/products-fav/search',
+          settings
+        )
+        const data = await fetchResponse.json()
+        const fav = data.result.map((v, i) => {
+          return v.pro_id
+        })
+        if (a) {
+          setFavorite(fav)
+        }
+      } catch (e) {
+        return e
+      }
+    }
+
+    if (a) {
+      getFav1()
+    }
+
+    return () => {
+      a = false
+    }
   }, [])
 
   useEffect(() => {
