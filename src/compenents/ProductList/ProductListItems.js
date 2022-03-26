@@ -97,11 +97,10 @@ const ProductListItems = (props) => {
       const fetchedData = await res.json()
       const test = fetchedData
 
-      if(a){
-
+      if (a) {
         setRows(test.totalRows)
         setList(test.rows)
-  
+
         if (test.rows.length === 0) {
           setNoresult(false)
         } else {

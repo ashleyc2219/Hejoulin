@@ -8,6 +8,7 @@ const AccountCheck = () => {
   const APISendEmail = 'http://localhost:3001/login/send-email'
   const whenSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
+    localStorage.setItem('email', document.querySelector('#user_account').value)
     const fd = new FormData(document.form2)
     const r = await fetch(APICheck, {
       method: 'POST',
