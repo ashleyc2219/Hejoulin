@@ -56,6 +56,7 @@ const ProductList = (props) => {
   const [reload, setReload] = useState(0)
 
 
+
   const reset = () => {
     locavalue.current.value = ''
     brandvalue.current.value = ''

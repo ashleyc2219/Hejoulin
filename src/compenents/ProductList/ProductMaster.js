@@ -7,7 +7,8 @@ import AddCartIcon from './AddCartIcon'
 
 const ProductMaster = ({ compare, setCompare, setCartCount }) => {
   const [master, setMaster] = useState([])
- 
+  const [count, setCount] = useState(1)
+
   const mas = master.map((v, i) => {
     return (
       <div key={i} className="product">
@@ -48,7 +49,11 @@ const ProductMaster = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} id={v.pro_id}/>
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>

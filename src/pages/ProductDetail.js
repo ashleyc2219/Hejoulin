@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 import CompareBtn from '../compenents/ProductList/CompareBtn'
+import { Spinner } from 'react-bootstrap'
 
 //import AddCartIcon from '../compenents/ProductList/AddCartIcon'
 import AddCartBtn from '../compenents/ProductList/AddCartBtn'
@@ -23,6 +24,8 @@ const ProductDetail = (props) => {
   const [comparePro3, setComparePro3] = useState([])
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
+
+  const [spin, setSpin] = useState(true)
 
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
@@ -315,6 +318,11 @@ const ProductDetail = (props) => {
         setDetail(pro)
       }
     }
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
 
     fetchData()
 
@@ -358,7 +366,15 @@ const ProductDetail = (props) => {
                   <div className="state">1</div>
                 </div>
               </div>
-              {productDetail}
+              {spin ? (
+                <div className="spin">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner>
+                </div>
+              ) : (
+                productDetail
+              )}
             </div>
 
             {/* 右側比較區塊 */}
