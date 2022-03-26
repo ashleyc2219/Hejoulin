@@ -55,7 +55,7 @@ const ProductList = (props) => {
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
 
-
+  const [catModal, setCatModal] = useState(false)
 
   const reset = () => {
     locavalue.current.value = ''
@@ -395,12 +395,21 @@ const ProductList = (props) => {
     }
   }
 
+  const mobilecat = () => {
+    setCatModal(!catModal)
+  }
+
   return (
     <>
       {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
-      {/*  <MobileCatModal /> */}
+
+      {catModal ? (
+        <MobileCatModal setCatModal={setCatModal} catModal={catModal} />
+      ) : (
+        ''
+      )}
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
@@ -485,7 +494,7 @@ const ProductList = (props) => {
               </div>
               {/* 手機版的篩選 */}
               <div className="mobile-search-bar">
-                <div className="cat">
+                <div className="cat" onClick={mobilecat}>
                   <div className="title">分類</div>
                   <div className="state">購買清酒</div>
                 </div>

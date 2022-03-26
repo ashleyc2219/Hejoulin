@@ -20,6 +20,24 @@
     @content;
   }
 }
+@keyframes catmodal {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
+@keyframes catbg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .MobileCatModal {
   position: fixed;
@@ -30,7 +48,9 @@
   left: 0;
   z-index: 9;
   display: none;
-  @include medium(){
+  animation: catbg 0.3s;
+  transition: all 1s;
+  @include medium() {
     display: block;
   }
   .cat-modal {
@@ -39,7 +59,9 @@
     margin-top: 75px;
     padding-top: 50px;
     position: relative;
-    
+    transition: all .5s;
+    animation: catmodal 0.3s;
+
     @include bgimage();
     img.close-black {
       position: absolute;
@@ -67,14 +89,13 @@
         li {
           list-style: none;
           margin-bottom: 9px;
-          &:first-child a{
+          &:first-child a {
             color: $primary;
-        }
+          }
           a {
             @include kleeone();
             font-size: 20px;
             color: $gray-300;
-            
           }
         }
       }
