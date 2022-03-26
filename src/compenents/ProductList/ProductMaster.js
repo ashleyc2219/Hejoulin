@@ -7,7 +7,7 @@ import AddCartIcon from './AddCartIcon'
 
 const ProductMaster = ({ compare, setCompare, setCartCount }) => {
   const [master, setMaster] = useState([])
-
+ 
   const mas = master.map((v, i) => {
     return (
       <div key={i} className="product">

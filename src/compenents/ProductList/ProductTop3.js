@@ -9,7 +9,7 @@ import { cleanup } from '@testing-library/react'
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
   const [count, setCount] = useState(1)
-
+ 
   /* 人氣之選 */
   const fetchTop = async () => {
     const res = await fetch(

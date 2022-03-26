@@ -10,7 +10,7 @@ import AddCartIcon from './AddCartIcon'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
-
+ 
   const {
     page,
     search,
