@@ -8,6 +8,7 @@ import AccountCheck from './AccountCheck'
 const LoginContext = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
+  const [goVerify, setGoVerify] = useState('register')
 
   const APILogin = 'http://localhost:3001/login/login'
   const API = 'http://localhost:3001/user/api/auth-list'
@@ -127,9 +128,9 @@ const LoginContext = (props) => {
           </div>
         </div>
       ) : row === 'register' ? (
-        <RegisterContext row={row} setRow={setRow} />
+        <RegisterContext row={row} setRow={setRow} goVerify={goVerify} setGoVerify={setGoVerify} />
       ) : row === 'forgetPass' ? (
-        <AccountCheck row={row} setRow={setRow} />
+        <AccountCheck row={row} setRow={setRow} goVerify={goVerify} setGoVerify={setGoVerify} />
       ) : null}
     </>
   )
