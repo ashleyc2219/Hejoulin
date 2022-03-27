@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Member/Member-Login/PassForget.scss'
+import '../../../styles/Member/Member-Login/PassForget.scss'
 
 const PassForget = () => {
   return (

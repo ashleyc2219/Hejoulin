@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../compenents/Member/Sidebar'
+import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import '../styles/Member/MemberSubListDetail.scss'
 
 const MemberSubListDetail = () => {

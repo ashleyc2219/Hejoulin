@@ -51,7 +51,7 @@ function App() {
       <Router>
         <>
           <CartCount.Provider value={cartCount}>
-            <Header user={user} setUser={setUser} setCartCount={setCartCount}/>
+            <Header user={user} setUser={setUser} setCartCount={setCartCount} />
           </CartCount.Provider>
           <Switch>
             <Route exact path="/news/detail/:id">
@@ -163,7 +163,15 @@ function App() {
               <MemberSubList user={user} setUser={setUser} />
             </Route>
             <Route exact path="/member/fav">
-              <MemberFav user={user} setUser={setUser} />
+              <CartCount.Provider value={cartCount}>
+                <MemberFav
+                  user={user}
+                  setUser={setUser}
+                  compare={compare}
+                  setCompare={setCompare}
+                  setCartCount={setCartCount}
+                />
+              </CartCount.Provider>
             </Route>
             <Route exact path="/member/mark">
               <MemberMark user={user} setUser={setUser} />
