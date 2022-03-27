@@ -262,7 +262,6 @@
     }
     .level-box-r {
       @include medium() {
-        min-width: 200px;
         overflow-x: scroll;
       }
 
