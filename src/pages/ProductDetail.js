@@ -43,7 +43,7 @@ const ProductDetail = (props) => {
   }
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
-
+  
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -157,7 +157,7 @@ const ProductDetail = (props) => {
                     <p>品牌：{v.pro_brand}</p>
                     <p>等級：{v.pro_level}</p>
                     <p>容量：{v.pro_capacity}ml</p>
-                    <p>酒精度：{v.alco}%</p>
+                    <p>酒精度：{v.pro_alco}%</p>
                   </div>
                 </div>
                 <div className="detail-japan">
