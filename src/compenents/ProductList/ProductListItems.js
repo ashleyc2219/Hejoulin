@@ -10,7 +10,8 @@ import AddCartIcon from './AddCartIcon'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
- 
+  const [count, setCount] = useState(1)
+
   const {
     page,
     search,
@@ -71,7 +72,11 @@ const ProductListItems = (props) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} id={v.pro_id} />
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>
