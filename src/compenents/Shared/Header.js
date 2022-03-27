@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import LoginContext from '../Member/LoginPages/LoginContext'
@@ -230,4 +230,4 @@ const Header = (props) => {
   )
 }
 
-export default Header
+export default React.memo(Header)
