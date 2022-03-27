@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 import CompareBtn from '../compenents/ProductList/CompareBtn'
+import { Spinner } from 'react-bootstrap'
 
 //import AddCartIcon from '../compenents/ProductList/AddCartIcon'
 import AddCartBtn from '../compenents/ProductList/AddCartBtn'
@@ -24,6 +25,8 @@ const ProductDetail = (props) => {
   const [comparemodal, setComparemodel] = useState(false)
   const [reload, setReload] = useState(0)
 
+  const [spin, setSpin] = useState(true)
+
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
   }
@@ -40,14 +43,7 @@ const ProductDetail = (props) => {
   }
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
-
-  const fetchData = async () => {
-    const res = await fetch(url)
-    const data = await res.json()
-    const pro = data
-    setDetail(pro)
-  }
-
+  
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -125,7 +121,11 @@ const ProductDetail = (props) => {
                   </button>
                 )}
               </CartCount.Consumer> */}
-              <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
+              <AddCartBtn
+                id={v.pro_id}
+                setCartCount={setCartCount}
+                count={count}
+              />
             </div>
             <div className="intro">
               <p>{v.pro_intro}</p>
@@ -157,7 +157,7 @@ const ProductDetail = (props) => {
                     <p>品牌：{v.pro_brand}</p>
                     <p>等級：{v.pro_level}</p>
                     <p>容量：{v.pro_capacity}ml</p>
-                    <p>酒精度：{v.alco}%</p>
+                    <p>酒精度：{v.pro_alco}%</p>
                   </div>
                 </div>
                 <div className="detail-japan">
@@ -307,8 +307,28 @@ const ProductDetail = (props) => {
   })
 
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
+
+    const fetchData = async () => {
+      const res = await fetch(url)
+      const data = await res.json()
+      const pro = data
+      if (a) {
+        setDetail(pro)
+      }
+    }
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+
     fetchData()
+
+    return () => {
+      a = false
+    }
   }, [])
 
   return (
@@ -316,15 +336,11 @@ const ProductDetail = (props) => {
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
-          //compare={compare}
-          //comparemodal={comparemodal}
           reload={reload}
           comparePro1={comparePro1}
-          //setComparePro1={setComparePro1}
           comparePro2={comparePro2}
-          //setComparePro2={setComparePro2}
           comparePro3={comparePro3}
-          //setComparePro3={setComparePro3}
+          setCartCount={setCartCount}
         />
       ) : (
         ''
@@ -350,7 +366,15 @@ const ProductDetail = (props) => {
                   <div className="state">1</div>
                 </div>
               </div>
-              {productDetail}
+              {spin ? (
+                <div className="spin">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                  </Spinner>
+                </div>
+              ) : (
+                productDetail
+              )}
             </div>
 
             {/* 右側比較區塊 */}

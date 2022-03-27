@@ -1,20 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
-import LoginContext from '../Member/LoginContext'
+import LoginContext from '../Member/LoginPages/LoginContext'
 import { useLocation } from 'react-router-dom'
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 
 const Header = (props) => {
-  const { user, setUser } = props
+  const { user, setUser, setCartCount } = props
   const [sidebar, setSidebar] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
   const location = useLocation()
 
-  //console.log(location)
+  const getQuantity = async () => {
+    const data = { member_id: 4 }
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:3001/api/products-cart-quantity',
+        settings
+      )
+      const data = await fetchResponse.json()
+      setCartCount(data)
+    } catch (e) {
+      return e
+    }
+  }
+
+  getQuantity()
+
   useEffect(() => {
     if (!location.state) return
 
@@ -207,4 +230,4 @@ const Header = (props) => {
   )
 }
 
-export default Header
+export default React.memo(Header)

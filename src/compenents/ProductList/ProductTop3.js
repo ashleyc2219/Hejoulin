@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, memo } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './ProductTop3.scss'
 import Heart from './Heart'
 import CompareBtn from './CompareBtn'
 import AddCartIcon from './AddCartIcon'
+import { cleanup } from '@testing-library/react'
 
 const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
   const [top, setTop] = useState([])
+  const [count, setCount] = useState(1)
 
   /* 人氣之選 */
-  const fetchTop = async () => {
+  /* const fetchTop = async () => {
     const res = await fetch(
       'http://localhost:3001/api/products-condition/top-three'
     )
@@ -18,9 +20,24 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
 
     setTop(test)
   }
+ */
 
   useEffect(() => {
+    let a = true
+    const fetchTop = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/top-three'
+      )
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setTop(test)
+      }
+    }
     fetchTop()
+    return () => {
+      a = false
+    }
   }, [])
 
   const top3 = top.map((v, i) => {
@@ -58,7 +75,11 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} />
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>

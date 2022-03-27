@@ -7,15 +7,7 @@ import AddCartIcon from './AddCartIcon'
 
 const ProductMaster = ({ compare, setCompare, setCartCount }) => {
   const [master, setMaster] = useState([])
-
-  const fetchMaster = async () => {
-    const res = await fetch(
-      'http://localhost:3001/api/products-condition/random-three'
-    )
-    const fetchedData = await res.json()
-    const test = fetchedData
-    setMaster(test)
-  }
+  const [count, setCount] = useState(1)
 
   const mas = master.map((v, i) => {
     return (
@@ -57,7 +49,11 @@ const ProductMaster = ({ compare, setCompare, setCartCount }) => {
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount} />
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>
@@ -72,7 +68,24 @@ const ProductMaster = ({ compare, setCompare, setCartCount }) => {
   })
 
   useEffect(() => {
+    let a = true
+
+    const fetchMaster = async () => {
+      const res = await fetch(
+        'http://localhost:3001/api/products-condition/random-three'
+      )
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setMaster(test)
+      }
+    }
+
     fetchMaster()
+
+    return () => {
+      a = false
+    }
   }, [])
 
   return (

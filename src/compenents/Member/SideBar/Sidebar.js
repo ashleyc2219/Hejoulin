@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import SideBarItem from './SideBarItem'
-import '../../styles/Member/Member-Sidebar/Sidebar.scss'
+import '../../../styles/Member/Member-Sidebar/Sidebar.scss'
 
 function Sidebar() {
   const renderItem = (items) =>

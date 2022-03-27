@@ -1,13 +1,16 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './../../styles/ProductList/MobileCatModal.css'
 
-const MobileCatModal = () => {
+const MobileCatModal = ({ setCatModal, catModal }) => {
   return (
     <>
       <div className="MobileCatModal">
         <div className="cat-modal">
           <img
+            onClick={() => {
+              setCatModal(!catModal)
+            }}
             src="/ProductList/close-black.svg"
             alt=""
             className="close-black"
@@ -18,7 +21,7 @@ const MobileCatModal = () => {
           <div className="cat">
             <ul>
               <li>
-              <Link to="/product/list">購買清酒</Link>
+                <Link to="/product/list">購買清酒</Link>
               </li>
 
               <li>

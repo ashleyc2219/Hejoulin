@@ -1,5 +1,12 @@
 @import '../mixin.scss';
-
+@keyframes animate {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .Header {
   width: 100%;
   @include medium() {
@@ -20,10 +27,10 @@
       .logo {
         // width: 63%;
         margin-top: 55.7px;
-        @include large(){
+        @include large() {
           width: 120px;
         }
-        @include medium(){
+        @include medium() {
           width: max-content;
         }
       }
@@ -113,9 +120,9 @@
           flex-direction: column;
           align-items: center;
           position: relative;
-          &:hover  span{
+          &:hover span {
             opacity: 1;
-            bottom: -10px
+            bottom: -10px;
           }
           @include large() {
             width: 25%;
@@ -125,7 +132,7 @@
           }
           cursor: pointer;
           span {
-            transition: all .5s;
+            transition: all 0.5s;
             opacity: 0;
             pointer-events: none;
             position: absolute;
@@ -136,8 +143,7 @@
             border-top: 2px solid $primary;
           }
         }
-        
-        
+
         .cart {
           cursor: pointer;
           margin-right: 7px;
@@ -148,7 +154,7 @@
             width: 30px;
             height: 30px;
           }
-          span{
+          span {
             position: absolute;
             top: 17px;
             right: -8px;
@@ -161,6 +167,7 @@
             line-height: 20px;
             font-size: 12px;
             background-color: $secondary;
+            animation: animate .3s forwards ease-in-out;
           }
         }
         .fav {
@@ -327,16 +334,13 @@
       }
       .purchase-sake {
         transition: all 0.3s;
-        a{
-
-          &:hover{
+        a {
+          &:hover {
             border-bottom: 1px solid black;
             //text-decoration: underline;
           }
         }
         .dropdown-content {
-          
-
           display: none;
           position: absolute;
           padding: 15px 0 5px 20px;
@@ -349,14 +353,13 @@
             opacity: 0;
             pointer-events: none;
             margin: 0;
-            transition: all .3s;
+            transition: all 0.3s;
             a {
-              
               font-weight: 400;
               text-decoration: none;
             }
           }
-          .showLi{
+          .showLi {
             opacity: 1;
             pointer-events: all;
           }

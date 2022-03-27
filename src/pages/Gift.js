@@ -1,25 +1,85 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import './../styles/Gift/Gift.scss'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
 import StepBar from '../compenents/Gift/StepBar'
 import ProductModal from '../compenents/Gift/ProductModal'
-// import ImgCard from '../compenents/Gift/ImgCard'
+import SakeItems from '../compenents/Gift/SakeItems'
 import SakeButton from '../compenents/Gift/SakeButton'
 
+// switch
+
 const Gift = (props) => {
-  // const url = 'http://localhost:3001/api/gift'
-
+  // const { gift_id } = useParams()
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
-
   // const kind = [{ gift_id: 2 }, { gift_id: 3 }, { guft_id: 4 }]
+
   const [kind, setKind] = useState(0) //決定禮盒種類
+  const [sake, setSake] = useState([])
+  const [container, setContainer] = useState([])
+  const [color, setColor] = useState([])
+
+  const [modalShow, setMadolShow] = useState(false) //酒詳細資訊光箱
+
+  let gift_id
+  if (kind === 1) {
+    gift_id = 1
+  } else if (kind === 2) {
+    gift_id = 2
+  } else if (kind === 3) {
+    gift_id = 3
+  }
+
+  const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
+  const url02 = `http://localhost:3001/api/product_gift` //不同禮盒的酒類資訊
+  const url03 = 'http://localhost:3001/api/gift_container' //酒器照片
+
+  useEffect(() => {
+    //載入資料
+    window.scrollTo(0, 0)
+
+    // 禮盒顏色圖片
+    const fetchGift = async () => {
+      const res = await fetch(url01)
+      const data = await res.json()
+      const pro = data
+      setColor(pro)
+    }
+
+    const fetchSake = async () => {
+      const res = await fetch(url02)
+      const data = await res.json()
+      const pro = data
+      setKind(pro)
+      setSake(pro)
+    }
+
+    const fetchContainer = async () => {
+      const res = await fetch(url03)
+      const data = await res.json()
+      const pro = data
+      setContainer(pro)
+    }
+
+    fetchGift()
+    fetchSake()
+    fetchContainer()
+  }, [])
 
   return (
     <>
       <div className="Gift">
-        {/* <ProductModal /> */}
+        {/* {modalShow ? (
+          <ProductModal
+            modalShow={modalShow}
+            setModalShow={setMadolShow}
+            sake={sake}
+          />
+        ) : (
+          ''
+        )} */}
         <div className="gift_container">
           {/* background-patten */}
           <div className="patten">
@@ -39,17 +99,27 @@ const Gift = (props) => {
                   <div
                     className="kind"
                     onClick={() => {
-                      setKind(2)
+                      setKind(1)
                     }}
                   >
                     <img src="/Gift/1.png" alt="" />
                     <span className="title">1入禮盒</span>
                   </div>
-                  <div className="kind" onClick={() => {}}>
+                  <div
+                    className="kind"
+                    onClick={() => {
+                      setKind(2)
+                    }}
+                  >
                     <img src="/Gift/2.png" alt="" />
                     <span className="title">2入禮盒</span>
                   </div>
-                  <div className="kind" onClick={() => {}}>
+                  <div
+                    className="kind"
+                    onClick={() => {
+                      setKind(3)
+                    }}
+                  >
                     <img src="/Gift/3.png" alt="" />
                     <span className="title">1+1 禮盒</span>
                   </div>
@@ -59,62 +129,17 @@ const Gift = (props) => {
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
-                <h4>請選擇一瓶清酒商品</h4>
+                {kind === 4 ? (
+                  <h4>請選擇 同一瓶 或 二瓶清酒商品</h4>
+                ) : (
+                  <h4>請選擇一瓶清酒商品</h4>
+                )}
                 <div className="grid gift_grid">
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
-                  <div className="gift_sake">
-                    <div className="sake_card">
-                      <img src="/Gift/4.png" alt="" className="original" />
-                      <img src="/Gift/1.png" alt="" className="trans" />
-                      <span className="name">水芭蕉　鼠年限定</span>
-                      <small>$2890</small>
-                    </div>
-                    <SakeButton />
-                  </div>
+                  <SakeItems
+                    modalShow={modalShow}
+                    setmadolShow={setMadolShow}
+                    sake={sake}
+                  />
                 </div>
               </section>
               <section id="gift_color">
@@ -123,7 +148,12 @@ const Gift = (props) => {
                 </div>
                 <h4>請選擇禮盒顏色</h4>
                 <div className="color_group">
-                  <button className="color_btn">
+                  <button
+                    className="color_btn"
+                    onClick={() => {
+                      setColor()
+                    }}
+                  >
                     <img src="/Gift/black.svg" alt="" />
                     <small>曜岩黑</small>
                   </button>

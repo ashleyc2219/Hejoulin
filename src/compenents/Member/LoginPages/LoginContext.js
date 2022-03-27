@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import '../../styles/Member/Member-Login/LoginContext.scss'
+import '../../../styles/Member/Member-Login/LoginContext.scss'
 import RegisterContext from './RegisterContext'
+import EmailVerify from './EmailVerify'
+import AccountCheck from './AccountCheck'
 
 const LoginContext = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
 
   const APILogin = 'http://localhost:3001/login/login'
+  const API = 'http://localhost:3001/user/api/auth-list'
   let history = useHistory()
 
   const whenSubmit = async (event) => {
@@ -29,15 +32,17 @@ const LoginContext = (props) => {
     setUser(obj.info.user_account)
     const token = localStorage.getItem('token')
 
-    const r2 = await fetch('http://localhost:3001/user/api/auth-list', {
+    const r2 = await fetch(API, {
       headers: {
         authorization: `Bearer ${token}`,
       },
     })
     const info2 = await r2.json()
-    console.log({ info2 })
-    setUser(info2.obj)
-    history.push('/', { from: 'login-success' })
+    console.log(info2)
+    if (info2.obj) {
+      setUser(info2.obj)
+      history.push('/')
+    }
 
     // const
     //   .then((res) => res.json())
@@ -46,10 +51,12 @@ const LoginContext = (props) => {
     //     history.push('/')
     //   })
   }
+
+  //登出
   function jump() {
     localStorage.clear()
     if (localStorage.hasOwnProperty('token') === false) {
-      history.push('/')
+      history.push('/', { from: 'login-success' })
       setSidebar(false)
     }
   }
@@ -66,9 +73,7 @@ const LoginContext = (props) => {
           <div className="container">
             <div className="LoginContextBox row">
               <div className="loginPage">
-                <h1 className="login-title">
-                  歡迎回到禾酒林 <br /> {user ? '已登入' : '未登入'}
-                </h1>
+                <h1 className="login-title">歡迎回到禾酒林</h1>
                 <br />
                 <h5>
                   <button onClick={jump}>登出</button>
@@ -98,14 +103,17 @@ const LoginContext = (props) => {
                         name="user_pass"
                         required
                       />
-                      <Link to="/#" className="passForget">
+                      <div
+                        className="passForget"
+                        onClick={() => setRow('forgetPass')}
+                      >
                         忘記密碼?
-                      </Link>
+                      </div>
                     </div>
                     <button
                       type="button"
                       className="btn btn-outline-primary register-btn"
-                      onClick={rowTo}
+                      onClick={() => rowTo('forgetPass')}
                     >
                       註冊
                     </button>
@@ -120,6 +128,8 @@ const LoginContext = (props) => {
         </div>
       ) : row === 'register' ? (
         <RegisterContext row={row} setRow={setRow} />
+      ) : row === 'forgetPass' ? (
+        <AccountCheck row={row} setRow={setRow} />
       ) : null}
     </>
   )

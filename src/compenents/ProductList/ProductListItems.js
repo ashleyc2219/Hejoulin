@@ -10,6 +10,7 @@ import AddCartIcon from './AddCartIcon'
 const ProductListItems = (props) => {
   const [list, setList] = useState([])
   const [rows, setRows] = useState('')
+  const [count, setCount] = useState(1)
 
   const {
     page,
@@ -35,24 +36,6 @@ const ProductListItems = (props) => {
   } = props
 
   let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
-
-  const fetchList = async () => {
-    const res = await fetch(url)
-    const fetchedData = await res.json()
-    const test = fetchedData
-    setRows(test.totalRows)
-    setList(test.rows)
-
-    if (test.rows.length === 0) {
-      setNoresult(false)
-    } else {
-      setNoresult(true)
-    }
-    // 後端摟出的資料大於等於所有資料 按鈕就消失
-    if (page >= test.totalRows) {
-      setLoad(false)
-    }
-  }
 
   const product = list.map((v, i) => {
     return (
@@ -82,14 +65,18 @@ const ProductListItems = (props) => {
             )}
           </div>
           <div className="icon">
-          <CompareBtn
+            <CompareBtn
               id={v.pro_id}
               compare={compare}
               setCompare={setCompare}
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
-              <AddCartIcon setCartCount={setCartCount}/>
+              <AddCartIcon
+                setCartCount={setCartCount}
+                id={v.pro_id}
+                count={count}
+              />
             </div>
           </div>
         </div>
@@ -109,11 +96,32 @@ const ProductListItems = (props) => {
 
   useEffect(() => {
     //clear()
+    let a = true
+    const fetchList = async () => {
+      const res = await fetch(url)
+      const fetchedData = await res.json()
+      const test = fetchedData
 
-    ;(async () => {
-      await fetchList()
-      await clear()
-    })()
+      if (a) {
+        setRows(test.totalRows)
+        setList(test.rows)
+
+        if (test.rows.length === 0) {
+          setNoresult(false)
+        } else {
+          setNoresult(true)
+        }
+        // 後端摟出的資料大於等於所有資料 按鈕就消失
+        if (page >= test.totalRows) {
+          setLoad(false)
+        }
+      }
+    }
+    fetchList()
+    clear()
+    return () => {
+      a = false
+    }
   }, [page, search, locasort, level, price, mark])
 
   return (

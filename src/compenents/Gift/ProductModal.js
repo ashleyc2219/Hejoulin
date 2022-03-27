@@ -1,16 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ProductModal.scss'
 
 import SakeButton from './SakeButton'
 
-const ProductModal = () => {
+const ProductModal = ({ setModalShow, content }) => {
+  const [slides, setSlides] = useState(false)
+
+  let modal = content.map(function (v, i) {
+    return (
+      <div className="grid">
+        <div className="image">
+          <button className="left">
+            <img src="/Gift/Left.svg" className="left_arrow" alt="" />
+          </button>
+          <div className="slider">
+            <div className="wrap uno">
+              <img
+                src={'http://localhost:3001/images/pro_img' + v.pro_img}
+                alt=""
+                className="modal_sake"
+              />
+            </div>
+            <div className="wrap dos">
+              <img
+                src={'http://localhost:3001/images/con_img' + v.container_id}
+                alt=""
+                className="modal_container"
+              />
+            </div>
+          </div>
+          <button className="right">
+            <img src="/Gift/Right.svg" className="right_arrow" alt="" />
+          </button>
+          <div className="sake_button">
+            <div className="center">
+              <SakeButton />
+            </div>
+          </div>
+        </div>
+        <div className="info">
+          <div className="name">{v.pro_name}</div>
+          <div className="tag">
+            <p className="brand">{v.pro_brand}</p>
+            <p className="level">{v.pro_level}</p>
+            <div className="like">
+              <div className="heart_icon"></div>
+              <p>收藏</p>
+            </div>
+            <div className="price">{v.pro_price}</div>
+          </div>
+          <div className="content">
+            <span className="text">{v.pro_intro}</span>
+          </div>
+          <table className="table_grid">
+            <ul>
+              <li>容量</li>
+              <li>酒造</li>
+              <li>口感</li>
+            </ul>
+            <ul>
+              <li>{v.pro_capacity}</li>
+              <li>{v.pro_maker}</li>
+              <li>{v.pro_taste}</li>
+            </ul>
+            <ul>
+              <li className="computer">精米步合度</li>
+              <li className="mobile">步合度</li>
+              <li className="alco">酒精度</li>
+              <li className="temp">溫度</li>
+            </ul>
+            <ul>
+              <li>{v.pro_essence}</li>
+              <li>{v.pro_clco}</li>
+              <li>{v.pro_temp}</li>
+            </ul>
+          </table>
+        </div>
+      </div>
+    )
+  })
   return (
     <>
       <div className="ProductModal">
         <div className="page">
           <main id="modal">
-            <div className="close"></div>
-            <div className="grid">
+            <div
+              className="close"
+              onClick={() => {
+                setModalShow(false)
+              }}
+            ></div>
+            {modal}
+            {/* <div className="grid">
               <div className="image">
                 <button className="left">
                   <img src="/Gift/Left.svg" className="left_arrow" alt="" />
@@ -75,7 +156,7 @@ const ProductModal = () => {
                   </ul>
                 </table>
               </div>
-            </div>
+            </div> */}
             <div className="mobile_sake_button">
               <div className="mobile_center">
                 <SakeButton />

@@ -17,18 +17,6 @@ const CompareBlock = ({
   comparePro3,
   setComparePro3,
 }) => {
-  const fetch1 = async () => {
-    if (compare[0] === undefined || compare[0] === []) return false
-
-    const url =
-      'http://localhost:3001/api/products-sake/item-detail?pro_id=' + compare[0]
-
-    const res = await fetch(url)
-    const fetchedData = await res.json()
-    const test = fetchedData
-    setComparePro1(test)
-  }
-
   let product1 = comparePro1.map(function (v, i) {
     return (
       <div key={i} className="product">
@@ -46,16 +34,6 @@ const CompareBlock = ({
       </div>
     )
   })
-  const fetch2 = async () => {
-    if (compare[1] === undefined || compare[1] === '') return false
-    const url =
-      'http://localhost:3001/api/products-sake/item-detail?pro_id=' + compare[1]
-
-    const res = await fetch(url)
-    const fetchedData = await res.json()
-    const test = fetchedData
-    setComparePro2(test)
-  }
 
   let product2 = comparePro2.map(function (v, i) {
     return (
@@ -74,16 +52,6 @@ const CompareBlock = ({
       </div>
     )
   })
-  const fetch3 = async () => {
-    if (compare[2] === undefined || compare[2] === '') return false
-    const url =
-      'http://localhost:3001/api/products-sake/item-detail?pro_id=' + compare[2]
-
-    const res = await fetch(url)
-    const fetchedData = await res.json()
-    const test = fetchedData
-    setComparePro3(test)
-  }
 
   let product3 = comparePro3.map(function (v, i) {
     return (
@@ -125,23 +93,55 @@ const CompareBlock = ({
   }
 
   useEffect(() => {
-    /* if (compare.length > 0) {
-      console.log(compare)
-      fetch1()
-      fetch2()
-      fetch3()
-    } */
-
+    let a = true
     clear()
+    const fetch1 = async () => {
+      if (compare[0] === undefined || compare[0] === []) return false
+
+      const url =
+        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        compare[0]
+
+      const res = await fetch(url)
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setComparePro1(test)
+      }
+    }
+    const fetch2 = async () => {
+      if (compare[1] === undefined || compare[1] === '') return false
+      const url =
+        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        compare[1]
+
+      const res = await fetch(url)
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setComparePro2(test)
+      }
+    }
+    const fetch3 = async () => {
+      if (compare[2] === undefined || compare[2] === '') return false
+      const url =
+        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        compare[2]
+
+      const res = await fetch(url)
+      const fetchedData = await res.json()
+      const test = fetchedData
+      if (a) {
+        setComparePro3(test)
+      }
+    }
+
     fetch1()
     fetch2()
     fetch3()
-    /* ;(async () => {
-      await clear()
-      await fetch1()
-      await fetch2()
-      await fetch3()
-    })() */
+    return () => {
+      a = false
+    }
   }, [compare, reload])
 
   return (
@@ -162,7 +162,9 @@ const CompareBlock = ({
               setModal()
             }}
             className="compare btn-primary btn-sm btn"
-          >比較</button>
+          >
+            比較
+          </button>
         </div>
       </div>
     </>

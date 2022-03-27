@@ -1,3 +1,23 @@
+@keyframes catmodal {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes catbg {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .MobileCatModal {
   position: fixed;
   width: 100vw;
@@ -7,6 +27,8 @@
   left: 0;
   z-index: 9;
   display: none;
+  animation: catbg 0.3s;
+  transition: all 1s;
 }
 
 @media (max-width: 768px) {
@@ -21,6 +43,8 @@
   margin-top: 75px;
   padding-top: 50px;
   position: relative;
+  transition: all .5s;
+  animation: catmodal 0.3s;
   background: url("/public/Sake-background0310.jpg");
 }
 

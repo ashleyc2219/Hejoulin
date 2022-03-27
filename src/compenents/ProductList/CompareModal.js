@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './../../styles/ProductList/CompareModal.css'
 import Heart from './Heart'
+import AddCartBtn from './AddCartBtn'
 
 const CompareModal = ({
   setComparemodel,
@@ -8,7 +9,10 @@ const CompareModal = ({
   comparePro1,
   comparePro2,
   comparePro3,
+  setCartCount,
 }) => {
+
+  const [count , setCount] = useState(1)
   let product1 = comparePro1.map(function (v, i) {
     return (
       <div key={v.pro_id} className="com-pro">
@@ -22,7 +26,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id}/>
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -35,7 +39,7 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <button className="btn btn-primary">加入購物車</button>
+          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
         </div>
       </div>
     )
@@ -66,7 +70,7 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <button className="btn btn-primary">加入購物車</button>
+          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
         </div>
       </div>
     )
@@ -97,15 +101,13 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <button className="btn btn-primary">加入購物車</button>
+          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
         </div>
       </div>
     )
   })
 
-  useEffect(() => {
-    console.log('reload at modal')
-  }, [reload])
+  useEffect(() => {}, [reload])
   return (
     <>
       <div className="CompareModal">

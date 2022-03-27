@@ -1,10 +1,22 @@
 @import './../../styles/mixin.scss';
 
+@keyframes sideani {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .ProductList {
   .sidebar {
     width: 175px;
     height: fit-content;
     margin-right: 30px;
+    animation: sideani 1s;
     @include medium() {
       display: none;
     }
@@ -137,6 +149,7 @@
     width: 175px;
     height: fit-content;
     margin-right: 30px;
+    animation: sideani 1s;
     @include medium() {
       display: none;
     }

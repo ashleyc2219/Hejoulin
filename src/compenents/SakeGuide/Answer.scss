@@ -1,0 +1,101 @@
+@import './../../styles/mixin.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.group {
+    width: fit-content;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    @include medium() {
+      margin: 15px 0;
+    }
+
+    &:hover {
+      .circle {
+        border-color: $primary;
+      }
+      .inner_circle {
+        transform: translateY(-79px);
+        transition: 0.5s;
+      }
+
+      .answer {
+        color: $primary;
+      }
+    }
+
+    .circle_group {
+      width: 51px;
+      height: 51px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      @include medium() {
+        width: 31px;
+        height: 31px;
+      }
+
+      .inner_circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $primary;
+        position: absolute;
+        top: 85px;
+        @include medium() {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        outline: 1px solid $gray-200;
+        @include medium() {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .answer {
+      font-size: 70px;
+      line-height: 70px;
+      font-weight: 900;
+      letter-spacing: 35px;
+      color: $gray-200;
+      margin-left: 30px;
+
+      @include medium() {
+        font-size: 50px;
+        line-height: 50px;
+        letter-spacing: 7px;
+      }
+    }
+  }

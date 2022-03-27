@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Sidebar from '../compenents/Member/Sidebar'
+import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import '../styles/Member/MenberMark.scss'
 import MarkModal from '../compenents/Member/MarkModal'
 import MarkData from '../compenents/Member/MarkData'

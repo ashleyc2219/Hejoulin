@@ -1,7 +1,53 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Question from '../compenents/SakeGuide/Question'
 import './../styles/SakeGuide/SakeGuide.scss'
 
 const SakeGuide = () => {
+  const [content, setContent] = useState([])
+  const url = 'http://localhost:3500/api/guide_q'
+
+  const fetchData = async () => {
+    const res = await fetch(url)
+    const data = await res.json()
+    const pro = data
+    setContent(pro)
+  }
+
+  const question = content.map((v, i) => {
+    return (
+      <React.Fragment key={i}>
+        <section className="main">
+          <p className="question">{v.q_des}</p>
+          <div className="group">
+            <div className="circle_group">
+              <div className="inner_circle"></div>
+              <div className="circle"></div>
+            </div>
+            <p className="answer">清爽</p>
+          </div>
+          <div className="group">
+            <div className="circle_group">
+              <div className="circle"></div>
+              <div className="inner_circle"></div>
+            </div>
+            <p className="answer">豐富</p>
+          </div>
+          <div className="group">
+            <div className="circle_group">
+              <div className="circle"></div>
+              <div className="inner_circle"></div>
+            </div>
+            <p className="answer">兩者皆可</p>
+          </div>
+        </section>
+      </React.Fragment>
+    )
+  })
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    fetchData()
+  }, [])
   return (
     <>
       <div className="SakeGuide">
@@ -32,7 +78,9 @@ const SakeGuide = () => {
               <p className="answer">兩者皆可</p>
             </div>
           </section>
+          {question}
           <section className="price">
+          
             {/* <div className="cost">
               <div className="qus">
                 <legend className="filter-headline">價錢預算</legend>

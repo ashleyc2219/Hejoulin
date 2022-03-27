@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import '../../styles/Member/Member-Login/RegisterContext.scss'
+import '../../../styles/Member/Member-Login/RegisterContext.scss'
 
 const RegisterContext = (props) => {
   const { user, setUser, row, setRow } = props
@@ -58,9 +58,9 @@ const RegisterContext = (props) => {
     setShowPass(!showPass)
   }
 
-  function changeShowConfirmPass() {
-    setShowConfirmPass(!showConfirmPass)
-  }
+  // function changeShowConfirmPass() {
+  //   setShowConfirmPass(!showConfirmPass)
+  // }
 
   function handleInputChangePwd(event) {
     setPassword(true)
@@ -157,8 +157,8 @@ const RegisterContext = (props) => {
                       <img
                         src={
                           showPass
-                            ? '/Member/passHideIcon.svg'
-                            : '/Member/passShowIcon.svg'
+                            ? '/Member/hidePass.svg'
+                            : '/Member/showPass.svg'
                         }
                         onClick={changeShowPass}
                         alt=""
@@ -220,17 +220,17 @@ const RegisterContext = (props) => {
                       disabled
                       />}
                     )} */}
-                    <div className="passHideIcon">
-                      <img
-                        src={
-                          showConfirmPass
-                            ? '/Member/passHideIcon.svg'
-                            : '/Member/passShowIcon.svg'
-                        }
-                        onClick={changeShowConfirmPass}
-                        alt=""
-                      />
-                    </div>
+                    {/*<div className="passHideIcon">*/}
+                    {/*  <img*/}
+                    {/*    src={*/}
+                    {/*      showConfirmPass*/}
+                    {/*        ? '/Member/hidePass.svg'*/}
+                    {/*        : '/Member/showPass.svg'*/}
+                    {/*    }*/}
+                    {/*    onClick={changeShowConfirmPass}*/}
+                    {/*    alt=""*/}
+                    {/*  />*/}
+                    {/*</div>*/}
                     <div className="errorMsg">
                       <div
                         className="form-text"

@@ -1,0 +1,77 @@
+@import '../../mixin.scss';
+
+.MemberFavBar {
+  padding-top: 22px;
+  width: 100%;
+  margin-top: 10%;
+  border-top: 2px solid #bbbcbd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include medium() {
+    display: none;
+  }
+
+  .search-icon-fav {
+    img {
+      margin-right: 3px;
+      margin-bottom: -10px;
+    }
+    input {
+      width: 150px;
+      border: none;
+      border-bottom: 2px solid #7e8082;
+      background-color: transparent;
+      font-size: 18px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .MemberFavBar-right {
+    display: flex;
+    align-items: center;
+
+    .countItemsTotal {
+      text-align: center;
+      width: 120px;
+      margin-right: 4%;
+    }
+
+    .ItemsSort {
+      margin-top: 1.5%;
+      margin-right: 3%;
+    }
+  }
+}
+
+.MobileMemberFavBar {
+  display: none;
+  width: 100%;
+  @include medium() {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .MemberFavBar-left {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 23px;
+    margin-top: -23px;
+
+    .countItemsTotal {
+      color: $primary;
+      font-size: 17px;
+      font-weight: 700;
+    }
+  }
+
+  .MemberFavBar-right {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+}
