@@ -1,28 +1,46 @@
 import React, { useState, useRef } from 'react'
 import './SakeItems.scss'
 
-const SakeItems = () => {
-  const [modalShow, setModalShow] = useState(false)
+import SakeButton from './SakeButton'
+import ProductModal from './ProductModal'
 
-  return (
-    <>
-      <div className="gift_sake">
-        <div className="sake_card">
+const SakeItems = (props) => {
+  const { modalShow, setModalShow, sake } = props
+
+  const items = sake.map((v, i) => {
+    return (
+      <div className="gift_sake" key={i}>
+        <div className="sake_card" onClick={() => setModalShow(!modalShow)}>
           <img
-            // src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
             alt=""
             className="original"
           />
           <img
-            // src={'http://localhost:3001/images/con_img/' + v.con_img}
+            src={'http://localhost:3001/images/con_img/' + v.container_img}
             alt=""
             className="trans"
           />
-          {/* <span className="name">{v.pro_name}</span> */}
-          {/* <small>${v.pro_price}</small> */}
+          <span className="name">{v.pro_name}</span>
+          <small>${v.pro_price}</small>
         </div>
-        {/* <SakeButton /> */}
+        <SakeButton />
       </div>
+    )
+  })
+
+  return (
+    <>
+      {modalShow ? (
+        <ProductModal
+          modalShow={modalShow}
+          setModalShow={setModalShow}
+          sake={sake}
+        />
+      ) : (
+        ''
+      )}
+      {items}
     </>
   )
 }
