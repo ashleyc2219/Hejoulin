@@ -17,7 +17,9 @@
   z-index: 9;
 
   display: none;
-  @include medium(){
+  animation: catbg 0.3s;
+  transition: all 1s;
+  @include medium() {
     display: block;
   }
   .filter-modal {
@@ -26,13 +28,15 @@
     margin-top: 75px;
     padding-top: 50px;
     position: relative;
+    transition: all 0.5s;
+    animation: catmodal 0.3s;
     @include bgimage();
-    
-    img.close-black{
-        position: absolute;
-        top: 15px;
-        right:30px;
-        cursor: pointer;
+
+    img.close-black {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      cursor: pointer;
     }
     .sidebar {
       width: 175px;
