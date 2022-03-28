@@ -1,12 +1,19 @@
 import React from 'react'
 import './../../styles/ProductList/MobileFilterModal.css'
 
-const MobileFilterModal = () => {
+const MobileFilterModal = ({ setFilterModal, filterModal }) => {
   return (
     <>
       <div className="MobileFilterModal">
         <div className="filter-modal">
-        <img src="/ProductList/close-black.svg" alt="" className="close-black" />
+          <img
+            onClick={() => {
+              setFilterModal(!filterModal)
+            }}
+            src="/ProductList/close-black.svg"
+            alt=""
+            className="close-black"
+          />
           <div className="sidebar">
             <div className="second">
               <div className="filter">
