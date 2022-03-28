@@ -90,6 +90,7 @@
       //outline: 3px solid rgb(180, 12, 12);
       position: relative;
       margin: 3% 6%;
+      min-width: 400px;
 
       height: 400px;
       .pic {
@@ -248,10 +249,12 @@
         margin-top: 5px;
         height: 147px;
       }
+      // 釀造酒精
       .L2-1 {
         height: 15px;
         background-color: $info;
         border-radius: 30px;
+        margin: 21px 0px;
       }
       .L3-1 {
         background-color: $info;
@@ -268,8 +271,9 @@
       div {
         display: flex;
       }
+      //精米步合
       .L0 {
-        margin-top: 9px;
+        margin: 15px 0px;
         height: 15px;
         background-color: $gray-100;
         border-radius: 30px;
@@ -314,6 +318,99 @@
         }
         .L4-3 {
           background-color: $gray-100;
+        }
+      }
+    }
+  }
+
+  .brew-container {
+    min-width: 100%;
+    //outline: 3px solid rgb(231, 1, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include medium() {
+      flex-direction: row;
+      overflow-x: scroll;
+      align-items: flex-start;
+    }
+
+    .brew_2 {
+      flex-direction: row-reverse;
+      @include medium() {
+        flex-direction: row;
+      }
+    }
+
+    .brew-column {
+      display: flex;
+      margin: 55px 0px;
+
+      //outline: 3px solid rgb(248, 135, 42);
+      .brew-box {
+        //outline: 3px solid rgb(250, 246, 17);
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .item-title {
+          //outline: 3px solid rgb(27, 100, 9);
+          width: fit-content;
+          .rice {
+            //outline: 3px solid rgb(1, 70, 231);
+          }
+          .title {
+            //outline: 3px solid rgb(46, 128, 123);
+            h3 {
+              //outline: 3px solid rgb(231, 1, 212);
+            }
+          }
+        }
+        .item-img {
+          //outline: 3px solid rgb(131, 62, 91);
+          width: fit-content;
+          height: 140px;
+          margin: 20px 0;
+
+          img {
+            //outline: 3px solid rgb(99, 124, 71);
+            height: 100%;
+            max-width: 250px;
+          }
+        }
+        .item-word {
+          max-width: 200px;
+          @include medium() {
+            width: 350px;
+          }
+          //outline: 3px solid rgb(146, 49, 78);
+          p {
+            //outline: 3px solid rgb(7, 119, 76);
+          }
+        }
+      }
+      .arr-box {
+        //outline: 3px solid rgb(97, 57, 5);
+        margin: 44px 15px 0px 15px;
+        transform: scale(0.5, 0.5);
+        @include medium() {
+          background-image: url('./../../../public/Sakeintro/ar01.svg');
+          background-repeat: no-repeat;
+          background-position: top center;
+        }
+
+        img {
+          visibility: inherit;
+          @include medium() {
+            visibility: hidden;
+          }
+        }
+      }
+      .arr_1 {
+        margin: -146px 15px 0px 15px;
+        @include medium() {
+          margin: 44px 15px 0px 15px;
         }
       }
     }
