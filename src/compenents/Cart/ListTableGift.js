@@ -1,9 +1,12 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import './ListTableGift.scss'
 
 const ListTableGift = (props) => {
-  const { giftInfo } = props
+  const { giftIncart, setGiftIncart, giftInfo, member_id } = props
+  const [quantity, setQuantity] = useState(giftInfo['cart_quantity'])
   let price = 0
+  const fetchURL = 'http://localhost:3001/api/cart-list/gift'
   function renderGiftInfo(giftInfo) {
     if (giftInfo.gift_id === 3) {
       price = giftInfo.pro_one.pro_price + giftInfo.pro_two.pro_price + 200
@@ -14,10 +17,17 @@ const ListTableGift = (props) => {
           <h5>{giftInfo.pro_two.pro_name}</h5>
           <p className="ml">{giftInfo.pro_two.pro_capacity}</p>
           <div className="quantity-container">
-            <img src="/CartList/minus-circle.svg" alt="" />
-            <p>{giftInfo.cart_quantity}</p>
-            <img src="/CartList/plus-circle.svg" alt="" />
-            <img className="trash" src="/CartList/trash.png" alt="" />
+            <img
+              src="/CartList/minus-circle.svg"
+              alt=""
+              onClick={minusQuantity}
+            />
+            <p>{quantity}</p>
+            <img
+              src="/CartList/plus-circle.svg"
+              alt=""
+              onClick={plusQuantity}
+            />
           </div>
         </>
       )
@@ -29,10 +39,17 @@ const ListTableGift = (props) => {
           <h5>{giftInfo.pro_name}</h5>
           <p className="ml">{giftInfo.pro_capacity}</p>
           <div className="quantity-container">
-            <img src="/CartList/minus-circle.svg" alt="" />
-            <p>{giftInfo.cart_quantity}</p>
-            <img src="/CartList/plus-circle.svg" alt="" />
-            <img className="trash" src="/CartList/trash.png" alt="" />
+            <img
+              src="/CartList/minus-circle.svg"
+              alt=""
+              onClick={minusQuantity}
+            />
+            <p>{quantity}</p>
+            <img
+              src="/CartList/plus-circle.svg"
+              alt=""
+              onClick={plusQuantity}
+            />
           </div>
         </>
       )
@@ -45,10 +62,17 @@ const ListTableGift = (props) => {
           <p className="ml">{giftInfo.pro_capacity}</p>
           <h5>{giftInfo.container_name}</h5>
           <div className="quantity-container">
-            <img src="/CartList/minus-circle.svg" alt="" />
-            <p>{giftInfo.cart_quantity}</p>
-            <img src="/CartList/plus-circle.svg" alt="" />
-            <img className="trash" src="/CartList/trash.png" alt="" />
+            <img
+              src="/CartList/minus-circle.svg"
+              alt=""
+              onClick={minusQuantity}
+            />
+            <p>{quantity}</p>
+            <img
+              src="/CartList/plus-circle.svg"
+              alt=""
+              onClick={plusQuantity}
+            />
           </div>
         </>
       )
@@ -65,11 +89,87 @@ const ListTableGift = (props) => {
       return '曜岩黑'
     }
   }
+  let data = {
+    member_id: member_id,
+    cart_gift_id: giftInfo.cart_gift_id,
+  }
+  const delGiftItem = async () => {
+    const r1 = await fetch(fetchURL, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    const obj = await r1.json()
+    const newGiftInCart = giftIncart.filter(
+      (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
+    )
+    setGiftIncart(newGiftInCart)
+    console.log(obj)
+  }
+  const minusQuantity = async () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1)
+      let data = {
+        cart_quantity: quantity - 1,
+        member_id: member_id,
+        cart_gift_id: giftInfo.cart_gift_id,
+      }
+      const r1 = await fetch(fetchURL, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      const obj = await r1.json()
+      console.log(obj)
+    }
+    if (quantity - 1 === 0) {
+      setQuantity(quantity - 1)
+      const r1 = await fetch(fetchURL, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      const obj = await r1.json()
+      console.log(obj)
+
+      const newGiftInCart = giftIncart.filter(
+        (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
+      )
+      setGiftIncart(newGiftInCart)
+    }
+  }
+  const plusQuantity = async () => {
+    setQuantity(quantity + 1)
+    let data = {
+      cart_quantity: quantity + 1,
+      member_id: member_id,
+      cart_gift_id: giftInfo.cart_gift_id,
+    }
+    const r1 = await fetch(fetchURL, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    const obj = await r1.json()
+    console.log(obj)
+  }
   return (
     <>
       <div className="table-item gift-table-item">
         <div className="item item-del">
-          <img src="/CartList/trash.png" alt="" />
+          <img src="/CartList/trash.png" alt="" onClick={delGiftItem} />
         </div>
         <div className="item item-gift-img">
           <img src={'/CartList/Gift_' + giftInfo.gift_id + '.png'} alt="" />
@@ -81,13 +181,21 @@ const ListTableGift = (props) => {
         </div>
         <div className="item item-quantity">
           <div className="quantity-container">
-            <img src="/CartList/minus-circle.svg" alt="" />
-            <p>1</p>
-            <img src="/CartList/plus-circle.svg" alt="" />
+            <img
+              src="/CartList/minus-circle.svg"
+              alt=""
+              onClick={minusQuantity}
+            />
+            <p>{quantity}</p>
+            <img
+              src="/CartList/plus-circle.svg"
+              alt=""
+              onClick={plusQuantity}
+            />
           </div>
         </div>
         <div className="item item-subtotal">
-          <p>{price * giftInfo.cart_quantity}</p>
+          <p>{price * quantity}</p>
         </div>
       </div>
       <hr></hr>

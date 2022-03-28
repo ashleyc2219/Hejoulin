@@ -11,8 +11,12 @@ const CartList = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
+  const [sakeCount, setSakeCount] = useState({})
+  const [sakeTotal, setSakeTotal] = useState(0)
+  const member_id = 4
   useEffect(() => {
-    const member_id = 4
+    window.scrollTo(0, 0)
+    // fetch 清酒資料
     ;(async () => {
       const r1 = await fetch(
         `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
@@ -26,6 +30,8 @@ const CartList = () => {
       const obj = await r1.json()
       setSakeIncart(obj)
     })()
+
+    // fetch 禮盒資料
     ;(async () => {
       const rGift = await fetch(
         `http://localhost:3001/api/cart-list/gift?member_id=${member_id}`,
@@ -53,7 +59,18 @@ const CartList = () => {
             <span className="title-subtotal">小計</span>
           </div>
           {sakeIncart.map((sake, i) => {
-            return <ListTableSake key={i} sakeInfo={sake} />
+            return (
+              <ListTableSake
+                key={i}
+                index={i}
+                sakeIncart={sakeIncart}
+                setSakeIncart={setSakeIncart}
+                sakeInfo={sake}
+                member_id={member_id}
+                sakeCount={sakeCount}
+                setSakeCount={setSakeCount}
+              />
+            )
           })}
         </>
       )
@@ -74,7 +91,15 @@ const CartList = () => {
             <span className="title-subtotal">小計</span>
           </div>
           {giftIncart.map((gift, i) => {
-            return <ListTableGift key={i} giftInfo={gift} />
+            return (
+              <ListTableGift
+                key={i}
+                giftIncart={giftIncart}
+                setGiftIncart={setGiftIncart}
+                giftInfo={gift}
+                member_id={member_id}
+              />
+            )
           })}
         </>
       )
@@ -91,7 +116,6 @@ const CartList = () => {
           <div className="cart-list">
             {console.log('list: ', sakeIncart)}
             {renderSakeItems(sakeIncart)}
-
             {renderGiftItems(giftIncart)}
           </div>
           <div className="cart-form">
@@ -137,7 +161,7 @@ const CartList = () => {
                 <div className="order-summary-table">
                   <div className="table-row">
                     <p>小計</p>
-                    <p className="dollar-sign">5640</p>
+                    <p className="dollar-sign">{sakeTotal}</p>
                   </div>
                   <div className="table-row">
                     <p>運費</p>
@@ -149,7 +173,7 @@ const CartList = () => {
                   </div>
                   <div className="table-row">
                     <p>總計</p>
-                    <p className="dollar-sign total">5700</p>
+                    <p className="dollar-sign total">{sakeTotal}</p>
                   </div>
                 </div>
               </div>
