@@ -4,7 +4,16 @@ import EmailVerify from './EmailVerify'
 import FinishRegister from './FinishRegister'
 
 const RegisterContext = (props) => {
-  const { user, setUser, row, setRow, goVerify, setGoVerify } = props
+  const {
+    user,
+    setUser,
+    row,
+    setRow,
+    goVerify,
+    setGoVerify,
+    sidebar,
+    setSidebar,
+  } = props
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
   const [password, setPassword] = useState(false)
@@ -125,6 +134,25 @@ const RegisterContext = (props) => {
   // function isSpecial(v) {
   //   return !!v.match(/([^a-zA-Z0-9])+/)
   // }
+  function check() {
+    if (
+      !!isSimplePwd(newPwd) &&
+      isLowerLetter(newPwd) &&
+      isNum(newPwd) &&
+      isUpperLetter(newPwd)
+    ) {
+      return 'gray'
+    } else {
+      return 'red'
+    }
+  }
+
+  console.log(
+    !!isSimplePwd(newPwd),
+    isLowerLetter(newPwd),
+    isNum(newPwd),
+    isUpperLetter(newPwd)
+  )
 
   return (
     <>
@@ -179,13 +207,7 @@ const RegisterContext = (props) => {
                         className="form-text errorMsg"
                         id="checkPass"
                         style={{
-                          color:
-                            isSimplePwd(newPwd) === false &&
-                            isLowerLetter(newPwd) === false &&
-                            isNum(newPwd) === false &&
-                            isUpperLetter(newPwd) === false
-                              ? 'grey'
-                              : 'red',
+                          color: check(),
                           display:
                             isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
                         }}
@@ -193,7 +215,7 @@ const RegisterContext = (props) => {
                         {newPwd.length < 8
                           ? '密碼最短長度為8個英數字'
                           : isLowerLetter(newPwd) === false
-                          ? '應包含小寫'
+                          ? '應包含英文'
                           : isNum(newPwd) === false
                           ? '應包含數字'
                           : isUpperLetter(newPwd) === false
@@ -300,7 +322,7 @@ const RegisterContext = (props) => {
       ) : goVerify === 'verify' ? (
         <EmailVerify goVerify={goVerify} setGoVerify={setGoVerify} />
       ) : goVerify === 'finish' ? (
-        <FinishRegister />
+        <FinishRegister sidebar={sidebar} setSidebar={setSidebar} />
       ) : null}
     </>
   )
