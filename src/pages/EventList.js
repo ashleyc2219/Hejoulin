@@ -3,11 +3,13 @@ import './../styles/EventList/EventList.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import EventCard from '../compenents/Event/EventCard'
 
+
 const EventList = () => {
   const [sort, setSort] = useState('')
   const [searchword, setSearchword] = useState('')
   const cat = useRef()
   const search = useRef()
+
 
   const catvalue = () => {
     setSort(cat.current.value)

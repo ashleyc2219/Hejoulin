@@ -71,7 +71,7 @@ const EventCard = ({ sort, searchword }) => {
       if (searchword.length > 0) {
         obj = obj.filter(function (v, i) {
             console.log(searchword)
-          return v.event_brief.includes(searchword)
+          return v.event_name.includes(searchword)
         })
       }
 
