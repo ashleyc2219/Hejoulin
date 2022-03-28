@@ -46,6 +46,7 @@ function App() {
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [memberId, setMemberId] = useState({})
+  const [subPlan, setSubPlan] = useState([])
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -98,10 +99,10 @@ function App() {
               <MarkDone />
             </Route>
             <Route exact path="/sub/plan">
-              <SubPlan />
+              <SubPlan subPlan={subPlan} setSubPlan={setSubPlan} />
             </Route>
             <Route exact path="/sub/time">
-              <SubTime />
+              <SubTime subPlan={subPlan} setSubPlan={setSubPlan} />
             </Route>
             <Route exact path="/sub/confirm">
               <SubConfirm />

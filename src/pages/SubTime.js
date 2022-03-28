@@ -6,7 +6,9 @@ import SubTimeCard from '../compenents/Sub/SubTimeCard'
 
 import '../styles/SubTime/SubTime.scss'
 
-const SubTime = () => {
+const SubTime = (props) => {
+  const { subPlan, setSubPlan } = props
+  let subPlanString = subPlan.join('、')
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
   const [times, setTimes] = useState([])
   useEffect(() => {
@@ -18,7 +20,8 @@ const SubTime = () => {
         },
       })
       const obj = await r1.json()
-      setTimes(obj)
+      const data = obj
+      setTimes(data)
     })()
   }, [])
 
@@ -51,7 +54,7 @@ const SubTime = () => {
               越長的訂閱週期越多折扣。
             </p>
             <p>
-              你選擇了 <span>純米大吟釀</span>
+              你選擇了 <span>{subPlanString}</span>
             </p>
           </div>
           <div className="right-planChoices">{renderTimes(times)}</div>
