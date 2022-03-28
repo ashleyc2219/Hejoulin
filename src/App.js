@@ -45,6 +45,7 @@ function App() {
   const [user, setUser] = useState(false)
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
+  const [memberId, setMemberId] = useState({})
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
