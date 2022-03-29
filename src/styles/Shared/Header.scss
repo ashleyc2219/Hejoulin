@@ -43,6 +43,9 @@
           color: $secondary;
           font-weight: bold;
         }
+        .test{
+          display: none;
+        }
       }
     }
 
@@ -167,7 +170,7 @@
             line-height: 20px;
             font-size: 12px;
             background-color: $secondary;
-            animation: animate .3s forwards ease-in-out;
+            animation: animate 0.3s forwards ease-in-out;
           }
         }
         .fav {

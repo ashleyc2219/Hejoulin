@@ -1,12 +1,15 @@
 import React from 'react'
 import './../../styles/ProductList/MobileSortModal.css'
 
-const MobileSortModal = () => {
+const MobileSortModal = ({ sortModal, setSortModal }) => {
   return (
     <>
       <div className="MobileSortModal">
         <div className="sort-modal">
           <img
+            onClick={() => {
+              setSortModal(!sortModal)
+            }}
             src="/ProductList/close-black.svg"
             alt=""
             className="close-black"

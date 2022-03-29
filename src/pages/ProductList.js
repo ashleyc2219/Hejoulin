@@ -57,6 +57,7 @@ const ProductList = (props) => {
 
   const [catModal, setCatModal] = useState(false)
   const [filterModal, setFilterModal] = useState(false)
+  const [sortModal, setSortModal] = useState(false)
 
   const reset = () => {
     locavalue.current.value = ''
@@ -396,18 +397,25 @@ const ProductList = (props) => {
     }
   }
 
+  // 手機版的篩選排序光箱
   const mobilecat = () => {
     setCatModal(!catModal)
   }
   const mobilefilter = () => {
     setFilterModal(!filterModal)
   }
+  const mobileSort = () => {
+    setSortModal(!sortModal)
+  }
 
   return (
     <>
-      {/* <CompareModal /> */}
-      {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
+      {sortModal ? (
+        <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
+      ) : (
+        ''
+      )}
       {filterModal ? (
         <MobileFilterModal
           setFilterModal={setFilterModal}
@@ -513,7 +521,7 @@ const ProductList = (props) => {
                   <div className="title">篩選</div>
                   <div className="state">無</div>
                 </div>
-                <div className="sort">
+                <div className="sort" onClick={mobileSort}>
                   <div className="title">排序</div>
                   <div className="state">預設排序</div>
                 </div>

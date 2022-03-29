@@ -7,7 +7,11 @@ const PassForget = () => {
       <div className="PassForget">
         <div className="mb-3 PassForgetBox">
           <label className="form-label">請輸入您註冊使用的郵箱</label>
-          <input type="text" className="form-control" placeholder="輸入郵箱以取得驗證碼" />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="輸入郵箱以取得驗證碼"
+          />
           <button className="btn btn-sm btn-primary">送出</button>
         </div>
       </div>

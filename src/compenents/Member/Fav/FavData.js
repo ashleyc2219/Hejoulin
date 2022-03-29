@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
-import noFavItem from './noFavItem'
+import NoFavItem from './NoFavItem'
 import { Link } from 'react-router-dom'
-import CompareBtn from '../../ProductList/CompareBtn'
-import Heart from '../../ProductList/Heart'
-import AddCartIcon from '../../ProductList/AddCartIcon'
 
 const FavData = (props) => {
-  const { user, setUser, compare, setCompare, setCartCount, favData, setFavData } = props
+  const { user, setUser, favData, setFavData, optionChose, setOptionChose } =
+    props
   const APIFav = 'http://localhost:3001/user/member/MemberFav'
 
   useEffect(() => {
@@ -30,6 +28,41 @@ const FavData = (props) => {
   //     })
   // }, [])
   const renderFavItems = (favData) => {
+    let active = true
+
+    const click = () => {
+      if (active === true) {
+        ;(async function del() {
+          await deleteFav()
+          // await getFav()
+        })()
+
+        active = false
+      }
+    }
+
+    const deleteFav = async () => {
+      console.log(favData['test' + favData.member_id])
+      const data = {
+        member_id: `${favData.member_id}`,
+        pro_id: `${favData.pro_id}`,
+      }
+      console.log(data)
+      const settings = {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }
+      try {
+        const fetchResponse = await fetch(
+          'http://localhost:3001/member/MemberFav-heart-delete',
+          settings
+        )
+        const data = await fetchResponse.json()
+        //setFavData(data)
+      } catch (err) {
+        return err
+      }
+    }
     if (favData && favData.length) {
       return favData.map((el) => (
         <div key={'test' + el.member_id} className="product">
@@ -63,7 +96,23 @@ const FavData = (props) => {
             </div>
             <div className="icon">
               <div className="cart-heart">
-                <Heart id={el.pro_id} />
+                <svg
+                  onClick={click}
+                  className={active ? 'heart-click' : 'heart'}
+                  width="25"
+                  height="24"
+                  viewBox="0 0 25 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.6876 9.48377C19.7077 8.95014 19.6222 8.41785 19.4361 7.91813C19.25 7.41842 18.9671 6.96137 18.604 6.57386C18.2408 6.18634 17.8049 5.87617 17.3216 5.66158C16.8383 5.44698 16.3176 5.33228 15.7899 5.32422C15.0316 5.32668 14.2957 5.5849 13.6987 6.05805C13.1018 6.53119 12.6778 7.19224 12.4938 7.93661C12.3098 7.19224 11.8857 6.53119 11.2887 6.05805C10.6918 5.5849 9.95593 5.32668 9.19763 5.32422C8.671 5.33395 8.15158 5.44989 7.66977 5.66523C7.18797 5.88057 6.75346 6.19099 6.39167 6.57833C6.02988 6.96567 5.74809 7.42215 5.56278 7.92104C5.37747 8.41993 5.29236 8.95119 5.31245 9.48377C5.31245 9.95298 5.31247 14.7593 12.4938 18.6779C19.7001 14.7593 19.7001 9.95298 19.6876 9.48377Z"
+                    stroke="#BBBCBD"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </div>
             </div>
           </div>
@@ -74,7 +123,7 @@ const FavData = (props) => {
         </div>
       ))
     } else {
-      return <noFavItem />
+      return <NoFavItem />
     }
   }
   return (
