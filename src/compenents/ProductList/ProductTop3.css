@@ -1,0 +1,250 @@
+@keyframes ani {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.ProductList .famous-choose {
+  padding-top: 20px;
+}
+
+.ProductList .famous-choose .famous-title {
+  font-family: "Klee One", cursive;
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 43px;
+  position: relative;
+  opacity: 0;
+  animation: ani 1s forwards;
+}
+
+.ProductList .famous-choose .famous-title img {
+  width: 80px;
+  position: absolute;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  left: -46px;
+  top: -14px;
+}
+
+.ProductList .famous-choose .product-container {
+  border-bottom: 1px solid #bbbcbd;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 25px;
+}
+
+.ProductList .famous-choose .product-container .product {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  column-gap: 20px;
+  opacity: 0;
+  animation: ani 1s forwards .3s;
+}
+
+.ProductList .famous-choose .product-container .product:hover > .product-wrap {
+  transform: translateY(-5px);
+  box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.146);
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product {
+    width: 49%;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(247, 247, 246, 0.63);
+  padding: 10px;
+  position: relative;
+  transition: all 0.3s;
+  /* &:hover .img-wrap > img {
+            transform: scale(1.1) translateY(5px);
+          } */
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap {
+    padding: 10px 5px 5px 5px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .img-wrap {
+  width: 100%;
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .img-wrap img.product-img {
+  height: 190px;
+  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .img-wrap img.product-img {
+    height: 120px;
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .tag-img img {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .tag-img img {
+    top: 6%;
+    right: 7%;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon .compare {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon .compare img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .icon .compare img {
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon .compare p {
+  color: #bbbcbd;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .icon .compare p {
+    font-size: 12px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon .cart-heart {
+  display: flex;
+  align-items: center;
+  /* .heart {
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                transition: all .3s;
+                &:hover path {
+                  stroke: $primary;
+                }
+                @include medium() {
+                  width: 21px;
+                  height: 21px;
+                }
+              }
+              .heart path{
+                transition: all .3s;
+              }
+
+              .heart-click {
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                transition: all .3s;
+                &:hover path {
+                  fill: transparent;
+                }
+                @include medium() {
+                  width: 21px;
+                  height: 21px;
+                }
+              }
+              .heart-click path{
+                fill: $secondary;
+                stroke: $secondary;
+                transition: all .3s;
+              } */
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .icon .cart-heart {
+    margin-top: 5px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .product-wrap .icon .cart-heart img {
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .product-wrap .icon .cart-heart img {
+    width: 18px;
+    height: 17px;
+    margin-left: 12px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .title a {
+  transition: all 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.ProductList .famous-choose .product-container .product .title p {
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .title p {
+    font-size: 15px;
+  }
+}
+
+.ProductList .famous-choose .product-container .product .title p.price {
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #e6c49e;
+}
+
+@media (max-width: 768px) {
+  .ProductList .famous-choose .product-container .product .title p.price {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=ProductTop3.css.map */
