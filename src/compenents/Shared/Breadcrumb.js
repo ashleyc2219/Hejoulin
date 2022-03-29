@@ -26,19 +26,19 @@ const Breadcrumb = () => {
       // 最後一個
       if (i === array.length - 1) {
         return (
-          <>
-            <img src="/Shared/rightArrow.svg" alt="" />
+          <React.Fragment key={i}>
+            <img className="test" src="/Shared/rightArrow.svg" alt="" />
             <span className="current">{v}</span>
-          </>
+          </React.Fragment>
         )
       }
 
       // 其它中間樣式
       return (
-        <>
-          {' '}
-          <span className="">{v}</span>
-        </>
+        <React.Fragment key={i}>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">{v}</span>
+        </React.Fragment>
       )
     })
 
@@ -49,7 +49,7 @@ const Breadcrumb = () => {
     <>
       <div className="bread">
         <span>首頁</span>
-        <img src="/Shared/rightArrow.svg" alt="" />
+
         {formatTextLocale(location.pathname)}
       </div>
     </>
