@@ -6,7 +6,7 @@ const SetNewPass = (props) => {
   const [newPass, setNewPass] = useState('')
   const [newConfPass, setConfNewPass] = useState('')
   const [pass, setPass] = useState(false)
-  const { page, setPage } = props
+  const { row, setRow } = props
   const APISetPass = 'http://localhost:3001/user/member-passChange'
   function changeShowPass() {
     setSPass(!sPass)

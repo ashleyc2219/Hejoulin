@@ -4,17 +4,19 @@ import '../../../styles/Member/Member-Login/LoginContext.scss'
 import RegisterContext from './RegisterContext'
 import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
+import FinishRegister from './FinishRegister'
+import SetNewPass from './SetNewPass'
 
 const LoginContext = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
-  const [goVerify, setGoVerify] = useState('register')
+  //const [goVerify, setGoVerify] = useState('register')
 
   const APILogin = 'http://localhost:3001/login/login'
   const API = 'http://localhost:3001/user/api/auth-list'
   let history = useHistory()
 
-  const whenSubmit = async (event) => {
+  const whenLoginSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
 
     const fd = new FormData(document.form1)
@@ -62,10 +64,10 @@ const LoginContext = (props) => {
     }
   }
 
-  function rowTo() {
-    const newPage = row === 'login' ? 'register' : 'login'
-    setRow(newPage)
-  }
+  // function rowTo() {
+  //   const newPage = row === 'login' ? 'register' : 'login'
+  //   setRow(newPage)
+  // }
 
   return (
     <>
@@ -80,7 +82,7 @@ const LoginContext = (props) => {
                   <button onClick={jump}>登出</button>
                 </h5>
                 <div className="login-form-group">
-                  <form name="form1" onSubmit={whenSubmit}>
+                  <form name="form1" onSubmit={whenLoginSubmit}>
                     <div className="mb-4">
                       <label htmlFor="user_account" className="form-label">
                         email (作為帳號使用)
@@ -114,7 +116,7 @@ const LoginContext = (props) => {
                     <button
                       type="button"
                       className="btn btn-outline-primary register-btn"
-                      onClick={() => rowTo('forgetPass')}
+                      onClick={() => setRow('register')}
                     >
                       註冊
                     </button>
@@ -131,18 +133,17 @@ const LoginContext = (props) => {
         <RegisterContext
           row={row}
           setRow={setRow}
-          goVerify={goVerify}
-          setGoVerify={setGoVerify}
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
       ) : row === 'forgetPass' ? (
-        <AccountCheck
-          row={row}
-          setRow={setRow}
-          goVerify={goVerify}
-          setGoVerify={setGoVerify}
-        />
+        <AccountCheck row={row} setRow={setRow} />
+      ) : row === 'verify' ? (
+        <EmailVerify row={row} setRow={setRow} />
+      ) : row === 'finish' ? (
+        <FinishRegister sidebar={sidebar} setSidebar={setSidebar} />
+      ) : row === 'setNewPass' ? (
+        <SetNewPass row={row} setRow={setRow} />
       ) : null}
     </>
   )

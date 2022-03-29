@@ -4,27 +4,18 @@ import EmailVerify from './EmailVerify'
 import FinishRegister from './FinishRegister'
 
 const RegisterContext = (props) => {
-  const {
-    user,
-    setUser,
-    row,
-    setRow,
-    goVerify,
-    setGoVerify,
-    sidebar,
-    setSidebar,
-  } = props
+  const { user, setUser, row, setRow, sidebar, setSidebar } = props
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
   const [password, setPassword] = useState(false)
-  const [focusConfirmPassword, setFocusConfirmPassword] = useState(false)
-  const [passCorrect, setPassCorrect] = useState(false)
+  // const [focusConfirmPassword, setFocusConfirmPassword] = useState(false)
+  // const [passCorrect, setPassCorrect] = useState(false)
   const [newPwd, setNewPwd] = useState('')
   const [confPwd, setConfPwd] = useState('')
   const APIRegister = 'http://localhost:3001/login/register'
   const APISendEmail = 'http://localhost:3001/login/send-email'
 
-  const whenSubmit = async (event) => {
+  const whenRegSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     const fd = new FormData(document.form1)
     const r = await fetch(APIRegister, {
@@ -44,8 +35,8 @@ const RegisterContext = (props) => {
       })
       const emailSend = await verify.json()
       console.log(emailSend)
-      if (emailSend.message === '郵件已寄出') {
-        setGoVerify('verify')
+      if (emailSend.message === 'success') {
+        setRow('verify')
       }
     }
     // const token = localStorage.getItem('token')
@@ -67,10 +58,10 @@ const RegisterContext = (props) => {
     //   })
   }
 
-  function rowTo() {
-    const newPage = row === 'login' ? 'register' : 'login'
-    setRow(newPage)
-  }
+  // function rowTo() {
+  //   const newPage = row === 'login' ? 'register' : 'login'
+  //   setRow(newPage)
+  // }
 
   function changeShowPass() {
     setShowPass(!showPass)
@@ -145,91 +136,90 @@ const RegisterContext = (props) => {
 
   return (
     <>
-      {goVerify === 'register' ? (
-        <div className="RegisterContext">
-          <div className="container">
-            <div className="RegisterContextBox row">
-              <div className="registerPage">
-                <h1 className="register-title">歡迎來到禾酒林</h1>
-                <br />
-                <div className="register-form-group">
-                  <form name="form1" onSubmit={whenSubmit}>
-                    <div className="mb-4 account-g">
-                      <label htmlFor="user_account" className="form-label">
-                        email (作為帳號使用)
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="user_account"
-                        name="user_account"
-                        key="account"
-                        required
+      <div className="RegisterContext">
+        <div className="container">
+          <div className="RegisterContextBox row">
+            <div className="registerPage">
+              <h1 className="register-title">歡迎來到禾酒林</h1>
+              <br />
+              <div className="register-form-group">
+                <form name="form1" onSubmit={whenRegSubmit}>
+                  <div className="mb-4 account-g">
+                    <label htmlFor="user_account" className="form-label">
+                      email (作為帳號使用)
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="user_account"
+                      name="user_account"
+                      key="account"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4 pass-g">
+                    <label htmlFor="user_pass" className="form-label">
+                      密碼
+                    </label>
+                    <input
+                      type={showPass ? 'text' : 'password'}
+                      className="form-control"
+                      id="user_pass"
+                      name="user_pass"
+                      key="password"
+                      placeholder="請輸入8個英數字大小寫混合密碼"
+                      onChange={handleInputChangePwd}
+                      required
+                    />
+                    <div className="passHideIcon">
+                      <img
+                        src={
+                          showPass
+                            ? '/Member/hidePass.svg'
+                            : '/Member/showPass.svg'
+                        }
+                        onClick={changeShowPass}
+                        alt=""
                       />
                     </div>
-                    <div className="mb-4 pass-g">
-                      <label htmlFor="user_pass" className="form-label">
-                        密碼
-                      </label>
-                      <input
-                        type={showPass ? 'text' : 'password'}
-                        className="form-control"
-                        id="user_pass"
-                        name="user_pass"
-                        key="password"
-                        placeholder="請輸入8個英數字大小寫混合密碼"
-                        onChange={handleInputChangePwd}
-                        required
-                      />
-                      <div className="passHideIcon">
-                        <img
-                          src={
-                            showPass
-                              ? '/Member/hidePass.svg'
-                              : '/Member/showPass.svg'
-                          }
-                          onClick={changeShowPass}
-                          alt=""
-                        />
-                      </div>
-                      <div
-                        className="form-text errorMsg"
-                        id="checkPass"
-                        style={{
-                          color: check(),
-                          display:
-                            isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
-                        }}
-                      >
-                        {newPwd.length < 8
-                          ? '密碼最短長度為8個英數字'
-                          : isLowerLetter(newPwd) === false
-                          ? '應包含英文'
-                          : isNum(newPwd) === false
-                          ? '應包含數字'
-                          : isUpperLetter(newPwd) === false
-                          ? '應包含大寫'
-                          : // : isSpecial(newPwd) === false
-                            // ? '含有特殊字元'
-                            'OK'}
-                      </div>
+                    <div
+                      className="form-text errorMsg"
+                      id="checkPass"
+                      style={{
+                        color: check(),
+                        display:
+                          isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
+                      }}
+                    >
+                      {newPwd.length < 8
+                        ? '密碼最短長度為8個英數字'
+                        : isLowerLetter(newPwd) === false
+                        ? '應包含英文'
+                        : isNum(newPwd) === false
+                        ? '應包含數字'
+                        : isUpperLetter(newPwd) === false
+                        ? '應包含大寫'
+                        : // : isSpecial(newPwd) === false
+                          // ? '含有特殊字元'
+                          'OK'}
                     </div>
-                    <div className="mb-4 passConf-g">
-                      <label htmlFor="user_pass" className="form-label">
-                        確認密碼
-                      </label>
-                      {/*{isSimplePwd(newPwd) === 5 ? (*/}
-                      <input
-                        type={showConfirmPass ? 'text' : 'password'}
-                        placeholder="請再次輸入密碼"
-                        className="form-control"
-                        id="check-user-pass"
-                        name="check-user-pass"
-                        key="passwordConf"
-                        onChange={handleInputChangeConfPwd}
-                        required
-                      />
-                      {/* ) : (
+                  </div>
+                  <div className="mb-4 passConf-g">
+                    <label htmlFor="user_pass" className="form-label">
+                      確認密碼
+                    </label>
+                    {/*{isSimplePwd(newPwd) === 5 ? (*/}
+                    <input
+                      type={showConfirmPass ? 'text' : 'password'}
+                      placeholder="請再次輸入密碼"
+                      className="form-control"
+                      id="check-user-pass"
+                      name="check-user-pass"
+                      key="passwordConf"
+                      onChange={handleInputChangeConfPwd}
+                      required
+                    />
+                    {/* ) : (
                         {<input
                       type={showConfirmPass ? 'text' : 'password'}
                       placeholder="請再次輸入密碼"
@@ -242,77 +232,72 @@ const RegisterContext = (props) => {
                       disabled
                       />}
                     )} */}
-                      {/*<div className="passHideIcon">*/}
-                      {/*  <img*/}
-                      {/*    src={*/}
-                      {/*      showConfirmPass*/}
-                      {/*        ? '/Member/hidePass.svg'*/}
-                      {/*        : '/Member/showPass.svg'*/}
-                      {/*    }*/}
-                      {/*    onClick={changeShowConfirmPass}*/}
-                      {/*    alt=""*/}
-                      {/*  />*/}
-                      {/*</div>*/}
-                      <div className="errorMsg">
-                        <div
-                          className="form-text"
-                          id="checkConf"
-                          color={
+                    {/*<div className="passHideIcon">*/}
+                    {/*  <img*/}
+                    {/*    src={*/}
+                    {/*      showConfirmPass*/}
+                    {/*        ? '/Member/hidePass.svg'*/}
+                    {/*        : '/Member/showPass.svg'*/}
+                    {/*    }*/}
+                    {/*    onClick={changeShowConfirmPass}*/}
+                    {/*    alt=""*/}
+                    {/*  />*/}
+                    {/*</div>*/}
+                    <div className="errorMsg">
+                      <div
+                        className="form-text"
+                        id="checkConf"
+                        color={
+                          newPwd === confPwd && isSimplePwd(newPwd) === 5
+                            ? 'green'
+                            : 'grey'
+                        }
+                      ></div>
+                      <div
+                        className="matchTip"
+                        style={{
+                          display:
                             newPwd === confPwd && isSimplePwd(newPwd) === 5
-                              ? 'green'
-                              : 'grey'
-                          }
-                        ></div>
-                        <div
-                          className="matchTip"
-                          style={{
-                            display:
-                              newPwd === confPwd && isSimplePwd(newPwd) === 5
-                                ? 'inline-block'
-                                : 'none',
-                          }}
-                        >
-                          相同
-                        </div>
+                              ? 'inline-block'
+                              : 'none',
+                        }}
+                      >
+                        相同
                       </div>
                     </div>
-                    {newPwd === confPwd ? (
-                      <button
-                        type="submit"
-                        className="btn btn-primary register-btn"
-                        onClick={change}
-                      >
-                        註冊
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="btn btn-primary register-btn"
-                        onClick={change}
-                        disabled
-                      >
-                        註冊
-                      </button>
-                    )}
-
+                  </div>
+                  {newPwd === confPwd ? (
+                    <button
+                      type="submit"
+                      className="btn btn-primary register-btn"
+                      onClick={change}
+                    >
+                      註冊
+                    </button>
+                  ) : (
                     <button
                       type="button"
-                      className="btn btn-outline-primary login-btn"
-                      onClick={rowTo}
+                      className="btn btn-primary register-btn"
+                      onClick={change}
+                      disabled
                     >
-                      登入
+                      註冊
                     </button>
-                  </form>
-                </div>
+                  )}
+
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary login-btn"
+                    onClick={() => setRow('login')}
+                  >
+                    登入
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      ) : goVerify === 'verify' ? (
-        <EmailVerify goVerify={goVerify} setGoVerify={setGoVerify} />
-      ) : goVerify === 'finish' ? (
-        <FinishRegister sidebar={sidebar} setSidebar={setSidebar} />
-      ) : null}
+      </div>
     </>
   )
 }
