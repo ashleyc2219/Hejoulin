@@ -1,25 +1,30 @@
 import React from 'react'
 
-const OrderTableItem = (props) => {
+const OrderTableSake = (props) => {
+  const { sakeInfo } = props
+  console.log(sakeInfo)
   const mark = props.mark
   return (
     <>
       <div className="table-item">
         <div className="item item-product-img">
-          <img src="/CartList/M0023.png" alt="" />
+          <img
+            src={'http://localhost:3001/images/pro_img/' + sakeInfo.pro_img}
+            alt=""
+          />
         </div>
         <div className="item item-product-info">
-          <h5>篠峯 雄町純米大吟釀</h5>
-          <p className="ml">720</p>
-          <p className="price">1880</p>
-          <p className={mark + ' cmark'}>客製化酒標 A</p>
-          <p className="product-count">x1</p>
+          <h5>{sakeInfo.pro_name}</h5>
+          <p className="ml">{sakeInfo.pro_capacity}</p>
+          <p className="price">{sakeInfo.pro_price}</p>
+          <p className={mark + ' cmark'}>{sakeInfo.mark_name}</p>
+          <p className="product-count">x{sakeInfo.order_quantity}</p>
         </div>
         <div className="item item-quantity">
-          <p>2</p>
+          <p>{sakeInfo.order_quantity}</p>
         </div>
         <div className="item item-subtotal">
-          <p>1880</p>
+          <p>{sakeInfo.pro_price * sakeInfo.order_quantity}</p>
         </div>
       </div>
       <hr />
@@ -27,4 +32,4 @@ const OrderTableItem = (props) => {
   )
 }
 
-export default OrderTableItem
+export default OrderTableSake
