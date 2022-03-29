@@ -1,59 +1,79 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import './../styles/Gift/Gift.scss'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
 import StepBar from '../compenents/Gift/StepBar'
-import ProductModal from '../compenents/Gift/ProductModal'
 import SakeItems from '../compenents/Gift/SakeItems'
-import SakeButton from '../compenents/Gift/SakeButton'
+// import Color01 from '../compenents/Gift/Color01'
+// import Color02 from '../compenents/Gift/Color02'
+import Color03 from '../compenents/Gift/Color03'
+import Detail from '../compenents/Gift/Detail'
 
 // switch
 
 const Gift = (props) => {
-  // const { gift_id } = useParams()
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
-  // const kind = [{ gift_id: 2 }, { gift_id: 3 }, { guft_id: 4 }]
 
-  const [kind, setKind] = useState(0) //決定禮盒種類
-  const [sake, setSake] = useState([])
-  const [container, setContainer] = useState([])
-  const [color, setColor] = useState([])
+  const [kind, setKind] = useState(1) //決定禮盒種類
+  const [sake, setSake] = useState([]) //接酒的資料
+  const [container, setContainer] = useState([]) //接酒氣的資料
+  const [color, setColor] = useState([]) //接禮盒顏色
+  const [boxImgColor, setBoxImgColor] = useState(2) //單一種類禮盒的不同顏色照片
+  const giftId = () => {
+    if (kind === 1) {
+      setBoxImgColor(2)
+    } else if (kind === 2) {
+      setBoxImgColor(3)
+    } else if (kind === 3) {
+      setBoxImgColor(4)
+    }
+  }
+  const [count, setCount] = useState([]) //購買酒數量
+  const [sakeId, setSakeId] = useState('') //購買酒的id
+  const [sakeId2, setSakeId2] = useState('') //2入的第2個id
+  const [comfirmColor, setComfirmColor] = useState('') //確定顏色
+  const changeText = () => {
+    if (comfirmColor === 'black') {
+      return '曜岩黑'
+    } else if (comfirmColor === 'white') {
+      return '英石白'
+    } else if (comfirmColor === 'gold') {
+      return '流沙金'
+    }
+  }
+  const [name, setName] = useState('')
+  const [name2, setName2] = useState('')
+  const [price, setPrice] = useState(0)
+  const [price2, setPrice2] = useState(0)
+  const [conName, setConName] = useState('')
 
-  const [modalShow, setMadolShow] = useState(false) //酒詳細資訊光箱
-
-  let gift_id
-  if (kind === 1) {
-    gift_id = 1
-  } else if (kind === 2) {
-    gift_id = 2
-  } else if (kind === 3) {
-    gift_id = 3
+  const [id, setId] = useState('') //決定光箱的id
+  const [modalShow, setModalShow] = useState(false) //酒詳細資訊光箱
+  const showHandle = () => {
+    setModalShow(true)
+  }
+  const closeHandle = () => {
+    setModalShow(false)
   }
 
+
+
   const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
-  const url02 = `http://localhost:3001/api/product_gift` //不同禮盒的酒類資訊
+  let url02 = `http://localhost:3001/api/product_gift`
+  //不同禮盒的酒類資訊
   const url03 = 'http://localhost:3001/api/gift_container' //酒器照片
 
   useEffect(() => {
     //載入資料
     window.scrollTo(0, 0)
 
-    // 禮盒顏色圖片
-    const fetchGift = async () => {
-      const res = await fetch(url01)
-      const data = await res.json()
-      const pro = data
-      setColor(pro)
-    }
-
     const fetchSake = async () => {
-      const res = await fetch(url02)
+      const res = await fetch(url02 + '?gift=' + kind)
       const data = await res.json()
-      const pro = data
-      setKind(pro)
-      setSake(pro)
+      setSake(data)
+      giftId()
+      console.log(data)
     }
 
     const fetchContainer = async () => {
@@ -63,23 +83,24 @@ const Gift = (props) => {
       setContainer(pro)
     }
 
-    fetchGift()
     fetchSake()
     fetchContainer()
-  }, [])
+  }, [kind])
+
+  // 一種禮盒顏色圖片
+  useEffect(() => {
+    const fetchGift = async () => {
+      const res = await fetch(url01 + '?gift_id=' + boxImgColor)
+      const data = await res.json()
+      const pro = data
+      setColor(pro)
+    }
+    fetchGift()
+  }, [boxImgColor])
 
   return (
     <>
       <div className="Gift">
-        {/* {modalShow ? (
-          <ProductModal
-            modalShow={modalShow}
-            setModalShow={setMadolShow}
-            sake={sake}
-          />
-        ) : (
-          ''
-        )} */}
         <div className="gift_container">
           {/* background-patten */}
           <div className="patten">
@@ -129,7 +150,7 @@ const Gift = (props) => {
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
-                {kind === 4 ? (
+                {kind === 2 ? (
                   <h4>請選擇 同一瓶 或 二瓶清酒商品</h4>
                 ) : (
                   <h4>請選擇一瓶清酒商品</h4>
@@ -137,8 +158,27 @@ const Gift = (props) => {
                 <div className="grid gift_grid">
                   <SakeItems
                     modalShow={modalShow}
-                    setmadolShow={setMadolShow}
+                    showHandle={showHandle}
+                    closeHandle={closeHandle}
                     sake={sake}
+                    id={id}
+                    setId={setId}
+                    sakeId={sakeId}
+                    setSakeId={setSakeId}
+                    sakeId2={sakeId2}
+                    setSakeId2={setSakeId2}
+                    name={name}
+                    setName={setName}
+                    name2={name2}
+                    setName2={setName2}
+                    price={price}
+                    setPrice={setPrice}
+                    price2={price2}
+                    setPrice2={setPrice2}
+                    conName={conName}
+                    setConName={setConName}
+                    count={count}
+                    setCount={setCount}
                   />
                 </div>
               </section>
@@ -147,33 +187,37 @@ const Gift = (props) => {
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
                 <h4>請選擇禮盒顏色</h4>
-                <div className="color_group">
-                  <button
-                    className="color_btn"
-                    onClick={() => {
-                      setColor()
-                    }}
-                  >
-                    <img src="/Gift/black.svg" alt="" />
-                    <small>曜岩黑</small>
-                  </button>
-                  <button className="color_btn">
-                    <img src="/Gift/white.svg" alt="" />
-                    <small>英石白</small>
-                  </button>
-                  <button className="color_btn">
-                    <img src="/Gift/golden.svg" alt="" />
-                    <small>流沙金</small>
-                  </button>
-                </div>
-                <div className="gift_image">
-                  <img src="/Gift/gift.png" alt="box" className="box" />
-                  <img src="/Gift/gift.png" alt="sake" className="sake" />
-                  <img src="/Gift/gift.png" alt="container" className="other" />
-                </div>
-                <div className="confirm">
-                  <button className="btn btn-sm btn-primary">下一步</button>
-                </div>
+                {/* {kind === 1 ? (
+                  <Color01
+                    kind={kind}
+                    sakeId={sakeId}
+                    comfirmColor={comfirmColor}
+                    setComfirmColor={setComfirmColor}
+                  />
+                ) : (
+                  ''
+                )} */}
+                {/* {kind === 2 ? (
+                  <Color02
+                    kind={kind}
+                    sakeId={sakeId}
+                    sakeId2={sakeId2}
+                    comfirmColor={comfirmColor}
+                    setComfirmColor={setComfirmColor}
+                  />
+                ) : (
+                  ''
+                )} */}
+                {kind === 3 ? (
+                  <Color03
+                    kind={kind}
+                    sakeId={sakeId}
+                    comfirmColor={comfirmColor}
+                    setComfirmColor={setComfirmColor}
+                  />
+                ) : (
+                  ''
+                )}
               </section>
               <section id="gift_detail">
                 <div className="header">
@@ -186,19 +230,24 @@ const Gift = (props) => {
                     <h5 className="title">禮盒明細</h5>
                     <div className="sheet grid">
                       {/* gift sake */}
-                      <p className="text color">水芭蕉　牛年限定</p>
+                      <p className="text color">{name}</p>
                       <p className="quality color">1瓶</p>
-                      <div className="price color">780</div>
-                      <p className="text color">陶器豬口杯和清酒壺</p>
-                      <p className="quality color">1組</p>
-                      <div className="price color">600</div>
+                      <div className="price color">{price}</div>
+
+                      <Detail
+                        name2={name2}
+                        price2={price2}
+                        conName={conName}
+                        kind={kind}
+                      /> 
+
                       {/* space */}
                       <p></p>
                       <p></p>
                       <div></div>
                       {/* gift color */}
                       <p className="text color">禮盒顏色</p>
-                      <p className="quality color">曜岩黑</p>
+                      <p className="quality color">{changeText()}</p>
                       <div className="price color">200</div>
                       {/* gift total */}
                       <p className="text_total total">總價</p>
@@ -210,7 +259,7 @@ const Gift = (props) => {
                       <div className="minus">
                         <img src="/Gift/minus-circle.svg" alt="" />
                       </div>
-                      <div className="number">2</div>
+                      <div className="number">1</div>
                       <div className="plus">
                         <img src="/ProductList/plus-circle.svg" alt="" />
                       </div>
