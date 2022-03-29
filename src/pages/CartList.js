@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 
+
 import '../styles/CartList/CartList.scss'
 import { Link } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
@@ -29,7 +30,7 @@ const CartList = () => {
         }
       )
       const obj = await r1.json()
-      
+
       if (a) {
         setSakeIncart(obj)
       }
@@ -41,7 +42,9 @@ const CartList = () => {
         // console.log(total)
         return total
       }
-      setSakeTotal(initialSakeTotal(obj))
+      if (a) {
+        setSakeTotal(initialSakeTotal(obj))
+      }
     })()
 
     // fetch 禮盒資料
@@ -56,7 +59,7 @@ const CartList = () => {
         }
       )
       const obj = await rGift.json()
-      console.log('obj', obj)
+      // console.log('obj', obj)
       if (a) {
         setGiftIncart(obj)
       }
@@ -74,11 +77,13 @@ const CartList = () => {
             price = gift.pro_price + 200 + 600
           }
           total += price
-          console.log(total)
+          // console.log(total)
         }
         return total
       }
-      setGiftTotal(initialGiftTotal(obj))
+      if (a) {
+        setGiftTotal(initialGiftTotal(obj))
+      }
     })()
     return () => {
       a = false
