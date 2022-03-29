@@ -1,0 +1,54 @@
+@import './../../styles/mixin.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.CartMarkModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+
+  .markmodal {
+    width: 800px;
+    height: fit-content;
+    padding: 20px;
+    background: url('./../../../public/Sake-background0310.jpg');
+    .img{
+        width: 100%;
+        height: 400px;
+        background: url('./../../../public/14639462910_5e3affa127_k.jpg') center / cover ;
+       
+    }
+    .btns{
+        padding-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 20px;
+    }
+  }
+}
