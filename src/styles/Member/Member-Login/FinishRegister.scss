@@ -1,0 +1,30 @@
+@import "../../mixin.scss";
+
+.FinishRegister {
+  display: flex;
+  margin: 0 auto;
+  width: 650px;
+  height: 900px;
+  flex-direction: column;
+
+  .FinishRegisterBox {
+    width: 50%;
+    margin-top: 25%;
+    margin-left: 25%;
+
+    h3 {
+      text-align: center;
+    }
+
+    .link-g {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        margin-top: 20px;
+      }
+    }
+  }
+
+}

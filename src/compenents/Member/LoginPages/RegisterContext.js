@@ -1,9 +1,19 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import '../../../styles/Member/Member-Login/RegisterContext.scss'
+import EmailVerify from './EmailVerify'
+import FinishRegister from './FinishRegister'
 
 const RegisterContext = (props) => {
-  const { user, setUser, row, setRow } = props
+  const {
+    user,
+    setUser,
+    row,
+    setRow,
+    goVerify,
+    setGoVerify,
+    sidebar,
+    setSidebar,
+  } = props
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
   const [password, setPassword] = useState(false)
@@ -11,25 +21,33 @@ const RegisterContext = (props) => {
   const [passCorrect, setPassCorrect] = useState(false)
   const [newPwd, setNewPwd] = useState('')
   const [confPwd, setConfPwd] = useState('')
-  const APIReg = 'http://wilson:3001/register'
-  let history = useHistory()
+  const APIRegister = 'http://localhost:3001/login/register'
+  const APISendEmail = 'http://localhost:3001/login/send-email'
 
   const whenSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
-
     const fd = new FormData(document.form1)
-    const r = await fetch(APIReg, {
+    const r = await fetch(APIRegister, {
       method: 'POST',
-      body: fd,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(fd).toString(),
     })
 
     const obj = await r.json()
-    // TODO: is success
     console.log(obj)
-
-    localStorage.setItem('token', obj.token)
-    localStorage.setItem('account', obj.info.user_account)
-    setUser(obj.info.user_account)
+    if (obj.success === true) {
+      const verify = await fetch(APISendEmail, {
+        method: 'POST',
+        body: fd,
+      })
+      const emailSend = await verify.json()
+      console.log(emailSend)
+      if (emailSend.message === '郵件已寄出') {
+        setGoVerify('verify')
+      }
+    }
     // const token = localStorage.getItem('token')
 
     // const r2 = await fetch('http://localhost:3001/user/api/auth-list', {
@@ -116,98 +134,113 @@ const RegisterContext = (props) => {
   // function isSpecial(v) {
   //   return !!v.match(/([^a-zA-Z0-9])+/)
   // }
+  function check() {
+    if (
+      !!isSimplePwd(newPwd) &&
+      isLowerLetter(newPwd) &&
+      isNum(newPwd) &&
+      isUpperLetter(newPwd)
+    ) {
+      return 'gray'
+    } else {
+      return 'red'
+    }
+  }
+
+  console.log(
+    !!isSimplePwd(newPwd),
+    isLowerLetter(newPwd),
+    isNum(newPwd),
+    isUpperLetter(newPwd)
+  )
 
   return (
     <>
-      <div className="RegisterContext">
-        <div className="container">
-          <div className="RegisterContextBox row">
-            <div className="registerPage">
-              <h1 className="register-title">歡迎來到禾酒林</h1>
-              <br />
-              <div className="register-form-group">
-                <form name="form1" onSubmit={whenSubmit}>
-                  <div className="mb-4 account-g">
-                    <label htmlFor="user_account" className="form-label">
-                      email (作為帳號使用)
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="user_account"
-                      name="user_account"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4 pass-g">
-                    <label htmlFor="user_pass" className="form-label">
-                      密碼
-                    </label>
-                    <input
-                      type={showPass ? 'text' : 'password'}
-                      className="form-control"
-                      id="user_pass"
-                      name="password"
-                      key="password"
-                      placeholder="請輸入8個英數字大小寫混合密碼"
-                      onChange={handleInputChangePwd}
-                      required
-                    />
-                    <div className="passHideIcon">
-                      <img
-                        src={
-                          showPass
-                            ? '/Member/hidePass.svg'
-                            : '/Member/showPass.svg'
-                        }
-                        onClick={changeShowPass}
-                        alt=""
+      {goVerify === 'register' ? (
+        <div className="RegisterContext">
+          <div className="container">
+            <div className="RegisterContextBox row">
+              <div className="registerPage">
+                <h1 className="register-title">歡迎來到禾酒林</h1>
+                <br />
+                <div className="register-form-group">
+                  <form name="form1" onSubmit={whenSubmit}>
+                    <div className="mb-4 account-g">
+                      <label htmlFor="user_account" className="form-label">
+                        email (作為帳號使用)
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="user_account"
+                        name="user_account"
+                        key="account"
+                        required
                       />
                     </div>
-                    <div
-                      className="form-text errorMsg"
-                      id="checkPass"
-                      style={{
-                        color:
-                          isSimplePwd(newPwd) === false &&
-                          isLowerLetter(newPwd) === false &&
-                          isNum(newPwd) === false &&
-                          isUpperLetter(newPwd) === false
-                            ? 'grey'
-                            : 'red',
-                        display:
-                          isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
-                      }}
-                    >
-                      {newPwd.length < 8
-                        ? '密碼最短長度為8個英數字'
-                        : isLowerLetter(newPwd) === false
-                        ? '應包含小寫'
-                        : isNum(newPwd) === false
-                        ? '應包含數字'
-                        : isUpperLetter(newPwd) === false
-                        ? '應包含大寫'
-                        : // : isSpecial(newPwd) === false
-                          // ? '含有特殊字元'
-                          'OK'}
+                    <div className="mb-4 pass-g">
+                      <label htmlFor="user_pass" className="form-label">
+                        密碼
+                      </label>
+                      <input
+                        type={showPass ? 'text' : 'password'}
+                        className="form-control"
+                        id="user_pass"
+                        name="user_pass"
+                        key="password"
+                        placeholder="請輸入8個英數字大小寫混合密碼"
+                        onChange={handleInputChangePwd}
+                        required
+                      />
+                      <div className="passHideIcon">
+                        <img
+                          src={
+                            showPass
+                              ? '/Member/hidePass.svg'
+                              : '/Member/showPass.svg'
+                          }
+                          onClick={changeShowPass}
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        className="form-text errorMsg"
+                        id="checkPass"
+                        style={{
+                          color: check(),
+                          display:
+                            isSimplePwd(newPwd) === 0 ? 'none' : 'inline-block',
+                        }}
+                      >
+                        {newPwd.length < 8
+                          ? '密碼最短長度為8個英數字'
+                          : isLowerLetter(newPwd) === false
+                          ? '應包含英文'
+                          : isNum(newPwd) === false
+                          ? '應包含數字'
+                          : isUpperLetter(newPwd) === false
+                          ? '應包含大寫'
+                          : // : isSpecial(newPwd) === false
+                            // ? '含有特殊字元'
+                            'OK'}
+                      </div>
                     </div>
-                  </div>
-                  <div className="mb-4 passConf-g">
-                    <label htmlFor="user_pass" className="form-label">
-                      確認密碼
-                    </label>
-                    {/*{isSimplePwd(newPwd) === 5 ? (*/}
-                    <input
-                      type={showConfirmPass ? 'text' : 'password'}
-                      placeholder="請再次輸入密碼"
-                      className="form-control"
-                      id="check-user-pass"
-                      name="password"
-                      key="password"
-                      onChange={handleInputChangeConfPwd}
-                      required
-                    />
-                    {/* ) : (
+                    <div className="mb-4 passConf-g">
+                      <label htmlFor="user_pass" className="form-label">
+                        確認密碼
+                      </label>
+                      {/*{isSimplePwd(newPwd) === 5 ? (*/}
+                      <input
+                        type={showConfirmPass ? 'text' : 'password'}
+                        placeholder="請再次輸入密碼"
+                        className="form-control"
+                        id="check-user-pass"
+                        name="check-user-pass"
+                        key="password"
+                        onChange={handleInputChangeConfPwd}
+                        required
+                      />
+                      {/* ) : (
                         {<input
                       type={showConfirmPass ? 'text' : 'password'}
                       placeholder="請再次輸入密碼"
@@ -220,72 +253,77 @@ const RegisterContext = (props) => {
                       disabled
                       />}
                     )} */}
-                    {/*<div className="passHideIcon">*/}
-                    {/*  <img*/}
-                    {/*    src={*/}
-                    {/*      showConfirmPass*/}
-                    {/*        ? '/Member/hidePass.svg'*/}
-                    {/*        : '/Member/showPass.svg'*/}
-                    {/*    }*/}
-                    {/*    onClick={changeShowConfirmPass}*/}
-                    {/*    alt=""*/}
-                    {/*  />*/}
-                    {/*</div>*/}
-                    <div className="errorMsg">
-                      <div
-                        className="form-text"
-                        id="checkConf"
-                        color={
-                          newPwd === confPwd && isSimplePwd(newPwd) === 5
-                            ? 'green'
-                            : 'grey'
-                        }
-                      ></div>
-                      <div
-                        className="matchTip"
-                        style={{
-                          display:
+                      {/*<div className="passHideIcon">*/}
+                      {/*  <img*/}
+                      {/*    src={*/}
+                      {/*      showConfirmPass*/}
+                      {/*        ? '/Member/hidePass.svg'*/}
+                      {/*        : '/Member/showPass.svg'*/}
+                      {/*    }*/}
+                      {/*    onClick={changeShowConfirmPass}*/}
+                      {/*    alt=""*/}
+                      {/*  />*/}
+                      {/*</div>*/}
+                      <div className="errorMsg">
+                        <div
+                          className="form-text"
+                          id="checkConf"
+                          color={
                             newPwd === confPwd && isSimplePwd(newPwd) === 5
-                              ? 'inline-block'
-                              : 'none',
-                        }}
-                      >
-                        相同
+                              ? 'green'
+                              : 'grey'
+                          }
+                        ></div>
+                        <div
+                          className="matchTip"
+                          style={{
+                            display:
+                              newPwd === confPwd && isSimplePwd(newPwd) === 5
+                                ? 'inline-block'
+                                : 'none',
+                          }}
+                        >
+                          相同
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {newPwd === confPwd ? (
-                    <button
-                      type="submit"
-                      className="btn btn-primary register-btn"
-                      onClick={change}
-                    >
-                      註冊
-                    </button>
-                  ) : (
+                    {newPwd === confPwd ? (
+                      <button
+                        type="submit"
+                        className="btn btn-primary register-btn"
+                        onClick={change}
+                      >
+                        註冊
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="btn btn-primary register-btn"
+                        onClick={change}
+                        disabled
+                      >
+                        註冊
+                      </button>
+                    )}
+
                     <button
                       type="button"
-                      className="btn btn-primary register-btn"
-                      onClick={change}
-                      disabled
+                      className="btn btn-outline-primary login-btn"
+                      onClick={rowTo}
                     >
-                      註冊
+                      登入
                     </button>
-                  )}
-
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary login-btn"
-                    onClick={rowTo}
-                  >
-                    登入
-                  </button>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : goVerify === 'verify' ? (
+        <EmailVerify goVerify={goVerify} setGoVerify={setGoVerify} />
+      ) : goVerify === 'finish' ? (
+        <FinishRegister sidebar={sidebar} setSidebar={setSidebar} />
+      ) : null}
     </>
   )
 }

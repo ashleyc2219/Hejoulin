@@ -96,37 +96,13 @@
           justify-content: space-between;
           align-items: center;
 
-          .compare {
-            display: flex;
-            align-items: center;
-            padding-top: 5px;
-            cursor: pointer;
-
-            img {
-              width: 20px;
-              height: 20px;
-              margin-right: 5px;
-              @include medium() {
-                width: 14px;
-                height: 14px;
-                margin-right: 2px;
-              }
-            }
-
-            p {
-              color: $gray-200;
-              margin: 0;
-              font-size: 16px;
-              font-weight: 500;
-              @include medium() {
-                font-size: 12px;
-              }
-            }
           }
 
           .cart-heart {
             display: flex;
             align-items: center;
+            margin: auto;
+            padding-top: 5px;
             @include medium() {
               margin-top: 5px;
             }
@@ -181,5 +157,4 @@
       }
     }
   }
-}
 

@@ -56,6 +56,7 @@ const ProductList = (props) => {
   const [reload, setReload] = useState(0)
 
   const [catModal, setCatModal] = useState(false)
+  const [filterModal, setFilterModal] = useState(false)
 
   const reset = () => {
     locavalue.current.value = ''
@@ -398,13 +399,23 @@ const ProductList = (props) => {
   const mobilecat = () => {
     setCatModal(!catModal)
   }
+  const mobilefilter = () => {
+    setFilterModal(!filterModal)
+  }
 
   return (
     <>
       {/* <CompareModal /> */}
       {/*  <MobileFilterModal /> */}
       {/* <MobileSortModal /> */}
-
+      {filterModal ? (
+        <MobileFilterModal
+          setFilterModal={setFilterModal}
+          filterModal={filterModal}
+        />
+      ) : (
+        ''
+      )}
       {catModal ? (
         <MobileCatModal setCatModal={setCatModal} catModal={catModal} />
       ) : (
@@ -498,7 +509,7 @@ const ProductList = (props) => {
                   <div className="title">分類</div>
                   <div className="state">購買清酒</div>
                 </div>
-                <div className="filter">
+                <div className="filter" onClick={mobilefilter}>
                   <div className="title">篩選</div>
                   <div className="state">無</div>
                 </div>
