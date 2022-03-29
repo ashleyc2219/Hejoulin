@@ -76,10 +76,6 @@ const RegisterContext = (props) => {
     setShowPass(!showPass)
   }
 
-  // function changeShowConfirmPass() {
-  //   setShowConfirmPass(!showConfirmPass)
-  // }
-
   function handleInputChangePwd(event) {
     setPassword(true)
     setNewPwd(event.target.value)
@@ -146,13 +142,6 @@ const RegisterContext = (props) => {
       return 'red'
     }
   }
-
-  console.log(
-    !!isSimplePwd(newPwd),
-    isLowerLetter(newPwd),
-    isNum(newPwd),
-    isUpperLetter(newPwd)
-  )
 
   return (
     <>
@@ -236,7 +225,7 @@ const RegisterContext = (props) => {
                         className="form-control"
                         id="check-user-pass"
                         name="check-user-pass"
-                        key="password"
+                        key="passwordConf"
                         onChange={handleInputChangeConfPwd}
                         required
                       />

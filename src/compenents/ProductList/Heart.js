@@ -12,7 +12,7 @@ const Heart = (props) => {
       return v === props.id
     })
   }
- 
+
   if (proid.length > 0) {
     active = false
   }

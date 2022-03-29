@@ -1,6 +1,6 @@
 import React from 'react'
 
-const noFavItem = () => {
+const NoFavItem = () => {
   return (
     <>
       <div className="noFavItem">
@@ -10,4 +10,4 @@ const noFavItem = () => {
   )
 }
 
-export default noFavItem
+export default NoFavItem
