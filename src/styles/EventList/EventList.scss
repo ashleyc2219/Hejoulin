@@ -1,11 +1,31 @@
 @import '../mixin.scss';
 
+@keyframes event {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes event_search {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 .EventList {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   max-width: 1130px;
-  border: 1px solid red;
   margin: 0 auto;
   .search-bar {
     width: 100%;
@@ -13,6 +33,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: event_search 1s forwards;
     @include medium() {
       height: fit-content;
       justify-content: center;
@@ -70,45 +91,68 @@
     flex-wrap: wrap;
     row-gap: 30px;
     margin: 0 -50px;
+    animation: event 1s forwards;
     @include medium() {
       padding: 0 60px;
       margin: 0;
     }
+
     .event-card {
       max-width: 33.3333333%;
       height: 330px;
       overflow: hidden;
       padding: 0 50px 0 50px;
+
       @include medium() {
         min-width: 100%;
         margin-top: 50px;
         padding: 0;
       }
-      img {
-        height: 180px;
-        width: 100%;
-        object-fit: cover;
-      }
-      .info {
+      a {
         display: flex;
-        justify-content: space-between;
-        padding: 12px;
-        .loca-cat {
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.2s;
+        &:hover {
+          text-decoration: none;
+          color: $primary;
+          background-color: $white;
+        }
+        img {
+          height: 180px;
+          width: 100%;
+          object-fit: cover;
+        }
+        .info {
           display: flex;
-          column-gap: 13px;
-          .cat1 {
-            border-bottom: 5px solid $secondary;
-          }
-          .cat2 {
-            border-bottom: 5px solid $success;
-          }
-          .cat3 {
-            border-bottom: 5px solid $info;
+          justify-content: space-between;
+          padding: 12px;
+          .loca-cat {
+            display: flex;
+            column-gap: 13px;
+            .cat1 {
+              border-bottom: 5px solid $secondary;
+            }
+            .cat2 {
+              border-bottom: 5px solid $success;
+            }
+            .cat3 {
+              border-bottom: 5px solid $info;
+            }
           }
         }
+        .title {
+          padding: 0 12px 12px 12px;
+        }
       }
-      .title {
-        padding: 0 12px 12px 12px;
+      a.hover1:hover {
+        border-bottom: 30px solid $secondary;
+      }
+      a.hover2:hover {
+        border-bottom: 30px solid $success;
+      }
+      a.hover3:hover {
+        border-bottom: 30px solid $info;
       }
     }
   }

@@ -5,18 +5,22 @@ const EventCard = ({ sort, searchword }) => {
   const [data, setData] = useState([])
   const event_card = data.map((v, i) => {
     let a
+    let b
     if (v.event_cat_id === 1) {
       a = 'cat1'
+      b = 'hover1'
     }
     if (v.event_cat_id === 2) {
       a = 'cat2'
+      b = 'hover2'
     }
     if (v.event_cat_id === 3) {
       a = 'cat3'
+      b = 'hover3'
     }
     return (
       <div key={i} className="event-card">
-        <Link to={'/event/detail/' + v.event_id}>
+        <Link className={b} to={'/event/detail/' + v.event_id}>
           <img
             src={'http://localhost:3001/images/event_pic/' + v.event_cover}
             alt=""
@@ -40,7 +44,6 @@ const EventCard = ({ sort, searchword }) => {
       const obj = await res.json()
       const obj1 = obj
       if (a) {
-        console.log(obj1)
         setData(obj1)
       }
     }
