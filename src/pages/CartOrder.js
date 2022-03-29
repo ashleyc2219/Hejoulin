@@ -1,9 +1,10 @@
 import React from 'react'
 import '../styles/CartOrder/CartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
-import OrderTableItem from '../compenents/Cart/OrderTableItem'
+import OrderTableItem from '../compenents/Cart/OrderTableSake'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { useEffect } from 'react'
+import OrderTableGift from '../compenents/Cart/OrderTableGift'
 const CartOrder = () => {
   useEffect(() => {
     window.scrollTo(0, 0)

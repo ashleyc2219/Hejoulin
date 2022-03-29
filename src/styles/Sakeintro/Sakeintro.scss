@@ -10,9 +10,6 @@
 // }
 
 .sake-intro {
-  .container {
-    outline: 1px solid red;
-  }
   p {
     color: $gray-300;
   }
@@ -93,6 +90,7 @@
       //outline: 3px solid rgb(180, 12, 12);
       position: relative;
       margin: 3% 6%;
+      min-width: 400px;
 
       height: 400px;
       .pic {
@@ -197,6 +195,10 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    @include medium() {
+      justify-content: flex-start;
+    }
+
     div {
       background-color: rgba(255, 255, 255, 0.548);
     }
@@ -207,9 +209,13 @@
         font-size: 18px;
       }
       .ball {
-        width: 140px;
+        min-width: 140px;
         height: 140px;
         margin: 10px 5px 5px 5px;
+        border-radius: 50%;
+        @include medium() {
+          border-radius: 70px;
+        }
       }
       .L1,
       .L2,
@@ -243,10 +249,12 @@
         margin-top: 5px;
         height: 147px;
       }
+      // 釀造酒精
       .L2-1 {
         height: 15px;
         background-color: $info;
         border-radius: 30px;
+        margin: 21px 0px;
       }
       .L3-1 {
         background-color: $info;
@@ -256,10 +264,16 @@
       }
     }
     .level-box-r {
+      @include medium() {
+        overflow-x: scroll;
+      }
+
       div {
         display: flex;
       }
+      //精米步合
       .L0 {
+        margin: 15px 0px;
         height: 15px;
         background-color: $gray-100;
         border-radius: 30px;
@@ -270,7 +284,7 @@
       }
       .L1 {
         .L1-2 {
-          width: 140px;
+          min-width: 140px;
           height: 80px;
           margin: 24px 5px 0px 5px;
           img {
@@ -280,17 +294,16 @@
       }
       .L2 {
         .L2-2 {
-          width: 140px;
+          min-width: 140px;
           margin: 10px 5px 0px 5px;
         }
       }
       .L3 {
         .L3-2 {
           background-color: $info;
-          border-radius: 50%;
         }
         .L3-3 {
-          width: 280px;
+          min-width: 280px;
           background-color: #3d4349a6;
           border-radius: 150px;
           margin: 5px;
@@ -302,11 +315,102 @@
       .L4 {
         .L4-2 {
           background-color: $success;
-          border-radius: 50%;
         }
         .L4-3 {
           background-color: $gray-100;
-          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .brew-container {
+    min-width: 100%;
+    //outline: 3px solid rgb(231, 1, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include medium() {
+      flex-direction: row;
+      overflow-x: scroll;
+      align-items: flex-start;
+    }
+
+    .brew_2 {
+      flex-direction: row-reverse;
+      @include medium() {
+        flex-direction: row;
+      }
+    }
+
+    .brew-column {
+      display: flex;
+      margin: 55px 0px;
+
+      //outline: 3px solid rgb(248, 135, 42);
+      .brew-box {
+        //outline: 3px solid rgb(250, 246, 17);
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .item-title {
+          //outline: 3px solid rgb(27, 100, 9);
+          width: fit-content;
+          .rice {
+            //outline: 3px solid rgb(1, 70, 231);
+          }
+          .title {
+            //outline: 3px solid rgb(46, 128, 123);
+            h3 {
+              //outline: 3px solid rgb(231, 1, 212);
+            }
+          }
+        }
+        .item-img {
+          //outline: 3px solid rgb(131, 62, 91);
+          width: fit-content;
+          height: 140px;
+          margin: 20px 0;
+
+          img {
+            //outline: 3px solid rgb(99, 124, 71);
+            height: 100%;
+            max-width: 250px;
+          }
+        }
+        .item-word {
+          max-width: 200px;
+          @include medium() {
+            width: 350px;
+          }
+          //outline: 3px solid rgb(146, 49, 78);
+          p {
+            //outline: 3px solid rgb(7, 119, 76);
+          }
+        }
+      }
+      .arr-box {
+        //outline: 3px solid rgb(97, 57, 5);
+        margin: 44px 15px 0px 15px;
+        transform: scale(0.5, 0.5);
+        @include medium() {
+          background-image: url('./../../../public/Sakeintro/ar01.svg');
+          background-repeat: no-repeat;
+          background-position: top center;
+        }
+
+        img {
+          visibility: inherit;
+          @include medium() {
+            visibility: hidden;
+          }
+        }
+      }
+      .arr_1 {
+        margin: -146px 15px 0px 15px;
+        @include medium() {
+          margin: 44px 15px 0px 15px;
         }
       }
     }

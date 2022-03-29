@@ -5,16 +5,20 @@ import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import smoothscroll from 'smoothscroll-polyfill'
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   // TODO: 可能要換狀態名稱，不然會跟CartList相撞
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
+  const [collapseClass, setCollapseClass] = useState('')
 
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
     const member_id = 4
+    let cartLength = 0
     ;(async () => {
       const r1 = await fetch(
         `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
@@ -26,7 +30,12 @@ const CartInfo = () => {
         }
       )
       const obj = await r1.json()
-      setSakeIncart(obj)
+      cartLength += obj.length
+      console.log('obj.length', obj.length)
+
+      if (a) {
+        setSakeIncart(obj)
+      }
     })()
     ;(async () => {
       const rGift = await fetch(
@@ -39,8 +48,30 @@ const CartInfo = () => {
         }
       )
       const obj = await rGift.json()
-      setGiftIncart(obj)
+      cartLength += obj.length
+      console.log(cartLength)
+      cartListAppearance(cartLength)
+      function cartListAppearance(cartLength) {
+        if (cartLength === 1) {
+          setCollapseClass('list-table one')
+          console.log('one', cartLength)
+        }
+        if (cartLength === 2) {
+          setCollapseClass('list-table two')
+          console.log('two', cartLength)
+        }
+        if (cartLength > 2) {
+          setCollapseClass('list-table morethantwo')
+        }
+      }
+
+      if (a) {
+        setGiftIncart(obj)
+      }
     })()
+    return () => {
+      a = false
+    }
   }, [])
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
@@ -60,6 +91,16 @@ const CartInfo = () => {
       return ''
     }
   }
+  function openCloseHandler() {
+    if (collapseClass == 'list-table morethantwo') {
+      setCollapseClass('list-table')
+    }
+    if (collapseClass == 'list-table') {
+      setCollapseClass('list-table morethantwo')
+
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }
+  }
   return (
     <div className="CartInfo">
       <ProgressBar step="two" content={stepContent} />
@@ -68,8 +109,8 @@ const CartInfo = () => {
           <div className="mobile-table-btn ">
             <span className="total">訂單總計: $ 5700</span>
           </div>
-          <div className="list-table">
-            <div className="table-head ">
+          <div className={collapseClass}>
+            <div className="table-head">
               <span className="title-product">商品</span>
               <span className="title-subtotal">小計</span>
             </div>
@@ -77,6 +118,18 @@ const CartInfo = () => {
             {renderGiftItems(giftIncart)}
           </div>
           <div className="list-summary">
+            {collapseClass === 'list-table morethantwo' ||
+            collapseClass === 'list-table' ? (
+              <div className="collapse-btn" onClick={openCloseHandler}>
+                {collapseClass === 'list-table morethantwo' ? (
+                  <>&darr; 展開</>
+                ) : (
+                  <>&uarr; 收起</>
+                )}
+              </div>
+            ) : (
+              ''
+            )}
             <div className="table-row">
               <p>小計</p>
               <p className="dollar-sign">5640</p>

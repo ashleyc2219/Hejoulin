@@ -4,7 +4,7 @@ import './InfoTableGift.scss'
 const InfoTableGift = (props) => {
   const { giftInfo } = props
   let price = 0
-  console.log(giftInfo)
+  // console.log(giftInfo)
   function boxColor(giftInfo) {
     if (giftInfo.box_color === 'white') {
       return '英石白'

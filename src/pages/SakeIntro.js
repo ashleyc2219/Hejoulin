@@ -24,7 +24,7 @@ const SakeIntro = () => {
             <h2>產地</h2>
             <p>產地對於清酒而言，就是各式不同的組成元素代表。</p>
           </div>
-          {/* 產地內容 */}
+          {/* 產地內容 origin-content */}
           <div className="origin-content">
             <div className="ori-card weather col-md-4 col-sm-12">
               <div className="pic"></div>
@@ -68,7 +68,7 @@ const SakeIntro = () => {
               </div>
             </div>
           </div>
-
+          {/* 等級 */}
           <div className="sakeintro-title">
             <h2>等級</h2>
             <p>
@@ -76,13 +76,13 @@ const SakeIntro = () => {
               <b>「精米步合」。</b>
             </p>
           </div>
-
+          {/* 等級內容 level-container*/}
           <div className="level-container">
             <div className="level-box-l">
+              <div className="L1-1"></div>
               <div className="L2-1">
                 <p>釀造酒精</p>
               </div>
-              <div className="L1-1"></div>
 
               <div className="L3-1 ball">
                 <p>米・米麴</p>
@@ -94,9 +94,6 @@ const SakeIntro = () => {
               </div>
             </div>
             <div className="level-box-r">
-              <div className="L0">
-                <p>精米步合</p>
-              </div>
               <div className="L1">
                 <div className="L1-2">
                   <img src="Sakeintro/mi-1.svg" alt="" />
@@ -125,6 +122,9 @@ const SakeIntro = () => {
                   <p>無規定</p>
                 </div>
               </div>
+              <div className="L0">
+                <p>精米步合</p>
+              </div>
               <div className="L3">
                 <div className="L3-2 ball">
                   <p>純米大吟釀</p>
@@ -152,12 +152,264 @@ const SakeIntro = () => {
               </div>
             </div>
           </div>
-
+          {/* 釀造製成 */}
           <div className="sakeintro-title">
             <h2>釀造製成</h2>
             <p>
               日本酒,葡萄酒和啤酒同屬於釀造酒，其中我們的主角日本酒又有其獨特的發酵作業，現在就讓我們來一步步了解這個國粹的誕生。
             </p>
+          </div>
+          {/* 釀造製成內容 brew-container */}
+          <div className="brew-container">
+            {/* 第一層 */}
+            <div className="brew-column">
+              {/* 1 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>精米</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_1.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    米本身含有蛋白質、脂質或一些雜質，會產生影響日本酒的香氣，而這些成份大多分佈在米的外圍，所以釀製時會先把米粒外圍研磨並去除，這過程就是
+                    “ 精米 ”，而剩下米粒的百分比，就是 “ 精米步合
+                    ”，例如去除了米粒 35% 而剩下 65%，就是精米步合 65%
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar01.svg" alt="" />
+              </div>
+              {/* 2 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>蒸米</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_2.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    以蒸氣方式蒸煮大約 40 ~ 60
+                    分鐘，讓米粒能達到外硬內軟、成為具有彈性的熟米
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar02.svg" alt="" />
+              </div>
+            </div>
+            {/* 第二層 */}
+            <div className="brew-column brew_2">
+              {/* 3 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>製麴</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_3.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    米本身沒有糖，需要透過 “ 麴菌 ”
+                    將澱粉轉為糖才能發酵。麴菌附著在米粒後菌絲往中心延伸，將澱粉轉為糖的過程就是
+                    “ 製麴 ”。而麴菌繁殖在米粒上則稱為 “ 麴米 ”
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar03.svg" alt="" />
+              </div>
+              {/* 4 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>製作酵母</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_4.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    這個過程是要培養出強壯且大量的酵母，過程是添加麴米、掛米 (
+                    蒸熟的米
+                    )、水、酵母、乳酸，有健康的酵母對於接下來的發酵才能順利完成
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar03.svg" alt="" />
+              </div>
+              {/* 5 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>製膠</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_5.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    為了酵母的健康，利用酵母耐酸的特性，於轉換酒精的過程中會保持酸度以避免其他微生物影響酵母。一開始會先以酒母在桶內為基底
+                    ( 大約佔 6 %
+                    )，接下來會投入麴米、掛米、水，為了不讓酸度下降，大多會用四天分三次投入，讓轉換酒精的發酵過程能順利
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* 第三層 */}
+
+            <div className="brew-column">
+              {/* ar */}
+              <div className="arr-box arr_1 ">
+                <img src="Sakeintro/ar04.svg" alt="" />
+              </div>
+              {/* 6 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>上槽（搾酒）</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_6.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    發酵完後，將桶內液體及米糊裝入棉質的酒袋進行壓搾，出來的液體就是清酒，而米糊壓搾後稱為
+                    “ 酒粕 ”
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar05.svg" alt="" />
+              </div>
+              {/* 7 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>過濾</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_8.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>過濾：主要為了脫色，或是做香氣調整，去除異味</p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar05.svg" alt="" />
+              </div>
+              {/* 8 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>入火（第一次）</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_9.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    火入 ( 第一次 )：由於酒中還有酵母及微生物在活動，所以用60 ~
+                    65 度左右的熱水，停止酵母的活動。
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* 第四層 */}
+
+            <div className="brew-column brew_2">
+              {/* ar */}
+              <div className="arr-box arr_1 ">
+                <img src="Sakeintro/ar06.svg" alt="" />
+              </div>
+              {/* 9 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>貯藏</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_10.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    貯藏：分為槽儲藏或瓶儲藏，目的是為了酒與水能完美融合，讓酒質更為圓滑
+                  </p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar07.svg" alt="" />
+              </div>
+              {/* 10 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>裝瓶</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_11.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>裝瓶：將酒裝入瓶中</p>
+                </div>
+              </div>
+              {/* ar */}
+              <div className="arr-box">
+                <img src="Sakeintro/ar07.svg" alt="" />
+              </div>
+              {/* 11 */}
+              <div className="brew-box">
+                <div className="item-title">
+                  <div className="rice"></div>
+                  <div className="title">
+                    <h3>入火（第二次）</h3>
+                  </div>
+                </div>
+                <div className="item-img">
+                  <img src="Sakeintro/it_12.svg" alt="" />
+                </div>
+                <div className="item-word">
+                  <p>
+                    火入（第二次
+                    ）：目的是為了讓酵母或微生物完全停止活動，可在裝瓶前或裝瓶後進行。
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="sakeintro-title">

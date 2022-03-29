@@ -216,7 +216,7 @@ function Sidebar(props) {
               純米大吟釀
             </p>
             <p className={level === '6' ? 'checked' : ''} onClick={click6}>
-              吟釀
+              本釀造
             </p>
           </div>
         </div>

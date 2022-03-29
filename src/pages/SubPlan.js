@@ -5,9 +5,11 @@ import '../styles/SubPlan/SubPlan.scss'
 import SubPlanCard from '../compenents/Sub/SubPlanCard'
 import { useEffect, useState } from 'react'
 
-const SubPlan = () => {
+const SubPlan = (props) => {
+  const { subPlan, setSubPlan } = props
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
   const [plans, setPlans] = useState([])
+  const [planSelections, setPlanSelections] = useState([])
   useEffect(() => {
     ;(async () => {
       const r1 = await fetch(`http://localhost:3001/api/sub/sub-plan`, {
@@ -24,11 +26,21 @@ const SubPlan = () => {
   const renderPlans = (plans) => {
     if (plans.length) {
       return plans.map((p, i) => {
-        return <SubPlanCard key={i} planInfo={p} />
+        return (
+          <SubPlanCard
+            key={i}
+            planInfo={p}
+            planSelections={planSelections}
+            setPlanSelections={setPlanSelections}
+          />
+        )
       })
     } else {
       return ''
     }
+  }
+  function test() {
+    setSubPlan(planSelections)
   }
   return (
     <div className="SubPlan">
@@ -55,7 +67,9 @@ const SubPlan = () => {
         </div>
         <div className="button">
           <Link to="/sub/time">
-            <button className="btn btn-secondary">下一步</button>
+            <button className="btn btn-secondary" onClick={test}>
+              下一步
+            </button>
           </Link>
         </div>
       </div>

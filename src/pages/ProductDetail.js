@@ -353,7 +353,7 @@ const ProductDetail = (props) => {
           {/* sidebar篩選 */}
           <Sidebar />
 
-          <div className="main">
+          <div className="main-detail">
             <div className="center-container">
               {/* 手機版的篩選 */}
               <div className="mobile-search-bar">
