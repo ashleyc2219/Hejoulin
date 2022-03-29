@@ -1,0 +1,197 @@
+@keyframes event {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes event_search {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.EventList {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+.EventList .search-bar {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: event_search 1s forwards;
+}
+
+@media (max-width: 768px) {
+  .EventList .search-bar {
+    height: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 33px;
+  }
+}
+
+.EventList .search-bar .select {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .EventList .search-bar .select {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.EventList .search-bar .select select {
+  background-color: transparent;
+  border-color: #4d4e4f;
+  padding-left: 10px;
+  font-size: 18px;
+  position: relative;
+  color: #202326;
+}
+
+.EventList .search-bar .select select:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .EventList .search-bar .select select {
+    margin: 0;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .EventList .search-bar .search {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.EventList .search-bar .search img {
+  margin-right: 3px;
+  margin-bottom: -10px;
+}
+
+.EventList .search-bar .search input {
+  width: 150px;
+  border: none;
+  border-bottom: 2px solid #7e8082;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.EventList .search-bar .search input:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .EventList .search-bar .search input {
+    width: 100%;
+  }
+}
+
+.EventList .event-list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  margin: 0 -50px;
+  animation: event 1s forwards;
+}
+
+@media (max-width: 768px) {
+  .EventList .event-list {
+    padding: 0 60px;
+    margin: 0;
+  }
+}
+
+.EventList .event-list .event-card {
+  max-width: 33.3333333%;
+  height: 330px;
+  overflow: hidden;
+  padding: 0 50px 0 50px;
+}
+
+@media (max-width: 768px) {
+  .EventList .event-list .event-card {
+    min-width: 100%;
+    margin-top: 50px;
+    padding: 0;
+  }
+}
+
+.EventList .event-list .event-card a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.EventList .event-list .event-card a:hover {
+  text-decoration: none;
+  color: #3d4349;
+  background-color: #f7f7f6;
+}
+
+.EventList .event-list .event-card a img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.EventList .event-list .event-card a .info {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.EventList .event-list .event-card a .info .loca-cat {
+  display: flex;
+  column-gap: 13px;
+}
+
+.EventList .event-list .event-card a .info .loca-cat .cat1 {
+  border-bottom: 5px solid #d26d54;
+}
+
+.EventList .event-list .event-card a .info .loca-cat .cat2 {
+  border-bottom: 5px solid #e6c49e;
+}
+
+.EventList .event-list .event-card a .info .loca-cat .cat3 {
+  border-bottom: 5px solid #ffdb8a;
+}
+
+.EventList .event-list .event-card a .title {
+  padding: 0 12px 12px 12px;
+}
+
+.EventList .event-list .event-card a.hover1:hover {
+  border-bottom: 30px solid #d26d54;
+}
+
+.EventList .event-list .event-card a.hover2:hover {
+  border-bottom: 30px solid #e6c49e;
+}
+
+.EventList .event-list .event-card a.hover3:hover {
+  border-bottom: 30px solid #ffdb8a;
+}
+/*# sourceMappingURL=EventList.css.map */
