@@ -5,6 +5,7 @@ import LoginContext from '../Member/LoginPages/LoginContext'
 import { useLocation } from 'react-router-dom'
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
+import Breadcrumb from './Breadcrumb'
 
 const Header = (props) => {
   const { user, setUser, setCartCount } = props
@@ -60,11 +61,7 @@ const Header = (props) => {
             <Link to="/">
               <img className="logo" src="/Shared/logo.svg" alt="" />
             </Link>
-            <div className="bread">
-              <span>首頁</span>
-              <img src="/Shared/rightArrow.svg" alt="" />
-              <span className="current">購物車</span>
-            </div>
+            <Breadcrumb />
           </div>
           <div className="navbar">
             <ul className="links">
