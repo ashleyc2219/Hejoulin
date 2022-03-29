@@ -3,12 +3,17 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const EventCard = ({ sort, searchword }) => {
   const [data, setData] = useState([])
-  console.log(searchword)
   const event_card = data.map((v, i) => {
-      let a 
-      if(v.event_cat_id === 1){a='cat1'}
-      if(v.event_cat_id === 2){a='cat2'}
-      if(v.event_cat_id === 3){a='cat3'}
+    let a
+    if (v.event_cat_id === 1) {
+      a = 'cat1'
+    }
+    if (v.event_cat_id === 2) {
+      a = 'cat2'
+    }
+    if (v.event_cat_id === 3) {
+      a = 'cat3'
+    }
     return (
       <div key={i} className="event-card">
         <Link to={'/event/detail/' + v.event_id}>
@@ -70,8 +75,8 @@ const EventCard = ({ sort, searchword }) => {
       }
       if (searchword.length > 0) {
         obj = obj.filter(function (v, i) {
-            console.log(searchword)
-          return v.event_name.includes(searchword)
+          console.log(searchword)
+          return v.event_name.toUpperCase().includes(searchword.toUpperCase())
         })
       }
 
