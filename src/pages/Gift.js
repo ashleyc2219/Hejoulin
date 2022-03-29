@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './../styles/Gift/Gift.scss'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
 import StepBar from '../compenents/Gift/StepBar'
 import SakeItems from '../compenents/Gift/SakeItems'
-// import Color01 from '../compenents/Gift/Color01'
-// import Color02 from '../compenents/Gift/Color02'
+import Color01 from '../compenents/Gift/Color01'
+import Color02 from '../compenents/Gift/Color02'
 import Color03 from '../compenents/Gift/Color03'
 import Detail from '../compenents/Gift/Detail'
 
@@ -42,11 +42,19 @@ const Gift = (props) => {
       return '流沙金'
     }
   }
+  const [img, setImg] = useState('')
+  const [img2, setImg2] = useState('')
   const [name, setName] = useState('')
   const [name2, setName2] = useState('')
   const [price, setPrice] = useState(0)
   const [price2, setPrice2] = useState(0)
+  const [con, setCon] = useState('')
   const [conName, setConName] = useState('')
+  const [currentId, setCurrentId] = useState('')
+  const [currentCon, setCurrentCon] = useState('')
+  const [currentImg, setCurrentImg] = useState('')
+  const [currentName, setCurrentName] = useState('')
+  const [currentPrice, setCurrentPrice] = useState('')
 
   const [id, setId] = useState('') //決定光箱的id
   const [modalShow, setModalShow] = useState(false) //酒詳細資訊光箱
@@ -56,8 +64,44 @@ const Gift = (props) => {
   const closeHandle = () => {
     setModalShow(false)
   }
-
-
+  const value = useRef(0)
+  const total = () => {
+    switch (value.current) {
+      case 0:
+        // btn.removeAttribute('disable', '')
+        break
+      case 1:
+        // btn.removeAttribute('disable', '')
+        setSakeId(currentId)
+        setImg(currentImg)
+        setName(currentName)
+        setPrice(currentPrice)
+        break
+      case 2:
+        // btn.setAttribute('disable', '')
+        setSakeId2(currentId)
+        setImg2(currentImg)
+        setName2(currentName)
+        setPrice2(currentPrice)
+        break
+      default:
+        // handleShow()
+        break
+    }
+  }
+  useEffect(() => {
+    if (value === 1) {
+      setSakeId(currentId)
+      setName(currentName)
+      setPrice(currentPrice)
+    } else if (value === 2) {
+      setSakeId2(currentId)
+      setName2(currentName)
+      setPrice2(currentPrice)
+    } else if (value >= 3) {
+    }
+    console.log('sakeId', sakeId)
+  }, [value])
 
   const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
   let url02 = `http://localhost:3001/api/product_gift`
@@ -160,6 +204,7 @@ const Gift = (props) => {
                     modalShow={modalShow}
                     showHandle={showHandle}
                     closeHandle={closeHandle}
+                    kind={kind}
                     sake={sake}
                     id={id}
                     setId={setId}
@@ -167,6 +212,10 @@ const Gift = (props) => {
                     setSakeId={setSakeId}
                     sakeId2={sakeId2}
                     setSakeId2={setSakeId2}
+                    img={img}
+                    setImg={setImg}
+                    img2={img2}
+                    setImg2={setImg2}
                     name={name}
                     setName={setName}
                     name2={name2}
@@ -175,10 +224,23 @@ const Gift = (props) => {
                     setPrice={setPrice}
                     price2={price2}
                     setPrice2={setPrice2}
+                    con={con}
+                    setCon={setCon}
                     conName={conName}
                     setConName={setConName}
                     count={count}
                     setCount={setCount}
+                    value={value}
+                    currentId={currentId}
+                    setCurrentId={setCurrentId}
+                    currentCon={currentCon}
+                    setCurrentCon={setCurrentCon}
+                    currentImg={currentImg} setCurrentImg={setCurrentImg}
+                    currentName={currentName}
+                    setCurrentName={setCurrentName}
+                    currentPrice={currentPrice}
+                    setCurrentPrice={setCurrentPrice}
+                    total={total}
                   />
                 </div>
               </section>
@@ -187,27 +249,30 @@ const Gift = (props) => {
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
                 <h4>請選擇禮盒顏色</h4>
-                {/* {kind === 1 ? (
+                {kind === 1 ? (
                   <Color01
                     kind={kind}
                     sakeId={sakeId}
+                    img={img}
                     comfirmColor={comfirmColor}
                     setComfirmColor={setComfirmColor}
                   />
                 ) : (
                   ''
-                )} */}
-                {/* {kind === 2 ? (
+                )}
+                {kind === 2 ? (
                   <Color02
                     kind={kind}
                     sakeId={sakeId}
                     sakeId2={sakeId2}
+                    img={img}
+                    img2={img2}
                     comfirmColor={comfirmColor}
                     setComfirmColor={setComfirmColor}
                   />
                 ) : (
                   ''
-                )} */}
+                )}
                 {kind === 3 ? (
                   <Color03
                     kind={kind}
@@ -239,7 +304,7 @@ const Gift = (props) => {
                         price2={price2}
                         conName={conName}
                         kind={kind}
-                      /> 
+                      />
 
                       {/* space */}
                       <p></p>

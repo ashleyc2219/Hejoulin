@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../styles/Member/Member-Login/FinishRegister.scss'
 import { Link } from 'react-router-dom'
 
-const FinishRegister = ({ sidebar, setSidebar }) => {
+const FinishRegister = () => {
   return (
     <>
       <div className="FinishRegister">
@@ -12,7 +12,6 @@ const FinishRegister = ({ sidebar, setSidebar }) => {
             <Link to="/member/profile">
               <button
                 className="btn btn-primary"
-                onClick={setSidebar(!sidebar)}
               >
                 前往完成填寫會員資訊
               </button>
@@ -20,7 +19,6 @@ const FinishRegister = ({ sidebar, setSidebar }) => {
             <Link to="/product/list">
               <button
                 className="btn btn-secondary"
-                onClick={setSidebar(!sidebar)}
               >
                 立即前往選購商品
               </button>

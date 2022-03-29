@@ -141,8 +141,6 @@ const Header = (props) => {
             sidebar={sidebar}
             setSidebar={setSidebar}
           />
-          {/*<EmailVerify />*/}
-          {/*<PassForget />*/}
         </ul>
       </nav>
       <div className="mobile-menu">

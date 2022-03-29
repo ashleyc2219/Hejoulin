@@ -8,6 +8,10 @@ const SakeButton = (props) => {
     setSakeId,
     sakeId2,
     setSakeId2,
+    img,
+    setImg,
+    img2,
+    setImg2,
     name,
     setName,
     name2,
@@ -21,13 +25,14 @@ const SakeButton = (props) => {
     currentId,
     count,
     setCount,
+    value,
+    total,
   } = props
   const [sakeButton, setSakeButton] = useState(0)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const value = useRef(0)
   const plus = () => {
     value.current += 1
   }
@@ -36,29 +41,42 @@ const SakeButton = (props) => {
   }
 
   let btn = document.querySelectorAll('.sake')
-  const total = () => {
-    switch (value.current) {
-      case 0:
-        // btn.removeAttribute('disable', '')
-        break
-      case 1:
-        // btn.removeAttribute('disable', '')
-        setSakeId(currentId)
-        setName(currentName)
-        setPrice(currentPrice)
-        break
-      case 2:
-        // btn.setAttribute('disable', '')
-        setSakeId2(currentId)
-        setName2(currentName)
-        setPrice2(currentPrice)
-        break
-      default:
-        // handleShow()
-        break
-    }
-  }
-  
+  // const total = () => {
+  //   switch (value.current) {
+  //     case 0:
+  //       // btn.removeAttribute('disable', '')
+  //       break
+  //     case 1:
+  //       // btn.removeAttribute('disable', '')
+  //       setSakeId(currentId)
+  //       setName(currentName)
+  //       setPrice(currentPrice)
+  //       break
+  //     case 2:
+  //       // btn.setAttribute('disable', '')
+  //       setSakeId2(currentId)
+  //       setName2(currentName)
+  //       setPrice2(currentPrice)
+  //       break
+  //     default:
+  //       // handleShow()
+  //       break
+  //   }
+  // }
+  // function updateItem(){
+  //   let Items = [...count]
+  //   if (!Items.includes(currentId)){
+  //     Items = [...count, currentId]
+  //     setCount([Items])
+  //   }else{
+  //     let filter = Items.indexOf(currentId)
+  //     let filterItems = Items.splice(filter,1)
+  //     Items = filterItems
+  //     setCount([...Items])
+  //   }
+  //   console.log(count)
+  // }
+
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={false}>
@@ -77,7 +95,9 @@ const SakeButton = (props) => {
         onClick={() => {
           total()
           console.log('current:', value.current)
-          console.log(currentId)
+          console.log('currentId', currentId)
+          console.log('1', sakeId, name, price)
+          console.log('2', sakeId2, name2, price2)
         }}
       >
         {sakeButton === 0 && (
@@ -85,9 +105,10 @@ const SakeButton = (props) => {
             className="sake empty"
             onClick={() => {
               setSakeButton(1)
-              setCount(currentId)
+              // setCount(currentId)
               plus()
-              console.log(count)
+              console.log('count', count)
+              // updateItem()
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />
@@ -104,6 +125,7 @@ const SakeButton = (props) => {
                 // setCount(newCount)
                 plus()
                 // console.log(count)
+                // updateItem()
               }}
             >
               <img src="/Gift/full_sake.svg" alt="" className="sake single" />

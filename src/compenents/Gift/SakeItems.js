@@ -3,6 +3,7 @@ import './SakeItems.scss'
 
 import SakeButton from './SakeButton'
 import ProductModal from './ProductModal'
+import SakeButtonSingle from './SakeButtonSingle'
 
 const SakeItems = (props) => {
   const {
@@ -16,22 +17,38 @@ const SakeItems = (props) => {
     setSakeId,
     sakeId2,
     setSakeId2,
+    kind,
     name,
     setName,
     name2,
+    img,
+    setImg,
+    img2,
+    setImg2,
     setName2,
     price,
     setPrice,
     price2,
     setPrice2,
+    con,
+    setCon,
     conName,
     setConName,
     count,
     setCount,
+    value,
+    currentId,
+    setCurrentId,
+    currentCon,
+    setCurrentCon,
+    currentImg,
+    setCurrentImg,
+    currentName,
+    setCurrentName,
+    currentPrice,
+    setCurrentPrice,
+    total,
   } = props
-  const [currentId, setCurrentId] = useState('')
-  const [currentName, setCurrentName] = useState('')
-  const [currentPrice, setCurrentPrice] = useState('')
 
   const items = sake.map((v, i) => {
     return (
@@ -60,31 +77,66 @@ const SakeItems = (props) => {
           <div
             onClick={() => {
               setCurrentId(v.pro_id)
+              setCurrentImg(v.pro_img)
               setCurrentName(v.pro_name)
               setCurrentPrice(v.pro_price)
+              setCurrentCon()
             }}
           >
-            <SakeButton
-              sakeId={sakeId}
-              setSakeId={setSakeId}
-              sakeId2={sakeId2}
-              setSakeId2={setSakeId2}
-              name={name}
-              setName={setName}
-              name2={name2}
-              setName2={setName2}
-              price={price}
-              setPrice={setPrice}
-              price2={price2}
-              setPrice2={setPrice2}
-              conName={conName}
-              setConName={setConName}
-              currentPrice={currentPrice}
-              currentName={currentName}
-              currentId={currentId}
-              count={count}
-              setCount={setCount}
-            />
+            {kind === 2 ? (
+              <SakeButton
+                sakeId={sakeId}
+                setSakeId={setSakeId}
+                sakeId2={sakeId2}
+                setSakeId2={setSakeId2}
+                img={img}
+                setImg={setImg}
+                img2={img2}
+                setImg2={setImg2}
+                name={name}
+                setName={setName}
+                name2={name2}
+                setName2={setName2}
+                price={price}
+                setPrice={setPrice}
+                price2={price2}
+                setPrice2={setPrice2}
+                conName={conName}
+                setConName={setConName}
+                currentPrice={currentPrice}
+                currentName={currentName}
+                currentId={currentId}
+                currentImg={currentImg}
+                count={count}
+                setCount={setCount}
+                value={value}
+                total={total}
+              />
+            ) : (
+              <SakeButtonSingle
+                sakeId={sakeId}
+                setSakeId={setSakeId}
+                name={name}
+                setName={setName}
+                img={img}
+                setImg={setImg}
+                price={price}
+                setPrice={setPrice}
+                con={con}
+                    setCon={setCon}
+                conName={conName}
+                setConName={setConName}
+                currentPrice={currentPrice}
+                currentName={currentName}
+                currentId={currentId}
+                currentImg={currentImg}
+                currentCon={currentCon}
+                count={count}
+                setCount={setCount}
+                value={value}
+                total={total}
+              />
+            )}
           </div>
         </div>
       </React.Fragment>
