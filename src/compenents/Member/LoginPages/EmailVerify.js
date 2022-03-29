@@ -1,14 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../../styles/Member/Member-Login/EmailVerify.scss'
-import SetNewPass from './SetNewPass'
-import FinishRegister from './FinishRegister'
-import { useHistory } from 'react-router-dom'
 
-const EmailVerify = ({ goVerify, setGoVerify }) => {
-  const [page, setPage] = useState('emailVerify')
+const EmailVerify = ({ row, setRow }) => {
   const APIVerify = 'http://localhost:3001/login/code-verify'
-  const history = useHistory()
-  const whenSubmit = async (event) => {
+  const whenVerSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     const fd = new FormData(document.formV)
     const r = await fetch(APIVerify, {
@@ -17,56 +12,46 @@ const EmailVerify = ({ goVerify, setGoVerify }) => {
     })
     const obj = await r.json()
     console.log(obj)
-    if (obj.message === '驗證成功') {
-      if (goVerify === 'verify') {
-        setGoVerify('finish')
-      }
-    } else {
-      setPage('setNewPass')
+    if (obj.message === 'success') {
+      setRow('finish')
     }
   }
   return (
     <>
-      {page === 'emailVerify' ? (
-        <div className="EmailVerify">
-          <div className="EmailVerifyBox">
-            <div className="mb-3">
-              <form name="formV" onSubmit={whenSubmit}>
-                <label className="form-label">請輸入郵箱驗證碼</label>
-                <div className="inputGroup row">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="verifyCodeFirst"
-                    name="verifyCodeFirst"
-                    placeholder=""
-                    maxLength="3"
-                  />
-                  <img src="/Member/LineInVerify.svg" alt="" />
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="verifyCodeLast"
-                    name="verifyCodeLast"
-                    placeholder=""
-                    maxLength="3"
-                  />
-                </div>
-                <div className="form-text reSendTag">
-                  沒有收到 ? <button>重新發送</button>
-                </div>
-                <button type="submit" className="btn btn-sm btn-primary">
-                  送出
-                </button>
-              </form>
-            </div>
+      <div className="EmailVerify">
+        <div className="EmailVerifyBox">
+          <div className="mb-3">
+            <form name="formV" onSubmit={whenVerSubmit}>
+              <label className="form-label">請輸入郵箱驗證碼</label>
+              <div className="inputGroup row">
+                <input
+                  type="number"
+                  className="form-control"
+                  id="verifyCodeFirst"
+                  name="verifyCodeFirst"
+                  placeholder=""
+                  maxLength="3"
+                />
+                <img src="/Member/LineInVerify.svg" alt="" />
+                <input
+                  type="number"
+                  className="form-control"
+                  id="verifyCodeLast"
+                  name="verifyCodeLast"
+                  placeholder=""
+                  maxLength="3"
+                />
+              </div>
+              <div className="form-text reSendTag">
+                沒有收到 ? <button>重新發送</button>
+              </div>
+              <button type="submit" className="btn btn-sm btn-primary">
+                送出
+              </button>
+            </form>
           </div>
         </div>
-      ) : page === 'setNewPass' ? (
-        <SetNewPass page={page} setPage={setPage} />
-      ) : goVerify === 'finish' ? (
-        <FinishRegister />
-      ) : null}
+      </div>
     </>
   )
 }
