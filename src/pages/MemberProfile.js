@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/Member/MemberProfile.scss'
-import Sidebar from '../compenents/Member/Sidebar'
+import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import Tabs from '../compenents/Member/AllTabs/Profile/Tabs'
 
 const MemberProfile = (props) => {

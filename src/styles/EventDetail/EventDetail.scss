@@ -1,0 +1,53 @@
+@import '../mixin.scss';
+
+.eventDetail {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  .main-container {
+    max-width: 790px;
+    flex-shrink: 3;
+    border: 1px solid red;
+    overflow: hidden;
+    img {
+      width: 100%;
+      overflow: hidden;
+    }
+    .event-info{
+        padding: 40px;
+        padding-top: 50px;
+    }
+  }
+  .signup-container {
+    width: 380px;
+    height: 460px;
+    background-color: #f7f7f6c1;
+    border: 1px solid red;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-size: 32px;
+      line-height: 40px;
+      color: $black;
+    }
+    .dateinfo,
+    .locainfo {
+      color: $gray-300;
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 40px;
+    }
+    .price{
+        color: $success;
+        text-align: center;
+        margin-top: 45px;
+        font-size: 20px;
+    }
+    button{
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+  }
+}

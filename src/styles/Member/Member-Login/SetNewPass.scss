@@ -11,6 +11,18 @@
     padding-left: 26%;
 
     .setPassForm {
+      position: relative;
+
+      .passHideIcon {
+        position: absolute;
+        right: 4px;
+        top: 42px;
+
+        img {
+          width: 40px;
+          height: 30px;
+        }
+      }
 
       button {
         margin-top: 8%;

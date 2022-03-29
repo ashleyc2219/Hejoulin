@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import '../../../styles/Member/Member-Login/EmailVerify.scss'
 import SetNewPass from './SetNewPass'
+import FinishRegister from './FinishRegister'
+import { useHistory } from 'react-router-dom'
 
-const EmailVerify = () => {
+const EmailVerify = ({ goVerify, setGoVerify }) => {
   const [page, setPage] = useState('emailVerify')
   const APIVerify = 'http://localhost:3001/login/code-verify'
+  const history = useHistory()
   const whenSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     const fd = new FormData(document.formV)
@@ -15,6 +18,10 @@ const EmailVerify = () => {
     const obj = await r.json()
     console.log(obj)
     if (obj.message === '驗證成功') {
+      if (goVerify === 'verify') {
+        setGoVerify('finish')
+      }
+    } else {
       setPage('setNewPass')
     }
   }
@@ -57,6 +64,8 @@ const EmailVerify = () => {
         </div>
       ) : page === 'setNewPass' ? (
         <SetNewPass page={page} setPage={setPage} />
+      ) : goVerify === 'finish' ? (
+        <FinishRegister />
       ) : null}
     </>
   )

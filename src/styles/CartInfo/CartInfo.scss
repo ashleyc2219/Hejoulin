@@ -37,6 +37,19 @@
         }
       }
     }
+    .list-table.one {
+      height: 210px;
+      overflow: hidden;
+    }
+    .list-table.two {
+      height: 390px;
+      overflow: hidden;
+    }
+    .list-table.morethantwo {
+      height: 390px;
+      overflow: hidden;
+    }
+
     .list-table {
       width: 100%;
 
@@ -66,12 +79,19 @@
           width: 22.35%;
         }
       }
-      
     }
     .list-summary {
       width: 100%;
       @include medium {
         padding: 10px;
+      }
+      .collapse-btn {
+        height: 25px;
+        width: 80px;
+        background-color: $gray-300;
+        color: white;
+        text-align: center;
+        margin: -27px auto 0;
       }
       .table-row {
         display: flex;

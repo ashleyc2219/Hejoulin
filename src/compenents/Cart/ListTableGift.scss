@@ -19,6 +19,9 @@
   height: 208px;
   .item-del {
     width: 6.16%;
+    img{
+      cursor: pointer;
+    }
   }
   .item-gift-img {
     width: 11.166%;
@@ -85,6 +88,9 @@
       text-align: center;
       font-size: 16px;
     }
+    img{
+      cursor: pointer;
+    }
   }
   .item-subtotal {
     width: 8.25%;
@@ -150,6 +156,9 @@ hr {
             align-items: flex-start;
             justify-content: flex-start;
             padding-top: 0;
+            h5{
+              line-height: 18px;
+            }
             .quantity-container {
               display: flex;
               align-items: center;

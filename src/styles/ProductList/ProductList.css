@@ -256,6 +256,7 @@
   justify-content: space-between;
   column-gap: 40px;
   position: relative;
+  padding: 0;
 }
 
 @media (max-width: 768px) {

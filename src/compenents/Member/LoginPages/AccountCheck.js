@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../../styles/Member/Member-Login/AccountCheck.scss'
 import EmailVerify from './EmailVerify'
 
-const AccountCheck = () => {
+const AccountCheck = ({ goVerify, setGoVerify }) => {
   const [next, setNext] = useState('check')
   const APICheck = 'http://localhost:3001/login/account-check'
   const APISendEmail = 'http://localhost:3001/login/send-email'
@@ -22,7 +22,7 @@ const AccountCheck = () => {
     console.log(obj)
 
     if (obj.used === true) {
-      setNext('verify')
+      setNext('forgetVerify')
       await fetch(APISendEmail, {
         method: 'POST',
         body: fd,
@@ -62,8 +62,8 @@ const AccountCheck = () => {
             </form>
           </div>
         </div>
-      ) : next === 'verify' ? (
-        <EmailVerify />
+      ) : next === 'forgetVerify' ? (
+        <EmailVerify goVerify={goVerify} setGoVerify={setGoVerify} />
       ) : null}
     </>
   )

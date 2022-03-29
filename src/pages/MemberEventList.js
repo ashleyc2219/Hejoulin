@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Sidebar from '../compenents/Member/Sidebar'
+import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import '../styles/Member/MemberEventList.scss'
 import TabsEvent from '../compenents/Member/AllTabs/EventList/TabsEvent'
 
