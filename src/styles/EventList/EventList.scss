@@ -97,13 +97,13 @@
           display: flex;
           column-gap: 13px;
           .cat1 {
-            border-bottom: 2px solid $secondary;
+            border-bottom: 5px solid $secondary;
           }
           .cat2 {
-            border-bottom: 2px solid $success;
+            border-bottom: 5px solid $success;
           }
           .cat3 {
-            border-bottom: 2px solid $info;
+            border-bottom: 5px solid $info;
           }
         }
       }

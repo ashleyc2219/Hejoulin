@@ -62,24 +62,14 @@ const FavData = (props) => {
               )}
             </div>
             <div className="icon">
-              <CompareBtn
-                id={el.pro_id}
-                compare={compare}
-                setCompare={setCompare}
-              />
               <div className="cart-heart">
                 <Heart id={el.pro_id} />
-                <AddCartIcon
-                  setCartCount={setCartCount}
-                  id={el.pro_id}
-                  // count={count}
-                />
               </div>
             </div>
           </div>
           <div className="title">
             <p className="name">{el.pro_name}</p>
-            <p className="price">{el.pro_price}</p>
+            <p className="price">${el.pro_price}</p>
           </div>
         </div>
       ))

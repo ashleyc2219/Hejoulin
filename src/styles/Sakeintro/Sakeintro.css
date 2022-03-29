@@ -2,10 +2,6 @@
   width: 100%;
 }
 
-.sake-intro .container {
-  outline: 1px solid red;
-}
-
 .sake-intro p {
   color: #7e8082;
 }
@@ -82,6 +78,7 @@
 .sake-intro .origin-content .ori-card {
   position: relative;
   margin: 3% 6%;
+  min-width: 400px;
   height: 400px;
 }
 
@@ -172,15 +169,72 @@
 }
 
 .sake-intro .level-container {
+  margin: 90px 0px;
   mix-blend-mode: multiply;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .level-container {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.sake-intro .level-container div {
+  background-color: rgba(255, 255, 255, 0.548);
+}
+
+.sake-intro .level-container .level-box-l p,
+.sake-intro .level-container .level-box-r p {
+  font-size: 18px;
 }
 
 .sake-intro .level-container .level-box-l .ball,
 .sake-intro .level-container .level-box-r .ball {
-  width: 100px;
+  min-width: 140px;
+  height: 140px;
+  margin: 10px 5px 5px 5px;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .level-container .level-box-l .ball,
+  .sake-intro .level-container .level-box-r .ball {
+    border-radius: 70px;
+  }
+}
+
+.sake-intro .level-container .level-box-l .L1 div,
+.sake-intro .level-container .level-box-l .L2 div,
+.sake-intro .level-container .level-box-l .L3 div,
+.sake-intro .level-container .level-box-l .L4 div,
+.sake-intro .level-container .level-box-r .L1 div,
+.sake-intro .level-container .level-box-r .L2 div,
+.sake-intro .level-container .level-box-r .L3 div,
+.sake-intro .level-container .level-box-r .L4 div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sake-intro .level-container .level-box-l .L1 .ball,
@@ -191,45 +245,243 @@
 .sake-intro .level-container .level-box-r .L2 .ball,
 .sake-intro .level-container .level-box-r .L3 .ball,
 .sake-intro .level-container .level-box-r .L4 .ball {
-  width: 100px;
+  width: 140px;
+  height: 140px;
+  margin: 5px 5px;
 }
 
 .sake-intro .level-container .level-box-l {
-  outline: 3 solid red;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.sake-intro .level-container .level-box-l div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sake-intro .level-container .level-box-l .L1-1 {
+  margin-top: 5px;
+  height: 147px;
+}
+
+.sake-intro .level-container .level-box-l .L2-1 {
+  height: 15px;
+  background-color: #ffdb8a;
+  border-radius: 30px;
+  margin: 21px 0px;
 }
 
 .sake-intro .level-container .level-box-l .L3-1 {
   background-color: #ffdb8a;
   border-radius: 50%;
+  line-height: 15px;
+  padding-top: 10px;
 }
 
-.sake-intro .level-container .level-box-r {
-  outline: 3 solid red;
+@media (max-width: 768px) {
+  .sake-intro .level-container .level-box-r {
+    overflow-x: scroll;
+  }
 }
 
 .sake-intro .level-container .level-box-r div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 200px;
-  height: 200px;
+}
+
+.sake-intro .level-container .level-box-r .L0 {
+  margin: 15px 0px;
+  height: 15px;
+  background-color: #e0e0df;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sake-intro .level-container .level-box-r .L1 .L1-2 {
+  min-width: 140px;
   height: 80px;
+  margin: 24px 5px 0px 5px;
 }
 
 .sake-intro .level-container .level-box-r .L1 .L1-2 img {
   height: 100%;
 }
 
+.sake-intro .level-container .level-box-r .L2 .L2-2 {
+  min-width: 140px;
+  margin: 10px 5px 0px 5px;
+}
+
 .sake-intro .level-container .level-box-r .L3 .L3-2 {
   background-color: #ffdb8a;
-  border-radius: 50%;
 }
 
 .sake-intro .level-container .level-box-r .L3 .L3-3 {
-  background-color: #3d4349;
-  border-radius: 50%;
+  min-width: 280px;
+  background-color: #3d4349a6;
+  border-radius: 150px;
+  margin: 5px;
+}
+
+.sake-intro .level-container .level-box-r .L3 .L3-3 p {
+  color: white;
+}
+
+.sake-intro .level-container .level-box-r .L4 .L4-2 {
+  background-color: #e6c49e;
+}
+
+.sake-intro .level-container .level-box-r .L4 .L4-3 {
+  background-color: #e0e0df;
+}
+
+.sake-intro .brew-container {
+  min-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow-x: scroll;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.sake-intro .brew-container .brew_2 {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container .brew_2 {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.sake-intro .brew-container .brew-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 55px 0px;
+}
+
+.sake-intro .brew-container .brew-column .brew-box {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sake-intro .brew-container .brew-column .brew-box .item-title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.sake-intro .brew-container .brew-column .brew-box .item-img {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 140px;
+  margin: 20px 0;
+}
+
+.sake-intro .brew-container .brew-column .brew-box .item-img img {
+  height: 100%;
+  max-width: 250px;
+}
+
+.sake-intro .brew-container .brew-column .brew-box .item-word {
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container .brew-column .brew-box .item-word {
+    width: 350px;
+  }
+}
+
+.sake-intro .brew-container .brew-column .arr-box {
+  margin: 44px 15px 0px 15px;
+  -webkit-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5);
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container .brew-column .arr-box {
+    background-image: url("./../../../public/Sakeintro/ar01.svg");
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+}
+
+.sake-intro .brew-container .brew-column .arr-box img {
+  visibility: inherit;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container .brew-column .arr-box img {
+    visibility: hidden;
+  }
+}
+
+.sake-intro .brew-container .brew-column .arr_1 {
+  margin: -146px 15px 0px 15px;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .brew-container .brew-column .arr_1 {
+    margin: 44px 15px 0px 15px;
+  }
 }
 /*# sourceMappingURL=Sakeintro.css.map */

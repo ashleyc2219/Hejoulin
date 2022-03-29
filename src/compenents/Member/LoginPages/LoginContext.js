@@ -128,9 +128,21 @@ const LoginContext = (props) => {
           </div>
         </div>
       ) : row === 'register' ? (
-        <RegisterContext row={row} setRow={setRow} goVerify={goVerify} setGoVerify={setGoVerify} />
+        <RegisterContext
+          row={row}
+          setRow={setRow}
+          goVerify={goVerify}
+          setGoVerify={setGoVerify}
+          sidebar={sidebar}
+          setSidebar={setSidebar}
+        />
       ) : row === 'forgetPass' ? (
-        <AccountCheck row={row} setRow={setRow} goVerify={goVerify} setGoVerify={setGoVerify} />
+        <AccountCheck
+          row={row}
+          setRow={setRow}
+          goVerify={goVerify}
+          setGoVerify={setGoVerify}
+        />
       ) : null}
     </>
   )
