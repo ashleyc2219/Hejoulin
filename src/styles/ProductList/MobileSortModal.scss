@@ -10,6 +10,8 @@
   left: 0;
   z-index: 9;
   display: none;
+  animation: catbg 0.3s;
+  transition: all 1s;
   @include medium(){
     display: block;
   }
@@ -19,6 +21,8 @@
     margin-top: 75px;
     padding-top: 50px;
     position: relative;
+    transition: all 0.5s;
+    animation: catmodal 0.3s;
     @include bgimage();
     img.close-black {
       position: absolute;
