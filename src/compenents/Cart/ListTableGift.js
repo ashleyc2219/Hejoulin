@@ -3,7 +3,14 @@ import { useEffect, useState } from 'react'
 import './ListTableGift.scss'
 
 const ListTableGift = (props) => {
-  const { giftIncart, setGiftIncart, giftInfo, member_id } = props
+  const {
+    giftIncart,
+    setGiftIncart,
+    giftInfo,
+    member_id,
+    giftTotal,
+    setGiftTotal,
+  } = props
   const [quantity, setQuantity] = useState(giftInfo['cart_quantity'])
   let price = 0
   const fetchURL = 'http://localhost:3001/api/cart-list/gift'
@@ -89,6 +96,21 @@ const ListTableGift = (props) => {
       return '曜岩黑'
     }
   }
+  function updateGiftTotal(price, action) {
+    let newGiftTotal = giftTotal
+    console.log(action)
+    if (action === 'add') {
+      newGiftTotal += price
+    }
+    if (action === 'minus') {
+      newGiftTotal -= price
+    }
+    if (action === 'del') {
+      newGiftTotal -= price
+    }
+    console.log(newGiftTotal)
+    setGiftTotal(newGiftTotal)
+  }
   let data = {
     member_id: member_id,
     cart_gift_id: giftInfo.cart_gift_id,
@@ -107,7 +129,7 @@ const ListTableGift = (props) => {
       (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
     )
     setGiftIncart(newGiftInCart)
-    console.log(obj)
+    updateGiftTotal(price, 'del')
   }
   const minusQuantity = async () => {
     if (quantity > 0) {
@@ -126,25 +148,7 @@ const ListTableGift = (props) => {
         body: JSON.stringify(data),
       })
       const obj = await r1.json()
-      console.log(obj)
-    }
-    if (quantity - 1 === 0) {
-      setQuantity(quantity - 1)
-      const r1 = await fetch(fetchURL, {
-        method: 'DELETE',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      const obj = await r1.json()
-      console.log(obj)
-
-      const newGiftInCart = giftIncart.filter(
-        (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
-      )
-      setGiftIncart(newGiftInCart)
+      updateGiftTotal(price, 'minus')
     }
   }
   const plusQuantity = async () => {
@@ -163,7 +167,7 @@ const ListTableGift = (props) => {
       body: JSON.stringify(data),
     })
     const obj = await r1.json()
-    console.log(obj)
+    updateGiftTotal(price, 'add')
   }
   return (
     <>

@@ -10,8 +10,8 @@ const ListTableSake = (props) => {
     setSakeIncart,
     sakeInfo,
     member_id,
-    sakeCount,
-    setSakeCount,
+    sakeTotal,
+    setSakeTotal,
   } = props
   const fetchURL = 'http://localhost:3001/api/cart-list/sake'
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
@@ -49,12 +49,19 @@ const ListTableSake = (props) => {
     cart_sake_id: sakeInfo.cart_sake_id,
     pro_id: sakeInfo.pro_id,
   }
-  // 更新商數量
-  function updateSakeCount(newQuantity) {
-    let newSakeCount = [...sakeCount]
-    newSakeCount[index] = newQuantity
-    setSakeCount(newSakeCount)
-    console.log('newSakeCount', newSakeCount)
+  // 更新總價
+  function updateSakeTotal(price, action) {
+    let newSakeTotal = sakeTotal
+    if (action === 'add') {
+      newSakeTotal += price
+    }
+    if (action === 'minus') {
+      newSakeTotal -= price
+    }
+    if (action === 'del') {
+      newSakeTotal -= price
+    }
+    setSakeTotal(newSakeTotal)
   }
   // 刪除商品
   const delSakeItem = async () => {
@@ -71,12 +78,11 @@ const ListTableSake = (props) => {
       (sake) => sake['cart_sake_id'] !== sakeInfo.cart_sake_id
     )
     setSakeIncart(newSakeInCart)
-    updateSakeCount(0)
-    console.log(obj)
+    updateSakeTotal(sakeInfo.pro_price * quantity, 'del')
   }
   // 商品數量-1
   const minusQuantity = async () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1)
       let data = {
         cart_quantity: quantity - 1,
@@ -93,11 +99,7 @@ const ListTableSake = (props) => {
         body: JSON.stringify(data),
       })
       const obj = await r1.json()
-      updateSakeCount(quantity - 1)
-    }
-    if (quantity - 1 === 0) {
-      setQuantity(quantity - 1)
-      delSakeItem()
+      updateSakeTotal(sakeInfo.pro_price, 'minus')
     }
   }
   // 商品數量+1
@@ -118,7 +120,7 @@ const ListTableSake = (props) => {
       body: JSON.stringify(data),
     })
     const obj = await r1.json()
-    updateSakeCount(quantity + 1)
+    updateSakeTotal(sakeInfo.pro_price, 'add')
   }
   useEffect(() => {}, [quantity])
 
