@@ -1,31 +1,39 @@
-import React from 'react'
+import {React, useState} from 'react'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubConfirmCard from '../compenents/Sub/SubComfirmCard'
 import './../styles/SubConfirm/SubConfirm.scss'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-const SubConfirm = () => {
+const SubConfirm = (props) => {
+  const { subPlan, subTimeTotal, subTimeMonth } = props
+  let subPlanMap = subPlan
+  subPlanMap.sort(function (a, b) {
+    return a.length - b.length
+  })
+  let subPlanString = subPlanMap.join('、')
+
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
+  function renderConfirmCard(subPlanMap) {
+    return subPlanMap.map((v, i) => {
+      return <SubConfirmCard key={i} planName={v} />
+    })
+  }
   return (
     <div className="SubConfirm">
       <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
       <div className="container">
         <ProgressBar step="three" content={stepContent} />
         <div className="main">
-          <div className="top-order-list">
-            <SubConfirmCard />
-            <SubConfirmCard />
-            <SubConfirmCard />
-          </div>
+          <div className="top-order-list">{renderConfirmCard(subPlanMap)}</div>
           <div className="bottom-order-summary">
             <p>
-              方案 <span> 純米、純米吟釀、純米大吟釀</span>
+              方案 <span> {subPlanString}</span>
             </p>
             <p>
-              週期 <span>12個月</span>
+              週期 <span>{subTimeMonth}個月</span>
             </p>
             <p>
-              總計 <span>$17400元</span>
+              總計 <span>${subTimeTotal}元</span>
             </p>
           </div>
         </div>

@@ -46,7 +46,12 @@ function App() {
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [memberId, setMemberId] = useState({})
+  // subPlan, subTime 溝通用的state
   const [subPlan, setSubPlan] = useState([])
+  const [subPlanTotal, setSubPlanTotal] = useState(0)
+  // subTime subConfirm溝通用的state
+  const [subTimeTotal, setSubTimeTotal] = useState(0)
+  const [subTimeMonth, setSubTimeMonth] = useState(0)
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -99,13 +104,27 @@ function App() {
               <MarkDone />
             </Route>
             <Route exact path="/sub/plan">
-              <SubPlan subPlan={subPlan} setSubPlan={setSubPlan} />
+              <SubPlan
+                subPlan={subPlan}
+                setSubPlan={setSubPlan}
+                subPlanTotal={subPlanTotal}
+                setSubPlanTotal={setSubPlanTotal}
+              />
             </Route>
             <Route exact path="/sub/time">
-              <SubTime subPlan={subPlan} setSubPlan={setSubPlan} />
+              <SubTime
+                subPlan={subPlan}
+                subPlanTotal={subPlanTotal}
+                setSubTimeTotal={setSubTimeTotal}
+                setSubTimeMonth={setSubTimeMonth}
+              />
             </Route>
             <Route exact path="/sub/confirm">
-              <SubConfirm />
+              <SubConfirm
+                subPlan={subPlan}
+                subTimeTotal={subTimeTotal}
+                subTimeMonth={subTimeMonth}
+              />
             </Route>
             <Route exact path="/sub/cart-list">
               <SubCartList />

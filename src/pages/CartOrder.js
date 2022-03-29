@@ -1,14 +1,99 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import '../styles/CartOrder/CartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableItem from '../compenents/Cart/OrderTableSake'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import { useEffect } from 'react'
 import OrderTableGift from '../compenents/Cart/OrderTableGift'
+import OrderTableSake from '../compenents/Cart/OrderTableSake'
 const CartOrder = () => {
+  const [sakeInOrder, setSakeInOrder] = useState([])
+  const [giftInOrder, setGiftInOrder] = useState([])
+  const [orderInfo, setOrderInfo] = useState([])
+  const order_id = '20220110001'
+  // 訂單編號 產生 訂單日期字串
+  function genDate(order_id) {
+    let year = order_id.slice(0, 4)
+    let month = order_id.slice(4, 6)
+    let date = order_id.slice(6, 8)
+    let orderDate = year + '-' + month + '-' + date
+    return orderDate
+  }
+  genDate(order_id)
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
+    // 清酒訂單
+    ;(async () => {
+      const r1 = await fetch(
+        `http://localhost:3001/api/cart-order-confirm/order-sake?order_id=${order_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await r1.json()
+      console.log('sake', obj)
+      if (a) {
+        setSakeInOrder(obj)
+      }
+    })()
+    // 禮盒訂單
+    ;(async () => {
+      const r1 = await fetch(
+        `http://localhost:3001/api/cart-order-confirm/order-gift?order_id=${order_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await r1.json()
+      if (a) {
+        setGiftInOrder(obj)
+      }
+    })()
+    // 訂單資料
+    ;(async () => {
+      const r1 = await fetch(
+        `http://localhost:3001/api/cart-order-confirm/order-info?order_id=${order_id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const obj = await r1.json()
+      console.log(obj)
+      if (a) {
+        setOrderInfo(obj[0])
+      }
+    })()
+    return () => {
+      a = false
+    }
   }, [])
+  const renderSakeItems = (sakeInOrder) => {
+    if (sakeInOrder.length) {
+      return sakeInOrder.map((sake, i) => {
+        return <OrderTableSake key={i} sakeInfo={sake} />
+      })
+    } else {
+      return ''
+    }
+  }
+  const renderGiftItems = (giftIncart) => {
+    if (giftIncart.length) {
+      return giftIncart.map((gift, i) => {
+        return <OrderTableGift key={i} giftInfo={gift} />
+      })
+    } else {
+      return ''
+    }
+  }
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
     <div className="CartOrder">
@@ -24,8 +109,8 @@ const CartOrder = () => {
               <span className="title-quantity">數量</span>
               <span className="title-subtotal">小計</span>
             </div>
-            <OrderTableItem mark="true" />
-            <OrderTableItem mark="false" />
+            {renderSakeItems(sakeInOrder)}
+            {renderGiftItems(giftInOrder)}
           </div>
           <div className="list-summary">
             <div className="table-row">
@@ -53,17 +138,17 @@ const CartOrder = () => {
           <div className="order-container">
             <img src="/CartList/orderBg.png" alt="" />
             <div className="order-title">
-              <label className="form-label">訂單編碼 20220102001</label>
-              <span>2022-01-02</span>
+              <label className="form-label">訂單編碼 {order_id}</label>
+              <span>{genDate(order_id)}</span>
             </div>
             <div className="order-row">
               <div className="row-head">
                 <p>購買人資訊</p>
               </div>
               <div className="row-data">
-                <p>金城武</p>
-                <p>0987382937</p>
-                <p>kco9384@gmail.com</p>
+                <p>{orderInfo.order_name}</p>
+                <p>{orderInfo.order_mobile}</p>
+                <p>{orderInfo.order_email}</p>
               </div>
             </div>
             <hr />
@@ -72,9 +157,8 @@ const CartOrder = () => {
                 <p>收件人資訊</p>
               </div>
               <div className="row-data">
-                <p>金城武</p>
-                <p>0987382937</p>
-                <p>kco9384@gmail.com</p>
+                <p>{orderInfo.receiver}</p>
+                <p>{orderInfo.receiver_mobile}</p>
               </div>
             </div>
             <hr />
@@ -83,8 +167,16 @@ const CartOrder = () => {
                 <p>貨運資訊</p>
               </div>
               <div className="row-data">
-                <p>低溫宅配</p>
-                <p>台北市大安區仁愛路4段29號1樓</p>
+                <p>
+                  {orderInfo.shipment_method === 'delivery'
+                    ? '低溫宅配'
+                    : '門市取貨'}
+                </p>
+                <p>
+                  {orderInfo.shipment_address === null
+                    ? orderInfo.store_address
+                    : orderInfo.shipment_address}
+                </p>
               </div>
             </div>
             <hr />
@@ -94,7 +186,7 @@ const CartOrder = () => {
               </div>
               <div className="row-data payment">
                 <p>信用卡付款</p>
-                <p>卡號末四碼 1689</p>
+                <p>卡號末四碼 {orderInfo.card_num}</p>
               </div>
             </div>
           </div>

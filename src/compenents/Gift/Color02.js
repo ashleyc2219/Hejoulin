@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './Color03.scss'
+import './Color02.scss'
 
-const Color03 = (props) => {
-  const { kind, sakeId,img, comfirmColor, setComfirmColor } = props
-  const [detail, setDetail] = useState([])
+const Color02 = (props) => {
+  const { kind, sakeId, img, img2, comfirmColor, setComfirmColor } = props
   const [boxColor, setBoxColor] = useState('black')
   let imgSrc
   const srcRouter = () => {
@@ -15,40 +14,6 @@ const Color03 = (props) => {
       imgSrc = `white-` + kind + `.jpg`
     }
   }
-  const url = 'http://localhost:3001/api/products-sake/item-detail'
-  const fetchData = async () => {
-    const res = await fetch(url + '?pro_id=' + sakeId)
-    const data = await res.json()
-    setDetail(data)
-  }
-
-  const giftImg = detail.map((v, i) => {
-    return (
-      <React.Fragment key={i}>
-        <div className="gift_image">
-          <img
-            src={'http://localhost:3001/images/gift_img/' + imgSrc}
-            alt="box"
-            className="box"
-          />
-          <img
-            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
-            alt="sake"
-            className="sake"
-          />
-          <img
-            src={'http://localhost:3001/images/con_img/' + v.container_img}
-            alt="container"
-            className="other"
-          />
-        </div>
-      </React.Fragment>
-    )
-  })
-
-  useEffect(() => {
-    fetchData()
-  }, [])
 
   return (
     <>
@@ -84,7 +49,23 @@ const Color03 = (props) => {
           <small>流沙金</small>
         </button>
       </div>
-      {giftImg}
+      <div className="gift_image">
+        <img
+          src={'http://localhost:3001/images/gift_img/' + imgSrc}
+          alt="box"
+          className="box"
+        />
+        <img
+          src={'http://localhost:3001/images/pro_img/' + img}
+          alt="sake"
+          className="sake"
+        />
+        <img
+          src={'http://localhost:3001/images/con_img/' + img2}
+          alt="container"
+          className="other"
+        />
+      </div>
       <div className="confirm">
         <button
           className="btn btn-sm btn-primary"
@@ -99,4 +80,4 @@ const Color03 = (props) => {
   )
 }
 
-export default Color03
+export default Color02
