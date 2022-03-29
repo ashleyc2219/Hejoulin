@@ -6,6 +6,7 @@ import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
 import FinishRegister from './FinishRegister'
 import SetNewPass from './SetNewPass'
+import LilMemberCenter from "./LilMemberCenter";
 
 const LoginContext = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
@@ -140,10 +141,17 @@ const LoginContext = (props) => {
         <AccountCheck row={row} setRow={setRow} />
       ) : row === 'verify' ? (
         <EmailVerify row={row} setRow={setRow} />
-      ) : row === 'finish' ? (
-        <FinishRegister sidebar={sidebar} setSidebar={setSidebar} />
       ) : row === 'setNewPass' ? (
+        <FinishRegister
+          row={row}
+          setRow={setRow}
+          sidebar={sidebar}
+          setSidebar={setSidebar}
+        />
+      ) : row === 'finish' ? (
         <SetNewPass row={row} setRow={setRow} />
+      ) : row === 'lilMemberCenter' ? (
+        <LilMemberCenter row={row} setRow={setRow} />
       ) : null}
     </>
   )
