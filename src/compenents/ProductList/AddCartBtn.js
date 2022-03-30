@@ -4,8 +4,8 @@ import { CartCount } from '../../App'
 
 const AddCartBtn = ({ id, setCartCount, count }) => {
   const addcart = async (num, pro_id) => {
+    console.log(CartCount)
     const a = count + num
-    console.log(count, num)
     setCartCount(a)
 
     const data = {
@@ -13,7 +13,7 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
       pro_id: `${pro_id}`,
       cart_quantity: `${count}`,
     }
-    console.log(data)
+    
     const settings = {
       method: 'POST',
       headers: {

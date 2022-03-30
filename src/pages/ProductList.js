@@ -375,7 +375,6 @@ const ProductList = (props) => {
     fetchBrand()
 
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY, document.body.offsetHeight)
       if (a) {
         handleScroll()
       }
