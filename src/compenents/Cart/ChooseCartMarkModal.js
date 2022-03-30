@@ -7,6 +7,7 @@ const ChooseCartMarkModal = () => {
   const markData = data.map((v, i) => {
     return (
       <div
+      key={i}
         onClick={() => {
           setCheck(i)
         }}
