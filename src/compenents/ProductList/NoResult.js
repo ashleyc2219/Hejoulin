@@ -1,9 +1,11 @@
 import React from 'react'
+import './NoResult.scss'
 
 const NoResult = () => {
   return (
     <div className="noresult">
-        <h1>沒有篩選結果</h1>
+      <img src="/restaurant/notfound.svg" alt=""></img>
+      <h1>沒有篩選結果</h1>
     </div>
   )
 }
