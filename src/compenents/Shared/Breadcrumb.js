@@ -37,7 +37,7 @@ const Breadcrumb = () => {
       // 其它中間樣式
       return (
         <React.Fragment key={i}>
-          <Link to={pathArray.slice(0, i + 2).join('/')}>
+          <Link to={pathArray.slice(0, i + 1).join('/')}>
             <span className="current">{v}</span>
           </Link>
         </React.Fragment>
