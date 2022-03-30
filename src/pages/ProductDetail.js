@@ -26,24 +26,33 @@ const ProductDetail = (props) => {
   const [reload, setReload] = useState(0)
 
   const [spin, setSpin] = useState(true)
+  const [animate, setAnimate] = useState(false)
 
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
   }
 
   const minus = () => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 100)
     if (count > 1) {
       setCount(count - 1)
     }
   }
   const add = () => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 100)
     if (count < 20) {
       setCount(count + 1)
     }
   }
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
-  
+
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -103,7 +112,9 @@ const ProductDetail = (props) => {
                 <div onClick={minus} className="minus">
                   <img src="/ProductList/minus-circle.svg" alt="" />
                 </div>
-                <div className="number">{count}</div>
+                <div className={animate ? 'number numberanimate' : 'number'}>
+                  {count}
+                </div>
                 <div onClick={add} className="plus">
                   <img src="/ProductList/plus-circle.svg" alt="" />
                 </div>

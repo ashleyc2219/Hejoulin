@@ -78,10 +78,10 @@ const Header = (props) => {
                     <Link to="/product/list">選購清酒</Link>
                   </li>
                   <li href="">
-                    <Link to="/sake-guide">選酒指南</Link>
+                    <Link to="/gift">禮盒系列</Link>
                   </li>
                   <li href="">
-                    <Link to="/gift">禮盒系列</Link>
+                    <Link to="/sake-guide">選酒指南</Link>
                   </li>
                 </ul>
               </li>
@@ -194,13 +194,13 @@ const Header = (props) => {
                   </Link>
                 </li>
                 <li className={open ? 'showLi ' : ''}>
-                  <Link onClick={setmobilemenu} to="/sake-guide">
-                    選酒指南
+                  <Link onClick={setmobilemenu} to="/gift">
+                    禮盒系列
                   </Link>
                 </li>
                 <li className={open ? 'showLi ' : ''}>
-                  <Link onClick={setmobilemenu} to="/gift">
-                    禮盒系列
+                  <Link onClick={setmobilemenu} to="/sake-guide">
+                    選酒指南
                   </Link>
                 </li>
               </ul>

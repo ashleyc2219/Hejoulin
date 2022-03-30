@@ -5,10 +5,13 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  @include medium(){
+    align-items: center;
+    flex-direction: column;
+  }
   .main-container {
     max-width: 790px;
     flex-shrink: 3;
-    border: 1px solid red;
     overflow: hidden;
     img {
       width: 100%;
@@ -21,9 +24,8 @@
   }
   .signup-container {
     width: 380px;
-    height: 460px;
+    height: fit-content;
     background-color: #f7f7f6c1;
-    border: 1px solid red;
     padding: 18px;
     display: flex;
     flex-direction: column;
