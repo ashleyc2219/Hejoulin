@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Question from '../compenents/SakeGuide/Question'
 import './../styles/SakeGuide/SakeGuide.scss'
+import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
 
 const SakeGuide = () => {
   const [content, setContent] = useState([])
+  const [minPrice, setMinPrice] = useState('')
+  const [maxPrice, setMaxPrice] = useState('')
   const url = 'http://localhost:3500/api/guide_q'
+
+  
 
   const fetchData = async () => {
     const res = await fetch(url)
@@ -80,7 +85,15 @@ const SakeGuide = () => {
           </section>
           {question}
           <section className="price">
-          
+            <MultiRangeSlider
+              min={380}
+              max={14800}
+              setMinPrice={setMinPrice}
+              setMaxPrice={setMaxPrice}
+              onChange={({ min, max }) =>
+                console.log(`min = ${min}, max = ${max}`)
+              }
+            />
             {/* <div className="cost">
               <div className="qus">
                 <legend className="filter-headline">價錢預算</legend>
