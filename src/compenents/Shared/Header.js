@@ -1,8 +1,8 @@
 import React, { useEffect, useState, memo } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
-import LoginContext from '../Member/LoginPages/LoginContext'
 import { useLocation } from 'react-router-dom'
+import Login from "../Member/LoginPages/Login";
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
@@ -135,7 +135,7 @@ const Header = (props) => {
               alt=""
             />
           </li>
-          <LoginContext
+          <Login
             user={user}
             setUser={setUser}
             sidebar={sidebar}

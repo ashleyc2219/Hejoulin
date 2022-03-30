@@ -7,22 +7,20 @@ const SetNewPass = ({ row, setRow }) => {
   const [newConfPass, setConfNewPass] = useState('')
   const [pass, setPass] = useState(false)
 
-  const APISetPass = 'http://localhost:3001/user/member-passChange'
+  const APISetPass = 'http://localhost:3001/user/member/forgetPassChange'
 
   function changeShowPass() {
     setSPass(!sPass)
   }
 
-  const whenSubmit = async (event) => {
+  const whenPassSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     const userAccount = localStorage.getItem('email')
-    const fd = new FormData(document.form2)
+    const fd = new FormData(document.formP)
+    fd.append('email', userAccount)
     const r = await fetch(APISetPass, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: { ...fd, userAccount },
+      body: fd,
     })
     const obj = await r.json()
     console.log(obj)
@@ -96,9 +94,15 @@ const SetNewPass = ({ row, setRow }) => {
       <div className="SetNewPass">
         <div className="SetNewPassBox">
           <div className="mb-3">
-            <form name="formP" className="setPassForm" onSubmit={whenSubmit}>
+            <form
+              name="formP"
+              className="setPassForm"
+              onSubmit={whenPassSubmit}
+            >
               <div className="pass-g">
-                <label className="form-label">請輸入新密碼</label>
+                <label htmlFor="user_pass" className="form-label">
+                  請輸入新密碼
+                </label>
                 <input
                   type={sPass ? 'text' : 'password'}
                   className="form-control mb-3"
@@ -140,7 +144,9 @@ const SetNewPass = ({ row, setRow }) => {
                 </div>
               </div>
               <div className="passConf-g">
-                <label className="form-label">再次請輸入新密碼</label>
+                <label className="form-label" htmlFor="user_passConf">
+                  再次請輸入新密碼
+                </label>
                 <input
                   type="password"
                   className="form-control mb-3"

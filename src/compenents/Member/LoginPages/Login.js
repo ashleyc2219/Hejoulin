@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import '../../../styles/Member/Member-Login/LoginContext.scss'
-import RegisterContext from './RegisterContext'
+import Register from './Register'
 import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
 import FinishRegister from './FinishRegister'
 import SetNewPass from './SetNewPass'
 import LilMemberCenter from "./LilMemberCenter";
 
-const LoginContext = (props) => {
+const Login = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
   //const [goVerify, setGoVerify] = useState('register')
@@ -27,9 +27,6 @@ const LoginContext = (props) => {
     })
 
     const obj = await r.json()
-    // TODO: is success
-    console.log(obj)
-    console.log(history)
 
     localStorage.setItem('token', obj.token)
     localStorage.setItem('account', obj.info.user_account)
@@ -42,18 +39,10 @@ const LoginContext = (props) => {
       },
     })
     const info2 = await r2.json()
-    console.log(info2)
     if (info2.obj) {
       setUser(info2.obj)
       history.push('/')
     }
-
-    // const
-    //   .then((res) => res.json())
-    //   .then((response) => {
-    //     setUser(response.obj)
-    //     history.push('/')
-    //   })
   }
 
   //登出
@@ -131,7 +120,7 @@ const LoginContext = (props) => {
           </div>
         </div>
       ) : row === 'register' ? (
-        <RegisterContext
+        <Register
           row={row}
           setRow={setRow}
           sidebar={sidebar}
@@ -157,4 +146,4 @@ const LoginContext = (props) => {
   )
 }
 
-export default LoginContext
+export default Login

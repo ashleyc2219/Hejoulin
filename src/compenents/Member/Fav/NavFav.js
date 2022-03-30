@@ -36,7 +36,7 @@ const NavFav = (props) => {
   }
 
   function PriceLowToHigh(a, b) {
-    return a.pro_price > b.pro_price ? 1 : -1
+    return b.pro_price > a.pro_price ? 1 : -1
   }
 
   function MarkCustomFirst(a, b) {
@@ -55,25 +55,25 @@ const NavFav = (props) => {
         })
       ).json()
       console.log(obj)
-      setFavData(
-        (obj.sort = () => {
-          switch (optionChose) {
-            case optionChose === 'oldToNew':
-              obj.sort(AddOldToNew)
-              break
-            case optionChose === 'lowToHigh':
-              obj.sort(PriceLowToHigh)
-              break
-            case optionChose === 'customFirst':
-              obj.sort(MarkCustomFirst)
-              break
-            default:
-              setOptionChose('none')
-          }
-        })
-      )
+
+      let newObj = null
+      switch (optionChose) {
+        case 'oldToNew':
+          newObj = obj.sort(AddOldToNew)
+          break
+        case 'lowToHigh':
+          newObj = obj.sort(PriceLowToHigh)
+          break
+        case 'customFirst':
+          newObj = obj.sort(MarkCustomFirst)
+          break
+        default:
+          newObj = obj
+      }
+
+      setFavData(newObj)
     })()
-  }, [setOptionChose])
+  }, [optionChose])
   return (
     <>
       <div className="MemberFavBar">
@@ -83,7 +83,7 @@ const NavFav = (props) => {
           <input onKeyPress={keypress} type="text" name="" id="" />
         </div>
         <div className="MemberFavBar-right">
-          {/*<div className="countItemsTotal">收藏商品 {favData.length}</div>*/}
+          <div className="countItemsTotal">收藏商品 {favData.length}</div>
           <select
             className="decorated ItemsSort"
             name="drinks"
@@ -102,7 +102,7 @@ const NavFav = (props) => {
       </div>
       <div className="MobileMemberFavBar">
         <div className="MemberFavBar-left">
-          {/*<div className="countItemsTotal">收藏商品 {favData.length}</div>*/}
+          <div className="countItemsTotal">收藏商品 {favData.length}</div>
           <img
             className="search-icon-fav"
             src="/ProductList/search.svg"

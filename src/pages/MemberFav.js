@@ -26,8 +26,6 @@ const MemberFav = () => {
                   <FavData
                     favData={favData}
                     setFavData={setFavData}
-                    optionChose={optionChose}
-                    setOptionChose={setOptionChose}
                   />
                 </div>
               </div>
