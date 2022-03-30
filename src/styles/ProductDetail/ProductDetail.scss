@@ -52,7 +52,14 @@
     opacity: 1;
   }
 }
-
+@keyframes number {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -510,6 +517,9 @@
                   @include medium() {
                     width: 40px;
                   }
+                }
+                .numberanimate{
+                  animation: number .2s;
                 }
                 .plus {
                   display: flex;
