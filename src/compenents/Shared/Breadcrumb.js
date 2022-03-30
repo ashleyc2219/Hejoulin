@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Breadcrumb = () => {
   const location = useLocation()
-  console.log(location)
   const formatTextLocale = (pathname) => {
     // '/product/baby/birth' -> ['','product','baby', 'birth']
     const pathArray = pathname.split('/')
@@ -28,15 +27,19 @@ const Breadcrumb = () => {
       if (i === array.length - 1) {
         return (
           <React.Fragment key={i}>
-            <span className="current">{v}</span>
+            <Link to={pathArray.slice(0, i + 1).join('/')}>
+              <span className="current">{v}</span>
+            </Link>
           </React.Fragment>
         )
       }
-
+      
       // 其它中間樣式
       return (
         <React.Fragment key={i}>
-          <span className="current">{v}</span>
+          <Link to={pathArray.slice(0, i + 2).join('/')}>
+            <span className="current">{v}</span>
+          </Link>
         </React.Fragment>
       )
     })
