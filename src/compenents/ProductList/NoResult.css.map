@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,YADU,CACV,SAAS,CAAC;EACR,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,IAAI;CACd;;AAEH,AACE,WADS,CACT,SAAS,CAAC;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,SAAS;CAClB",
+    "sources": [
+        "NoResult.scss"
+    ],
+    "names": [],
+    "file": "NoResult.css"
+}
