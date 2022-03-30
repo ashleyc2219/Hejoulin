@@ -15,6 +15,7 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 import GuideButton from '../compenents/SakeGuide/Guide'
+import ChooseCartMarkModal from '../compenents/Cart/ChooseCartMarkModal'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
@@ -374,6 +375,7 @@ const ProductList = (props) => {
     fetchBrand()
 
     window.addEventListener('scroll', () => {
+      console.log(window.scrollY, document.body.offsetHeight)
       if (a) {
         handleScroll()
       }
@@ -386,10 +388,7 @@ const ProductList = (props) => {
 
   const handleScroll = () => {
     if (compare.length > 1) {
-      if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 300
-      ) {
+      if (window.scrollY >= document.body.offsetHeight + 2200) {
         setUp(true)
       } else {
         setUp(false)
@@ -410,7 +409,7 @@ const ProductList = (props) => {
 
   return (
     <>
-      {/* <MobileSortModal /> */}
+      {/* <ChooseCartMarkModal /> */}
       {sortModal ? (
         <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
       ) : (
