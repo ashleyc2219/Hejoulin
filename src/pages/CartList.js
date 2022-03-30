@@ -1,12 +1,12 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-
+import { Link } from 'react-router-dom'
 
 import '../styles/CartList/CartList.scss'
-import { Link } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import ListTableSake from '../compenents/Cart/ListTableSake'
 import ListTableGift from '../compenents/Cart/ListTableGift'
+import ListSelection from '../compenents/Cart/ListSelection'
 
 const CartList = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
@@ -166,87 +166,7 @@ const CartList = () => {
           <div className="cart-form">
             <div className="form-left">
               <div className="shipment">
-                <h5>貨運資訊</h5>
-                <label className="form-label">收件地點</label>
-                <select className="decorated district" name="district" required>
-                  <option value="main">台灣 (本島地區)</option>
-                  <option value="outer">台灣 (外島地區)</option>
-                </select>
-
-                <select className="decorated city" name="city" required>
-                  <option value="台北市" data-index="0">
-                    台北市
-                  </option>
-                  <option value="基隆市" data-index="1">
-                    基隆市
-                  </option>
-                  <option value="新北市" data-index="2">
-                    新北市
-                  </option>
-                  <option value="宜蘭縣" data-index="3">
-                    宜蘭縣
-                  </option>
-                  <option value="桃園市" data-index="4">
-                    桃園市
-                  </option>
-                  <option value="新竹市" data-index="5">
-                    新竹市
-                  </option>
-                  <option value="新竹縣" data-index="6">
-                    新竹縣
-                  </option>
-                  <option value="苗栗縣" data-index="7">
-                    苗栗縣
-                  </option>
-                  <option value="台中市" data-index="8">
-                    台中市
-                  </option>
-                  <option value="彰化縣" data-index="9">
-                    彰化縣
-                  </option>
-                  <option value="南投縣" data-index="10">
-                    南投縣
-                  </option>
-                  <option value="嘉義市" data-index="11">
-                    嘉義市
-                  </option>
-                  <option value="嘉義縣" data-index="12">
-                    嘉義縣
-                  </option>
-                  <option value="雲林縣" data-index="13">
-                    雲林縣
-                  </option>
-                  <option value="台南市" data-index="14">
-                    台南市
-                  </option>
-                  <option value="高雄市" data-index="15">
-                    高雄市
-                  </option>
-                  <option value="澎湖縣" data-index="16">
-                    澎湖縣
-                  </option>
-                  <option value="金門縣" data-index="17">
-                    金門縣
-                  </option>
-                  <option value="屏東縣" data-index="18">
-                    屏東縣
-                  </option>
-                  <option value="台東縣" data-index="19">
-                    台東縣
-                  </option>
-                  <option value="花蓮縣" data-index="20">
-                    花蓮縣
-                  </option>
-                  <option value="連江縣" data-index="21">
-                    連江縣
-                  </option>
-                </select>
-
-                <label className="form-label">運送方式</label>
-                <select className="decorated method" name="method" required>
-                  <option value="delivery">低溫宅配</option>
-                  <option value="pick">門市自取</option>
-                </select>
+                <ListSelection/>
               </div>
 
               <div className="discount">
