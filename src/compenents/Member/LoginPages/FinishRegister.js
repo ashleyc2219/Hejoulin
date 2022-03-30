@@ -2,7 +2,11 @@ import React from 'react'
 import '../../../styles/Member/Member-Login/FinishRegister.scss'
 import { Link } from 'react-router-dom'
 
-const FinishRegister = () => {
+const FinishRegister = ({ sidebar, setSidebar, row, setRow }) => {
+  const showSidebar = () => {
+    setSidebar(!sidebar)
+    setRow('lilMemberCenter')
+  }
   return (
     <>
       <div className="FinishRegister">
@@ -10,16 +14,12 @@ const FinishRegister = () => {
           <h3>恭喜您完成註冊</h3>
           <div className="link-g">
             <Link to="/member/profile">
-              <button
-                className="btn btn-primary"
-              >
+              <button className="btn btn-primary" onClick={showSidebar}>
                 前往完成填寫會員資訊
               </button>
             </Link>
             <Link to="/product/list">
-              <button
-                className="btn btn-secondary"
-              >
+              <button className="btn btn-secondary" onClick={showSidebar}>
                 立即前往選購商品
               </button>
             </Link>

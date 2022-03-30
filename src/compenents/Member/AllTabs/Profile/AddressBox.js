@@ -11,11 +11,6 @@ const AddressBox = () => {
         <div className="mb-3 AddressBox-Item">
           <input
             type="text"
-            className="form-control input-lastName"
-            placeholder="姓氏"
-          />
-          <input
-            type="text"
             className="form-control input-firstName"
             placeholder="名字"
           />

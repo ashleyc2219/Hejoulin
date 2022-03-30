@@ -7,8 +7,22 @@ import SubTimeCard from '../compenents/Sub/SubTimeCard'
 import '../styles/SubTime/SubTime.scss'
 
 const SubTime = (props) => {
-  const { subPlan, setSubPlan } = props
-  let subPlanString = subPlan.join('、')
+  const { subPlan, subPlanTotal, setSubTimeTotal, setSubTimeMonth } = props
+  // subTime subConfirm溝通用的state (subTimeTotal, subTimeMonth) 是外層的state
+
+  // subTime, subTimeCard溝通用的
+  const [time, setTime] = useState(0)
+  const [oldTime, setOldTime] = useState(0)
+  const [timeTotal, setTimeTotal] = useState(0)
+  const [timeMonth, setTimeMonth] = useState(0)
+  // 訂閱方案 字串排序
+  let subPlanString = subPlan
+  subPlanString.sort(function (a, b) {
+    return a.length - b.length
+  })
+  subPlanString = subPlanString.join('、')
+
+  // stepbar
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
   const [times, setTimes] = useState([])
   useEffect(() => {
@@ -28,7 +42,19 @@ const SubTime = (props) => {
   const renderTimes = (times) => {
     if (times.length) {
       return times.map((t, i) => {
-        return <SubTimeCard key={i} timeInfo={t} />
+        return (
+          <SubTimeCard
+            key={i}
+            timeInfo={t}
+            subPlanTotal={subPlanTotal}
+            time={time}
+            setTime={setTime}
+            oldTime={oldTime}
+            setOldTime={setOldTime}
+            setTimeTotal={setTimeTotal}
+            setTimeMonth={setTimeMonth}
+          />
+        )
       })
     } else {
       return ''
@@ -63,9 +89,25 @@ const SubTime = (props) => {
           <Link to="/sub/plan">
             <button className="btn btn-primary">上一步</button>
           </Link>
-          <Link to="/sub/confirm">
-            <button className="btn btn-secondary">下一步</button>
-          </Link>
+          {time !== 0 ? (
+            <Link to="/sub/confirm">
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setSubTimeTotal(timeTotal)
+                  setSubTimeMonth(timeMonth)
+                }}
+              >
+                下一步
+              </button>
+            </Link>
+          ) : (
+            <Link to="/sub/confirm">
+              <button className="btn btn-secondary" disabled>
+                下一步
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

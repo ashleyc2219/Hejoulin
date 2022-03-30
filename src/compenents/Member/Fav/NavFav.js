@@ -29,7 +29,7 @@ const NavFav = (props) => {
   }
 
   function handleChange(event) {
-    setOptionChose(event.target.value)
+    setTimeout(setOptionChose(event.target.value), 1000)
   }
   function AddOldToNew(a, b) {
     return a.pro_id > b.pro_id ? 1 : -1
