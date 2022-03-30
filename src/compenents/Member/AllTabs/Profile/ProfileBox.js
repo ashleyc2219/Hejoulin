@@ -20,43 +20,36 @@ const ProfileBox = () => {
           },
         })
       ).json()
-      console.log(obj)
       setMemberData(obj)
     })()
   }, [])
   const userAccount = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.user_account)
     }
   }
   const memberName = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.member_name)
     }
   }
   const memberMobile = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.member_mob)
     }
   }
   const memberBirthdayY = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.member_bir.slice(0, 4))
     }
   }
   const memberBirthdayM = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.member_bir.slice(5, 7))
     }
   }
   const memberBirthdayD = (memberData) => {
     if (memberData && memberData.length) {
-      console.log(memberData)
       return memberData.map((el) => el.member_bir.slice(8, 10))
     }
   }

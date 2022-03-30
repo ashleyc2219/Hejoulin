@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
 import NoFavItem from './NoFavItem'
-import { Link } from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 const FavData = (props) => {
-  const { user, setUser, favData, setFavData, optionChose, setOptionChose } =
-    props
+  const { user, setUser, favData, setFavData } = props
   const APIFav = 'http://localhost:3001/user/member/MemberFav'
+  const APIDel = 'http://localhost:3001/user/member/MemberFav/delete'
+  const history = useHistory()
 
   useEffect(() => {
     ;(async () => {
@@ -28,41 +29,44 @@ const FavData = (props) => {
   //     })
   // }, [])
   const renderFavItems = (favData) => {
-    let active = true
+    const deleteFav = async () => {
+      // console.log('test' + favData[0].member_id)
+      const data = {
+        member_id: `${favData[0].member_id}`,
+        pro_id: `${favData[0].pro_id}`,
+      }
+      console.log(data)
+      const settings = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+      try {
+        const fetchResponse = await fetch(APIDel, settings)
+        const data = await fetchResponse.json()
+        console.log(data)
+        if (data.success === true) {
+          history.go(0)
+        }
+        //setFavData(data)
+      } catch (err) {
+        return err
+      }
+    }
 
+    let active = true
     const click = () => {
       if (active === true) {
         ;(async function del() {
           await deleteFav()
-          // await getFav()
         })()
 
         active = false
       }
     }
 
-    const deleteFav = async () => {
-      console.log(favData['test' + favData.member_id])
-      const data = {
-        member_id: `${favData.member_id}`,
-        pro_id: `${favData.pro_id}`,
-      }
-      console.log(data)
-      const settings = {
-        method: 'POST',
-        body: JSON.stringify(data),
-      }
-      try {
-        const fetchResponse = await fetch(
-          'http://localhost:3001/member/MemberFav-heart-delete',
-          settings
-        )
-        const data = await fetchResponse.json()
-        //setFavData(data)
-      } catch (err) {
-        return err
-      }
-    }
     if (favData && favData.length) {
       return favData.map((el) => (
         <div key={'test' + el.member_id} className="product">
