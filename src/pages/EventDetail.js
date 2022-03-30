@@ -24,7 +24,8 @@ const EventDetail = () => {
           <div className="dateinfo">
             <div className="datetitle">日期：</div>
             <div className="date">
-              {v.event_time_start}{" ~ " +v.event_time_end}
+              {v.event_time_start}
+              {' ~ ' + v.event_time_end}
             </div>
           </div>
           <div className="locainfo">
@@ -56,9 +57,7 @@ const EventDetail = () => {
 
   return (
     <>
-      <div className="eventDetail">
-        {Detail}
-      </div>
+      <div className="eventDetail">{Detail}</div>
     </>
   )
 }

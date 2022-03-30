@@ -27,6 +27,14 @@
   box-sizing: border-box;
   max-width: 1130px;
   margin: 0 auto;
+  .spin {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: ani2 1s forwards;
+  }
   .search-bar {
     width: 100%;
     height: 100px;
