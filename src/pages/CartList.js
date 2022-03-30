@@ -1,14 +1,16 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import '../styles/CartList/CartList.scss'
+import { islands, townships } from './../data/cart-list-select'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import ListTableSake from '../compenents/Cart/ListTableSake'
 import ListTableGift from '../compenents/Cart/ListTableGift'
 import ListSelection from '../compenents/Cart/ListSelection'
 
-const CartList = () => {
+const CartList = (props) => {
+  const { setCartSummary } = props
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
@@ -20,7 +22,17 @@ const CartList = () => {
   const [discountMsg, setDiscountMsg] = useState(0)
   const [shipFee, setShipFee] = useState(0)
   const [shipMethod, setShipMethod] = useState(-1)
+  const [island, setIsland] = useState(-1)
+  const [township, setTownship] = useState(-1)
+  // 表單檢查
+  const [islandTownshipPass, setIslandTownshipPass] = useState(false)
+  const [shipMethodPass, setShipMethodPass] = useState(false)
+  const [passThrough, setPassThrough] = useState(false)
+  // 檢查表單後 變紅色
+  const [oneWarning, setOneWarning] = useState(true)
+  const [twoWarning, setTwoWarning] = useState(true)
   const member_id = 4
+
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
@@ -132,8 +144,8 @@ const CartList = () => {
       setDiscountPerscent(result.perscent)
     } else {
       setDiscountMsg('折扣碼無效')
+      setDiscountCode('')
       setDiscountPerscent(1)
-
     }
   }
 
@@ -199,6 +211,58 @@ const CartList = () => {
       return ''
     }
   }
+  useEffect(() => {
+    function formCheck() {
+      if (island !== -1 && township !== -1 && township !== undefined) {
+        setIslandTownshipPass(true)
+        // console.log('setIslandTownshipPass(true)')
+      } else {
+        setIslandTownshipPass(false)
+      }
+      if (shipMethod !== -1) {
+        setShipMethodPass(true)
+        // console.log('setShipMethodPass(true)')
+      } else {
+        setShipMethodPass(false)
+      }
+      if (islandTownshipPass === true && shipMethodPass === true) {
+        setPassThrough(true)
+        // console.log('setPassThrough(true)')
+      } else {
+        setPassThrough(false)
+      }
+    }
+    formCheck()
+  }, [island, township, shipMethod, islandTownshipPass, shipMethodPass])
+  function warningRed() {
+    if (islandTownshipPass === false) {
+      setOneWarning(false)
+    } else {
+      setOneWarning(true)
+    }
+    if (shipMethodPass === false) {
+      setTwoWarning(false)
+    } else {
+      setTwoWarning(true)
+    }
+  }
+
+  function CartSummaryData() {
+    let district = ''
+    let data = {}
+    if (island !== -1 && township !== -1 && township !== undefined) {
+      data = {
+        district: townships[island][township],
+        method: shipMethod,
+        subtotal: sakeTotal + giftTotal,
+        discountCode: discountCode === 'no code' ? '' : discountCode,
+        shipFee: shipFee,
+        allTotal: allTotal,
+      }
+      setCartSummary(data)
+      console.log('setCartSummary')
+    }
+  }
 
   return (
     <>
@@ -214,9 +278,14 @@ const CartList = () => {
             <div className="form-left">
               <div className="shipment">
                 <ListSelection
-                  setShipFee={setShipFee}
                   shipMethod={shipMethod}
                   setShipMethod={setShipMethod}
+                  island={island}
+                  setIsland={setIsland}
+                  township={township}
+                  setTownship={setTownship}
+                  oneWarning={oneWarning}
+                  twoWarning={twoWarning}
                 />
               </div>
 
@@ -259,12 +328,12 @@ const CartList = () => {
                     <p className="dollar-sign">{sakeTotal + giftTotal}</p>
                   </div>
                   <div className="table-row">
-                    <p>運費</p>
-                    <p className="dollar-sign">{shipFee}</p>
-                  </div>
-                  <div className="table-row">
                     <p>折扣碼</p>
                     <p>{discountPerscent !== 1 ? discountMsg : ''}</p>
+                  </div>
+                  <div className="table-row">
+                    <p>運費</p>
+                    <p className="dollar-sign">{shipFee}</p>
                   </div>
                   <div className="table-row">
                     <p>總計</p>
@@ -276,9 +345,21 @@ const CartList = () => {
                 <Link to="/product/list">
                   <button className="btn btn-primary">繼續購物</button>
                 </Link>
-                <Link to="/cart/info">
-                  <button className="btn btn-secondary">結帳</button>
-                </Link>
+
+                {passThrough === true ? (
+                  <Link to="/cart/info">
+                    <button
+                      className="btn btn-secondary"
+                      onClick={CartSummaryData}
+                    >
+                      結帳
+                    </button>
+                  </Link>
+                ) : (
+                  <button className="btn btn-secondary" onClick={warningRed}>
+                    結帳
+                  </button>
+                )}
               </div>
             </div>
           </div>

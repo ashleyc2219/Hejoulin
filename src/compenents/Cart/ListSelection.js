@@ -3,9 +3,16 @@ import React from 'react'
 import { islands, townships } from '../../data/cart-list-select'
 import { useState, useEffect } from 'react'
 const ListSelection = (props) => {
-  const { setShipFee, shipMethod, setShipMethod } = props
-  const [island, setIsland] = useState(-1)
-  const [township, setTownship] = useState(-1)
+  const {
+    shipMethod,
+    setShipMethod,
+    island,
+    setIsland,
+    township,
+    setTownship,
+    oneWarning,
+    twoWarning,
+  } = props
 
   function methodUpdate(e) {
     if (e.target.value === 'pick') {
@@ -23,7 +30,9 @@ const ListSelection = (props) => {
       <h5>貨運資訊</h5>
       <label className="form-label">收件地點</label>
       <select
-        className="decorated district"
+        className={
+          oneWarning === false ? 'decorated district red' : 'decorated district'
+        }
         value={island}
         onChange={(e) => {
           // 將字串轉成數字
@@ -41,14 +50,15 @@ const ListSelection = (props) => {
         ))}
       </select>
       <select
-        className="decorated city"
+        className={
+          oneWarning === false ? 'decorated city red' : 'decorated city'
+        }
         name="city"
         value={township}
         onChange={(e) => {
           // 將字串轉成數字
           setTownship(+e.target.value)
           setShipMethod(-1)
-
         }}
       >
         <option value="-1">選擇縣市</option>
@@ -62,7 +72,9 @@ const ListSelection = (props) => {
 
       <label className="form-label">運送方式</label>
       <select
-        className="decorated method"
+        className={
+          twoWarning === false ? 'decorated method red' : 'decorated method'
+        }
         name="method"
         value={shipMethod}
         onChange={(e) => {

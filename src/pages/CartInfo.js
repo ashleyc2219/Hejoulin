@@ -6,9 +6,12 @@ import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
+import { CartSummary } from './../App'
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
+  console.log(CartSummary._currentValue)
+  let cartSummaryInfo = CartSummary._currentValue
   // TODO: 可能要換狀態名稱，不然會跟CartList相撞
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
@@ -31,7 +34,7 @@ const CartInfo = () => {
       )
       const obj = await r1.json()
       cartLength += obj.length
-      console.log('obj.length', obj.length)
+      // console.log('obj.length', obj.length)
 
       if (a) {
         setSakeIncart(obj)
@@ -49,8 +52,10 @@ const CartInfo = () => {
       )
       const obj = await rGift.json()
       cartLength += obj.length
-      console.log(cartLength)
-      cartListAppearance(cartLength)
+      // console.log(cartLength)
+      if (a) {
+        cartListAppearance(cartLength)
+      }
       function cartListAppearance(cartLength) {
         if (cartLength === 1) {
           setCollapseClass('list-table one')
@@ -132,19 +137,20 @@ const CartInfo = () => {
             )}
             <div className="table-row">
               <p>小計</p>
-              <p className="dollar-sign">5640</p>
-            </div>
-            <div className="table-row">
-              <p>運費</p>
-              <p className="dollar-sign">60</p>
+              <p className="dollar-sign">{cartSummaryInfo.subtotal}</p>
             </div>
             <div className="table-row">
               <p>折扣碼</p>
-              <p>DiscountCode</p>
+              <p>{cartSummaryInfo.discountCode}</p>
             </div>
             <div className="table-row">
+              <p>運費</p>
+              <p className="dollar-sign">{cartSummaryInfo.shipFee}</p>
+            </div>
+
+            <div className="table-row">
               <p>總計</p>
-              <p className="dollar-sign total">5700</p>
+              <p className="dollar-sign total">{cartSummaryInfo.allTotal}</p>
             </div>
           </div>
           <div className="mobile-table-btn ">
@@ -233,7 +239,7 @@ const CartInfo = () => {
                   <option value="taiwan">台灣</option>
                 </select>
                 <select className="decorated" name="city" disabled>
-                  <option value="taipei">台北市</option>
+                  <option value="taipei">{cartSummaryInfo.district}</option>
                 </select>
                 <div className="district-code">
                   <input
@@ -248,7 +254,7 @@ const CartInfo = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="台北市大安區仁愛路4段29號1樓"
+                  placeholder="仁愛路4段29號1樓"
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>

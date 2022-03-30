@@ -39,6 +39,7 @@ import Header from './compenents/Shared/Header'
 import Footer from './compenents/Shared/Footer'
 import { createContext, useState } from 'react'
 export const CartCount = createContext('defaultvalue')
+export const CartSummary = createContext('default')
 
 function App() {
   const AuthContext = createContext(null)
@@ -52,7 +53,7 @@ function App() {
   // subTime subConfirm溝通用的state
   const [subTimeTotal, setSubTimeTotal] = useState(0)
   const [subTimeMonth, setSubTimeMonth] = useState(0)
-
+  const [cartSummary, setCartSummary] = useState(['lol'])
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Router>
@@ -145,10 +146,14 @@ function App() {
               <EventList />
             </Route>
             <Route exact path="/cart/list">
-              <CartList />
+              <CartSummary.Provider value={cartSummary}>
+                <CartList setCartSummary={setCartSummary} />
+              </CartSummary.Provider>
             </Route>
             <Route exact path="/cart/info">
-              <CartInfo />
+              <CartSummary.Provider value={cartSummary}>
+                <CartInfo />
+              </CartSummary.Provider>
             </Route>
             <Route exact path="/cart/verify">
               <CartVerify />
