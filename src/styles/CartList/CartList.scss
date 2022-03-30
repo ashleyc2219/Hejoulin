@@ -151,6 +151,10 @@
                 width: 100%;
                 height: 50px;
               }
+              .form-text{
+                height: 16px;
+                color: $dark
+              }
             }
             button {
               flex-shrink: 0;

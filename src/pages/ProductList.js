@@ -408,7 +408,7 @@ const ProductList = (props) => {
 
   return (
     <>
-      {/* <ChooseCartMarkModal /> */}
+      <ChooseCartMarkModal />
       {sortModal ? (
         <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
       ) : (

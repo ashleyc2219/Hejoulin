@@ -14,6 +14,12 @@ const CartList = () => {
   const [giftIncart, setGiftIncart] = useState([])
   const [sakeTotal, setSakeTotal] = useState(0)
   const [giftTotal, setGiftTotal] = useState(0)
+  const [allTotal, setAllTotal] = useState(0)
+  const [discountCode, setDiscountCode] = useState('no code')
+  const [discountPerscent, setDiscountPerscent] = useState(1)
+  const [discountMsg, setDiscountMsg] = useState(0)
+  const [shipFee, setShipFee] = useState(0)
+  const [shipMethod, setShipMethod] = useState(-1)
   const member_id = 4
   useEffect(() => {
     let a = true
@@ -89,6 +95,47 @@ const CartList = () => {
       a = false
     }
   }, [])
+  useEffect(() => {
+    let total = (sakeTotal + giftTotal) * discountPerscent + shipFee
+    if (total < 1000 && shipMethod !== 'pick') {
+      setShipFee(60)
+    } else {
+      setShipFee(0)
+    }
+    setAllTotal(total)
+  }, [sakeTotal, giftTotal, discountPerscent, shipFee, shipMethod])
+
+  // 折扣碼 enter 輸入
+  const enter = (e) => {
+    if (e.key === 'Enter') {
+      fetchDiscountCode(discountCode)
+    }
+  }
+  async function fetchDiscountCode(code) {
+    let data = {
+      discountCode: code,
+    }
+    const r1 = await fetch(`http://localhost:3001/api/cart-list/discount`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    const obj = await r1.json()
+    if (obj.length) {
+      const result = obj[0]
+      let perscentString = result.perscentString
+      let msg = result.discount_info + ' ' + perscentString + '折'
+      setDiscountMsg(msg)
+      setDiscountPerscent(result.perscent)
+    } else {
+      setDiscountMsg('折扣碼無效')
+      setDiscountPerscent(1)
+
+    }
+  }
 
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
@@ -166,7 +213,11 @@ const CartList = () => {
           <div className="cart-form">
             <div className="form-left">
               <div className="shipment">
-                <ListSelection/>
+                <ListSelection
+                  setShipFee={setShipFee}
+                  shipMethod={shipMethod}
+                  setShipMethod={setShipMethod}
+                />
               </div>
 
               <div className="discount">
@@ -177,10 +228,25 @@ const CartList = () => {
                       type="text"
                       className="form-control"
                       placeholder="輸入折扣碼"
+                      onChange={(e) => {
+                        setDiscountCode(e.target.value)
+                      }}
+                      onKeyPress={enter}
                     />
-                    <div className="form-text">錯誤/提示訊息</div>
+                    {discountMsg !== 0 ? (
+                      <div className="form-text">{discountMsg}</div>
+                    ) : (
+                      <div className="form-text"></div>
+                    )}
                   </div>
-                  <button className="btn btn-primary">使用折扣碼</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      fetchDiscountCode(discountCode)
+                    }}
+                  >
+                    使用折扣碼
+                  </button>
                 </div>
               </div>
             </div>
@@ -194,15 +260,15 @@ const CartList = () => {
                   </div>
                   <div className="table-row">
                     <p>運費</p>
-                    <p className="dollar-sign">60</p>
+                    <p className="dollar-sign">{shipFee}</p>
                   </div>
                   <div className="table-row">
                     <p>折扣碼</p>
-                    <p>DiscountCode</p>
+                    <p>{discountPerscent !== 1 ? discountMsg : ''}</p>
                   </div>
                   <div className="table-row">
                     <p>總計</p>
-                    <p className="dollar-sign total">{sakeTotal + giftTotal}</p>
+                    <p className="dollar-sign total">{allTotal}</p>
                   </div>
                 </div>
               </div>
