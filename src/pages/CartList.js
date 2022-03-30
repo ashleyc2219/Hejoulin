@@ -14,6 +14,8 @@ const CartList = () => {
   const [giftIncart, setGiftIncart] = useState([])
   const [sakeTotal, setSakeTotal] = useState(0)
   const [giftTotal, setGiftTotal] = useState(0)
+  const [discountCode, setDiscountCode] = useState('no code')
+  const [discountMsg, setDiscountMsg] = useState(0)
   const member_id = 4
   useEffect(() => {
     let a = true
@@ -89,6 +91,35 @@ const CartList = () => {
       a = false
     }
   }, [])
+  const enter = (e) => {
+    if (e.key === 'Enter') {
+      fetchDiscountCode(discountCode)
+    }
+  }
+  async function fetchDiscountCode(code) {
+    let data = {
+      discountCode: code,
+    }
+    const r1 = await fetch(`http://localhost:3001/api/cart-list/discount`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    const obj = await r1.json()
+    console.log(obj)
+    console.log(discountCode)
+    if (obj.length) {
+      const result = obj[0]
+      let perscentString = result.perscentString
+      let msg = result.discount_info + ' ' + perscentString + '折'
+      setDiscountMsg(msg)
+    } else {
+      setDiscountMsg('折扣碼無效')
+    }
+  }
 
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
@@ -166,7 +197,7 @@ const CartList = () => {
           <div className="cart-form">
             <div className="form-left">
               <div className="shipment">
-                <ListSelection/>
+                <ListSelection />
               </div>
 
               <div className="discount">
@@ -177,10 +208,25 @@ const CartList = () => {
                       type="text"
                       className="form-control"
                       placeholder="輸入折扣碼"
+                      onChange={(e) => {
+                        setDiscountCode(e.target.value)
+                      }}
+                      onKeyPress={enter}
                     />
-                    <div className="form-text">錯誤/提示訊息</div>
+                    {discountMsg !== 0 ? (
+                      <div className="form-text">{discountMsg}</div>
+                    ) : (
+                      <div className="form-text">預設狀態</div>
+                    )}
                   </div>
-                  <button className="btn btn-primary">使用折扣碼</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      fetchDiscountCode(discountCode)
+                    }}
+                  >
+                    使用折扣碼
+                  </button>
                 </div>
               </div>
             </div>
