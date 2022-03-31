@@ -48,11 +48,13 @@
     .list-table.morethantwo {
       height: 360px;
       overflow: hidden;
+      padding-bottom: 378px;
+      margin-bottom: 0;
     }
 
     .list-table {
       width: 100%;
-
+      margin-bottom: -28px;
       .table-head {
         width: 100%;
         background-color: rgba(187, 188, 189, 0.5);
@@ -91,7 +93,7 @@
         background-color: $gray-300;
         color: white;
         text-align: center;
-        margin: -27px auto 0;
+        margin: -13px auto 13px;
       }
       .table-row {
         display: flex;
