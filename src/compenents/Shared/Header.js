@@ -6,6 +6,7 @@ import Login from "../Member/LoginPages/Login";
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
+import AddCartModal from '../ProductList/AddCartModal';
 
 const Header = (props) => {
   const { user, setUser, setCartCount } = props
@@ -57,6 +58,7 @@ const Header = (props) => {
     <>
       <div className="Header">
         <div className="Header-container">
+        <AddCartModal />
           <div className="logo-bread">
             <Link to="/">
               <img className="logo" src="/Shared/logo.svg" alt="" />

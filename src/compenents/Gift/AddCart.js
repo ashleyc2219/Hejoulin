@@ -1,19 +1,24 @@
 import React from 'react'
-import './AddCartBtn.scss'
 import { CartCount } from '../../App'
 
-const AddCartBtn = ({ id, setCartCount, count }) => {
-  const addcart = async (num, pro_id) => {
-    
-    const a = count + num
+const AddCart = (props) => {
+  const { quality, kind, comfirmColor, sakeId, sakeId2, setCartCount } = props
+
+  const addcart = async (num) => {
+    const a = quality + num
+    console.log(quality, num)
     setCartCount(a)
 
     const data = {
       member_id: 4,
-      pro_id: `${pro_id}`,
-      cart_quantity: `${count}`,
+      cart_quantity: quality,
+      gift_id: kind,
+      box_color: comfirmColor,
+      pro_id01: `${sakeId}`,
+      pro_id02: `${sakeId2}`,
     }
-    
+    console.log(data)
+
     const settings = {
       method: 'POST',
       headers: {
@@ -24,27 +29,29 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3001/api/products-addcart',
+        'http://localhost:3001/api/gift_addcart',
         settings
       )
       const data = await fetchResponse.json()
-      console.log(data)
-      
+      if (data.success) {
+        // alert('已加入購物車')
+      }
     } catch (e) {
       return e
-    } 
+    }
   }
+
   return (
     <>
       <CartCount.Consumer>
         {(cartCount) => (
           <button
+            className="btn btn-primary btn-sm gift_cart"
             onClick={() => {
-              addcart(cartCount, id)
+              addcart(cartCount, kind, comfirmColor)
             }}
-            className="btn-sm btn-primary btn cart"
           >
-            <img src="/ProductList/cart-white.svg" alt="" />
+            <img src="/Gift/cart.svg" alt="" className="cart" />
             加入購物車
           </button>
         )}
@@ -53,4 +60,4 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
   )
 }
 
-export default AddCartBtn
+export default AddCart

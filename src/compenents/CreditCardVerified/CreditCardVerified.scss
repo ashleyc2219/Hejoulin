@@ -1,0 +1,143 @@
+@import './../../styles/mixin.scss';
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+
+.CreditCardVerified {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  .Verified-container {
+    margin: 0 auto;
+    width: 450px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 14px;
+    .logo {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      column-gap: 100px;
+      padding: 0 59px;
+
+      img {
+        width: 130px;
+        height: fit-content;
+        &:last-child {
+          width: 150px;
+        }
+      }
+    }
+    .title {
+      width: 100%;
+      padding: 50px 0 15px 20px;
+      color: $gray-300;
+      margin: 0;
+    }
+    .card-main {
+      display: flex;
+      width: 100%;
+      .left {
+        width: 55%;
+        p {
+          width: 100%;
+          text-align: end;
+          margin: 0;
+          padding: 5px;
+        }
+      }
+      .right {
+        width: 45%;
+        p {
+          width: 100%;
+          text-align: start;
+          margin: 0;
+          padding: 5px;
+        }
+        .price {
+          font-weight: 700;
+        }
+        .input {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          input {
+            height: 25px;
+            width: 150px;
+            margin: 0;
+          }
+          button {
+            width: 50px;
+            margin: 0;
+            border-radius: 3px;
+          }
+        }
+        button {
+          width: 150px;
+          margin-top: 10px;
+          border-radius: 3px;
+        }
+        .illustrate {
+          margin-top: 10px;
+          display: flex;
+          margin-left: 30px;
+          align-items: center;
+          column-gap: 10px;
+          a {
+            text-decoration: underline;
+            span {
+              display: inline-block;
+              text-align: center;
+              line-height: 16px;
+              width: 16px;
+              height: 16px;
+              background-color: rgb(239, 101, 55);
+              color: white;
+            }
+            width: fit-content;
+          }
+        }
+      }
+    }
+    .precautions {
+      p {
+        color: rgb(239, 101, 55);
+        font-weight: 700;
+      }
+      ol {
+        width: 80%;
+        margin-left: auto;
+        color: rgb(239, 101, 55);
+        font-weight: 700;
+      }
+    }
+  }
+}
