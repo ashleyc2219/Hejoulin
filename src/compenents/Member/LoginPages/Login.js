@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import '../../../styles/Member/Member-Login/LoginContext.scss'
 import Register from './Register'
 import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
 import FinishRegister from './FinishRegister'
 import SetNewPass from './SetNewPass'
-import LilMemberCenter from "./LilMemberCenter";
+import LilMemberCenter from './LilMemberCenter'
 
 const Login = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
-  //const [goVerify, setGoVerify] = useState('register')
-
   const APILogin = 'http://localhost:3001/login/login'
   const API = 'http://localhost:3001/user/api/auth-list'
   let history = useHistory()

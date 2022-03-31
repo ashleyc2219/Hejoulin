@@ -7,6 +7,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
   const [valueY, setValueY] = useState('')
   const [valueM, setValueM] = useState('')
   const [valueD, setValueD] = useState('')
+  const [rs, setRs] = useState(undefined)
 
   useEffect(() => {
     ;(async () => {
@@ -80,9 +81,17 @@ const ProfileBox = ({ memberData, setMemberData }) => {
     console.log(updateAction)
     if (updateAction.success === true) {
       // 更新成功
+      setRs(updateAction)
     }
   }
-
+  console.log(rs)
+  function resultCheck() {
+    if (rs && rs.success === true) {
+      return 'grey'
+    } else {
+      return 'red'
+    }
+  }
   return (
     <>
       <div className="ProfileBox">
@@ -107,7 +116,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
               key="memberName"
               placeholder={memberName(memberData)}
             />
-            <div className="form-text">錯誤/提示訊息</div>
+            <div className="form-text displayNone">錯誤/提示訊息</div>
           </div>
           <br />
           <div className="mb-3 ProfileBox-Item">
@@ -120,7 +129,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
               key="memberMob"
               placeholder={memberMobile(memberData)}
             />
-            <div className="form-text">錯誤/提示訊息</div>
+            <div className="form-text displayNone">錯誤/提示訊息</div>
           </div>
           <br />
           <div className="mb-3 ProfileBox-Item ProfileBox-Item-Last">
@@ -132,6 +141,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
                 onChange={(e) => {
                   setValueY(e.target.value)
                 }}
+                name="birY"
               >
                 {Array(122)
                   .fill(0)
@@ -149,6 +159,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
                 onChange={(e) => {
                   setValueM(e.target.value)
                 }}
+                name="birM"
               >
                 {Array(12)
                   .fill(0)
@@ -166,6 +177,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
                 onChange={(e) => {
                   setValueD(e.target.value)
                 }}
+                name="birD"
               >
                 {Array(31)
                   .fill(0)
@@ -177,7 +189,16 @@ const ProfileBox = ({ memberData, setMemberData }) => {
               </select>
             </div>
           </div>
-          <div className="form-text displayNone">錯誤/提示訊息</div>
+          <div
+            className="form-text rsMsg"
+            id="displayRs"
+            style={{
+              color: resultCheck(),
+              display: resultCheck() === 'grey' ? 'inline-block' : 'none',
+            }}
+          >
+            修改成功
+          </div>
           <br />
           <button type="submit" className="btn btn-primary profile-btn">
             確認修改資料
