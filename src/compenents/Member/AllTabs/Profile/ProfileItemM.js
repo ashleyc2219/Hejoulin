@@ -1,54 +1,54 @@
 import React from 'react'
 
-const ProfileItem = [
+const ProfileItemM = [
   {
-    itemName: '一月',
+    itemName: '1',
     itemType: '月',
   },
   {
-    itemName: '二月',
+    itemName: '2',
     itemType: '月',
   },
   {
-    itemName: '三月',
+    itemName: '3',
     itemType: '月',
   },
   {
-    itemName: '四月',
+    itemName: '4',
     itemType: '月',
   },
   {
-    itemName: '五月',
+    itemName: '5',
     itemType: '月',
   },
   {
-    itemName: '六月',
+    itemName: '6',
     itemType: '月',
   },
   {
-    itemName: '七月',
+    itemName: '7',
     itemType: '月',
   },
   {
-    itemName: '八月',
+    itemName: '8',
     itemType: '月',
   },
   {
-    itemName: '九月',
+    itemName: '9',
     itemType: '月',
   },
   {
-    itemName: '十月',
+    itemName: '10',
     itemType: '月',
   },
   {
-    itemName: '十一月',
+    itemName: '11',
     itemType: '月',
   },
   {
-    itemName: '十二月',
+    itemName: '12',
     itemType: '月',
   },
 ]
 
-export default ProfileItem
+export default ProfileItemM
