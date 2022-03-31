@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import NoResult from '../ProductList/NoResult'
 
 const EventCard = ({ sort, searchword }) => {
   const [data, setData] = useState([])
+  const [noresult, setNoresult] = useState(false)
   const event_card = data.map((v, i) => {
     let a
     let b
@@ -47,7 +49,6 @@ const EventCard = ({ sort, searchword }) => {
         setData(obj1)
       }
     }
-
     fetchData()
     return () => {
       a = false
@@ -78,13 +79,17 @@ const EventCard = ({ sort, searchword }) => {
       }
       if (searchword.length > 0) {
         obj = obj.filter(function (v, i) {
-          console.log(searchword)
           return v.event_name.toUpperCase().includes(searchword.toUpperCase())
         })
       }
-
-      setData(obj)
-      console.log(data)
+      if (a) {
+        if (obj.length === 0) {
+          setNoresult(true)
+        } else {
+          setNoresult(false)
+        }
+        setData(obj)
+      }
     }
 
     fetchData()
@@ -93,7 +98,7 @@ const EventCard = ({ sort, searchword }) => {
       a = false
     }
   }, [sort, searchword])
-  return <>{event_card}</>
+  return <>{noresult ? <NoResult /> : event_card}</>
 }
 
 export default EventCard

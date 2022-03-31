@@ -44,9 +44,7 @@ const ProductModal = (props) => {
               <img src="/Gift/Right.svg" className="right_arrow" alt="" />
             </button>
             <div className="sake_button">
-              <div className="center">
-                <SakeButton />
-              </div>
+              <div className="center">{/* <SakeButton /> */}</div>
             </div>
           </div>
           <div className="info">
@@ -104,9 +102,7 @@ const ProductModal = (props) => {
             <div className="close" onClick={closeHandle}></div>
             {modal}
             <div className="mobile_sake_button">
-              <div className="mobile_center">
-                <SakeButton />
-              </div>
+              <div className="mobile_center">{/* <SakeButton /> */}</div>
             </div>
           </main>
         </div>

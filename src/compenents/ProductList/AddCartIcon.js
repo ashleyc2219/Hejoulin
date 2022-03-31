@@ -2,11 +2,11 @@ import React from 'react'
 import { CartCount } from '../../App'
 import './AddCartIcon.scss'
 
-const AddCartIcon = ({ id, setCartCount, count }) => {
+const AddCartIcon = ({ id, setCartCount, count, setAddcartmodal }) => {
   const addcart = async (num, pro_id) => {
     const a = count + num
     setCartCount(a)
- 
+
     const data = {
       member_id: 4,
       pro_id: `${pro_id}`,
@@ -27,7 +27,7 @@ const AddCartIcon = ({ id, setCartCount, count }) => {
       )
       const data = await fetchResponse.json()
       if (data.success) {
-        alert('已加入購物車')
+        setAddcartmodal(true)
       }
     } catch (e) {
       return e

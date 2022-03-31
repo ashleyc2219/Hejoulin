@@ -31,6 +31,15 @@
   }
 }
 
+@keyframes number {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -637,6 +646,10 @@
   .ProductDetail .product-container .main-detail .center-container .product-wrap .product-info .add-cart .add-minus .number {
     width: 40px;
   }
+}
+
+.ProductDetail .product-container .main-detail .center-container .product-wrap .product-info .add-cart .add-minus .numberanimate {
+  animation: number .2s;
 }
 
 .ProductDetail .product-container .main-detail .center-container .product-wrap .product-info .add-cart .add-minus .plus {

@@ -1,20 +1,21 @@
 import React, { useEffect, useState, memo } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
-import LoginContext from '../Member/LoginPages/LoginContext'
 import { useLocation } from 'react-router-dom'
+import Login from '../Member/LoginPages/Login'
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
+import AddCartModal from '../ProductList/AddCartModal'
 
 const Header = (props) => {
-  const { user, setUser, setCartCount } = props
+  const { user, setUser, setCartCount, addcartmodal } = props
   const [sidebar, setSidebar] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
   const location = useLocation()
-
+  console.log(addcartmodal)
   const getQuantity = async () => {
     const data = { member_id: 4 }
     const settings = {
@@ -57,6 +58,8 @@ const Header = (props) => {
     <>
       <div className="Header">
         <div className="Header-container">
+          {addcartmodal ? <AddCartModal /> : ''}
+
           <div className="logo-bread">
             <Link to="/">
               <img className="logo" src="/Shared/logo.svg" alt="" />
@@ -78,10 +81,10 @@ const Header = (props) => {
                     <Link to="/product/list">選購清酒</Link>
                   </li>
                   <li href="">
-                    <Link to="/sake-guide">選酒指南</Link>
+                    <Link to="/gift">禮盒系列</Link>
                   </li>
                   <li href="">
-                    <Link to="/gift">禮盒系列</Link>
+                    <Link to="/sake-guide">選酒指南</Link>
                   </li>
                 </ul>
               </li>
@@ -135,14 +138,12 @@ const Header = (props) => {
               alt=""
             />
           </li>
-          <LoginContext
+          <Login
             user={user}
             setUser={setUser}
             sidebar={sidebar}
             setSidebar={setSidebar}
           />
-          {/*<EmailVerify />*/}
-          {/*<PassForget />*/}
         </ul>
       </nav>
       <div className="mobile-menu">
@@ -196,13 +197,13 @@ const Header = (props) => {
                   </Link>
                 </li>
                 <li className={open ? 'showLi ' : ''}>
-                  <Link onClick={setmobilemenu} to="/sake-guide">
-                    選酒指南
+                  <Link onClick={setmobilemenu} to="/gift">
+                    禮盒系列
                   </Link>
                 </li>
                 <li className={open ? 'showLi ' : ''}>
-                  <Link onClick={setmobilemenu} to="/gift">
-                    禮盒系列
+                  <Link onClick={setmobilemenu} to="/sake-guide">
+                    選酒指南
                   </Link>
                 </li>
               </ul>

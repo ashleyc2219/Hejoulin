@@ -1,27 +1,31 @@
 import React, { useState } from 'react'
 import '../../../styles/Member/Member-Login/SetNewPass.scss'
 
-const SetNewPass = (props) => {
+const SetNewPass = ({ row, setRow }) => {
   const [sPass, setSPass] = useState(false)
   const [newPass, setNewPass] = useState('')
   const [newConfPass, setConfNewPass] = useState('')
   const [pass, setPass] = useState(false)
-  const { page, setPage } = props
-  const APISetPass = 'http://localhost:3001/user/member-passChange'
+
+  const APISetPass = 'http://localhost:3001/user/member/forgetPassChange'
+
   function changeShowPass() {
     setSPass(!sPass)
   }
-  const whenSubmit = async (event) => {
+
+  const whenPassSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
-    localStorage.getItem('email')
-    const fd = new FormData(document.form2)
+    const userAccount = localStorage.getItem('email')
+    const fd = new FormData(document.formP)
+    fd.append('email', userAccount)
     const r = await fetch(APISetPass, {
-      method: 'POST',
+      method: 'PUT',
       body: fd,
     })
     const obj = await r.json()
     console.log(obj)
   }
+
   function handleInputChangePwd(event) {
     setPass(true)
     setNewPass(event.target.value)
@@ -90,9 +94,15 @@ const SetNewPass = (props) => {
       <div className="SetNewPass">
         <div className="SetNewPassBox">
           <div className="mb-3">
-            <form name="formP" className="setPassForm" onSubmit={whenSubmit}>
+            <form
+              name="formP"
+              className="setPassForm"
+              onSubmit={whenPassSubmit}
+            >
               <div className="pass-g">
-                <label className="form-label">請輸入新密碼</label>
+                <label htmlFor="user_pass" className="form-label">
+                  請輸入新密碼
+                </label>
                 <input
                   type={sPass ? 'text' : 'password'}
                   className="form-control mb-3"
@@ -134,9 +144,11 @@ const SetNewPass = (props) => {
                 </div>
               </div>
               <div className="passConf-g">
-                <label className="form-label">再次請輸入新密碼</label>
+                <label className="form-label" htmlFor="user_passConf">
+                  再次請輸入新密碼
+                </label>
                 <input
-                  type="text"
+                  type="password"
                   className="form-control mb-3"
                   id="user_passConf"
                   name="user_passConf"
@@ -185,7 +197,6 @@ const SetNewPass = (props) => {
                   送出
                 </button>
               )}
-              >
             </form>
           </div>
         </div>

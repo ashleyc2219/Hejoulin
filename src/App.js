@@ -39,6 +39,7 @@ import Header from './compenents/Shared/Header'
 import Footer from './compenents/Shared/Footer'
 import { createContext, useState } from 'react'
 export const CartCount = createContext('defaultvalue')
+export const CartSummary = createContext('default')
 
 function App() {
   const AuthContext = createContext(null)
@@ -46,14 +47,21 @@ function App() {
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [memberId, setMemberId] = useState({})
+  // subPlan, subTime 溝通用的state
   const [subPlan, setSubPlan] = useState([])
-
+  const [subPlanTotal, setSubPlanTotal] = useState(0)
+  // subTime subConfirm溝通用的state
+  const [subTimeTotal, setSubTimeTotal] = useState(0)
+  const [subTimeMonth, setSubTimeMonth] = useState(0)
+  const [cartSummary, setCartSummary] = useState(['lol'])
+  //加入購物車的提示光箱
+  const[addcartmodal , setAddcartmodal] = useState(false)
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Router>
         <>
           <CartCount.Provider value={cartCount}>
-            <Header user={user} setUser={setUser} setCartCount={setCartCount} />
+            <Header user={user} setUser={setUser} setCartCount={setCartCount} addcartmodal={addcartmodal}/>
           </CartCount.Provider>
           <Switch>
             <Route exact path="/news/detail/:id">
@@ -71,6 +79,7 @@ function App() {
                   compare={compare}
                   setCompare={setCompare}
                   setCartCount={setCartCount}
+                  setAddcartmodal={setAddcartmodal}
                 />
               </CartCount.Provider>
             </Route>
@@ -80,6 +89,7 @@ function App() {
                   compare={compare}
                   setCompare={setCompare}
                   setCartCount={setCartCount}
+                  setAddcartmodal={setAddcartmodal}
                 />
               </CartCount.Provider>
             </Route>
@@ -87,7 +97,7 @@ function App() {
               <SakeGuide />
             </Route>
             <Route exact path="/gift">
-              <Gift />
+              <Gift setCartCount={setCartCount} />
             </Route>
             <Route exact path="/mark/intro">
               <MarkIntro />
@@ -99,13 +109,27 @@ function App() {
               <MarkDone />
             </Route>
             <Route exact path="/sub/plan">
-              <SubPlan subPlan={subPlan} setSubPlan={setSubPlan} />
+              <SubPlan
+                subPlan={subPlan}
+                setSubPlan={setSubPlan}
+                subPlanTotal={subPlanTotal}
+                setSubPlanTotal={setSubPlanTotal}
+              />
             </Route>
             <Route exact path="/sub/time">
-              <SubTime subPlan={subPlan} setSubPlan={setSubPlan} />
+              <SubTime
+                subPlan={subPlan}
+                subPlanTotal={subPlanTotal}
+                setSubTimeTotal={setSubTimeTotal}
+                setSubTimeMonth={setSubTimeMonth}
+              />
             </Route>
             <Route exact path="/sub/confirm">
-              <SubConfirm />
+              <SubConfirm
+                subPlan={subPlan}
+                subTimeTotal={subTimeTotal}
+                subTimeMonth={subTimeMonth}
+              />
             </Route>
             <Route exact path="/sub/cart-list">
               <SubCartList />
@@ -126,10 +150,14 @@ function App() {
               <EventList />
             </Route>
             <Route exact path="/cart/list">
-              <CartList />
+              <CartSummary.Provider value={cartSummary}>
+                <CartList setCartSummary={setCartSummary} />
+              </CartSummary.Provider>
             </Route>
             <Route exact path="/cart/info">
-              <CartInfo />
+              <CartSummary.Provider value={cartSummary}>
+                <CartInfo />
+              </CartSummary.Provider>
             </Route>
             <Route exact path="/cart/verify">
               <CartVerify />

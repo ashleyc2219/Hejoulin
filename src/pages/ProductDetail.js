@@ -18,7 +18,7 @@ const ProductDetail = (props) => {
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
 
-  const { compare, setCompare, setCartCount } = props
+  const { compare, setCompare, setCartCount, setAddcartmodal } = props
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
@@ -26,24 +26,33 @@ const ProductDetail = (props) => {
   const [reload, setReload] = useState(0)
 
   const [spin, setSpin] = useState(true)
+  const [animate, setAnimate] = useState(false)
 
   const linkFavhandler = () => {
     setlinkFav(linkFav + 1)
   }
 
   const minus = () => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 100)
     if (count > 1) {
       setCount(count - 1)
     }
   }
   const add = () => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 100)
     if (count < 20) {
       setCount(count + 1)
     }
   }
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
-  
+
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -103,7 +112,9 @@ const ProductDetail = (props) => {
                 <div onClick={minus} className="minus">
                   <img src="/ProductList/minus-circle.svg" alt="" />
                 </div>
-                <div className="number">{count}</div>
+                <div className={animate ? 'number numberanimate' : 'number'}>
+                  {count}
+                </div>
                 <div onClick={add} className="plus">
                   <img src="/ProductList/plus-circle.svg" alt="" />
                 </div>
@@ -125,6 +136,7 @@ const ProductDetail = (props) => {
                 id={v.pro_id}
                 setCartCount={setCartCount}
                 count={count}
+                setAddcartmodal={setAddcartmodal}
               />
             </div>
             <div className="intro">
@@ -341,6 +353,7 @@ const ProductDetail = (props) => {
           comparePro2={comparePro2}
           comparePro3={comparePro3}
           setCartCount={setCartCount}
+          setAddcartmodal={setAddcartmodal}
         />
       ) : (
         ''

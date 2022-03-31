@@ -9,6 +9,7 @@ import '../../../../styles/Member/TabComponent/Tabs.scss'
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('tab1')
+  const [memberData, setMemberData] = useState({})
 
   return (
     <div className="Tabs">
@@ -41,10 +42,10 @@ const Tabs = () => {
       </div>
       <div className="outlet">
         <TabContent id="tab1" activeTab={activeTab}>
-          <ProfileBox />
+          <ProfileBox memberData={memberData} setMemberData={setMemberData} />
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
-          <AddressBox />
+          <AddressBox memberData={memberData} setMemberData={setMemberData} />
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
           <PassBox />

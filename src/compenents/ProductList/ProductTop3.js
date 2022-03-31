@@ -6,7 +6,12 @@ import CompareBtn from './CompareBtn'
 import AddCartIcon from './AddCartIcon'
 import { cleanup } from '@testing-library/react'
 
-const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
+const ProductTop3 = ({
+  compare,
+  setCompare,
+  setCartCount,
+  setAddcartmodal,
+}) => {
   const [top, setTop] = useState([])
   const [count, setCount] = useState(1)
 
@@ -72,6 +77,7 @@ const ProductTop3 = ({ compare, setCompare, setCartCount }) => {
               id={v.pro_id}
               compare={compare}
               setCompare={setCompare}
+              setAddcartmodal={setAddcartmodal}
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
