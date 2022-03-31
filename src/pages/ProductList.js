@@ -16,7 +16,6 @@ import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 import GuideButton from '../compenents/SakeGuide/Guide'
 import ChooseCartMarkModal from '../compenents/Cart/ChooseCartMarkModal'
-import CreditCardVerified from '../compenents/CreditCardVerified/CreditCardVerified'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
