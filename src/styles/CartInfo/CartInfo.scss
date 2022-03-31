@@ -42,17 +42,19 @@
       overflow: hidden;
     }
     .list-table.two {
-      height: 390px;
+      height: 360px;
       overflow: hidden;
     }
     .list-table.morethantwo {
-      height: 390px;
+      height: 360px;
       overflow: hidden;
+      padding-bottom: 378px;
+      margin-bottom: 0;
     }
 
     .list-table {
       width: 100%;
-
+      margin-bottom: -28px;
       .table-head {
         width: 100%;
         background-color: rgba(187, 188, 189, 0.5);
@@ -91,7 +93,7 @@
         background-color: $gray-300;
         color: white;
         text-align: center;
-        margin: -27px auto 0;
+        margin: -13px auto 13px;
       }
       .table-row {
         display: flex;
@@ -202,44 +204,6 @@
         }
       }
     }
-    .credit-card {
-      width: 100%;
-      .credit-card-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        column-gap: 10px;
-
-        .credit-card-img {
-          width: 335px;
-          @include medium {
-            display: none;
-          }
-        }
-        .card-info {
-          width: 219px;
-          @include medium {
-            width: 100%;
-          }
-          input {
-            width: 100%;
-          }
-          .date-code-container {
-            display: flex;
-            justify-content: space-between;
-            .expire-date {
-              width: 50%;
-            }
-            .security-code {
-              width: 47%;
-            }
-          }
-        }
-      }
-    }
-
     .buttons {
       display: flex;
       column-gap: 10px;

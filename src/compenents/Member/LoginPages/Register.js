@@ -3,7 +3,7 @@ import '../../../styles/Member/Member-Login/RegisterContext.scss'
 import EmailVerify from './EmailVerify'
 import FinishRegister from './FinishRegister'
 
-const RegisterContext = (props) => {
+const Register = (props) => {
   const { user, setUser, row, setRow, sidebar, setSidebar } = props
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
@@ -302,4 +302,4 @@ const RegisterContext = (props) => {
   )
 }
 
-export default RegisterContext
+export default Register

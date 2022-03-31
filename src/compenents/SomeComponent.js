@@ -15,8 +15,15 @@ const SomeComponent = () => {
       </p>
       <div className="d-flex">
         <div className="pantone-container">
-          <motion.div onHoverStart={e => {console.log('enter')}}
-  onHoverEnd={e => {console.log('leave')}} className="pantone primary"></motion.div>
+          <motion.div
+            onHoverStart={(e) => {
+              console.log('enter')
+            }}
+            onHoverEnd={(e) => {
+              console.log('leave')
+            }}
+            className="pantone primary"
+          ></motion.div>
           <p>primary</p>
         </div>
         <div className="pantone-container">
