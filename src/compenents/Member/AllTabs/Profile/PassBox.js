@@ -78,6 +78,7 @@ const PassBox = () => {
   const whenNewPassSub = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     const fd = new FormData(document.formPass)
+    // 令一個空物件來裝FormData //遍歷開
     let obj = {}
     fd.forEach(function (value, key) {
       obj[key] = value
@@ -110,6 +111,7 @@ const PassBox = () => {
       }
     }
   }
+
   return (
     <>
       <div className="PassBox">

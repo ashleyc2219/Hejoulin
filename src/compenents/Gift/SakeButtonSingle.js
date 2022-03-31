@@ -4,28 +4,29 @@ import './SakeButtonSingle.scss'
 
 const SakeButtonSingle = (props) => {
   const {
-    sakeId,
-    setSakeId,
-    name,
-    setName,
-    img,
-    setImg,
-    price,
-    setPrice,
     conName,
     setConName,
     currentPrice,
+    setCurrentPrice,
     currentName,
+    setCurrentName,
     currentId,
-    count,
-    setCount,
+    setCurrentId,
+    currentImg,
+    setCurrentImg,
     value,
-    total,
+    item,
+    setItem,
+    sakeButton,
+    setSakeButton,
+    id,
+    pro_id,
+    setStep,
+    
   } = props
 
   let disable = false
 
-  const [sakeButton, setSakeButton] = useState(0)
   const [click, setClick] = useState(0)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -71,23 +72,18 @@ const SakeButtonSingle = (props) => {
       <div
         className="SakeButton"
         onClick={() => {
-          total()
           setBtn()
-          console.log('1', sakeId, name, price)
-          console.log('current:', value.current)
-          console.log('currentId', currentId)
         }}
       >
-        {sakeButton === 0 && (
+        {sakeButton === 0 &&  (
           <button
             className="sake empty"
             disabled={disable}
             onClick={() => {
               setSakeButton(1)
-              // setCount(currentId)
               plus()
-              console.log('count', count)
-              // updateItem()
+              setItem(1)
+              setStep('three')
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />
@@ -105,20 +101,6 @@ const SakeButtonSingle = (props) => {
             >
               <img src="/Gift/gray_sake.svg" alt="" className="sake single" />
               <span>已選一瓶</span>
-            </button>
-            <button
-              className="cancel"
-              onClick={() => {
-                setSakeButton(0)
-                minus()
-                setSakeId('')
-                setName('')
-                setPrice('')
-                console.log(count)
-              }}
-            >
-              <img src="/Gift/cancel.svg" alt="" className="circle" />
-              <span>取消</span>
             </button>
           </>
         )}
