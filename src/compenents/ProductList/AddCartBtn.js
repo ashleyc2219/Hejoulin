@@ -2,9 +2,8 @@ import React from 'react'
 import './AddCartBtn.scss'
 import { CartCount } from '../../App'
 
-const AddCartBtn = ({ id, setCartCount, count }) => {
+const AddCartBtn = ({ id, setCartCount, count, setAddcartmodal }) => {
   const addcart = async (num, pro_id) => {
-    
     const a = count + num
     setCartCount(a)
 
@@ -13,7 +12,7 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
       pro_id: `${pro_id}`,
       cart_quantity: `${count}`,
     }
-    
+
     const settings = {
       method: 'POST',
       headers: {
@@ -28,11 +27,12 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
         settings
       )
       const data = await fetchResponse.json()
-      console.log(data)
-      
+      if (data.success) {
+        setAddcartmodal(true)
+      }
     } catch (e) {
       return e
-    } 
+    }
   }
   return (
     <>

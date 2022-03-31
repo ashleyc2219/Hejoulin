@@ -1,12 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+// 驗證電話號碼套件
+import Input from 'react-phone-number-input/input'
+import { isValidPhoneNumber } from 'react-phone-number-input'
+// 驗證電子信箱
+import validator from 'validator'
+
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import smoothscroll from 'smoothscroll-polyfill'
 import { CartSummary } from './../App'
 // 信用卡
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
@@ -14,12 +20,42 @@ const hunel = new HunelCreditCard()
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
-  console.log(CartSummary._currentValue)
+  // console.log(CartSummary._currentValue)
   let cartSummaryInfo = CartSummary._currentValue
   // TODO: 可能要換狀態名稱，不然會跟CartList相撞
+  // 接清酒跟禮盒的資料
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
+  // 左邊清單的收合
   const [collapseClass, setCollapseClass] = useState('')
+  // 表單資料 接資料
+  const [buyerName, setBuyerName] = useState('')
+  const [buyerMobile, setBuyerMobile] = useState('')
+  const [buyerEmail, setBuyerEmail] = useState('')
+  const [receiverName, setReceiverName] = useState('')
+  const [receiverMobile, setReceiverMobile] = useState('')
+  const [receiverAddress, setReceiverAddress] = useState('')
+  // 信用卡資料
+  const [cardNum, setCardNum] = useState('')
+  const [cardHolder, setCardHolder] = useState('')
+  const [cardMonth, setCardMonth] = useState('')
+  const [cardYear, setCardYear] = useState('')
+  const [cardCvv, setCardCvv] = useState('')
+  const [numberValid, setNumberValid] = useState(false)
+
+  // 表單檢查 讓輸入框變紅色
+  const [passBuyerName, setPassBuyerName] = useState('defualt')
+  const [passBuyerMobile, setPassBuyerMobile] = useState('defualt')
+  const [passBuyerEmail, setPassBuyerEmail] = useState('defualt')
+  const [passReceiverName, setPassReceiverName] = useState('defualt')
+  const [passReceiverMobile, setPassReceiverMobile] = useState('defualt')
+  const [passReceiverAddress, setPassReceiverAddress] = useState('defualt')
+  const [passCardNum, setPassCardNum] = useState(false)
+  const [passCardHolder, setPassCardHolder] = useState('default')
+  const [passCardCvv, setPassCardCvv] = useState('default')
+  const [passThrough, setPassThrough] = useState(false)
+  // 讓border變紅色
+  const [warning, setWarning] = useState('no')
 
   useEffect(() => {
     let a = true
@@ -101,15 +137,132 @@ const CartInfo = () => {
     }
   }
   function openCloseHandler() {
-    if (collapseClass == 'list-table morethantwo') {
+    if (collapseClass === 'list-table morethantwo') {
       setCollapseClass('list-table')
     }
-    if (collapseClass == 'list-table') {
+    if (collapseClass === 'list-table') {
       setCollapseClass('list-table morethantwo')
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
   }
+  // 取得表單資料 後簡禪表單資料
+  function formCheck() {
+    let data = {
+      buyerName: buyerName,
+      buyerMobile: buyerMobile,
+      buyerEmail: buyerEmail,
+      receiverName: receiverName,
+      receiverMobile: receiverMobile,
+      receiverAddress: receiverAddress,
+      cardNum: cardNum,
+    }
+
+    // 驗證 表單資料
+    // 購買人
+    if (buyerName.length >= 2) {
+      setPassBuyerName(true)
+
+    } else {
+      setPassBuyerName(false)
+      setPassThrough(false)
+    }
+
+    if (buyerMobile && isValidPhoneNumber(buyerMobile)) {
+      setPassBuyerMobile(true)
+    } else {
+      setPassBuyerMobile(false)
+      setPassThrough(false)
+    }
+    if (validator.isEmail(buyerEmail)) {
+      setPassBuyerEmail(true)
+    } else {
+      setPassBuyerEmail(false)
+      setPassThrough(false)
+    }
+    // 收件人
+    if (receiverName.length >= 2) {
+      setPassReceiverName(true)
+    } else {
+      setPassReceiverName(false)
+      setPassThrough(false)
+    }
+    if (receiverMobile && isValidPhoneNumber(receiverMobile)) {
+      setPassReceiverMobile(true)
+    } else {
+      setPassReceiverMobile(false)
+      setPassThrough(false)
+    }
+    if (receiverAddress.length >= 10) {
+      setPassReceiverAddress(true)
+    } else {
+      setPassReceiverAddress(false)
+      setPassThrough(false)
+    }
+    // 信用卡資訊
+    // 用元件內的套件檢查 會更新numberValid，再用numberValid做確認
+    if (numberValid === true) {
+      setPassCardNum(true)
+    } else {
+      setPassCardNum(false)
+      setPassThrough(false)
+    }
+    if (cardHolder.length >= 3) {
+      setPassCardHolder(true)
+    } else {
+      setPassCardHolder(false)
+      setPassThrough(false)
+    }
+    if (cardCvv.length === 3) {
+      setPassCardCvv(true)
+    } else {
+      setPassCardCvv(false)
+      setPassThrough(false)
+    }
+
+    let pass = {
+      passBuyerName: passBuyerName,
+      passBuyerMobile: passBuyerMobile,
+      passBuyerEmail: passBuyerEmail,
+      passReceiverName: passReceiverName,
+      passReceiverMobile: passReceiverMobile,
+      passReceiverAddress: passReceiverAddress,
+      passCardNum: passCardNum,
+      passCardHolder: passCardHolder,
+      passCardCvv: passCardCvv,
+    }
+    if (buyerName&&
+    buyerMobile&&
+    buyerEmail&&
+    receiverName&&
+    receiverMobile&&
+    receiverAddress&&
+    cardNum&&
+    cardHolder&&
+    cardCvv) {
+      setPassThrough(true)
+      console.log('pass', pass)
+      console.log('data', data)
+      console.log('cvv', cardCvv.length)
+    }
+    console.log('cvv', cardCvv.length, passCardCvv)
+    console.log('pass', pass)
+  }
+  useEffect(() => {
+    formCheck()
+    // setWarning()
+  }, [
+    buyerName,
+    buyerMobile,
+    buyerEmail,
+    receiverName,
+    receiverMobile,
+    receiverAddress,
+    cardNum,
+    cardHolder,
+    cardCvv,
+  ])
+
   return (
     <div className="CartInfo">
       <ProgressBar step="two" content={stepContent} />
@@ -177,17 +330,32 @@ const CartInfo = () => {
                 <label className="form-label">購買人姓名</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={
+                    passBuyerName === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
                   placeholder="真實姓名"
+                  value={buyerName}
+                  onChange={(e) => {
+                    setBuyerName(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
               <div className="buyer-mobile">
                 <label className="form-label">手機號碼</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="0912-345678"
+                <Input
+                  international
+                  className={
+                    passBuyerMobile === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
+                  placeholder="0912 345 678"
+                  country="TW"
+                  value={buyerMobile}
+                  onChange={setBuyerMobile}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
@@ -195,7 +363,18 @@ const CartInfo = () => {
             <div className="buyer-email-check">
               <div className="buyer-email">
                 <label className="form-label">電子信箱</label>
-                <input type="text" className="form-control" />
+                <input
+                  type="text"
+                  className={
+                    passBuyerEmail === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
+                  value={buyerEmail}
+                  onChange={(e) => {
+                    setBuyerEmail(e.target.value)
+                  }}
+                />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
               <div className="sub-check">
@@ -222,17 +401,32 @@ const CartInfo = () => {
                 <label className="form-label">收件人姓名</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={
+                    passReceiverName === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
                   placeholder="真實姓名"
+                  value={receiverName}
+                  onChange={(e) => {
+                    setReceiverName(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
               <div className="receiver-mobile">
                 <label className="form-label">手機號碼</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="0912-345678"
+                <Input
+                  international
+                  className={
+                    passReceiverMobile === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
+                  placeholder="0912 345 678"
+                  country="TW"
+                  value={receiverMobile}
+                  onChange={setReceiverMobile}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
@@ -257,8 +451,16 @@ const CartInfo = () => {
               <div className="full-address">
                 <input
                   type="text"
-                  className="form-control"
+                  className={
+                    passReceiverAddress === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
+                  }
                   placeholder="仁愛路4段29號1樓"
+                  value={receiverAddress}
+                  onChange={(e) => {
+                    setReceiverAddress(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
@@ -270,62 +472,43 @@ const CartInfo = () => {
               <h5>信用卡資訊</h5>
             </div>
             <HunelProvider config={hunel}>
-              <InfoCreditCard />
+              <InfoCreditCard
+                cardNum={cardNum}
+                setCardNum={setCardNum}
+                setNumberValid={setNumberValid}
+                passCardNum={passCardNum}
+                passCardHolder={passCardHolder}
+                passCardCvv={passCardCvv}
+                cardHolder={cardHolder}
+                cardMonth={cardMonth}
+                cardYear={cardYear}
+                setCardHolder={setCardHolder}
+                setCardMonth={setCardMonth}
+                setCardYear={setCardYear}
+                setCardCvv={setCardCvv}
+                warning={warning}
+              />
             </HunelProvider>
-            {/* <div className="credit-card-container">
-              ,
-              <div className="credit-card-img">
-                <img src="/CartList/card.svg" alt="" />
-              </div>
-              <div className="card-info">
-                <div className="card-num">
-                  <label className="form-label">信用卡卡號</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="0000 0000 0000 0000"
-                  />
-                  <div className="form-text">錯誤/提示訊息</div>
-                </div>
-                <div className="date-code-container">
-                  <div className="expire-date">
-                    <label className="form-label">有效年月</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="MM/YY"
-                    />
-                    <div className="form-text">錯誤/提示訊息</div>
-                  </div>
-                  <div className="security-code">
-                    <label className="form-label">安全碼</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="000"
-                    />
-                    <div className="form-text">錯誤/提示訊息</div>
-                  </div>
-                </div>
-                <div className="card-name">
-                  <label className="form-label">持卡人姓名</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Kaneshiro Takeshi"
-                  />
-                  <div className="form-text">錯誤/提示訊息</div>
-                </div>
-              </div>
-            </div> */}
           </div>
           <div className="buttons">
             <Link to="/cart/list">
               <button className="btn btn-primary">上一步</button>
             </Link>
-            <Link to="/cart/order">
-              <button className="btn btn-secondary">確認付款</button>
-            </Link>
+            {passThrough === true ? (
+              <Link to="/cart/verify">
+                <button className="btn btn-secondary">確認付款</button>
+              </Link>
+            ) : (
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setWarning('red')
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                }}
+              >
+                確認付款
+              </button>
+            )}
           </div>
         </div>
       </div>

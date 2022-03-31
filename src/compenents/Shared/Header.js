@@ -2,20 +2,20 @@ import React, { useEffect, useState, memo } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './../../styles/Shared/Header.scss'
 import { useLocation } from 'react-router-dom'
-import Login from "../Member/LoginPages/Login";
+import Login from '../Member/LoginPages/Login'
 import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
-import AddCartModal from '../ProductList/AddCartModal';
+import AddCartModal from '../ProductList/AddCartModal'
 
 const Header = (props) => {
-  const { user, setUser, setCartCount } = props
+  const { user, setUser, setCartCount, addcartmodal } = props
   const [sidebar, setSidebar] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
   const location = useLocation()
-
+  console.log(addcartmodal)
   const getQuantity = async () => {
     const data = { member_id: 4 }
     const settings = {
@@ -58,7 +58,8 @@ const Header = (props) => {
     <>
       <div className="Header">
         <div className="Header-container">
-        <AddCartModal />
+          {addcartmodal ? <AddCartModal /> : ''}
+
           <div className="logo-bread">
             <Link to="/">
               <img className="logo" src="/Shared/logo.svg" alt="" />

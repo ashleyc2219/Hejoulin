@@ -94,6 +94,7 @@
         color: white;
         text-align: center;
         margin: -13px auto 13px;
+        cursor: pointer;
       }
       .table-row {
         display: flex;
@@ -139,6 +140,9 @@
       }
     }
     .buyer {
+      .red{
+        border:  1px solid $secondary;
+      }
       .buyer-name-mobile,
       .buyer-email-check {
         display: flex;
@@ -171,6 +175,9 @@
       }
     }
     .receiver {
+      .red{
+        border:  1px solid $secondary;
+      }
       .receiver-name-mobile {
         display: flex;
         column-gap: 20px;
