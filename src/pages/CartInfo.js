@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom'
 
 // 驗證電話號碼套件
 import Input from 'react-phone-number-input/input'
-import PhoneInput, {
-  formatPhoneNumber,
-  formatPhoneNumberIntl,
-  isValidPhoneNumber,
-} from 'react-phone-number-input'
+import { isValidPhoneNumber } from 'react-phone-number-input'
 // 驗證電子信箱
 import validator from 'validator'
 
@@ -45,21 +41,21 @@ const CartInfo = () => {
   const [cardMonth, setCardMonth] = useState('')
   const [cardYear, setCardYear] = useState('')
   const [cardCvv, setCardCvv] = useState('')
-  const [numberValid, setNumberValid] = useState(true)
+  const [numberValid, setNumberValid] = useState(false)
 
   // 表單檢查 讓輸入框變紅色
-  const [passBuyerName, setPassBuyerName] = useState(true)
-  const [passBuyerMobile, setPassBuyerMobile] = useState(false)
-  const [passBuyerEmail, setPassBuyerEmail] = useState(false)
-  const [passReceiverName, setPassReceiverName] = useState(false)
-  const [passReceiverMobile, setPassReceiverMobile] = useState(false)
-  const [passReceiverAddress, setPassReceiverAddress] = useState(false)
-  const [passCardNum, setPassCardNum] = useState('default')
+  const [passBuyerName, setPassBuyerName] = useState('defualt')
+  const [passBuyerMobile, setPassBuyerMobile] = useState('defualt')
+  const [passBuyerEmail, setPassBuyerEmail] = useState('defualt')
+  const [passReceiverName, setPassReceiverName] = useState('defualt')
+  const [passReceiverMobile, setPassReceiverMobile] = useState('defualt')
+  const [passReceiverAddress, setPassReceiverAddress] = useState('defualt')
+  const [passCardNum, setPassCardNum] = useState(false)
   const [passCardHolder, setPassCardHolder] = useState('default')
   const [passCardCvv, setPassCardCvv] = useState('default')
-
-  // 電話驗證
-  const [value, setValue] = useState()
+  const [passThrough, setPassThrough] = useState(false)
+  // 讓border變紅色
+  const [warning, setWarning] = useState('no')
 
   useEffect(() => {
     let a = true
@@ -141,16 +137,16 @@ const CartInfo = () => {
     }
   }
   function openCloseHandler() {
-    if (collapseClass == 'list-table morethantwo') {
+    if (collapseClass === 'list-table morethantwo') {
       setCollapseClass('list-table')
     }
-    if (collapseClass == 'list-table') {
+    if (collapseClass === 'list-table') {
       setCollapseClass('list-table morethantwo')
 
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
   }
-  // 取得表單資料
+  // 取得表單資料 後簡禪表單資料
   function formCheck() {
     let data = {
       buyerName: buyerName,
@@ -162,36 +158,67 @@ const CartInfo = () => {
       cardNum: cardNum,
     }
 
-    console.log('data', data)
     // 驗證 表單資料
     // 購買人
-    buyerName.length >= 2 ? setPassBuyerName(true) : setPassBuyerName(false)
+    if (buyerName.length >= 2) {
+      setPassBuyerName(true)
+
+    } else {
+      setPassBuyerName(false)
+      setPassThrough(false)
+    }
+
     if (buyerMobile && isValidPhoneNumber(buyerMobile)) {
       setPassBuyerMobile(true)
     } else {
       setPassBuyerMobile(false)
+      setPassThrough(false)
     }
-    validator.isEmail(buyerEmail)
-      ? setPassBuyerEmail(true)
-      : setPassBuyerEmail(false)
+    if (validator.isEmail(buyerEmail)) {
+      setPassBuyerEmail(true)
+    } else {
+      setPassBuyerEmail(false)
+      setPassThrough(false)
+    }
     // 收件人
-    receiverName.length >= 2
-      ? setPassReceiverName(true)
-      : setPassReceiverName(false)
-
+    if (receiverName.length >= 2) {
+      setPassReceiverName(true)
+    } else {
+      setPassReceiverName(false)
+      setPassThrough(false)
+    }
     if (receiverMobile && isValidPhoneNumber(receiverMobile)) {
       setPassReceiverMobile(true)
     } else {
       setPassReceiverMobile(false)
+      setPassThrough(false)
     }
-    receiverAddress.length >= 10
-      ? setPassReceiverAddress(true)
-      : setPassReceiverAddress(false)
+    if (receiverAddress.length >= 10) {
+      setPassReceiverAddress(true)
+    } else {
+      setPassReceiverAddress(false)
+      setPassThrough(false)
+    }
     // 信用卡資訊
     // 用元件內的套件檢查 會更新numberValid，再用numberValid做確認
-    numberValid === true ? setPassCardNum(true) : setPassCardNum(false)
-    cardHolder.length >= 3 ? setPassCardHolder(true) : setPassCardHolder(false)
-    cardCvv.length === 3 ? setPassCardCvv(true) : setPassCardCvv(false)
+    if (numberValid === true) {
+      setPassCardNum(true)
+    } else {
+      setPassCardNum(false)
+      setPassThrough(false)
+    }
+    if (cardHolder.length >= 3) {
+      setPassCardHolder(true)
+    } else {
+      setPassCardHolder(false)
+      setPassThrough(false)
+    }
+    if (cardCvv.length === 3) {
+      setPassCardCvv(true)
+    } else {
+      setPassCardCvv(false)
+      setPassThrough(false)
+    }
 
     let pass = {
       passBuyerName: passBuyerName,
@@ -200,10 +227,42 @@ const CartInfo = () => {
       passReceiverName: passReceiverName,
       passReceiverMobile: passReceiverMobile,
       passReceiverAddress: passReceiverAddress,
-      // TODO: 信用卡資訊
+      passCardNum: passCardNum,
+      passCardHolder: passCardHolder,
+      passCardCvv: passCardCvv,
     }
+    if (buyerName&&
+    buyerMobile&&
+    buyerEmail&&
+    receiverName&&
+    receiverMobile&&
+    receiverAddress&&
+    cardNum&&
+    cardHolder&&
+    cardCvv) {
+      setPassThrough(true)
+      console.log('pass', pass)
+      console.log('data', data)
+      console.log('cvv', cardCvv.length)
+    }
+    console.log('cvv', cardCvv.length, passCardCvv)
     console.log('pass', pass)
   }
+  useEffect(() => {
+    formCheck()
+    // setWarning()
+  }, [
+    buyerName,
+    buyerMobile,
+    buyerEmail,
+    receiverName,
+    receiverMobile,
+    receiverAddress,
+    cardNum,
+    cardHolder,
+    cardCvv,
+  ])
+
   return (
     <div className="CartInfo">
       <ProgressBar step="two" content={stepContent} />
@@ -272,7 +331,9 @@ const CartInfo = () => {
                 <input
                   type="text"
                   className={
-                    passBuyerName ? 'form-control' : 'form-control red'
+                    passBuyerName === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   placeholder="真實姓名"
                   value={buyerName}
@@ -287,7 +348,9 @@ const CartInfo = () => {
                 <Input
                   international
                   className={
-                    passBuyerMobile ? 'form-control' : 'form-control red'
+                    passBuyerMobile === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   placeholder="0912 345 678"
                   country="TW"
@@ -303,7 +366,9 @@ const CartInfo = () => {
                 <input
                   type="text"
                   className={
-                    passBuyerEmail ? 'form-control' : 'form-control red'
+                    passBuyerEmail === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   value={buyerEmail}
                   onChange={(e) => {
@@ -337,7 +402,9 @@ const CartInfo = () => {
                 <input
                   type="text"
                   className={
-                    passReceiverName ? 'form-control' : 'form-control red'
+                    passReceiverName === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   placeholder="真實姓名"
                   value={receiverName}
@@ -352,7 +419,9 @@ const CartInfo = () => {
                 <Input
                   international
                   className={
-                    passReceiverMobile ? 'form-control' : 'form-control red'
+                    passReceiverMobile === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   placeholder="0912 345 678"
                   country="TW"
@@ -383,7 +452,9 @@ const CartInfo = () => {
                 <input
                   type="text"
                   className={
-                    passReceiverAddress ? 'form-control' : 'form-control red'
+                    passReceiverAddress === false && warning === 'red'
+                      ? 'form-control red'
+                      : 'form-control'
                   }
                   placeholder="仁愛路4段29號1樓"
                   value={receiverAddress}
@@ -415,6 +486,7 @@ const CartInfo = () => {
                 setCardMonth={setCardMonth}
                 setCardYear={setCardYear}
                 setCardCvv={setCardCvv}
+                warning={warning}
               />
             </HunelProvider>
           </div>
@@ -422,13 +494,21 @@ const CartInfo = () => {
             <Link to="/cart/list">
               <button className="btn btn-primary">上一步</button>
             </Link>
-            {/* <Link to="/cart/order">
-              <button className="btn btn-secondary">確認付款</button>
-            </Link> */}
-
-            <button className="btn btn-secondary" onClick={formCheck}>
-              確認付款
-            </button>
+            {passThrough === true ? (
+              <Link to="/cart/verify">
+                <button className="btn btn-secondary">確認付款</button>
+              </Link>
+            ) : (
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setWarning('red')
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                }}
+              >
+                確認付款
+              </button>
+            )}
           </div>
         </div>
       </div>
