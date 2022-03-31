@@ -202,44 +202,6 @@
         }
       }
     }
-    .credit-card {
-      width: 100%;
-      .credit-card-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        column-gap: 10px;
-
-        .credit-card-img {
-          width: 335px;
-          @include medium {
-            display: none;
-          }
-        }
-        .card-info {
-          width: 219px;
-          @include medium {
-            width: 100%;
-          }
-          input {
-            width: 100%;
-          }
-          .date-code-container {
-            display: flex;
-            justify-content: space-between;
-            .expire-date {
-              width: 50%;
-            }
-            .security-code {
-              width: 47%;
-            }
-          }
-        }
-      }
-    }
-
     .buttons {
       display: flex;
       column-gap: 10px;
