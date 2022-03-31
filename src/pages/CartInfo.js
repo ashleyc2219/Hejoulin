@@ -3,10 +3,14 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
+import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
 import { CartSummary } from './../App'
+// 信用卡
+import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
+const hunel = new HunelCreditCard()
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
@@ -265,8 +269,11 @@ const CartInfo = () => {
             <div className="info-title">
               <h5>信用卡資訊</h5>
             </div>
-
-            <div className="credit-card-container">
+            <HunelProvider config={hunel}>
+              <InfoCreditCard />
+            </HunelProvider>
+            {/* <div className="credit-card-container">
+              ,
               <div className="credit-card-img">
                 <img src="/CartList/card.svg" alt="" />
               </div>
@@ -310,7 +317,7 @@ const CartInfo = () => {
                   <div className="form-text">錯誤/提示訊息</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="buttons">
             <Link to="/cart/list">
