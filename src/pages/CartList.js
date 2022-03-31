@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import '../styles/CartList/CartList.scss'
 import { islands, townships } from './../data/cart-list-select'
@@ -248,7 +248,6 @@ const CartList = (props) => {
   }
 
   function CartSummaryData() {
-    let district = ''
     let data = {}
     if (island !== -1 && township !== -1 && township !== undefined) {
       data = {
