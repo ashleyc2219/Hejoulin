@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react'
-import ProfileItemM from './ProfileItemM'
-import ProfileItemD from './ProfileItemD'
+import React, { useEffect, useState } from 'react'
 import '../../../../styles/Member/Member-ProfileBox/ProfileBox.scss'
 
 const ProfileBox = ({ memberData, setMemberData }) => {
   const APIUpdate = 'http://localhost:3001/user/member/Change'
-  const birthOption = (items) =>
-    items.map((item, i) => (
-      <option value={item.itemName} key={i}>
-        {item.itemName}
-      </option>
-    ))
+
+  const [valueY, setValueY] = useState('')
+  const [valueM, setValueM] = useState('')
+  const [valueD, setValueD] = useState('')
+
   useEffect(() => {
     ;(async () => {
       const obj = await (
@@ -24,6 +21,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
       setMemberData(obj)
     })()
   }, [])
+
   const userAccount = (memberData) => {
     if (memberData && memberData.length) {
       return memberData.map((el) => el.user_account)
@@ -46,14 +44,20 @@ const ProfileBox = ({ memberData, setMemberData }) => {
   }
   const memberBirthdayM = (memberData) => {
     if (memberData && memberData.length) {
-      return memberData.map((el) => el.member_bir.slice(5, 7))
+      return memberData.map((el) => el.member_bir.slice(6, 7))
     }
   }
   const memberBirthdayD = (memberData) => {
     if (memberData && memberData.length) {
-      return memberData.map((el) => el.member_bir.slice(8, 10))
+      return memberData.map((el) => el.member_bir.slice(9, 10))
     }
   }
+
+  useEffect(() => {
+    setValueY(memberBirthdayY(memberData))
+    setValueM(memberBirthdayM(memberData))
+    setValueD(memberBirthdayD(memberData))
+  }, [memberData])
 
   const whenMemberProfileSub = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
@@ -74,9 +78,8 @@ const ProfileBox = ({ memberData, setMemberData }) => {
     })
     const updateAction = await memberUpdate.json()
     console.log(updateAction)
-    if (updateAction.success === true){
+    if (updateAction.success === true) {
       // 更新成功
-
     }
   }
 
@@ -124,29 +127,53 @@ const ProfileBox = ({ memberData, setMemberData }) => {
             {/* 這裡我多包了一層div 提示訊息拉到外面 改成項figma那樣 */}
             <div className="birthday">
               <label className="form-label">生日</label>
-              <select className="decorated">
-                <option value="" disabled selected hidden>
-                  {memberBirthdayY(memberData)}
-                </option>
-                {/*{birthOption(ProfileItem)}*/}
+              <select
+                value={valueY}
+                onChange={(e) => {
+                  setValueY(e.target.value)
+                }}
+              >
+                {Array(122)
+                  .fill(0)
+                  .map((v, i) => (
+                    <option value={i + 1900} key={i + 1900}>
+                      {i + 1900}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="birthday">
               <label className="form-label displayNone">生日</label>
-              <select className="decorated">
-                <option value="" disabled selected hidden>
-                  {memberBirthdayM(memberData)}
-                </option>
-                {birthOption(ProfileItemM)}
+              <select
+                value={valueM}
+                onChange={(e) => {
+                  setValueM(e.target.value)
+                }}
+              >
+                {Array(12)
+                  .fill(0)
+                  .map((v, i) => (
+                    <option value={i + 1} key={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="birthday">
               <label className="form-label displayNone">生日</label>
-              <select className="decorated">
-                <option value="" disabled selected hidden>
-                  {memberBirthdayD(memberData)}
-                </option>
-                {birthOption(ProfileItemD)}
+              <select
+                value={valueD}
+                onChange={(e) => {
+                  setValueD(e.target.value)
+                }}
+              >
+                {Array(31)
+                  .fill(0)
+                  .map((v, i) => (
+                    <option value={i + 1} key={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>

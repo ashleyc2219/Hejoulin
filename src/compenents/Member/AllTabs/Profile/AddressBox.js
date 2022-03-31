@@ -45,6 +45,7 @@ const AddressBox = ({ memberData, setMemberData }) => {
       return memberData.map((el) => el.member_addr.slice(0, 2))
     }
   }
+
   return (
     <>
       <div className="AddressBox">

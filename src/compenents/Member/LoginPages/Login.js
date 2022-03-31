@@ -54,11 +54,6 @@ const Login = (props) => {
     }
   }
 
-  // function rowTo() {
-  //   const newPage = row === 'login' ? 'register' : 'login'
-  //   setRow(newPage)
-  // }
-
   return (
     <>
       {row === 'login' ? (
