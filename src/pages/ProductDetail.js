@@ -18,7 +18,7 @@ const ProductDetail = (props) => {
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
 
-  const { compare, setCompare, setCartCount } = props
+  const { compare, setCompare, setCartCount,setAddcartmodal } = props
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
@@ -80,6 +80,7 @@ const ProductDetail = (props) => {
                     id={v.pro_id}
                     compare={compare}
                     setCompare={setCompare}
+                    setAddcartmodal={setAddcartmodal}
                   />
                 </div>
               </div>

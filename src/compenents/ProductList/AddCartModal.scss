@@ -1,26 +1,22 @@
 @import './../../styles/mixin.scss';
-@mixin exlarge {
-  @media (max-width: 1440px) {
-    @content;
-  }
-}
-@mixin large {
-  @media (max-width: 1024px) {
-    @content;
-  }
-}
-@mixin medium {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-@mixin small {
-  @media (max-width: 320px) {
-    @content;
-  }
-}
 
 @keyframes AddCartModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
 
 .AddCartModal {
@@ -29,21 +25,12 @@
   right: 0px;
   width: fit-content;
   height: 50px;
-  // border: 1px solid red;
   border-radius: 20px;
   box-shadow: 0 0 5px rgb(186, 186, 186);
   background-color: $white;
-  &::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    top: -20px;
-    right: 50px;
-    position: absolute;
-    border: 1px solid red;
-    border-left: 10px solid transparent;
-  }
+  animation: AddCartModal 4s;
+  opacity: 0;
+  pointer-events: none;
   .title {
     line-height: 50px;
     font-size: 16px;

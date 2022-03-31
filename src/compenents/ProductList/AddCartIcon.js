@@ -2,7 +2,10 @@ import React from 'react'
 import { CartCount } from '../../App'
 import './AddCartIcon.scss'
 
-const AddCartIcon = ({ id, setCartCount, count }) => {
+const AddCartIcon = ({ id, setCartCount, count , setAddcartmodal}) => {
+
+
+  console.log(setAddcartmodal)
   const addcart = async (num, pro_id) => {
     const a = count + num
     setCartCount(a)
