@@ -10,9 +10,9 @@ const CompareModal = ({
   comparePro2,
   comparePro3,
   setCartCount,
+  setAddcartmodal,
 }) => {
-
-  const [count , setCount] = useState(1)
+  const [count, setCount] = useState(1)
   let product1 = comparePro1.map(function (v, i) {
     return (
       <div key={v.pro_id} className="com-pro">
@@ -26,7 +26,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id}/>
+              <Heart id={v.pro_id} />
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -39,7 +39,12 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
+          <AddCartBtn
+            id={v.pro_id}
+            setCartCount={setCartCount}
+            count={count}
+            setAddcartmodal={setAddcartmodal}
+          />
         </div>
       </div>
     )
@@ -70,7 +75,12 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
+          <AddCartBtn
+            id={v.pro_id}
+            setCartCount={setCartCount}
+            count={count}
+            setAddcartmodal={setAddcartmodal}
+          />
         </div>
       </div>
     )
@@ -101,7 +111,12 @@ const CompareModal = ({
           </ul>
         </div>
         <div className="button">
-          <AddCartBtn id={v.pro_id} setCartCount={setCartCount} count={count}/>
+          <AddCartBtn
+            id={v.pro_id}
+            setCartCount={setCartCount}
+            count={count}
+            setAddcartmodal={setAddcartmodal}
+          />
         </div>
       </div>
     )

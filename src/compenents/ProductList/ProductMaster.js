@@ -5,7 +5,12 @@ import Heart from './Heart'
 import CompareBtn from './CompareBtn'
 import AddCartIcon from './AddCartIcon'
 
-const ProductMaster = ({ compare, setCompare, setCartCount }) => {
+const ProductMaster = ({
+  compare,
+  setCompare,
+  setCartCount,
+  setAddcartmodal,
+}) => {
   const [master, setMaster] = useState([])
   const [count, setCount] = useState(1)
 
@@ -53,6 +58,7 @@ const ProductMaster = ({ compare, setCompare, setCartCount }) => {
                 setCartCount={setCartCount}
                 id={v.pro_id}
                 count={count}
+                setAddcartmodal={setAddcartmodal}
               />
             </div>
           </div>
