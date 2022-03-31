@@ -8,7 +8,10 @@ const ProfileBox = ({ memberData, setMemberData }) => {
   const [valueM, setValueM] = useState('')
   const [valueD, setValueD] = useState('')
   const [rs, setRs] = useState(undefined)
+  const [mob, setMob] = useState('')
+  const [name, setName] = useState('')
 
+  let mData = ''
   useEffect(() => {
     ;(async () => {
       const obj = await (
@@ -20,22 +23,14 @@ const ProfileBox = ({ memberData, setMemberData }) => {
         })
       ).json()
       setMemberData(obj)
+      setMob(obj[0].member_mob)
+      setName(obj[0].member_name)
     })()
   }, [])
 
   const userAccount = (memberData) => {
     if (memberData && memberData.length) {
       return memberData.map((el) => el.user_account)
-    }
-  }
-  const memberName = (memberData) => {
-    if (memberData && memberData.length) {
-      return memberData.map((el) => el.member_name)
-    }
-  }
-  const memberMobile = (memberData) => {
-    if (memberData && memberData.length) {
-      return memberData.map((el) => el.member_mob)
     }
   }
   const memberBirthdayY = (memberData) => {
@@ -53,7 +48,6 @@ const ProfileBox = ({ memberData, setMemberData }) => {
       return memberData.map((el) => el.member_bir.slice(9, 10))
     }
   }
-
   useEffect(() => {
     setValueY(memberBirthdayY(memberData))
     setValueM(memberBirthdayM(memberData))
@@ -78,13 +72,11 @@ const ProfileBox = ({ memberData, setMemberData }) => {
       body: json,
     })
     const updateAction = await memberUpdate.json()
-    console.log(updateAction)
     if (updateAction.success === true) {
       // 更新成功
       setRs(updateAction)
     }
   }
-  console.log(rs)
   function resultCheck() {
     if (rs && rs.success === true) {
       return 'grey'
@@ -114,7 +106,10 @@ const ProfileBox = ({ memberData, setMemberData }) => {
               id="member_name"
               name="member_name"
               key="memberName"
-              placeholder={memberName(memberData)}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value)
+              }}
             />
             <div className="form-text displayNone">錯誤/提示訊息</div>
           </div>
@@ -127,7 +122,10 @@ const ProfileBox = ({ memberData, setMemberData }) => {
               id="member_mob"
               name="member_mob"
               key="memberMob"
-              placeholder={memberMobile(memberData)}
+              value={mob}
+              onChange={(e) => {
+                setMob(e.target.value)
+              }}
             />
             <div className="form-text displayNone">錯誤/提示訊息</div>
           </div>

@@ -67,14 +67,6 @@ const AddressBox = ({ memberData, setMemberData }) => {
         <br />
         <label className="form-label">取件地址</label>
         <div className="mb-3 AddressBox-Item">
-          <select className="decorated" name="drinks" required>
-            <option value="" disabled selected hidden>
-              台灣
-            </option>
-            <option value="coffee">Coffee</option>
-            <option value="tea">Tea</option>
-            <option value="milk">Milk</option>
-          </select>
           <select className="decorated dropDown-city" name="drinks" required>
             <option value="" disabled selected hidden>
               {memberCity(memberData)}
