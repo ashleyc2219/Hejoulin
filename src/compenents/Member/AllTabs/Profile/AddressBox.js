@@ -1,7 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../../../styles/Member/Member-ProfileBox/AddressBox.scss'
 
-const AddressBox = () => {
+const AddressBox = ({ memberData, setMemberData }) => {
+  useEffect(() => {
+    ;(async () => {
+      const obj = await (
+        await fetch('http://localhost:3001/user/member', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + localStorage.token,
+          },
+        })
+      ).json()
+      setMemberData(obj)
+    })()
+  }, [])
+
+  const memberName = (memberData) => {
+    if (memberData && memberData.length) {
+      return memberData.map((el) => el.member_name)
+    }
+  }
+
+  const memberMobile = (memberData) => {
+    if (memberData && memberData.length) {
+      return memberData.map((el) => el.member_mob)
+    }
+  }
+
+  const memberAddress = (memberData) => {
+    if (memberData && memberData.length) {
+      return memberData.map((el) => el.member_addr.slice(6))
+    }
+  }
+
+  const memberZip = (memberData) => {
+    if (memberData && memberData.length) {
+      return memberData.map((el) => el.member_addr.slice(3, 6))
+    }
+  }
+
+  const memberCity = (memberData) => {
+    if (memberData && memberData.length) {
+      return memberData.map((el) => el.member_addr.slice(0, 2))
+    }
+  }
+
   return (
     <>
       <div className="AddressBox">
@@ -12,12 +56,12 @@ const AddressBox = () => {
           <input
             type="text"
             className="form-control input-firstName"
-            placeholder="名字"
+            placeholder={memberName(memberData)}
           />
           <input
             type="text"
             className="form-control input-mobile"
-            placeholder="0912-3450678"
+            placeholder={memberMobile(memberData)}
           />
         </div>
         <br />
@@ -33,27 +77,27 @@ const AddressBox = () => {
           </select>
           <select className="decorated dropDown-city" name="drinks" required>
             <option value="" disabled selected hidden>
-              台北
+              {memberCity(memberData)}
             </option>
-            <option value="coffee">Coffee</option>
-            <option value="tea">Tea</option>
-            <option value="milk">Milk</option>
+            <option value="coffee">新北市</option>
+            <option value="tea">桃園市</option>
+            <option value="milk">新竹市</option>
           </select>
           <input
             type="text"
             className="form-control input-zip"
-            placeholder="郵遞區號"
+            placeholder={memberZip(memberData)}
           />
         </div>
         <div className="mb-3 AddressBox-Item">
           <input
             type="text"
             className="form-control input-address"
-            placeholder="台北市大安區仁愛路4段29號1樓"
+            placeholder={memberAddress(memberData)}
           />
         </div>
         <br />
-        <button className="btn btn-primary address-btn">
+        <button type="submit" className="btn btn-primary address-btn">
           {' '}
           ＋ 新增收件人資訊
         </button>
