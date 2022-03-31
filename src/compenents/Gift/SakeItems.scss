@@ -33,10 +33,10 @@
     background-color: rgba(255, 255, 255, 0.5);
     padding: 20px 0;
     cursor: pointer;
-    @include medium(){
+    @include medium() {
       padding: 0%;
     }
-    
+
     &:hover {
       .original {
         display: none;
@@ -47,7 +47,8 @@
     }
 
     .original {
-      width: 50px;
+      height: 175px;
+      filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
     }
     .trans {
       display: none;
@@ -81,6 +82,17 @@
         font-size: 13px;
         line-height: 20px;
         font-weight: 500;
+      }
+    }
+  }
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    .cancel {
+      background-color: transparent;
+      border: none;
+      span {
+        margin-left: 5px;
       }
     }
   }
