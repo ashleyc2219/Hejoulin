@@ -4,7 +4,7 @@ import { CartCount } from '../../App'
 
 const AddCartBtn = ({ id, setCartCount, count }) => {
   const addcart = async (num, pro_id) => {
-    console.log(CartCount)
+    
     const a = count + num
     setCartCount(a)
 
@@ -28,9 +28,8 @@ const AddCartBtn = ({ id, setCartCount, count }) => {
         settings
       )
       const data = await fetchResponse.json()
-      if (data.success) {
-        alert('已加入購物車')
-      }
+      console.log(data)
+      
     } catch (e) {
       return e
     } 
