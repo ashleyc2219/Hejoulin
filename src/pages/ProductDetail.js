@@ -86,7 +86,7 @@ const ProductDetail = (props) => {
             </div>
             <div className="product-price">
               {v.pro_gift == 1 ? (
-                <div className="gift">
+                <div className="gift active">
                   <Link to="/gift">製作禮盒</Link>
                 </div>
               ) : (
