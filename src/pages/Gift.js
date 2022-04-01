@@ -246,6 +246,10 @@ const Gift = (props) => {
                     setCurrentPrice={setCurrentPrice}
                     cancel={cancel}
                     setStep={setStep}
+                    setSakeId2={setSakeId2}
+                    setName2={setName2}
+                    setPrice2={setPrice2}
+                    setImg2={setImg2}
                   />
                 </div>
               </section>
@@ -303,7 +307,59 @@ const Gift = (props) => {
                 </div>
                 <h4>請確認禮盒明細數量</h4>
                 <div className="detail">
-                  <img src="/Gift/3.png" alt="final" className="final" />
+                  <div className="final">
+                    {kind === 1 && (
+                      <img
+                        src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
+                        alt="final"
+                        className="final-box1"
+                      />
+                    )}
+                    {kind > 1 && (
+                      <img
+                        src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
+                        alt="final"
+                        className="final-box2"
+                      />
+                    )}
+                    {kind === 1 && (
+                      <img
+                        src={'http://localhost:3001/images/pro_img/' + img}
+                        alt="final"
+                        className="final-sake1"
+                      />
+                    )}
+                    {kind === 2 && (
+                      <>
+                        <img
+                          src={'http://localhost:3001/images/pro_img/' + img}
+                          alt="final"
+                          className="final-sake2-1"
+                        />
+                        <img
+                          src={'http://localhost:3001/images/pro_img/' + img2}
+                          alt="final"
+                          className="final-sake2"
+                        />
+                      </>
+                    )}
+                    {kind === 3 && (
+                      <>
+                        <img
+                          src={'http://localhost:3001/images/pro_img/' + img}
+                          alt="final"
+                          className="final-sake3-1"
+                        />
+                        <img
+                          src={
+                            'http://localhost:3001/images/con_img/' + conShadow
+                          }
+                          alt="final"
+                          className="final-con"
+                        />
+                      </>
+                    )}
+                  </div>
                   <div className="content">
                     <h5 className="title">禮盒明細</h5>
                     <div className="sheet grid">

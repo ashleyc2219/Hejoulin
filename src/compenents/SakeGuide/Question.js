@@ -16,6 +16,11 @@ const Question = (props) => {
     setContent(pro)
   }
   useEffect(() => {
+    // setThickness('')
+    // setSmooth('')
+    // setSweet('')
+    // setTemp('')
+    // setGift('')
     fetchData()
   }, [])
 
