@@ -79,7 +79,6 @@ const NavFav = (props) => {
       <div className="MemberFavBar">
         <div className="search-icon-fav">
           <img src="/ProductList/search.svg" alt="" />
-
           <input onKeyPress={keypress} type="text" name="" id="" />
         </div>
         <div className="MemberFavBar-right">
