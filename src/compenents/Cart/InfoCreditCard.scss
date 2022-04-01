@@ -2,20 +2,22 @@
 .credit-card-container {
   width: 100%;
   display: flex;
-  column-gap: 10px;
+justify-content: space-between;
+column-gap: 10px;
 
   .fix-new {
-    // width: 100%;
+    width: 60%;
     margin: auto;
     .card {
       background: linear-gradient(to right, rgb(15, 15, 15), rgb(94, 92, 94));
     }
     .card-new {
       border-radius: 20px;
-      // width: 100%;
+      width: 100%;
     }
   }
   .form-box {
+      width: 39%;
     form {
       input::placeholder {
         color: $gray-200;

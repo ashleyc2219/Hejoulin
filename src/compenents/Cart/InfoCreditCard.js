@@ -7,7 +7,7 @@ import {
 } from 'reactjs-credit-card/form'
 import Card from 'reactjs-credit-card/card'
 import { useCardForm } from 'reactjs-credit-card'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import './../Cart/InfoCreditCard.scss'
 
 function InfoCreditCard(props) {
@@ -29,6 +29,7 @@ function InfoCreditCard(props) {
     setCardMonth,
     setCardYear,
     setCardCvv,
+    warning,
   } = props
 
   //useCardForm is a hook which returns a function.If this function calls,function returns credit card form data values and their validations
@@ -37,8 +38,11 @@ function InfoCreditCard(props) {
   function handleSubmit(e) {
     // e.preventDefault()
     const [data, isValid] = getFormData()
-    console.log(data, isValid)
-    if (!data.number.isValid) setNumberValid(true)
+    // console.log(data, isValid)
+    if (!data.number.isValid) {setNumberValid(true)
+    }else{
+      setNumberValid(false)
+    }
   }
 
   //We can set any form element attribute
@@ -59,7 +63,7 @@ function InfoCreditCard(props) {
           <CardNumber
             placeholder="信用卡號"
             className={`input-customize input-text${
-              !passCardNum ? ' red' : ''
+              !passCardNum && warning === 'red' ? ' red' : ''
             }`}
             onFocus={handleFocus}
             onChange={(e) => {
@@ -69,7 +73,7 @@ function InfoCreditCard(props) {
           <CardHolder
             placeholder="持卡人姓名"
             className={`input-customize input-text${
-              !passCardHolder ? ' red' : ''
+              !passCardHolder && warning === 'red' ? ' red' : ''
             }`}
             onChange={(e) => {
               setCardHolder(e.target.value)
@@ -88,7 +92,7 @@ function InfoCreditCard(props) {
             <CardSecurityCode
               placeholder="CVV"
               className={`input-customize input-text semi${
-                !passCardCvv ? ' red' : ''
+                !passCardCvv && warning === 'red' ? ' red' : ''
               }`}
               onChange={(e) => {
                 setCardCvv(e.target.value)

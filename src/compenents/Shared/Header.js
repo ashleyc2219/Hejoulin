@@ -7,6 +7,7 @@ import LoginHover from './LoginHover'
 import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
 import AddCartModal from '../ProductList/AddCartModal'
+import LogoutHover from './LogoutHover'
 
 const Header = (props) => {
   const { user, setUser, setCartCount, addcartmodal } = props
@@ -14,8 +15,7 @@ const Header = (props) => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
-  const location = useLocation()
-  console.log(addcartmodal)
+  const location = useLocation() 
   const getQuantity = async () => {
     const data = { member_id: 4 }
     const settings = {
@@ -103,7 +103,8 @@ const Header = (props) => {
               </li>
             </ul>
             <div className="icons">
-              <LoginHover showSidebar={showSidebar} />
+              {/* <LoginHover showSidebar={showSidebar} /> */}
+              <LogoutHover />
               <Link to="/cart/list" className="cart">
                 <img alt="" src="/Shared/shoppingCart.svg" />
                 <CartCount.Consumer>

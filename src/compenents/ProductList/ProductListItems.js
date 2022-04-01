@@ -33,6 +33,7 @@ const ProductListItems = (props) => {
     compare,
     setCompare,
     setCartCount,
+    setAddcartmodal,
   } = props
 
   let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
@@ -76,6 +77,7 @@ const ProductListItems = (props) => {
                 setCartCount={setCartCount}
                 id={v.pro_id}
                 count={count}
+                setAddcartmodal={setAddcartmodal}
               />
             </div>
           </div>

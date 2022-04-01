@@ -89,6 +89,7 @@ function App() {
                   compare={compare}
                   setCompare={setCompare}
                   setCartCount={setCartCount}
+                  setAddcartmodal={setAddcartmodal}
                 />
               </CartCount.Provider>
             </Route>

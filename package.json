@@ -18,6 +18,7 @@
     "react-phone-number-input": "^3.1.49",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",
+    "react-transition-group": "^1.2.1",
     "reactjs-credit-card": "^1.0.6",
     "sass": "^1.49.9",
     "smoothscroll-polyfill": "^0.4.4",
