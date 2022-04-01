@@ -1,10 +1,27 @@
 import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import './LogoutHover.scss'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  useHistory,
+} from 'react-router-dom'
 
-const LogoutHover = () => {
+const LogoutHover = ({ setSidebar }) => {
   const controls = useAnimation()
+  const history = useHistory()
+
+  //登出
+  function jumpOut() {
+    localStorage.clear()
+    if (localStorage.hasOwnProperty('token') === false) {
+      history.push('/', { from: 'login-success' })
+      setSidebar(false)
+    }
+  }
+
   function onHoverStart(event, info) {
     controls.start({
       d: [
