@@ -1,0 +1,48 @@
+@import './../../styles/mixin.scss';
+
+.logoutHover {
+  width: 37.4%;
+  height: 80px;
+  margin-right: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  &:hover .logoutmenu {
+    opacity: 1;
+    bottom: -38px;
+  }
+  @include large() {
+    width: 25%;
+  }
+  @include medium() {
+    display: none;
+  }
+  cursor: pointer;
+  .menubar {
+    width: 50px;
+    height: 50px;
+    background-color: red !important;
+  }
+  div.logoutmenu{
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: -28px;
+    right: -22px;
+    transition: all 0.5s;
+    opacity: 0;
+    span {
+      pointer-events: none;
+      width: fit-content;
+      @include kleeone();
+      line-height: 28px;
+      font-size: 15px;
+      bottom: -5px;
+      &:first-child {
+        border-top: 2px solid $primary;
+      }
+    }
+  }
+}
