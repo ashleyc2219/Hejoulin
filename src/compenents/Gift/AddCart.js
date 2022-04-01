@@ -14,8 +14,7 @@ const AddCart = (props) => {
       cart_quantity: quality,
       gift_id: kind,
       box_color: comfirmColor,
-      pro_id01: `${sakeId}`,
-      pro_id02: `${sakeId2}`,
+      pro_id: [`${sakeId}`, `${sakeId2}`],
     }
     console.log(data)
 
