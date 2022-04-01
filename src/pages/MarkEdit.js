@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import ImageEditor from '@toast-ui/react-image-editor'
 import 'tui-image-editor/dist/tui-image-editor.css'
 
@@ -20,6 +21,7 @@ function DataURIToBlob(dataURI) {
 }
 
 const MarkEdit = () => {
+  const history = useHistory()
   const tui = useRef()
 
   const [markname, setMarkname] = useState('')
@@ -35,10 +37,14 @@ const MarkEdit = () => {
     fetch('http://localhost:3001/api/mark', {
       method: 'POST',
       body: formData,
-      // headers: { 'Content-Type': 'multipart/form-data' },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.success) {
+          localStorage.setItem('markid', data.result.insertId)
+          history.push('/mark/done')
+        }
+      })
   }
 
   const [modalShow, setModalShow] = useState(false)
@@ -89,7 +95,7 @@ const MarkEdit = () => {
         </div>
       </div>
       {modalShow && (
-        <div className="DetailModal">
+        <div className="DetailModal d-none d-lg-flex">
           <div className="comparepage">
             <div className="close-white" onClick={openModal}>
               <img src="/ProductList/close-white.svg" alt="" />

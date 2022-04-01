@@ -30,6 +30,10 @@
   }
 }
 
+* {
+  outline: 1px solid red;
+}
+
 .SakeGuide {
   max-width: 100%;
   overflow: hidden;
@@ -44,101 +48,65 @@
     max-width: 1200px;
     margin: 0 auto;
     height: fit-content;
-
-    .main {
-      width: 100%;
-      height: 75vh;
-      padding: 140px 110px 0;
-      @include medium() {
-        padding: 50px 18px 0;
-        .question {
-          font-size: 17px;
-          line-height: 30px;
-          margin-bottom: 35px;
-        }
+    .start {
+      height: calc(100vh - 185px);
+      position: relative;
+      margin: 0 120px;
+      padding: 100px 0 0;
+      //patten
+      .one,
+      .two {
+        position: absolute;
+        z-index: 0;
       }
-
-      .question {
-        font-size: 20px;
-        line-height: 40px;
-        color: $gray-400;
+      .one {
+        top: -50px;
+        width: 400px;
       }
-
-      .group {
-        width: fit-content;
-        margin: 25px 0;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        @include medium() {
-          margin: 15px 0;
-        }
-
-        &:hover {
-          .circle {
-            border-color: $primary;
-          }
-          .inner_circle {
-            transform: translateY(-79px);
-            transition: 0.5s;
-          }
-
-          .answer {
+      .two {
+        right: -200px;
+        transform: translateY(20px) rotateZ(60deg);
+      }
+      .text {
+        position: relative;
+        width: 960px;
+        z-index: 3;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .left {
+          h2 {
+            @include kleeone();
+            text-align: center;
             color: $primary;
           }
         }
-
-        .circle_group {
-          width: 51px;
-          height: 51px;
-          border-radius: 50%;
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          @include medium() {
-            width: 31px;
-            height: 31px;
-          }
-
-          .inner_circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: $primary;
-            position: absolute;
-            top: 85px;
-            @include medium() {
-              width: 22px;
-              height: 22px;
-            }
-          }
-
-          .circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            outline: 1px solid $gray-200;
-            @include medium() {
-              width: 30px;
-              height: 30px;
-            }
+        .right {
+          .intro {
+            font-size: 16px;
+            line-height: 32px;
+            color: $gray-300;
           }
         }
+      }
+      .location {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        .answer {
-          font-size: 70px;
-          line-height: 70px;
-          font-weight: 900;
-          letter-spacing: 35px;
-          color: $gray-200;
-          margin-left: 30px;
-
-          @include medium() {
-            font-size: 50px;
-            line-height: 50px;
-            letter-spacing: 7px;
+        .begin {
+          position: absolute;
+          z-index: 3;
+          border: transparent;
+          background-color: transparent;
+          display: flex;
+          flex-direction: column;
+          align-content: space-around;
+          bottom: 50px;
+          .line {
+            height: 20px;
+            width: 1px;
+            border: 1px solid $primary;
           }
         }
       }
@@ -212,7 +180,6 @@
           }
 
           &__label {
-
             &:not(:focus-within):hover {
               border-color: transparentize(#fff, 0.4);
             }

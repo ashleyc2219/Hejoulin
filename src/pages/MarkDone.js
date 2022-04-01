@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import './../styles/Mark/MarkDone.scss'
 
 const MarkDone = () => {
+  const markId = localStorage.getItem('markid')
+  const [markImg, setMarkImg] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('http://localhost:3001/api/mark?markId=' + markId)
+      const data = await res.json()
+      setMarkImg(data)
+    }
+    fetchData()
+    return () => {
+      setMarkImg([]) // This worked for me
+    }
+  }, [])
   return (
     <>
       <div className="MarkDone">
@@ -12,7 +25,18 @@ const MarkDone = () => {
           </div>
           <div className="done">
             <img src="/Mark/1.png" alt="" className="bottle image" />
-            <img src="/Mark/1.png" alt="" className="sticker image" />
+            {markImg.length !== 0 && (
+              <>
+                <img
+                  src={
+                    'http://localhost:3001/images/mark_pic/' + markImg[0]?.pics
+                  }
+                  alt=""
+                  className="sticker image"
+                />
+                <div className="shadow"></div>
+              </>
+            )}
           </div>
           <div className="grid">
             <div className="group">
