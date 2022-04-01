@@ -388,7 +388,10 @@ const ProductList = (props) => {
 
   const handleScroll = () => {
     if (compare.length > 1) {
-      if (window.scrollY >= document.body.offsetHeight + 2200) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 200
+      ) {
         setUp(true)
       } else {
         setUp(false)

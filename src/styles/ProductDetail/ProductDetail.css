@@ -568,6 +568,10 @@
   }
 }
 
+.ProductDetail .product-container .main-detail .center-container .product-wrap .product-info .product-price .active a {
+  color: #e6c49e;
+}
+
 .ProductDetail .product-container .main-detail .center-container .product-wrap .product-info .product-price .product-mark {
   margin-right: 45px;
   cursor: pointer;

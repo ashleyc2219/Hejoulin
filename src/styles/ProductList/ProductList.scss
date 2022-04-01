@@ -815,7 +815,7 @@
       }
 
       //最右邊比較區塊
-      .compare-block {
+      /* .compare-block {
         @include large() {
           display: none;
         }
@@ -868,7 +868,7 @@
             transform: translateY(50%);
           }
         }
-      }
+      } */
     }
   }
 }

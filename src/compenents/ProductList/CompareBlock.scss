@@ -65,9 +65,9 @@
           z-index: 1;
         }
         p {
-          width: 80px;
+          width: 160px;
           text-align: center;
-          line-height: 28px;
+          line-height: 20px;
           font-size: 14px;
         }
         .shadow {
@@ -129,10 +129,10 @@
           height: 100px;
           z-index: 1;
         }
-        p {
-          width: 80px;
+        p.name {
+          width: 160px;
           text-align: center;
-          line-height: 28px;
+          line-height: 20px;
           font-size: 14px;
         }
         .shadow {

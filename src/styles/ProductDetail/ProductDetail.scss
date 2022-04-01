@@ -445,9 +445,7 @@
                   margin-right: 0;
                 }
               }
-              .active{
-                color: $success;
-              }
+              
               .gift a {
                 font-size: 16px;
                 color: $gray-200;
@@ -456,6 +454,9 @@
                 @include medium() {
                   margin-right: 0;
                 }
+              }
+              .active a{
+                color: $success;
               }
               .product-mark {
                 margin-right: 45px;
