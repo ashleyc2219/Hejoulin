@@ -12,10 +12,9 @@ const AddCart = (props) => {
     const data = {
       member_id: 4,
       cart_quantity: quality,
-      gift_id: kind,
+      gift_id: kind + 1,
       box_color: comfirmColor,
-      pro_id01: `${sakeId}`,
-      pro_id02: `${sakeId2}`,
+      pro_id: [`${sakeId}`, `${sakeId2}`],
     }
     console.log(data)
 

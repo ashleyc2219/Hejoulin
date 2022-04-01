@@ -32,6 +32,10 @@ const SakeItems = (props) => {
     setCurrentPrice,
     cancel,
     setStep,
+    setSakeId2,
+    setName2,
+    setPrice2,
+    setImg2,
   } = props
 
   const [item, setItem] = useState(1)
@@ -74,6 +78,10 @@ const SakeItems = (props) => {
           setItem={setItem}
           minus={minus}
           setStep={setStep}
+          setSakeId2={setSakeId2}
+          setName2={setName2}
+          setPrice2={setPrice2}
+          setImg2={setImg2}
         />
       </React.Fragment>
     )

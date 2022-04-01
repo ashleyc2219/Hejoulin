@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Question from '../compenents/SakeGuide/Question'
-import Finally from '../compenents/SakeGuide/Finally'
 import './../styles/SakeGuide/SakeGuide.scss'
 import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
 
@@ -16,6 +16,32 @@ const SakeGuide = () => {
   const [temp, setTemp] = useState('') //溫度
   const [gift, setGift] = useState(false) //送禮
   const [sakeId, setSakeId] = useState(0) //設定最終的id
+
+  const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
+  const sake = content.map((v, i) => {
+    return (
+      <React.Fragment key={i}>
+        <div className="box">
+          <div className="sake_circle uno"></div>
+          <Link to={'/product/detail/' + v.pro_id}>
+            <img
+              src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+              alt=""
+            />
+            <span>{v.pro_name}</span>
+          </Link>
+        </div>
+      </React.Fragment>
+    )
+  })
+  useEffect(() => {
+    const fetchItem = async () => {
+      const res = await fetch(url2)
+      const data = await res.json()
+      setContent(data)
+    }
+    fetchItem()
+  }, [taste, temp, minPrice, maxPrice, gift])
 
   return (
     <>
@@ -73,6 +99,7 @@ const SakeGuide = () => {
                 console.log(
                   `thickness=${thickness},smooth=${smooth},sweet=${sweet},temp=${temp},gift=${gift}`
                 )
+                setTaste(thickness + smooth + sweet)
               }}
             >
               察看結果
@@ -92,7 +119,8 @@ const SakeGuide = () => {
             <h4>推薦酒款</h4>
           </div>
           <div className="sakes">
-            <div className="box left">
+            {sake}
+            {/* <div className="box left">
               <div className="sake_circle uno"></div>
               <img src="/SakeGuide/4.png" alt="" />
             </div>
@@ -103,7 +131,7 @@ const SakeGuide = () => {
             <div className="box right">
               <div className="sake_circle tres"></div>
               <img src="/SakeGuide/4.png" alt="" />
-            </div>
+            </div> */}
           </div>
           <div className="anime_bg">
             <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />

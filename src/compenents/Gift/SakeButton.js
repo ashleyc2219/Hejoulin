@@ -8,17 +8,15 @@ const SakeButton = (props) => {
     currentName,
     currentId,
     currentImg,
-    setCurrentPrice,
-    setCurrentName,
-    setCurrentId,
-    setCurrentImg,
     value,
     item,
     setItem,
     sakeButton,
     setSakeButton,
-    id,
-    pro_id,
+    setSakeId2,
+    setName2,
+    setPrice2,
+    setImg2,
   } = props
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -56,7 +54,7 @@ const SakeButton = (props) => {
           </button>
         )}
 
-        {sakeButton === 1 &&  (
+        {sakeButton === 1 && (
           <>
             <button
               className="one"
@@ -64,6 +62,10 @@ const SakeButton = (props) => {
                 setSakeButton(2)
                 plus()
                 setItem(1)
+                setSakeId2(currentId)
+                setName2 (currentName)
+                setPrice2(currentPrice)
+                setImg2 (currentImg)
               }}
             >
               <img src="/Gift/full_sake.svg" alt="" className="sake single" />

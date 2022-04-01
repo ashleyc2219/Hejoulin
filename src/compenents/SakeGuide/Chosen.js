@@ -9,39 +9,49 @@ const Chosen = (props) => {
   const setData = () => {
     switch (id) {
       case 1:
-        setThickness(answer)
-        localStorage.setItem('thick', answer)
-        let item1 = localStorage.getItem('thick')
-        console.log('thick')
-        console.log(item1)
+        if (answer === '清爽') {
+          setThickness('輕盈')
+        } else if (answer === '豐富') {
+          setThickness('適中')
+        } else {
+          setThickness('')
+        }
         break
       case 2:
-        setSmooth(answer)
-        localStorage.setItem('smooth', answer)
-        let item2 = localStorage.getItem('smooth')
-        console.log('smooth')
-        console.log(item2)
+        if (answer === '濃烈') {
+          setSmooth('辛口')
+        } else if (answer === '適中') {
+          setSmooth('甘口')
+        } else {
+          setSmooth('')
+        }
         break
       case 3:
-        setSweet(answer)
-        console.log('sweet')
-        localStorage.setItem('sweet', answer)
-        let item3 = localStorage.getItem('sweet')
-        console.log(item3)
+        if (answer === '甜') {
+          setSweet('偏甜')
+        } else if (answer === '酸') {
+          setSweet('偏酸')
+        } else {
+          setSweet('')
+        }
         break
       case 5:
-        setGift(answer)
-        console.log('gift')
-        localStorage.setItem('gift', answer)
-        let item4 = localStorage.getItem('gift')
-        console.log(item4)
+        if (answer === '送禮') {
+          setGift(true)
+        } else {
+          setGift(false)
+        }
         break
       case 6:
-        setTemp(answer)
-        console.log('temp')
-        localStorage.setItem('temp', answer)
-        let item5 = localStorage.getItem('temp')
-        console.log(item5)
+        if (answer === '冷藏飲用') {
+          setTemp('冷酒')
+        } else if (answer === '隔水加熱飲用') {
+          setTemp('燗酒')
+        } else if (answer === '常溫飲用') {
+          setTemp('常溫')
+        } else {
+          setTemp('')
+        }
         break
       default:
         break

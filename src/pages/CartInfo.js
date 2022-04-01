@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // 驗證電話號碼套件
@@ -12,16 +13,31 @@ import '../styles/CartInfo/CartInfo.scss'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
-import { useEffect, useState } from 'react'
+import { islands, townships } from './../data/cart-list-select'
+import { districtsData } from './../data/districts'
+
 import { CartSummary } from './../App'
 // 信用卡
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
+import {
+  orderMainInsert,
+  orderSakeMarkInsert,
+  orderGiftGdInsert,
+  cartSakeMarkDelete,
+  cartGiftGdDelete,
+  shipmentInsert,
+  paymentInsert,
+} from '../compenents/CartFetch/CartListFetch'
 const hunel = new HunelCreditCard()
 
 const CartInfo = () => {
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   // console.log(CartSummary._currentValue)
   let cartSummaryInfo = CartSummary._currentValue
+  let cartSummaryInfoDistrict = cartSummaryInfo.district
+    ? cartSummaryInfo.district
+    : '台北市'
+
   // TODO: 可能要換狀態名稱，不然會跟CartList相撞
   // 接清酒跟禮盒的資料
   const [sakeIncart, setSakeIncart] = useState([])
@@ -35,6 +51,7 @@ const CartInfo = () => {
   const [receiverName, setReceiverName] = useState('')
   const [receiverMobile, setReceiverMobile] = useState('')
   const [receiverAddress, setReceiverAddress] = useState('')
+  const [receiverDistrict, setReceiverDistrict] = useState(-1)
   // 信用卡資料
   const [cardNum, setCardNum] = useState('')
   const [cardHolder, setCardHolder] = useState('')
@@ -50,17 +67,20 @@ const CartInfo = () => {
   const [passReceiverName, setPassReceiverName] = useState('defualt')
   const [passReceiverMobile, setPassReceiverMobile] = useState('defualt')
   const [passReceiverAddress, setPassReceiverAddress] = useState('defualt')
+  const [passReceiverDistrict, setPassReceiverDistrict] = useState(false)
   const [passCardNum, setPassCardNum] = useState(false)
   const [passCardHolder, setPassCardHolder] = useState('default')
   const [passCardCvv, setPassCardCvv] = useState('default')
   const [passThrough, setPassThrough] = useState(false)
   // 讓border變紅色
   const [warning, setWarning] = useState('no')
-
+  // 會員ID TODO: 之後要連動
+  const member_id = 4
+  // TODO: store_id 要在做門市元件後換
+  const store_id = ''
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
-    const member_id = 4
     let cartLength = 0
     ;(async () => {
       const r1 = await fetch(
@@ -148,21 +168,10 @@ const CartInfo = () => {
   }
   // 取得表單資料 後簡禪表單資料
   function formCheck() {
-    let data = {
-      buyerName: buyerName,
-      buyerMobile: buyerMobile,
-      buyerEmail: buyerEmail,
-      receiverName: receiverName,
-      receiverMobile: receiverMobile,
-      receiverAddress: receiverAddress,
-      cardNum: cardNum,
-    }
-
     // 驗證 表單資料
     // 購買人
     if (buyerName.length >= 2) {
       setPassBuyerName(true)
-
     } else {
       setPassBuyerName(false)
       setPassThrough(false)
@@ -199,6 +208,12 @@ const CartInfo = () => {
       setPassReceiverAddress(false)
       setPassThrough(false)
     }
+    if (receiverDistrict !== -1) {
+      setPassReceiverDistrict(true)
+    } else {
+      setPassReceiverDistrict(false)
+      setPassThrough(false)
+    }
     // 信用卡資訊
     // 用元件內的套件檢查 會更新numberValid，再用numberValid做確認
     if (numberValid === true) {
@@ -231,22 +246,19 @@ const CartInfo = () => {
       passCardHolder: passCardHolder,
       passCardCvv: passCardCvv,
     }
-    if (buyerName&&
-    buyerMobile&&
-    buyerEmail&&
-    receiverName&&
-    receiverMobile&&
-    receiverAddress&&
-    cardNum&&
-    cardHolder&&
-    cardCvv) {
+    if (
+      buyerName &&
+      buyerMobile &&
+      buyerEmail &&
+      receiverName &&
+      receiverMobile &&
+      receiverAddress &&
+      cardNum &&
+      cardHolder &&
+      cardCvv
+    ) {
       setPassThrough(true)
-      console.log('pass', pass)
-      console.log('data', data)
-      console.log('cvv', cardCvv.length)
     }
-    console.log('cvv', cardCvv.length, passCardCvv)
-    console.log('pass', pass)
   }
   useEffect(() => {
     formCheck()
@@ -262,6 +274,87 @@ const CartInfo = () => {
     cardHolder,
     cardCvv,
   ])
+  async function printMe() {
+    let data = {
+      buyerName: buyerName,
+      buyerMobile: buyerMobile,
+      buyerEmail: buyerEmail,
+      receiverName: receiverName,
+      receiverMobile: receiverMobile,
+      receiverAddress: receiverAddress,
+      cardNum: cardNum,
+    }
+
+    console.log(data)
+  }
+  async function fectOutData() {
+    let data = {
+      buyerName: buyerName,
+      buyerMobile: buyerMobile,
+      buyerEmail: buyerEmail,
+      receiverName: receiverName,
+      receiverMobile: receiverMobile,
+      receiverAddress: receiverAddress,
+      cardNum: cardNum,
+    }
+
+    console.log(data)
+    // 將手機號碼 +886轉成 0
+    let buyerMobileTidy = buyerMobile
+    if (buyerMobileTidy.includes('+886')) {
+      buyerMobileTidy = buyerMobileTidy.replace(/\+886/, 0)
+    }
+    // insert order_main訂單資料 回傳的order_main_id要給之後的訂單明細用
+    let [orderMainResult, order_main_id] = await orderMainInsert(
+      member_id,
+      buyerName,
+      buyerMobileTidy,
+      buyerEmail,
+      cartSummaryInfo.discountCode
+    )
+    // insert sake mark訂單資料
+    let orderSakeMarkResult = await orderSakeMarkInsert(
+      member_id,
+      order_main_id
+    )
+    // insert 禮盒 禮盒明細訂單資料
+    let orderGiftResult = await orderGiftGdInsert(member_id, order_main_id)
+    let cartSakeMarkDelResult = await cartSakeMarkDelete(member_id)
+    let cartGiftGdDelResult = await cartGiftGdDelete(member_id)
+
+    // 整理地址加上市、區
+    let receiverAddressTidy = receiverAddress
+    receiverAddressTidy =
+      cartSummaryInfoDistrict + receiverDistrict + receiverAddressTidy
+    let receiverMobileTidy = receiverMobile
+    if (receiverMobileTidy.includes('+886')) {
+      receiverMobileTidy = receiverMobileTidy.replace(/\+886/, 0)
+    }
+    let shipmentResult = await shipmentInsert(
+      order_main_id,
+      cartSummaryInfo.method,
+      store_id,
+      receiverName,
+      receiverMobileTidy,
+      receiverAddressTidy,
+      'shipment_note'
+    )
+    let cardNumTidy = cardNum
+    cardNumTidy = cardNum.slice(-4)
+    let paymentResult = await paymentInsert(order_main_id, cardNumTidy)
+    console.log(
+      'orderMainResult: ',
+      orderMainResult,
+      'order_main_id: ',
+      order_main_id
+    )
+    console.log('orderSakeMarkResult: ', orderSakeMarkResult)
+    console.log('orderGiftResult: ', orderGiftResult)
+    console.log('cartSakeMarkDelResult: ', cartSakeMarkDelResult)
+    console.log('cartGiftGdDelResult: ', cartGiftGdDelResult)
+    console.log('shipmentResult: ', shipmentResult)
+    console.log('paymentResult: ', paymentResult)
+  }
 
   return (
     <div className="CartInfo">
@@ -437,14 +530,30 @@ const CartInfo = () => {
                   <option value="taiwan">台灣</option>
                 </select>
                 <select className="decorated" name="city" disabled>
-                  <option value="taipei">{cartSummaryInfo.district}</option>
+                  <option value="taipei">{cartSummaryInfoDistrict}</option>
                 </select>
-                <div className="district-code">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="郵遞區號"
-                  />
+                <div className="district">
+                  <select
+                    className={
+                      passReceiverDistrict === false && warning === 'red'
+                        ? 'decorated red'
+                        : 'decorated'
+                    }
+                    name="district"
+                    onChange={(e) => {
+                      setReceiverDistrict(e.target.value)
+                    }}
+                  >
+                    <option value="-1">選擇區域</option>
+                    {!!districtsData &&
+                      districtsData[cartSummaryInfoDistrict].map(
+                        (value, index) => (
+                          <option key={index} value={value}>
+                            {value}
+                          </option>
+                        )
+                      )}
+                  </select>
                   <div className="form-text">錯誤/提示訊息</div>
                 </div>
               </div>
@@ -491,12 +600,20 @@ const CartInfo = () => {
             </HunelProvider>
           </div>
           <div className="buttons">
+            <button className="btn btn-primary" onClick={printMe}>
+              data
+            </button>
+            <button className="btn btn-primary" onClick={fectOutData}>
+              FetchOut
+            </button>
             <Link to="/cart/list">
               <button className="btn btn-primary">上一步</button>
             </Link>
             {passThrough === true ? (
               <Link to="/cart/verify">
-                <button className="btn btn-secondary">確認付款</button>
+                <button className="btn btn-secondary" onClick={fectOutData}>
+                  確認付款
+                </button>
               </Link>
             ) : (
               <button

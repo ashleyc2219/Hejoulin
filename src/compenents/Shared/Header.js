@@ -15,7 +15,8 @@ const Header = (props) => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
-  const location = useLocation() 
+  const location = useLocation()
+
   const getQuantity = async () => {
     const data = { member_id: 4 }
     const settings = {
