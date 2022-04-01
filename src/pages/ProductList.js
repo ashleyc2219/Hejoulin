@@ -133,7 +133,7 @@ const ProductList = (props) => {
       setProlist(true)
       setSpinTop(false)
       setLoad(true)
-    }, 1000)
+    }, 1000) 
   }
   const sidebarToLoad3 = () => {
     setProlist(false)
