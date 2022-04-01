@@ -16,6 +16,7 @@ const Header = (props) => {
   const [open, setOpen] = useState(false)
 
   const location = useLocation()
+
   const getQuantity = async () => {
     const data = { member_id: 4 }
     const settings = {
@@ -104,7 +105,7 @@ const Header = (props) => {
             </ul>
             <div className="icons">
               {/* <LoginHover showSidebar={showSidebar} /> */}
-              <LogoutHover />
+              <LogoutHover setSidebar={setSidebar}/>
               <Link to="/cart/list" className="cart">
                 <img alt="" src="/Shared/shoppingCart.svg" />
                 <CartCount.Consumer>

@@ -55,13 +55,18 @@ function App() {
   const [subTimeMonth, setSubTimeMonth] = useState(0)
   const [cartSummary, setCartSummary] = useState(['lol'])
   //加入購物車的提示光箱
-  const[addcartmodal , setAddcartmodal] = useState(false)
+  const [addcartmodal, setAddcartmodal] = useState(false)
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Router>
         <>
           <CartCount.Provider value={cartCount}>
-            <Header user={user} setUser={setUser} setCartCount={setCartCount} addcartmodal={addcartmodal}/>
+            <Header
+              user={user}
+              setUser={setUser}
+              setCartCount={setCartCount}
+              addcartmodal={addcartmodal}
+            />
           </CartCount.Provider>
           <Switch>
             <Route exact path="/news/detail/:id">

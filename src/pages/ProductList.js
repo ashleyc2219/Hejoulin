@@ -16,6 +16,7 @@ import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
 import GuideButton from '../compenents/SakeGuide/Guide'
 import ChooseCartMarkModal from '../compenents/Cart/ChooseCartMarkModal'
+import EmptyCart from '../compenents/Cart/EmptyCart'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
@@ -410,6 +411,7 @@ const ProductList = (props) => {
     <>
       {/*  <CreditCardVerified /> */}
       {/* <ChooseCartMarkModal /> */}
+      {/* <EmptyCart /> */}
       {sortModal ? (
         <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
       ) : (

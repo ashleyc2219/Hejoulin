@@ -36,6 +36,10 @@ const Cards = (props) => {
     currentCon,
     minus,
     setStep,
+    setSakeId2,
+    setName2,
+    setPrice2,
+    setImg2,
   } = props
 
   const [sakeButton, setSakeButton] = useState(0)
@@ -90,6 +94,10 @@ const Cards = (props) => {
               sakeButton={sakeButton}
               setSakeButton={setSakeButton}
               pro_id={pro_id}
+              setSakeId2={setSakeId2}
+              setName2={setName2}
+              setPrice2={setPrice2}
+              setImg2={setImg2}
             />
           ) : (
             <SakeButtonSingle

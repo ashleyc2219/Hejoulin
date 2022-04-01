@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Question from '../compenents/SakeGuide/Question'
 import './../styles/SakeGuide/SakeGuide.scss'
 import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
@@ -7,82 +8,82 @@ const SakeGuide = () => {
   const [content, setContent] = useState([])
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
-  const url = 'http://localhost:3500/api/guide_q'
+  const [thickness, setThickness] = useState('') //厚薄
+  const [smooth, setSmooth] = useState('') //辛口甘口
+  const [sweet, setSweet] = useState('') //偏酸偏甜
+  //一定要照上面的順序
+  const [taste, setTaste] = useState('') //最後的taste ?
+  const [temp, setTemp] = useState('') //溫度
+  const [gift, setGift] = useState(false) //送禮
+  const [sakeId, setSakeId] = useState(0) //設定最終的id
 
-  
-
-  const fetchData = async () => {
-    const res = await fetch(url)
-    const data = await res.json()
-    setContent(data)
-  }
-
-  const question = content.map((v, i) => {
+  const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
+  const sake = content.map((v, i) => {
     return (
       <React.Fragment key={i}>
-        <section className="main">
-          <p className="question">{v.q_des}</p>
-          <div className="group">
-            <div className="circle_group">
-              <div className="inner_circle"></div>
-              <div className="circle"></div>
-            </div>
-            <p className="answer">清爽</p>
-          </div>
-          <div className="group">
-            <div className="circle_group">
-              <div className="circle"></div>
-              <div className="inner_circle"></div>
-            </div>
-            <p className="answer">豐富</p>
-          </div>
-          <div className="group">
-            <div className="circle_group">
-              <div className="circle"></div>
-              <div className="inner_circle"></div>
-            </div>
-            <p className="answer">兩者皆可</p>
-          </div>
-        </section>
+        <div className="box">
+          <div className="sake_circle uno"></div>
+          <Link to={'/product/detail/' + v.pro_id}>
+            <img
+              src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+              alt=""
+            />
+            <span>{v.pro_name}</span>
+          </Link>
+        </div>
       </React.Fragment>
     )
   })
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-    fetchData()
-  }, [])
+    const fetchItem = async () => {
+      const res = await fetch(url2)
+      const data = await res.json()
+      setContent(data)
+    }
+    fetchItem()
+  }, [taste, temp, minPrice, maxPrice, gift])
+
   return (
     <>
       <div className="SakeGuide">
         <div className="guide_container">
-          <section className="main">
-            <p className="question">
-              您喜歡口感清爽的清酒，還是有豐富層次的清酒呢？
-            </p>
-            <div className="group">
-              <div className="circle_group">
-                <div className="inner_circle"></div>
-                <div className="circle"></div>
+          <section className="start">
+            <img src="/Gift/bgelement.svg" alt="" className="one"></img>
+            <img src="/Gift/bgelement.svg" alt="" className="two"></img>
+            {/* </div> */}
+            <div className="text">
+              <div className="left">
+                <h2>擺脫選擇苦手</h2>
+                <h2>選酒指南</h2>
               </div>
-              <p className="answer">清爽</p>
+              <div className="right">
+                <p className="intro">想嘗試清酒卻不知道從哪裡開始？</p>
+                <p className="intro">
+                  還是本身就是選擇障礙患者，決定買哪一支清酒就要花很多時間？
+                </p>
+                <p className="intro">或是想送人清酒卻怕無法送入心坎？</p>
+                <p className="intro">
+                  我們提供專業的選酒指南，隨著問題的進行，逐一篩選出您心目中優質的清酒候選，推薦給您！
+                </p>
+              </div>
             </div>
-            <div className="group">
-              <div className="circle_group">
-                <div className="circle"></div>
-                <div className="inner_circle"></div>
-              </div>
-              <p className="answer">豐富</p>
-            </div>
-            <div className="group">
-              <div className="circle_group">
-                <div className="circle"></div>
-                <div className="inner_circle"></div>
-              </div>
-              <p className="answer">兩者皆可</p>
+            <div className="location">
+              <button className="begin">
+                <p>立即開始</p>
+                <span>scroll</span>
+                <div className="line"></div>
+                <div className="arrow"></div>
+              </button>
             </div>
           </section>
-          {question}
+          <Question
+            setThickness={setThickness}
+            setSmooth={setSmooth}
+            setSweet={setSweet}
+            setTaste={setTaste}
+            setTemp={setTemp}
+            setGift={setGift}
+          />
           <section className="price">
             <MultiRangeSlider
               min={380}
@@ -93,58 +94,16 @@ const SakeGuide = () => {
                 console.log(`min = ${min}, max = ${max}`)
               }
             />
-            {/* <div className="cost">
-              <div className="qus">
-                <legend className="filter-headline">價錢預算</legend>
-                <p className="cost__inputs">
-                  <label className="cost__label">
-                    <input
-                      className="cost__input"
-                      type="number"
-                      value="0"
-                      min="0"
-                      max="12000"
-                      readOnly
-                    />
-                  </label>
-                  <span>~</span>
-                  <label className="cost__label">
-                    <input
-                      className="cost__input"
-                      type="number"
-                      value="3000"
-                      min="0"
-                      max="12000"
-                      readOnly
-                    />
-                  </label>
-                </p>
-              </div>
-
-              <div
-                className="range-slider cost__range"
-                // style={{--first-val: 0%, --second-val: 75%}}
-              >
-                <input
-                  className="range-slider__input"
-                  type="range"
-                  min="0"
-                  max="12000"
-                  // value="0"
-                  step="100"
-                  aria-label="Min range"
-                />
-                <input
-                  className="range-slider__input"
-                  type="range"
-                  min="0"
-                  max="12000"
-                  // value="9000"
-                  step="100"
-                  aria-label="Max range"
-                />
-              </div>
-            </div> */}
+            <button
+              onClick={() => {
+                console.log(
+                  `thickness=${thickness},smooth=${smooth},sweet=${sweet},temp=${temp},gift=${gift}`
+                )
+                setTaste(thickness + smooth + sweet)
+              }}
+            >
+              察看結果
+            </button>
           </section>
           <section className="wave_loca">
             <div className="wave">
@@ -154,12 +113,14 @@ const SakeGuide = () => {
           </section>
         </div>
 
+        {/* <Finally /> */}
         <section id="result">
           <div className="title">
             <h4>推薦酒款</h4>
           </div>
           <div className="sakes">
-            <div className="box left">
+            {sake}
+            {/* <div className="box left">
               <div className="sake_circle uno"></div>
               <img src="/SakeGuide/4.png" alt="" />
             </div>
@@ -170,7 +131,7 @@ const SakeGuide = () => {
             <div className="box right">
               <div className="sake_circle tres"></div>
               <img src="/SakeGuide/4.png" alt="" />
-            </div>
+            </div> */}
           </div>
           <div className="anime_bg">
             <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
@@ -194,12 +155,6 @@ const SakeGuide = () => {
               alt=""
             />
             <img className="gray_wave" src="/SakeGuide/gray-wave.svg" alt="" />
-            {/* <img className="other_small" src="/SakeGuide/dots.svg" alt="" />
-            <img
-              className="other_large"
-              src="/SakeGuide/dots-large.svg"
-              alt=""
-            /> */}
           </div>
         </section>
       </div>

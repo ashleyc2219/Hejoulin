@@ -6,7 +6,6 @@ import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
 import FinishRegister from './FinishRegister'
 import SetNewPass from './SetNewPass'
-import LilMemberCenter from './LilMemberCenter'
 
 const Login = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
@@ -43,15 +42,6 @@ const Login = (props) => {
     }
   }
 
-  //登出
-  function jump() {
-    localStorage.clear()
-    if (localStorage.hasOwnProperty('token') === false) {
-      history.push('/', { from: 'login-success' })
-      setSidebar(false)
-    }
-  }
-
   return (
     <>
       {row === 'login' ? (
@@ -61,9 +51,6 @@ const Login = (props) => {
               <div className="loginPage">
                 <h1 className="login-title">歡迎回到禾酒林</h1>
                 <br />
-                <h5>
-                  <button onClick={jump}>登出</button>
-                </h5>
                 <div className="login-form-group">
                   <form name="form1" onSubmit={whenLoginSubmit}>
                     <div className="mb-4">
@@ -132,9 +119,7 @@ const Login = (props) => {
         />
       ) : row === 'finish' ? (
         <SetNewPass row={row} setRow={setRow} />
-      ) : row === 'lilMemberCenter' ? (
-        <LilMemberCenter row={row} setRow={setRow} />
-      ) : null}
+      )  : null}
     </>
   )
 }
