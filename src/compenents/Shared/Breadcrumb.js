@@ -4,10 +4,19 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Breadcrumb = () => {
   const location = useLocation()
-  console.log(location.pathname)
+  let pathname = location.pathname
   let bread = ''
+  if (location.pathname.includes('/product/detail/')) {
+    pathname = '商品詳細'
+  }
+  if (location.pathname.includes('/event/detail/')) {
+    pathname = '活動詳細'
+  }
+  if (location.pathname.includes('/restaurant/detail/')) {
+    pathname = '餐廳詳細'
+  }
 
-  switch (location.pathname) {
+  switch (pathname) {
     case '/news/list':
       bread = (
         <React.Fragment>
@@ -126,6 +135,51 @@ const Breadcrumb = () => {
         </React.Fragment>
       )
       break
+    case '/event/list':
+      bread = (
+        <React.Fragment>
+          <Link to="/event/list">
+            <span className="current">參加活動</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
+    case '/cart/list':
+      bread = (
+        <React.Fragment>
+          <Link to="/cart/list">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
+    case '/cart/info':
+      bread = (
+        <React.Fragment>
+          <Link to="/cart/info">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
+    case '/cart/verify':
+      bread = (
+        <React.Fragment>
+          <Link to="/cart/verify">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
+    case '/cart/order':
+      bread = (
+        <React.Fragment>
+          <Link to="/cart/order">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
     case '/restaurant/list':
       bread = (
         <React.Fragment>
@@ -139,8 +193,10 @@ const Breadcrumb = () => {
       bread = (
         <React.Fragment>
           <Link to="/member/profile">
-            <span className="current">會員中心</span>
+            <span className="">會員中心</span>
           </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">個人資訊</span>
         </React.Fragment>
       )
       break
@@ -148,8 +204,87 @@ const Breadcrumb = () => {
       bread = (
         <React.Fragment>
           <Link to="/member/profile">
-            <span className="current">會員中心</span>
+            <span className="">會員中心</span>
           </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">訂單總覽</span>
+        </React.Fragment>
+      )
+      break
+    case '/member/event-list':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">活動紀錄</span>
+        </React.Fragment>
+      )
+      break
+    case '/member/sub-list':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">訂閱方案</span>
+        </React.Fragment>
+      )
+      break
+    case '/member/fav':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">收藏商品</span>
+        </React.Fragment>
+      )
+      break
+    case '/member/mark':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">酒標作品</span>
+        </React.Fragment>
+      )
+      break
+    case '商品詳細':
+      bread = (
+        <React.Fragment>
+          <Link to="/product/list">
+            <span className="">選購清酒</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">商品細節</span>
+        </React.Fragment>
+      )
+      break
+    case '活動詳細':
+      bread = (
+        <React.Fragment>
+          <Link to="/event/list">
+            <span className="">參加活動</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">活動細節</span>
+        </React.Fragment>
+      )
+      break
+    case '餐廳詳細':
+      bread = (
+        <React.Fragment>
+          <Link to="/restaurant/list">
+            <span className="">合作餐廳</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">餐廳細節</span>
         </React.Fragment>
       )
       break
@@ -204,7 +339,13 @@ const Breadcrumb = () => {
   return (
     <>
       <div className="bread">
-        {location.pathname === '/' ? '' : <span>首頁</span>}
+        {location.pathname === '/' ? (
+          ''
+        ) : (
+          <Link to="/">
+            <span>首頁</span>
+          </Link>
+        )}
         {location.pathname === '/' ? (
           ''
         ) : (
