@@ -196,7 +196,7 @@ function Sidebar(props) {
         </div>
         <div className="second">
           <div className="filter">
-            <a>篩選</a>
+            <p>篩選</p>
           </div>
           <p>等級</p>
           <div className="level">
