@@ -1,11 +1,55 @@
 import React from 'react'
-import './../../styles/ProductList/MobileFilterModal.css'
+import './../../styles/ProductList/MobileFilterModal.scss'
+import SidebarMobile from './SidebarMobile'
 
-const MobileFilterModal = ({ setFilterModal, filterModal }) => {
+const MobileFilterModal = ({
+  setFilterModal,
+  filterModallevel,
+  filterModal,
+  level,
+  setLevel,
+  price,
+  setPrice,
+  sidebarToLoad1,
+  sidebarToLoad2,
+  sidebarToLoad3,
+  levelToLoad,
+  priceToLoad,
+  markToLoad,
+  mark,
+  setMark,
+  reset,
+}) => {
   return (
     <>
       <div className="MobileFilterModal">
         <div className="filter-modal">
+          <img
+            onClick={() => {
+              setFilterModal(!filterModal)
+            }}
+            src="/ProductList/close-black.svg"
+            alt=""
+            className="close-black"
+          />
+          <SidebarMobile
+            level={level}
+            setLevel={setLevel}
+            sidebarToLoad1={sidebarToLoad1}
+            sidebarToLoad2={sidebarToLoad2}
+            sidebarToLoad3={sidebarToLoad3}
+            levelToLoad={levelToLoad}
+            price={price}
+            setPrice={setPrice}
+            priceToLoad={priceToLoad}
+            markToLoad={markToLoad}
+            mark={mark}
+            setMark={setMark}
+            reset={reset}
+          />
+        </div>
+
+        {/* <div className="filter-modal">
           <img
             onClick={() => {
               setFilterModal(!filterModal)
@@ -64,7 +108,7 @@ const MobileFilterModal = ({ setFilterModal, filterModal }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )
