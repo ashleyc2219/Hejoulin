@@ -54,7 +54,7 @@ const SubPlan = (props) => {
             <div className="title">名譽清酒唎酒師為你精選季節性限定清酒。</div>
             <h4>
               名譽清酒唎酒師 <br />
-              為你精選季節性限定清酒。
+              為你精選季節性限定清酒
             </h4>
             <hr />
             <h5>選擇方案</h5>
