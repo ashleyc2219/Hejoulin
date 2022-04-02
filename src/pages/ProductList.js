@@ -133,7 +133,7 @@ const ProductList = (props) => {
       setProlist(true)
       setSpinTop(false)
       setLoad(true)
-    }, 1000) 
+    }, 1000)
   }
   const sidebarToLoad3 = () => {
     setProlist(false)
@@ -375,19 +375,24 @@ const ProductList = (props) => {
     fetchLoca()
     fetchBrand()
 
-    window.addEventListener('scroll', () => {
+    /* window.addEventListener('scroll', () => {
       if (a) {
         handleScroll()
       }
-    })
+    }) */
 
     return () => {
       a = false
     }
   }, [])
 
-  const handleScroll = () => {
+  /*  const handleScroll = () => {
     if (compare.length > 1) {
+      if (window.scrollY >= 100) {
+        setUp(true)
+      }else{
+        setUp(false)
+      }
       if (
         window.innerHeight + window.scrollY >=
         document.body.offsetHeight - 200
@@ -397,7 +402,7 @@ const ProductList = (props) => {
         setUp(false)
       }
     }
-  }
+  } */
 
   // 手機版的篩選排序光箱
   const mobilecat = () => {
@@ -424,6 +429,19 @@ const ProductList = (props) => {
         <MobileFilterModal
           setFilterModal={setFilterModal}
           filterModal={filterModal}
+          level={level}
+          setLevel={setLevel}
+          sidebarToLoad1={sidebarToLoad1}
+          sidebarToLoad2={sidebarToLoad2}
+          sidebarToLoad3={sidebarToLoad3}
+          levelToLoad={levelToLoad}
+          price={price}
+          setPrice={setPrice}
+          priceToLoad={priceToLoad}
+          markToLoad={markToLoad}
+          mark={mark}
+          setMark={setMark}
+          reset={reset}
         />
       ) : (
         ''
@@ -532,7 +550,16 @@ const ProductList = (props) => {
                 </div>
                 <div className="compare">
                   <div className="title">比較</div>
-                  <div className="state">1</div>
+                  <div
+                    onClick={() => {
+                      if (compare.length > 0) {
+                        setComparemodel(!comparemodal)
+                      }
+                    }}
+                    className="state"
+                  >
+                    {compare.length}
+                  </div>
                 </div>
               </div>
               {spinTop ? (
