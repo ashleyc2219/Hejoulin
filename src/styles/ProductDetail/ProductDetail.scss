@@ -775,7 +775,7 @@
           }
           .tran-detail1 {
             width: 100%;
-            height: 700px;
+            height: fit-content;
             display: none;
             border-top: 2px solid $gray-100;
             transition: all 0.3s;

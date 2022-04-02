@@ -966,7 +966,7 @@
 
 .ProductDetail .product-container .main-detail .center-container .mobile-bookmark .tran-detail1 {
   width: 100%;
-  height: 700px;
+  height: fit-content;
   display: none;
   border-top: 2px solid #e0e0df;
   transition: all 0.3s;

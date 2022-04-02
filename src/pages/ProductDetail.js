@@ -383,7 +383,14 @@ const ProductDetail = (props) => {
                 </div>
                 <div className="compare">
                   <div className="title">比較</div>
-                  <div className="state">1</div>
+                  <div
+                    onClick={() => {
+                      setComparemodel(true)
+                    }}
+                    className="state"
+                  >
+                    {compare.length}
+                  </div>
                 </div>
               </div>
               {spin ? (
