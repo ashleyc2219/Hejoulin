@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import './../../compenents/ProductList/CompareBlock.scss'
 
 const CompareBlock = ({
-  up,
   compare,
   setCompare,
   comparemodal,
@@ -17,6 +16,7 @@ const CompareBlock = ({
   comparePro3,
   setComparePro3,
 }) => {
+  const [style, setStyle] = useState({ top: '180px' })
   let product1 = comparePro1.map(function (v, i) {
     return (
       <div key={i} className="product">
@@ -92,6 +92,46 @@ const CompareBlock = ({
     setComparePro3([])
   }
 
+  const handleScroll = () => {
+    if (compare.length > 1) {
+      if (window.innerHeight < 800) {
+        if (
+          window.scrollY >= 100 &&
+          window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 200
+        ) {
+          setStyle({ top: '-300px' })
+          return
+        } else if (window.scrollY >= 100) {
+          setStyle({ top: '0px' })
+          return
+        }
+        setStyle({ top: '180px' })
+      }
+      if (window.innerHeight > 800) {
+        if (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 200
+        ) {
+          setStyle({ top: '-180px' })
+        } else {
+          setStyle({ top: '180px' })
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    let a = true
+    window.addEventListener('scroll', () => {
+      if (a) {
+        handleScroll()
+      }
+    })
+    return () => {
+      a = false
+    }
+  }, [])
   useEffect(() => {
     let a = true
     clear()
@@ -146,7 +186,7 @@ const CompareBlock = ({
 
   return (
     <>
-      <div className={up ? 'compare-block up' : 'compare-block'}>
+      <div style={style} className="compare-block">
         <div className="compare-wrap">
           {/* <div className="product">
             <img src="/ProductList/product.png" alt="" />
