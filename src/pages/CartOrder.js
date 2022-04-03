@@ -5,11 +5,17 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableItem from '../compenents/Cart/OrderTableSake'
 import OrderTableGift from '../compenents/Cart/OrderTableGift'
 import OrderTableSake from '../compenents/Cart/OrderTableSake'
+import { CartSummary } from '../App'
 const CartOrder = () => {
+  let cartSummaryInfo = CartSummary._currentValue
+  console.log(cartSummaryInfo.order_main_id)
   const [sakeInOrder, setSakeInOrder] = useState([])
   const [giftInOrder, setGiftInOrder] = useState([])
   const [orderInfo, setOrderInfo] = useState([])
-  const order_id = '20220110001'
+  const order_id = cartSummaryInfo.order_main_id
+    ? cartSummaryInfo.order_main_id
+    : '20220110001'
+
   // 訂單編號 產生 訂單日期字串
   function genDate(order_id) {
     let year = order_id.slice(0, 4)
@@ -18,7 +24,6 @@ const CartOrder = () => {
     let orderDate = year + '-' + month + '-' + date
     return orderDate
   }
-  genDate(order_id)
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
@@ -77,7 +82,7 @@ const CartOrder = () => {
     }
   }, [])
   const renderSakeItems = (sakeInOrder) => {
-    if (sakeInOrder.length) {
+    if (sakeInOrder.length && sakeInOrder[0].pro_name !== null) {
       return sakeInOrder.map((sake, i) => {
         return <OrderTableSake key={i} sakeInfo={sake} />
       })
@@ -86,7 +91,8 @@ const CartOrder = () => {
     }
   }
   const renderGiftItems = (giftIncart) => {
-    if (giftIncart.length) {
+    console.log(giftIncart.length)
+    if (giftIncart.length && giftIncart[0].order_quantity !== null) {
       return giftIncart.map((gift, i) => {
         return <OrderTableGift key={i} giftInfo={gift} />
       })
@@ -101,7 +107,9 @@ const CartOrder = () => {
       <div className="container">
         <div className="left-list">
           <div className="mobile-table-btn ">
-            <span className="total">訂單總計: $ 5700</span>
+            <span className="total">
+              訂單總計: $ {cartSummaryInfo.allTotal}
+            </span>
           </div>
           <div className="list-table">
             <div className="table-head ">
@@ -115,19 +123,20 @@ const CartOrder = () => {
           <div className="list-summary">
             <div className="table-row">
               <p>小計</p>
-              <p className="dollar-sign">5640</p>
-            </div>
-            <div className="table-row">
-              <p>運費</p>
-              <p className="dollar-sign">60</p>
+              <p className="dollar-sign">{cartSummaryInfo.subtotal}</p>
             </div>
             <div className="table-row">
               <p>折扣碼</p>
-              <p>DiscountCode</p>
+              <p>{cartSummaryInfo.discountCode}</p>
             </div>
             <div className="table-row">
+              <p>運費</p>
+              <p className="dollar-sign">{cartSummaryInfo.shipFee}</p>
+            </div>
+
+            <div className="table-row">
               <p>總計</p>
-              <p className="dollar-sign total">5700</p>
+              <p className="dollar-sign total">{cartSummaryInfo.allTotal}</p>
             </div>
           </div>
           <div className="mobile-table-btn ">
