@@ -2,7 +2,7 @@ import React from 'react'
 
 const OrderTableSake = (props) => {
   const { sakeInfo } = props
-  console.log(sakeInfo)
+  
   const mark = props.mark
   return (
     <>
