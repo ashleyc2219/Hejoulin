@@ -39,18 +39,27 @@ const AddressBox = ({ memberData, setMemberData }) => {
 
   const memberAddress = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_addr === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_addr.slice(6))
     }
   }
 
   const memberZip = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_addr === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_addr.slice(3, 6))
     }
   }
 
   const memberCity = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_addr === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_addr.slice(0, 3))
     }
   }

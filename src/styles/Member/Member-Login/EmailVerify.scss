@@ -15,22 +15,31 @@
     }
 
     .inputGroup {
-
+      position: relative;
 
       img {
         margin-top: 3%;
         margin-left: 3%;
       }
+
       input {
         width: 17%;
         margin-left: 3%;
         margin-top: 3%;
+      }
+
+      .errMsg {
+        color: red;
+        position: absolute;
+        top: 80px;
+        left: 13px;
       }
     }
 
     .reSendTag {
       margin-top: 10%;
     }
+
     .btn {
       margin-top: 10%;
     }

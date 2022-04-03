@@ -8,10 +8,11 @@ import TabPages from '../../TabComponent/TabPages'
 const TabsSub = (props) => {
   const { user, setUser } = props
   const [activeTab, setActiveTab] = useState('tab1')
+  const [subData, setSubData] = useState([])
   return (
     <>
       <div className="TabsSub">
-        <nav className="nav">
+        <nav className="nav" style={{display: subData.length ? 'inline-block' : 'none'}}>
           <TabNavItem
             title="已過期"
             id="tab1"
@@ -29,7 +30,7 @@ const TabsSub = (props) => {
         </nav>
         <div className="outlet">
           <TabContent id="tab1" activeTab={activeTab}>
-            <SubData user={user} setUser={setUser} />
+            <SubData user={user} setUser={setUser} subData={subData} setSubData={setSubData}/>
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
             {/*<EventData data={data} setData={setData} />*/}

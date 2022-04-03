@@ -24,6 +24,9 @@ const SetNewPass = ({ row, setRow }) => {
     })
     const obj = await r.json()
     console.log(obj)
+    if (obj.success === true) {
+      setRow('login')
+    }
   }
 
   function handleInputChangePwd(event) {
@@ -194,7 +197,7 @@ const SetNewPass = ({ row, setRow }) => {
                   onClick={change}
                   disabled
                 >
-                  送出
+                  輸入錯誤
                 </button>
               )}
             </form>

@@ -11,7 +11,6 @@ const ProfileBox = ({ memberData, setMemberData }) => {
   const [mob, setMob] = useState('')
   const [name, setName] = useState('')
 
-  let mData = ''
   useEffect(() => {
     ;(async () => {
       const obj = await (
@@ -22,6 +21,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
           },
         })
       ).json()
+      console.log(obj)
       setMemberData(obj)
       setMob(obj[0].member_mob)
       setName(obj[0].member_name)
@@ -35,16 +35,25 @@ const ProfileBox = ({ memberData, setMemberData }) => {
   }
   const memberBirthdayY = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_bir === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_bir.slice(0, 4))
     }
   }
   const memberBirthdayM = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_bir === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_bir.slice(6, 7))
     }
   }
   const memberBirthdayD = (memberData) => {
     if (memberData && memberData.length) {
+      if (memberData[0].member_bir === null) {
+        return ''
+      }
       return memberData.map((el) => el.member_bir.slice(9, 10))
     }
   }
@@ -62,7 +71,7 @@ const ProfileBox = ({ memberData, setMemberData }) => {
       obj[key] = value
     })
     const json = JSON.stringify(obj)
-    console.log(json)
+    // console.log(json)
     const memberUpdate = await fetch(APIUpdate, {
       method: 'PUT',
       headers: {

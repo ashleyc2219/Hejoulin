@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 const FinishRegister = ({ sidebar, setSidebar, row, setRow }) => {
   const showSidebar = () => {
     setSidebar(!sidebar)
-    setRow('lilMemberCenter')
   }
   return (
     <>

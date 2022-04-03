@@ -30,7 +30,6 @@ const FavData = (props) => {
   // }, [])
   const renderFavItems = (favData) => {
     const deleteFav = async () => {
-      // console.log('test' + favData[0].member_id)
       const data = {
         member_id: `${favData[0].member_id}`,
         pro_id: `${favData[0].pro_id}`,

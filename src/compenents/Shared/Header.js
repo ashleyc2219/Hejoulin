@@ -54,6 +54,14 @@ const Header = (props) => {
     setMobileMenu(!mobileMenu)
     setOpen(false)
   }
+  function authCtrl() {
+    // console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('token') !== null ){
+      return <LogoutHover setSidebar={setSidebar}/>
+    } else {
+      return <LoginHover showSidebar={showSidebar} />
+    }
+  }
   const openMenu = () => setOpen(!open)
   return (
     <>
@@ -104,8 +112,7 @@ const Header = (props) => {
               </li>
             </ul>
             <div className="icons">
-              {/* <LoginHover showSidebar={showSidebar} /> */}
-              <LogoutHover setSidebar={setSidebar}/>
+              {authCtrl()}
               <Link to="/cart/list" className="cart">
                 <img alt="" src="/Shared/shoppingCart.svg" />
                 <CartCount.Consumer>

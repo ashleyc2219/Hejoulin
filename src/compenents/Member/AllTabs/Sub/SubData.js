@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../../../styles/Member/Member-Sub/SubData.scss'
+import { Link } from "react-router-dom";
 
 const SubData = (props) => {
-  const { user, setUser } = props
-  const [subData, setSubData] = useState({})
+  const { user, setUser, subData, setSubData } = props
   const listNames = [
     { listName: '訂閱開始時間' },
     { listName: '訂閱名稱' },
@@ -27,6 +27,7 @@ const SubData = (props) => {
       setSubData(obj)
     })()
   }, [])
+
   const renderSubItems = (subData) => {
     if (subData.data1) {
       return (
@@ -40,22 +41,26 @@ const SubData = (props) => {
           </td>
         </tr>
       )
-    } else {
-      return (
-        <tr></tr>
-        // <div className="none-mes">
-        //   <h5>您目前未有訂閱方案</h5>
-        //   <button className="btn btn-primary btnSub">點我訂閱去</button>
-        // </div>
-      )
     }
+  }
+  const noSubItems = (subData) => {
+          if (!subData.length){
+              return (
+                  <div className="noneSubData">
+                      <h5>您目前未有訂閱方案</h5>
+                      <Link to="/sub/plan">
+                          <button className="btn btn-primary btnSub">點我訂閱去</button>
+                      </Link>
+                  </div>
+              )
+          }
   }
   return (
     <>
       <div className="subData">
         <table>
-          <thead>{subData ? <tr>{listType(listNames)}</tr> : <tr></tr>}</thead>
-          <tbody>{subData.data1 && renderSubItems(subData)}</tbody>
+            {subData.length ? <thead><tr>{listType(listNames)}</tr></thead> : <tr></tr>}
+          <tbody>{subData.data1 ? renderSubItems(subData) : noSubItems(subData)}</tbody>
         </table>
       </div>
     </>

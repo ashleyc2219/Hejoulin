@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../../styles/Member/Member-Login/AccountCheck.scss'
 
-const AccountCheck = ({ setRow }) => {
+const AccountCheck = ({ setRow, userToken, setUserToken  }) => {
   const APICheck = 'http://localhost:3001/login/account-check'
   const APISendEmail = 'http://localhost:3001/login/send-email'
 
@@ -19,22 +19,26 @@ const AccountCheck = ({ setRow }) => {
 
     const obj = await r.json()
     console.log(obj)
-
+    let userId = {
+      userId: obj.uId,
+    }
+    console.log(userId)
     if (obj.used === 'have') {
-      setRow('verify')
+      localStorage.setItem('token', obj.token)
+      // setUserToken(localStorage.getItem('token'))
+      setRow('verify2')
       await fetch(APISendEmail, {
         method: 'POST',
-        body: fd,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userId),
       })
     } else {
       setRow('login')
     }
   }
 
-  // function nextPage() {
-  //   const newPage = next === 'check' ? 'verify' : 'check'
-  //   setNext(newPage)
-  // }
 
   return (
     <>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import AddressBox from './AddressBox'
 import PassBox from './PassBox'
-import CardBox from './CardBox'
 import ProfileBox from './ProfileBox'
 import TabNavItem from '../../TabComponent/TabNavItem'
 import TabContent from '../../TabComponent/TabContent'
@@ -33,12 +32,6 @@ const Tabs = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <TabNavItem
-          title="信用卡 / 付款方式"
-          id="tab4"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
       </div>
       <div className="outlet">
         <TabContent id="tab1" activeTab={activeTab}>
@@ -49,9 +42,6 @@ const Tabs = () => {
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
           <PassBox />
-        </TabContent>
-        <TabContent id="tab4" activeTab={activeTab}>
-          <CardBox />
         </TabContent>
       </div>
     </div>

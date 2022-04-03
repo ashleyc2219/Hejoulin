@@ -179,7 +179,7 @@ function App() {
             <Route exact path="/member/profile">
               <MemberProfile user={user} setUser={setUser} />
             </Route>
-            <Route exact path="/member/order-list/detail/:id">
+            <Route exact path="/member/order-list/detail">
               <MemberOrderListDetail user={user} setUser={setUser} />
             </Route>
             <Route exact path="/member/order-list">

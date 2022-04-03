@@ -6,12 +6,15 @@ import EmailVerify from './EmailVerify'
 import AccountCheck from './AccountCheck'
 import FinishRegister from './FinishRegister'
 import SetNewPass from './SetNewPass'
+import EmailVerify2 from "./EmailVerify2";
 
 const Login = (props) => {
   const { user, setUser, sidebar, setSidebar } = props
   const [row, setRow] = useState('login')
+  const [userToken, setUserToken] = useState('')
+  const [verifyAccount, setVerifyAccount] = useState('')
   const APILogin = 'http://localhost:3001/login/login'
-  const API = 'http://localhost:3001/user/api/auth-list'
+  // const API = 'http://localhost:3001/user/api/auth-list'
   let history = useHistory()
 
   const whenLoginSubmit = async (event) => {
@@ -24,22 +27,27 @@ const Login = (props) => {
     })
 
     const obj = await r.json()
-
-    localStorage.setItem('token', obj.token)
-    localStorage.setItem('account', obj.info.user_account)
-    setUser(obj.info.user_account)
-    const token = localStorage.getItem('token')
-
-    const r2 = await fetch(API, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    const info2 = await r2.json()
-    if (info2.obj) {
-      setUser(info2.obj)
-      history.push('/')
+    console.log(obj)
+    if (obj.success === false) {
+      setVerifyAccount('wrong')
+      return
     }
+    if (obj.success === true){
+      localStorage.setItem('token', obj.token)
+      localStorage.setItem('account', obj.info)
+      history.go(0)
+    }
+    // const token = localStorage.getItem('token')
+
+    // const r2 = await fetch(API, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`,
+    //   },
+    // })
+    // const info2 = await r2.json()
+    // if (info2.obj) {
+    //   setUser(info2.obj)
+    // }
   }
 
   return (
@@ -82,6 +90,14 @@ const Login = (props) => {
                       >
                         忘記密碼?
                       </div>
+                      <div
+                          className="errMsg"
+                          style={{
+                            color:"red",
+                            display: verifyAccount === 'wrong' ? 'inline-block' : 'none'}}
+                      >
+                        帳號或是密碼輸入錯誤
+                      </div>
                     </div>
                     <button
                       type="button"
@@ -105,19 +121,23 @@ const Login = (props) => {
           setRow={setRow}
           sidebar={sidebar}
           setSidebar={setSidebar}
+          userToken={userToken}
+          setUserToken={setUserToken}
         />
       ) : row === 'forgetPass' ? (
         <AccountCheck row={row} setRow={setRow} />
       ) : row === 'verify' ? (
         <EmailVerify row={row} setRow={setRow} />
-      ) : row === 'setNewPass' ? (
+      ) : row === 'verify2' ? (
+        <EmailVerify2 row={row} setRow={setRow} />
+      ) : row === 'finish' ? (
         <FinishRegister
           row={row}
           setRow={setRow}
           sidebar={sidebar}
           setSidebar={setSidebar}
         />
-      ) : row === 'finish' ? (
+      ) : row === 'setNewPass' ? (
         <SetNewPass row={row} setRow={setRow} />
       )  : null}
     </>

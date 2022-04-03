@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import '../../../styles/Member/Member-Login/RegisterContext.scss'
-import EmailVerify from './EmailVerify'
-import FinishRegister from './FinishRegister'
 
 const Register = (props) => {
-  const { user, setUser, row, setRow, sidebar, setSidebar } = props
+  const { row, setRow, sidebar, setSidebar, userToken, setUserToken } = props
   const [showPass, setShowPass] = useState(false)
   const [showConfirmPass, setShowConfirmPass] = useState(false)
   const [password, setPassword] = useState(false)
-  // const [focusConfirmPassword, setFocusConfirmPassword] = useState(false)
-  // const [passCorrect, setPassCorrect] = useState(false)
   const [newPwd, setNewPwd] = useState('')
   const [confPwd, setConfPwd] = useState('')
+  const [failMsg, setFailMsg] = useState('')
   const APIRegister = 'http://localhost:3001/login/register'
   const APISendEmail = 'http://localhost:3001/login/send-email'
 
@@ -28,40 +25,31 @@ const Register = (props) => {
 
     const obj = await r.json()
     console.log(obj)
+    let userId = {
+      userId: obj.uId.userId,
+    }
+    console.log(userId)
     if (obj.success === true) {
       const verify = await fetch(APISendEmail, {
         method: 'POST',
-        body: fd,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userId),
       })
       const emailSend = await verify.json()
       console.log(emailSend)
       if (emailSend.message === 'success') {
+       localStorage.setItem('token', obj.token)
+        setUserToken(localStorage.getItem('token'))
         setRow('verify')
       }
+    } else {
+      if (obj.error === "Email 已被使用過") {
+         setFailMsg('used')
+      }
     }
-    // const token = localStorage.getItem('token')
-
-    // const r2 = await fetch('http://localhost:3001/user/api/auth-list', {
-    //   headers: {
-    //     authorization: `Bearer ${token}`,
-    //   },
-    // })
-    // const info2 = await r2.json()
-    // console.log({info2})
-    // setUser(info2.obj)
-
-    // const
-    //   .then((res) => res.json())
-    //   .then((response) => {
-    //     setUser(response.obj)
-    //     history.push('/')
-    //   })
   }
-
-  // function rowTo() {
-  //   const newPage = row === 'login' ? 'register' : 'login'
-  //   setRow(newPage)
-  // }
 
   function changeShowPass() {
     setShowPass(!showPass)
@@ -118,9 +106,6 @@ const Register = (props) => {
     return !!v.match(/([0-9])+/)
   }
 
-  // function isSpecial(v) {
-  //   return !!v.match(/([^a-zA-Z0-9])+/)
-  // }
   function check() {
     if (
       !!isSimplePwd(newPwd) &&
@@ -130,6 +115,12 @@ const Register = (props) => {
     ) {
       return 'gray'
     } else {
+      return 'red'
+    }
+  }
+
+  function registerRsColor() {
+    if (failMsg === 'used') {
       return 'red'
     }
   }
@@ -201,14 +192,13 @@ const Register = (props) => {
                         ? '應包含大寫'
                         : // : isSpecial(newPwd) === false
                           // ? '含有特殊字元'
-                          'OK'}
+                          '您輸入合格的密碼'}
                     </div>
                   </div>
                   <div className="mb-4 passConf-g">
                     <label htmlFor="user_pass" className="form-label">
                       確認密碼
                     </label>
-                    {/*{isSimplePwd(newPwd) === 5 ? (*/}
                     <input
                       type={showConfirmPass ? 'text' : 'password'}
                       placeholder="請再次輸入密碼"
@@ -219,51 +209,19 @@ const Register = (props) => {
                       onChange={handleInputChangeConfPwd}
                       required
                     />
-                    {/* ) : (
-                        {<input
-                      type={showConfirmPass ? 'text' : 'password'}
-                      placeholder="請再次輸入密碼"
-                      className="form-control"
-                      id="check-user-pass"
-                      name="password"
-                      key="password"
-                      onChange={handleInputChangeConfPwd}
-                      required
-                      disabled
-                      />}
-                    )} */}
-                    {/*<div className="passHideIcon">*/}
-                    {/*  <img*/}
-                    {/*    src={*/}
-                    {/*      showConfirmPass*/}
-                    {/*        ? '/Member/hidePass.svg'*/}
-                    {/*        : '/Member/showPass.svg'*/}
-                    {/*    }*/}
-                    {/*    onClick={changeShowConfirmPass}*/}
-                    {/*    alt=""*/}
-                    {/*  />*/}
-                    {/*</div>*/}
-                    <div className="errorMsg">
-                      <div
-                        className="form-text"
-                        id="checkConf"
-                        color={
-                          newPwd === confPwd && isSimplePwd(newPwd) === 5
-                            ? 'green'
-                            : 'grey'
-                        }
-                      ></div>
-                      <div
-                        className="matchTip"
+                    <div
+                        className="form-text errorMsg"
+                        id="checkPass"
                         style={{
-                          display:
-                            newPwd === confPwd && isSimplePwd(newPwd) === 5
-                              ? 'inline-block'
-                              : 'none',
+                            color: registerRsColor(),
+                            display:
+                                failMsg === 'used' ? 'inline-block' : 'none',
                         }}
-                      >
-                        相同
-                      </div>
+                    >
+                      {failMsg === 'used'
+                          ? '您註冊的Email已被使用過'
+                          : ''
+                      }
                     </div>
                   </div>
                   {newPwd === confPwd ? (
@@ -281,7 +239,7 @@ const Register = (props) => {
                       onClick={change}
                       disabled
                     >
-                      註冊
+                      檢查密碼
                     </button>
                   )}
 
