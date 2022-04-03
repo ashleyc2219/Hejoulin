@@ -7,16 +7,13 @@ import CompareModal from '../compenents/ProductList/CompareModal'
 import MobileFilterModal from '../compenents/ProductList/MobileFilterModal'
 import MobileSortModal from '../compenents/ProductList/MobileSortModal'
 import MobileCatModal from '../compenents/ProductList/MobileCatModal'
-import { ListGroup } from 'react-bootstrap'
 import ProductTop3 from '../compenents/ProductList/ProductTop3'
 import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import { Spinner } from 'react-bootstrap'
-import GuideButton from '../compenents/SakeGuide/Guide'
-import ChooseCartMarkModal from '../compenents/Cart/ChooseCartMarkModal'
-import EmptyCart from '../compenents/Cart/EmptyCart'
+import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
@@ -417,9 +414,7 @@ const ProductList = (props) => {
 
   return (
     <>
-      {/*  <CreditCardVerified /> */}
-      {/* <ChooseCartMarkModal /> */}
-      {/* <EmptyCart /> */}
+     
       {sortModal ? (
         <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
       ) : (
@@ -485,9 +480,10 @@ const ProductList = (props) => {
             setMark={setMark}
             reset={reset}
           />
-          <GuideButton />
+         
 
           <div className="main">
+            <MobileGuideButton/>
             <div className="center-container">
               <div className="search-bar">
                 <div className="select">

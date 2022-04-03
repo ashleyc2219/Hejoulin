@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './../styles/ProductDetail/ProductDetail.css'
+import './../styles/ProductDetail/ProductDetail.scss'
 import Sidebar from '../compenents/ProductList/Sidebar'
 import CompareBlock from '../compenents/ProductList/CompareBlock'
 import CompareModal from '../compenents/ProductList/CompareModal'
@@ -8,8 +8,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 import CompareBtn from '../compenents/ProductList/CompareBtn'
 import { Spinner } from 'react-bootstrap'
-
-//import AddCartIcon from '../compenents/ProductList/AddCartIcon'
+import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 import AddCartBtn from '../compenents/ProductList/AddCartBtn'
 
 const ProductDetail = (props) => {
@@ -366,6 +365,7 @@ const ProductDetail = (props) => {
         ''
       )}
       <div className="ProductDetail">
+        <MobileGuideButton />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
         {/* 商品列表的容器 */}

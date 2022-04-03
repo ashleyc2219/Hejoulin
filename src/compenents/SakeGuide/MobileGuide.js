@@ -5,7 +5,7 @@ import './MobileGuide.scss'
 const MobileGuideButton = () => {
   return (
     <Link to="/sake-guide">
-      <div className="Guide">
+      <div className="Guide-mobile">
         <div className="circle"></div>
         <div className="arround">
           <img src="/SakeGuide/full_sake.svg" alt="" className="sake" />

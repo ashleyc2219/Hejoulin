@@ -74,7 +74,7 @@
   overflow: hidden;
   position: relative;
   padding-bottom: 150px;
-  @include bgimage();
+  background-image: url('./../../../public/Sake-background0310.jpg');
   @include medium() {
     padding: 0 20px;
   }
@@ -118,6 +118,9 @@
     margin: 0 auto;
     display: flex;
     z-index: 3;
+    @include medium(){
+      padding-top: 0;
+    }
 
     // 背景的花紋
 
@@ -361,6 +364,9 @@
             }
             .product-title {
               margin-top: 45px;
+              @include medium(){
+                margin-top: 20px;
+              }
               .name {
                 color: $black;
                 font-size: 24px;
