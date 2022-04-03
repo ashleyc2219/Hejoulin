@@ -2,6 +2,7 @@ import React from 'react'
 
 const OrderTableGift = (props) => {
   const { giftInfo } = props
+  console.log(giftInfo)
   let price = 0
   function boxColor(giftInfo) {
     if (giftInfo.box_color === 'white') {
@@ -27,7 +28,7 @@ const OrderTableGift = (props) => {
             <span>{boxColor(giftInfo)}</span>
             <p>{giftInfo.pro_one.pro_name}</p>
             <p>{giftInfo.pro_two.pro_name}</p>
-            <p className="product-count">x{giftInfo.cart_quantity}</p>
+            <p className="product-count">x{giftInfo.order_quantity}</p>
           </div>
           <div className="item item-quantity">
             <p>{giftInfo.order_quantity}</p>
@@ -40,6 +41,7 @@ const OrderTableGift = (props) => {
       </>
     )
   }
+  // 1入
   if (giftInfo.gift_id === 2) {
     price = giftInfo.pro_price + 200
     return (
@@ -52,10 +54,10 @@ const OrderTableGift = (props) => {
             <h5>{giftInfo.gift_name} 禮盒</h5>
             <span>{boxColor(giftInfo)}</span>
             <p>{giftInfo.pro_name}</p>
-            <p className="product-count">x{giftInfo.cart_quantity}</p>
+            <p className="product-count">x{giftInfo.order_quantity}</p>
           </div>
           <div className="item item-quantity">
-            <p>{giftInfo.cart_quantity}</p>
+            <p>{giftInfo.order_quantity}</p>
           </div>
           <div className="item item-subtotal">
             <p>{price * giftInfo.cart_quantity}</p>
@@ -78,13 +80,13 @@ const OrderTableGift = (props) => {
             <span>{boxColor(giftInfo)}</span>
             <p>{giftInfo.pro_name}</p>
             <p>{giftInfo.pro_name}</p>
-            <p className="product-count">x{giftInfo.cart_quantity}</p>
+            <p className="product-count">x{giftInfo.order_quantity}</p>
           </div>
           <div className="item item-quantity">
-            <p>{giftInfo.cart_quantity}</p>
+            <p>{giftInfo.order_quantity}</p>
           </div>
           <div className="item item-subtotal">
-            <p>{price * giftInfo.cart_quantity}</p>
+            <p>{price * giftInfo.order_quantity}</p>
           </div>
         </div>
         <hr />

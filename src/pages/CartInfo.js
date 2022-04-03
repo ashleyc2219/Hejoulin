@@ -30,9 +30,10 @@ import {
 } from '../compenents/CartFetch/CartListFetch'
 const hunel = new HunelCreditCard()
 
-const CartInfo = () => {
+const CartInfo = (props) => {
+  const { setCartVerifyInfo, setCartSummary } = props
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
-  // console.log(CartSummary._currentValue)
+  // cartList 傳過來的資料
   let cartSummaryInfo = CartSummary._currentValue
   let cartSummaryInfoDistrict = cartSummaryInfo.district
     ? cartSummaryInfo.district
@@ -274,18 +275,13 @@ const CartInfo = () => {
     cardHolder,
     cardCvv,
   ])
-  async function printMe() {
+  async function forCartVerifyInfo() {
     let data = {
-      buyerName: buyerName,
-      buyerMobile: buyerMobile,
-      buyerEmail: buyerEmail,
-      receiverName: receiverName,
-      receiverMobile: receiverMobile,
-      receiverAddress: receiverAddress,
       cardNum: cardNum,
+      total: cartSummaryInfo.allTotal,
+      email_account: buyerEmail,
     }
-
-    console.log(data)
+    setCartVerifyInfo(data)
   }
   async function fectOutData() {
     let data = {
@@ -312,6 +308,7 @@ const CartInfo = () => {
       buyerEmail,
       cartSummaryInfo.discountCode
     )
+
     // insert sake mark訂單資料
     let orderSakeMarkResult = await orderSakeMarkInsert(
       member_id,
@@ -340,7 +337,11 @@ const CartInfo = () => {
       'shipment_note'
     )
     let cardNumTidy = cardNum
-    cardNumTidy = cardNum.slice(-4)
+    cardNumTidy = cardNumTidy.slice(-4)
+    // 設定order_main_id 到useContext 給後面的步驟用
+    cartSummaryInfo['order_main_id'] = order_main_id
+    cartSummaryInfo['cardNum'] = cardNumTidy
+    setCartSummary(cartSummaryInfo)
     let paymentResult = await paymentInsert(order_main_id, cardNumTidy)
     console.log(
       'orderMainResult: ',
@@ -362,7 +363,9 @@ const CartInfo = () => {
       <div className="container">
         <div className="left-list">
           <div className="mobile-table-btn ">
-            <span className="total">訂單總計: $ 5700</span>
+            <span className="total">
+              訂單總計: $ {cartSummaryInfo.allTotal}
+            </span>
           </div>
           <div className={collapseClass}>
             <div className="table-head">
@@ -600,18 +603,18 @@ const CartInfo = () => {
             </HunelProvider>
           </div>
           <div className="buttons">
-            <button className="btn btn-primary" onClick={printMe}>
-              data
-            </button>
-            <button className="btn btn-primary" onClick={fectOutData}>
-              FetchOut
-            </button>
             <Link to="/cart/list">
               <button className="btn btn-primary">上一步</button>
             </Link>
             {passThrough === true ? (
               <Link to="/cart/verify">
-                <button className="btn btn-secondary" onClick={fectOutData}>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    forCartVerifyInfo()
+                    fectOutData()
+                  }}
+                >
                   確認付款
                 </button>
               </Link>

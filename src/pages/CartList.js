@@ -8,6 +8,7 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import ListTableSake from '../compenents/Cart/ListTableSake'
 import ListTableGift from '../compenents/Cart/ListTableGift'
 import ListSelection from '../compenents/Cart/ListSelection'
+import EmptyCart from '../compenents/Cart/EmptyCart'
 
 const CartList = (props) => {
   const { setCartSummary } = props
@@ -48,6 +49,7 @@ const CartList = (props) => {
         }
       )
       const obj = await r1.json()
+      console.log(obj)
 
       if (a) {
         setSakeIncart(obj)
@@ -77,6 +79,8 @@ const CartList = (props) => {
         }
       )
       const obj = await rGift.json()
+      console.log(obj)
+
       // console.log('obj', obj)
       if (a) {
         setGiftIncart(obj)
@@ -263,7 +267,9 @@ const CartList = (props) => {
     }
   }
 
-  return (
+  return sakeIncart.length === 0 && giftIncart.length === 0 ? (
+    <EmptyCart />
+  ) : (
     <>
       <div className="CartList">
         <div className="CartList-container">
