@@ -26,6 +26,9 @@
   height: 42px;
   margin: 10px auto;
   position: relative;
+  .test {
+    display: none;
+  }
 
   button {
     background-color: transparent;
@@ -33,26 +36,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     .sake {
       height: 41px;
       width: 18px;
     }
-    .single{
-        margin-right: 10px;
+    .single {
+      margin-right: 10px;
     }
-    .none{
+    .none {
       display: none;
     }
-    span{
-        margin-left: 5px;
+
+    span {
+      margin-left: 5px;
     }
   }
-  .full{
+  .full {
     cursor: not-allowed;
   }
-  .cancel{
-      position: absolute;
-      top:8px;
-      right: 16px;
+  .cancel {
+    position: absolute;
+    top: 8px;
+    right: 16px;
   }
 }

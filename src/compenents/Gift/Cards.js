@@ -29,8 +29,6 @@ const Cards = (props) => {
     currentImg,
     value,
     cancel,
-    item,
-    setItem,
     conImgShadow,
     conName,
     currentCon,
@@ -40,9 +38,15 @@ const Cards = (props) => {
     setName2,
     setPrice2,
     setImg2,
+    sakeId,
+    sakeId2,
   } = props
 
   const [sakeButton, setSakeButton] = useState(0)
+
+  useEffect(() => {
+    setSakeButton(0)
+  }, [kind])
 
   return (
     <div className="gift_sake" key={i}>
@@ -66,7 +70,273 @@ const Cards = (props) => {
         <span className="name">{name}</span>
         <small>${price}</small>
       </div>
-      <div className="btns">
+      {kind === 2 ? (
+        <>
+          <div className="btns">
+            {value.current > 1 ? (
+              <div>
+                <SakeButton
+                  currentPrice={currentPrice}
+                  currentName={currentName}
+                  currentId={currentId}
+                  currentImg={currentImg}
+                  value={value}
+                  cancel={cancel}
+                  sakeButton={sakeButton}
+                  setSakeButton={setSakeButton}
+                  pro_id={pro_id}
+                  setSakeId2={setSakeId2}
+                  setName2={setName2}
+                  setPrice2={setPrice2}
+                  setImg2={setImg2}
+                  setStep={setStep}
+                  sakeId={sakeId}
+                  sakeId2={sakeId2}
+                />
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  setCurrentId(pro_id)
+                  setCurrentImg(img)
+                  setCurrentName(name)
+                  setCurrentPrice(price)
+                  setCurrentCon(conName)
+                  setConShadow(conImgShadow)
+                }}
+              >
+                <SakeButton
+                  currentPrice={currentPrice}
+                  currentName={currentName}
+                  currentId={currentId}
+                  currentImg={currentImg}
+                  value={value}
+                  cancel={cancel}
+                  sakeButton={sakeButton}
+                  setSakeButton={setSakeButton}
+                  pro_id={pro_id}
+                  setSakeId2={setSakeId2}
+                  setName2={setName2}
+                  setPrice2={setPrice2}
+                  setImg2={setImg2}
+                  setStep={setStep}
+                  sakeId={sakeId}
+                  sakeId2={sakeId2}
+                />
+              </div>
+            )}
+            {sakeButton === 1 && (
+              <>
+                <button
+                  className="cancel"
+                  onClick={() => {
+                    setSakeButton(0)
+                    minus()
+                    // setCurrentId(pro_id)
+                    localStorage.setItem('currentId',pro_id)
+                    cancel()
+                  }}
+                >
+                  <img src="/Gift/cancel.svg" alt="" className="circle" />
+                  <span>取消</span>
+                </button>
+              </>
+            )}
+            {sakeButton === 2 && (
+              <>
+                <button
+                  className="cancel"
+                  onClick={() => {
+                    setSakeButton(1)
+                    minus()
+                    // setCurrentId(pro_id)
+                    localStorage.setItem('currentId',pro_id)
+                    cancel()
+                  }}
+                >
+                  <img src="/Gift/cancel.svg" alt="" className="circle" />
+                  <span>取消</span>
+                </button>
+              </>
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="btns">
+            {value.current > 0 ? (
+              <div>
+                <SakeButtonSingle
+                  conImgShadow={conImgShadow}
+                  setConShadow={setConShadow}
+                  conName={conName}
+                  conShadow={conShadow}
+                  currentPrice={currentPrice}
+                  currentName={currentName}
+                  currentId={currentId}
+                  currentImg={currentImg}
+                  setCurrentCon={setCurrentCon}
+                  currentCon={currentCon}
+                  value={value}
+                  cancel={cancel}
+                  sakeButton={sakeButton}
+                  setSakeButton={setSakeButton}
+                  pro_id={pro_id}
+                  setStep={setStep}
+                />
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  setCurrentId(pro_id)
+                  setCurrentImg(img)
+                  setCurrentName(name)
+                  setCurrentPrice(price)
+                  setCurrentCon(conName)
+                  setConShadow(conImgShadow)
+                }}
+              >
+                <SakeButtonSingle
+                  conImgShadow={conImgShadow}
+                  setConShadow={setConShadow}
+                  conName={conName}
+                  conShadow={conShadow}
+                  currentPrice={currentPrice}
+                  currentName={currentName}
+                  currentId={currentId}
+                  currentImg={currentImg}
+                  setCurrentCon={setCurrentCon}
+                  currentCon={currentCon}
+                  value={value}
+                  cancel={cancel}
+                  sakeButton={sakeButton}
+                  setSakeButton={setSakeButton}
+                  pro_id={pro_id}
+                  setStep={setStep}
+                />
+              </div>
+            )}
+
+            {sakeButton === 1 && (
+              <>
+                <button
+                  className="cancel"
+                  onClick={() => {
+                    setSakeButton(0)
+                    minus()
+                    setCurrentId(pro_id)
+                    cancel()
+                  }}
+                >
+                  <img src="/Gift/cancel.svg" alt="" className="circle" />
+                  <span>取消</span>
+                </button>
+              </>
+            )}
+          </div>
+        </>
+      )}
+      {/* <div className="btns">
+        {kind === 1 && value.current > 0 ? (
+          <div>
+            <SakeButtonSingle
+              conImgShadow={conImgShadow}
+              setConShadow={setConShadow}
+              conName={conName}
+              conShadow={conShadow}
+              currentPrice={currentPrice}
+              currentName={currentName}
+              currentId={currentId}
+              currentImg={currentImg}
+              setCurrentCon={setCurrentCon}
+              currentCon={currentCon}
+              value={value}
+              cancel={cancel}
+              sakeButton={sakeButton}
+              setSakeButton={setSakeButton}
+              pro_id={pro_id}
+              setStep={setStep}
+            />
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              setCurrentId(pro_id)
+              setCurrentImg(img)
+              setCurrentName(name)
+              setCurrentPrice(price)
+              setCurrentCon(conName)
+              setConShadow(conImgShadow)
+            }}
+          >
+            <SakeButtonSingle
+              conImgShadow={conImgShadow}
+              setConShadow={setConShadow}
+              conName={conName}
+              conShadow={conShadow}
+              currentPrice={currentPrice}
+              currentName={currentName}
+              currentId={currentId}
+              currentImg={currentImg}
+              setCurrentCon={setCurrentCon}
+              currentCon={currentCon}
+              value={value}
+              cancel={cancel}
+              sakeButton={sakeButton}
+              setSakeButton={setSakeButton}
+              pro_id={pro_id}
+              setStep={setStep}
+            />
+          </div>
+        )}
+        {kind === 2 && value.current > 1 ? (
+          <div>
+          <SakeButton
+              currentPrice={currentPrice}
+              currentName={currentName}
+              currentId={currentId}
+              currentImg={currentImg}
+              value={value}
+              cancel={cancel}
+              sakeButton={sakeButton}
+              setSakeButton={setSakeButton}
+              pro_id={pro_id}
+              setSakeId2={setSakeId2}
+              setName2={setName2}
+              setPrice2={setPrice2}
+              setImg2={setImg2}
+              setStep={setStep}
+            />
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              setCurrentId(pro_id)
+              setCurrentImg(img)
+              setCurrentName(name)
+              setCurrentPrice(price)
+              setCurrentCon(conName)
+              setConShadow(conImgShadow)
+            }}
+          >
+           <SakeButton
+              currentPrice={currentPrice}
+              currentName={currentName}
+              currentId={currentId}
+              currentImg={currentImg}
+              value={value}
+              cancel={cancel}
+              sakeButton={sakeButton}
+              setSakeButton={setSakeButton}
+              pro_id={pro_id}
+              setSakeId2={setSakeId2}
+              setName2={setName2}
+              setPrice2={setPrice2}
+              setImg2={setImg2}
+              setStep={setStep}
+            />
+          </div>
+        )}
         <div
           onClick={() => {
             setCurrentId(pro_id)
@@ -83,14 +353,8 @@ const Cards = (props) => {
               currentName={currentName}
               currentId={currentId}
               currentImg={currentImg}
-              setCurrentPrice={setCurrentPrice}
-              setCurrentName={setCurrentName}
-              setCurrentId={setCurrentId}
-              setCurrentImg={setCurrentImg}
               value={value}
               cancel={cancel}
-              item={item}
-              setItem={setItem}
               sakeButton={sakeButton}
               setSakeButton={setSakeButton}
               pro_id={pro_id}
@@ -98,6 +362,7 @@ const Cards = (props) => {
               setName2={setName2}
               setPrice2={setPrice2}
               setImg2={setImg2}
+              setStep={setStep}
             />
           ) : (
             <SakeButtonSingle
@@ -105,20 +370,14 @@ const Cards = (props) => {
               setConShadow={setConShadow}
               conName={conName}
               conShadow={conShadow}
-              setCurrentPrice={setCurrentPrice}
               currentPrice={currentPrice}
-              setCurrentName={setCurrentName}
               currentName={currentName}
-              setCurrentId={setCurrentId}
               currentId={currentId}
-              setCurrentImg={setCurrentImg}
               currentImg={currentImg}
               setCurrentCon={setCurrentCon}
               currentCon={currentCon}
               value={value}
               cancel={cancel}
-              item={item}
-              setItem={setItem}
               sakeButton={sakeButton}
               setSakeButton={setSakeButton}
               pro_id={pro_id}
@@ -133,7 +392,6 @@ const Cards = (props) => {
               onClick={() => {
                 setSakeButton(0)
                 minus()
-                setItem(0)
                 setCurrentId(pro_id)
                 cancel()
               }}
@@ -150,7 +408,6 @@ const Cards = (props) => {
               onClick={() => {
                 setSakeButton(1)
                 minus()
-                setItem(0)
                 setCurrentId(pro_id)
                 cancel()
               }}
@@ -160,7 +417,7 @@ const Cards = (props) => {
             </button>
           </>
         )}
-      </div>
+      </div>  */}
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Question from '../compenents/SakeGuide/Question'
 import './../styles/SakeGuide/SakeGuide.scss'
 import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
+import Answer from '../compenents/SakeGuide/Answer'
 
 const SakeGuide = () => {
   const [content, setContent] = useState([])
@@ -22,14 +23,16 @@ const SakeGuide = () => {
     return (
       <React.Fragment key={i}>
         <div className="box">
-          <div className="sake_circle uno"></div>
           <Link to={'/product/detail/' + v.pro_id}>
-            <img
-              src={'http://localhost:3001/images/pro_img/' + v.pro_img}
-              alt=""
-            />
-            <span>{v.pro_name}</span>
+            <div className="sth">
+              <img
+                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                alt=""
+              />
+              <span>{v.pro_name}</span>
+            </div>
           </Link>
+          <div className="sake_circle uno"></div>
         </div>
       </React.Fragment>
     )
@@ -46,6 +49,12 @@ const SakeGuide = () => {
   return (
     <>
       <div className="SakeGuide">
+        <section className="wave_loca">
+          <div className="wave">
+            <div className="upper"></div>
+            <div className="down"></div>
+          </div>
+        </section>
         <div className="guide_container">
           <section className="start">
             <img src="/Gift/bgelement.svg" alt="" className="one"></img>
@@ -53,8 +62,9 @@ const SakeGuide = () => {
             {/* </div> */}
             <div className="text">
               <div className="left">
-                <h2>擺脫選擇苦手</h2>
-                <h2>選酒指南</h2>
+                <img src="/SakeGuide/bgmark.svg" alt="" className="bgmark" />
+                <h2 className="title01">擺脫選擇苦手</h2>
+                <h2 className="title02">選酒指南</h2>
               </div>
               <div className="right">
                 <p className="intro">想嘗試清酒卻不知道從哪裡開始？</p>
@@ -85,30 +95,36 @@ const SakeGuide = () => {
             setGift={setGift}
           />
           <section className="price">
-            <MultiRangeSlider
-              min={380}
-              max={14800}
-              setMinPrice={setMinPrice}
-              setMaxPrice={setMaxPrice}
-              onChange={({ min, max }) =>
-                console.log(`min = ${min}, max = ${max}`)
-              }
-            />
-            <button
-              onClick={() => {
-                console.log(
-                  `thickness=${thickness},smooth=${smooth},sweet=${sweet},temp=${temp},gift=${gift}`
-                )
-                setTaste(thickness + smooth + sweet)
-              }}
-            >
-              察看結果
-            </button>
-          </section>
-          <section className="wave_loca">
-            <div className="wave">
-              <div className="upper"></div>
-              <div className="down"></div>
+            <div className="text">
+              <p className="question">預估花費</p>
+              <p classNmae="question price_low">${minPrice}</p>
+              <p className="question symbol">~</p>
+              <p classNmae="question price_high">${maxPrice}</p>
+            </div>
+            <div className="range">
+              <MultiRangeSlider
+                min={380}
+                max={14800}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
+                onChange={({ min, max }) =>
+                  console.log(`min = ${min}, max = ${max}`)
+                }
+              />
+            </div>
+            <div className="position">
+              <button
+                className="comfirm btn btn-warning"
+                onClick={() => {
+                  console.log(
+                    `thickness=${thickness},smooth=${smooth},sweet=${sweet},temp=${temp},gift=${gift},minPrice=${minPrice},maxPrice=${maxPrice}`
+                  )
+
+                  setTaste(thickness + smooth + sweet)
+                }}
+              >
+                察看結果
+              </button>
             </div>
           </section>
         </div>

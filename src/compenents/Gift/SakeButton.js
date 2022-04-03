@@ -9,14 +9,16 @@ const SakeButton = (props) => {
     currentId,
     currentImg,
     value,
-    item,
-    setItem,
     sakeButton,
     setSakeButton,
     setSakeId2,
     setName2,
     setPrice2,
     setImg2,
+    setStep,
+    pro_id,
+    sakeId,
+    sakeId2,
   } = props
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -24,6 +26,43 @@ const SakeButton = (props) => {
 
   const plus = () => {
     value.current += 1
+  }
+  const condition = () => {
+    if (sakeButton === 1 && value.current === 2) {
+      return (
+        <>
+          <button
+            className="one"
+            onClick={() => {
+              handleShow()
+            }}
+          >
+            <img src="/Gift/full_sake.svg" alt="" className="sake single" />
+            <span>再加一瓶</span>
+          </button>
+        </>
+      )
+    } else if (sakeButton === 1) {
+      return (
+        <>
+          <button
+            className="one"
+            onClick={() => {
+              setSakeButton(2)
+              plus()
+              setSakeId2(currentId)
+              setName2(currentName)
+              setPrice2(currentPrice)
+              setImg2(currentImg)
+              setStep('three')
+            }}
+          >
+            <img src="/Gift/full_sake.svg" alt="" className="sake single" />
+            <span>再加一瓶</span>
+          </button>
+        </>
+      )
+    }
   }
 
   return (
@@ -40,39 +79,29 @@ const SakeButton = (props) => {
         </Modal.Footer>
       </Modal>
       <div className="SakeButton">
-        {sakeButton === 0 && (
+        {sakeButton === 0 && value.current < 2 ? (
           <button
             className="sake empty"
             onClick={() => {
               setSakeButton(1)
               plus()
-              setItem(1)
+            }}
+          >
+            <img src="/Gift/null_sake.svg" alt="" className="sake single" />
+            <span>點擊小酒瓶選擇商品</span>
+          </button>
+        ) : (
+          <button
+            className={`sake empty ${sakeButton > 0 ? 'test' : ''}`}
+            onClick={() => {
+              handleShow()
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />
             <span>點擊小酒瓶選擇商品</span>
           </button>
         )}
-
-        {sakeButton === 1 && (
-          <>
-            <button
-              className="one"
-              onClick={() => {
-                setSakeButton(2)
-                plus()
-                setItem(1)
-                setSakeId2(currentId)
-                setName2 (currentName)
-                setPrice2(currentPrice)
-                setImg2 (currentImg)
-              }}
-            >
-              <img src="/Gift/full_sake.svg" alt="" className="sake single" />
-              <span>再加一瓶</span>
-            </button>
-          </>
-        )}
+        {condition()}
         {sakeButton === 2 && (
           <>
             <button

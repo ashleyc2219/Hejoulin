@@ -2,59 +2,39 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import './SakeButtonSingle.scss'
 
+// import BackDrop from './Backdrop'
+// import Modal from './Modal'
+
 const SakeButtonSingle = (props) => {
   const {
     conName,
     setConName,
     currentPrice,
-    setCurrentPrice,
     currentName,
-    setCurrentName,
     currentId,
-    setCurrentId,
     currentImg,
-    setCurrentImg,
     value,
-    item,
-    setItem,
     sakeButton,
     setSakeButton,
-    id,
     pro_id,
     setStep,
-    
   } = props
 
-  let disable = false
-
-  const [click, setClick] = useState(0)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  useEffect(() => {
-    setClick(value.current)
-  }, [value.current])
+  // const [modal, setModal] = useState(false)
+  // const closeModal = () => {
+  //   setModal(false)
+  // }
+  // const openModal = () => {
+  //   setModal(true)
+  // }
 
   const plus = () => {
     value.current += 1
   }
-  const minus = () => {
-    value.current -= 1
-  }
-
-  const setBtn = () => {
-    if (click < 1) {
-      disable = false
-    } else if (click === 1) {
-      disable = true
-    }
-  }
-  // const display = () => {
-  //   if (disable === true) {
-  //     handleShow()
-  //   }
-  // }
 
   return (
     <>
@@ -69,28 +49,39 @@ const SakeButtonSingle = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <div
-        className="SakeButton"
-        onClick={() => {
-          setBtn()
-        }}
-      >
-        {sakeButton === 0 &&  (
+      {/* {modal ? (
+        <>
+          <Modal closeModal={closeModal} />
+          <BackDrop closeModal={closeModal} />
+        </>
+      ) : (
+        ''
+      )} */}
+      <div className="SakeButton">
+        {sakeButton === 0 && value.current === 0 ? (
           <button
             className="sake empty"
-            disabled={disable}
             onClick={() => {
               setSakeButton(1)
               plus()
-              setItem(1)
               setStep('three')
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />
             <span>點擊小酒瓶選擇商品</span>
           </button>
+        ) : (
+          <button
+            className={`sake empty ${pro_id === currentId ? 'test' : ''}`}
+            onClick={() => {
+              handleShow()
+              // openModal()
+            }}
+          >
+            <img src="/Gift/null_sake.svg" alt="" className="sake single" />
+            <span>點擊小酒瓶選擇商品</span>
+          </button>
         )}
-
         {sakeButton === 1 && (
           <>
             <button

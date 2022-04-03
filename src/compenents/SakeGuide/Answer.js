@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Answer.scss'
 
 const Answer = (props) => {
-  const { id, setAnswer, setData } = props
+  const { id, setAnswer, setData , setId} = props
   const [detail, setDetail] = useState([])
   const url = 'http://localhost:3001/api/guide_a'
 
@@ -22,6 +22,7 @@ const Answer = (props) => {
         <div
           className="group"
           onClick={() => {
+            setId(id)
             setAnswer(v.a_item)
             setData()
             console.log(1)

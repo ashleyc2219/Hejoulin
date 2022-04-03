@@ -26,9 +26,7 @@
   height: 42px;
   margin: 10px auto;
   position: relative;
-  .test {
-    display: none;
-  }
+
   button {
     background-color: transparent;
     border: none;
@@ -39,20 +37,25 @@
       height: 41px;
       width: 18px;
     }
-    .single {
-      margin-right: 10px;
+    .single{
+        margin-right: 10px;
     }
-    .dou {
-      margin-right: 3px;
-    }
-    .none {
+    .none{
       display: none;
     }
-    span {
-      margin-left: 5px;
+    .block{
+      opacity: 70%;
+    }
+    span{
+        margin-left: 5px;
     }
   }
-  .full {
+  .full{
     cursor: not-allowed;
+  }
+  .cancel{
+      position: absolute;
+      top:8px;
+      right: 16px;
   }
 }

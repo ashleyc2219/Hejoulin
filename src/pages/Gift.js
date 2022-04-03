@@ -84,7 +84,6 @@ const Gift = (props) => {
       setName(currentName)
       setPrice(currentPrice)
       setImg(currentImg)
-      setStep('two')
     } else if (value.current === 2 && sakeId && !sakeId2) {
       setSakeId2(currentId)
       setName2(currentName)
@@ -100,15 +99,17 @@ const Gift = (props) => {
     }
   }, [value.current])
 
+  let currentItem = localStorage.getItem('currentId')//沒有用
   const cancel = () => {
-    if (currentId === sakeId) {
+    console.log(currentItem)
+    if (currentItem === sakeId) {
       setSakeId('')
       setName('')
       setPrice('')
       setImg('')
       setConShadow('')
       setCurrentCon('')
-    } else if (currentId === sakeId2) {
+    } else if (currentItem === sakeId2) {
       setSakeId2('')
       setName2('')
       setPrice2('')
@@ -124,6 +125,7 @@ const Gift = (props) => {
     setName2('')
     setPrice2('')
     setImg2('')
+    // localStorage.removeItem('currentId')
     value.current = 0
   }
 
@@ -231,6 +233,7 @@ const Gift = (props) => {
                     id={id}
                     setId={setId}
                     sakeId={sakeId}
+                    sakeId2={sakeId2}
                     conShadow={conShadow}
                     setConShadow={setConShadow}
                     value={value}
