@@ -4,7 +4,7 @@ import NoFavItem from './NoFavItem'
 import {Link, useHistory} from 'react-router-dom'
 
 const FavData = (props) => {
-  const { user, setUser, favData, setFavData } = props
+  const { favData, setFavData } = props
   const APIFav = 'http://localhost:3001/user/member/MemberFav'
   const APIDel = 'http://localhost:3001/user/member/MemberFav/delete'
   const history = useHistory()

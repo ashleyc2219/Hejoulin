@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
-const OrderData = (props) => {
-    const {user, setUser} = props
+const OrderData = () => {
     const [dataOrder, setOrderData] = useState({}) // 訂單資料
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
     const listNames = [

@@ -43,8 +43,6 @@ export const CartSummary = createContext('default')
 export const CartVerifyInfo = createContext('default')
 
 function App() {
-  const AuthContext = createContext(null)
-  const [user, setUser] = useState(false)
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [memberId, setMemberId] = useState({})
@@ -72,13 +70,10 @@ function App() {
   //加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
       <Router>
         <>
           <CartCount.Provider value={cartCount}>
             <Header
-              user={user}
-              setUser={setUser}
               setCartCount={setCartCount}
               addcartmodal={addcartmodal}
             />
@@ -197,31 +192,29 @@ function App() {
               <RestaurantList />
             </Route>
             <Route exact path="/member/profile">
-              <MemberProfile user={user} setUser={setUser} />
+              <MemberProfile />
             </Route>
             <Route exact path="/member/order-list/detail">
-              <MemberOrderListDetail user={user} setUser={setUser} />
+              <MemberOrderListDetail />
             </Route>
             <Route exact path="/member/order-list">
-              <MemberOrderList user={user} setUser={setUser} />
+              <MemberOrderList />
             </Route>
             <Route exact path="/member/event-list/detail/:id">
-              <MemberEventListDetail user={user} setUser={setUser} />
+              <MemberEventListDetail />
             </Route>
             <Route exact path="/member/event-list">
-              <MemberEventList user={user} setUser={setUser} />
+              <MemberEventList />
             </Route>
             <Route exact path="/member/sub-list/detail/:id">
-              <MemberSubListDetail user={user} setUser={setUser} />
+              <MemberSubListDetail />
             </Route>
             <Route exact path="/member/sub-list">
-              <MemberSubList user={user} setUser={setUser} />
+              <MemberSubList />
             </Route>
             <Route exact path="/member/fav">
               <CartCount.Provider value={cartCount}>
                 <MemberFav
-                  user={user}
-                  setUser={setUser}
                   compare={compare}
                   setCompare={setCompare}
                   setCartCount={setCartCount}
@@ -229,7 +222,7 @@ function App() {
               </CartCount.Provider>
             </Route>
             <Route exact path="/member/mark">
-              <MemberMark user={user} setUser={setUser} />
+              <MemberMark/>
             </Route>
             <Route exact path="/">
               <Home />
@@ -241,7 +234,6 @@ function App() {
           <Footer />
         </>
       </Router>
-    </AuthContext.Provider>
   )
 }
 
