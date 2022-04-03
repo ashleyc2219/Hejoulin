@@ -40,6 +40,7 @@ import Footer from './compenents/Shared/Footer'
 import { createContext, useState } from 'react'
 export const CartCount = createContext('defaultvalue')
 export const CartSummary = createContext('default')
+export const CartVerifyInfo = createContext('default')
 
 function App() {
   const AuthContext = createContext(null)
@@ -53,7 +54,21 @@ function App() {
   // subTime subConfirm溝通用的state
   const [subTimeTotal, setSubTimeTotal] = useState(0)
   const [subTimeMonth, setSubTimeMonth] = useState(0)
-  const [cartSummary, setCartSummary] = useState(['lol'])
+  // 購物車之間溝通的state
+  const [cartSummary, setCartSummary] = useState({
+    district: '',
+    method: '',
+    subtotal: '',
+    discountCode: '',
+    shipFee: '',
+    allTotal: '',
+    order_main_id: '',
+  })
+  const [cartVerifyInfo, setCartVerifyInfo] = useState({
+    cardNum: '',
+    total: '',
+    email: '',
+  })
   //加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
   return (
@@ -155,20 +170,25 @@ function App() {
               <EventList />
             </Route>
             <Route exact path="/cart/list">
-              <CartSummary.Provider value={cartSummary}>
-                <CartList setCartSummary={setCartSummary} />
-              </CartSummary.Provider>
+              <CartList setCartSummary={setCartSummary} />
             </Route>
             <Route exact path="/cart/info">
               <CartSummary.Provider value={cartSummary}>
-                <CartInfo />
+                <CartInfo
+                  setCartVerifyInfo={setCartVerifyInfo}
+                  setCartSummary={setCartSummary}
+                />
               </CartSummary.Provider>
             </Route>
             <Route exact path="/cart/verify">
-              <CartVerify />
+              <CartVerifyInfo.Provider value={cartVerifyInfo}>
+                <CartVerify />
+              </CartVerifyInfo.Provider>
             </Route>
             <Route exact path="/cart/order">
-              <CartOrder />
+              <CartSummary.Provider value={cartSummary}>
+                <CartOrder />
+              </CartSummary.Provider>
             </Route>
             <Route exact path="/restaurant/detail/:id">
               <RestaurantDetail />
