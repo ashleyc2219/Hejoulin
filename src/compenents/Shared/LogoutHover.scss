@@ -33,16 +33,22 @@
     right: -22px;
     transition: all 0.5s;
     opacity: 0;
-    span {
-      pointer-events: none;
-      width: fit-content;
-      @include kleeone();
-      line-height: 25px;
-      font-size: 15px;
-      bottom: -5px;
-      &:first-child {
+    text-align: center;
+    a {
+      &:first-child span{
         border-top: 2px solid $primary;
       }
-    }
+      span{
+
+        text-align: center;
+        pointer-events: none;
+        width: fit-content;
+        @include kleeone();
+        line-height: 25px;
+        font-size: 15px;
+        bottom: -5px;
+      }
+
+      }
   }
 }

@@ -59,6 +59,9 @@
     margin: 0 auto;
     display: flex;
     z-index: 3;
+    @include medium() {
+      padding-top: 0;
+    }
     // 背景的花紋
     .bgele1,
     .bgele2 {
