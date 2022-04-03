@@ -40,6 +40,7 @@
     top: 180px;
     right: 25px;
     z-index: 8;
+    transition: all 0.3s;
     animation: compareblock 1s;
     @include large() {
       display: none;

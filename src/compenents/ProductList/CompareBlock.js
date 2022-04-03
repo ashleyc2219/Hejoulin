@@ -1,6 +1,7 @@
 import { clear } from '@testing-library/user-event/dist/clear'
 import React, { useEffect, useState } from 'react'
 import './../../compenents/ProductList/CompareBlock.scss'
+import GuideButton from '../SakeGuide/Guide'
 
 const CompareBlock = ({
   compare,
@@ -188,6 +189,7 @@ const CompareBlock = ({
     <>
       <div style={style} className="compare-block">
         <div className="compare-wrap">
+          <GuideButton />
           {/* <div className="product">
             <img src="/ProductList/product.png" alt="" />
             <p className="name">篠峯 雄町純米大吟醸</p>
