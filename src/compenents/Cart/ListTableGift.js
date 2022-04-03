@@ -132,7 +132,7 @@ const ListTableGift = (props) => {
     updateGiftTotal(price, 'del')
   }
   const minusQuantity = async () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1)
       let data = {
         cart_quantity: quantity - 1,
