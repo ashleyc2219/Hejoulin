@@ -1,7 +1,7 @@
 import React from 'react'
 import './../../styles/ProductList/MobileSortModal.css'
 
-const MobileSortModal = ({ sortModal, setSortModal }) => {
+const MobileSortModal = ({ sortModal, setSortModal, sorthandler }) => {
   return (
     <>
       <div className="MobileSortModal">
@@ -19,21 +19,53 @@ const MobileSortModal = ({ sortModal, setSortModal }) => {
           </div>
           <div className="sort">
             <div className="radio-container">
-              <input type="radio" name="sort" id="1" />
+              <input
+                onClick={(e) => {
+                  sorthandler(e)
+                }}
+                type="radio"
+                name="sort"
+                id="1"
+                value="1"
+              />
               <label htmlFor="1">
                 <span></span>預設排序
               </label>
-              <input type="radio" name="sort" id="2" />
+              <input
+                onClick={(e) => {
+                  sorthandler(e)
+                }}
+                type="radio"
+                name="sort"
+                id="2"
+                value="2"
+              />
               <label htmlFor="2">
                 <span></span>最新商品
               </label>
-              <input type="radio" name="sort" id="3" />
+              <input
+                onClick={(e) => {
+                  sorthandler(e)
+                }}
+                type="radio"
+                name="sort"
+                id="3"
+                value="4"
+              />
               <label htmlFor="3">
-                <span></span>價錢高至低
-              </label>
-              <input type="radio" name="sort" id="4" />
-              <label htmlFor="4">
                 <span></span>價錢低至高
+              </label>
+              <input
+                onClick={(e) => {
+                  sorthandler(e)
+                }}
+                type="radio"
+                name="sort"
+                id="4"
+                value="5"
+              />
+              <label htmlFor="4">
+                <span></span>價錢高至低
               </label>
             </div>
           </div>
