@@ -1,3 +1,17 @@
+const memberInfoG = async function (member_id) {
+  const r1 = await fetch(
+    `http://localhost:3001/api/cart-info/member?member_id=4`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+  const obj = await r1.json()
+  return obj[0]
+}
+
 const orderMainI = async function (
   member_id,
   order_name,
@@ -124,10 +138,7 @@ const shipmentI = async function (
   const obj = await r1.json()
   return obj
 }
-const paymentI = async function (
-  order_id,
-  card_num,
-) {
+const paymentI = async function (order_id, card_num) {
   let data = {
     order_id: order_id,
     card_num: card_num,
@@ -144,7 +155,7 @@ const paymentI = async function (
   return obj
 }
 
-
+export const memberInfoGet = memberInfoG
 export const orderMainInsert = orderMainI
 export const orderSakeMarkInsert = orderSakeMarkI
 export const orderGiftGdInsert = orderGiftGdI
