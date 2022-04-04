@@ -23,15 +23,19 @@
 
 .ProductModal {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  top: 0;
-  left: 0;
-  z-index: 11;
+  z-index: 20;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: calc(50vh - 287px);
+  left: calc(50vw - 540px);
+  @include large(){
+    left: calc(50vw - 375px);
+  }
+  @include medium(){
+    left: calc(50vw - 42%);
+    top: 15vh;
+  }
 
   .page {
     @include medium() {

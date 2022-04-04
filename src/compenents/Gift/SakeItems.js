@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './SakeItems.scss'
 
-import SakeButton from './SakeButton'
 import ProductModal from './ProductModal'
-import SakeButtonSingle from './SakeButtonSingle'
+import Backdrop from './Backdrop'
 import Cards from './Cards'
 
 const SakeItems = (props) => {
@@ -30,7 +29,6 @@ const SakeItems = (props) => {
     setCurrentName,
     currentPrice,
     setCurrentPrice,
-    cancel,
     setStep,
     setSakeId2,
     setName2,
@@ -38,6 +36,10 @@ const SakeItems = (props) => {
     setImg2,
     sakeId,
     sakeId2,
+    setSakeId,
+    setName,
+    setPrice,
+    setImg,
   } = props
 
   const minus = () => {
@@ -73,7 +75,6 @@ const SakeItems = (props) => {
           currentId={currentId}
           currentImg={currentImg}
           value={value}
-          cancel={cancel}
           minus={minus}
           setStep={setStep}
           setSakeId2={setSakeId2}
@@ -82,6 +83,10 @@ const SakeItems = (props) => {
           setImg2={setImg2}
           sakeId={sakeId}
           sakeId2={sakeId2}
+          setSakeId={setSakeId}
+          setName={setName}
+          setPrice={setPrice}
+          setImg={setImg}
         />
       </React.Fragment>
     )
@@ -90,7 +95,14 @@ const SakeItems = (props) => {
   return (
     <>
       {modalShow ? (
-        <ProductModal modalShow={modalShow} closeHandle={closeHandle} id={id} />
+        <>
+          {/* <ProductModal
+            modalShow={modalShow}
+            closeHandle={closeHandle}
+            id={id}
+          /> */}
+          <Backdrop closeHandle={closeHandle} />
+        </>
       ) : (
         ''
       )}

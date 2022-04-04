@@ -3,8 +3,8 @@ import '../styles/Member/MemberProfile.scss'
 import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import Tabs from '../compenents/Member/AllTabs/Profile/Tabs'
 
-const MemberProfile = (props) => {
-  const { user, setUser } = props
+const MemberProfile = () => {
+
   return (
     <>
       <div className="MemberProfile">

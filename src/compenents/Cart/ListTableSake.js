@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ListTableSake.scss'
+import ChooseCartMarkModal from './ChooseCartMarkModal'
+import CartMarkModal from './CartMarkModal'
 
 const ListTableSake = (props) => {
   const {
@@ -13,26 +15,39 @@ const ListTableSake = (props) => {
     sakeTotal,
     setSakeTotal,
   } = props
+  // setMarkPic(sakeInfo.pics)
+
+  const [chooseModalShow, setChooseModalShow] = useState(false)
+  const [markModalShow, setMarkModalShow] = useState(false)
+  const [markPic, setMarkPic] = useState(sakeInfo.pics)
   const fetchURL = 'http://localhost:3001/api/cart-list/sake'
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
   let pro_gift = 'false'
   let gift_text = '不提供禮盒'
-  const mark_pic = sakeInfo.pics
-  const markRender = (mark_pic) => {
-    if (mark_pic && sakeInfo.pro_mark === 1) {
+  const markRender = (markPic) => {
+    if (markPic && sakeInfo.pro_mark === 1) {
       return (
         <div className="item item-mark true">
           <img
-            src={'http://localhost:3001/images/mark_pic/' + mark_pic}
+            onClick={() => {
+              setMarkModalShow(true)
+            }}
+            src={'http://localhost:3001/images/mark_pic/' + markPic}
             alt=""
           />
         </div>
       )
     }
-    if (mark_pic == null && sakeInfo.pro_mark === 1) {
+    if (markPic == null && sakeInfo.pro_mark === 1) {
       return (
         <div className="item item-mark true">
-          <Link to="/mark/intro">製作客製化酒標</Link>
+          <p
+            onClick={() => {
+              setChooseModalShow(true)
+            }}
+          >
+            製作客製化酒標
+          </p>
         </div>
       )
     } else {
@@ -122,10 +137,31 @@ const ListTableSake = (props) => {
     const obj = await r1.json()
     updateSakeTotal(sakeInfo.pro_price, 'add')
   }
-  useEffect(() => {}, [quantity])
+  useEffect(() => {
+    markRender()
+  }, [quantity, markPic])
 
   return (
     <>
+      {chooseModalShow ? (
+        <ChooseCartMarkModal
+          sakeInfo={sakeInfo}
+          setChooseModalShow={setChooseModalShow}
+          setMarkPic={setMarkPic}
+        />
+      ) : (
+        ''
+      )}
+      {markModalShow ? (
+        <CartMarkModal
+          sakeInfo={sakeInfo}
+          setMarkModalShow={setMarkModalShow}
+          setMarkPic={setMarkPic}
+          markPic={markPic}
+        />
+      ) : (
+        ''
+      )}
       <div className="table-item sake-table-item">
         <div className="item item-del">
           <img src="/CartList/trash.png" alt="" onClick={delSakeItem} />
@@ -158,7 +194,7 @@ const ListTableSake = (props) => {
             <img className="trash" src="/CartList/trash.png" alt="" />
           </div>
         </div>
-        {markRender(mark_pic)}
+        {markRender(markPic)}
         <div className="item item-quantity">
           <div className="quantity-container">
             <img

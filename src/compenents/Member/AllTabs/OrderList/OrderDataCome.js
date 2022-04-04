@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
-const OrderData = () => {
+const OrderDataCome = () => {
     const [dataOrder, setOrderData] = useState({}) // 訂單資料
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
     const listNames = [
@@ -28,7 +28,6 @@ const OrderData = () => {
             ).json()
             console.log(obj)
             setOrderData(obj)
-            console.log(obj.length)
         })()
     }, [])
 
@@ -36,8 +35,8 @@ const OrderData = () => {
 
     const renderOrderItems = (dataOrder) => {
         if (dataOrder && dataOrder.length) {
-            return dataOrder.map((el) => (
-                <tr key={'test' + el.order_id}>
+            return dataOrder.filter((v => v.order_state === '待出貨')).map((el) => (
+                <tr key={'test' + el.member_id}>
                     <td>{el.order_date}</td>
                     <td>{el.order_id}</td>
                     <td>{el.order_d_price}</td>
@@ -73,4 +72,4 @@ const OrderData = () => {
     )
 }
 
-export default OrderData
+export default OrderDataCome

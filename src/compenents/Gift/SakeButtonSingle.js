@@ -6,19 +6,7 @@ import './SakeButtonSingle.scss'
 // import Modal from './Modal'
 
 const SakeButtonSingle = (props) => {
-  const {
-    conName,
-    setConName,
-    currentPrice,
-    currentName,
-    currentId,
-    currentImg,
-    value,
-    sakeButton,
-    setSakeButton,
-    pro_id,
-    setStep,
-  } = props
+  const { currentId, value, sakeButton, setSakeButton, pro_id, setStep } = props
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)

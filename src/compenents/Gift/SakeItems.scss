@@ -52,12 +52,34 @@
     }
     .trans {
       display: none;
-      height: 187.96px;
+      position: relative;
+      .box {
+        height: 175px;
+      }
+      .sake1 {
+        height: 150px;
+        position: absolute;
+        left: calc(50% - 23px);
+        top: 18px;
+      }
+      .sake2 {
+        height: 155px;
+        position: absolute;
+        top: 13px;
+        left: 15px;
+      }
+      .sake_con {
+        height: 150px;
+        position: absolute;
+        top: 13px;
+        left: calc(50% - 2px);
+      }
     }
 
     .name {
       font-size: 18px;
       margin-top: 10px;
+      width: 100%;
     }
 
     small {
@@ -68,10 +90,7 @@
     }
     @include medium() {
       .original {
-        width: 40px;
-      }
-      .trans {
-        height: 20vh;
+        height: 155px;
       }
       .name {
         color: $primary;

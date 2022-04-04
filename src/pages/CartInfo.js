@@ -20,6 +20,7 @@ import { CartSummary } from './../App'
 // 信用卡
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
 import {
+  memberInfoGet,
   orderMainInsert,
   orderSakeMarkInsert,
   orderGiftGdInsert,
@@ -43,6 +44,7 @@ const CartInfo = (props) => {
   // 接清酒跟禮盒的資料
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
+  const [memberInfo, setMemberInfo] = useState([])
   // 左邊清單的收合
   const [collapseClass, setCollapseClass] = useState('')
   // 表單資料 接資料
@@ -75,6 +77,9 @@ const CartInfo = (props) => {
   const [passThrough, setPassThrough] = useState(false)
   // 讓border變紅色
   const [warning, setWarning] = useState('no')
+  // 自動填寫
+  const [autoBuyer, setAutoBuyer] = useState(false)
+  const [autoReceiver, setAutoReceiver] = useState(false)
   // 會員ID TODO: 之後要連動
   const member_id = 4
   // TODO: store_id 要在做門市元件後換
@@ -130,11 +135,14 @@ const CartInfo = (props) => {
           setCollapseClass('list-table morethantwo')
         }
       }
-
+      let memberInfoObj = await memberInfoGet(member_id)
+      console.log(memberInfoObj)
       if (a) {
         setGiftIncart(obj)
+        setMemberInfo(memberInfoObj)
       }
     })()
+
     return () => {
       a = false
     }
@@ -178,7 +186,7 @@ const CartInfo = (props) => {
       setPassThrough(false)
     }
 
-    if (buyerMobile && isValidPhoneNumber(buyerMobile)) {
+    if (buyerMobile && validator.isMobilePhone(buyerMobile, 'zh-TW')) {
       setPassBuyerMobile(true)
     } else {
       setPassBuyerMobile(false)
@@ -197,7 +205,7 @@ const CartInfo = (props) => {
       setPassReceiverName(false)
       setPassThrough(false)
     }
-    if (receiverMobile && isValidPhoneNumber(receiverMobile)) {
+    if (receiverMobile && validator.isMobilePhone(receiverMobile, 'zh-TW')) {
       setPassReceiverMobile(true)
     } else {
       setPassReceiverMobile(false)
@@ -263,7 +271,6 @@ const CartInfo = (props) => {
   }
   useEffect(() => {
     formCheck()
-    // setWarning()
   }, [
     buyerName,
     buyerMobile,
@@ -275,6 +282,27 @@ const CartInfo = (props) => {
     cardHolder,
     cardCvv,
   ])
+  useEffect(() => {
+    if (autoBuyer) {
+      setBuyerName(memberInfo.member_name)
+      setBuyerMobile(memberInfo.member_mob)
+      setBuyerEmail(memberInfo.user_account)
+    } else {
+      setBuyerName('')
+      setBuyerMobile('')
+      setBuyerEmail('')
+    }
+  }, [autoBuyer])
+  useEffect(() => {
+    if (autoReceiver) {
+      setReceiverName(buyerName)
+      setReceiverMobile(buyerMobile)
+    } else {
+      setReceiverName('')
+      setReceiverMobile('')
+    }
+  }, [autoReceiver])
+
   async function forCartVerifyInfo() {
     let data = {
       cardNum: cardNum,
@@ -415,8 +443,15 @@ const CartInfo = (props) => {
             <div className="info-title buyer-title">
               <h5>購買人資訊</h5>
               <div>
-                <input type="checkbox" id="c1" name="cc" />
-                <label htmlFor="c1">
+                <input
+                  type="checkbox"
+                  id="sameMember"
+                  name="sameMember"
+                  onClick={(e) => {
+                    e.target.checked ? setAutoBuyer(true) : setAutoBuyer(false)
+                  }}
+                />
+                <label htmlFor="sameMember">
                   <span></span>與會員資料相同
                 </label>
               </div>
@@ -441,17 +476,17 @@ const CartInfo = (props) => {
               </div>
               <div className="buyer-mobile">
                 <label className="form-label">手機號碼</label>
-                <Input
-                  international
+                <input
                   className={
                     passBuyerMobile === false && warning === 'red'
                       ? 'form-control red'
                       : 'form-control'
                   }
                   placeholder="0912 345 678"
-                  country="TW"
                   value={buyerMobile}
-                  onChange={setBuyerMobile}
+                  onChange={(e) => {
+                    setBuyerMobile(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
@@ -486,8 +521,17 @@ const CartInfo = (props) => {
             <div className="info-title receiver-title">
               <h5>收件人資訊</h5>
               <div>
-                <input type="checkbox" id="c2" name="cc" />
-                <label htmlFor="c2">
+                <input
+                  type="checkbox"
+                  id="sameBuyer"
+                  name="sameBuyer"
+                  onClick={(e) => {
+                    e.target.checked
+                      ? setAutoReceiver(true)
+                      : setAutoReceiver(false)
+                  }}
+                />
+                <label htmlFor="sameBuyer">
                   <span></span>與購買人資料相同
                 </label>
               </div>
@@ -512,17 +556,18 @@ const CartInfo = (props) => {
               </div>
               <div className="receiver-mobile">
                 <label className="form-label">手機號碼</label>
-                <Input
-                  international
+
+                <input
                   className={
                     passReceiverMobile === false && warning === 'red'
                       ? 'form-control red'
                       : 'form-control'
                   }
                   placeholder="0912 345 678"
-                  country="TW"
                   value={receiverMobile}
-                  onChange={setReceiverMobile}
+                  onChange={(e) => {
+                    setReceiverMobile(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>

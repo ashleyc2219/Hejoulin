@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
-const OrderData = () => {
+const OrderDataToget = ({whichTabRender, setWhichTabRender}) => {
     const [dataOrder, setOrderData] = useState({}) // 訂單資料
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
     const listNames = [
@@ -28,16 +28,36 @@ const OrderData = () => {
             ).json()
             console.log(obj)
             setOrderData(obj)
-            console.log(obj.length)
         })()
     }, [])
 
+    function handleChange(event) {
+        setTimeout(setWhichTabRender(event.target.value), 500)
+    }
 
+    function AddOldToNew(a) {
+        return a.order_state === '待收貨'
+    }
+
+    // useEffect(() => {
+    //     ;(async () => {
+    //         const obj = await (
+    //             await fetch(APIMOrder, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     Authorization: 'Bearer ' + localStorage.token,
+    //                 },
+    //             })
+    //         ).json()
+    //         // console.log(obj.filter(v=>v.order_state === '待出貨'))
+    //         setWhichTabRender(obj)
+    //     })()
+    // }, [whichTabRender])
 
     const renderOrderItems = (dataOrder) => {
         if (dataOrder && dataOrder.length) {
             return dataOrder.map((el) => (
-                <tr key={'test' + el.order_id}>
+                <tr key={'test' + el.member_id}>
                     <td>{el.order_date}</td>
                     <td>{el.order_id}</td>
                     <td>{el.order_d_price}</td>
@@ -54,7 +74,7 @@ const OrderData = () => {
         } else {
             return (
                 <tr>
-                    <td></td>
+                    <td>目前沒有待收貨訂單</td>
                 </tr>
             )
         }
@@ -73,4 +93,4 @@ const OrderData = () => {
     )
 }
 
-export default OrderData
+export default OrderDataToget
