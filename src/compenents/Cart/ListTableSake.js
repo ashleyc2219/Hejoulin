@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ListTableSake.scss'
 import ChooseCartMarkModal from './ChooseCartMarkModal'
+import CartMarkModal from './CartMarkModal'
 
 const ListTableSake = (props) => {
   const {
@@ -16,7 +17,8 @@ const ListTableSake = (props) => {
   } = props
   // setMarkPic(sakeInfo.pics)
 
-  const [modalShow, setModalShow] = useState(false)
+  const [chooseModalShow, setChooseModalShow] = useState(false)
+  const [markModalShow, setMarkModalShow] = useState(false)
   const [markPic, setMarkPic] = useState(sakeInfo.pics)
   const fetchURL = 'http://localhost:3001/api/cart-list/sake'
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
@@ -28,6 +30,9 @@ const ListTableSake = (props) => {
       return (
         <div className="item item-mark true">
           <img
+            onClick={() => {
+              setMarkModalShow(true)
+            }}
             src={'http://localhost:3001/images/mark_pic/' + markPic}
             alt=""
           />
@@ -39,7 +44,7 @@ const ListTableSake = (props) => {
         <div className="item item-mark true">
           <p
             onClick={() => {
-              setModalShow(true)
+              setChooseModalShow(true)
             }}
           >
             製作客製化酒標
@@ -139,10 +144,19 @@ const ListTableSake = (props) => {
 
   return (
     <>
-      {modalShow ? (
+      {chooseModalShow ? (
         <ChooseCartMarkModal
           sakeInfo={sakeInfo}
-          setModalShow={setModalShow}
+          setChooseModalShow={setChooseModalShow}
+          setMarkPic={setMarkPic}
+        />
+      ) : (
+        ''
+      )}
+      {markModalShow ? (
+        <CartMarkModal
+          sakeInfo={sakeInfo}
+          setMarkModalShow={setMarkModalShow}
           setMarkPic={setMarkPic}
         />
       ) : (
