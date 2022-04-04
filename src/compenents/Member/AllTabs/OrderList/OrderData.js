@@ -15,6 +15,7 @@ const OrderData = () => {
     const listType = (items) =>
         items.map((item, i) => <th key={i}>{item.listName}</th>)
 
+
     useEffect(() => {
         ;(async () => {
             const obj = await (
@@ -27,13 +28,16 @@ const OrderData = () => {
             ).json()
             console.log(obj)
             setOrderData(obj)
+            console.log(obj.length)
         })()
     }, [])
+
+
 
     const renderOrderItems = (dataOrder) => {
         if (dataOrder && dataOrder.length) {
             return dataOrder.map((el) => (
-                <tr key={'test' + el.member_id}>
+                <tr key={'test' + el.order_id}>
                     <td>{el.order_date}</td>
                     <td>{el.order_id}</td>
                     <td>{el.order_d_price}</td>

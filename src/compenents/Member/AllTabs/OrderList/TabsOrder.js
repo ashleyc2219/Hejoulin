@@ -4,10 +4,12 @@ import TabContent from '../../TabComponent/TabContent'
 import '../../../../styles/Member/TabComponent/TabsOrder.scss'
 import OrderData from './OrderData'
 import TabPages from '../../TabComponent/TabPages'
+import OrderDataCome from "./OrderDataCome";
+import OrderDataToget from "./OrderDataToget";
 
-const TabsOrder = (props) => {
-  const { user, setUser } = props
+const TabsOrder = () => {
   const [activeTab, setActiveTab] = useState('tab1')
+  const [whichTabRender, setWhichTabRender] = useState('all')
   return (
     <>
       <div className="TabOrder">
@@ -49,19 +51,19 @@ const TabsOrder = (props) => {
         </div>
         <div className="outlet">
           <TabContent id="tab1" activeTab={activeTab}>
-            <OrderData user={user} setUser={setUser} />
+            <OrderData whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender} />
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <OrderDataCome whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <OrderDataToget whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
           </TabContent>
           <TabContent id="tab4" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <OrderData />
           </TabContent>
           <TabContent id="tab5" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <OrderData />
           </TabContent>
         </div>
       </div>

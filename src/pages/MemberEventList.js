@@ -3,15 +3,14 @@ import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import '../styles/Member/MemberEventList.scss'
 import TabsEvent from '../compenents/Member/AllTabs/EventList/TabsEvent'
 
-const MemberEventList = (props) => {
-  const { user, setUser } = props
+const MemberEventList = () => {
 
   return (
     <>
       <div className="MemberEventList">
         <Sidebar />
         <div className="MemberEventBox">
-          <TabsEvent user={user} setUser={setUser} />
+          <TabsEvent />
         </div>
       </div>
     </>
