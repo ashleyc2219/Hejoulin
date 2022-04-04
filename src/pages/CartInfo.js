@@ -186,7 +186,7 @@ const CartInfo = (props) => {
       setPassThrough(false)
     }
 
-    if (buyerMobile && isValidPhoneNumber(buyerMobile)) {
+    if (buyerMobile && validator.isMobilePhone(buyerMobile, 'zh-TW')) {
       setPassBuyerMobile(true)
     } else {
       setPassBuyerMobile(false)
@@ -205,7 +205,7 @@ const CartInfo = (props) => {
       setPassReceiverName(false)
       setPassThrough(false)
     }
-    if (receiverMobile && isValidPhoneNumber(receiverMobile)) {
+    if (receiverMobile && validator.isMobilePhone(receiverMobile, 'zh-TW')) {
       setPassReceiverMobile(true)
     } else {
       setPassReceiverMobile(false)
@@ -292,13 +292,12 @@ const CartInfo = (props) => {
       setBuyerMobile('')
       setBuyerEmail('')
     }
-    
   }, [autoBuyer])
   useEffect(() => {
     if (autoReceiver) {
       setReceiverName(buyerName)
       setReceiverMobile(buyerMobile)
-    }else{
+    } else {
       setReceiverName('')
       setReceiverMobile('')
     }
@@ -477,17 +476,17 @@ const CartInfo = (props) => {
               </div>
               <div className="buyer-mobile">
                 <label className="form-label">手機號碼</label>
-                <Input
-                  international
+                <input
                   className={
                     passBuyerMobile === false && warning === 'red'
                       ? 'form-control red'
                       : 'form-control'
                   }
                   placeholder="0912 345 678"
-                  country="TW"
                   value={buyerMobile}
-                  onChange={setBuyerMobile}
+                  onChange={(e) => {
+                    setBuyerMobile(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
@@ -557,17 +556,18 @@ const CartInfo = (props) => {
               </div>
               <div className="receiver-mobile">
                 <label className="form-label">手機號碼</label>
-                <Input
-                  international
+
+                <input
                   className={
                     passReceiverMobile === false && warning === 'red'
                       ? 'form-control red'
                       : 'form-control'
                   }
                   placeholder="0912 345 678"
-                  country="TW"
                   value={receiverMobile}
-                  onChange={setReceiverMobile}
+                  onChange={(e) => {
+                    setReceiverMobile(e.target.value)
+                  }}
                 />
                 <div className="form-text">錯誤/提示訊息</div>
               </div>
