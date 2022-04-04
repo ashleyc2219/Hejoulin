@@ -14,24 +14,27 @@ const ListTableSake = (props) => {
     sakeTotal,
     setSakeTotal,
   } = props
+  // setMarkPic(sakeInfo.pics)
+
   const [modalShow, setModalShow] = useState(false)
+  const [markPic, setMarkPic] = useState(sakeInfo.pics)
   const fetchURL = 'http://localhost:3001/api/cart-list/sake'
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
   let pro_gift = 'false'
   let gift_text = '不提供禮盒'
   const mark_pic = sakeInfo.pics
-  const markRender = (mark_pic) => {
-    if (mark_pic && sakeInfo.pro_mark === 1) {
+  const markRender = (markPic) => {
+    if (markPic && sakeInfo.pro_mark === 1) {
       return (
         <div className="item item-mark true">
           <img
-            src={'http://localhost:3001/images/mark_pic/' + mark_pic}
+            src={'http://localhost:3001/images/mark_pic/' + markPic}
             alt=""
           />
         </div>
       )
     }
-    if (mark_pic == null && sakeInfo.pro_mark === 1) {
+    if (markPic == null && sakeInfo.pro_mark === 1) {
       return (
         <div className="item item-mark true">
           <p
@@ -130,11 +133,21 @@ const ListTableSake = (props) => {
     const obj = await r1.json()
     updateSakeTotal(sakeInfo.pro_price, 'add')
   }
-  useEffect(() => {}, [quantity])
+  useEffect(() => {
+    markRender()
+  }, [quantity, markPic])
 
   return (
     <>
-      {modalShow ? <ChooseCartMarkModal sakeInfo={sakeInfo} setModalShow={setModalShow} /> : ''}
+      {modalShow ? (
+        <ChooseCartMarkModal
+          sakeInfo={sakeInfo}
+          setModalShow={setModalShow}
+          setMarkPic={setMarkPic}
+        />
+      ) : (
+        ''
+      )}
       <div className="table-item sake-table-item">
         <div className="item item-del">
           <img src="/CartList/trash.png" alt="" onClick={delSakeItem} />
@@ -167,7 +180,7 @@ const ListTableSake = (props) => {
             <img className="trash" src="/CartList/trash.png" alt="" />
           </div>
         </div>
-        {markRender(mark_pic)}
+        {markRender(markPic)}
         <div className="item item-quantity">
           <div className="quantity-container">
             <img
