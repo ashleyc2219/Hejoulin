@@ -19,12 +19,7 @@ const ProductMaster = ({
       <div key={i} className="product">
         <div className="product-wrap">
           <Link to={'/product/detail/' + v.pro_id}>
-            <div
-              onClick={() => {
-                console.log('img-wrap')
-              }}
-              className="img-wrap"
-            >
+            <div className="img-wrap">
               <img
                 className="product-img"
                 src={'http://localhost:3001/images/pro_img/' + v.pro_img}

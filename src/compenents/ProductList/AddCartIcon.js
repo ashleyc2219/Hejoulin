@@ -28,6 +28,9 @@ const AddCartIcon = ({ id, setCartCount, count, setAddcartmodal }) => {
       const data = await fetchResponse.json()
       if (data.success) {
         setAddcartmodal(true)
+        setTimeout(() => {
+          setAddcartmodal(false)
+        }, 4000);
       }
     } catch (e) {
       return e

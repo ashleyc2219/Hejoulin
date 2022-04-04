@@ -77,7 +77,6 @@ const ProductTop3 = ({
               id={v.pro_id}
               compare={compare}
               setCompare={setCompare}
-              setAddcartmodal={setAddcartmodal}
             />
             <div className="cart-heart">
               <Heart id={v.pro_id} />
@@ -85,6 +84,7 @@ const ProductTop3 = ({
                 setCartCount={setCartCount}
                 id={v.pro_id}
                 count={count}
+                setAddcartmodal={setAddcartmodal}
               />
             </div>
           </div>
