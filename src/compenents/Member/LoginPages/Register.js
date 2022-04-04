@@ -25,17 +25,18 @@ const Register = (props) => {
 
     const obj = await r.json()
     console.log(obj)
-    let userId = {
+    let userData = {
       userId: obj.uId.userId,
+      user_account: obj.info.user_account
     }
-    console.log(userId)
+    console.log(userData)
     if (obj.success === true) {
       const verify = await fetch(APISendEmail, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userId),
+        body: JSON.stringify(userData),
       })
       const emailSend = await verify.json()
       console.log(emailSend)
