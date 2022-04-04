@@ -201,73 +201,6 @@
               gap: 15px;
               padding: 0;
             }
-
-            .gift_sake {
-              // padding: 0 10px;
-              @include medium() {
-                padding: 0;
-              }
-
-              .sake_card {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                background-color: rgba(255, 255, 255, 0.5);
-                padding: 20px 0;
-                cursor: pointer;
-                @include medium(){
-                  padding: 0%;
-                }
-                
-                &:hover {
-                  .original {
-                    display: none;
-                  }
-                  .trans {
-                    display: block;
-                  }
-                }
-
-                .original {
-                  width: 50px;
-                }
-                .trans {
-                  display: none;
-                  height: 187.96px;
-                }
-
-                .name {
-                  font-size: 18px;
-                  margin-top: 10px;
-                }
-
-                small {
-                  font-size: 14px;
-                  font-weight: 700;
-                  color: $gray-200;
-                  margin-top: 5px;
-                }
-                @include medium() {
-                  .original {
-                    width: 40px;
-                  }
-                  .trans {
-                    height: 20vh;
-                  }
-                  .name {
-                    color: $primary;
-                    font-size: 17px;
-                    line-height: 30px;
-                  }
-                  small {
-                    font-size: 13px;
-                    line-height: 20px;
-                    font-weight: 500;
-                  }
-                }
-              }
-            }
           }
           @include medium() {
             margin-top: 40px;
@@ -387,7 +320,7 @@
                 overflow: hidden;
 
                 .color {
-                  font-size: 18px;
+                  font-size: 16px;
                   line-height: 30px;
                   color: $gray-300;
                   margin: 0;
