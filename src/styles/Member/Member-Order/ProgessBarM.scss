@@ -1,0 +1,71 @@
+@import '../../mixin.scss';
+
+.progressBarM {
+  min-width: 420px;
+  width: 38.8%;
+  height: 60px;
+  margin: 0 auto;
+  padding-left: 80px;
+  li {
+    list-style-type: none;
+    width: 100px;
+    float: left;
+    color: $primary;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    margin-top: 40px;
+
+    &::before {
+      width: 13px;
+      height: 13px;
+      content: '';
+      line-height: 30px;
+      background-color: $primary;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+    }
+    &::after {
+      width: 100%;
+      height: 4px;
+      content: '';
+      position: absolute;
+      background-color: $primary;
+      top: 5px;
+      left: -50%;
+      z-index: -1;
+      transition: all 0.8s;
+    }
+    &:first-child::after {
+      content: none;
+    }
+  }
+  .active {
+    color: $primary;
+    &::before {
+      content: url('../../../../public/Progressbar/cup_dot.png');
+      background-color: transparent;
+      width: 18px;
+      height: 13px;
+      line-height: 16px;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+    }
+    &::after {
+      background-color: $primary;
+    }
+  }
+  .active ~ li {
+    color: $gray-200;
+    &::before {
+      background-color: $gray-200;
+    }
+    &::after {
+      background-color: $gray-200;
+    }
+  }
+}

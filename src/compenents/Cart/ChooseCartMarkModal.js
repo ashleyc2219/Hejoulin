@@ -1,25 +1,36 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ChooseCartMarkModal.scss'
+import ChooseMark from './ChooseMark'
+import { createBrowserHistory } from 'history'
 
-const ChooseCartMarkModal = () => {
+const ChooseCartMarkModal = (props) => {
+  const { sakeInfo, setChooseModalShow, setMarkPic } = props
   const [data, setData] = useState([])
   const [check, setCheck] = useState('')
+  const history = createBrowserHistory()
+
   const markData = data.map((v, i) => {
     return (
-      <div
-      key={i}
-        onClick={() => {
-          setCheck(i)
-        }}
-        className={check === i ? 'mark markchecked' : 'mark'}
-      >
-        <div className="markname">{v.mark_name}</div>
-        <div className="markpic">
-          <img src={'http://localhost:3001/images/mark_pic/' + v.pics} alt="" />
-        </div>
-      </div>
+      <ChooseMark key={i} check={check} setCheck={setCheck} mark_info={v} />
     )
   })
+  const MarkInsert = async function () {
+    let data = {
+      mark_id: check,
+      cart_sake_id: sakeInfo.cart_sake_id,
+    }
+    const r1 = await fetch('http://localhost:3001/api/cart-list/mark', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    const obj = await r1.json()
+    // console.log(obj)
+  }
 
   useEffect(() => {
     let a = true
@@ -28,10 +39,9 @@ const ChooseCartMarkModal = () => {
         'http://localhost:3001/api/cart-list/mark?member_id=4'
       )
       const fetchedData = await res.json()
-      const test = fetchedData
-      console.log(test)
+      console.log(fetchedData)
       if (a) {
-        setData(test)
+        setData(fetchedData)
       }
     }
     fetchTop()
@@ -44,31 +54,48 @@ const ChooseCartMarkModal = () => {
       <div className="ChooseCartMarkModal">
         <div className="ChooseCartMark">
           <svg
+            onClick={() => {
+              setChooseModalShow(false)
+            }}
+            xmlns="http://www.w3.org/2000/svg"
             width="29"
             height="29"
-            viewBox="0 0 29 29"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 29 29"
           >
             <path
-              d="M21.75 7.25L7.25 21.75"
               stroke="#F7F7F6"
-              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-            />
-            <path
-              d="M7.25 7.25L14.5 14.5L21.75 21.75"
-              stroke="#F7F7F6"
               strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d="M21.75 7.25l-14.5 14.5M7.25 7.25l7.25 7.25 7.25 7.25"
             />
           </svg>
-          <div className="markcontainer">{markData}</div>
-          <div className="button">
-            <button className="btn btn-primary">確認</button>
-          </div>
+          {data.length >= 1 ? (
+            <>
+              <div className="markcontainer">{markData}</div>
+              <div className="button">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    MarkInsert()
+                    setMarkPic(check)
+                    setChooseModalShow(false)
+                  }}
+                >
+                  確認
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="nomark">
+              <p>沒有酒標作品</p>
+
+              <Link to="/mark/intro">
+                <button className="btn btn-primary">前去製作</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>
