@@ -4,10 +4,14 @@ import './ProductModal.scss'
 import SakeButton from './SakeButton'
 
 const ProductModal = (props) => {
-  const [slides, setSlides] = useState(false)
+  const { modalShow, closeHandle, id, kind } = props
+
+  const [slidesRight, setSlidesRight] = useState(true)
+  const [slidesLeft, setSlidesLeft] = useState(false)
+  const [moveRight, setMoveRight] = useState(false)
+  const [moveLeft, setMoveLeft] = useState(false)
   const [linkFav, setLinkFav] = useState(0)
   const [detail, setDetail] = useState([])
-  const { modalShow, closeHandle, id } = props
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
   const fetchData = async () => {
@@ -15,37 +19,76 @@ const ProductModal = (props) => {
     const data = await res.json()
     setDetail(data)
   }
+  const right = () => {
+    if (slidesRight) {
+      setSlidesLeft(true)
+      setSlidesRight(false)
+      setMoveLeft(false)
+    }
+  }
+  const left = () => {
+    if (slidesLeft) {
+      setSlidesLeft(false)
+      setSlidesRight(true)
+      setMoveRight(false)
+    }
+  }
 
   let modal = detail.map(function (v, i) {
     return (
       <React.Fragment key={v.pro_id}>
         <div className="grid">
-          <div className="image">
-            <button className="left">
-              <img src="/Gift/Left.svg" className="left_arrow" alt="" />
-            </button>
+          <div className={`image ${kind === 3 && 'grid'}`}>
+            {kind === 3 && (
+              <button
+                className={`left ${slidesLeft ? 'nothing' : 'sake_block'}`}
+                onClick={() => {
+                  left()
+                  setMoveLeft(true)
+                }}
+              >
+                <img src="/Gift/Left.svg" className="left_arrow" alt="" />
+              </button>
+            )}
             <div className="slider">
-              <div className="wrap uno">
-                <img
-                  src={'http://localhost:3001/images/pro_img/' + v.pro_img}
-                  alt=""
-                  className="modal_sake"
-                />
-              </div>
-              <div className="wrap dos">
-                <img
-                  src={'http://localhost:3001/images/con_img/' + v.container_id}
-                  alt=""
-                  className="modal_container"
-                />
+              <div
+                className={`img_wrap ${
+                  kind === 3 && moveRight ? 'trans_right' : ''
+                } ${kind === 3 && moveLeft ? 'trans_left' : ''}`}
+              >
+                <div className="wrap uno">
+                  <img
+                    src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                    alt=""
+                    className="modal_sake"
+                  />
+                </div>
+                {kind === 3 && (
+                  <div className="wrap dos">
+                    <img
+                      src={
+                        'http://localhost:3001/images/con_img/' +
+                        v.container_id +
+                        '-o.png'
+                      }
+                      alt=""
+                      className="modal_container"
+                    />
+                  </div>
+                )}
               </div>
             </div>
-            <button className="right">
-              <img src="/Gift/Right.svg" className="right_arrow" alt="" />
-            </button>
-            <div className="sake_button">
-              <div className="center">{/* <SakeButton /> */}</div>
-            </div>
+            {kind === 3 && (
+              <button
+                className={`right ${slidesRight ? 'nothing' : 'sake_block'}`}
+                onClick={() => {
+                  right()
+                  setMoveRight(true)
+                }}
+              >
+                <img src="/Gift/Right.svg" className="right_arrow" alt="" />
+              </button>
+            )}
           </div>
           <div className="info">
             <div className="name">{v.pro_name}</div>

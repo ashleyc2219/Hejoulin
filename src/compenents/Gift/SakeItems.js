@@ -50,7 +50,9 @@ const SakeItems = (props) => {
     return (
       <React.Fragment key={i}>
         <Cards
+          modalShow={modalShow}
           showHandle={showHandle}
+          closeHandle={closeHandle}
           id={id}
           setId={setId}
           i={i}
@@ -95,7 +97,12 @@ const SakeItems = (props) => {
   return (
     <>
       {modalShow && (
-        <ProductModal modalShow={modalShow} closeHandle={closeHandle} id={id} />
+        <ProductModal
+          modalShow={modalShow}
+          closeHandle={closeHandle}
+          id={id}
+          kind={kind}
+        />
       )}
       {modalShow && <Backdrop closeHandle={closeHandle} />}
       {items}

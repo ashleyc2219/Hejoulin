@@ -47,11 +47,20 @@
         display: block;
       }
     }
+    @include medium() {
+      img {
+        transform: translateY(-5px);
+      }
+    }
 
     small {
       display: none;
       margin-top: 10px;
       color: $gray-300;
+      @include medium() {
+        display: block;
+        margin: 0%;
+      }
     }
   }
 }
@@ -64,15 +73,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .box {
-    height: 300px;
+  @include medium() {
+    height: 400px;
+    overflow: hidden;
+  }
+  .box01 {
+    height: 450px;
+    @include medium(){
+        height: 335px;
+    }
   }
 
-  .sake {
-    height: 325px;
+  .sake01 {
+    height: 320px;
     position: absolute;
     margin: auto;
-    left: 400px;
+    left: calc(50% - 113px);
+    @include medium(){
+      height: 225px;
+      top: calc(50% - 115px);
+      left: calc(50% - 83px);
+    }
   }
 }
 .confirm {

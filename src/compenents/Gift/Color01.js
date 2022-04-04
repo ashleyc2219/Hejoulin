@@ -48,12 +48,12 @@ const Color01 = (props) => {
             '.png'
           }
           alt="box"
-          className="box"
+          className="box01"
         />
         <img
           src={'http://localhost:3001/images/pro_img/' + img}
           alt="sake"
-          className="sake"
+          className="sake01"
         />
         <div className="confirm">
           <button
