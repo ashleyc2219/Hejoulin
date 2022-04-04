@@ -94,18 +94,10 @@ const SakeItems = (props) => {
 
   return (
     <>
-      {modalShow ? (
-        <>
-          {/* <ProductModal
-            modalShow={modalShow}
-            closeHandle={closeHandle}
-            id={id}
-          /> */}
-          <Backdrop closeHandle={closeHandle} />
-        </>
-      ) : (
-        ''
+      {modalShow && (
+        <ProductModal modalShow={modalShow} closeHandle={closeHandle} id={id} />
       )}
+      {modalShow && <Backdrop closeHandle={closeHandle} />}
       {items}
     </>
   )
