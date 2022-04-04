@@ -7,9 +7,9 @@ const ChooseMark = (props) => {
     <>
       <div
         onClick={() => {
-          setCheck(mark_info.mark_id)
+          setCheck(mark_info.pics)
         }}
-        className={check === mark_info.mark_id ? 'mark markchecked' : 'mark'}
+        className={check === mark_info.pics ? 'mark markchecked' : 'mark'}
       >
         <div className="markname">{mark_info.mark_name}</div>
         <div className="markpic">
