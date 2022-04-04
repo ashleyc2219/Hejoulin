@@ -119,8 +119,18 @@ const CompareBlock = ({
           setStyle({ top: '180px' })
         }
       }
+    } else {
+      setStyle({ top: '180px' })
     }
   }
+
+  useEffect(() => {
+    let a = true
+
+    return () => {
+      a = false
+    }
+  }, [])
 
   useEffect(() => {
     let a = true
@@ -129,12 +139,6 @@ const CompareBlock = ({
         handleScroll()
       }
     })
-    return () => {
-      a = false
-    }
-  }, [])
-  useEffect(() => {
-    let a = true
     clear()
     const fetch1 = async () => {
       if (compare[0] === undefined || compare[0] === []) return false
