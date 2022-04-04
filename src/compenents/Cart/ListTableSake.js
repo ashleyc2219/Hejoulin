@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ListTableSake.scss'
+import ChooseCartMarkModal from './ChooseCartMarkModal'
 
 const ListTableSake = (props) => {
   const {
@@ -13,6 +14,7 @@ const ListTableSake = (props) => {
     sakeTotal,
     setSakeTotal,
   } = props
+  const [modalShow, setModalShow] = useState(false)
   const fetchURL = 'http://localhost:3001/api/cart-list/sake'
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
   let pro_gift = 'false'
@@ -32,7 +34,13 @@ const ListTableSake = (props) => {
     if (mark_pic == null && sakeInfo.pro_mark === 1) {
       return (
         <div className="item item-mark true">
-          <Link to="/mark/intro">製作客製化酒標</Link>
+          <p
+            onClick={() => {
+              setModalShow(true)
+            }}
+          >
+            製作客製化酒標
+          </p>
         </div>
       )
     } else {
@@ -126,6 +134,7 @@ const ListTableSake = (props) => {
 
   return (
     <>
+      {modalShow ? <ChooseCartMarkModal sakeInfo={sakeInfo} setModalShow={setModalShow} /> : ''}
       <div className="table-item sake-table-item">
         <div className="item item-del">
           <img src="/CartList/trash.png" alt="" onClick={delSakeItem} />

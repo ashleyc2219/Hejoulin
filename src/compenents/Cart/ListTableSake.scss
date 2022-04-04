@@ -85,12 +85,14 @@
     img {
       height: 100px;
     }
-    a {
+    p {
       text-decoration: underline;
       line-height: 32px;
       font-size: 16px;
       font-weight: 500;
       color: $secondary;
+      margin: 0;
+      cursor: pointer;
     }
   }
   .item-mark {
