@@ -48,7 +48,7 @@
   //overflow: hidden;
   //position: relative;
   padding-bottom: 100px;
-  @include bgimage();
+  background-image: url('./../../../public/Sake-background0310.jpg');
   @include medium() {
     padding: 0 20px;
   }

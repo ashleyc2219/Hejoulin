@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './../styles/ProductList/ProductList.css'
+import './../styles/ProductList/ProductList.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Sidebar from '../compenents/ProductList/Sidebar'
 import CompareBlock from '../compenents/ProductList/CompareBlock'
@@ -12,8 +12,9 @@ import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
-import { Spinner } from 'react-bootstrap'
+//import { Spinner } from 'react-bootstrap'
 import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
+import Spinner from '../compenents/Shared/Spinner'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
@@ -297,6 +298,7 @@ const ProductList = (props) => {
   }
 
   const sorthandler = (e) => {
+    console.log('test')
     const sort = e.target.value
     if (sort === '1') {
       preToLoad()
@@ -414,9 +416,12 @@ const ProductList = (props) => {
 
   return (
     <>
-     
       {sortModal ? (
-        <MobileSortModal sortModal={sortModal} setSortModal={setSortModal} />
+        <MobileSortModal
+          sortModal={sortModal}
+          setSortModal={setSortModal}
+          sorthandler={sorthandler}
+        />
       ) : (
         ''
       )}
@@ -480,10 +485,9 @@ const ProductList = (props) => {
             setMark={setMark}
             reset={reset}
           />
-         
 
           <div className="main">
-            <MobileGuideButton/>
+            <MobileGuideButton />
             <div className="center-container">
               <div className="search-bar">
                 <div className="select">
@@ -558,7 +562,8 @@ const ProductList = (props) => {
                   </div>
                 </div>
               </div>
-              {spinTop ? (
+              {spinTop ? <Spinner /> : ''}
+              {/* {spinTop ? (
                 <div className="spin">
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden"></span>
@@ -566,7 +571,7 @@ const ProductList = (props) => {
                 </div>
               ) : (
                 ''
-              )}
+              )} */}
               {/* 人氣之選 */}
               {resultTitle ||
               resultTitle2 ||
@@ -641,7 +646,8 @@ const ProductList = (props) => {
                 ''
               )}
 
-              {spin ? (
+              {spin ? <Spinner /> : ''}
+              {/* {spin ? (
                 <div className="spin">
                   <Spinner animation="border" role="status">
                     <span className="visually-hidden"></span>
@@ -649,7 +655,7 @@ const ProductList = (props) => {
                 </div>
               ) : (
                 ''
-              )}
+              )} */}
 
               {noresult ? '' : <NoResult />}
             </div>

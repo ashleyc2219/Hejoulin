@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
+import './Spinner.scss'
 
 const Spinner = () => {
   return (
