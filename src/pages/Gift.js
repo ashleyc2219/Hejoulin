@@ -99,28 +99,13 @@ const Gift = (props) => {
     }
   }, [value.current])
 
-  let currentItem = localStorage.getItem('currentId')//沒有用
-  const cancel = () => {
-    console.log(currentItem)
-    if (currentItem === sakeId) {
-      setSakeId('')
-      setName('')
-      setPrice('')
-      setImg('')
-      setConShadow('')
-      setCurrentCon('')
-    } else if (currentItem === sakeId2) {
-      setSakeId2('')
-      setName2('')
-      setPrice2('')
-      setImg2('')
-    }
-  }
   const reset = () => {
     setSakeId('')
     setName('')
     setPrice('')
     setImg('')
+    setCurrentCon('')
+    setConShadow('')
     setSakeId2('')
     setName2('')
     setPrice2('')
@@ -247,12 +232,15 @@ const Gift = (props) => {
                     setCurrentName={setCurrentName}
                     currentPrice={currentPrice}
                     setCurrentPrice={setCurrentPrice}
-                    cancel={cancel}
                     setStep={setStep}
                     setSakeId2={setSakeId2}
                     setName2={setName2}
                     setPrice2={setPrice2}
                     setImg2={setImg2}
+                    setSakeId={setSakeId}
+                    setName={setName}
+                    setPrice={setPrice}
+                    setImg={setImg}
                   />
                 </div>
               </section>

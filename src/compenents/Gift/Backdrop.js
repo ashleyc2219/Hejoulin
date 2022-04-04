@@ -1,8 +1,8 @@
 import React from 'react'
 
 const BackDrop = (props) => {
-  const { closeModal } = props
-  return <div className="backdrop" onClick={closeModal} />
+  const { closeHandle } = props
+  return <div className="backdrop" onClick={closeHandle} />
 }
 
 export default BackDrop
