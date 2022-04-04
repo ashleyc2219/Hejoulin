@@ -1,6 +1,7 @@
 import React from 'react'
 import ProgressBarM from "../compenents/Member/AllTabs/OrderList/ProgressBarM";
 import '../styles/Member/Member-Order/MemberOrderListDetail.scss'
+import {Link} from "react-router-dom";
 
 const MemberOrderListDetail = () => {
     const stepContent = ['訂單成立', '已出貨', '物流收件', '已送達']
@@ -85,7 +86,9 @@ const MemberOrderListDetail = () => {
                                 </div>
                             </div>
                         </div>
+                        <Link to="/member/order-list">
                         <button className="btn btn-secondary">返回</button>
+                        </Link>
                     </div>
                 </div>
             </div>
