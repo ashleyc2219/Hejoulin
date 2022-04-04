@@ -5,7 +5,7 @@ import ChooseMark from './ChooseMark'
 import { createBrowserHistory } from 'history'
 
 const ChooseCartMarkModal = (props) => {
-  const { sakeInfo, setModalShow, setMarkPic } = props
+  const { sakeInfo, setChooseModalShow, setMarkPic } = props
   const [data, setData] = useState([])
   const [check, setCheck] = useState('')
   const history = createBrowserHistory()
@@ -29,8 +29,7 @@ const ChooseCartMarkModal = (props) => {
       body: JSON.stringify(data),
     })
     const obj = await r1.json()
-    console.log(obj)
-    history.push('/cart/list', { some: 'state' })
+    // console.log(obj)
   }
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const ChooseCartMarkModal = (props) => {
         <div className="ChooseCartMark">
           <svg
             onClick={() => {
-              setModalShow(false)
+              setChooseModalShow(false)
             }}
             xmlns="http://www.w3.org/2000/svg"
             width="29"
@@ -81,7 +80,7 @@ const ChooseCartMarkModal = (props) => {
                   onClick={() => {
                     MarkInsert()
                     setMarkPic(check)
-                    setModalShow(false)
+                    setChooseModalShow(false)
                   }}
                 >
                   確認
