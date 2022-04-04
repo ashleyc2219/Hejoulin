@@ -1,0 +1,278 @@
+@import '../../mixin.scss';
+
+* {
+  //border: 1px blue solid;
+  margin: 0;
+  padding: 0;
+}
+
+.MemberOrderListDetail {
+  width: 100%;
+
+  .listDetail-container {
+    width: 1200px;
+    height: 560px;
+    padding: 0;
+    display: flex;
+    column-gap: 70px;
+    margin: 5% 5%;
+    @include medium {
+      flex-direction: column;
+    }
+    .left-list {
+
+      width: 51.16%;
+      //   display: flex;
+      //   flex-direction: column;
+      @include medium {
+        width: 100%;
+      }
+      .mobile-table-btn {
+        display: none;
+        @include medium {
+          width: 100%;
+          background-color: rgba(187, 188, 189, 0.5);
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          span {
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+          }
+        }
+      }
+      .list-table {
+        width: 100%;
+
+        .table-head {
+          width: 100%;
+          background-color: rgba(187, 188, 189, 0.5);
+          padding: 10px;
+          margin-top: 2px;
+
+          display: flex;
+          justify-content: space-between;
+
+          span {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+          }
+          .title-product {
+            width: 59.18%;
+          }
+          .title-quantity {
+            width: 17.07%;
+          }
+          .title-subtotal {
+            width: 17.07%;
+          }
+          @include medium {
+            .title-quantity {
+              display: none;
+            }
+          }
+        }
+        // table -item---
+        .table-item {
+          height: 140px;
+          padding: 5px 0;
+          display: flex;
+          column-gap: 10px;
+          @include medium {
+            padding: 10px;
+            height: 130px;
+          }
+          .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .item-product-img {
+            width: 21.138%;
+            background-color: $white;
+            mix-blend-mode: multiply;
+            @include medium {
+              height: 90px;
+              img {
+                height: 80px;
+              }
+            }
+            img {
+              height: 110px;
+            }
+          }
+          .item-product-info {
+            width: 36.85%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-grow: 1;
+            @include medium {
+              justify-content: flex-start;
+            }
+            h5 {
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 36px;
+              margin: 0;
+              color: $primary;
+              @include medium {
+                font-size: 16px;
+                line-height: 18px;
+              }
+            }
+            p {
+              font-size: 16px;
+              line-height: 20px;
+              margin: 0;
+              color: $primary;
+            }
+            p.ml::after {
+              content: ' ml';
+            }
+            p.price {
+              @include medium {
+                display: none;
+              }
+              &::before {
+                content: '$ ';
+              }
+            }
+            p.cmark {
+              visibility: hidden;
+              color: $secondary;
+              text-decoration: underline;
+              line-height: 42px;
+              flex-grow: 1;
+            }
+            p.cmark.true {
+              visibility: visible;
+            }
+            p.product-count {
+              display: none;
+              @include medium {
+                display: block;
+                justify-self: end;
+              }
+            }
+          }
+          .item-quantity {
+            width: 17.07%;
+            p {
+              margin: 0%;
+              font-weight: bold;
+              color: $primary;
+            }
+            @include medium {
+              display: none;
+            }
+          }
+
+          .item-subtotal {
+            width: 17.07%;
+            p {
+              margin: 0%;
+              font-weight: bold;
+              color: $primary;
+              &::before {
+                content: '$ ';
+              }
+            }
+          }
+        }
+        hr {
+          border: $gray-100 1px solid;
+          margin: 6px 0;
+        }
+      }
+      .list-summary {
+        width: 100%;
+        padding-left: 21.38%;
+        @include medium {
+          padding: 10px;
+        }
+        .table-row {
+          display: flex;
+          justify-content: space-between;
+          color: $gray-400;
+          line-height: 32px;
+          p {
+            margin-bottom: 0%;
+          }
+          p.dollar-sign::before {
+            content: '$ ';
+          }
+          p.total {
+            font-size: 20px;
+            color: $secondary;
+          }
+        }
+      }
+    }
+    .rightOrder {
+      width: 42.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      @include medium {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .order-container {
+        width: 100%;
+        padding: 25px 32px;
+        background-color: rgba(255, 255, 255, 0.7);
+        position: relative;
+        img {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
+
+        .order-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 28px;
+          label {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+        .order-row {
+          display: flex;
+          column-gap: 50px;
+          .row-head {
+            flex-shrink: 0;
+            min-width: 82px;
+            font-weight: 500;
+            font-size: 16px;
+            color: $gray-300;
+          }
+          .row-data {
+            font-weight: 400;
+            font-size: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 40px;
+            p {
+              margin-bottom: 5px;
+            }
+          }
+          .row-data .payment {
+            p {
+              width: 100%;
+            }
+          }
+        }
+      }
+      button {
+        margin-top: 150px;
+      }
+    }
+  }
+}
