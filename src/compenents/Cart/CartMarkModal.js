@@ -2,7 +2,7 @@ import React from 'react'
 import './CartMarkModal.scss'
 
 const CartMarkModal = (props) => {
-  const { sakeInfo, setMarkModalShow, setMarkPic } = props
+  const { sakeInfo, setMarkModalShow, setMarkPic, markPic } = props
   const MarkDelete = async function () {
     let data = {
       cart_sake_id: sakeInfo.cart_sake_id,
@@ -25,7 +25,7 @@ const CartMarkModal = (props) => {
         <div className="markmodal">
           <div className="img">
             <img
-              src={`http://localhost:3001/images/mark_pic/${sakeInfo.pics}`}
+              src={`http://localhost:3001/images/mark_pic/${markPic}`}
               alt=""
             />
           </div>
@@ -36,7 +36,6 @@ const CartMarkModal = (props) => {
                 MarkDelete()
                 setMarkPic(null)
                 setMarkModalShow(false)
-
               }}
             >
               刪除
