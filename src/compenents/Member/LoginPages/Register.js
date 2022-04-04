@@ -27,7 +27,7 @@ const Register = (props) => {
     console.log(obj)
     let userData = {
       userId: obj.uId.userId,
-      user_account: obj.info.user_account
+      userAccount: obj.info.user_account
     }
     console.log(userData)
     if (obj.success === true) {
