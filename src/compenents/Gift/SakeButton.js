@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import React, { useState } from 'react'
 import './SakeButton.scss'
+
+import BackDrop02 from './Backdrop02'
+import Modal from './Modal'
 
 const SakeButton = (props) => {
   const {
@@ -20,9 +22,9 @@ const SakeButton = (props) => {
     sakeId,
     sakeId2,
   } = props
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [modal, setModal] = useState(false)
+  const closeModal = () => setModal(false)
+  const openModal = () => setModal(true)
 
   const plus = () => {
     value.current += 1
@@ -34,7 +36,7 @@ const SakeButton = (props) => {
           <button
             className="one"
             onClick={() => {
-              handleShow()
+              openModal()
             }}
           >
             <img src="/Gift/full_sake.svg" alt="" className="sake single" />
@@ -67,17 +69,8 @@ const SakeButton = (props) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>選購額度已滿！</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>選購清酒額度已滿，請先取消當前已選購的商品</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            確認
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {modal && <Modal closeModal={closeModal} />}
+      {modal && <BackDrop02 closeModal={closeModal} />}
       <div className="SakeButton">
         {sakeButton === 0 && value.current < 2 ? (
           <button
@@ -94,7 +87,7 @@ const SakeButton = (props) => {
           <button
             className={`sake empty ${sakeButton > 0 ? 'test' : ''}`}
             onClick={() => {
-              handleShow()
+              openModal()
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />
@@ -107,11 +100,11 @@ const SakeButton = (props) => {
             <button
               className="full"
               onClick={() => {
-                handleShow()
+                openModal()
               }}
             >
               <img src="/Gift/gray_sake.svg" alt="" className="sake dou" />
-              <img src="/Gift/gray_sake.svg" alt="" className="sake dou" />
+              <img src="/Gift/gray_sake.svg" alt="" className="sake dou mobile" />
               <span>已選二瓶</span>
             </button>
           </>

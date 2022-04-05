@@ -258,45 +258,88 @@
             gap: 50px;
             padding: 5vh 110px;
             overflow: hidden;
+            @include medium() {
+              grid-template-columns: none;
+              grid-template-rows: 250px 1fr;
+              padding: 0%;
+              gap: 30px;
+              margin-top: 20px;
+            }
 
             .final {
               width: 400px;
               z-index: 3;
               position: relative;
               overflow: hidden;
-              .final-box1{
-
+              @include medium() {
+                width: 335px;
+                display: flex;
+                justify-content: center;
               }
-              .final-box2{}
-              .final-sake1{
+              .final-box1 {
+                @include medium() {
+                  height: 250px;
+                }
+              }
+              .final-box2 {
+                @include medium() {
+                  height: 250px;
+                }
+              }
+              .final-sake1 {
                 position: absolute;
                 height: 500px;
-                top:50px;
+                top: 50px;
                 left: 125px;
+                @include medium() {
+                  height: 200px;
+                  top: calc(50% - 100px);
+                  left:calc(50% - 30px);
+                }
               }
-              .final-sake2-1{
+              .final-sake2-1 {
                 position: absolute;
                 height: 520px;
-                top:50px;
+                top: 50px;
                 left: 55px;
+                @include medium() {
+                  height: 210px;
+                  top: calc(50% - 100px);
+                  left:calc(50% - 60px);
+                }
               }
-              .final-sake2{
+              .final-sake2 {
                 position: absolute;
                 height: 520px;
-                top:50px;
+                top: 50px;
                 left: 200px;
+                @include medium() {
+                  height: 210px;
+                  top: calc(50% - 100px);
+                  left:50%;
+                }
               }
-              .final-sake3-1{
+              .final-sake3-1 {
                 position: absolute;
                 height: 520px;
-                top:50px;
+                top: 50px;
                 left: 55px;
+                @include medium() {
+                  height: 210px;
+                  top: calc(50% - 100px);
+                  left:calc(50% - 60px);
+                }
               }
-              .final-con{
+              .final-con {
                 position: absolute;
                 height: 520px;
-                top:50px;
+                top: 50px;
                 left: 200px;
+                @include medium() {
+                  height: 210px;
+                  top: calc(50% - 100px);
+                  left:calc(50% - 2px);
+                }
               }
             }
 
@@ -304,12 +347,14 @@
               display: flex;
               flex-direction: column;
               align-items: center;
-              // padding: 5vh 0;
 
               .title {
                 color: $gray-300;
                 font-weight: bold;
                 line-height: 90px;
+                @include medium(){
+                  line-height: 48px;
+                }
               }
 
               .sheet {

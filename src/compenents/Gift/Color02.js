@@ -55,7 +55,7 @@ const Color02 = (props) => {
             '.png'
           }
           alt="box"
-          className="box"
+          className="box02"
         />
         <img
           src={'http://localhost:3001/images/pro_img/' + img}

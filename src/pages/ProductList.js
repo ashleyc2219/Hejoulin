@@ -12,7 +12,6 @@ import ProductMaster from '../compenents/ProductList/ProductMaster'
 import ProductListItems from '../compenents/ProductList/ProductListItems'
 import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
-//import { Spinner } from 'react-bootstrap'
 import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 import Spinner from '../compenents/Shared/Spinner'
 
@@ -214,8 +213,8 @@ const ProductList = (props) => {
       if (searchword.length > 0) {
         setSearch(searchword)
         setResultTitle7(true)
+        setNoresult(true)
         setTimeout(() => {
-          setNoresult(true)
           // 如果搜尋文字長度大於0會執行以下動作
           setSpinTop(false)
           setResultTitle(true)

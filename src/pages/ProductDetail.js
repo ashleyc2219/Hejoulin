@@ -7,9 +7,9 @@ import { useParams } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Heart from '../compenents/ProductList/Heart'
 import CompareBtn from '../compenents/ProductList/CompareBtn'
-import { Spinner } from 'react-bootstrap'
 import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 import AddCartBtn from '../compenents/ProductList/AddCartBtn'
+import Spinner from '../compenents/Shared/Spinner'
 
 const ProductDetail = (props) => {
   const { id } = useParams()
@@ -394,11 +394,7 @@ const ProductDetail = (props) => {
                 </div>
               </div>
               {spin ? (
-                <div className="spin">
-                  <Spinner animation="border" role="status">
-                    <span className="visually-hidden"></span>
-                  </Spinner>
-                </div>
+                <Spinner />
               ) : (
                 productDetail
               )}

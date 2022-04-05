@@ -29,6 +29,28 @@
     background-image: url('./../../../public/Sakeintro/sakepic271.jpg');
   }
 
+  .container {
+    // .Guide 和 .loca都是為了解決位置的問題，在這2個地方改就可以了，記得順便看 mobile的版本
+    // position: sticky 會因為父層用 overflow:hidden等問題不能用
+
+    .Guide {
+      // position: sticky;
+      // top: 100px;
+      // width: fit-content;
+      height: 0px;
+      // z-index: 10;
+      @include medium() {
+        // display: none;
+      }
+
+      .loca {
+        // position: absolute;
+        left: 85vw;
+        top: -41px;
+      }
+    }
+  }
+
   .sake-intro-container {
     //outline: 3px solid purple;
     // max-width: 1200px;
@@ -68,6 +90,9 @@
   }
   .sakeintro-title {
     //outline: 1px solid black;
+    .box {
+      display: flex;
+    }
 
     h2 {
       //outline: 1px solid rgb(196, 22, 167);
@@ -336,6 +361,20 @@
       align-items: flex-start;
     }
 
+    @keyframes brewani {
+      0% {
+        // transform: translateY(-10px);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        // transform: translateY(0px);
+        opacity: 0;
+      }
+    }
+
     .brew_2 {
       flex-direction: row-reverse;
       @include medium() {
@@ -391,6 +430,10 @@
         }
       }
       .arr-box {
+        animation-name: brewani;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-delay: 1s;
         //outline: 3px solid rgb(97, 57, 5);
         margin: 44px 15px 0px 15px;
         transform: scale(0.5, 0.5);

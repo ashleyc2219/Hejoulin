@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import './../styles/EventList/EventList.scss'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import EventCard from '../compenents/Event/EventCard'
-import { Spinner } from 'react-bootstrap'
+//import { Spinner } from 'react-bootstrap'
+import Spinner from '../compenents/Shared/Spinner'
 
 const EventList = () => {
   const [sort, setSort] = useState('')
@@ -53,11 +54,7 @@ const EventList = () => {
         </div>
         <div className="event-list">
           {spin ? (
-            <div className="spin">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden"></span>
-              </Spinner>
-            </div>
+            <Spinner />
           ) : (
             ''
           )}
