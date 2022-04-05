@@ -8,7 +8,6 @@ body {
 }
 
 .home {
-  width: 100%;
   position: relative;
 }
 
@@ -548,5 +547,11 @@ body {
 
 .home .sub-box .sub-word .sub-word-content p b {
   text-combine-upright: all;
+}
+
+.home .sakeintro-title .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=Home.css.map */

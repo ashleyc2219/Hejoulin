@@ -20,6 +20,15 @@
   background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
 }
 
+.sake-intro .container .Guide {
+  height: 0px;
+}
+
+.sake-intro .container .Guide .loca {
+  left: 85vw;
+  top: -41px;
+}
+
 .sake-intro .sake-intro-container {
   position: relative;
   height: 220px;
@@ -58,6 +67,12 @@
   margin: 30px;
   font-family: 'Klee One', cursive;
   font-size: 40px;
+}
+
+.sake-intro .sakeintro-title .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .sake-intro .sakeintro-title h2 {

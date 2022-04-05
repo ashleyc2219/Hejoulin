@@ -9,8 +9,6 @@ body {
 }
 
 .home {
-  width: 100%;
-
   // .Guide 和 .loca都是為了解決位置的問題，在這2個地方改就可以了，記得順便看 mobile的版本
   // position: sticky 會因為父層用 overflow:hidden等問題不能用
 
