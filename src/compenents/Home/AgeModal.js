@@ -1,9 +1,11 @@
 import React from 'react'
 import './AgeModal.css'
 import { useEffect, useState } from 'react'
+import DatePicker from 'react-date-picker'
 
 const AgeModal = (props) => {
   const { modalShow, setModalShow } = props
+  const [value, onChange] = useState(new Date())
 
   const openModal = () => {
     setModalShow((prev) => !prev)
@@ -147,35 +149,8 @@ const AgeModal = (props) => {
           </div>
           <div className="Age-content">
             <h3>請問你的出生年月日是：</h3>
-            <div className="input-box">
-              <select className="decorated" name="drinks" required>
-                <option defaultValue="" disabled hidden>
-                  Choose a drink
-                </option>
-                <option value="coffee">YYYY</option>
-                <option value="tea">2004</option>
-                <option value="milk">2022</option>
-              </select>
-              <p>年</p>
-              <select className="decorated" name="drinks" required>
-                <option defaultValue="" disabled hidden>
-                  Choose a drink
-                </option>
-                <option value="coffee">MM</option>
-                <option value="tea">04</option>
-                <option value="milk">02</option>
-              </select>
-              <p>月</p>
-              <select className="decorated" name="drinks" required>
-                <option defaultValue="" disabled hidden>
-                  Choose a drink
-                </option>
-                <option value="coffee">DD</option>
-                <option value="tea">12</option>
-                <option value="milk">02</option>
-              </select>
-              <p>日</p>
-            </div>
+            <DatePicker onChange={onChange} value={value} />
+
             <button className="mt-3 btn btn-primary">確認</button>
             <div className="red-word">
               <p>未滿18歲請勿飲酒</p>
