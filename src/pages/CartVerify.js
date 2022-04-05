@@ -12,7 +12,7 @@ const CartVerify = () => {
     cardNum: cartVerifyInfo.cardNum,
     total: cartVerifyInfo.total,
   })
-  const [btnText, setBtnText] = useState('取得email傳送交易密碼')
+  const [btnText, setBtnText] = useState('取得信箱傳送交易密碼')
   const [enterCode, setEnterCode] = useState('')
 
   const today = new Date()
