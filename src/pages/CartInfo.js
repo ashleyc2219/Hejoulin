@@ -304,8 +304,10 @@ const CartInfo = (props) => {
   }, [autoReceiver])
 
   async function forCartVerifyInfo() {
+    let cardNumTidy = cardNum
+    cardNumTidy = cardNumTidy.slice(-4)
     let data = {
-      cardNum: cardNum,
+      cardNum: cardNumTidy,
       total: cartSummaryInfo.allTotal,
       email_account: buyerEmail,
     }
@@ -652,12 +654,12 @@ const CartInfo = (props) => {
               <button className="btn btn-primary">上一步</button>
             </Link>
             {passThrough === true ? (
-              <Link to="/cart/verify">
+              <Link to="/sub/cart-verify">
                 <button
                   className="btn btn-secondary"
                   onClick={() => {
                     forCartVerifyInfo()
-                    fectOutData()
+                    // fectOutData()
                   }}
                 >
                   確認付款
