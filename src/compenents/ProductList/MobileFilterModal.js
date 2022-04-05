@@ -49,7 +49,7 @@ const MobileFilterModal = ({
           />
         </div>
 
-        {/* <div className="filter-modal">
+        {/* <div className="filter-Modal">
           <img
             onClick={() => {
               setFilterModal(!filterModal)

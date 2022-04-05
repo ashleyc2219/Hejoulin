@@ -6,67 +6,80 @@ import OrderData from './OrderData'
 import TabPages from '../../TabComponent/TabPages'
 import OrderDataCome from "./OrderDataCome";
 import OrderDataToget from "./OrderDataToget";
+import MemberOrderListDetail from "../../../../pages/MemberOrderListDetail";
 
-const TabsOrder = () => {
+const TabsOrder = ({ detailData, setDetailData }) => {
   const [activeTab, setActiveTab] = useState('tab1')
   const [whichTabRender, setWhichTabRender] = useState('all')
+  const [pageData, setPageData] = useState({})
+  const [cPage, setCPage] = useState(1)
+
   return (
     <>
-      <div className="TabOrder">
-        <div className="nav">
-          {/*TODO:建立搜尋元件*/}
-          <img src="/ProductList/search.svg" alt="" />
-          <TabNavItem
-            title="全部"
-            id="tab1"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            checked={true}
-          />
-          <TabNavItem
-            title="待出貨"
-            id="tab2"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabNavItem
-            title="待收貨"
-            id="tab3"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabNavItem
-            title="已完成"
-            id="tab4"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabNavItem
-            title="已取消"
-            id="tab5"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabPages />
-        </div>
-        <div className="outlet">
-          <TabContent id="tab1" activeTab={activeTab}>
-            <OrderData whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender} />
-          </TabContent>
-          <TabContent id="tab2" activeTab={activeTab}>
-            <OrderDataCome whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
-          </TabContent>
-          <TabContent id="tab3" activeTab={activeTab}>
-            <OrderDataToget whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
-          </TabContent>
-          <TabContent id="tab4" activeTab={activeTab}>
-            <OrderData />
-          </TabContent>
-          <TabContent id="tab5" activeTab={activeTab}>
-            <OrderData />
-          </TabContent>
-        </div>
-      </div>
+          <div className="TabOrder">
+            <div className="nav">
+              {/*TODO:建立搜尋元件*/}
+              <img src="/ProductList/search.svg" alt="" />
+              <TabNavItem
+                  title="全部"
+                  id="tab1"
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                  checked={true}
+              />
+              <TabNavItem
+                  title="待出貨"
+                  id="tab2"
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+              />
+              <TabNavItem
+                  title="待收貨"
+                  id="tab3"
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+              />
+              <TabNavItem
+                  title="已完成"
+                  id="tab4"
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+              />
+              <TabNavItem
+                  title="已取消"
+                  id="tab5"
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+              />
+              <TabPages pageData={pageData} setPageData={setPageData} cPage={cPage} setCPage={setCPage}/>
+            </div>
+            <div className="outlet">
+              <TabContent id="tab1" activeTab={activeTab}>
+                <OrderData
+                    whichTabRender={whichTabRender}
+                    setWhichTabRender={setWhichTabRender}
+                    pageData={pageData}
+                    setPageData={setPageData}
+                    cPage={cPage}
+                    setCPage={setCPage}
+                    detailData={detailData}
+                    setDetailData={setDetailData}
+                />
+              </TabContent>
+              <TabContent id="tab2" activeTab={activeTab}>
+                <OrderDataCome whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
+              </TabContent>
+              <TabContent id="tab3" activeTab={activeTab}>
+                <OrderDataToget whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
+              </TabContent>
+              <TabContent id="tab4" activeTab={activeTab}>
+                <OrderData />
+              </TabContent>
+              <TabContent id="tab5" activeTab={activeTab}>
+                <OrderData />
+              </TabContent>
+            </div>
+          </div>
     </>
   )
 }

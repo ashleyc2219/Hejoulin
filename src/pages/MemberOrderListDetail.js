@@ -2,13 +2,62 @@ import React from 'react'
 import ProgressBarM from "../compenents/Member/AllTabs/OrderList/ProgressBarM";
 import '../styles/Member/Member-Order/MemberOrderListDetail.scss'
 import {Link} from "react-router-dom";
+import {element} from "prop-types";
 
-const MemberOrderListDetail = () => {
+const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetailData }) => {
     const stepContent = ['訂單成立', '已出貨', '物流收件', '已送達']
+
+    // onClick={()=>setCurrentRow('orderData')}
+
+    const renderDetailItem = (detailData) => {
+        if (detailData && detailData.length) {
+            return detailData.map((el) => (
+                <div className="list-summary">
+                    <div className="table-row">
+                        <p>小計</p>
+                        <p className="dollar-sign">11120</p>
+                    </div>
+                    <div className="table-row">
+                        <p>折扣碼</p>
+                        <p></p>
+                    </div>
+                    <div className="table-row">
+                        <p>運費</p>
+                        <p className="dollar-sign">0</p>
+                    </div>
+                    <div className="table-row">
+                        <p>總計</p>
+                        <p className="dollar-sign total">11120</p>
+                    </div>
+                </div>
+        ))
+        } else {
+            return (
+                <div className="list-summary">
+                    <div className="table-row">
+                        <p>小計</p>
+                        <p className="dollar-sign">11120</p>
+                    </div>
+                    <div className="table-row">
+                        <p>折扣碼</p>
+                        <p></p>
+                    </div>
+                    <div className="table-row">
+                        <p>運費</p>
+                        <p className="dollar-sign">0</p>
+                    </div>
+                    <div className="table-row">
+                        <p>總計</p>
+                        <p className="dollar-sign total">11120</p>
+                    </div>
+                </div>
+            )
+        }
+    }
     return (
         <>
             <div className="MemberOrderListDetail">
-            <ProgressBarM step="one" content={stepContent}/>
+                <ProgressBarM step="one" content={stepContent}/>
                 <div className="listDetail-container">
                     <div className="left-list">
                         <div className="mobile-table-btn "><span className="total">訂單總計: $ 11120</span></div>
@@ -37,7 +86,7 @@ const MemberOrderListDetail = () => {
                                 <p className="dollar-sign total">11120</p>
                             </div>
                         </div>
-                        <div className="mobile-table-btn ">
+                        <div className="mobile-table-btn">
                             <span className="product-count">↓ 共4件商品</span>
                         </div>
                     </div>
@@ -87,7 +136,7 @@ const MemberOrderListDetail = () => {
                             </div>
                         </div>
                         <Link to="/member/order-list">
-                        <button className="btn btn-secondary">返回</button>
+                            <button className="btn btn-secondary">返回</button>
                         </Link>
                     </div>
                 </div>

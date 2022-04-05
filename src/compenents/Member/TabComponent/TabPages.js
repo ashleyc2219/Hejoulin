@@ -1,16 +1,14 @@
 import React, {useState} from 'react'
 import '../../../styles/Member/TabComponent/TabPages.scss'
 
-const TabPages = () => {
-    const [currentPageSize, setCurrentPageSize] = useState(8) // 每頁幾條資料
-    const [firstRowIndex, setFirstRowIndex] = useState(0) // 每頁幾條資料
-    const [totalItems, setTotalItems] = useState(0) // 每頁幾條資料
+const TabPages = ({ cPage, setCPage }) => {
+
   return (
     <>
       <div className="pageTags">
-        <div className="page">1</div>
-        <div className="page">2</div>
-        <div className="page">3</div>
+        <div className="page" onClick={()=> setCPage(1)} >1</div>
+        <div className="page" onClick={()=> setCPage(2)} >2</div>
+        {/*<div className="page">3</div>*/}
       </div>
     </>
   )
