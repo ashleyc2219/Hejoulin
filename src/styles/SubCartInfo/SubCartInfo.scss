@@ -1,0 +1,201 @@
+@import '../mixin.scss';
+* {
+  // border: 1px blue solid;
+  margin: 0;
+  padding: 0;
+}
+.SubCartInfo {
+  width: 100%;
+  .container {
+    max-width: 1200px;
+    padding: 0%;
+
+    display: flex;
+    column-gap: 110px;
+    @include medium {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+  .left-list {
+    width: 37.75%;
+    @include medium {
+      width: 100%;
+    }
+    .mobile-table-btn {
+      display: none;
+      @include medium {
+        width: 100%;
+        background-color: rgba(187, 188, 189, 0.5);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        span {
+          font-size: 17px;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+    }
+  
+
+    .list-table {
+      width: 100%;
+      margin-bottom: 10px;
+      .table-head {
+        width: 100%;
+        background-color: rgba(187, 188, 189, 0.5);
+        padding: 10px;
+        margin-top: 2px;
+        margin-bottom: 5px;
+
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          font-size: 14px;
+          font-weight: bold;
+          text-align: center;
+        }
+        .title-product {
+          width: 75.4%;
+          @include medium {
+            padding-left: 45px;
+            text-align: left;
+          }
+        }
+        .title-subtotal {
+          width: 22.35%;
+        }
+      }
+    }
+    .list-summary {
+      width: 100%;
+      @include medium {
+        padding: 10px;
+      }
+      
+      .table-row {
+        display: flex;
+        justify-content: space-between;
+        color: $gray-400;
+        line-height: 32px;
+        p {
+          margin-bottom: 0%;
+        }
+        p.dollar-sign::before {
+          content: '$ ';
+        }
+        p.total {
+          font-size: 20px;
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .right-info {
+    .form-text {
+      visibility: hidden;
+    }
+    width: 48.75%;
+    @include medium {
+      width: 100%;
+      padding: 10px;
+    }
+    hr {
+      border: $gray-100 1px solid;
+      margin: 40px 0;
+    }
+    .info-title {
+      display: flex;
+      align-items: center;
+      column-gap: 30px;
+      margin-bottom: 30px;
+      h5 {
+        font-size: 18px;
+        font-weight: 500;
+        color: $gray-300;
+        margin: 0;
+      }
+    }
+    .buyer {
+      .red{
+        border:  1px solid $secondary;
+      }
+      .buyer-name-mobile,
+      .buyer-email-check {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        .buyer-name,
+        .buyer-mobile {
+          input {
+            width: 100%;
+          }
+        }
+        .buyer-email {
+          flex-grow: 2;
+          input {
+            width: 100%;
+          }
+        }
+        @include medium {
+          flex-direction: column;
+          column-gap: 0px;
+          .buyer-name,
+          .buyer-mobile,
+          .buyer-email {
+            width: 100%;
+          }
+          .sub-check {
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+    .receiver {
+      .red{
+        border:  1px solid $secondary;
+      }
+      .receiver-name-mobile {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        @include medium {
+          flex-direction: column;
+          column-gap: 0px;
+        }
+        .receiver-name,
+        .receiver-mobile {
+          input {
+            width: 100%;
+          }
+          @include medium {
+            width: 100%;
+          }
+        }
+      }
+      .receiver-address {
+        .address-row {
+          display: flex;
+          align-items: flex-start;
+          column-gap: 8px;
+          .district-code input {
+            width: 120px;
+            height: 57px;
+          }
+        }
+        .full-address input {
+          width: 100%;
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      column-gap: 10px;
+      justify-content: flex-end;
+
+      margin-top: 40px;
+    }
+  }
+}
