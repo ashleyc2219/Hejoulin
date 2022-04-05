@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './../styles/Gift/Gift.scss'
+import * as Scroll from 'react-scroll'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
@@ -15,6 +16,11 @@ import AddCart from '../compenents/Gift/AddCart'
 
 const Gift = (props) => {
   const { setCartCount } = props
+  let GiftLink = Scroll.Link
+  const [block01, setBlock01] = useState(false)
+  const [block02, setBlock02] = useState(false)
+  const [block03, setBlock03] = useState(false)
+
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
   const [step, setStep] = useState('one')
 
@@ -110,7 +116,6 @@ const Gift = (props) => {
     setName2('')
     setPrice2('')
     setImg2('')
-    // localStorage.removeItem('currentId')
     value.current = 0
   }
 
@@ -168,36 +173,56 @@ const Gift = (props) => {
                       setKind(1)
                       setStep('two')
                       reset()
+                      setBlock01(true)
                     }}
                   >
                     <img src="/Gift/1.png" alt="" />
                     <span className="title">1入禮盒</span>
                   </div>
-                  <div
-                    className="kind"
-                    onClick={() => {
-                      setKind(2)
-                      setStep('two')
-                      reset()
-                    }}
+
+                  <GiftLink
+                    to="gift_sake"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
                   >
-                    <img src="/Gift/2.png" alt="" />
-                    <span className="title">2入禮盒</span>
-                  </div>
-                  <div
-                    className="kind"
-                    onClick={() => {
-                      setKind(3)
-                      setStep('two')
-                      reset()
-                    }}
+                    <div
+                      className="kind"
+                      onClick={() => {
+                        setKind(2)
+                        setStep('two')
+                        reset()
+                        setBlock01(true)
+                      }}
+                    >
+                      <img src="/Gift/2.png" alt="" />
+                      <span className="title">2入禮盒</span>
+                    </div>
+                  </GiftLink>
+                  <GiftLink
+                    to="gift_sake"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
                   >
-                    <img src="/Gift/3.png" alt="" />
-                    <span className="title">1+1 禮盒</span>
-                  </div>
+                    <div
+                      className="kind"
+                      onClick={() => {
+                        setKind(3)
+                        setStep('two')
+                        reset()
+                        setBlock01(true)
+                      }}
+                    >
+                      <img src="/Gift/3.png" alt="" />
+                      <span className="title">1+1 禮盒</span>
+                    </div>
+                  </GiftLink>
                 </div>
               </section>
-              <section id="gift_sake">
+              <section id="gift_sake" 
+              // className={`${!block01 ? '' : 'login'}`}
+              >
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -241,10 +266,14 @@ const Gift = (props) => {
                     setName={setName}
                     setPrice={setPrice}
                     setImg={setImg}
+                    GiftLink={GiftLink}
+                    setBlock02={setBlock02}
                   />
                 </div>
               </section>
-              <section id="gift_color">
+              <section id="gift_color" 
+              // className={`${block02 ? '' : 'login'}`}
+              >
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -258,6 +287,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    GiftLink={GiftLink}
+                    setBlock03={setBlock03}
                   />
                 ) : (
                   ''
@@ -273,6 +304,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    GiftLink={GiftLink}
+                    setBlock03={setBlock03}
                   />
                 ) : (
                   ''
@@ -287,12 +320,16 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    GiftLink={GiftLink}
+                    setBlock03={setBlock03}
                   />
                 ) : (
                   ''
                 )}
               </section>
-              <section id="gift_detail">
+              <section id="gift_detail" 
+              // className={`${block03 ? '' : 'login'}`}
+              >
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>

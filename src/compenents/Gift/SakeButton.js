@@ -21,6 +21,8 @@ const SakeButton = (props) => {
     pro_id,
     sakeId,
     sakeId2,
+    GiftLink,
+    setBlock02,
   } = props
   const [modal, setModal] = useState(false)
   const closeModal = () => setModal(false)
@@ -57,6 +59,7 @@ const SakeButton = (props) => {
               setPrice2(currentPrice)
               setImg2(currentImg)
               setStep('three')
+              setBlock02(true)
             }}
           >
             <img src="/Gift/full_sake.svg" alt="" className="sake single" />
@@ -104,7 +107,11 @@ const SakeButton = (props) => {
               }}
             >
               <img src="/Gift/gray_sake.svg" alt="" className="sake dou" />
-              <img src="/Gift/gray_sake.svg" alt="" className="sake dou mobile" />
+              <img
+                src="/Gift/gray_sake.svg"
+                alt=""
+                className="sake dou mobile"
+              />
               <span>已選二瓶</span>
             </button>
           </>

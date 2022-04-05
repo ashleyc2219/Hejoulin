@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react'
 import './Color01.scss'
 
 const Color01 = (props) => {
-  const { kind, sakeId, img, comfirmColor, setComfirmColor, step, setStep } =
-    props
+  const {
+    kind,
+    sakeId,
+    img,
+    comfirmColor,
+    setComfirmColor,
+    step,
+    setStep,
+    GiftLink,
+    setBlock03,
+  } = props
 
   const [boxColor, setBoxColor] = useState('black')
 
@@ -56,15 +65,16 @@ const Color01 = (props) => {
           className="sake01"
         />
         <div className="confirm">
-          <button
-            className="btn btn-sm btn-primary"
-            onClick={() => {
-              setComfirmColor(boxColor)
-              setStep('four')
-            }}
-          >
-            下一步
-          </button>
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={() => {
+                setComfirmColor(boxColor)
+                setStep('four')
+                setBlock03(true)
+              }}
+            >
+              下一步
+            </button>
         </div>
       </div>
     </>

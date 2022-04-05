@@ -12,6 +12,8 @@ const Color03 = (props) => {
     setComfirmColor,
     step,
     setStep,
+    GiftLink,
+    setBlock03,
   } = props
   const [boxColor, setBoxColor] = useState('black')
 
@@ -75,6 +77,7 @@ const Color03 = (props) => {
           onClick={() => {
             setComfirmColor(boxColor)
             setStep('four')
+            setBlock03(true)
           }}
         >
           下一步

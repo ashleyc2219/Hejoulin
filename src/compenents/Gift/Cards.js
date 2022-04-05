@@ -42,6 +42,8 @@ const Cards = (props) => {
     setName,
     setPrice,
     setImg,
+    GiftLink,
+    setBlock02,
   } = props
 
   const [sakeButton, setSakeButton] = useState(0)
@@ -133,6 +135,8 @@ const Cards = (props) => {
                   setStep={setStep}
                   sakeId={sakeId}
                   sakeId2={sakeId2}
+                  GiftLink={GiftLink}
+                  setBlock02={setBlock02}
                 />
               </div>
             ) : (
@@ -227,6 +231,8 @@ const Cards = (props) => {
                   setSakeButton={setSakeButton}
                   pro_id={pro_id}
                   setStep={setStep}
+                  GiftLink={GiftLink}
+                  setBlock02={setBlock02}
                 />
               </div>
             )}

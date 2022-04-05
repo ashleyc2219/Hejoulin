@@ -4,6 +4,7 @@ import './SakeItems.scss'
 import ProductModal from './ProductModal'
 import Backdrop from './Backdrop'
 import Cards from './Cards'
+import Gift from '../../pages/Gift'
 
 const SakeItems = (props) => {
   const {
@@ -40,6 +41,8 @@ const SakeItems = (props) => {
     setName,
     setPrice,
     setImg,
+    GiftLink,
+    setBlock02,
   } = props
 
   const minus = () => {
@@ -89,6 +92,8 @@ const SakeItems = (props) => {
           setName={setName}
           setPrice={setPrice}
           setImg={setImg}
+          GiftLink={GiftLink}
+          setBlock02={setBlock02}
         />
       </React.Fragment>
     )
