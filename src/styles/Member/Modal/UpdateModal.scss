@@ -48,9 +48,10 @@
 
     .close-white {
       position: absolute;
-      top: 5%;
-      right: 3%;
+      top: -14%;
+      right: -12%;
       cursor: pointer;
+      z-index: 55;
 
       img {
         width: 24px;
@@ -67,17 +68,20 @@
         top: 10px;
         right: 10px;
         cursor: pointer;
+        z-index: 55;
       }
     }
 
     .rsMsg {
       width: 200px;
-      height: 150px;
-      background-color: #e6c49e;
+      height: 100px;
+      background: url("../../../../public/Sake-background0310.jpg") ;
       text-align: center;
+      z-index: 50;
 
       p {
-        margin: 30%;
+        margin: 15%;
+        font-size: 25px;
       }
     }
   }
