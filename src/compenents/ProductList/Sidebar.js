@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useLocation,
+} from 'react-router-dom'
 import './Sidebar.scss'
 
 function Sidebar(props) {
@@ -21,6 +26,16 @@ function Sidebar(props) {
   } = props
 
   const history = useHistory()
+  const location = useLocation()
+
+  const checkReset = () => {
+    if (location.pathname.includes('/product/detail/')) {
+      history.push('/product/list')
+    } else {
+      reset()
+    }
+  }
+
   const linkTo = () => {
     history.push('/product/list')
   }
@@ -243,7 +258,7 @@ function Sidebar(props) {
             <p className={mark === '1' ? 'checked' : ''} onClick={mark1}>
               可酒標客製
             </p>
-            <p onClick={reset}>重設</p>
+            <p onClick={checkReset}>重設</p>
           </div>
         </div>
       </div>
