@@ -170,8 +170,6 @@ const Cards = (props) => {
                   onClick={() => {
                     setSakeButton(0)
                     minus()
-                    // setCurrentId(pro_id)
-                    localStorage.setItem('currentId', pro_id)
                     cancel()
                   }}
                 >
@@ -187,8 +185,6 @@ const Cards = (props) => {
                   onClick={() => {
                     setSakeButton(1)
                     minus()
-                    // setCurrentId(pro_id)
-                    localStorage.setItem('currentId', pro_id)
                     cancel()
                   }}
                 >

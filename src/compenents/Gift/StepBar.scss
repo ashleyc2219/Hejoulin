@@ -7,9 +7,16 @@
   top: 0;
   z-index: 5;
   background: url(./../../../public/Gift/Sake-background0310.jpg);
+  @include medium(){
+    padding: 10px 0 0;
+  }
   .background {
     width: 464px;
     margin: 20px auto;
+    @include medium(){
+      width: 100%;
+      margin: 10px auto;
+    }
 
     li {
       list-style-type: none;

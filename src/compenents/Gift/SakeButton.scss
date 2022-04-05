@@ -41,15 +41,23 @@
     }
     .single {
       margin-right: 10px;
+      @include medium(){
+        margin: 0%;
+      }
     }
     .dou {
       margin-right: 3px;
     }
-    .none {
-      display: none;
+    .mobile{
+      @include medium(){
+        display: none;
+      }
     }
     span {
       margin-left: 5px;
+      @include medium(){
+        margin: 0%;
+      }
     }
   }
   .full {

@@ -43,13 +43,16 @@
     }
     .single {
       margin-right: 10px;
-    }
-    .none {
-      display: none;
+      @include medium() {
+        margin: 0%;
+      }
     }
 
     span {
       margin-left: 5px;
+      @include medium() {
+        margin: 0%;
+      }
     }
   }
   .full {

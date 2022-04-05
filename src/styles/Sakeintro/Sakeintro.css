@@ -20,6 +20,15 @@
   background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
 }
 
+.sake-intro .container .Guide {
+  height: 0px;
+}
+
+.sake-intro .container .Guide .loca {
+  left: 85vw;
+  top: -41px;
+}
+
 .sake-intro .sake-intro-container {
   position: relative;
   height: 220px;
@@ -58,6 +67,12 @@
   margin: 30px;
   font-family: 'Klee One', cursive;
   font-size: 40px;
+}
+
+.sake-intro .sakeintro-title .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .sake-intro .sakeintro-title h2 {
@@ -383,6 +398,30 @@
   }
 }
 
+@-webkit-keyframes brewani {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes brewani {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .sake-intro .brew-container .brew_2 {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
@@ -452,6 +491,14 @@
 }
 
 .sake-intro .brew-container .brew-column .arr-box {
+  -webkit-animation-name: brewani;
+          animation-name: brewani;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
   margin: 44px 15px 0px 15px;
   -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);

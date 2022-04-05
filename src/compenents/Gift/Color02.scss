@@ -47,11 +47,19 @@
         display: block;
       }
     }
-
+    @include medium(){
+      img{
+        transform: translateY(-5px);
+      }
+    }
     small {
       display: none;
       margin-top: 10px;
       color: $gray-300;
+            @include medium(){
+        display: block;
+        margin: 0%;
+      }
     }
   }
 }
@@ -64,23 +72,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .box {
+  @include medium(){
+    overflow: hidden;
+    height: 375px;
+  }
+  .box02 {
     height: 450px;
+    @include medium(){
+      height: 260px;
+    }
   }
 
   .dou_sake {
-    height: 350px;
+    height: 340px;
     position: absolute;
     margin: auto;
     top: 95px;
-    left: 305px;
+    left: calc(50% - 205px);
+    @include medium(){
+      height: 190px;
+      top: calc(50% - 80px);
+      left: calc(50% - 118px);
+    }
   }
   .dou_other{
-    height: 350px;
+    height: 340px;
     position: absolute;
     margin: auto;
     top: 95px;
-    left: 405px;
+    left: calc(50% - 105px);
+    @include medium(){
+      height: 190px;
+      top: calc(50% - 80px);
+      left: calc(50% - 62px);
+    }
   }
 }
 
