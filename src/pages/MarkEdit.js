@@ -36,6 +36,9 @@ const MarkEdit = () => {
 
     fetch('http://localhost:3001/api/mark', {
       method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.token,
+      },
       body: formData,
     })
       .then((res) => res.json())
