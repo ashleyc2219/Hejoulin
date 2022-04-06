@@ -21,12 +21,89 @@
 }
 
 .sake-intro .container .Guide {
-  height: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 150px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .container .Guide {
+    display: none;
+  }
 }
 
 .sake-intro .container .Guide .loca {
-  left: 85vw;
-  top: -41px;
+  position: absolute;
+  top: 8px;
+  left: 79vw;
+}
+
+.sake-intro .container .Guide .loca .arround {
+  position: absolute;
+  top: 0px;
+  left: 118px;
+}
+
+.sake-intro .container .Guide .loca .arround p {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 23px;
+  line-height: 33px;
+  position: absolute;
+}
+
+.sake-intro .container .Guide .loca .arround .first {
+  top: 15px;
+  right: 95px;
+}
+
+.sake-intro .container .Guide .loca .arround .sen {
+  top: 0;
+  right: 65px;
+}
+
+.sake-intro .container .Guide .loca .arround .thr {
+  right: 35px;
+}
+
+.sake-intro .container .Guide .loca .arround .four {
+  top: 15px;
+  right: 5px;
+}
+
+.sake-intro .container .Guide .loca .arround .trian {
+  position: absolute;
+  top: 55px;
+  right: -10px;
+}
+
+.sake-intro .container .Guide .loca .round {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #3d4349;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background: url("../../../public/Sake-background0310.jpg");
+}
+
+.sake-intro .container .Guide .loca .round:hover .sake {
+  -webkit-animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
+          animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
 }
 
 .sake-intro .sake-intro-container {
@@ -212,6 +289,7 @@
 .sake-intro .level-container .level-box-l p,
 .sake-intro .level-container .level-box-r p {
   font-size: 18px;
+  margin-bottom: 0rem;
 }
 
 .sake-intro .level-container .level-box-l .ball,
@@ -369,6 +447,10 @@
 
 .sake-intro .level-container .level-box-r .L4 .L4-3 {
   background-color: #e0e0df;
+}
+
+.sake-intro .level-container .up p {
+  margin-bottom: 1rem;
 }
 
 .sake-intro .brew-container {

@@ -12,12 +12,89 @@ body {
 }
 
 .home .Guide {
-  height: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 150px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .home .Guide {
+    display: none;
+  }
 }
 
 .home .Guide .loca {
+  position: absolute;
+  top: 15px;
   left: 85vw;
-  top: -41px;
+}
+
+.home .Guide .loca .arround {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .Guide .loca .arround p {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 23px;
+  line-height: 33px;
+  position: absolute;
+}
+
+.home .Guide .loca .arround .first {
+  top: 15px;
+  right: 95px;
+}
+
+.home .Guide .loca .arround .sen {
+  top: 0;
+  right: 65px;
+}
+
+.home .Guide .loca .arround .thr {
+  right: 35px;
+}
+
+.home .Guide .loca .arround .four {
+  top: 15px;
+  right: 5px;
+}
+
+.home .Guide .loca .arround .trian {
+  position: absolute;
+  top: 55px;
+  right: -10px;
+}
+
+.home .Guide .loca .round {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #3d4349;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background: url("../../../public/Sake-background0310.jpg");
+}
+
+.home .Guide .loca .round:hover .sake {
+  -webkit-animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
+          animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
 }
 
 .home .wave-line[data-v-c0cb0066] {
