@@ -8,8 +8,14 @@ import TitleDecoPath from './../compenents/Home/TitleDecoPath'
 
 import SakeCarousel from '../compenents/Home/SakeCarousel'
 import GuideButton from '../compenents/SakeGuide/Guide'
+import AgeModal from './../compenents/Home/AgeModal.js'
 
 const Home = () => {
+  //年領警示光箱
+  //光箱的設定
+  const [modalShow, setModalShow] = useState(true)
+
+  //最新消息
   const [detail, setDetail] = useState([])
   const url = 'http://localhost:3001/api/news'
 
@@ -48,6 +54,11 @@ const Home = () => {
   return (
     <>
       <div className="home">
+        {modalShow ? (
+          <AgeModal modalShow={modalShow} setModalShow={setModalShow} />
+        ) : (
+          ''
+        )}
         <GuideButton />
         {/* 線條 */}
         <div data-v-c0cb0066="" data-v-95467d66="" className="wave-line line">

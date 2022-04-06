@@ -21,8 +21,8 @@ const NewsDetail = () => {
     
       </div> */}
 
-      <div>警示頁光箱測試</div>
-      <AgeModal />
+      {/* <div>警示頁光箱測試</div> */}
+      {/* <AgeModal /> */}
 
       {/* <div id="sakepic"></div>
       <SakeCarousel /> */}
