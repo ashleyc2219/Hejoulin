@@ -2,15 +2,15 @@ import React from 'react'
 import './../styles/CartVerify/CartVerify.scss'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CartVerifyInfo } from './../App'
+import { SubCartVerifyInfo } from './../App'
 import { createBrowserHistory } from 'history'
 
 const SubCartVerify = () => {
-  let cartVerifyInfo = CartVerifyInfo._currentValue
+  let subCartVerifyInfo = SubCartVerifyInfo._currentValue
   console.log({
-    to: cartVerifyInfo.email_account,
-    cardNum: cartVerifyInfo.cardNum,
-    total: cartVerifyInfo.total,
+    to: subCartVerifyInfo.email_account,
+    cardNum: subCartVerifyInfo.cardNum,
+    total: subCartVerifyInfo.total,
   })
   const [btnText, setBtnText] = useState('取得信箱傳送交易密碼')
   const [enterCode, setEnterCode] = useState('')
@@ -23,9 +23,9 @@ const SubCartVerify = () => {
 
   const sendEmail = async function () {
     let data = {
-      email_account: cartVerifyInfo.email_account,
-      cardNum: cartVerifyInfo.cardNum,
-      total: cartVerifyInfo.total,
+      email_account: subCartVerifyInfo.email_account,
+      cardNum: subCartVerifyInfo.cardNum,
+      total: subCartVerifyInfo.total,
     }
 
     const r1 = await fetch(`http://localhost:3001/api/cart-verify/send-email`, {
@@ -78,9 +78,9 @@ const SubCartVerify = () => {
               </div>
               <div className="right">
                 <p>Hejoulin</p>
-                <p className="price">TWD {cartVerifyInfo.total}</p>
+                <p className="price">TWD {subCartVerifyInfo.total}</p>
                 <p>{date}</p>
-                <p>XXXX-XXXX-XXXX-{cartVerifyInfo.cardNum}</p>
+                <p>XXXX-XXXX-XXXX-{subCartVerifyInfo.cardNum}</p>
                 <div className="input">
                   <input
                     type="text"
@@ -91,7 +91,7 @@ const SubCartVerify = () => {
                       setEnterCode(e.target.value)
                     }}
                   />
-                  <Link to="/cart/order">
+                  <Link to="/sub/cart-order">
                     <button
                       onClick={() => {
                         verifyTheCode()
