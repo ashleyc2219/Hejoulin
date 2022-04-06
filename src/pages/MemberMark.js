@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import Sidebar from '../compenents/Member/SideBar/Sidebar'
 import '../styles/Member/MenberMark.scss'
-import MarkModal from '../compenents/Member/MarkModal'
-import MarkData from '../compenents/Member/MarkData'
-import {Link, useHistory} from "react-router-dom";
+import MarkModal from '../compenents/Member/Mark/MarkModal'
+import MarkData from '../compenents/Member/Mark/MarkData'
+import { useHistory} from "react-router-dom";
 
 const MemberMark = () => {
     const [markData, setMarkData] = useState([])
     const [whichMark, setWhichMark] = useState([])
+    const [whichMark2, setWhichMark2] = useState([])
     const APIDelMark = "http://localhost:3001/user/member/MemberMarkDelete"
     const APIMark = "http://localhost:3001/user/member/MemberMark"
     const history = useHistory()
@@ -25,6 +26,7 @@ const MemberMark = () => {
             setMarkData(obj)
         })()
     }, [])
+
     const deleteMark = async () => {
         const data = {
             mark_id: `${whichMark}`,
@@ -82,6 +84,8 @@ const MemberMark = () => {
                             setMarkData={setMarkData}
                             whichMark={whichMark}
                             setWhichMark={setWhichMark}
+                            whichMark2={whichMark2}
+                            setWhichMark2={setWhichMark2}
                         />
                         <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt=""/>
                     </div>

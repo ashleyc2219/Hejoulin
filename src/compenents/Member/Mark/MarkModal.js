@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../styles/Member/Modal/MarkModal.scss'
+import '../../../styles/Member/Modal/MarkModal.scss'
 
 const MarkModal = (props) => {
   const { setModalShow, modalContent } = props

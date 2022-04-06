@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function BarTabs() {
-  const renderTabs = (items) => {
-    items.map((item, i) => {
-      <Link to="main" className="ProfileBar-item" key={i}>
-          {item.itemName}
-      </Link>
-    })
-  }
+  // const renderTabs = (items) => {
+  //   items.map((item, i) => {
+  //     <Link to="main" className="ProfileBar-item" key={i}>
+  //         {item.itemName}
+  //     </Link>
+  //   })
+  // }
   return (
     <>
       <div className="MemberProfileBar">
