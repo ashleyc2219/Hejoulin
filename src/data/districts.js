@@ -388,3 +388,5 @@ const data = {
 }
 
 export const districtsData = data
+export const districts = Object.getOwnPropertyNames(data)
+export const townships = districts.map((v, i) => data[v])
