@@ -1,62 +1,46 @@
 import React, {useEffect, useState} from 'react'
 import MarkModal from './MarkModal'
 import '../../styles/Member/Member-Mark/MarkData.scss'
+import MarkImgItem from "./Mark/MarkImgItem";
+import {Link} from "react-router-dom";
 
 const MarkData = (props) => {
-    const {markData, setMarkData} = props
+    const {markData, whichMark, setWhichMark} = props
     const [modalShow, setModalShow] = useState(false)
-    const [currentPic, setCurrentPic] = useState([])
-    const [picsName, setPicsName] = useState([])
-    const openModal = () => {
-        setModalShow((prev) => !prev)
-    }
+    const [modalContent, setModalContent] = useState('')
 
-    const renderImg = async (markData) => {
+    const renderImg =  (markData) => {
         if (markData && markData.length) {
-            return await markData.map((el, i) => (
-                <div className="MarkPic" onClick={openModal} key={i}>
-                    <img
-                        src={'http://localhost:3001/images/mark_pic/' + el.pics}
-                        alt=""
-                    />
-                </div>
-            ))
-        }
-    }
-
-    const renderImgName = (markData) => {
-        if (markData && markData.length) {
-            return markData.map((el, i) => (
-                <div className="MarkName" key={i}>
-                    <input type="checkbox" id="c1" name="cc"/>
-                    <label htmlFor="c1">
-                        <span></span>酒標名稱 : {el.mark_name}
-                    </label>
-                </div>
-            ))
+              return  <MarkImgItem
+                    setModalShow={setModalShow}
+                    markData={markData}
+                    setModalContent={setModalContent}
+                    whichMark={whichMark}
+                    setWhichMark={setWhichMark}
+                />
+        } else {
+            return null
         }
     }
 
     return (
         <>
             <div className="MarkItem">
-                {/*{markData.length > 0 ? (*/}
-                {/*    renderImg(markData)*/}
-                {/*) : (*/}
-                {/*    ''*/}
-                {/*)}*/}
-                {/*{markData.length > 0 ? (*/}
-                {/*    renderImgName(markData)*/}
-                {/*) : (*/}
-                {/*    ''*/}
-                {/*)}*/}
+                <div className="MarkItemAdd">
+                    <Link to="/mark/intro">
+                        <div className="MarkPicAdd">
+                            <img src="/Member/plusCircle.svg" alt=""/>
+                        </div>
+                        <div className="MarkAddText">立即新增您的專屬酒標</div>
+                    </Link>
+                </div>
+                {markData.length > 0 ? (
+                    renderImg(markData)
+                ) : (
+                    ''
+                )}
                 {modalShow ? (
-                    <MarkModal
-                        modalShow={modalShow}
-                        setModalShow={setModalShow}
-                        markData={markData}
-                        setMarkData={setMarkData}
-                    />
+                    <MarkModal setModalShow={setModalShow} modalContent={modalContent} />
                 ) : (
                     ''
                 )}
