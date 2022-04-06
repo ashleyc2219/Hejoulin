@@ -82,14 +82,14 @@ const SakeIntro = () => {
           <div className="level-container">
             <div className="level-box-l">
               <div className="L1-1"></div>
-              <div className="L2-1">
+              <div className="L2-1 up">
                 <p>釀造酒精</p>
               </div>
 
               <div className="L3-1 ball">
                 <p>米・米麴</p>
               </div>
-              <div className="L3-1 ball">
+              <div className="L3-1 ball up">
                 <p>米・米麴</p>
                 <p>＋</p>
                 <p>釀造酒精</p>
@@ -124,7 +124,7 @@ const SakeIntro = () => {
                   <p>無規定</p>
                 </div>
               </div>
-              <div className="L0">
+              <div className="L0 up">
                 <p>精米步合</p>
               </div>
               <div className="L3">

@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import '../../../../styles/Member/Member-ProfileBox/PassBox.scss'
+import UpdateModal from "./UpdateModal";
 
 const PassBox = () => {
   const [showP, setShowP] = useState(false)
   const [nPass, setNPass] = useState('')
   const [nConfPass, setNConfPass] = useState('')
+  const [passModalShow, setPassModalShow] = useState(false)
+  const [passRs, setPassRs] = useState(undefined)
+
   const APISetNewPass = 'http://localhost:3001/user/member/passChange'
   const APICheckPass = 'http://localhost:3001/user/pass/check'
 
@@ -15,12 +19,12 @@ const PassBox = () => {
   function handleInputChangePwd(event) {
     //setPass(true)
     setNPass(event.target.value)
-    console.log('newPwd', event.target.value)
+    // console.log('newPwd', event.target.value)
   }
 
   function handleInputChangeConfPwd(event) {
     setNConfPass(event.target.value)
-    console.log('confPwd', event.target.value)
+    // console.log('confPwd', event.target.value)
   }
 
   function change() {
@@ -83,18 +87,22 @@ const PassBox = () => {
     fd.forEach(function (value, key) {
       obj[key] = value
     })
-    const json = JSON.stringify(obj)
+    const json = JSON.parse(JSON.stringify(obj))
+    let dataOldPass = {
+      user_passOld: json.user_passOld,
+    }
     const passCheck = await fetch(APICheckPass, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.token,
       },
-      body: json.slice(0, 24) + json.slice(76, 77),
+      body: JSON.stringify(dataOldPass),
     })
     const checkRs = await passCheck.json()
-    console.log(checkRs)
-    console.log(json.slice(0, 2) + json.slice(26, 48) + json.slice(76, 77))
+    let dataNewPass = {
+      user_pass: json.user_pass,
+    }
     if (checkRs.used === 'have') {
       const r = await fetch(APISetNewPass, {
         method: 'PUT',
@@ -102,12 +110,12 @@ const PassBox = () => {
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + localStorage.token,
         },
-        body: json.slice(0, 2) + json.slice(26, 48) + json.slice(76, 77),
+        body: JSON.stringify(dataNewPass),
       })
       const rs = await r.json()
-      console.log(rs)
       if (rs.success === true) {
-        // TODO:設定成功的顯示訊息
+        setPassRs(rs)
+        setPassModalShow((prev) => !prev)
       }
     }
   }
@@ -202,6 +210,16 @@ const PassBox = () => {
             </button>
           )}
         </form>
+        {passModalShow ? (
+            <UpdateModal
+                passModalShow={passModalShow}
+                setPassModalShow={setPassModalShow}
+                passRs={passRs}
+            />
+        ) : (
+            ''
+        )}
+
       </div>
     </>
   )

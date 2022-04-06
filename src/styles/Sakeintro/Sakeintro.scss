@@ -32,21 +32,71 @@
   .container {
     // .Guide 和 .loca都是為了解決位置的問題，在這2個地方改就可以了，記得順便看 mobile的版本
     // position: sticky 會因為父層用 overflow:hidden等問題不能用
-
     .Guide {
-      // position: sticky;
-      // top: 100px;
-      // width: fit-content;
-      height: 0px;
-      // z-index: 10;
+      position: sticky;
+      top: 100px;
+      width: fit-content;
+      height: 150px;
+      z-index: 10;
       @include medium() {
-        // display: none;
+        display: none;
       }
 
       .loca {
-        // position: absolute;
-        left: 85vw;
-        top: -41px;
+        position: absolute;
+        top: 8px;
+        left: 79vw;
+
+        .arround {
+          position: absolute;
+          top: 0px;
+          left: 118px;
+          p {
+            @include kleeone();
+            color: $gray-300;
+            font-size: 23px;
+            line-height: 33px;
+            position: absolute;
+          }
+          .first {
+            top: 15px;
+            right: 95px;
+          }
+          .sen {
+            top: 0;
+            right: 65px;
+          }
+          .thr {
+            right: 35px;
+          }
+          .four {
+            top: 15px;
+            right: 5px;
+          }
+          .trian {
+            position: absolute;
+            top: 55px;
+            right: -10px;
+          }
+        }
+        .round {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          border: 2px solid $primary;
+          margin-top: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          background: url('../../../public/Sake-background0310.jpg');
+          &:hover {
+            .sake {
+              animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s
+                infinite normal none;
+            }
+          }
+        }
       }
     }
   }
@@ -232,6 +282,7 @@
     .level-box-r {
       p {
         font-size: 18px;
+        margin-bottom: 0rem;
       }
       .ball {
         min-width: 140px;
@@ -344,6 +395,11 @@
         .L4-3 {
           background-color: $gray-100;
         }
+      }
+    }
+    .up {
+      p {
+        margin-bottom: 1rem;
       }
     }
   }

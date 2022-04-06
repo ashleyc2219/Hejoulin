@@ -23,7 +23,6 @@ const ProfileBox = ({memberData, setMemberData}) => {
                     },
                 })
             ).json()
-            console.log(obj)
             setMemberData(obj)
             setMob(obj[0].member_mob)
             setName(obj[0].member_name)
@@ -73,8 +72,6 @@ const ProfileBox = ({memberData, setMemberData}) => {
             obj[key] = value
         })
         const json = JSON.stringify(obj)
-        console.log(json)
-        // console.log(json)
         const memberUpdate = await fetch(APIUpdate, {
             method: 'PUT',
             headers: {
@@ -91,13 +88,6 @@ const ProfileBox = ({memberData, setMemberData}) => {
         }
     }
 
-    function resultCheck() {
-        if (rs && rs.success === true) {
-            return 'grey'
-        } else {
-            return 'red'
-        }
-    }
 
     return (
         <>
@@ -202,16 +192,6 @@ const ProfileBox = ({memberData, setMemberData}) => {
                             </select>
                         </div>
                     </div>
-                    {/*<div*/}
-                    {/*    className="form-text rsMsg"*/}
-                    {/*    id="displayRs"*/}
-                    {/*    style={{*/}
-                    {/*        color: resultCheck(),*/}
-                    {/*        display: resultCheck() === 'grey' ? 'inline-block' : 'none',*/}
-                    {/*    }}*/}
-                    {/*>*/}
-                    {/*    修改成功*/}
-                    {/*</div>*/}
                     <br/>
                     <button type="submit" className="btn btn-primary profile-btn">
                         確認修改資料

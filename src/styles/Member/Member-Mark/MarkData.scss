@@ -1,8 +1,10 @@
 @import '../../mixin.scss';
 
 .MarkItem {
-
+  max-width: 733px;
+  display: flex;
   .MarkPic {
+
 
     img {
       width: 343px;
@@ -10,6 +12,7 @@
     }
 
   }
+
   .MarkName {
 
   }

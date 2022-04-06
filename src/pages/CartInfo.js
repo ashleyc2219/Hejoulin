@@ -2,10 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-// 驗證電話號碼套件
-import Input from 'react-phone-number-input/input'
-import { isValidPhoneNumber } from 'react-phone-number-input'
-// 驗證電子信箱
+// 驗證電子信箱 電話號碼套件
 import validator from 'validator'
 
 import ProgressBar from '../compenents/Cart/ProgressBar'
@@ -13,7 +10,6 @@ import '../styles/CartInfo/CartInfo.scss'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
-import { islands, townships } from './../data/cart-list-select'
 import { districtsData } from './../data/districts'
 
 import { CartSummary } from './../App'
@@ -495,7 +491,9 @@ const CartInfo = (props) => {
             </div>
             <div className="buyer-email-check">
               <div className="buyer-email">
-                <label className="form-label">電子信箱</label>
+                <label className="form-label">
+                  電子信箱 (將用於傳送驗證碼)
+                </label>
                 <input
                   type="text"
                   className={
@@ -654,12 +652,12 @@ const CartInfo = (props) => {
               <button className="btn btn-primary">上一步</button>
             </Link>
             {passThrough === true ? (
-              <Link to="/sub/cart-verify">
+              <Link to="/cart/verify">
                 <button
                   className="btn btn-secondary"
                   onClick={() => {
                     forCartVerifyInfo()
-                    // fectOutData()
+                    fectOutData()
                   }}
                 >
                   確認付款
