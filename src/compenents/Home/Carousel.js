@@ -18,9 +18,9 @@ class Carousel extends React.Component {
   generateItems() {
     const items = []
     let level
-    console.log('generateItems')
-    console.log(this.state.active)
-    console.log(this.state.items)
+    // console.log('generateItems')
+    // console.log(this.state.active)
+    // console.log(this.state.items)
     for (let i = this.state.active - 4; i < this.state.active + 4; i++) {
       let index = i
       if (i < 0) {
@@ -29,8 +29,8 @@ class Carousel extends React.Component {
         index = i % this.state.items.length
       }
       level = this.state.active - i
-      console.log('index')
-      console.log(index)
+      // console.log('index')
+      // console.log(index)
 
       items.push(
         <Item key={index} id={this.state.items[index]} level={level} />
@@ -65,7 +65,7 @@ class Carousel extends React.Component {
 
         <CSSTransitionGroup
           transitionName={this.state.direction}
-          class="flex02"
+          className="flex02"
         >
           {this.generateItems()}
         </CSSTransitionGroup>

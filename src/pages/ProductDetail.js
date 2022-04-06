@@ -84,12 +84,12 @@ const ProductDetail = (props) => {
               </div>
             </div>
             <div className="product-price">
-              {v.pro_gift == 1 ? (
+              {v.pro_gift === 0 ? (
+                <div className="gift">不提供禮盒</div>
+              ) : (
                 <div className="gift active">
                   <Link to="/gift">製作禮盒</Link>
                 </div>
-              ) : (
-                <div className="gift">不提供禮盒</div>
               )}
 
               {v.pro_mark == 1 ? (
@@ -393,11 +393,7 @@ const ProductDetail = (props) => {
                   </div>
                 </div>
               </div>
-              {spin ? (
-                <Spinner />
-              ) : (
-                productDetail
-              )}
+              {spin ? <Spinner /> : productDetail}
             </div>
 
             {/* 右側比較區塊 */}

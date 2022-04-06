@@ -21,12 +21,87 @@
 }
 
 .sake-intro .container .Guide {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  width: 100%;
   height: 0px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .sake-intro .container .Guide {
+    display: none;
+  }
 }
 
 .sake-intro .container .Guide .loca {
-  left: 85vw;
-  top: -41px;
+  position: absolute;
+  top: 3px;
+  right: -80px;
+}
+
+.sake-intro .container .Guide .loca .arround {
+  position: absolute;
+  top: 0px;
+  left: 118px;
+}
+
+.sake-intro .container .Guide .loca .arround p {
+  font-family: "Klee One", cursive;
+  color: #7e8082;
+  font-size: 23px;
+  line-height: 33px;
+  position: absolute;
+}
+
+.sake-intro .container .Guide .loca .arround .first {
+  top: 15px;
+  right: 95px;
+}
+
+.sake-intro .container .Guide .loca .arround .sen {
+  top: 0;
+  right: 65px;
+}
+
+.sake-intro .container .Guide .loca .arround .thr {
+  right: 35px;
+}
+
+.sake-intro .container .Guide .loca .arround .four {
+  top: 15px;
+  right: 5px;
+}
+
+.sake-intro .container .Guide .loca .arround .trian {
+  position: absolute;
+  top: 55px;
+  right: -10px;
+}
+
+.sake-intro .container .Guide .loca .round {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #3d4349;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background: url("../../../public/Sake-background0310.jpg");
+}
+
+.sake-intro .container .Guide .loca .round:hover .sake {
+  -webkit-animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
+          animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite normal none;
 }
 
 .sake-intro .sake-intro-container {
@@ -69,10 +144,43 @@
   font-size: 40px;
 }
 
+.sake-intro .sakeintro-title h2 {
+  margin-top: 35px;
+  margin-bottom: 8px;
+}
+
 .sake-intro .sakeintro-title .box {
+  margin-top: 26px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 1024px) {
+  .sake-intro .sakeintro-title .box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.sake-intro .sakeintro-title .box p {
+  padding: 25px 61px 0px 0px;
+}
+
+@media (max-width: 1024px) {
+  .sake-intro .sakeintro-title .box p {
+    padding: 25px 0px 0px 0px;
+  }
+}
+
+.sake-intro .sakeintro-title .box img {
+  max-width: 500px;
 }
 
 .sake-intro .sakeintro-title h2 {
@@ -105,8 +213,6 @@
   position: absolute;
   z-index: 2;
   left: 0;
-  -webkit-box-shadow: 3px 3px 5px #95a4b2d9;
-          box-shadow: 3px 3px 5px #95a4b2d9;
 }
 
 .sake-intro .origin-content .ori-card .title {
@@ -168,7 +274,9 @@
 }
 
 .sake-intro .origin-content .weather .pic {
-  background-image: url("./../../../public/Sakeintro/sakepic271.jpg");
+  background-image: url("./../../../public/Sakeintro/sakepic131.jpg");
+  -webkit-box-shadow: 3px 3px 5px #95a4b2d9;
+          box-shadow: 3px 3px 5px #95a4b2d9;
 }
 
 .sake-intro .origin-content .weather .card-bg {
@@ -181,6 +289,42 @@
 
 .sake-intro .origin-content .weather .card-bg .back {
   background: repeating-linear-gradient(315deg, #505c68, #505c68 2px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 11px);
+}
+
+.sake-intro .origin-content .water .pic {
+  background-image: url("./../../../public/Sakeintro/sakepic161.png");
+  -webkit-box-shadow: 3px 3px 5px #af732ec2;
+          box-shadow: 3px 3px 5px #af732ec2;
+}
+
+.sake-intro .origin-content .water .card-bg {
+  mix-blend-mode: multiply;
+}
+
+.sake-intro .origin-content .water .card-bg .front {
+  background: #f3e2ce;
+}
+
+.sake-intro .origin-content .water .card-bg .back {
+  background: repeating-linear-gradient(315deg, #e6c49e, #e6c49e 2px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 11px);
+}
+
+.sake-intro .origin-content .rice .pic {
+  background-image: url("./../../../public/Sakeintro/sakepic81.jpg");
+  -webkit-box-shadow: 3px 3px 5px #907b49c9;
+          box-shadow: 3px 3px 5px #907b49c9;
+}
+
+.sake-intro .origin-content .rice .card-bg {
+  mix-blend-mode: multiply;
+}
+
+.sake-intro .origin-content .rice .card-bg .front {
+  background: #fdedc6;
+}
+
+.sake-intro .origin-content .rice .card-bg .back {
+  background: repeating-linear-gradient(315deg, #ffdb8a, #ffdb8a 2px, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 11px);
 }
 
 .sake-intro .level-container {
@@ -212,6 +356,7 @@
 .sake-intro .level-container .level-box-l p,
 .sake-intro .level-container .level-box-r p {
   font-size: 18px;
+  margin-bottom: 0rem;
 }
 
 .sake-intro .level-container .level-box-l .ball,
@@ -369,6 +514,10 @@
 
 .sake-intro .level-container .level-box-r .L4 .L4-3 {
   background-color: #e0e0df;
+}
+
+.sake-intro .level-container .up p {
+  margin-bottom: 1rem;
 }
 
 .sake-intro .brew-container {

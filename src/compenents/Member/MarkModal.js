@@ -2,23 +2,12 @@ import React, { useState } from 'react'
 import '../../styles/Member/Modal/MarkModal.scss'
 
 const MarkModal = (props) => {
-  const { modalShow, setModalShow, markData, setMarkData } = props
+  const { setModalShow, modalContent } = props
 
   const openModal = () => {
     setModalShow((prev) => !prev)
   }
 
-  // const renderBigMark = (markData) => {
-  //   if (markData && markData.length) {
-  //     return markData.map((el, i)=>(
-  //           <img
-  //               key={i}
-  //               src={'http://localhost:3001/images/mark_pic/' + el.pics}
-  //               alt=""
-  //           />
-  //     ))
-  //   }
-  // }
 
   return (
     <>
@@ -31,10 +20,10 @@ const MarkModal = (props) => {
             <img src="/ProductList/close-black.svg" alt="" />
           </div>
           <img
-            src="http://localhost:3001/images/mark-pic/4-1.jpg"
-            alt=""
+              src={'http://localhost:3001/images/mark_pic/' + modalContent}
+              alt=""
           />
-          {/*{renderBigMark(markData)}*/}
+
         </div>
       </div>
     </>

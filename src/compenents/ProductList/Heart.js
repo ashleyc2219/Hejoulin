@@ -18,26 +18,29 @@ const Heart = (props) => {
   }
 
   const click = () => {
-    if (active === true) {
-      ;(async function add() {
-        await insertFav()
-        await getFav()
-      })()
+    if (localStorage.token) {
+      if (active === true) {
+        ;(async function add() {
+          await insertFav()
+          await getFav()
+        })()
 
-      active = false
+        active = false
+      } else {
+        ;(async function del() {
+          await deleteFav()
+          await getFav()
+        })()
+
+        active = true
+      }
     } else {
-      ;(async function del() {
-        await deleteFav()
-        await getFav()
-      })()
-
-      active = true
+      alert('請登入會員')
     }
   }
 
   const insertFav = async () => {
     const data = { member_id: 1, pro_id: `${id}` }
-    console.log(data)
     const settings = {
       method: 'POST',
       headers: {
@@ -59,7 +62,6 @@ const Heart = (props) => {
 
   const deleteFav = async () => {
     const data = { member_id: 1, pro_id: `${id}` }
-    console.log(data)
     const settings = {
       method: 'POST',
       headers: {
@@ -98,7 +100,6 @@ const Heart = (props) => {
       const fav = data.result.map((v, i) => {
         return v.pro_id
       })
-      console.log(fav)
       setFavorite(fav)
     } catch (e) {
       return e
@@ -109,29 +110,31 @@ const Heart = (props) => {
     let a = true
 
     const getFav1 = async () => {
-      const data = { member_id: '1' }
-      const settings = {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-      try {
-        const fetchResponse = await fetch(
-          'http://localhost:3001/api/products-fav/search',
-          settings
-        )
-        const data = await fetchResponse.json()
-        const fav = data.result.map((v, i) => {
-          return v.pro_id
-        })
-        if (a) {
-          setFavorite(fav)
+      if (localStorage.token) {
+        const data = { member_id: '1' }
+        const settings = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         }
-      } catch (e) {
-        return e
+        try {
+          const fetchResponse = await fetch(
+            'http://localhost:3001/api/products-fav/search',
+            settings
+          )
+          const data = await fetchResponse.json()
+          const fav = data.result.map((v, i) => {
+            return v.pro_id
+          })
+          if (a) {
+            setFavorite(fav)
+          }
+        } catch (e) {
+          return e
+        }
       }
     }
 

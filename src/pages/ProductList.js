@@ -162,7 +162,7 @@ const ProductList = (props) => {
 
   const priceToLoad = () => {
     setProlist(false)
-    // setTitle(true)
+    setNoresult(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
@@ -285,6 +285,7 @@ const ProductList = (props) => {
         setSpinTop(false)
       }, 1000)
     } else {
+      setNoresult(true)
       setBrandsort(brand)
       preToLoad()
       setResultTitle2(true)
@@ -311,6 +312,7 @@ const ProductList = (props) => {
         setSpinTop(false)
       }, 1000)
     } else {
+      setNoresult(true)
       setSort(sort)
       preToLoad()
       setResultTitle3(true)
@@ -547,18 +549,16 @@ const ProductList = (props) => {
                   <div className="title">排序</div>
                   <div className="state">預設排序</div>
                 </div>
-                <div className="compare">
+                <div
+                  className="compare"
+                  onClick={() => {
+                    if (compare.length > 0) {
+                      setComparemodel(!comparemodal)
+                    }
+                  }}
+                >
                   <div className="title">比較</div>
-                  <div
-                    onClick={() => {
-                      if (compare.length > 0) {
-                        setComparemodel(!comparemodal)
-                      }
-                    }}
-                    className="state"
-                  >
-                    {compare.length}
-                  </div>
+                  <div className="state">{compare.length}</div>
                 </div>
               </div>
               {spinTop ? <Spinner /> : ''}

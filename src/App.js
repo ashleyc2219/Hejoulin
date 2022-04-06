@@ -118,7 +118,10 @@ function App() {
             <SakeGuide />
           </Route>
           <Route exact path="/gift">
-            <Gift setCartCount={setCartCount} />
+            <Gift
+              setCartCount={setCartCount}
+              setAddcartmodal={setAddcartmodal}
+            />
           </Route>
           <Route exact path="/mark/intro">
             <MarkIntro />

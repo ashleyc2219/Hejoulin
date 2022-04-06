@@ -32,14 +32,13 @@
 .Gift {
   max-width: 100%;
   position: relative;
-  padding-bottom: 300px;
+  padding-bottom: 100px;
   @include medium() {
     padding: 0 20px;
   }
 
   //navbar下方的body
   .gift_container {
-    //padding-top: 40px;
     max-width: 1200px;
     margin: 40px auto 0px auto;
     display: flex;
@@ -117,10 +116,15 @@
           display: block;
         }
 
+        .login {
+          display: none;
+        }
+
         //section01
         #gift_kind {
           width: 100%;
-          height: fit-content;
+          height: 500px;
+          margin-bottom: 50px;
           .gift_kind {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -175,13 +179,13 @@
         #gift_sake {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 50px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
@@ -216,13 +220,13 @@
         #gift_color {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 50px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
@@ -236,13 +240,13 @@
         #gift_detail {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 50px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
@@ -294,7 +298,7 @@
                 @include medium() {
                   height: 200px;
                   top: calc(50% - 100px);
-                  left:calc(50% - 30px);
+                  left: calc(50% - 30px);
                 }
               }
               .final-sake2-1 {
@@ -305,7 +309,7 @@
                 @include medium() {
                   height: 210px;
                   top: calc(50% - 100px);
-                  left:calc(50% - 60px);
+                  left: calc(50% - 60px);
                 }
               }
               .final-sake2 {
@@ -316,7 +320,7 @@
                 @include medium() {
                   height: 210px;
                   top: calc(50% - 100px);
-                  left:50%;
+                  left: 50%;
                 }
               }
               .final-sake3-1 {
@@ -327,7 +331,7 @@
                 @include medium() {
                   height: 210px;
                   top: calc(50% - 100px);
-                  left:calc(50% - 60px);
+                  left: calc(50% - 60px);
                 }
               }
               .final-con {
@@ -338,7 +342,7 @@
                 @include medium() {
                   height: 210px;
                   top: calc(50% - 100px);
-                  left:calc(50% - 2px);
+                  left: calc(50% - 2px);
                 }
               }
             }
@@ -352,7 +356,7 @@
                 color: $gray-300;
                 font-weight: bold;
                 line-height: 90px;
-                @include medium(){
+                @include medium() {
                   line-height: 48px;
                 }
               }

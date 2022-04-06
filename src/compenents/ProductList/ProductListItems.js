@@ -59,10 +59,10 @@ const ProductListItems = (props) => {
               ''
             )}
 
-            {v.pro_gift === 1 ? (
-              <img src="/ProductList/gift.svg" alt="" className="pro-mark" />
-            ) : (
+            {v.pro_gift === 0 ? (
               ''
+            ) : (
+              <img src="/ProductList/gift.svg" alt="" className="pro-mark" />
             )}
           </div>
           <div className="icon">

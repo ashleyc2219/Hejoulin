@@ -42,7 +42,7 @@ const SakeIntro = () => {
               </div>
             </div>
 
-            <div className="ori-card weather col-md-4 col-sm-12">
+            <div className="ori-card water col-md-4 col-sm-12">
               <div className="pic"></div>
               <div className="title">
                 <h3>水質</h3>
@@ -56,7 +56,7 @@ const SakeIntro = () => {
               </div>
             </div>
 
-            <div className="ori-card weather col-md-4 col-sm-12">
+            <div className="ori-card rice col-md-4 col-sm-12">
               <div className="pic"></div>
               <div className="title">
                 <h3>酒米</h3>
@@ -82,14 +82,14 @@ const SakeIntro = () => {
           <div className="level-container">
             <div className="level-box-l">
               <div className="L1-1"></div>
-              <div className="L2-1">
+              <div className="L2-1 up">
                 <p>釀造酒精</p>
               </div>
 
               <div className="L3-1 ball">
                 <p>米・米麴</p>
               </div>
-              <div className="L3-1 ball">
+              <div className="L3-1 ball up">
                 <p>米・米麴</p>
                 <p>＋</p>
                 <p>釀造酒精</p>
@@ -124,7 +124,7 @@ const SakeIntro = () => {
                   <p>無規定</p>
                 </div>
               </div>
-              <div className="L0">
+              <div className="L0 up">
                 <p>精米步合</p>
               </div>
               <div className="L3">
@@ -424,7 +424,6 @@ const SakeIntro = () => {
             <h2>日本酒度酸度</h2>
             <div className="box">
               <div className="box">
-                {' '}
                 <p>
                   當你要選購琳琅滿目的清酒，一定曾滿腦問號：到底哪瓶清酒才好呢？現在介紹兩種方法，看看能否幫到你。
                   首先，可從酒標上所列的日本酒度及酸度理解酒釀。日本酒度是指酒所含的糖量，較多糖量的會以負值「-」表示，為甘口型，甘即甜的意思，而負值愈大，糖量愈高；較少糖量的會以正值「+」表示，為辛口型，而正值愈大，糖量愈少，「辛」這字，聽上去較難明白，或可以葡萄酒「乾型（Dry）」或香檳的乾型「Brut」的概念理解。

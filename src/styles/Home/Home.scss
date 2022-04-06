@@ -13,19 +13,70 @@ body {
   // position: sticky 會因為父層用 overflow:hidden等問題不能用
 
   .Guide {
-    // position: sticky;
-    // top: 100px;
-    // width: fit-content;
-    height: 0px;
-    // z-index: 10;
+    position: sticky;
+    top: 100px;
+    width: fit-content;
+    height: 150px;
+    z-index: 10;
     @include medium() {
-      // display: none;
+      display: none;
     }
 
     .loca {
-      // position: absolute;
+      position: absolute;
+      top: 15px;
       left: 85vw;
-      top: -41px;
+
+      .arround {
+        position: absolute;
+        top: 0px;
+        left: 118px;
+        p {
+          @include kleeone();
+          color: $gray-300;
+          font-size: 23px;
+          line-height: 33px;
+          position: absolute;
+        }
+        .first {
+          top: 15px;
+          right: 95px;
+        }
+        .sen {
+          top: 0;
+          right: 65px;
+        }
+        .thr {
+          right: 35px;
+        }
+        .four {
+          top: 15px;
+          right: 5px;
+        }
+        .trian {
+          position: absolute;
+          top: 55px;
+          right: -10px;
+        }
+      }
+      .round {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid $primary;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background: url('../../../public/Sake-background0310.jpg');
+        &:hover {
+          .sake {
+            animation: rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s
+              infinite normal none;
+          }
+        }
+      }
     }
   }
 
@@ -57,7 +108,7 @@ body {
     border-radius: 24%;
     transform-origin: 50% 49%;
     -webkit-animation: wave-data-v-c0cb0066 24s linear infinite;
-    animation: wave-data-v-c0cb0066 24s linear infinite;
+    animation: wave-data-v-c0cb0066 300s linear infinite;
   }
 
   .wave-line .line[data-v-c0cb0066]:first-of-type {
@@ -81,13 +132,13 @@ body {
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(10) {
     border-radius: 36%;
-    -webkit-animation-duration: 24.4s;
-    animation-duration: 24.4s;
+    -webkit-animation-duration: 600s;
+    animation-duration: 600s;
   }
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(2) {
-    -webkit-animation-duration: 18s;
-    animation-duration: 18s;
+    -webkit-animation-duration: 36s;
+    animation-duration: 36s;
   }
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(3) {
