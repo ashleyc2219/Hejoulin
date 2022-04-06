@@ -112,7 +112,11 @@ const RestaurantList = () => {
               style={{ paddingRight: '0' }}
             >
               {loading ? (
-                <Spinner />
+                <div style={{ overflowY: 'scroll', height: '90vh' }}>
+                  <div className="list-container d-flex flex-column py-3 justify-content-center">
+                    <Spinner />
+                  </div>
+                </div>
               ) : (
                 <MapList
                   childClicked={childClicked}
