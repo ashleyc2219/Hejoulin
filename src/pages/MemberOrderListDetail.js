@@ -1,21 +1,25 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ProgressBarM from "../compenents/Member/AllTabs/OrderList/ProgressBarM";
 import '../styles/Member/Member-Order/MemberOrderListDetail.scss'
 import {Link} from "react-router-dom";
-import {element} from "prop-types";
 
 const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetailData }) => {
     const stepContent = ['訂單成立', '已出貨', '物流收件', '已送達']
 
     // onClick={()=>setCurrentRow('orderData')}
 
-    const renderDetailItem = (detailData) => {
+    useEffect(()=>{
+        setDetailData(JSON.parse(localStorage.getItem('orderDetail')))
+    }, [])
+
+    console.log(detailData)
+    const renderDetailItem =  (detailData) => {
         if (detailData && detailData.length) {
             return detailData.map((el) => (
                 <div className="list-summary">
                     <div className="table-row">
                         <p>小計</p>
-                        <p className="dollar-sign">11120</p>
+                        <p className="dollar-sign">{el.order_d_price}</p>
                     </div>
                     <div className="table-row">
                         <p>折扣碼</p>
@@ -27,7 +31,7 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                     </div>
                     <div className="table-row">
                         <p>總計</p>
-                        <p className="dollar-sign total">11120</p>
+                        <p className="dollar-sign total">{el.order_d_price}</p>
                     </div>
                 </div>
         ))
@@ -36,7 +40,7 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                 <div className="list-summary">
                     <div className="table-row">
                         <p>小計</p>
-                        <p className="dollar-sign">11120</p>
+                        <p className="dollar-sign">無資料</p>
                     </div>
                     <div className="table-row">
                         <p>折扣碼</p>
@@ -44,11 +48,11 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                     </div>
                     <div className="table-row">
                         <p>運費</p>
-                        <p className="dollar-sign">0</p>
+                        <p className="dollar-sign">無資料</p>
                     </div>
                     <div className="table-row">
                         <p>總計</p>
-                        <p className="dollar-sign total">11120</p>
+                        <p className="dollar-sign total">無資料</p>
                     </div>
                 </div>
             )
@@ -68,24 +72,25 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                                 <span className="title-subtotal">小計</span>
                             </div>
                         </div>
-                        <div className="list-summary">
-                            <div className="table-row">
-                                <p>小計</p>
-                                <p className="dollar-sign">11120</p>
-                            </div>
-                            <div className="table-row">
-                                <p>折扣碼</p>
-                                <p></p>
-                            </div>
-                            <div className="table-row">
-                                <p>運費</p>
-                                <p className="dollar-sign">0</p>
-                            </div>
-                            <div className="table-row">
-                                <p>總計</p>
-                                <p className="dollar-sign total">11120</p>
-                            </div>
-                        </div>
+                        {/*<div className="list-summary">*/}
+                        {/*    <div className="table-row">*/}
+                        {/*        <p>小計</p>*/}
+                        {/*        <p className="dollar-sign">11120</p>*/}
+                        {/*    </div>*/}
+                        {/*    <div className="table-row">*/}
+                        {/*        <p>折扣碼</p>*/}
+                        {/*        <p></p>*/}
+                        {/*    </div>*/}
+                        {/*    <div className="table-row">*/}
+                        {/*        <p>運費</p>*/}
+                        {/*        <p className="dollar-sign">0</p>*/}
+                        {/*    </div>*/}
+                        {/*    <div className="table-row">*/}
+                        {/*        <p>總計</p>*/}
+                        {/*        <p className="dollar-sign total">11120</p>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+                        {renderDetailItem(detailData)}
                         <div className="mobile-table-btn">
                             <span className="product-count">↓ 共4件商品</span>
                         </div>

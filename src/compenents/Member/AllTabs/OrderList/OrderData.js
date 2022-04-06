@@ -35,7 +35,7 @@ const OrderData = (props) => {
         ).json()
         setPageData({})
         setPageData(obj2.rows)
-        console.log('obj : ', obj2)
+        // console.log('obj : ', obj2)
     }
 
     useEffect(() => {
@@ -68,10 +68,10 @@ const OrderData = (props) => {
                     body: 1,
                 })
             ).json()
-            console.log(obj2)
+            // console.log(obj2)
             setPageData(obj2.rows)
             setOrderData(obj2.rows)
-            console.log(obj2.length)
+            // console.log(obj2.length)
         })()
     }, [])
 
@@ -93,7 +93,7 @@ const OrderData = (props) => {
         //         return e.order_state === "待出貨"
         //     }
         // )}
-        console.log('c', filterData(pageData))
+        // console.log('c', filterData(pageData))
         //filter 分頁籤
         // const filterData = []
         // switch (status) {
@@ -110,6 +110,7 @@ const OrderData = (props) => {
         //
         //     }
         // }
+
         if (pageData && pageData.length) {
             return pageData.map((el) => (
                 <tr key={'test' + el.order_d_id}>
@@ -119,7 +120,7 @@ const OrderData = (props) => {
                     <td>{el.order_state}</td>
                     <td className="button-g">
                         <Link to="/member/order-list/detail">
-                            <button className="btn btn-primary">查看訂單</button>
+                            <button className="btn btn-primary" onClick={()=>localStorage.setItem('orderDetail', JSON.stringify(el))}>查看訂單</button>
                         </Link>
                         {' '}
                         <button className="btn btn-secondary">再買一次</button>
