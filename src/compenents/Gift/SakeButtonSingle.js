@@ -12,7 +12,7 @@ const SakeButtonSingle = (props) => {
     setSakeButton,
     pro_id,
     setStep,
-    GiftLink,
+    height,
     setBlock02,
   } = props
 
@@ -37,6 +37,13 @@ const SakeButtonSingle = (props) => {
               plus()
               setStep('three')
               setBlock02(true)
+              setTimeout(() => {
+                window.scroll({
+                  top: 2.1 * 714,
+                  left: 0,
+                  behavior: 'smooth',
+                })
+              }, 500)
             }}
           >
             <img src="/Gift/null_sake.svg" alt="" className="sake single" />

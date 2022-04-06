@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './../styles/Gift/Gift.scss'
-import * as Scroll from 'react-scroll'
 
 //元件
 import Sidebar from '../compenents/Gift/Sidebar'
@@ -11,12 +10,12 @@ import Color02 from '../compenents/Gift/Color02'
 import Color03 from '../compenents/Gift/Color03'
 import Detail from '../compenents/Gift/Detail'
 import AddCart from '../compenents/Gift/AddCart'
+import useWindowDimensions from '../compenents/Gift/WindowDim'
 
 // switch
 
 const Gift = (props) => {
-  const { setCartCount } = props
-  let GiftLink = Scroll.Link
+  const { setCartCount, setAddcartmodal } = props
   const [block01, setBlock01] = useState(false)
   const [block02, setBlock02] = useState(false)
   const [block03, setBlock03] = useState(false)
@@ -95,13 +94,23 @@ const Gift = (props) => {
       setName2(currentName)
       setPrice2(currentPrice)
       setImg2(currentImg)
-      setStep('three')
     } else if (value.current === 2 && !sakeId && sakeId2) {
       setSakeId(currentId)
       setName(currentName)
       setPrice(currentPrice)
       setImg(currentImg)
+    }
+
+    if (value.current === 2) {
       setStep('three')
+      setBlock02(true)
+      setTimeout(() => {
+        window.scroll({
+          top: 2.1 * 714,
+          left: 0,
+          behavior: 'smooth',
+        })
+      }, 500)
     }
   }, [value.current])
 
@@ -119,6 +128,8 @@ const Gift = (props) => {
     value.current = 0
   }
 
+  const { height, width } = useWindowDimensions()
+
   const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
   let url02 = `http://localhost:3001/api/product_gift`
   //不同禮盒的酒類資訊
@@ -132,7 +143,6 @@ const Gift = (props) => {
       const data = await res.json()
       setSake(data)
       giftId()
-      console.log(data)
     }
     fetchSake()
   }, [kind])
@@ -174,55 +184,60 @@ const Gift = (props) => {
                       setStep('two')
                       reset()
                       setBlock01(true)
+                      console.log(height)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
                     }}
                   >
                     <img src="/Gift/1.png" alt="" />
                     <span className="title">1入禮盒</span>
                   </div>
-
-                  <GiftLink
-                    to="gift_sake"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
+                  <div
+                    className="kind"
+                    onClick={() => {
+                      setKind(2)
+                      setStep('two')
+                      reset()
+                      setBlock01(true)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
+                    }}
                   >
-                    <div
-                      className="kind"
-                      onClick={() => {
-                        setKind(2)
-                        setStep('two')
-                        reset()
-                        setBlock01(true)
-                      }}
-                    >
-                      <img src="/Gift/2.png" alt="" />
-                      <span className="title">2入禮盒</span>
-                    </div>
-                  </GiftLink>
-                  <GiftLink
-                    to="gift_sake"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
+                    <img src="/Gift/2.png" alt="" />
+                    <span className="title">2入禮盒</span>
+                  </div>
+                  <div
+                    className="kind"
+                    onClick={() => {
+                      setKind(3)
+                      setStep('two')
+                      reset()
+                      setBlock01(true)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
+                    }}
                   >
-                    <div
-                      className="kind"
-                      onClick={() => {
-                        setKind(3)
-                        setStep('two')
-                        reset()
-                        setBlock01(true)
-                      }}
-                    >
-                      <img src="/Gift/3.png" alt="" />
-                      <span className="title">1+1 禮盒</span>
-                    </div>
-                  </GiftLink>
+                    <img src="/Gift/3.png" alt="" />
+                    <span className="title">1+1 禮盒</span>
+                  </div>
                 </div>
               </section>
-              <section id="gift_sake" 
-              // className={`${!block01 ? '' : 'login'}`}
-              >
+              <section id="gift_sake" className={`${block01 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -266,14 +281,12 @@ const Gift = (props) => {
                     setName={setName}
                     setPrice={setPrice}
                     setImg={setImg}
-                    GiftLink={GiftLink}
                     setBlock02={setBlock02}
+                    height={height}
                   />
                 </div>
               </section>
-              <section id="gift_color" 
-              // className={`${block02 ? '' : 'login'}`}
-              >
+              <section id="gift_color" className={`${block02 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -287,8 +300,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
-                    GiftLink={GiftLink}
                     setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
@@ -304,8 +317,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
-                    GiftLink={GiftLink}
                     setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
@@ -320,16 +333,14 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
-                    GiftLink={GiftLink}
                     setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
                 )}
               </section>
-              <section id="gift_detail" 
-              // className={`${block03 ? '' : 'login'}`}
-              >
+              <section id="gift_detail" className={`${block03 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -442,6 +453,7 @@ const Gift = (props) => {
                       sakeId={sakeId}
                       sakeId2={sakeId2}
                       setCartCount={setCartCount}
+                      setAddcartmodal={setAddcartmodal}
                     />
                   </div>
                 </div>

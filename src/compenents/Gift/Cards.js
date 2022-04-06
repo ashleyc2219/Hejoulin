@@ -42,8 +42,8 @@ const Cards = (props) => {
     setName,
     setPrice,
     setImg,
-    GiftLink,
     setBlock02,
+    height,
   } = props
 
   const [sakeButton, setSakeButton] = useState(0)
@@ -128,6 +128,9 @@ const Cards = (props) => {
                   sakeButton={sakeButton}
                   setSakeButton={setSakeButton}
                   pro_id={pro_id}
+                  img={img}
+                  name={name}
+                  price={price}
                   setSakeId2={setSakeId2}
                   setName2={setName2}
                   setPrice2={setPrice2}
@@ -135,7 +138,6 @@ const Cards = (props) => {
                   setStep={setStep}
                   sakeId={sakeId}
                   sakeId2={sakeId2}
-                  GiftLink={GiftLink}
                   setBlock02={setBlock02}
                 />
               </div>
@@ -157,6 +159,9 @@ const Cards = (props) => {
                   sakeButton={sakeButton}
                   setSakeButton={setSakeButton}
                   pro_id={pro_id}
+                  img={img}
+                  name={name}
+                  price={price}
                   setSakeId2={setSakeId2}
                   setName2={setName2}
                   setPrice2={setPrice2}
@@ -231,8 +236,8 @@ const Cards = (props) => {
                   setSakeButton={setSakeButton}
                   pro_id={pro_id}
                   setStep={setStep}
-                  GiftLink={GiftLink}
                   setBlock02={setBlock02}
+                  height={height}
                 />
               </div>
             )}

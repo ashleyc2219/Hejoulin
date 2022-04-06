@@ -19,10 +19,13 @@ const SakeButton = (props) => {
     setImg2,
     setStep,
     pro_id,
+    name,
+    img,
+    price,
     sakeId,
     sakeId2,
-    GiftLink,
     setBlock02,
+    height,
   } = props
   const [modal, setModal] = useState(false)
   const closeModal = () => setModal(false)
@@ -46,7 +49,7 @@ const SakeButton = (props) => {
           </button>
         </>
       )
-    } else if (sakeButton === 1) {
+    } else if (sakeButton === 1 && value.current === 1) {
       return (
         <>
           <button
@@ -54,12 +57,10 @@ const SakeButton = (props) => {
             onClick={() => {
               setSakeButton(2)
               plus()
-              setSakeId2(currentId)
-              setName2(currentName)
-              setPrice2(currentPrice)
-              setImg2(currentImg)
-              setStep('three')
-              setBlock02(true)
+              setSakeId2(pro_id)
+              setName2(name)
+              setPrice2(price)
+              setImg2(img)
             }}
           >
             <img src="/Gift/full_sake.svg" alt="" className="sake single" />

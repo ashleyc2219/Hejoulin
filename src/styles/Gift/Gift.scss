@@ -124,6 +124,7 @@
         #gift_kind {
           width: 100%;
           height: calc(100vh - 285px);
+          margin-bottom: 50px;
           .gift_kind {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -178,13 +179,13 @@
         #gift_sake {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 25px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
@@ -219,13 +220,13 @@
         #gift_color {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 50px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
@@ -239,13 +240,13 @@
         #gift_detail {
           width: 100%;
           height: fit-content;
-          margin-top: 20px;
+          margin-top: 50px;
 
           .header {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 5vh;
+            margin-top: 35px;
           }
 
           h4 {
