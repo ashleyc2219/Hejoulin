@@ -11,6 +11,8 @@ const CompareModal = ({
   comparePro3,
   setCartCount,
   setAddcartmodal,
+  sidebar,
+  setSidebar,
 }) => {
   const [count, setCount] = useState(1)
   let product1 = comparePro1.map(function (v, i) {
@@ -44,6 +46,8 @@ const CompareModal = ({
             setCartCount={setCartCount}
             count={count}
             setAddcartmodal={setAddcartmodal}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
           />
         </div>
       </div>
@@ -80,6 +84,8 @@ const CompareModal = ({
             setCartCount={setCartCount}
             count={count}
             setAddcartmodal={setAddcartmodal}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
           />
         </div>
       </div>
@@ -116,6 +122,8 @@ const CompareModal = ({
             setCartCount={setCartCount}
             count={count}
             setAddcartmodal={setAddcartmodal}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
           />
         </div>
       </div>

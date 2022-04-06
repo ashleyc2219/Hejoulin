@@ -10,8 +10,8 @@ import AddCartModal from '../ProductList/AddCartModal'
 import LogoutHover from './LogoutHover'
 
 const Header = (props) => {
-  const { user, setUser, setCartCount, addcartmodal } = props
-  const [sidebar, setSidebar] = useState(false)
+  const { user, setUser, setCartCount, addcartmodal, sidebar, setSidebar } =
+    props
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -63,6 +63,18 @@ const Header = (props) => {
       return <LogoutHover setSidebar={setSidebar} />
     } else {
       return <LoginHover showSidebar={showSidebar} />
+    }
+  }
+  function favCtrl() {
+    // console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('token') !== null) {
+      return (
+        <Link to="/member/fav" className="fav">
+          <img alt="" src="/Shared/heart.svg" />
+        </Link>
+      )
+    } else {
+      return ''
     }
   }
   const openMenu = () => setOpen(!open)
@@ -125,9 +137,7 @@ const Header = (props) => {
                   }
                 </CartCount.Consumer>
               </Link>
-              <Link to="/member/fav" className="fav">
-                <img alt="" src="/Shared/heart.svg" />
-              </Link>
+              {favCtrl()}
               <img
                 onClick={setmobilemenu}
                 src="/Shared/menu.svg"

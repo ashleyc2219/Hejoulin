@@ -9,8 +9,7 @@ import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/SubCartInfo/SubCartInfo.scss'
 import SubCartInfoCard from '../compenents/Sub/SubCartInfoCard'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
-import { islands, townships } from './../data/cart-list-select'
-import { districtsData } from './../data/districts'
+import { districts, townships } from './../data/districts'
 
 import { CartSummary } from './../App'
 // 信用卡
@@ -18,31 +17,19 @@ import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
 import {
   memberInfoGet,
   orderMainInsert,
-  orderSakeMarkInsert,
-  orderGiftGdInsert,
-  cartSakeMarkDelete,
-  cartGiftGdDelete,
+  orderSubInsert,
   shipmentInsert,
   paymentInsert,
-} from '../compenents/CartFetch/CartListFetch'
+} from '../compenents/SubCartFetch/SubCartListFetch'
 const hunel = new HunelCreditCard()
 
 const SubCartInfo = (props) => {
-  const { setCartVerifyInfo, setCartSummary } = props
-  const stepContent = ['購物車', '填寫資訊', '訂單成立']
-  // cartList 傳過來的資料
-  let cartSummaryInfo = CartSummary._currentValue
-  let cartSummaryInfoDistrict = cartSummaryInfo.district
-    ? cartSummaryInfo.district
-    : '台北市'
+  const subInCart = JSON.parse(localStorage.getItem('subCart'))
+  // console.log(subInCart)
+  const { setSubCartVerifyInfo } = props
+  const stepContent = ['確認方案', '填寫資訊', '訂單成立']
 
-  // TODO: 可能要換狀態名稱，不然會跟CartList相撞
-  // 接清酒跟禮盒的資料
-  const [sakeIncart, setSakeIncart] = useState([])
-  const [giftIncart, setGiftIncart] = useState([])
   const [memberInfo, setMemberInfo] = useState([])
-  // 左邊清單的收合
-  const [collapseClass, setCollapseClass] = useState('')
   // 表單資料 接資料
   const [buyerName, setBuyerName] = useState('')
   const [buyerMobile, setBuyerMobile] = useState('')
@@ -50,6 +37,7 @@ const SubCartInfo = (props) => {
   const [receiverName, setReceiverName] = useState('')
   const [receiverMobile, setReceiverMobile] = useState('')
   const [receiverAddress, setReceiverAddress] = useState('')
+  const [receiverCity, setReceiverCity] = useState(-1)
   const [receiverDistrict, setReceiverDistrict] = useState(-1)
   // 信用卡資料
   const [cardNum, setCardNum] = useState('')
@@ -66,6 +54,7 @@ const SubCartInfo = (props) => {
   const [passReceiverName, setPassReceiverName] = useState('defualt')
   const [passReceiverMobile, setPassReceiverMobile] = useState('defualt')
   const [passReceiverAddress, setPassReceiverAddress] = useState('defualt')
+  const [passReceiverCity, setPassReceiverCity] = useState(false)
   const [passReceiverDistrict, setPassReceiverDistrict] = useState(false)
   const [passCardNum, setPassCardNum] = useState(false)
   const [passCardHolder, setPassCardHolder] = useState('default')
@@ -83,26 +72,8 @@ const SubCartInfo = (props) => {
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
-    // TODO: 換成讀訂閱資訊
-    ;(async () => {
-      const r1 = await fetch(
-        `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      const obj = await r1.json()
-
-      if (a) {
-        setSakeIncart(obj)
-      }
-    })()
     ;(async () => {
       let memberInfoObj = await memberInfoGet(member_id)
-      console.log(memberInfoObj)
       if (a) {
         setMemberInfo(memberInfoObj)
       }
@@ -112,10 +83,12 @@ const SubCartInfo = (props) => {
       a = false
     }
   }, [])
-  const renderSubItems = (sakeIncart) => {
-    if (sakeIncart.length) {
-      return sakeIncart.map((sake, i) => {
-        return <SubCartInfoCard />
+  const renderSubItems = (data) => {
+    if (data.length) {
+      return data.map((sp, i) => {
+        return (
+          <SubCartInfoCard key={i} subPlan={sp} subMonth={subInCart.subTime} />
+        )
       })
     } else {
       return ''
@@ -162,6 +135,12 @@ const SubCartInfo = (props) => {
       setPassReceiverAddress(true)
     } else {
       setPassReceiverAddress(false)
+      setPassThrough(false)
+    }
+    if (receiverCity !== -1) {
+      setPassReceiverCity(true)
+    } else {
+      setPassReceiverCity(false)
       setPassThrough(false)
     }
     if (receiverDistrict !== -1) {
@@ -255,23 +234,12 @@ const SubCartInfo = (props) => {
     cardNumTidy = cardNumTidy.slice(-4)
     let data = {
       cardNum: cardNumTidy,
-      total: cartSummaryInfo.allTotal,
+      total: subInCart.subTimeTotal,
       email_account: buyerEmail,
     }
-    setCartVerifyInfo(data)
+    setSubCartVerifyInfo(data)
   }
-  async function fectOutData() {
-    let data = {
-      buyerName: buyerName,
-      buyerMobile: buyerMobile,
-      buyerEmail: buyerEmail,
-      receiverName: receiverName,
-      receiverMobile: receiverMobile,
-      receiverAddress: receiverAddress,
-      cardNum: cardNum,
-    }
-
-    console.log(data)
+  async function fetchOutData() {
     // 將手機號碼 +886轉成 0
     let buyerMobileTidy = buyerMobile
     if (buyerMobileTidy.includes('+886')) {
@@ -283,30 +251,29 @@ const SubCartInfo = (props) => {
       buyerName,
       buyerMobileTidy,
       buyerEmail,
-      cartSummaryInfo.discountCode
+      ''
     )
-
-    // insert sake mark訂單資料
-    let orderSakeMarkResult = await orderSakeMarkInsert(
-      member_id,
-      order_main_id
+    orderSubInsert(
+      order_main_id,
+      subInCart.subPlan,
+      subInCart.subTime,
+      subInCart.subTimeTotal
     )
-    // insert 禮盒 禮盒明細訂單資料
-    let orderGiftResult = await orderGiftGdInsert(member_id, order_main_id)
-    let cartSakeMarkDelResult = await cartSakeMarkDelete(member_id)
-    let cartGiftGdDelResult = await cartGiftGdDelete(member_id)
 
     // 整理地址加上市、區
     let receiverAddressTidy = receiverAddress
     receiverAddressTidy =
-      cartSummaryInfoDistrict + receiverDistrict + receiverAddressTidy
+      districts[receiverCity] +
+      townships[receiverCity][receiverDistrict] +
+      receiverAddressTidy
+    // 整理手機號碼 +886 -> 0
     let receiverMobileTidy = receiverMobile
     if (receiverMobileTidy.includes('+886')) {
       receiverMobileTidy = receiverMobileTidy.replace(/\+886/, 0)
     }
     let shipmentResult = await shipmentInsert(
       order_main_id,
-      cartSummaryInfo.method,
+      'delivery',
       store_id,
       receiverName,
       receiverMobileTidy,
@@ -315,10 +282,7 @@ const SubCartInfo = (props) => {
     )
     let cardNumTidy = cardNum
     cardNumTidy = cardNumTidy.slice(-4)
-    // 設定order_main_id 到useContext 給後面的步驟用
-    cartSummaryInfo['order_main_id'] = order_main_id
-    cartSummaryInfo['cardNum'] = cardNumTidy
-    setCartSummary(cartSummaryInfo)
+
     let paymentResult = await paymentInsert(order_main_id, cardNumTidy)
     console.log(
       'orderMainResult: ',
@@ -326,10 +290,7 @@ const SubCartInfo = (props) => {
       'order_main_id: ',
       order_main_id
     )
-    console.log('orderSakeMarkResult: ', orderSakeMarkResult)
-    console.log('orderGiftResult: ', orderGiftResult)
-    console.log('cartSakeMarkDelResult: ', cartSakeMarkDelResult)
-    console.log('cartGiftGdDelResult: ', cartGiftGdDelResult)
+    console.log('order_main_id: ', order_main_id)
     console.log('shipmentResult: ', shipmentResult)
     console.log('paymentResult: ', paymentResult)
   }
@@ -340,42 +301,33 @@ const SubCartInfo = (props) => {
       <div className="container">
         <div className="left-list">
           <div className="mobile-table-btn ">
-            <span className="total">
-              訂單總計: $ {cartSummaryInfo.allTotal}
-            </span>
+            <span className="total">訂單總計: $ {subInCart.subTimeTotal}</span>
           </div>
           <div className="list-table">
             <div className="table-head">
               <span className="title-product">商品</span>
               <span className="title-subtotal">小計</span>
             </div>
-            {/* TODO: 換成訂閱元件 */}
-            <SubCartInfoCard />
-            <SubCartInfoCard />
-            <SubCartInfoCard />
+            {renderSubItems(subInCart.subPlan)}
           </div>
           <div className="list-summary">
             <div className="table-row">
               <p>小計</p>
-              <p className="dollar-sign">{cartSummaryInfo.subtotal}</p>
-            </div>
-            <div className="table-row">
-              <p>折扣碼</p>
-              <p>{cartSummaryInfo.discountCode}</p>
+              <p className="dollar-sign">{subInCart.subTimeTotal}</p>
             </div>
             <div className="table-row">
               <p>運費</p>
-              <p className="dollar-sign">{cartSummaryInfo.shipFee}</p>
+              <p className="dollar-sign">0</p>
             </div>
 
             <div className="table-row">
               <p>總計</p>
-              <p className="dollar-sign total">{cartSummaryInfo.allTotal}</p>
+              <p className="dollar-sign total">{subInCart.subTimeTotal}</p>
             </div>
           </div>
-          <div className="mobile-table-btn ">
+          {/* <div className="mobile-table-btn ">
             <span className="product-count">&darr; 共4件商品</span>
-          </div>
+          </div> */}
         </div>
         <div className="right-info">
           <div className="buyer">
@@ -516,8 +468,25 @@ const SubCartInfo = (props) => {
                 <select className="decorated" name="country" disabled>
                   <option value="taiwan">台灣</option>
                 </select>
-                <select className="decorated" name="city" disabled>
-                  <option value="taipei">{cartSummaryInfoDistrict}</option>
+                <select
+                  className={
+                    passReceiverCity === false && warning === 'red'
+                      ? 'decorated red'
+                      : 'decorated'
+                  }
+                  name="city"
+                  onChange={(e) => {
+                    setReceiverCity(e.target.value)
+                    setReceiverDistrict(-1)
+                  }}
+                >
+                  <option value="-1">選擇縣市</option>
+                  {!!districts &&
+                    districts.map((value, index) => (
+                      <option key={index} value={index}>
+                        {value}
+                      </option>
+                    ))}
                 </select>
                 <div className="district">
                   <select
@@ -527,19 +496,19 @@ const SubCartInfo = (props) => {
                         : 'decorated'
                     }
                     name="district"
+                    value={receiverDistrict}
                     onChange={(e) => {
                       setReceiverDistrict(e.target.value)
                     }}
                   >
                     <option value="-1">選擇區域</option>
-                    {!!districtsData &&
-                      districtsData[cartSummaryInfoDistrict].map(
-                        (value, index) => (
-                          <option key={index} value={value}>
-                            {value}
-                          </option>
-                        )
-                      )}
+                    {!!districts &&
+                      receiverCity !== -1 &&
+                      townships[receiverCity].map((value, index) => (
+                        <option key={index} value={index}>
+                          {value}
+                        </option>
+                      ))}
                   </select>
                   <div className="form-text">錯誤/提示訊息</div>
                 </div>
@@ -596,24 +565,22 @@ const SubCartInfo = (props) => {
                   className="btn btn-secondary"
                   onClick={() => {
                     forCartVerifyInfo()
-                    // fectOutData()
+                    fetchOutData()
                   }}
                 >
                   確認付款
                 </button>
               </Link>
             ) : (
-              <Link to="/sub/cart-verify">
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    setWarning('red')
-                    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-                  }}
-                >
-                  確認付款
-                </button>
-              </Link>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setWarning('red')
+                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                }}
+              >
+                確認付款
+              </button>
             )}
           </div>
         </div>
