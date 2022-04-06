@@ -41,6 +41,7 @@ import { createContext, useState } from 'react'
 export const CartCount = createContext('defaultvalue')
 export const CartSummary = createContext('default')
 export const CartVerifyInfo = createContext('default')
+export const SubCartVerifyInfo = createContext('default')
 
 function App() {
   const [compare, setCompare] = useState([])
@@ -65,6 +66,12 @@ function App() {
     order_main_id: '',
   })
   const [cartVerifyInfo, setCartVerifyInfo] = useState({
+    cardNum: '',
+    total: '',
+    email: '',
+  })
+  // 訂閱 購物車之間溝通的state
+  const [subCartVerifyInfo, setSubCartVerifyInfo] = useState({
     cardNum: '',
     total: '',
     email: '',
@@ -162,10 +169,12 @@ function App() {
             <SubCartList />
           </Route>
           <Route exact path="/sub/cart-info">
-            <SubCartInfo />
+            <SubCartInfo setSubCartVerifyInfo={setSubCartVerifyInfo} />
           </Route>
           <Route exact path="/sub/cart-verify">
-            <SubCartVerify />
+            <SubCartVerifyInfo.Provider value={subCartVerifyInfo}>
+              <SubCartVerify />
+            </SubCartVerifyInfo.Provider>
           </Route>
           <Route exact path="/sub/cart-order">
             <SubCartOrder />
