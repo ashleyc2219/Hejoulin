@@ -10,8 +10,8 @@ import AddCartModal from '../ProductList/AddCartModal'
 import LogoutHover from './LogoutHover'
 
 const Header = (props) => {
-  const { user, setUser, setCartCount, addcartmodal } = props
-  const [sidebar, setSidebar] = useState(false)
+  const { user, setUser, setCartCount, addcartmodal, sidebar, setSidebar } =
+    props
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
 

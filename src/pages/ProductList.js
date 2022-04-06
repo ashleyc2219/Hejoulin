@@ -46,7 +46,14 @@ const ProductList = (props) => {
   const [price, setPrice] = useState('')
   const [mark, setMark] = useState('')
 
-  const { compare, setCompare, setCartCount, setAddcartmodal } = props
+  const {
+    compare,
+    setCompare,
+    setCartCount,
+    setAddcartmodal,
+    sidebar,
+    setSidebar,
+  } = props
   //const [compare, setCompare] = useState([])
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
@@ -461,6 +468,8 @@ const ProductList = (props) => {
           comparePro3={comparePro3}
           setCartCount={setCartCount}
           setAddcartmodal={setAddcartmodal}
+          sidebar={sidebar}
+          setSidebar={setSidebar}
         />
       ) : (
         ''

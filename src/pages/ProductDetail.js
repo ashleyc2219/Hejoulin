@@ -12,12 +12,19 @@ import AddCartBtn from '../compenents/ProductList/AddCartBtn'
 import Spinner from '../compenents/Shared/Spinner'
 
 const ProductDetail = (props) => {
+  const {
+    compare,
+    setCompare,
+    setCartCount,
+    setAddcartmodal,
+    sidebar,
+    setSidebar,
+  } = props
   const { id } = useParams()
   const [detail, setDetail] = useState([])
   const [count, setCount] = useState(1)
   const [linkFav, setlinkFav] = useState(0)
 
-  const { compare, setCompare, setCartCount, setAddcartmodal } = props
   const [comparePro1, setComparePro1] = useState([])
   const [comparePro2, setComparePro2] = useState([])
   const [comparePro3, setComparePro3] = useState([])
@@ -72,7 +79,12 @@ const ProductDetail = (props) => {
                 </div>
                 <div className="like-compare">
                   <div className="like">
-                    <Heart id={v.pro_id} linkFav={linkFav} />
+                    <Heart
+                      id={v.pro_id}
+                      linkFav={linkFav}
+                      sidebar={sidebar}
+                      setSidebar={setSidebar}
+                    />
                     <p onClick={linkFavhandler}>收藏</p>
                   </div>
                   <CompareBtn
@@ -136,6 +148,8 @@ const ProductDetail = (props) => {
                 setCartCount={setCartCount}
                 count={count}
                 setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
               />
             </div>
             <div className="intro">
@@ -411,6 +425,8 @@ const ProductDetail = (props) => {
               setComparePro2={setComparePro2}
               comparePro3={comparePro3}
               setComparePro3={setComparePro3}
+              sidebar={sidebar}
+              setSidebar={setSidebar}
             />
           </div>
         </div>

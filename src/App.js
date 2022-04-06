@@ -71,11 +71,17 @@ function App() {
   })
   //加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
+  const [sidebar, setSidebar] = useState(false)
   return (
     <Router>
       <>
         <CartCount.Provider value={cartCount}>
-          <Header setCartCount={setCartCount} addcartmodal={addcartmodal} />
+          <Header
+            setCartCount={setCartCount}
+            addcartmodal={addcartmodal}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
+          />
         </CartCount.Provider>
         <Switch>
           <Route exact path="/news/detail/:id">
@@ -94,6 +100,8 @@ function App() {
                 setCompare={setCompare}
                 setCartCount={setCartCount}
                 setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
               />
             </CartCount.Provider>
           </Route>
@@ -104,6 +112,8 @@ function App() {
                 setCompare={setCompare}
                 setCartCount={setCartCount}
                 setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
               />
             </CartCount.Provider>
           </Route>
