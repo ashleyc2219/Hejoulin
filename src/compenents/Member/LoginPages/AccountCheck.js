@@ -1,7 +1,8 @@
 import React from 'react'
 import '../../../styles/Member/Member-Login/AccountCheck.scss'
 
-const AccountCheck = ({ setRow, userToken, setUserToken  }) => {
+const AccountCheck = (props) => {
+  const { forgetPassData, setForgetPassData, setRow  } = props
   const APICheck = 'http://localhost:3001/login/account-check'
   const APISendEmail = 'http://localhost:3001/login/send-email'
 
@@ -19,24 +20,35 @@ const AccountCheck = ({ setRow, userToken, setUserToken  }) => {
 
     const obj = await r.json()
     console.log(obj)
-    let userId = {
-      userId: obj.uId,
+    const uId = JSON.stringify(obj.uId)
+    const userAccount = JSON.stringify(obj.userAccount)
+    let userData = {
+      userId: uId,
+      userAccount: userAccount,
     }
-    console.log(userId)
+    console.log(userData)
+    setForgetPassData(userData)
     if (obj.used === 'have') {
-      localStorage.setItem('token', obj.token)
-      // setUserToken(localStorage.getItem('token'))
-      setRow('verify2')
-      await fetch(APISendEmail, {
+      // setRow('verify2')
+      const rs =  await fetch(APISendEmail, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userId),
+        body: JSON.stringify(userData),
       })
+
+      const obj2 = await rs.json()
+      const emailCheck = obj2
+      console.log(emailCheck)
+      if (emailCheck.message === 'success') {
+        // localStorage.setItem('token', obj.token)
+        setRow('verify2')
+      }
     } else {
       setRow('login')
     }
+
   }
 
 
