@@ -77,7 +77,6 @@ const NewsList = () => {
   return (
     <>
       <div className="news">
-        {/* news-container 這層是我在想要下斷點的樣子 */}
         <div className=" news-container container-sm">
           <div className="">
             <div className="news-title">

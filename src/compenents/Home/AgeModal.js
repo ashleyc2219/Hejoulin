@@ -20,6 +20,7 @@ const AgeModal = (props) => {
       openModal()
     } else {
       console.log(AgeOne)
+      window.location.href = `https://www.google.com.tw`
     }
   }
 
