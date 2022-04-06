@@ -65,6 +65,18 @@ const Header = (props) => {
       return <LoginHover showSidebar={showSidebar} />
     }
   }
+  function favCtrl() {
+    // console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('token') !== null) {
+      return (
+        <Link to="/member/fav" className="fav">
+          <img alt="" src="/Shared/heart.svg" />
+        </Link>
+      )
+    } else {
+      return ''
+    }
+  }
   const openMenu = () => setOpen(!open)
   return (
     <>
@@ -125,9 +137,7 @@ const Header = (props) => {
                   }
                 </CartCount.Consumer>
               </Link>
-              <Link to="/member/fav" className="fav">
-                <img alt="" src="/Shared/heart.svg" />
-              </Link>
+              {favCtrl()}
               <img
                 onClick={setmobilemenu}
                 src="/Shared/menu.svg"
