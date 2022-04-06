@@ -1,8 +1,33 @@
 @import '../../mixin.scss';
 
 .MarkItem {
-  max-width: 733px;
+  width: 760px;
   display: flex;
+  //overflow: clip;
+  flex-wrap: wrap;
+  column-gap: 46px;
+  row-gap: 65px;
+
+  .MarkItemAdd {
+    width: 343px;
+    height: 214px;
+
+    .MarkPicAdd {
+      width: 100%;
+      height: 156px;
+      border: 1px solid rgba(110, 113, 115, 0.66);
+      text-align: center;
+
+      img {
+        padding-top: 17%;
+      }
+    }
+
+    .MarkAddText {
+      padding-top: 5%;
+    }
+  }
+
   .MarkPic {
 
 
@@ -14,6 +39,6 @@
   }
 
   .MarkName {
-
+    margin-top: 15px;
   }
 }

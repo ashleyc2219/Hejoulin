@@ -9,14 +9,14 @@
   .SakeBg {
     position: absolute;
     right: 5%;
-    top: -25%;
+    top: -50px;
     z-index: 1;
   }
 
   .MemberMarkBox {
     width: 100%;
     margin-top: 4.5%;
-    height: 622px;
+    height: fit-content;
 
     .MemberMarkBar {
       width: 80%;
@@ -33,52 +33,14 @@
       margin-top: 9%;
       align-items: center;
       position: relative;
+      //padding-bottom: 200px;
 
       .bgImg img {
         position: absolute;
         left: 41%;
-        top: -55%;
+        top: -15px;
         pointer-events: none;
         z-index: -1;
-      }
-
-      .MarkItemAdd {
-        width: 343px;
-        height: 214px;
-
-        .MarkPicAdd {
-          width: 100%;
-          height: 156px;
-          border: 1px solid rgba(110, 113, 115, 0.66);
-          text-align: center;
-
-          img {
-            padding-top: 17%;
-          }
-        }
-
-        .MarkAddText {
-          padding-top: 5%;
-        }
-      }
-
-      .MarkItem {
-        width: 343px;
-        height: 214px;
-        margin-left: 5%;
-
-        .MarkPicDisplay {
-          width: 100%;
-          height: 156px;
-
-          img {
-
-          }
-        }
-
-        .MarkName {
-          padding-top: 5%;
-        }
       }
     }
   }

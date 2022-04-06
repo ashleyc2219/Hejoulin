@@ -7,12 +7,13 @@ import {Link, useHistory} from "react-router-dom";
 
 const MemberMark = () => {
     const [markData, setMarkData] = useState([])
+    const [whichMark, setWhichMark] = useState([])
     const APIDelMark = "http://localhost:3001/user/member/MemberMarkDelete"
+    const APIMark = "http://localhost:3001/user/member/MemberMark"
     const history = useHistory()
     useEffect(() => {
         ;(async () => {
-            const res = await fetch(
-                'http://localhost:3001/user/member/MemberMark',{
+            const res = await fetch(APIMark,{
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,
@@ -26,12 +27,11 @@ const MemberMark = () => {
     }, [])
     const deleteMark = async () => {
         const data = {
-            member_id: `${markData[0].member_id}`,
-            mark_name: `${markData[0].mark_name}`,
+            mark_id: `${whichMark}`,
         }
         console.log(data)
         const settings = {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -39,9 +39,9 @@ const MemberMark = () => {
         }
         try {
             const fetchResponse = await fetch(APIDelMark, settings)
-            const data = await fetchResponse.json()
-            console.log(data)
-            if (data.success === true) {
+            const dataRs = await fetchResponse.json()
+            console.log(dataRs)
+            if (dataRs.success === true) {
                 history.go(0)
             }
             //setMarkData(data)
@@ -54,7 +54,7 @@ const MemberMark = () => {
     const click = () => {
         if (active === true) {
             ;(async function del() {
-                await deleteMark()
+                await deleteMark(whichMark)
             })()
 
             active = false
@@ -76,15 +76,12 @@ const MemberMark = () => {
                         <div className="bgImg">
                             <img src="/Member/MarkBgImg.svg" alt=""/>
                         </div>
-                        <div className="MarkItemAdd">
-                            <Link to="/mark/intro">
-                                <div className="MarkPicAdd">
-                                    <img src="/Member/plusCircle.svg" alt=""/>
-                                </div>
-                                <div className="MarkAddText">立即新增您的專屬酒標</div>
-                            </Link>
-                        </div>
-                        <MarkData markData={markData} setMarkData={setMarkData}/>
+                        <MarkData
+                            markData={markData}
+                            setMarkData={setMarkData}
+                            whichMark={whichMark}
+                            setWhichMark={setWhichMark}
+                        />
                         <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt=""/>
                     </div>
                 </div>
