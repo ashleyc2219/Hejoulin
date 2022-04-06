@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import '../../../styles/Member/Member-Login/SetNewPass.scss'
 
-const SetNewPass = ({ row, setRow }) => {
+const SetNewPass = (props) => {
+  const { forgetPassData, setForgetPassData, setRow  } = props
+
   const [sPass, setSPass] = useState(false)
   const [newPass, setNewPass] = useState('')
   const [newConfPass, setConfNewPass] = useState('')

@@ -47,7 +47,6 @@ const EmailVerify = ({row, setRow}) => {
                                     id="verifyCodeFirst"
                                     name="verifyCodeFirst"
                                     key="verifyCodeFirst"
-                                    placeholder=""
                                     maxLength="3"
                                 />
                                 <img src="/Member/LineInVerify.svg" alt=""/>
@@ -57,7 +56,6 @@ const EmailVerify = ({row, setRow}) => {
                                     id="verifyCodeLast"
                                     name="verifyCodeLast"
                                     key="verifyCodeLast"
-                                    placeholder=""
                                     maxLength="3"
                                 />
                                 <div

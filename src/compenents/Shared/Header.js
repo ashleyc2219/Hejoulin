@@ -56,6 +56,7 @@ const Header = (props) => {
     setMobileMenu(!mobileMenu)
     setOpen(false)
   }
+  // 用給token的時機來控登入顯示
   function authCtrl() {
     // console.log(localStorage.getItem('token'))
     if (localStorage.getItem('token') !== null) {

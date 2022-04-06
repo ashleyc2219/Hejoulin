@@ -1,26 +1,15 @@
 import React from "react";
-import '../../../../styles/Member/Modal/UpdateModal.scss'
 
+const LoginModal = (props) => {
+const { loginModalShow, setLoginModalShow, loginProcess, setLoginProcess } = props
 
-const UpdateModal = (props) => {
-    const {
-        pModalShow,
-        setPModalShow,
-        rs,
-        passRs,
-        setPassModalShow,
-        addrModalShow,
-        setAddrModalShow,
-        addrRs,
-    } = props
     const openModal = () => {
-        setPModalShow((prev) => !prev)
-        setPassModalShow((prev) => !prev)
-        setAddrModalShow((prev) => !prev)
+        setLoginModalShow((prev) => !prev)
+        setLoginProcess('finish')
     }
 
     function resultCheck() {
-        if (rs && rs.success === true) {
+        if (loginProcess === 'loginSuccess') {
             return 'grey'
         } else {
             return 'red'
@@ -30,7 +19,7 @@ const UpdateModal = (props) => {
     return (
         <>
             <div className="displayBlock" onClick={openModal}>
-                <div className="profileModal">
+                <div className="loginModal">
                     <div className="close-white" onClick={openModal}>
                         <img src="/ProductList/close-white.svg" alt=""/>
                     </div>
@@ -53,4 +42,4 @@ const UpdateModal = (props) => {
     )
 }
 
-export default UpdateModal
+export default LoginModal
