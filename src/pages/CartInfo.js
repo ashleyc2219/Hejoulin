@@ -495,7 +495,9 @@ const CartInfo = (props) => {
             </div>
             <div className="buyer-email-check">
               <div className="buyer-email">
-                <label className="form-label">電子信箱</label>
+                <label className="form-label">
+                  電子信箱 (將用於傳送驗證碼)
+                </label>
                 <input
                   type="text"
                   className={
@@ -654,12 +656,12 @@ const CartInfo = (props) => {
               <button className="btn btn-primary">上一步</button>
             </Link>
             {passThrough === true ? (
-              <Link to="/sub/cart-verify">
+              <Link to="/cart/verify">
                 <button
                   className="btn btn-secondary"
                   onClick={() => {
                     forCartVerifyInfo()
-                    // fectOutData()
+                    fectOutData()
                   }}
                 >
                   確認付款
