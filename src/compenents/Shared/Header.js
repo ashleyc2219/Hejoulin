@@ -39,7 +39,9 @@ const Header = (props) => {
     }
   }
 
-  getQuantity()
+  if (localStorage.token) {
+    getQuantity()
+  }
 
   useEffect(() => {
     if (!location.state) return
@@ -56,8 +58,8 @@ const Header = (props) => {
   }
   function authCtrl() {
     // console.log(localStorage.getItem('token'))
-    if (localStorage.getItem('token') !== null ){
-      return <LogoutHover setSidebar={setSidebar}/>
+    if (localStorage.getItem('token') !== null) {
+      return <LogoutHover setSidebar={setSidebar} />
     } else {
       return <LoginHover showSidebar={showSidebar} />
     }
@@ -67,6 +69,7 @@ const Header = (props) => {
     <>
       <div className="Header">
         <div className="Header-container">
+          {/* <AddCartModal /> */}
           {addcartmodal ? <AddCartModal /> : ''}
 
           <div className="logo-bread">

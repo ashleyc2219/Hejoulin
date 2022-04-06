@@ -18,20 +18,24 @@ const Heart = (props) => {
   }
 
   const click = () => {
-    if (active === true) {
-      ;(async function add() {
-        await insertFav()
-        await getFav()
-      })()
+    if (localStorage.token) {
+      if (active === true) {
+        ;(async function add() {
+          await insertFav()
+          await getFav()
+        })()
 
-      active = false
+        active = false
+      } else {
+        ;(async function del() {
+          await deleteFav()
+          await getFav()
+        })()
+
+        active = true
+      }
     } else {
-      ;(async function del() {
-        await deleteFav()
-        await getFav()
-      })()
-
-      active = true
+      alert('請登入會員')
     }
   }
 
