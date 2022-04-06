@@ -11,6 +11,7 @@
   @include medium(){
     width: 85%;
     margin:0 20px;
+    left: calc(50% - 42%);
   }
 
   .close {

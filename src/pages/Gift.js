@@ -10,11 +10,16 @@ import Color02 from '../compenents/Gift/Color02'
 import Color03 from '../compenents/Gift/Color03'
 import Detail from '../compenents/Gift/Detail'
 import AddCart from '../compenents/Gift/AddCart'
+import useWindowDimensions from '../compenents/Gift/WindowDim'
 
 // switch
 
 const Gift = (props) => {
-  const { setCartCount } = props
+  const { setCartCount, setAddcartmodal } = props
+  const [block01, setBlock01] = useState(false)
+  const [block02, setBlock02] = useState(false)
+  const [block03, setBlock03] = useState(false)
+
   const stepContent = ['選擇禮盒種類', '選擇清酒', '選擇禮盒顏色', '禮盒數量']
   const [step, setStep] = useState('one')
 
@@ -89,13 +94,23 @@ const Gift = (props) => {
       setName2(currentName)
       setPrice2(currentPrice)
       setImg2(currentImg)
-      setStep('three')
     } else if (value.current === 2 && !sakeId && sakeId2) {
       setSakeId(currentId)
       setName(currentName)
       setPrice(currentPrice)
       setImg(currentImg)
+    }
+
+    if (value.current === 2) {
       setStep('three')
+      setBlock02(true)
+      setTimeout(() => {
+        window.scroll({
+          top: 2.1 * 714,
+          left: 0,
+          behavior: 'smooth',
+        })
+      }, 500)
     }
   }, [value.current])
 
@@ -110,9 +125,10 @@ const Gift = (props) => {
     setName2('')
     setPrice2('')
     setImg2('')
-    // localStorage.removeItem('currentId')
     value.current = 0
   }
+
+  const { height, width } = useWindowDimensions()
 
   const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
   let url02 = `http://localhost:3001/api/product_gift`
@@ -127,7 +143,6 @@ const Gift = (props) => {
       const data = await res.json()
       setSake(data)
       giftId()
-      console.log(data)
     }
     fetchSake()
   }, [kind])
@@ -168,6 +183,15 @@ const Gift = (props) => {
                       setKind(1)
                       setStep('two')
                       reset()
+                      setBlock01(true)
+                      console.log(height)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
                     }}
                   >
                     <img src="/Gift/1.png" alt="" />
@@ -179,6 +203,14 @@ const Gift = (props) => {
                       setKind(2)
                       setStep('two')
                       reset()
+                      setBlock01(true)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
                     }}
                   >
                     <img src="/Gift/2.png" alt="" />
@@ -190,6 +222,14 @@ const Gift = (props) => {
                       setKind(3)
                       setStep('two')
                       reset()
+                      setBlock01(true)
+                      setTimeout(() => {
+                        window.scroll({
+                          top: 714,
+                          left: 0,
+                          behavior: 'smooth',
+                        })
+                      }, 500)
                     }}
                   >
                     <img src="/Gift/3.png" alt="" />
@@ -197,7 +237,7 @@ const Gift = (props) => {
                   </div>
                 </div>
               </section>
-              <section id="gift_sake">
+              <section id="gift_sake" className={`${block01 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -241,10 +281,12 @@ const Gift = (props) => {
                     setName={setName}
                     setPrice={setPrice}
                     setImg={setImg}
+                    setBlock02={setBlock02}
+                    height={height}
                   />
                 </div>
               </section>
-              <section id="gift_color">
+              <section id="gift_color" className={`${block02 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -258,6 +300,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
@@ -273,6 +317,8 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
@@ -287,12 +333,14 @@ const Gift = (props) => {
                     setComfirmColor={setComfirmColor}
                     step={step}
                     setStep={setStep}
+                    setBlock03={setBlock03}
+                    height={height}
                   />
                 ) : (
                   ''
                 )}
               </section>
-              <section id="gift_detail">
+              <section id="gift_detail" className={`${block03 ? '' : 'login'}`}>
                 <div className="header">
                   <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
                 </div>
@@ -405,6 +453,7 @@ const Gift = (props) => {
                       sakeId={sakeId}
                       sakeId2={sakeId2}
                       setCartCount={setCartCount}
+                      setAddcartmodal={setAddcartmodal}
                     />
                   </div>
                 </div>

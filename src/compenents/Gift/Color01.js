@@ -2,8 +2,18 @@ import React, { useState, useEffect } from 'react'
 import './Color01.scss'
 
 const Color01 = (props) => {
-  const { kind, sakeId, img, comfirmColor, setComfirmColor, step, setStep } =
-    props
+  const {
+    kind,
+    sakeId,
+    img,
+    comfirmColor,
+    setComfirmColor,
+    step,
+    setStep,
+    GiftLink,
+    setBlock03,
+    height,
+  } = props
 
   const [boxColor, setBoxColor] = useState('black')
 
@@ -61,6 +71,14 @@ const Color01 = (props) => {
             onClick={() => {
               setComfirmColor(boxColor)
               setStep('four')
+              setBlock03(true)
+              setTimeout(() => {
+                window.scroll({
+                  top: 3.15 * 714,
+                  left: 0,
+                  behavior: 'smooth',
+                })
+              }, 500)
             }}
           >
             下一步

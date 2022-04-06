@@ -72,176 +72,176 @@ function App() {
   //加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
   return (
-      <Router>
-        <>
-          <CartCount.Provider value={cartCount}>
-            <Header
+    <Router>
+      <>
+        <CartCount.Provider value={cartCount}>
+          <Header setCartCount={setCartCount} addcartmodal={addcartmodal} />
+        </CartCount.Provider>
+        <Switch>
+          <Route exact path="/news/detail/:id">
+            <NewsDetail />
+          </Route>
+          <Route exact path="/news/list">
+            <NewsList />
+          </Route>
+          <Route exact path="/sake-intro">
+            <SakeIntro />
+          </Route>
+          <Route exact path="/product/detail/:id">
+            <CartCount.Provider value={cartCount}>
+              <ProductDetail
+                compare={compare}
+                setCompare={setCompare}
+                setCartCount={setCartCount}
+                setAddcartmodal={setAddcartmodal}
+              />
+            </CartCount.Provider>
+          </Route>
+          <Route exact path="/product/list">
+            <CartCount.Provider value={cartCount}>
+              <ProductList
+                compare={compare}
+                setCompare={setCompare}
+                setCartCount={setCartCount}
+                setAddcartmodal={setAddcartmodal}
+              />
+            </CartCount.Provider>
+          </Route>
+          <Route exact path="/sake-guide">
+            <SakeGuide />
+          </Route>
+          <Route exact path="/gift">
+            <Gift
               setCartCount={setCartCount}
-              addcartmodal={addcartmodal}
+              setAddcartmodal={setAddcartmodal}
             />
-          </CartCount.Provider>
-          <Switch>
-            <Route exact path="/news/detail/:id">
-              <NewsDetail />
-            </Route>
-            <Route exact path="/news/list">
-              <NewsList />
-            </Route>
-            <Route exact path="/sake-intro">
-              <SakeIntro />
-            </Route>
-            <Route exact path="/product/detail/:id">
-              <CartCount.Provider value={cartCount}>
-                <ProductDetail
-                  compare={compare}
-                  setCompare={setCompare}
-                  setCartCount={setCartCount}
-                  setAddcartmodal={setAddcartmodal}
-                />
-              </CartCount.Provider>
-            </Route>
-            <Route exact path="/product/list">
-              <CartCount.Provider value={cartCount}>
-                <ProductList
-                  compare={compare}
-                  setCompare={setCompare}
-                  setCartCount={setCartCount}
-                  setAddcartmodal={setAddcartmodal}
-                />
-              </CartCount.Provider>
-            </Route>
-            <Route exact path="/sake-guide">
-              <SakeGuide />
-            </Route>
-            <Route exact path="/gift">
-              <Gift setCartCount={setCartCount} />
-            </Route>
-            <Route exact path="/mark/intro">
-              <MarkIntro />
-            </Route>
-            <Route exact path="/mark/edit">
-              <MarkEdit />
-            </Route>
-            <Route exact path="/mark/done">
-              <MarkDone />
-            </Route>
-            <Route exact path="/sub/plan">
-              <SubPlan
-                subPlan={subPlan}
-                setSubPlan={setSubPlan}
-                subPlanTotal={subPlanTotal}
-                setSubPlanTotal={setSubPlanTotal}
+          </Route>
+          <Route exact path="/mark/intro">
+            <MarkIntro />
+          </Route>
+          <Route exact path="/mark/edit">
+            <MarkEdit />
+          </Route>
+          <Route exact path="/mark/done">
+            <MarkDone />
+          </Route>
+          <Route exact path="/sub/plan">
+            <SubPlan
+              subPlan={subPlan}
+              setSubPlan={setSubPlan}
+              subPlanTotal={subPlanTotal}
+              setSubPlanTotal={setSubPlanTotal}
+            />
+          </Route>
+          <Route exact path="/sub/time">
+            <SubTime
+              subPlan={subPlan}
+              subPlanTotal={subPlanTotal}
+              setSubTimeTotal={setSubTimeTotal}
+              setSubTimeMonth={setSubTimeMonth}
+            />
+          </Route>
+          <Route exact path="/sub/confirm">
+            <SubConfirm
+              subPlan={subPlan}
+              subTimeTotal={subTimeTotal}
+              subTimeMonth={subTimeMonth}
+            />
+          </Route>
+          <Route exact path="/sub/cart-list">
+            <SubCartList />
+          </Route>
+          <Route exact path="/sub/cart-info">
+            <SubCartInfo />
+          </Route>
+          <Route exact path="/sub/cart-verify">
+            <SubCartVerify />
+          </Route>
+          <Route exact path="/sub/cart-order">
+            <SubCartOrder />
+          </Route>
+          <Route exact path="/event/detail/:id">
+            <EventDetail />
+          </Route>
+          <Route exact path="/event/list">
+            <EventList />
+          </Route>
+          <Route exact path="/cart/list">
+            <CartList setCartSummary={setCartSummary} />
+          </Route>
+          <Route exact path="/cart/info">
+            <CartSummary.Provider value={cartSummary}>
+              <CartInfo
+                setCartVerifyInfo={setCartVerifyInfo}
+                setCartSummary={setCartSummary}
               />
-            </Route>
-            <Route exact path="/sub/time">
-              <SubTime
-                subPlan={subPlan}
-                subPlanTotal={subPlanTotal}
-                setSubTimeTotal={setSubTimeTotal}
-                setSubTimeMonth={setSubTimeMonth}
+            </CartSummary.Provider>
+          </Route>
+          <Route exact path="/cart/verify">
+            <CartVerifyInfo.Provider value={cartVerifyInfo}>
+              <CartVerify />
+            </CartVerifyInfo.Provider>
+          </Route>
+          <Route exact path="/cart/order">
+            <CartSummary.Provider value={cartSummary}>
+              <CartOrder />
+            </CartSummary.Provider>
+          </Route>
+          <Route exact path="/restaurant/detail/:id">
+            <RestaurantDetail />
+          </Route>
+          <Route exact path="/restaurant/list">
+            <RestaurantList />
+          </Route>
+          <Route exact path="/member/profile">
+            <MemberProfile />
+          </Route>
+          <Route exact path="/member/order-list/detail">
+            <MemberOrderListDetail
+              detailData={detailData}
+              setDetailData={setDetailData}
+            />
+          </Route>
+          <Route exact path="/member/order-list">
+            <MemberOrderList
+              detailData={detailData}
+              setDetailData={setDetailData}
+            />
+          </Route>
+          <Route exact path="/member/event-list/detail/:id">
+            <MemberEventListDetail />
+          </Route>
+          <Route exact path="/member/event-list">
+            <MemberEventList />
+          </Route>
+          <Route exact path="/member/sub-list/detail/:id">
+            <MemberSubListDetail />
+          </Route>
+          <Route exact path="/member/sub-list">
+            <MemberSubList />
+          </Route>
+          <Route exact path="/member/fav">
+            <CartCount.Provider value={cartCount}>
+              <MemberFav
+                compare={compare}
+                setCompare={setCompare}
+                setCartCount={setCartCount}
               />
-            </Route>
-            <Route exact path="/sub/confirm">
-              <SubConfirm
-                subPlan={subPlan}
-                subTimeTotal={subTimeTotal}
-                subTimeMonth={subTimeMonth}
-              />
-            </Route>
-            <Route exact path="/sub/cart-list">
-              <SubCartList />
-            </Route>
-            <Route exact path="/sub/cart-info">
-              <SubCartInfo />
-            </Route>
-            <Route exact path="/sub/cart-verify">
-              <SubCartVerify />
-            </Route>
-            <Route exact path="/sub/cart-order">
-              <SubCartOrder />
-            </Route>
-            <Route exact path="/event/detail/:id">
-              <EventDetail />
-            </Route>
-            <Route exact path="/event/list">
-              <EventList />
-            </Route>
-            <Route exact path="/cart/list">
-              <CartList setCartSummary={setCartSummary} />
-            </Route>
-            <Route exact path="/cart/info">
-              <CartSummary.Provider value={cartSummary}>
-                <CartInfo
-                  setCartVerifyInfo={setCartVerifyInfo}
-                  setCartSummary={setCartSummary}
-                />
-              </CartSummary.Provider>
-            </Route>
-            <Route exact path="/cart/verify">
-              <CartVerifyInfo.Provider value={cartVerifyInfo}>
-                <CartVerify />
-              </CartVerifyInfo.Provider>
-            </Route>
-            <Route exact path="/cart/order">
-              <CartSummary.Provider value={cartSummary}>
-                <CartOrder />
-              </CartSummary.Provider>
-            </Route>
-            <Route exact path="/restaurant/detail/:id">
-              <RestaurantDetail />
-            </Route>
-            <Route exact path="/restaurant/list">
-              <RestaurantList />
-            </Route>
-            <Route exact path="/member/profile">
-              <MemberProfile />
-            </Route>
-            <Route exact path="/member/order-list/detail">
-              <MemberOrderListDetail
-                  detailData={detailData}
-                  setDetailData={setDetailData}
-              />
-            </Route>
-            <Route exact path="/member/order-list">
-              <MemberOrderList
-                  detailData={detailData}
-                  setDetailData={setDetailData}
-              />
-            </Route>
-            <Route exact path="/member/event-list/detail/:id">
-              <MemberEventListDetail />
-            </Route>
-            <Route exact path="/member/event-list">
-              <MemberEventList />
-            </Route>
-            <Route exact path="/member/sub-list/detail/:id">
-              <MemberSubListDetail />
-            </Route>
-            <Route exact path="/member/sub-list">
-              <MemberSubList />
-            </Route>
-            <Route exact path="/member/fav">
-              <CartCount.Provider value={cartCount}>
-                <MemberFav
-                  compare={compare}
-                  setCompare={setCompare}
-                  setCartCount={setCartCount}
-                />
-              </CartCount.Provider>
-            </Route>
-            <Route exact path="/member/mark">
-              <MemberMark/>
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="*">
-              <NotFoundPage />
-            </Route>
-          </Switch>
-          <Footer />
-        </>
-      </Router>
+            </CartCount.Provider>
+          </Route>
+          <Route exact path="/member/mark">
+            <MemberMark />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
+        </Switch>
+        <Footer />
+      </>
+    </Router>
   )
 }
 
