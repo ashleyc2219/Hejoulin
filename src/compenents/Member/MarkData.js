@@ -1,67 +1,68 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import MarkModal from './MarkModal'
 import '../../styles/Member/Member-Mark/MarkData.scss'
 
-const MarkData = () => {
-  const [modalShow, setModalShow] = useState(false)
-  const [markData, setMarkData] = useState([])
+const MarkData = (props) => {
+    const {markData, setMarkData} = props
+    const [modalShow, setModalShow] = useState(false)
+    const [currentPic, setCurrentPic] = useState([])
+    const [picsName, setPicsName] = useState([])
+    const openModal = () => {
+        setModalShow((prev) => !prev)
+    }
 
-  const openModal = () => {
-    setModalShow((prev) => !prev)
-  }
-  useEffect(() => {
-    ;(async () => {
-      const obj = await (
-        await fetch('http://localhost:3001/user/member/MemberMark', {
-          method: 'POST',
-          headers: {
-            Authorization: 'Bearer ' + localStorage.token,
-          },
-        })
-      ).json()
-      console.log(obj)
-      setMarkData(obj)
-    })()
-  }, [])
+    const renderImg = async (markData) => {
+        if (markData && markData.length) {
+            return await markData.map((el, i) => (
+                <div className="MarkPic" onClick={openModal} key={i}>
+                    <img
+                        src={'http://localhost:3001/images/mark_pic/' + el.pics}
+                        alt=""
+                    />
+                </div>
+            ))
+        }
+    }
 
-  const renderImg = (markData) => {
+    const renderImgName = (markData) => {
+        if (markData && markData.length) {
+            return markData.map((el, i) => (
+                <div className="MarkName" key={i}>
+                    <input type="checkbox" id="c1" name="cc"/>
+                    <label htmlFor="c1">
+                        <span></span>酒標名稱 : {el.mark_name}
+                    </label>
+                </div>
+            ))
+        }
+    }
+
     return (
-      <img
-        src={'http://localhost:3001/images/member_mark_pic/' + markData[0].pics}
-        alt=""
-      />
+        <>
+            <div className="MarkItem">
+                {/*{markData.length > 0 ? (*/}
+                {/*    renderImg(markData)*/}
+                {/*) : (*/}
+                {/*    ''*/}
+                {/*)}*/}
+                {/*{markData.length > 0 ? (*/}
+                {/*    renderImgName(markData)*/}
+                {/*) : (*/}
+                {/*    ''*/}
+                {/*)}*/}
+                {modalShow ? (
+                    <MarkModal
+                        modalShow={modalShow}
+                        setModalShow={setModalShow}
+                        markData={markData}
+                        setMarkData={setMarkData}
+                    />
+                ) : (
+                    ''
+                )}
+            </div>
+        </>
     )
-  }
-
-  return (
-    <>
-      <div className="MarkItem">
-        <div className="MarkPic" onClick={openModal}>
-          {markData.length > 0 ? (
-            renderImg(markData)
-          ) : (
-            <img src="http://localhost:3000/Member/MarkEX.svg" alt="" />
-          )}
-        </div>
-        <div className="MarkName">
-          <input type="checkbox" id="c1" name="cc" />
-          <label htmlFor="c1">
-            <span></span>酒標名稱 : 我的酒標一
-          </label>
-        </div>
-        {modalShow ? (
-          <MarkModal
-            modalShow={modalShow}
-            setModalShow={setModalShow}
-            markData={markData}
-            setMarkData={setMarkData}
-          />
-        ) : (
-          ''
-        )}
-      </div>
-    </>
-  )
 }
 
 export default MarkData
