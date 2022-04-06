@@ -54,9 +54,15 @@ const Header = (props) => {
     setMobileMenu(!mobileMenu)
     setOpen(false)
   }
+  // 用給token的時機來控登入顯示
   function authCtrl() {
     // console.log(localStorage.getItem('token'))
-    if (localStorage.getItem('token') !== null ){
+    if (
+        localStorage.getItem('token') !== null
+        && localStorage.getItem('token') !== ''
+        && localStorage.getItem('token') !== 'null'
+    )
+    {
       return <LogoutHover setSidebar={setSidebar}/>
     } else {
       return <LoginHover showSidebar={showSidebar} />
