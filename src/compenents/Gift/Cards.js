@@ -43,7 +43,6 @@ const Cards = (props) => {
     setPrice,
     setImg,
     setBlock02,
-    height,
   } = props
 
   const [sakeButton, setSakeButton] = useState(0)
@@ -237,7 +236,6 @@ const Cards = (props) => {
                   pro_id={pro_id}
                   setStep={setStep}
                   setBlock02={setBlock02}
-                  height={height}
                 />
               </div>
             )}

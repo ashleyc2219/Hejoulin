@@ -12,7 +12,6 @@ const SakeButtonSingle = (props) => {
     setSakeButton,
     pro_id,
     setStep,
-    height,
     setBlock02,
   } = props
 
@@ -39,7 +38,7 @@ const SakeButtonSingle = (props) => {
               setBlock02(true)
               setTimeout(() => {
                 window.scroll({
-                  top: 2.1 * 714,
+                  top: 2.3 * 714,
                   left: 0,
                   behavior: 'smooth',
                 })

@@ -41,9 +41,7 @@ const SakeItems = (props) => {
     setName,
     setPrice,
     setImg,
-    GiftLink,
     setBlock02,
-    height,
   } = props
 
   const minus = () => {
@@ -93,9 +91,7 @@ const SakeItems = (props) => {
           setName={setName}
           setPrice={setPrice}
           setImg={setImg}
-          GiftLink={GiftLink}
           setBlock02={setBlock02}
-          height={height}
         />
       </React.Fragment>
     )

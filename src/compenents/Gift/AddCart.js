@@ -62,7 +62,7 @@ const AddCart = (props) => {
               addcart(cartCount, kind, comfirmColor)
               setTimeout(() => {
                 window.scroll({ top: 0, left: 0, behavior: 'smooth' })
-              }, 2000)
+              }, 1000)
             }}
           >
             <img src="/Gift/cart.svg" alt="" className="cart" />

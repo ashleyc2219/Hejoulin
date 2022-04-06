@@ -25,7 +25,6 @@ const SakeButton = (props) => {
     sakeId,
     sakeId2,
     setBlock02,
-    height,
   } = props
   const [modal, setModal] = useState(false)
   const closeModal = () => setModal(false)

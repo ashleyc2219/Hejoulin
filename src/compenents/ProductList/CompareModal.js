@@ -125,7 +125,12 @@ const CompareModal = ({
   useEffect(() => {}, [reload])
   return (
     <>
-      <div className="CompareModal">
+      <div
+        className="CompareModal"
+        onClick={() => {
+          setComparemodel(false)
+        }}
+      >
         <div className="comparepage">
           <div
             onClick={() => {

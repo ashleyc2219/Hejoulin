@@ -38,11 +38,6 @@
   }
 
   .page {
-    @include medium() {
-      display: flex;
-      justify-content: center;
-    }
-
     #modal {
       position: relative;
       width: 1080px;
@@ -56,9 +51,7 @@
       }
       @include medium() {
         width: 85%;
-        height: 75%;
-        // position: absolute;
-        // top: 15vh;
+        height: 500px;
         padding: 30px 32px;
         overflow-x: hidden;
         overflow-y: scroll;
@@ -194,6 +187,12 @@
                 position: inherit;
                 top: 100px;
                 left: 45px;
+              }
+              @include medium(){
+                top: -90px;
+                .price{
+                  top: 60px;
+                }
               }
             }
           }
