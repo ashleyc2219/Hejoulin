@@ -55,8 +55,8 @@ const OrderData = (props) => {
             ).json()
             console.log(obj)
             setOrderData(obj.rows)
-            console.log(obj.orderDetail)
-            setDetailData(obj.orderDetail)
+            console.log(obj.orderDetail[0])
+            setDetailData(obj.orderDetail[0])
         })()
         ;(async () => {
             const obj2 = await (
@@ -68,14 +68,14 @@ const OrderData = (props) => {
                     body: 1,
                 })
             ).json()
-            // console.log(obj2)
             setPageData(obj2.rows)
             setOrderData(obj2.rows)
-            // console.log(obj2.length)
+            setDetailData(obj2.orderDetail[0])
         })()
     }, [])
 
 
+    // 頁籤
     const filterData = (d) => {
         if (d && d.length) {
             for (const e of d) {
@@ -120,7 +120,9 @@ const OrderData = (props) => {
                     <td>{el.order_state}</td>
                     <td className="button-g">
                         <Link to="/member/order-list/detail">
-                            <button className="btn btn-primary" onClick={()=>localStorage.setItem('orderDetail', JSON.stringify(el))}>查看訂單</button>
+                            <button className="btn btn-primary"
+                                    onClick={() => localStorage.setItem('orderDetail', JSON.stringify(detailData))}>查看訂單
+                            </button>
                         </Link>
                         {' '}
                         <button className="btn btn-secondary">再買一次</button>

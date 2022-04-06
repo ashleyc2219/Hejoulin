@@ -3,68 +3,24 @@ import ProgressBarM from "../compenents/Member/AllTabs/OrderList/ProgressBarM";
 import '../styles/Member/Member-Order/MemberOrderListDetail.scss'
 import {Link} from "react-router-dom";
 
-const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetailData }) => {
+const MemberOrderListDetail = ({currentRow, setCurrentRow, detailData, setDetailData}) => {
     const stepContent = ['訂單成立', '已出貨', '物流收件', '已送達']
 
     // onClick={()=>setCurrentRow('orderData')}
 
-    useEffect(()=>{
+    useEffect(() => {
         setDetailData(JSON.parse(localStorage.getItem('orderDetail')))
     }, [])
 
     console.log(detailData)
-    const renderDetailItem =  (detailData) => {
+    const renderDetailItem = (detailData) => {
         if (detailData && detailData.length) {
             return detailData.map((el) => (
-                <div className="list-summary">
-                    <div className="table-row">
-                        <p>小計</p>
-                        <p className="dollar-sign">{el.order_d_price}</p>
-                    </div>
-                    <div className="table-row">
-                        <p>折扣碼</p>
-                        <p></p>
-                    </div>
-                    <div className="table-row">
-                        <p>運費</p>
-                        <p className="dollar-sign">0</p>
-                    </div>
-                    <div className="table-row">
-                        <p>總計</p>
-                        <p className="dollar-sign total">{el.order_d_price}</p>
-                    </div>
-                </div>
-        ))
-        } else {
-            return (
-                <div className="list-summary">
-                    <div className="table-row">
-                        <p>小計</p>
-                        <p className="dollar-sign">無資料</p>
-                    </div>
-                    <div className="table-row">
-                        <p>折扣碼</p>
-                        <p></p>
-                    </div>
-                    <div className="table-row">
-                        <p>運費</p>
-                        <p className="dollar-sign">無資料</p>
-                    </div>
-                    <div className="table-row">
-                        <p>總計</p>
-                        <p className="dollar-sign total">無資料</p>
-                    </div>
-                </div>
-            )
-        }
-    }
-    return (
-        <>
-            <div className="MemberOrderListDetail">
-                <ProgressBarM step="one" content={stepContent}/>
-                <div className="listDetail-container">
-                    <div className="left-list">
-                        <div className="mobile-table-btn "><span className="total">訂單總計: $ 11120</span></div>
+                <div key={el.pro_img}>
+                    <div className="left-list" >
+                        <div className="mobile-table-btn ">
+                            <span className="total">訂單總計: $ {el.order_d_price}</span>
+                        </div>
                         <div className="list-table">
                             <div className="table-head ">
                                 <span className="title-product">商品</span>
@@ -72,42 +28,40 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                                 <span className="title-subtotal">小計</span>
                             </div>
                         </div>
-                        {/*<div className="list-summary">*/}
-                        {/*    <div className="table-row">*/}
-                        {/*        <p>小計</p>*/}
-                        {/*        <p className="dollar-sign">11120</p>*/}
-                        {/*    </div>*/}
-                        {/*    <div className="table-row">*/}
-                        {/*        <p>折扣碼</p>*/}
-                        {/*        <p></p>*/}
-                        {/*    </div>*/}
-                        {/*    <div className="table-row">*/}
-                        {/*        <p>運費</p>*/}
-                        {/*        <p className="dollar-sign">0</p>*/}
-                        {/*    </div>*/}
-                        {/*    <div className="table-row">*/}
-                        {/*        <p>總計</p>*/}
-                        {/*        <p className="dollar-sign total">11120</p>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {renderDetailItem(detailData)}
-                        <div className="mobile-table-btn">
-                            <span className="product-count">↓ 共4件商品</span>
+                        <div className="list-summary">
+                            <div className="table-row">
+                                <p>小計</p>
+                                <p className="dollar-sign">{el.order_d_price}</p>
+                            </div>
+                            <div className="table-row">
+                                <p>折扣碼</p>
+                                <p>{el.used_code}</p>
+                            </div>
+                            <div className="table-row">
+                                <p>運費</p>
+                                <p className="dollar-sign">0</p>
+                            </div>
+                            <div className="table-row">
+                                <p>總計</p>
+                                <p className="dollar-sign total">{el.order_d_price}</p>
+                            </div>
                         </div>
                     </div>
                     <div className="rightOrder">
                         <div className="order-container">
                             <img src="/CartList/orderBg.png" alt=""/>
                             <div className="order-title">
-                                <label className="form-label">訂單編碼 20220110001</label>
-                                <span>2022-01-10</span>
+                                <label className="form-label">訂單編碼 {el.order_id}</label>
+                                <span>{el.order_date.slice(1, 10)}</span>
                             </div>
                             <div className="order-row">
                                 <div className="row-head">
                                     <p>購買人資訊</p>
                                 </div>
                                 <div className="row-data">
-                                    <p></p><p></p><p></p>
+                                    <p>{el.order_name}</p>
+                                    <p>{el.order_mobile}</p>
+                                    <p>{el.order_email}</p>
                                 </div>
                             </div>
                             <hr/>
@@ -116,7 +70,9 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                                     <p>收件人資訊</p>
                                 </div>
                                 <div className="row-data">
-                                    <p></p><p></p>
+                                    <p>{el.order_name}</p>
+                                    <p>{el.order_mobile}</p>
+                                    <p>{el.order_email}</p>
                                 </div>
                             </div>
                             <hr/>
@@ -125,8 +81,8 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                                     <p>貨運資訊</p>
                                 </div>
                                 <div className="row-data">
-                                    <p>門市取貨</p>
-                                    <p></p>
+                                    <p>{el.shipment_method}</p>
+                                    <p>{el.shipment_address}</p>
                                 </div>
                             </div>
                             <hr/>
@@ -136,7 +92,7 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                                 </div>
                                 <div className="row-data payment">
                                     <p>信用卡付款</p>
-                                    <p>卡號末四碼 </p>
+                                    <p>卡號末四碼 {el.card_num}</p>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +100,18 @@ const MemberOrderListDetail = ({ currentRow, setCurrentRow, detailData, setDetai
                             <button className="btn btn-secondary">返回</button>
                         </Link>
                     </div>
+                </div>
+            ))
+        } else {
+            return null
+        }
+    }
+    return (
+        <>
+            <div className="MemberOrderListDetail">
+                <ProgressBarM step="one" content={stepContent}/>
+                <div className="listDetail-container">
+                    {renderDetailItem(detailData)}
                 </div>
             </div>
         </>
