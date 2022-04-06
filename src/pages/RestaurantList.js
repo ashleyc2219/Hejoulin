@@ -5,6 +5,7 @@ import List from '../compenents/restaurant/List'
 import Map from '../compenents/restaurant/Map'
 import MapList from '../compenents/restaurant/MapList'
 import ClickMobile from '../compenents/restaurant/ClickMobile'
+import Spinner from '../compenents/Shared/Spinner'
 
 import './../styles/RestaurantList/RestaurantList.scss'
 
@@ -15,6 +16,7 @@ const RestaurantList = () => {
   const [placesPics, setPlacesPics] = useState([])
   const [zoom, setZoom] = useState(12)
   const [bounds, setBounds] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   // 初始經緯度
   const [coordinates, setCoordinates] = useState({
@@ -47,6 +49,9 @@ const RestaurantList = () => {
       setDisplayPlaces(obj)
     }
     fetchData()
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
   }, [])
 
   // 接餐廳圖片資料
@@ -106,11 +111,15 @@ const RestaurantList = () => {
               className="d-none d-lg-block col-6"
               style={{ paddingRight: '0' }}
             >
-              <MapList
-                childClicked={childClicked}
-                displayPlaces={displayPlaces}
-                placesPics={placesPics}
-              />
+              {loading ? (
+                <Spinner />
+              ) : (
+                <MapList
+                  childClicked={childClicked}
+                  displayPlaces={displayPlaces}
+                  placesPics={placesPics}
+                />
+              )}
             </div>
             <div className="col-12 col-lg-6" style={{ paddingLeft: '0' }}>
               {' '}
