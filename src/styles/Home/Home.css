@@ -47,7 +47,7 @@ body {
   -webkit-transform-origin: 50% 49%;
           transform-origin: 50% 49%;
   -webkit-animation: wave-data-v-c0cb0066 24s linear infinite;
-  animation: wave-data-v-c0cb0066 24s linear infinite;
+  animation: wave-data-v-c0cb0066 300s linear infinite;
 }
 
 .home .wave-line .line[data-v-c0cb0066]:first-of-type {
@@ -71,13 +71,13 @@ body {
 
 .home .wave-line .line[data-v-c0cb0066]:nth-of-type(10) {
   border-radius: 36%;
-  -webkit-animation-duration: 24.4s;
-  animation-duration: 24.4s;
+  -webkit-animation-duration: 600s;
+  animation-duration: 600s;
 }
 
 .home .wave-line .line[data-v-c0cb0066]:nth-of-type(2) {
-  -webkit-animation-duration: 18s;
-  animation-duration: 18s;
+  -webkit-animation-duration: 36s;
+  animation-duration: 36s;
 }
 
 .home .wave-line .line[data-v-c0cb0066]:nth-of-type(3) {
@@ -547,11 +547,5 @@ body {
 
 .home .sub-box .sub-word .sub-word-content p b {
   text-combine-upright: all;
-}
-
-.home .sakeintro-title .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 /*# sourceMappingURL=Home.css.map */

@@ -57,7 +57,7 @@ body {
     border-radius: 24%;
     transform-origin: 50% 49%;
     -webkit-animation: wave-data-v-c0cb0066 24s linear infinite;
-    animation: wave-data-v-c0cb0066 24s linear infinite;
+    animation: wave-data-v-c0cb0066 300s linear infinite;
   }
 
   .wave-line .line[data-v-c0cb0066]:first-of-type {
@@ -81,13 +81,13 @@ body {
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(10) {
     border-radius: 36%;
-    -webkit-animation-duration: 24.4s;
-    animation-duration: 24.4s;
+    -webkit-animation-duration: 600s;
+    animation-duration: 600s;
   }
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(2) {
-    -webkit-animation-duration: 18s;
-    animation-duration: 18s;
+    -webkit-animation-duration: 36s;
+    animation-duration: 36s;
   }
 
   .wave-line .line[data-v-c0cb0066]:nth-of-type(3) {
