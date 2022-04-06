@@ -10,7 +10,6 @@ import Color02 from '../compenents/Gift/Color02'
 import Color03 from '../compenents/Gift/Color03'
 import Detail from '../compenents/Gift/Detail'
 import AddCart from '../compenents/Gift/AddCart'
-import useWindowDimensions from '../compenents/Gift/WindowDim'
 
 // switch
 
@@ -106,7 +105,7 @@ const Gift = (props) => {
       setBlock02(true)
       setTimeout(() => {
         window.scroll({
-          top: 2.1 * 714,
+          top: 2.3 * 714,
           left: 0,
           behavior: 'smooth',
         })
@@ -127,8 +126,6 @@ const Gift = (props) => {
     setImg2('')
     value.current = 0
   }
-
-  const { height, width } = useWindowDimensions()
 
   const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
   let url02 = `http://localhost:3001/api/product_gift`
@@ -184,10 +181,9 @@ const Gift = (props) => {
                       setStep('two')
                       reset()
                       setBlock01(true)
-                      console.log(height)
                       setTimeout(() => {
                         window.scroll({
-                          top: 714,
+                          top: 739,
                           left: 0,
                           behavior: 'smooth',
                         })
@@ -206,7 +202,7 @@ const Gift = (props) => {
                       setBlock01(true)
                       setTimeout(() => {
                         window.scroll({
-                          top: 714,
+                          top: 739,
                           left: 0,
                           behavior: 'smooth',
                         })
@@ -225,7 +221,7 @@ const Gift = (props) => {
                       setBlock01(true)
                       setTimeout(() => {
                         window.scroll({
-                          top: 714,
+                          top: 739,
                           left: 0,
                           behavior: 'smooth',
                         })
@@ -282,7 +278,6 @@ const Gift = (props) => {
                     setPrice={setPrice}
                     setImg={setImg}
                     setBlock02={setBlock02}
-                    height={height}
                   />
                 </div>
               </section>
@@ -301,7 +296,6 @@ const Gift = (props) => {
                     step={step}
                     setStep={setStep}
                     setBlock03={setBlock03}
-                    height={height}
                   />
                 ) : (
                   ''
@@ -318,7 +312,6 @@ const Gift = (props) => {
                     step={step}
                     setStep={setStep}
                     setBlock03={setBlock03}
-                    height={height}
                   />
                 ) : (
                   ''
@@ -334,7 +327,6 @@ const Gift = (props) => {
                     step={step}
                     setStep={setStep}
                     setBlock03={setBlock03}
-                    height={height}
                   />
                 ) : (
                   ''

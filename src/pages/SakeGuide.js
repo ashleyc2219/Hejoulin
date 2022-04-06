@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Question from '../compenents/SakeGuide/Question'
 import './../styles/SakeGuide/SakeGuide.scss'
+
+import Question from '../compenents/SakeGuide/Question'
 import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
-import Answer from '../compenents/SakeGuide/Answer'
+import useWindowDimensions from '../compenents/SakeGuide/WindowDim'
 
 const SakeGuide = () => {
   const [content, setContent] = useState([])
@@ -16,7 +17,8 @@ const SakeGuide = () => {
   const [taste, setTaste] = useState('') //最後的taste ?
   const [temp, setTemp] = useState('') //溫度
   const [gift, setGift] = useState(false) //送禮
-  const [sakeId, setSakeId] = useState(0) //設定最終的id
+
+  const { height, width } = useWindowDimensions()
 
   const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
   const sake = content.map((v, i) => {
@@ -78,7 +80,18 @@ const SakeGuide = () => {
               </div>
             </div>
             <div className="location">
-              <button className="begin">
+              <button
+                className="begin"
+                onClick={() => {
+                  setTimeout(() => {
+                    window.scroll({
+                      top: height,
+                      left: 0,
+                      behavior: 'smooth',
+                    })
+                  }, 500)
+                }}
+              >
                 <p>立即開始</p>
                 <span>scroll</span>
                 <div className="line"></div>
@@ -93,13 +106,14 @@ const SakeGuide = () => {
             setTaste={setTaste}
             setTemp={setTemp}
             setGift={setGift}
+            height={height}
           />
           <section className="price">
             <div className="text">
               <p className="question">預估花費</p>
-              <p classNmae="question price_low">${minPrice}</p>
+              <p className="question price_low">${minPrice}</p>
               <p className="question symbol">~</p>
-              <p classNmae="question price_high">${maxPrice}</p>
+              <p className="question price_high">${maxPrice}</p>
             </div>
             <div className="range">
               <MultiRangeSlider
@@ -107,8 +121,9 @@ const SakeGuide = () => {
                 max={14800}
                 setMinPrice={setMinPrice}
                 setMaxPrice={setMaxPrice}
-                onChange={({ min, max }) =>
-                  console.log(`min = ${min}, max = ${max}`)
+                onChange={
+                  ({ min, max }) => {}
+                  // console.log(`min = ${min}, max = ${max}`)
                 }
               />
             </div>
@@ -116,11 +131,14 @@ const SakeGuide = () => {
               <button
                 className="comfirm btn btn-warning"
                 onClick={() => {
-                  console.log(
-                    `thickness=${thickness},smooth=${smooth},sweet=${sweet},temp=${temp},gift=${gift},minPrice=${minPrice},maxPrice=${maxPrice}`
-                  )
-
                   setTaste(thickness + smooth + sweet)
+                  setTimeout(() => {
+                    window.scroll({
+                      top: height * 6,
+                      left: 0,
+                      behavior: 'smooth',
+                    })
+                  }, 500)
                 }}
               >
                 察看結果
@@ -134,21 +152,7 @@ const SakeGuide = () => {
           <div className="title">
             <h4>推薦酒款</h4>
           </div>
-          <div className="sakes">
-            {sake}
-            {/* <div className="box left">
-              <div className="sake_circle uno"></div>
-              <img src="/SakeGuide/4.png" alt="" />
-            </div>
-            <div className="box center">
-              <div className="sake_circle dos"></div>
-              <img src="/SakeGuide/4.png" alt="" />
-            </div>
-            <div className="box right">
-              <div className="sake_circle tres"></div>
-              <img src="/SakeGuide/4.png" alt="" />
-            </div> */}
-          </div>
+          <div className="sakes">{sake}</div>
           <div className="anime_bg">
             <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
             <div className="line_wave">
