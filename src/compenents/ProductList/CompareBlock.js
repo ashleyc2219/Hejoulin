@@ -110,13 +110,16 @@ const CompareBlock = ({
         setStyle({ top: '180px' })
       }
       if (window.innerHeight > 800) {
+        if (window.scrollY >= 200) {
+          setStyle({ top: '0px' })
+        } else {
+          setStyle({ top: '180px' })
+        }
         if (
           window.innerHeight + window.scrollY >=
           document.body.offsetHeight - 200
         ) {
           setStyle({ top: '-180px' })
-        } else {
-          setStyle({ top: '180px' })
         }
       }
     } else {
@@ -193,7 +196,7 @@ const CompareBlock = ({
     <>
       <div style={style} className="compare-block">
         <div className="compare-wrap">
-          <GuideButton />
+          <GuideButton compare={compare} />
           {/* <div className="product">
             <img src="/ProductList/product.png" alt="" />
             <p className="name">篠峯 雄町純米大吟醸</p>
