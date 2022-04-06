@@ -1,8 +1,17 @@
 import React from 'react'
+import smooth from 'react-scroll/modules/mixins/smooth'
 import { CartCount } from '../../App'
 
 const AddCart = (props) => {
-  const { quality, kind, comfirmColor, sakeId, sakeId2, setCartCount } = props
+  const {
+    quality,
+    kind,
+    comfirmColor,
+    sakeId,
+    sakeId2,
+    setCartCount,
+    setAddcartmodal,
+  } = props
 
   const addcart = async (num) => {
     const a = quality + num
@@ -33,7 +42,10 @@ const AddCart = (props) => {
       )
       const data = await fetchResponse.json()
       if (data.success) {
-        // alert('已加入購物車')
+        setAddcartmodal(true)
+        setTimeout(() => {
+          setAddcartmodal(false)
+        }, 4000)
       }
     } catch (e) {
       return e
@@ -48,6 +60,9 @@ const AddCart = (props) => {
             className="btn btn-primary btn-sm gift_cart"
             onClick={() => {
               addcart(cartCount, kind, comfirmColor)
+              setTimeout(() => {
+                window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+              }, 2000)
             }}
           >
             <img src="/Gift/cart.svg" alt="" className="cart" />

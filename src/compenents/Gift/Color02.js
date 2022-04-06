@@ -11,6 +11,9 @@ const Color02 = (props) => {
     setComfirmColor,
     step,
     setStep,
+    GiftLink,
+    setBlock03,
+    height,
   } = props
   const [boxColor, setBoxColor] = useState('black')
 
@@ -74,6 +77,14 @@ const Color02 = (props) => {
           onClick={() => {
             setComfirmColor(boxColor)
             setStep('four')
+            setBlock03(true)
+            setTimeout(() => {
+                window.scroll({
+                  top: 3.15 * 714,
+                  left: 0,
+                  behavior: 'smooth',
+                })
+              }, 500)
           }}
         >
           下一步

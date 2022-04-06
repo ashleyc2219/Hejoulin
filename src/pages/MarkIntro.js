@@ -1,8 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './../styles/Mark/MarkIntro.scss'
 
 const MarkIntro = () => {
+  const history = useHistory()
+  const goToEdit = () => {
+    if (!localStorage.getItem('token')) {
+      setModalShow(true)
+    } else {
+      history.push('/mark/edit')
+    }
+  }
+
+  const [modalShow, setModalShow] = useState(false)
+  const openModal = () => {
+    setModalShow((prev) => !prev)
+  }
   return (
     <>
       <div className="MarkIntro">
@@ -22,13 +35,44 @@ const MarkIntro = () => {
               <p className="mark_content">
                 進入會員我的編輯中，可以製作無限數量的酒標，並能選擇是否要儲存於會員–我的酒標中，同時也能下載圖片至電腦或手機中，分享至你的世界。
               </p>
-              <Link to="/mark/edit">
-                <button className="btn btn-primary edit">我的編輯</button>
-              </Link>
+              <button
+                className="btn btn-primary edit"
+                onClick={() => goToEdit()}
+              >
+                我的編輯
+              </button>
             </div>
           </main>
         </div>
       </div>
+      {modalShow && (
+        <div className="DetailModal">
+          <div className="comparepage">
+            <div className="close-white" onClick={openModal}>
+              <img src="/ProductList/close-white.svg" alt="" />
+            </div>
+            <div className="mobile-close" onClick={openModal}>
+              <img src="/ProductList/close-black.svg" alt="" />
+            </div>
+            <div
+              className="d-flex flex-column justify-content-center align-items-center"
+              style={{ width: '100%' }}
+            >
+              <p className="mt-5" style={{ color: '#7e8082' }}>
+                若需客製化酒標請先登入。
+              </p>
+              <button
+                className="btn btn-secondary mt-3 w-25 mb-5"
+                onClick={() => {
+                  setModalShow((prev) => !prev)
+                }}
+              >
+                確認
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
