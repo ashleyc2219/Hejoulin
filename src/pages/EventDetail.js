@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './../styles/EventDetail/EventDetail.scss'
 import { useParams } from 'react-router-dom'
 import Spinner from '../compenents/Shared/Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const EventDetail = () => {
   const [data, setData] = useState([])
@@ -17,7 +19,9 @@ const EventDetail = () => {
         setSpin(false)
       }
     }, 1000)
-
+    AOS.init({
+      duration: 2000,
+    })
     return () => {
       a = false
     }
@@ -26,14 +30,14 @@ const EventDetail = () => {
   const Detail = data.map((v) => {
     return (
       <React.Fragment key={v.event_id}>
-        <div className="main-container">
+        <div className="main-container" data-aos="fade-up">
           <img
             src={'http://localhost:3001/images/event_pic/' + v.event_cover}
             alt=""
           />
           <div className="event-info">{v.event_brief}</div>
         </div>
-        <div className="signup-container">
+        <div className="signup-container" data-aos="fade-left">
           <div className="title">{v.event_name}</div>
           <div className="dateinfo">
             <div className="datetitle">日期：</div>
