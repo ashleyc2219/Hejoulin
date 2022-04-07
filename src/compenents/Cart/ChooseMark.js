@@ -1,15 +1,14 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const ChooseMark = (props) => {
-  const { check, setCheck, mark_info, setMarkId } = props
+  const { check, setCheck, mark_info, setMarkId } = props;
   return (
     <>
       <div
         onClick={() => {
-          setCheck(mark_info.pics)
-          setMarkId(mark_info.mark_id)
-          
+          setCheck(mark_info.pics);
+          setMarkId(mark_info.mark_id);
         }}
         className={check === mark_info.pics ? 'mark markchecked' : 'mark'}
       >
@@ -22,7 +21,7 @@ const ChooseMark = (props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ChooseMark
+export default ChooseMark;
