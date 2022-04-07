@@ -195,7 +195,12 @@ function App() {
             <EventList />
           </Route>
           <Route exact path="/cart/list">
-            <CartList setCartSummary={setCartSummary} />
+            <CartList
+              setCartSummary={setCartSummary}
+              loginModal={loginModal}
+              setLoginModal={setLoginModal}
+              setSidebar={setSidebar}
+            />
           </Route>
           <Route exact path="/cart/info">
             <CartSummary.Provider value={cartSummary}>
@@ -235,8 +240,8 @@ function App() {
           </Route>
           <Route exact path="/member/event-list/detail">
             <MemberEventListDetail
-                eventDetailData={eventDetailData}
-                setEventDetailData={setEventDetailData}
+              eventDetailData={eventDetailData}
+              setEventDetailData={setEventDetailData}
             />
           </Route>
           <Route exact path="/member/event-list">
