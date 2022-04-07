@@ -32,7 +32,7 @@ const TabsEvent = (props) => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <TabPages />
+          {/*<TabPages />*/}
         </nav>
         <div className="outlet">
           <TabContent id="tab1" activeTab={activeTab}>
