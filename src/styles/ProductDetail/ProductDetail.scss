@@ -77,6 +77,7 @@
   background-image: url('./../../../public/Sake-background0310.jpg');
   @include medium() {
     padding: 0 20px;
+    overflow: visible;
   }
   .bgele1,
   .bgele2 {
