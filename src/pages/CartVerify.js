@@ -1,9 +1,8 @@
 import React from 'react'
 import './../styles/CartVerify/CartVerify.scss'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { CartVerifyInfo } from './../App'
-import { createBrowserHistory } from 'history'
 
 const CartVerify = () => {
   let cartVerifyInfo = CartVerifyInfo._currentValue
@@ -19,7 +18,7 @@ const CartVerify = () => {
   let date =
     today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate()
 
-  const history = createBrowserHistory()
+  let history = useHistory()
 
   const sendEmail = async function () {
     let data = {
@@ -56,7 +55,11 @@ const CartVerify = () => {
       }
     )
     const obj = await r1.json()
-    return obj.result
+    if (obj.result === 'success') {
+      history.push('/sub/cart-order', { some: 'state' })
+    } else {
+      setBtnText('驗證碼錯誤 按我重新發送')
+    }
   }
 
   return (
@@ -91,17 +94,14 @@ const CartVerify = () => {
                       setEnterCode(e.target.value)
                     }}
                   />
-                  <Link to="/cart/order">
-                    <button
-                      onClick={() => {
-                        verifyTheCode()
-                          ? history.push('/cart/order', { some: 'state' })
-                          : setBtnText('驗證碼錯誤 按我重新發送')
-                      }}
-                    >
-                      確認
-                    </button>
-                  </Link>
+
+                  <button
+                    onClick={() => {
+                      verifyTheCode()
+                    }}
+                  >
+                    確認
+                  </button>
                 </div>
                 <button
                   onClick={() => {

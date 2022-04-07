@@ -1,18 +1,15 @@
 import { React, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import '../styles/CartOrder/CartOrder.scss'
+import '../styles/SubCartOrder/SubCartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubOrderCard from '../compenents/Sub/SubCartOrderCard'
-import { CartSummary } from '../App'
+import { orderInfoGet } from './../compenents/SubCartFetch/SubCartOrderFetch'
 const SubCartOrder = () => {
-  let cartSummaryInfo = CartSummary._currentValue
-  console.log(cartSummaryInfo.order_main_id)
-  const [sakeInOrder, setSakeInOrder] = useState([])
-  const [giftInOrder, setGiftInOrder] = useState([])
   const [orderInfo, setOrderInfo] = useState([])
-  const order_id = cartSummaryInfo.order_main_id
-    ? cartSummaryInfo.order_main_id
-    : '20220110001'
+  const [allSubInfo, setAllSubInfo] = useState([])
+  // console.log(cartSummaryInfo.order_main_id)
+  let order_main_id = localStorage.getItem('sub_order_main_id')
+  const order_id = order_main_id ? order_main_id : '20220406004'
 
   // 訂單編號 產生 訂單日期字串
   function genDate(order_id) {
@@ -25,50 +22,21 @@ const SubCartOrder = () => {
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
-    // TODO: 改成訂閱資料
-    // 清酒訂單
-    ;(async () => {
-      const r1 = await fetch(
-        `http://localhost:3001/api/cart-order-confirm/order-sake?order_id=${order_id}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      const obj = await r1.json()
-      console.log('sake', obj)
+    ;(async function fetchGet(params) {
+      let [order_info, all_sub_info] = await orderInfoGet(order_id)
       if (a) {
-        setSakeInOrder(obj)
-      }
-    })()
-
-    // 訂單資料
-    ;(async () => {
-      const r1 = await fetch(
-        `http://localhost:3001/api/cart-order-confirm/order-info?order_id=${order_id}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      const obj = await r1.json()
-      console.log(obj)
-      if (a) {
-        setOrderInfo(obj[0])
+        setOrderInfo(order_info)
+        setAllSubInfo(all_sub_info)
       }
     })()
     return () => {
       a = false
     }
   }, [])
-  const renderSakeItems = (sakeInOrder) => {
-    if (sakeInOrder.length && sakeInOrder[0].pro_name !== null) {
-      return sakeInOrder.map((sake, i) => {
-        return <SubOrderCard key={i} sakeInfo={sake} />
+  const renderSubItems = (allSubInfo) => {
+    if (allSubInfo.length) {
+      return allSubInfo.map((sub, i) => {
+        return <SubOrderCard key={i} subInfo={sub} />
       })
     } else {
       return ''
@@ -77,13 +45,13 @@ const SubCartOrder = () => {
 
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   return (
-    <div className="CartOrder">
+    <div className="SubCartOrder">
       <ProgressBar step="three" content={stepContent} />
       <div className="container">
         <div className="left-list">
           <div className="mobile-table-btn ">
             <span className="total">
-              訂單總計: $ {cartSummaryInfo.allTotal}
+              訂單總計: $ {'cartSummaryInfo.allTotal'}
             </span>
           </div>
           <div className="list-table">
@@ -92,31 +60,27 @@ const SubCartOrder = () => {
               <span className="title-quantity">數量</span>
               <span className="title-subtotal">小計</span>
             </div>
-            {/* {renderSakeItems(sakeInOrder)} */}
-            <SubOrderCard />
+            {renderSubItems(allSubInfo)}
           </div>
           <div className="list-summary">
             <div className="table-row">
               <p>小計</p>
-              <p className="dollar-sign">{cartSummaryInfo.subtotal}</p>
+              <p className="dollar-sign">{orderInfo.order_d_price}</p>
             </div>
-            <div className="table-row">
-              <p>折扣碼</p>
-              <p>{cartSummaryInfo.discountCode}</p>
-            </div>
+
             <div className="table-row">
               <p>運費</p>
-              <p className="dollar-sign">{cartSummaryInfo.shipFee}</p>
+              <p className="dollar-sign">{orderInfo.ship_fee}</p>
             </div>
 
             <div className="table-row">
               <p>總計</p>
-              <p className="dollar-sign total">{cartSummaryInfo.allTotal}</p>
+              <p className="dollar-sign total">{orderInfo.order_d_price}</p>
             </div>
           </div>
-          <div className="mobile-table-btn ">
+          {/* <div className="mobile-table-btn ">
             <span className="product-count">&darr; 共4件商品</span>
-          </div>
+          </div> */}
         </div>
         <div className="right-order">
           <div className="order-container">
@@ -156,11 +120,7 @@ const SubCartOrder = () => {
                     ? '低溫宅配'
                     : '門市取貨'}
                 </p>
-                <p>
-                  {orderInfo.shipment_address === null
-                    ? orderInfo.store_address
-                    : orderInfo.shipment_address}
-                </p>
+                <p>{orderInfo.shipment_address}</p>
               </div>
             </div>
             <hr />
