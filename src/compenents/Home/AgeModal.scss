@@ -31,6 +31,7 @@
     background-color: #f0f0f0;
     color: #6d6d6d;
   }
+
   .react-date-picker__wrapper {
     display: flex;
     flex-grow: 1;
@@ -115,12 +116,28 @@
   .react-calendar__month-view__days__day--weekend {
     color: $secondary;
   }
+  .react-calendar__tile--now {
+    background: $success;
+    color: white;
+  }
+
+  .react-calendar__tile--hasActive {
+    background: $success;
+  }
+  .react-calendar__tile--hasActive:enabled:hover {
+    background: $light;
+  }
+  .react-calendar__tile--now:enabled:hover {
+    background: $light;
+  }
+
+  .react-date-picker__wrapper {
+    border: thin solid $gray-200;
+  }
+
   .react-calendar__tile--active {
     background: $dark;
     color: white;
-  }
-  .react-date-picker__wrapper {
-    border: thin solid $gray-200;
   }
   .react-calendar__tile {
     padding: 14px 6px;

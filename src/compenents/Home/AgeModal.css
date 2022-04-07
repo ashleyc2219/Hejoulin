@@ -145,13 +145,30 @@
   color: #d26d54;
 }
 
-.AgeModal .react-calendar__tile--active {
-  background: #6b7580;
+.AgeModal .react-calendar__tile--now {
+  background: #e6c49e;
   color: white;
+}
+
+.AgeModal .react-calendar__tile--hasActive {
+  background: #e6c49e;
+}
+
+.AgeModal .react-calendar__tile--hasActive:enabled:hover {
+  background: #95a4b2;
+}
+
+.AgeModal .react-calendar__tile--now:enabled:hover {
+  background: #95a4b2;
 }
 
 .AgeModal .react-date-picker__wrapper {
   border: thin solid #bbbcbd;
+}
+
+.AgeModal .react-calendar__tile--active {
+  background: #6b7580;
+  color: white;
 }
 
 .AgeModal .react-calendar__tile {
