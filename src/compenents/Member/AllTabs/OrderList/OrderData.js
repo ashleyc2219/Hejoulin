@@ -56,7 +56,7 @@ const OrderData = (props) => {
             console.log(obj)
             setOrderData(obj.rows)
             console.log(obj.orderDetail[0])
-            setDetailData(obj.orderDetail[0])
+            // setDetailData(obj.orderDetail[0])
         })()
         ;(async () => {
             const obj2 = await (
@@ -70,31 +70,29 @@ const OrderData = (props) => {
             ).json()
             setPageData(obj2.rows)
             setOrderData(obj2.rows)
-            setDetailData(obj2.orderDetail[0])
+            // setDetailData(obj2.orderDetail[0])
         })()
     }, [])
 
 
     // 頁籤
-    const filterData = (d) => {
-        if (d && d.length) {
-            for (const e of d) {
-                const st = e.order_state
-                // st 拿去等於 status 等於true的話 set進setStatus e push 到currentStatusData
-            }
-        }
-    }
+    // const filterData = (d) => {
+    //     if (d && d.length) {
+    //         for (const e of d) {
+    //             const st = e.order_state
+    //             // st 拿去等於 status 等於true的話 set進setStatus e push 到currentStatusData
+    //             if (st === status) {
+    //                 setStatus(st)
+    //                 setCurrentStatusData(e)
+    //             }
+    //         }
+    //     }
+    // }
 
 
     const renderOrderItems = (pageData, status) => {
-        //
-        // function c(pageData) { pageData.filter(e=>{
-        //     console.log('sssa',e)
-        //         return e.order_state === "待出貨"
-        //     }
-        // )}
-        // console.log('c', filterData(pageData))
-        //filter 分頁籤
+
+        // filter 分頁籤
         // const filterData = []
         // switch (status) {
         //     case status === 'toGo':

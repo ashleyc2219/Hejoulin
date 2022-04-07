@@ -6,7 +6,6 @@ import OrderData from './OrderData'
 import TabPages from '../../TabComponent/TabPages'
 import OrderDataCome from "./OrderDataCome";
 import OrderDataToget from "./OrderDataToget";
-import MemberOrderListDetail from "../../../../pages/MemberOrderListDetail";
 
 const TabsOrder = ({ detailData, setDetailData }) => {
   const [activeTab, setActiveTab] = useState('tab1')
