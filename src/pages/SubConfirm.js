@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import { React, useState } from 'react'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubConfirmCard from '../compenents/Sub/SubComfirmCard'
 import './../styles/SubConfirm/SubConfirm.scss'
@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 const SubConfirm = (props) => {
   const { subPlan, subTimeTotal, subTimeMonth } = props
+  // console.log(subPlan)
   let subPlanMap = subPlan
   subPlanMap.sort(function (a, b) {
     return a.length - b.length
@@ -42,7 +43,19 @@ const SubConfirm = (props) => {
             <button className="btn btn-primary">上一步</button>
           </Link>
           <Link to="/sub/cart-info">
-            <button className="btn btn-secondary">前往結賬</button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                const data = {
+                  subPlan: subPlan,
+                  subTime: subTimeMonth,
+                  subTimeTotal: subTimeTotal,
+                }
+                localStorage.setItem('subCart', JSON.stringify(data))
+              }}
+            >
+              前往結賬
+            </button>
           </Link>
         </div>
       </div>

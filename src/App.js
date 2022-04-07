@@ -41,6 +41,7 @@ import { createContext, useState } from 'react'
 export const CartCount = createContext('defaultvalue')
 export const CartSummary = createContext('default')
 export const CartVerifyInfo = createContext('default')
+export const SubCartVerifyInfo = createContext('default')
 
 function App() {
   const [compare, setCompare] = useState([])
@@ -69,13 +70,25 @@ function App() {
     total: '',
     email: '',
   })
+  // 訂閱 購物車之間溝通的state
+  const [subCartVerifyInfo, setSubCartVerifyInfo] = useState({
+    cardNum: '',
+    total: '',
+    email: '',
+  })
   //加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
+  const [sidebar, setSidebar] = useState(false)
   return (
     <Router>
       <>
         <CartCount.Provider value={cartCount}>
-          <Header setCartCount={setCartCount} addcartmodal={addcartmodal} />
+          <Header
+            setCartCount={setCartCount}
+            addcartmodal={addcartmodal}
+            sidebar={sidebar}
+            setSidebar={setSidebar}
+          />
         </CartCount.Provider>
         <Switch>
           <Route exact path="/news/detail/:id">
@@ -94,6 +107,8 @@ function App() {
                 setCompare={setCompare}
                 setCartCount={setCartCount}
                 setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
               />
             </CartCount.Provider>
           </Route>
@@ -104,6 +119,8 @@ function App() {
                 setCompare={setCompare}
                 setCartCount={setCartCount}
                 setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
               />
             </CartCount.Provider>
           </Route>
@@ -152,10 +169,12 @@ function App() {
             <SubCartList />
           </Route>
           <Route exact path="/sub/cart-info">
-            <SubCartInfo />
+            <SubCartInfo setSubCartVerifyInfo={setSubCartVerifyInfo} />
           </Route>
           <Route exact path="/sub/cart-verify">
-            <SubCartVerify />
+            <SubCartVerifyInfo.Provider value={subCartVerifyInfo}>
+              <SubCartVerify />
+            </SubCartVerifyInfo.Provider>
           </Route>
           <Route exact path="/sub/cart-order">
             <SubCartOrder />

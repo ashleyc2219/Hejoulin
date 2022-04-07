@@ -5,21 +5,29 @@ import DatePicker from 'react-date-picker'
 
 const AgeModal = (props) => {
   const { modalShow, setModalShow } = props
-  const [value, onChange] = useState(new Date())
+  const [value, setValue] = useState(new Date())
 
   const openModal = () => {
     setModalShow((prev) => !prev)
   }
+
+  const AgeCount = () => {
+    let Birthday = value.getTime()
+    let nowTime = new Date().getTime()
+    let AgeOne = Math.ceil((nowTime - Birthday) / 31536000000) - 1
+    console.log(AgeOne)
+    if (AgeOne >= 18) {
+      openModal()
+    } else {
+      console.log(AgeOne)
+      window.location.href = `https://www.google.com.tw`
+    }
+  }
+
   return (
     <>
       <div className="AgeModal">
         <div className="comparepage">
-          <div className="close-white" onClick={openModal}>
-            <img src="/ProductList/close-white.svg" alt="" />
-          </div>
-          <div className="mobile-close" onClick={openModal}>
-            <img src="/ProductList/close-black.svg" alt="" />
-          </div>
           {/* 內容top */}
           <div className="Footer">
             <div className="wave-container">
@@ -149,9 +157,12 @@ const AgeModal = (props) => {
           </div>
           <div className="Age-content">
             <h3>請問你的出生年月日是：</h3>
-            <DatePicker onChange={onChange} value={value} />
+            <DatePicker onChange={setValue} value={value} />
 
-            <button className="mt-3 btn btn-primary">確認</button>
+            <button className="mt-3 btn btn-primary" onClick={AgeCount}>
+              確認
+            </button>
+
             <div className="red-word">
               <p>未滿18歲請勿飲酒</p>
             </div>

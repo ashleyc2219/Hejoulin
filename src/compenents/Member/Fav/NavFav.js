@@ -90,9 +90,11 @@ const NavFav = (props) => {
             onChange={handleChange}
             required
           >
-            <option value="" disabled selected hidden>
+            {/*selected要看一下怎麼相容*/}
+            <option value="" disabled hidden defaultValue="none">
               商品排序
             </option>
+            <option value="none">商品排序</option>
             <option value="oldToNew">收藏順序舊到新</option>
             <option value="lowToHigh">商品價格低到高</option>
             <option value="customFirst">酒標客制優先</option>
@@ -116,9 +118,10 @@ const NavFav = (props) => {
             onChange={handleChange}
             required
           >
-            <option value="" disabled selected hidden>
+            <option value="" disabled defaultValue="none" hidden>
               商品排序
             </option>
+            <option value="none">商品排序</option>
             <option value="oldToNew">收藏順序舊到新</option>
             <option value="loToHigh">商品價格低到高</option>
             <option value="customFirst">酒標客制優先</option>

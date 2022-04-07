@@ -2,19 +2,25 @@ import React from 'react'
 import './AddCartBtn.scss'
 import { CartCount } from '../../App'
 
-const AddCartBtn = ({ id, setCartCount, count, setAddcartmodal }) => {
+const AddCartBtn = ({
+  id,
+  setCartCount,
+  count,
+  setAddcartmodal,
+  sidebar,
+  setSidebar,
+}) => {
   const addcart = async (num, pro_id) => {
-    if(localStorage.token){
-
+    if (localStorage.token) {
       const a = count + num
       setCartCount(a)
-  
+
       const data = {
         member_id: 4,
         pro_id: `${pro_id}`,
         cart_quantity: `${count}`,
       }
-  
+
       const settings = {
         method: 'POST',
         headers: {
@@ -33,13 +39,14 @@ const AddCartBtn = ({ id, setCartCount, count, setAddcartmodal }) => {
           setAddcartmodal(true)
           setTimeout(() => {
             setAddcartmodal(false)
-          }, 4000);
+          }, 4000)
         }
       } catch (e) {
         return e
       }
-    }else{
+    } else {
       alert('請登入會員')
+      setSidebar(!sidebar)
     }
   }
   return (

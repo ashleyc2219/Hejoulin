@@ -53,30 +53,20 @@ const ChooseCartMarkModal = (props) => {
     <>
       <div className="ChooseCartMarkModal">
         <div className="ChooseCartMark">
-          <svg
-            onClick={() => {
-              setChooseModalShow(false)
-            }}
-            xmlns="http://www.w3.org/2000/svg"
-            width="29"
-            height="29"
-            fill="none"
-            viewBox="0 0 29 29"
-          >
-            <path
-              stroke="#F7F7F6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21.75 7.25l-14.5 14.5M7.25 7.25l7.25 7.25 7.25 7.25"
-            />
-          </svg>
           {data.length >= 1 ? (
             <>
               <div className="markcontainer">{markData}</div>
               <div className="button">
                 <button
                   className="btn btn-primary"
+                  onClick={() => {
+                    setChooseModalShow(false)
+                  }}
+                >
+                  取消
+                </button>
+                <button
+                  className="btn btn-secondary "
                   onClick={() => {
                     MarkInsert()
                     setMarkPic(check)
