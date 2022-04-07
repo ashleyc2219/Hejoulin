@@ -3,11 +3,16 @@ import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubTimeCard from '../compenents/Sub/SubTimeCard'
+import Spinner from '../compenents/Shared/Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import '../styles/SubTime/SubTime.scss'
 
 const SubTime = (props) => {
   const { subPlan, subPlanTotal, setSubTimeTotal, setSubTimeMonth } = props
+  const [spin, setSpin] = useState(true)
+
   // subTime subConfirm溝通用的state (subTimeTotal, subTimeMonth) 是外層的state
 
   // subTime, subTimeCard溝通用的
@@ -26,6 +31,7 @@ const SubTime = (props) => {
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
   const [times, setTimes] = useState([])
   useEffect(() => {
+    let a = true
     ;(async () => {
       const r1 = await fetch(`http://localhost:3001/api/sub/sub-time`, {
         method: 'GET',
@@ -35,8 +41,21 @@ const SubTime = (props) => {
       })
       const obj = await r1.json()
       const data = obj
-      setTimes(data)
+      if (a) {
+        setTimes(data)
+      }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+  }, [])
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
   }, [])
 
   const renderTimes = (times) => {
@@ -60,11 +79,13 @@ const SubTime = (props) => {
       return ''
     }
   }
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="SubTime">
-      <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
+      <img className="LineBg" src="/Sub/LineBg.svg" alt="" data-aos="zoom-in" />
 
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <ProgressBar step="two" content={stepContent} />
         <div className="main">
           <div className="left-planInfo">

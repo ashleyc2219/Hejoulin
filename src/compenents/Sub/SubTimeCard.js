@@ -2,6 +2,8 @@ import React from 'react'
 import './SubTimeCard.scss'
 import { motion, useAnimation } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const SubTimeCard = (props) => {
   const {
@@ -16,6 +18,12 @@ const SubTimeCard = (props) => {
   } = props
 
   let timeSelection = 0
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+    })
+  }, [])
   const controls = useAnimation()
   useEffect(() => {
     function test(time) {
@@ -55,6 +63,9 @@ const SubTimeCard = (props) => {
     <>
       <motion.div
         className="timeChoice-card"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
         onClick={() => {
           setOldTime(time)
           setTime(timeInfo.sub_time_month)
