@@ -8,10 +8,10 @@ import { useHistory} from "react-router-dom";
 const MemberMark = () => {
     const [markData, setMarkData] = useState([])
     const [whichMark, setWhichMark] = useState([])
-    const [whichMark2, setWhichMark2] = useState([])
     const APIDelMark = "http://localhost:3001/user/member/MemberMarkDelete"
     const APIMark = "http://localhost:3001/user/member/MemberMark"
     const history = useHistory()
+
     useEffect(() => {
         ;(async () => {
             const res = await fetch(APIMark,{
@@ -84,8 +84,6 @@ const MemberMark = () => {
                             setMarkData={setMarkData}
                             whichMark={whichMark}
                             setWhichMark={setWhichMark}
-                            whichMark2={whichMark2}
-                            setWhichMark2={setWhichMark2}
                         />
                         <img src="/Member/MarkBg-SAKE.png" className="SakeBg" alt=""/>
                     </div>
