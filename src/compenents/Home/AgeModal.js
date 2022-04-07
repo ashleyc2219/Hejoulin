@@ -21,6 +21,7 @@ const AgeModal = (props) => {
     console.log(AgeOne)
     if (AgeOne >= 18) {
       setClassname(false)
+      localStorage.setItem('age', 'over 18')
       setTimeout(() => {
         openModal()
       }, 1000)
