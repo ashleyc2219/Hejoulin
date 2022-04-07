@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './../styles/Mark/MarkIntro.scss'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const MarkIntro = () => {
   const history = useHistory()
@@ -11,6 +13,13 @@ const MarkIntro = () => {
       history.push('/mark/edit')
     }
   }
+
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, [])
 
   const [modalShow, setModalShow] = useState(false)
   const openModal = () => {
@@ -27,9 +36,14 @@ const MarkIntro = () => {
             </div>
             <div className="anime">
               <img src="" alt="" className="intro_anime" />
-              <img src="/Mark/1.png" alt="" className="fake"></img>
+              <img
+                src="/Mark/1.png"
+                alt=""
+                className="fake"
+                data-aos="fade-up"
+              ></img>
             </div>
-            <div className="mark_intro">
+            <div className="mark_intro" data-aos="fade-up" data-aos-delay="300">
               <h2 className="mark_title">世界上只專屬於你的酒</h2>
               <h2 className="mark_title title_bottom">從此刻誕生</h2>
               <p className="mark_content">

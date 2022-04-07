@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
 import NoFavItem from './NoFavItem'
-<<<<<<< HEAD
 import { Link, useHistory } from 'react-router-dom'
-=======
-import {Link, useHistory} from 'react-router-dom'
-import DelFavModal from "./DelFavModal";
->>>>>>> 3414485235ad8b338108dd25270543d91e50995f
+import DelFavModal from './DelFavModal'
 
 const FavData = (props) => {
   const { favData, setFavData } = props
@@ -80,8 +76,8 @@ const FavData = (props) => {
       }
       try {
         const fetchResponse = await fetch(
-            'http://localhost:3001/api/products-fav/insert',
-            settings
+          'http://localhost:3001/api/products-fav/insert',
+          settings
         )
         const data = await fetchResponse.json()
         console.log(data)
@@ -179,15 +175,14 @@ const FavData = (props) => {
           {favData && renderFavItems(favData)}
         </div>
         {favModalShow ? (
-            <DelFavModal
-                favModalShow={favModalShow}
-                setFavModalShow={setFavModalShow}
-                favRs={favRs}
-            />
+          <DelFavModal
+            favModalShow={favModalShow}
+            setFavModalShow={setFavModalShow}
+            favRs={favRs}
+          />
         ) : (
-           ''
-        ) }
-
+          ''
+        )}
       </div>
     </>
   )

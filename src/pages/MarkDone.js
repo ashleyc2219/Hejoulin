@@ -52,14 +52,14 @@ const MarkDone = () => {
             data-speed="3"
             src="/Mark/7.svg"
             alt=""
-            style={{ opacity: '.7' }}
+            style={{ opacity: '.7', zIndex: '50' }}
           />
           <img
             className="layer"
             data-speed="-1"
             src="/Mark/8.svg"
             alt=""
-            style={{ opacity: '.7' }}
+            style={{ opacity: '.7', zIndex: '50' }}
           />
           <img className="layer" data-speed="8" src="/Mark/1.svg" alt="" />
           <img className="layer" data-speed="-4" src="/Mark/2.svg" alt="" />

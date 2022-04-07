@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal'
 import Swiper from '../compenents/restaurant/Swiper'
 import Spinner from '../compenents/Shared/Spinner'
 import { useParams } from 'react-router-dom'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const RestaurantDetail = () => {
   const [loading, setLoading] = useState(true)
@@ -22,6 +24,13 @@ const RestaurantDetail = () => {
   //to top
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [])
+
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
   }, [])
 
   // get restaurant data
@@ -119,7 +128,7 @@ const RestaurantDetail = () => {
       ) : (
         <div className="RestaurantDetail">
           <Carousel>{renderRestaurantPics}</Carousel>
-          <div className="res-info">
+          <div className="res-info" data-aos="fade-up">
             <h5 className="mb-3 pl-sm-4">{restaurant.res_name}</h5>
             <div className="px-3">
               {' '}
@@ -197,13 +206,13 @@ const RestaurantDetail = () => {
             )}
           </div>
           <div className="container">
-            <div className="res-intro">
+            <div className="res-intro" data-aos="fade-up">
               <h6>餐廳簡介</h6>
               <p>{restaurant.res_intro}</p>
             </div>
           </div>
           <div className="container">
-            <div className="sp-menu">
+            <div className="sp-menu" data-aos="fade-up">
               <div className="title">
                 <h6>特別菜單</h6>
               </div>
