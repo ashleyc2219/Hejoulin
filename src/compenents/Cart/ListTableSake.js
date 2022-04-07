@@ -26,6 +26,7 @@ const ListTableSake = (props) => {
   let gift_text = '不提供禮盒'
   useEffect(() => {
     setQuantity(sakeInfo['cart_quantity'])
+    setMarkPic(sakeInfo.pics)
   }, [sakeInfo])
   
   const markRender = (markPic) => {
