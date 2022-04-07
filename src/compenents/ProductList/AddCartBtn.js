@@ -8,9 +8,7 @@ const AddCartBtn = ({
   setCartCount,
   count,
   setAddcartmodal,
-  sidebar,
-  setSidebar,
-  setLoginModal
+  setLoginModal,
 }) => {
   const addcart = async (num, pro_id) => {
     const getMember = await FetchMemberId(localStorage.getItem('token'))

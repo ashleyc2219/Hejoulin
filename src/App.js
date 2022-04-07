@@ -38,7 +38,7 @@ import MemberMark from './pages/MemberMark'
 import Header from './compenents/Shared/Header'
 import Footer from './compenents/Shared/Footer'
 import { createContext, useState } from 'react'
-export const CartCount = createContext('defaultvalue')
+export const CartCount = createContext(0)
 export const CartSummary = createContext('default')
 export const CartVerifyInfo = createContext('default')
 export const SubCartVerifyInfo = createContext('default')
