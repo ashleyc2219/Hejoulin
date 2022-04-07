@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { gsap } from 'gsap'
 import './../styles/SakeGuide/SakeGuide.scss'
 
 import Question from '../compenents/SakeGuide/Question'
@@ -18,7 +19,25 @@ const SakeGuide = () => {
   const [temp, setTemp] = useState('') //溫度
   const [gift, setGift] = useState(false) //送禮
 
+  const [first, setfirst] = useState(false)
+  const [wave, setWave] = useState(false)
+  const [result, setResult] = useState(false)
+
+  const [waveHeight, setWaveHeight] = useState(1)
+  const wrap = useRef(1)
+  const plus = () => {
+    wrap.current += 1
+  }
   const { height, width } = useWindowDimensions()
+  const box = (198 / height) * 100
+  useEffect(() => {
+    setWaveHeight(wrap.current - 1)
+  }, [wrap.current])
+  useEffect(() => {
+    gsap.to(wrap.current, {
+      height: 'box+=13 * waveHeight',
+    })
+  })
 
   const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
   const sake = content.map((v, i) => {
@@ -51,10 +70,15 @@ const SakeGuide = () => {
   return (
     <>
       <div className="SakeGuide">
-        <section className="wave_loca">
-          <div className="wave">
-            <div className="upper"></div>
-            <div className="down"></div>
+        <section className={`guide_wave ${wave ? '' : 'wave_test'}`}>
+          <div className="wave_loca">
+            <div
+              className="wave"
+              style={{ height: `${box + 13 * waveHeight}vh` }}
+              ref={wrap}
+            >
+              <div className="upper"></div>
+            </div>
           </div>
         </section>
         <div className="guide_container">
@@ -83,6 +107,7 @@ const SakeGuide = () => {
               <button
                 className="begin"
                 onClick={() => {
+                  setfirst(true)
                   setTimeout(() => {
                     window.scroll({
                       top: height,
@@ -90,6 +115,9 @@ const SakeGuide = () => {
                       behavior: 'smooth',
                     })
                   }, 500)
+                  setTimeout(() => {
+                    setWave(true)
+                  }, 1000)
                 }}
               >
                 <p>立即開始</p>
@@ -107,8 +135,10 @@ const SakeGuide = () => {
             setTemp={setTemp}
             setGift={setGift}
             height={height}
+            first={first}
+            plus={plus}
           />
-          <section className="price">
+          <section className={`price ${first ? '' : 'guide_test'}`}>
             <div className="text">
               <p className="question">預估花費</p>
               <p className="question price_low">${minPrice}</p>
@@ -132,6 +162,18 @@ const SakeGuide = () => {
                 className="comfirm btn btn-warning"
                 onClick={() => {
                   setTaste(thickness + smooth + sweet)
+                  // console.log(
+                  //   'thickness',
+                  //   thickness,
+                  //   'smooth',
+                  //   smooth,
+                  //   'sweet',
+                  //   sweet,
+                  //   'temp',
+                  //   temp,
+                  //   'gift',
+                  //   gift
+                  // )
                   setTimeout(() => {
                     window.scroll({
                       top: height * 6,
@@ -139,6 +181,9 @@ const SakeGuide = () => {
                       behavior: 'smooth',
                     })
                   }, 500)
+                  setTimeout(() => {
+                    setResult(true)
+                  }, 1000)
                 }}
               >
                 察看結果
@@ -148,35 +193,41 @@ const SakeGuide = () => {
         </div>
 
         {/* <Finally /> */}
-        <section id="result">
-          <div className="title">
-            <h4>推薦酒款</h4>
-          </div>
-          <div className="sakes">{sake}</div>
-          <div className="anime_bg">
-            <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
-            <div className="line_wave">
-              <img className="_1st" src="/SakeGuide/line01.svg" alt="" />
-              <img className="_2nd" src="/SakeGuide/line02.svg" alt="" />
-              <img className="_3rd" src="/SakeGuide/line03.svg" alt="" />
-              <img className="_4th" src="/SakeGuide/line04.svg" alt="" />
-              <img className="_5th" src="/SakeGuide/line05.svg" alt="" />
-              <img className="_6th" src="/SakeGuide/line06.svg" alt="" />
-              <img className="_7th" src="/SakeGuide/line07.svg" alt="" />
-              <img className="_8th" src="/SakeGuide/line08.svg" alt="" />
-              <img className="_9th" src="/SakeGuide/line09.svg" alt="" />
-              <img className="_10th" src="/SakeGuide/line10.svg" alt="" />
-              <img className="_11th" src="/SakeGuide/line11.svg" alt="" />
+        <div className={result ? '' : 'wave_test'}>
+          <section id="result">
+            <div className="title">
+              <h4>推薦酒款</h4>
             </div>
-            <div className="random_dots"></div>
-            <img
-              className="white_wave"
-              src="/SakeGuide/white-wave.svg"
-              alt=""
-            />
-            <img className="gray_wave" src="/SakeGuide/gray-wave.svg" alt="" />
-          </div>
-        </section>
+            <div className="sakes">{sake}</div>
+            <div className="anime_bg">
+              <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
+              <div className="line_wave">
+                <img className="_1st" src="/SakeGuide/line01.svg" alt="" />
+                <img className="_2nd" src="/SakeGuide/line02.svg" alt="" />
+                <img className="_3rd" src="/SakeGuide/line03.svg" alt="" />
+                <img className="_4th" src="/SakeGuide/line04.svg" alt="" />
+                <img className="_5th" src="/SakeGuide/line05.svg" alt="" />
+                <img className="_6th" src="/SakeGuide/line06.svg" alt="" />
+                <img className="_7th" src="/SakeGuide/line07.svg" alt="" />
+                <img className="_8th" src="/SakeGuide/line08.svg" alt="" />
+                <img className="_9th" src="/SakeGuide/line09.svg" alt="" />
+                <img className="_10th" src="/SakeGuide/line10.svg" alt="" />
+                <img className="_11th" src="/SakeGuide/line11.svg" alt="" />
+              </div>
+              <div className="random_dots"></div>
+              <img
+                className="white_wave"
+                src="/SakeGuide/white-wave.svg"
+                alt=""
+              />
+              <img
+                className="gray_wave"
+                src="/SakeGuide/gray-wave.svg"
+                alt=""
+              />
+            </div>
+          </section>
+        </div>
       </div>
     </>
   )

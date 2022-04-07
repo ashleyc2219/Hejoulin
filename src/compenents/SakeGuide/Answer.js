@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Answer.scss'
 
 const Answer = (props) => {
-  const { id, setAnswer, setData , setId} = props
+  const { id, setAnswer, setData, setId, height, seq, plus,} = props
   const [detail, setDetail] = useState([])
   const url = 'http://localhost:3001/api/guide_a'
 
@@ -25,7 +25,14 @@ const Answer = (props) => {
             setId(id)
             setAnswer(v.a_item)
             setData()
-            console.log(1)
+            setTimeout(() => {
+              window.scroll({
+                top: height * seq,
+                left: 0,
+                behavior: 'smooth',
+              })
+              plus()
+            }, 500)
           }}
         >
           <div className="circle_group">
