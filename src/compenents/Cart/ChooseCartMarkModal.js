@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ChooseCartMarkModal.scss'
 import ChooseMark from './ChooseMark'
-import { createBrowserHistory } from 'history'
 
 const ChooseCartMarkModal = (props) => {
   const { sakeInfo, setChooseModalShow, setMarkPic } = props
@@ -11,7 +10,6 @@ const ChooseCartMarkModal = (props) => {
   const [check, setCheck] = useState('')
   // 傳資料用markID
   const [markId, setMarkId] = useState(0)
-  const history = createBrowserHistory()
 
   const markData = data.map((v, i) => {
     return (
