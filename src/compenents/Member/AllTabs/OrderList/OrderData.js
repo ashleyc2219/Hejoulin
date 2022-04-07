@@ -3,10 +3,18 @@ import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
 const OrderData = (props) => {
-    const {pageData, setPageData, cPage, setCPage, currentRow, setCurrentRow, detailData, setDetailData} = props
-    const [dataOrder, setOrderData] = useState({}) // 訂單資料
-    const [status, setStatus] = useState('all')
-    const [currentStatusData, setCurrentStatusData] = useState([])// 放目前tab的資料
+    const {
+        pageData,
+        setPageData,
+        cPage,
+        currentRow,
+        setCurrentRow,
+        detailData,
+        setDetailData,
+        status,
+        setStatus,
+        setOrderData,
+    } = props
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
     const listNames = [
         {listName: '訂單日期'},
@@ -35,7 +43,6 @@ const OrderData = (props) => {
         ).json()
         setPageData({})
         setPageData(obj2.rows)
-        // console.log('obj : ', obj2)
     }
 
     useEffect(() => {
@@ -51,12 +58,11 @@ const OrderData = (props) => {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,
                     },
+                    body: status,
                 })
             ).json()
             console.log(obj)
             setOrderData(obj.rows)
-            console.log(obj.orderDetail[0])
-            // setDetailData(obj.orderDetail[0])
         })()
         ;(async () => {
             const obj2 = await (
@@ -70,7 +76,6 @@ const OrderData = (props) => {
             ).json()
             setPageData(obj2.rows)
             setOrderData(obj2.rows)
-            // setDetailData(obj2.orderDetail[0])
         })()
     }, [])
 
