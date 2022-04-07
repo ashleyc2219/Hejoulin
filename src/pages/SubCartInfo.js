@@ -11,7 +11,8 @@ import SubCartInfoCard from '../compenents/Sub/SubCartInfoCard'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import { districts, townships } from './../data/districts'
 
-import { CartSummary } from './../App'
+import { SubCartVerifyInfo } from './../App'
+
 // 信用卡
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
 import {
@@ -290,6 +291,7 @@ const SubCartInfo = (props) => {
       'order_main_id: ',
       order_main_id
     )
+    localStorage.setItem('sub_order_main_id', order_main_id)
     console.log('order_main_id: ', order_main_id)
     console.log('shipmentResult: ', shipmentResult)
     console.log('paymentResult: ', paymentResult)
