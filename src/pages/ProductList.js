@@ -356,7 +356,7 @@ const ProductList = (props) => {
     let a = true
     const scroll = () => {
       if (a) {
-        //window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
       }
     }
     setUp()
