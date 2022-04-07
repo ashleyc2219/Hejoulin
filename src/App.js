@@ -49,6 +49,8 @@ function App() {
   const [memberId, setMemberId] = useState({})
   // 訂單詳細資料
   const [detailData, setDetailData] = useState({})
+  // 活動詳細資料
+  const [eventDetailData, setEventDetailData] = useState({})
   // subPlan, subTime 溝通用的state
   const [subPlan, setSubPlan] = useState([])
   const [subPlanTotal, setSubPlanTotal] = useState(0)
@@ -229,13 +231,13 @@ function App() {
             />
           </Route>
           <Route exact path="/member/order-list">
-            <MemberOrderList
-              detailData={detailData}
-              setDetailData={setDetailData}
-            />
+            <MemberOrderList />
           </Route>
           <Route exact path="/member/event-list/detail">
-            <MemberEventListDetail />
+            <MemberEventListDetail
+                eventDetailData={eventDetailData}
+                setEventDetailData={setEventDetailData}
+            />
           </Route>
           <Route exact path="/member/event-list">
             <MemberEventList />
