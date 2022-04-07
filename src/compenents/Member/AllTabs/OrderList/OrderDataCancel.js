@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
-const OrderDataCome = ({pageData, setPageData, cPage, setOrderData}) => {
-    const APIMOrderGet = 'http://localhost:3001/user/member/orderListTab2'
+const OrderDataCancel = ({pageData, setPageData, cPage, setOrderData}) => {
+    const APIMOrderGet = 'http://localhost:3001/user/member/orderListTab3'
     const listNames = [
         {listName: '訂單日期'},
         {listName: '訂單編碼'},
@@ -109,4 +109,4 @@ const OrderDataCome = ({pageData, setPageData, cPage, setOrderData}) => {
     )
 }
 
-export default OrderDataCome
+export default OrderDataCancel
