@@ -29,7 +29,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
+              <Heart id={v.pro_id} setLoginModal={setLoginModal} />
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -68,7 +68,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
+              <Heart id={v.pro_id} setLoginModal={setLoginModal} />
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -107,7 +107,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
+              <Heart id={v.pro_id} setLoginModal={setLoginModal} />
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -139,8 +139,10 @@ const CompareModal = ({
     <>
       <div
         className="CompareModal"
-        onClick={() => {
-          setComparemodel(false)
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setComparemodel(false)
+          }
         }}
       >
         <div className="comparepage">
@@ -151,14 +153,6 @@ const CompareModal = ({
             className="close-white"
           >
             <img src="/ProductList/close-white.svg" alt="" />
-          </div>
-          <div
-            onClick={() => {
-              setComparemodel(false)
-            }}
-            className="mobile-close"
-          >
-            <img src="/ProductList/close-black.svg" alt="" />
           </div>
           <div className="side-box">
             <div className="empty-wrap"></div>

@@ -348,6 +348,12 @@ const ProductDetail = (props) => {
       </React.Fragment>
     )
   })
+  const [style, setStyle] = useState(40)
+
+  const handleScroll = () => {
+    const a = (40 + window.scrollY)
+    setStyle(a)
+  }
 
   useEffect(() => {
     let a = true
@@ -366,6 +372,12 @@ const ProductDetail = (props) => {
         setSpin(false)
       }
     }, 1000)
+
+    window.addEventListener('scroll', () => {
+      if (a) {
+        handleScroll()
+      }
+    })
 
     fetchData()
 
@@ -391,7 +403,7 @@ const ProductDetail = (props) => {
         ''
       )}
       <div className="ProductDetail">
-        <MobileGuideButton />
+        <MobileGuideButton style={style} />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele1" />
         <img src="/ProductList/bgelement.svg" alt="" className="bgele2" />
         {/* 商品列表的容器 */}
