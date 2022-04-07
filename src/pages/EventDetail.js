@@ -7,6 +7,7 @@ const EventDetail = () => {
   const { id } = useParams()
   const url = 'http://localhost:3001/api/event?eventId=' + id
 
+
   const Detail = data.map((v) => {
     return (
       <React.Fragment key={v.event_id}>
@@ -31,7 +32,9 @@ const EventDetail = () => {
             <div className="loca">{v.event_location}</div>
           </div>
           <div className="price">NT${v.event_cost}</div>
-          <button className="btn btn-primary">立即報名</button>
+          <button className="btn btn-primary">
+            立即報名
+          </button>
         </div>
       </React.Fragment>
     )

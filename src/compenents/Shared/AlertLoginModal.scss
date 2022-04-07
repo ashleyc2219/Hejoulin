@@ -1,0 +1,51 @@
+@import './../../styles/mixin.scss';
+@keyframes bgani {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes bgani2 {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.AlertLoginModal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  z-index: 9;
+  animation: bgani 0.5s;
+  .Modal {
+    animation: bgani2 0.5s;
+    margin-top: 100px;
+    width: 300px;
+    height: fit-content;
+    padding: 10px 50px 10px 50px;
+    background-image: url('./../../../public/Sake-background0310.jpg');
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

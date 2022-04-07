@@ -1,16 +1,23 @@
 import React from 'react'
 import { CartCount } from '../../App'
 import './AddCartIcon.scss'
+import FetchMemberId from '../Member/FetchMemberId'
 
-const AddCartIcon = ({ id, setCartCount, count, setAddcartmodal }) => {
+const AddCartIcon = ({
+  id,
+  setCartCount,
+  count,
+  setAddcartmodal,
+  setLoginModal,
+}) => {
   const addcart = async (num, pro_id) => {
-    if(localStorage.token){
-
+    const getMember = await FetchMemberId(localStorage.getItem('token'))
+    if (getMember !== 'noMemberId') {
       const a = count + num
       setCartCount(a)
-  
+
       const data = {
-        member_id: 4,
+        member_id: getMember,
         pro_id: `${pro_id}`,
         cart_quantity: `${count}`,
       }
@@ -32,13 +39,13 @@ const AddCartIcon = ({ id, setCartCount, count, setAddcartmodal }) => {
           setAddcartmodal(true)
           setTimeout(() => {
             setAddcartmodal(false)
-          }, 4000);
+          }, 4000)
         }
       } catch (e) {
         return e
       }
-    }else{
-      alert('請登入會員')
+    } else {
+      setLoginModal(true)
     }
   }
   return (

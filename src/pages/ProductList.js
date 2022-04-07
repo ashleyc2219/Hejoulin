@@ -14,6 +14,7 @@ import EmptyBlock from '../compenents/ProductList/EmptyBlock'
 import NoResult from '../compenents/ProductList/NoResult'
 import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 import Spinner from '../compenents/Shared/Spinner'
+import AlertLoginModal from '../compenents/Shared/AlertLoginModal'
 
 const ProductList = (props) => {
   const [brand, setBrand] = useState([]) //品牌
@@ -53,6 +54,8 @@ const ProductList = (props) => {
     setAddcartmodal,
     sidebar,
     setSidebar,
+    loginModal,
+    setLoginModal,
   } = props
   //const [compare, setCompare] = useState([])
   const [comparePro1, setComparePro1] = useState([])
@@ -424,6 +427,14 @@ const ProductList = (props) => {
 
   return (
     <>
+      {loginModal ? (
+        <AlertLoginModal
+          setSidebar={setSidebar}
+          setLoginModal={setLoginModal}
+        />
+      ) : (
+        ''
+      )}
       {sortModal ? (
         <MobileSortModal
           sortModal={sortModal}
@@ -454,11 +465,7 @@ const ProductList = (props) => {
       ) : (
         ''
       )}
-      {catModal ? (
-        <MobileCatModal setCatModal={setCatModal} catModal={catModal} />
-      ) : (
-        ''
-      )}
+      {catModal ? <MobileCatModal catModal={catModal} /> : ''}
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
@@ -470,6 +477,7 @@ const ProductList = (props) => {
           setAddcartmodal={setAddcartmodal}
           sidebar={sidebar}
           setSidebar={setSidebar}
+          setLoginModal={setLoginModal}
         />
       ) : (
         ''
@@ -595,6 +603,9 @@ const ProductList = (props) => {
                   setCompare={setCompare}
                   setCartCount={setCartCount}
                   setAddcartmodal={setAddcartmodal}
+                  sidebar={sidebar}
+                  setSidebar={setSidebar}
+                  setLoginModal={setLoginModal}
                 />
               )}
               {/* 達人推薦 */}
@@ -612,6 +623,7 @@ const ProductList = (props) => {
                   setCompare={setCompare}
                   setCartCount={setCartCount}
                   setAddcartmodal={setAddcartmodal}
+                  setLoginModal={setLoginModal}
                 />
               )}
 
@@ -639,6 +651,7 @@ const ProductList = (props) => {
                   setCompare={setCompare}
                   setCartCount={setCartCount}
                   setAddcartmodal={setAddcartmodal}
+                  setLoginModal={setLoginModal}
                 />
               ) : (
                 ''

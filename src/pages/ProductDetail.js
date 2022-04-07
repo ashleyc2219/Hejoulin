@@ -10,6 +10,7 @@ import CompareBtn from '../compenents/ProductList/CompareBtn'
 import MobileGuideButton from '../compenents/SakeGuide/MobileGuide'
 import AddCartBtn from '../compenents/ProductList/AddCartBtn'
 import Spinner from '../compenents/Shared/Spinner'
+import AlertLoginModal from '../compenents/Shared/AlertLoginModal'
 
 const ProductDetail = (props) => {
   const {
@@ -19,6 +20,8 @@ const ProductDetail = (props) => {
     setAddcartmodal,
     sidebar,
     setSidebar,
+    loginModal,
+    setLoginModal,
   } = props
   const { id } = useParams()
   const [detail, setDetail] = useState([])
@@ -62,6 +65,14 @@ const ProductDetail = (props) => {
   const productDetail = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
+        {loginModal ? (
+          <AlertLoginModal
+            setSidebar={setSidebar}
+            setLoginModal={setLoginModal}
+          />
+        ) : (
+          ''
+        )}
         <div className="product-wrap">
           <div className="product-img">
             <img
@@ -82,8 +93,7 @@ const ProductDetail = (props) => {
                     <Heart
                       id={v.pro_id}
                       linkFav={linkFav}
-                      sidebar={sidebar}
-                      setSidebar={setSidebar}
+                      setLoginModal={setLoginModal}
                     />
                     <p onClick={linkFavhandler}>收藏</p>
                   </div>
@@ -150,6 +160,7 @@ const ProductDetail = (props) => {
                 setAddcartmodal={setAddcartmodal}
                 sidebar={sidebar}
                 setSidebar={setSidebar}
+                setLoginModal={setLoginModal}
               />
             </div>
             <div className="intro">
@@ -374,6 +385,7 @@ const ProductDetail = (props) => {
           comparePro3={comparePro3}
           setCartCount={setCartCount}
           setAddcartmodal={setAddcartmodal}
+          setLoginModal={setLoginModal}
         />
       ) : (
         ''

@@ -8,40 +8,54 @@ import { CartCount } from '../../App'
 import Breadcrumb from './Breadcrumb'
 import AddCartModal from '../ProductList/AddCartModal'
 import LogoutHover from './LogoutHover'
+import FetchMemberId from '../Member/FetchMemberId'
 
 const Header = (props) => {
   const { user, setUser, setCartCount, addcartmodal, sidebar, setSidebar } =
     props
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
+  const [ani, setAni] = useState('')
 
   const location = useLocation()
 
   const getQuantity = async () => {
-    const data = { member_id: 4 }
-    const settings = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }
-    try {
-      const fetchResponse = await fetch(
-        'http://localhost:3001/api/products-cart-quantity',
-        settings
-      )
-      const data = await fetchResponse.json()
-      setCartCount(data)
-    } catch (e) {
-      return e
-    }
-  }
+    const getMember = await FetchMemberId(localStorage.getItem('token'))
 
-  if (localStorage.token) {
-    getQuantity()
+    if (getMember !== 'noMemberId') {
+      const data = { member_id: getMember }
+      const settings = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+      try {
+        const fetchResponse = await fetch(
+          'http://localhost:3001/api/products-cart-quantity',
+          settings
+        )
+        const data = await fetchResponse.json()
+        setCartCount(data)
+      } catch (e) {
+        return e
+      }
+    }
   }
+  useEffect(() => {
+    getQuantity()
+  }, [])
+
+  let style = ''
+
+  useEffect(() => {
+    setAni('spanani')
+    setTimeout(() => {
+      setAni('')
+    }, 300)
+  }, [CartCount._currentValue])
 
   useEffect(() => {
     if (!location.state) return
@@ -133,7 +147,11 @@ const Header = (props) => {
                 <img alt="" src="/Shared/shoppingCart.svg" />
                 <CartCount.Consumer>
                   {(cartCount) =>
-                    cartCount === 0 ? '' : <span>{cartCount}</span>
+                    cartCount === 0 ? (
+                      ''
+                    ) : (
+                      <span className={ani}>{cartCount}</span>
+                    )
                   }
                 </CartCount.Consumer>
               </Link>

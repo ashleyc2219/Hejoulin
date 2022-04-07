@@ -13,6 +13,7 @@ const CompareModal = ({
   setAddcartmodal,
   sidebar,
   setSidebar,
+  setLoginModal,
 }) => {
   const [count, setCount] = useState(1)
   let product1 = comparePro1.map(function (v, i) {
@@ -28,7 +29,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -48,6 +49,7 @@ const CompareModal = ({
             setAddcartmodal={setAddcartmodal}
             sidebar={sidebar}
             setSidebar={setSidebar}
+            setLoginModal={setLoginModal}
           />
         </div>
       </div>
@@ -66,7 +68,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -86,6 +88,7 @@ const CompareModal = ({
             setAddcartmodal={setAddcartmodal}
             sidebar={sidebar}
             setSidebar={setSidebar}
+            setLoginModal={setLoginModal}
           />
         </div>
       </div>
@@ -104,7 +107,7 @@ const CompareModal = ({
         <div className="spec-wrap">
           <ul>
             <li className="like">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id} setLoginModal={setLoginModal}/>
             </li>
             <li>{v.pro_level}</li>
             <li>{v.pro_essence}%</li>
@@ -124,6 +127,7 @@ const CompareModal = ({
             setAddcartmodal={setAddcartmodal}
             sidebar={sidebar}
             setSidebar={setSidebar}
+            setLoginModal={setLoginModal}
           />
         </div>
       </div>
