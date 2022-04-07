@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddCartBtn.scss'
 import { CartCount } from '../../App'
+import FetchMemberId from '../Member/FetchMemberId'
 
 const AddCartBtn = ({
   id,
@@ -9,9 +10,12 @@ const AddCartBtn = ({
   setAddcartmodal,
   sidebar,
   setSidebar,
+  setLoginModal
 }) => {
   const addcart = async (num, pro_id) => {
-    if (localStorage.token) {
+    const getMember = await FetchMemberId(localStorage.getItem('token'))
+
+    if (getMember !== 'noMemberId') {
       const a = count + num
       setCartCount(a)
 
@@ -45,8 +49,7 @@ const AddCartBtn = ({
         return e
       }
     } else {
-      alert('請登入會員')
-      setSidebar(!sidebar)
+      setLoginModal(true)
     }
   }
   return (

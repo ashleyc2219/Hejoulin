@@ -11,6 +11,7 @@ const ProductTop3 = ({
   setCompare,
   setCartCount,
   setAddcartmodal,
+  setLoginModal,
 }) => {
   const [top, setTop] = useState([])
   const [count, setCount] = useState(1)
@@ -79,12 +80,13 @@ const ProductTop3 = ({
               setCompare={setCompare}
             />
             <div className="cart-heart">
-              <Heart id={v.pro_id} />
+              <Heart id={v.pro_id} setLoginModal={setLoginModal} />
               <AddCartIcon
                 setCartCount={setCartCount}
                 id={v.pro_id}
                 count={count}
                 setAddcartmodal={setAddcartmodal}
+                setLoginModal={setLoginModal}
               />
             </div>
           </div>

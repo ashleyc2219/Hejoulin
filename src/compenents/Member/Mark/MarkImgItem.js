@@ -1,13 +1,20 @@
 import React, {useState} from "react";
 
 const MarkImgItem = (props) => {
-    const { setModalShow, markData, setModalContent, whichMark, setWhichMark} = props
+    const { setModalShow, markData, setModalContent, whichMark, setWhichMark, whichMark2, setWhichMark2} = props
     console.log(props)
     const [currentIndex, setCurrentIndex] = useState(-1)
 
 
     const openModal = () => {
         setModalShow((prev) => !prev)
+    }
+
+     function handleCheckedMark(event) {
+         setWhichMark(event.target.value)
+         // setWhichMark2(whichMark.map((v)=> ({ ...v,  event.target.value})))
+        console.log('Checked1 :', whichMark)
+        // console.log('Checked2 :', whichMark2)
     }
 
     const renderMarkModal = () => {
@@ -25,7 +32,8 @@ const MarkImgItem = (props) => {
                     </div>
                     <div className="MarkName">
                         <input
-                            onClick={(e)=>{setWhichMark(e.target.value)}}
+                            // onClick={(e)=>{setWhichMark(e.target.value)}}
+                            onClick={handleCheckedMark}
                             type="checkbox"
                             id={el.mark_id}
                             name="cc"

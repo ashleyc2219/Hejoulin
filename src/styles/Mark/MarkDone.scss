@@ -22,6 +22,17 @@
 }
 
 .MarkDone {
+  section {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    transform: translateY(-100px);
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .img-show {
     animation: show 1s ease-in;
   }
@@ -47,17 +58,24 @@
       z-index: 0;
       display: flex;
       justify-content: center;
+      mix-blend-mode: multiply;
       .fake {
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        background-color: beige;
+        background-color: $info;
+        opacity: 0.3;
       }
     }
     .done {
       position: relative;
-      top: 0;
+      top: -22px;
+      left: 16px;
       z-index: 3;
+      @include medium() {
+        left: 0px;
+      }
+
       .shadow {
         background: linear-gradient(
           to right,

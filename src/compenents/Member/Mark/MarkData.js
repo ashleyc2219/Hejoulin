@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import MarkModal from './MarkModal'
-import '../../styles/Member/Member-Mark/MarkData.scss'
-import MarkImgItem from "./Mark/MarkImgItem";
+import '../../../styles/Member/Member-Mark/MarkData.scss'
+import MarkImgItem from "./MarkImgItem";
 import {Link} from "react-router-dom";
 
 const MarkData = (props) => {
-    const {markData, whichMark, setWhichMark} = props
+    const {markData, whichMark, setWhichMark, whichMark2, setWhichMark2} = props
     const [modalShow, setModalShow] = useState(false)
     const [modalContent, setModalContent] = useState('')
 
@@ -17,6 +17,8 @@ const MarkData = (props) => {
                     setModalContent={setModalContent}
                     whichMark={whichMark}
                     setWhichMark={setWhichMark}
+                    whichMark2={whichMark2}
+                    setWhichMark2={setWhichMark2}
                 />
         } else {
             return null

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './Heart.scss'
+import FetchMemberId from '../Member/FetchMemberId'
 
 const Heart = (props) => {
   const [favorites, setFavorite] = useState('')
-  const { id, linkFav } = props
+  const { id, linkFav, setLoginModal } = props
   let active = true
   let proid = ''
 
@@ -17,30 +18,28 @@ const Heart = (props) => {
     active = false
   }
 
-  const click = () => {
-    if (localStorage.token) {
+  const click = async () => {
+    const getMember = await FetchMemberId(localStorage.getItem('token'))
+
+    if (getMember !== 'noMemberId') {
       if (active === true) {
-        ;(async function add() {
-          await insertFav()
-          await getFav()
-        })()
+        await insertFav(getMember)
+        await getFav(getMember)
 
         active = false
       } else {
-        ;(async function del() {
-          await deleteFav()
-          await getFav()
-        })()
+        await deleteFav(getMember)
+        await getFav(getMember)
 
         active = true
       }
     } else {
-      alert('請登入會員')
+      setLoginModal(true)
     }
   }
 
-  const insertFav = async () => {
-    const data = { member_id: 1, pro_id: `${id}` }
+  const insertFav = async (member_id) => {
+    const data = { member_id: member_id, pro_id: `${id}` }
     const settings = {
       method: 'POST',
       headers: {
@@ -60,8 +59,8 @@ const Heart = (props) => {
     }
   }
 
-  const deleteFav = async () => {
-    const data = { member_id: 1, pro_id: `${id}` }
+  const deleteFav = async (member_id) => {
+    const data = { member_id: member_id, pro_id: `${id}` }
     const settings = {
       method: 'POST',
       headers: {
@@ -81,8 +80,8 @@ const Heart = (props) => {
     }
   }
 
-  const getFav = async () => {
-    const data = { member_id: '1' }
+  const getFav = async (member_id) => {
+    const data = { member_id: member_id }
     const settings = {
       method: 'POST',
       headers: {
@@ -110,8 +109,9 @@ const Heart = (props) => {
     let a = true
 
     const getFav1 = async () => {
-      if (localStorage.token) {
-        const data = { member_id: '1' }
+      const getMember = await FetchMemberId(localStorage.getItem('token'))
+      if (getMember !== 'noMemberId') {
+        const data = { member_id: getMember }
         const settings = {
           method: 'POST',
           headers: {

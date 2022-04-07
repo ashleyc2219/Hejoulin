@@ -76,9 +76,12 @@ function App() {
     total: '',
     email: '',
   })
-  //加入購物車的提示光箱
+  // 加入購物車的提示光箱
   const [addcartmodal, setAddcartmodal] = useState(false)
+  // 登入會員的側邊選單
   const [sidebar, setSidebar] = useState(false)
+  // 登入會員的alert光箱
+  const [loginModal, setLoginModal] = useState(false)
   return (
     <Router>
       <>
@@ -109,6 +112,8 @@ function App() {
                 setAddcartmodal={setAddcartmodal}
                 sidebar={sidebar}
                 setSidebar={setSidebar}
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
               />
             </CartCount.Provider>
           </Route>
@@ -121,6 +126,8 @@ function App() {
                 setAddcartmodal={setAddcartmodal}
                 sidebar={sidebar}
                 setSidebar={setSidebar}
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
               />
             </CartCount.Provider>
           </Route>
@@ -227,7 +234,7 @@ function App() {
               setDetailData={setDetailData}
             />
           </Route>
-          <Route exact path="/member/event-list/detail/:id">
+          <Route exact path="/member/event-list/detail">
             <MemberEventListDetail />
           </Route>
           <Route exact path="/member/event-list">

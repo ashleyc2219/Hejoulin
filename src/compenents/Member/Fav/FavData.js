@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
 import NoFavItem from './NoFavItem'
-import {Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import DelFavModal from "./DelFavModal"
 
 const FavData = (props) => {
   const { favData, setFavData } = props
+  const [favModalShow, setFavModalShow] = useState(false)
+  const [favRs, setFavRs] = useState(undefined)
   const APIFav = 'http://localhost:3001/user/member/MemberFav'
   const APIDel = 'http://localhost:3001/user/member/MemberFav/delete'
   const history = useHistory()
@@ -47,11 +50,43 @@ const FavData = (props) => {
         const data = await fetchResponse.json()
         console.log(data)
         if (data.success === true) {
-          history.go(0)
+          // history.go(0)
+          setFavRs(data)
+          setFavModalShow((prev) => !prev)
         }
         //setFavData(data)
       } catch (err) {
         return err
+      }
+    }
+
+    const insertFav = async () => {
+      const data = {
+        member_id: `${favData[0].member_id}`,
+        pro_id: `${favData[0].pro_id}`,
+      }
+      console.log(data)
+      const settings = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+      try {
+        const fetchResponse = await fetch(
+          'http://localhost:3001/api/products-fav/insert',
+          settings
+        )
+        const data = await fetchResponse.json()
+        console.log(data)
+        if (data.success === true) {
+          // history.go(0)
+          setFavRs(data)
+        }
+      } catch (e) {
+        return e
       }
     }
 
@@ -63,12 +98,16 @@ const FavData = (props) => {
         })()
 
         active = false
+      } else {
+        ;(async function add() {
+          await insertFav()
+        })()
       }
     }
 
     if (favData && favData.length) {
       return favData.map((el) => (
-        <div key={'test' + el.member_id} className="product">
+        <div key={'test' + el.pro_id} className="product">
           <div className="product-wrap">
             <Link to={'/product/detail/' + el.pro_id}>
               <div
@@ -135,6 +174,15 @@ const FavData = (props) => {
         <div className="product-container">
           {favData && renderFavItems(favData)}
         </div>
+        {favModalShow ? (
+          <DelFavModal
+            favModalShow={favModalShow}
+            setFavModalShow={setFavModalShow}
+            favRs={favRs}
+          />
+        ) : (
+          ''
+        )}
       </div>
     </>
   )
