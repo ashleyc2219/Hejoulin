@@ -13,6 +13,10 @@ const ListTableGift = (props) => {
   } = props
   const [quantity, setQuantity] = useState(giftInfo['cart_quantity'])
   let price = 0
+  useEffect(() => {
+    setQuantity(giftInfo['cart_quantity'])
+  }, [giftIncart])
+
   const fetchURL = 'http://localhost:3001/api/cart-list/gift'
   function renderGiftInfo(giftInfo) {
     if (giftInfo.gift_id === 3) {
@@ -129,7 +133,7 @@ const ListTableGift = (props) => {
       (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
     )
     setGiftIncart(newGiftInCart)
-    updateGiftTotal(price, 'del')
+    updateGiftTotal(price * quantity, 'del')
   }
   const minusQuantity = async () => {
     if (quantity > 1) {

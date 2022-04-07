@@ -101,7 +101,7 @@ const CartList = (props) => {
           if (gift.gift_id === 4) {
             price = gift.pro_price + 200 + 600
           }
-          total += price
+          total += price * gift.cart_quantity
           // console.log(total)
         }
         return total
