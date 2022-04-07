@@ -3,9 +3,12 @@ import './AgeModal.css'
 import { useEffect, useState } from 'react'
 import DatePicker from 'react-date-picker'
 
+import CalendarIcon from './CalendarIcon.js'
+
 const AgeModal = (props) => {
   const { modalShow, setModalShow } = props
   const [value, setValue] = useState(new Date())
+  const [classname, setClassname] = useState(true)
 
   const openModal = () => {
     setModalShow((prev) => !prev)
@@ -17,16 +20,27 @@ const AgeModal = (props) => {
     let AgeOne = Math.ceil((nowTime - Birthday) / 31536000000) - 1
     console.log(AgeOne)
     if (AgeOne >= 18) {
-      openModal()
+      setClassname(false)
+      localStorage.setItem('age', 'over 18')
+      setTimeout(() => {
+        openModal()
+      }, 1000)
     } else {
-      console.log(AgeOne)
       window.location.href = `https://www.google.com.tw`
     }
   }
 
+  function formatDay(d, locale) {
+    return (
+      <span>
+        {d.getDate()}-s{d.getMonth()}-{d.getFullYear()}
+      </span>
+    )
+  }
+
   return (
     <>
-      <div className="AgeModal">
+      <div className={classname ? 'AgeModal anistart' : 'AgeModal aniend'}>
         <div className="comparepage">
           {/* 內容top */}
           <div className="Footer">
@@ -156,16 +170,20 @@ const AgeModal = (props) => {
             </div>
           </div>
           <div className="Age-content">
-            <h3>請問你的出生年月日是：</h3>
-            <DatePicker onChange={setValue} value={value} />
-
-            <button className="mt-3 btn btn-primary" onClick={AgeCount}>
-              確認
-            </button>
-
+            <h3 className="mb-4">請問你的出生年月日是</h3>
+            <DatePicker
+              locale={'en-US'}
+              onChange={setValue}
+              value={value}
+              calendarIcon={<CalendarIcon />}
+              clearIcon={null}
+            />
             <div className="red-word">
               <p>未滿18歲請勿飲酒</p>
             </div>
+            <button className="mt-3 btn btn-primary mt-3" onClick={AgeCount}>
+              確認
+            </button>
           </div>
 
           {/* 內容bottom */}

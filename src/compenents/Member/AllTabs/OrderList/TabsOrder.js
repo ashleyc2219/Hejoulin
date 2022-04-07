@@ -6,13 +6,13 @@ import OrderData from './OrderData'
 import TabPages from '../../TabComponent/TabPages'
 import OrderDataCome from "./OrderDataCome";
 import OrderDataToget from "./OrderDataToget";
-import MemberOrderListDetail from "../../../../pages/MemberOrderListDetail";
+import OrderDataCancel from "./OrderDataCancel";
 
 const TabsOrder = ({ detailData, setDetailData }) => {
   const [activeTab, setActiveTab] = useState('tab1')
-  const [whichTabRender, setWhichTabRender] = useState('all')
   const [pageData, setPageData] = useState({})
   const [cPage, setCPage] = useState(1)
+  const [dataOrder, setOrderData] = useState({}) // 訂單資料
 
   return (
     <>
@@ -38,12 +38,12 @@ const TabsOrder = ({ detailData, setDetailData }) => {
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
               />
-              <TabNavItem
-                  title="已完成"
-                  id="tab4"
-                  activeTab={activeTab}
-                  setActiveTab={setActiveTab}
-              />
+              {/*<TabNavItem*/}
+              {/*    title="已完成"*/}
+              {/*    id="tab4"*/}
+              {/*    activeTab={activeTab}*/}
+              {/*    setActiveTab={setActiveTab}*/}
+              {/*/>*/}
               <TabNavItem
                   title="已取消"
                   id="tab5"
@@ -55,27 +55,40 @@ const TabsOrder = ({ detailData, setDetailData }) => {
             <div className="outlet">
               <TabContent id="tab1" activeTab={activeTab}>
                 <OrderData
-                    whichTabRender={whichTabRender}
-                    setWhichTabRender={setWhichTabRender}
                     pageData={pageData}
                     setPageData={setPageData}
                     cPage={cPage}
-                    setCPage={setCPage}
                     detailData={detailData}
                     setDetailData={setDetailData}
+                    setOrderData={setOrderData}
                 />
               </TabContent>
               <TabContent id="tab2" activeTab={activeTab}>
-                <OrderDataCome whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
+                <OrderDataCome
+                    pageData={pageData}
+                    setPageData={setPageData}
+                    cPage={cPage}
+                    setOrderData={setOrderData}
+                />
               </TabContent>
               <TabContent id="tab3" activeTab={activeTab}>
-                <OrderDataToget whichTabRender={whichTabRender} setWhichTabRender={setWhichTabRender}/>
+                <OrderDataToget
+                    pageData={pageData}
+                    setPageData={setPageData}
+                    cPage={cPage}
+                    setOrderData={setOrderData}
+                />
               </TabContent>
-              <TabContent id="tab4" activeTab={activeTab}>
-                <OrderData />
-              </TabContent>
+              {/*<TabContent id="tab4" activeTab={activeTab}>*/}
+              {/*  <OrderData />*/}
+              {/*</TabContent>*/}
               <TabContent id="tab5" activeTab={activeTab}>
-                <OrderData />
+                <OrderDataCancel
+                    pageData={pageData}
+                    setPageData={setPageData}
+                    cPage={cPage}
+                    setOrderData={setOrderData}
+                />
               </TabContent>
             </div>
           </div>

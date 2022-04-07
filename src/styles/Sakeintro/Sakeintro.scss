@@ -483,12 +483,26 @@
       0% {
         // transform: translateY(-10px);
         opacity: 0;
+        transform: scale(0.5, 0.5), translateX(0px);
       }
       50% {
         opacity: 1;
       }
       100% {
         // transform: translateY(0px);
+        opacity: 0;
+        transform: scale(0.5, 0.5), translateX(50px);
+      }
+    }
+
+    @keyframes brewani2 {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
         opacity: 0;
       }
     }
@@ -559,6 +573,7 @@
           background-image: url('./../../../public/Sakeintro/ar01.svg');
           background-repeat: no-repeat;
           background-position: top center;
+          animation-name: brewani2;
         }
 
         img {

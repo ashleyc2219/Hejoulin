@@ -15,6 +15,14 @@ class Carousel extends React.Component {
     this.leftClick = this.moveLeft.bind(this)
   }
 
+  componentDidMount() {
+    this.timeId = setInterval(this.rightClick, 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timeId)
+  }
+
   generateItems() {
     const items = []
     let level
@@ -47,7 +55,7 @@ class Carousel extends React.Component {
       direction: 'left',
     })
   }
-
+  //要加this
   moveRight() {
     let newActive = this.state.active
     this.setState({

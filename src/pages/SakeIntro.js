@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+//如果不是default export就要用花括號
 import './../styles/Sakeintro/Sakeintro.scss'
 import GuideButton from '../compenents/SakeGuide/Guide'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const SakeIntro = () => {
+  // use aos 初始化 動畫的時間長度
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, [])
+
   return (
     <>
       <div className="sake-intro">
@@ -27,7 +37,7 @@ const SakeIntro = () => {
             <p>產地對於清酒而言，就是各式不同的組成元素代表。</p>
           </div>
           {/* 產地內容 origin-content */}
-          <div className="origin-content">
+          <div className="origin-content " data-aos="fade-up">
             <div className="ori-card weather col-md-4 col-sm-12">
               <div className="pic"></div>
               <div className="title">
