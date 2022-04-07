@@ -127,7 +127,7 @@ const CartList = (props) => {
       setShipFee(0)
     }
     setAllTotal(total)
-  }, [sakeTotal, giftTotal, discountPerscent, shipFee, shipMethod])
+  }, [sakeTotal, giftTotal, discountPerscent, shipFee, shipMethod, sakeIncart])
 
   // 折扣碼 enter 輸入
   const enter = (e) => {

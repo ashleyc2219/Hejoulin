@@ -24,6 +24,10 @@ const ListTableSake = (props) => {
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
   let pro_gift = 'false'
   let gift_text = '不提供禮盒'
+  useEffect(() => {
+    setQuantity(sakeInfo['cart_quantity'])
+  }, [sakeInfo])
+  
   const markRender = (markPic) => {
     if (markPic && sakeInfo.pro_mark === 1) {
       return (
