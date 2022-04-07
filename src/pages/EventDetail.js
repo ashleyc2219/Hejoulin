@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import './../styles/EventDetail/EventDetail.scss'
 import { useParams } from 'react-router-dom'
+import Spinner from '../compenents/Shared/Spinner'
 
 const EventDetail = () => {
   const [data, setData] = useState([])
   const { id } = useParams()
+  const [spin, setSpin] = useState(true)
   const url = 'http://localhost:3001/api/event?eventId=' + id
 
+  useEffect(() => {
+    let a = true
+
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+
+    return () => {
+      a = false
+    }
+  }, [])
 
   const Detail = data.map((v) => {
     return (
@@ -32,9 +47,7 @@ const EventDetail = () => {
             <div className="loca">{v.event_location}</div>
           </div>
           <div className="price">NT${v.event_cost}</div>
-          <button className="btn btn-primary">
-            立即報名
-          </button>
+          <button className="btn btn-primary">立即報名</button>
         </div>
       </React.Fragment>
     )
@@ -58,7 +71,7 @@ const EventDetail = () => {
 
   return (
     <>
-      <div className="eventDetail">{Detail}</div>
+      <div className="eventDetail">{spin ? <Spinner /> : Detail}</div>
     </>
   )
 }
