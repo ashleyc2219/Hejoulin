@@ -5,6 +5,21 @@ import './../styles/Mark/MarkDone.scss'
 const MarkDone = () => {
   const markId = localStorage.getItem('markid')
   const [markImg, setMarkImg] = useState([])
+
+  useEffect(() => {
+    document.addEventListener('mousemove', parallax)
+    function parallax(e) {
+      this.querySelectorAll('.layer').forEach((layer) => {
+        const speed = layer.getAttribute('data-speed')
+
+        const x = (window.innerWidth - e.pageX * speed) / 12
+        const y = (window.innerHeight - e.pageY * speed) / 12
+
+        layer.style.transform = `translateX(${x}px) translateY(${y}px)`
+      })
+    }
+  })
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch('http://localhost:3001/api/mark?markId=' + markId)
@@ -28,6 +43,28 @@ const MarkDone = () => {
   return (
     <>
       <div className="MarkDone">
+        <section>
+          <img className="layer" data-speed="8" src="/Mark/4.svg" alt="" />
+          <img className="layer" data-speed="-9" src="/Mark/3.svg" alt="" />
+          <img className="layer" data-speed="5" src="/Mark/2.svg" alt="" />
+          <img
+            className="layer"
+            data-speed="3"
+            src="/Mark/7.svg"
+            alt=""
+            style={{ opacity: '.7' }}
+          />
+          <img
+            className="layer"
+            data-speed="-1"
+            src="/Mark/8.svg"
+            alt=""
+            style={{ opacity: '.7' }}
+          />
+          <img className="layer" data-speed="8" src="/Mark/1.svg" alt="" />
+          <img className="layer" data-speed="-4" src="/Mark/2.svg" alt="" />
+          <img className="layer" data-speed="7" src="/Mark/3.svg" alt="" />
+        </section>
         <div className="done_container">
           <div className="bg">
             <div className="fake"></div>

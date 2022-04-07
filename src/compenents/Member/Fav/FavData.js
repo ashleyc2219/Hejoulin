@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
 import NoFavItem from './NoFavItem'
-import {Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const FavData = (props) => {
   const { favData, setFavData } = props
@@ -68,7 +68,7 @@ const FavData = (props) => {
 
     if (favData && favData.length) {
       return favData.map((el) => (
-        <div key={'test' + el.member_id} className="product">
+        <div key={'test' + el.pro_id} className="product">
           <div className="product-wrap">
             <Link to={'/product/detail/' + el.pro_id}>
               <div
