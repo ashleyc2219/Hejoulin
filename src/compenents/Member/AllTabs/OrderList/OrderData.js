@@ -113,7 +113,7 @@ const OrderData = (props) => {
 
         if (pageData && pageData.length) {
             return pageData.map((el) => (
-                <tr key={'test' + el.order_d_id}>
+                <tr key={el.order_d_id}>
                     <td>{el.order_date}</td>
                     <td>{el.order_id}</td>
                     <td>{el.order_d_price}</td>
