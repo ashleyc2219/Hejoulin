@@ -10,11 +10,11 @@ const MarkImgItem = (props) => {
         setModalShow((prev) => !prev)
     }
 
-    async function handleCheckedMark(event) {
-        await setWhichMark(event.target.value)
-        await setWhichMark2(...whichMark, event.target.value)
+     function handleCheckedMark(event) {
+         setWhichMark(event.target.value)
+         // setWhichMark2(whichMark.map((v)=> ({ ...v,  event.target.value})))
         console.log('Checked1 :', whichMark)
-        console.log('Checked2 :', whichMark2)
+        // console.log('Checked2 :', whichMark2)
     }
 
     const renderMarkModal = () => {

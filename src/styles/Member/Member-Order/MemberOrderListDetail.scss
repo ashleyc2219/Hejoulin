@@ -15,7 +15,8 @@
     height: 560px;
     padding: 0;
 
-    margin: 5% 5%;
+
+    margin: 5% auto;
     @include medium {
       flex-direction: column;
     }

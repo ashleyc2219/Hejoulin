@@ -36,7 +36,7 @@ const NavFav = (props) => {
   }
 
   function PriceLowToHigh(a, b) {
-    return b.pro_price > a.pro_price ? 1 : -1
+    return a.pro_price > b.pro_price ? 1 : -1
   }
 
   function MarkCustomFirst(a, b) {

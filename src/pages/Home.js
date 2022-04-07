@@ -15,6 +15,11 @@ const Home = () => {
   //光箱的設定
   const [modalShow, setModalShow] = useState(true)
 
+  /* if (localStorage.getItem('age') === 'over 18') {
+    console.log('over 18')
+    setModalShow(false)
+  } */
+
   //最新消息
   const [detail, setDetail] = useState([])
   const url = 'http://localhost:3001/api/news'
@@ -54,7 +59,7 @@ const Home = () => {
   return (
     <>
       <div className="home">
-        {modalShow ? (
+        {localStorage.getItem('age') !== 'over 18' && modalShow ? (
           <AgeModal modalShow={modalShow} setModalShow={setModalShow} />
         ) : (
           ''
