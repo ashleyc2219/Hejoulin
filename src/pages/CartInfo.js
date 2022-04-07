@@ -10,6 +10,8 @@ import '../styles/CartInfo/CartInfo.scss'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
+import Spinner from '../compenents/Shared/Spinner'
+
 import { districtsData } from './../data/districts'
 
 import { CartSummary } from './../App'
@@ -29,6 +31,8 @@ const hunel = new HunelCreditCard()
 
 const CartInfo = (props) => {
   const { setCartVerifyInfo, setCartSummary } = props
+  const [spin, setSpin] = useState(true)
+
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   // cartList 傳過來的資料
   let cartSummaryInfo = CartSummary._currentValue
@@ -138,6 +142,11 @@ const CartInfo = (props) => {
         setMemberInfo(memberInfoObj)
       }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
 
     return () => {
       a = false
@@ -383,7 +392,9 @@ const CartInfo = (props) => {
     console.log('paymentResult: ', paymentResult)
   }
 
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="CartInfo">
       <ProgressBar step="two" content={stepContent} />
       <div className="container">

@@ -9,9 +9,11 @@ import ListTableSake from '../compenents/Cart/ListTableSake'
 import ListTableGift from '../compenents/Cart/ListTableGift'
 import ListSelection from '../compenents/Cart/ListSelection'
 import EmptyCart from '../compenents/Cart/EmptyCart'
+import Spinner from '../compenents/Shared/Spinner'
 
 const CartList = (props) => {
   const { setCartSummary } = props
+  const [spin, setSpin] = useState(true)
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   const [sakeIncart, setSakeIncart] = useState([])
   const [giftIncart, setGiftIncart] = useState([])
@@ -37,6 +39,7 @@ const CartList = (props) => {
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
+
     // fetch 清酒資料
     ;(async () => {
       const r1 = await fetch(
@@ -107,6 +110,11 @@ const CartList = (props) => {
         setGiftTotal(initialGiftTotal(obj))
       }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
     return () => {
       a = false
     }
@@ -266,8 +274,12 @@ const CartList = (props) => {
       console.log('setCartSummary')
     }
   }
-
-  return sakeIncart.length === 0 && giftIncart.length === 0 ? (
+  // 兩個三元判斷
+  // 先1秒的spinner
+  // 再判斷有沒有商品在購物車裡
+  return spin ? (
+    <Spinner />
+  ) : sakeIncart.length === 0 && giftIncart.length === 0 ? (
     <EmptyCart />
   ) : (
     <>
