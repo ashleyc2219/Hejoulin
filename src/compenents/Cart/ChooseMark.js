@@ -2,12 +2,14 @@ import React from 'react'
 import { useState } from 'react'
 
 const ChooseMark = (props) => {
-  const { check, setCheck, mark_info } = props
+  const { check, setCheck, mark_info, setMarkId } = props
   return (
     <>
       <div
         onClick={() => {
           setCheck(mark_info.pics)
+          setMarkId(mark_info.mark_id)
+          
         }}
         className={check === mark_info.pics ? 'mark markchecked' : 'mark'}
       >

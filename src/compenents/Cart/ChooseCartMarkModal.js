@@ -7,17 +7,26 @@ import { createBrowserHistory } from 'history'
 const ChooseCartMarkModal = (props) => {
   const { sakeInfo, setChooseModalShow, setMarkPic } = props
   const [data, setData] = useState([])
+  // 顯示酒標用
   const [check, setCheck] = useState('')
+  // 傳資料用markID
+  const [markId, setMarkId] = useState(0)
   const history = createBrowserHistory()
 
   const markData = data.map((v, i) => {
     return (
-      <ChooseMark key={i} check={check} setCheck={setCheck} mark_info={v} />
+      <ChooseMark
+        key={i}
+        check={check}
+        setCheck={setCheck}
+        mark_info={v}
+        setMarkId={setMarkId}
+      />
     )
   })
   const MarkInsert = async function () {
     let data = {
-      mark_id: check,
+      mark_id: markId,
       cart_sake_id: sakeInfo.cart_sake_id,
     }
     const r1 = await fetch('http://localhost:3001/api/cart-list/mark', {
