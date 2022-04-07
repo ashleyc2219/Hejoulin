@@ -13,7 +13,7 @@ const FetchMemberId = async (token) => {
         }
     )
     let memberData = res.json()
-    if (memberData) {
+    if (memberData.member_id) {
         return memberData.member_id
     } else {
         return 'noMemberId'

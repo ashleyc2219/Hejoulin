@@ -121,7 +121,7 @@ const OrderData = (props) => {
                     <td className="button-g">
                         <Link to="/member/order-list/detail">
                             <button className="btn btn-primary"
-                                    onClick={() => localStorage.setItem('orderDetail', JSON.stringify(detailData))}>查看訂單
+                                    onClick={() => localStorage.setItem('orderDetail', JSON.stringify(el))}>查看訂單
                             </button>
                         </Link>
                         {' '}
