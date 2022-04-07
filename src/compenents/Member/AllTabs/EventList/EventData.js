@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../../styles/Member/Member-Event/EventData.scss'
+import {Link} from "react-router-dom";
 
 const EventData = (props) => {
   const { user, setUser } = props
@@ -31,14 +32,16 @@ const EventData = (props) => {
   const renderEventItems = (eventData) => {
     if (eventData && eventData.length) {
       console.log(eventData)
-      return eventData?.map((el) => (
+      return eventData.map((el) => (
         <tr key={'test' + el.member_id}>
           <td>{el.event_time_start}</td>
           <td>{el.order_id}</td>
           <td>{el.event_name}</td>
           <td>{el.order_d_id.slice(0, 8)}</td>
           <td>
-            <button className="btn btn-primary">查看活動詳情</button>
+              <Link to="/member/event-list/detail">
+                  <button className="btn btn-primary">查看活動詳情</button>
+              </Link>
           </td>
         </tr>
       ))

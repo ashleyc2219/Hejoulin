@@ -1,7 +1,7 @@
 @import '../../mixin.scss';
 
 .eventData {
-  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
 
@@ -18,7 +18,7 @@
         //vertical-align: center;
         th {
           padding-left: 50px;
-          padding-right: 50px;
+          //padding-right: 50px;
           width: 25%;
           font-size: 14px;
           padding-bottom: 24px;
@@ -35,17 +35,14 @@
 
         td {
           text-align: center;
-          //width: 140px;
+          width: 140px;
           font-size: 14px;
-          //padding-left: 50px;
-          //padding-right: 50px;
-          width: 20%;
-         // padding-bottom: 24px;
-
         }
 
         button {
+          width: 145px;
           margin: 8px 8px;
+          height: 48px;
         }
       }
     }

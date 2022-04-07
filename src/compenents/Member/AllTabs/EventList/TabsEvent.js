@@ -12,8 +12,7 @@ const TabsEvent = (props) => {
     <>
       <div className="TabsEvent">
         <nav className="nav">
-          {/*TODO:建立搜尋元件*/}
-          <img src="/ProductList/search.svg" alt="" />
+          <img src="/ProductList/search.svg" className="d-none" alt="" />
           <TabNavItem
             title="即將到來"
             id="tab1"

@@ -234,7 +234,7 @@ function App() {
               setDetailData={setDetailData}
             />
           </Route>
-          <Route exact path="/member/event-list/detail/:id">
+          <Route exact path="/member/event-list/detail">
             <MemberEventListDetail />
           </Route>
           <Route exact path="/member/event-list">

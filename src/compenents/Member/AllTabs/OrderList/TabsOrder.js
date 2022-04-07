@@ -18,8 +18,7 @@ const TabsOrder = ({ detailData, setDetailData }) => {
     <>
           <div className="TabOrder">
             <div className="nav">
-              {/*TODO:建立搜尋元件*/}
-              <img src="/ProductList/search.svg" alt="" />
+              <img src="/ProductList/search.svg" className="d-none" alt="" />
               <TabNavItem
                   title="全部"
                   id="tab1"
