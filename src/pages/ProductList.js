@@ -359,6 +359,7 @@ const ProductList = (props) => {
         window.scrollTo(0, 0)
       }
     }
+    scroll()
     setUp()
     /* 產地 */
     const fetchLoca = async () => {
