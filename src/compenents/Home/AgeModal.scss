@@ -2,7 +2,22 @@
 
 * {
 }
-
+@keyframes ageanimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes ageanimate2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .AgeModal {
   position: fixed;
   width: 100vw;
@@ -14,6 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
 
   .react-date-picker {
     display: inline-flex;
@@ -248,4 +264,10 @@
       }
     }
   }
+}
+.anistart {
+  animation: ageanimate 1s;
+}
+.aniend {
+  animation: ageanimate2 1s;
 }

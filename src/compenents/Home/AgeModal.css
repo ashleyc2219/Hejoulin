@@ -1,3 +1,39 @@
+@-webkit-keyframes ageanimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ageanimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes ageanimate2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ageanimate2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .AgeModal {
   position: fixed;
   width: 100vw;
@@ -15,6 +51,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: 1;
 }
 
 .AgeModal .react-date-picker {
@@ -303,5 +340,15 @@
 
 .AgeModal .comparepage .Age-content .red-word p {
   color: #d26d54;
+}
+
+.anistart {
+  -webkit-animation: ageanimate 1s;
+          animation: ageanimate 1s;
+}
+
+.aniend {
+  -webkit-animation: ageanimate2 1s;
+          animation: ageanimate2 1s;
 }
 /*# sourceMappingURL=AgeModal.css.map */

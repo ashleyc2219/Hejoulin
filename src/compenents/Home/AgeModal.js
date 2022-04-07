@@ -8,6 +8,7 @@ import CalendarIcon from './CalendarIcon.js'
 const AgeModal = (props) => {
   const { modalShow, setModalShow } = props
   const [value, setValue] = useState(new Date())
+  const [classname, setClassname] = useState(true)
 
   const openModal = () => {
     setModalShow((prev) => !prev)
@@ -19,7 +20,10 @@ const AgeModal = (props) => {
     let AgeOne = Math.ceil((nowTime - Birthday) / 31536000000) - 1
     console.log(AgeOne)
     if (AgeOne >= 18) {
-      openModal()
+      setClassname(false)
+      setTimeout(() => {
+        openModal()
+      }, 1000)
     } else {
       window.location.href = `https://www.google.com.tw`
     }
@@ -35,7 +39,7 @@ const AgeModal = (props) => {
 
   return (
     <>
-      <div className="AgeModal">
+      <div className={classname ? 'AgeModal anistart' : 'AgeModal aniend'}>
         <div className="comparepage">
           {/* 內容top */}
           <div className="Footer">
