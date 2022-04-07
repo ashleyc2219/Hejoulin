@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../styles/Member/Member-Fav/FavData.scss'
 import NoFavItem from './NoFavItem'
 import { Link, useHistory } from 'react-router-dom'
-<<<<<<< HEAD
-import DelFavModal from './DelFavModal'
-=======
-import DelFavModal from "./DelFavModal";
->>>>>>> 4db26752512e6d237bb9179f97cdc68d08365bb3
+import DelFavModal from "./DelFavModal"
 
 const FavData = (props) => {
   const { favData, setFavData } = props
