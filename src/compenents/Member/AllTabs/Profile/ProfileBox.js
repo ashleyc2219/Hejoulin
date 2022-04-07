@@ -145,6 +145,7 @@ const ProfileBox = ({memberData, setMemberData}) => {
                                     setValueY(e.target.value)
                                 }}
                                 name="birY"
+                                defaultValue={valueY}
                             >
                                 {Array(122)
                                     .fill(0)
@@ -163,6 +164,7 @@ const ProfileBox = ({memberData, setMemberData}) => {
                                     setValueM(e.target.value)
                                 }}
                                 name="birM"
+                                defaultValue={valueM}
                             >
                                 {Array(12)
                                     .fill(0)
@@ -181,6 +183,7 @@ const ProfileBox = ({memberData, setMemberData}) => {
                                     setValueD(e.target.value)
                                 }}
                                 name="birD"
+                                defaultValue={valueD}
                             >
                                 {Array(31)
                                     .fill(0)
