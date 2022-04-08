@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Event/EventData.scss'
 import {Link} from "react-router-dom";
 
-const EventData = ({eventData, setEventData}) => {
+const EventDataCancel = (props) => {
+    const {user, setUser} = props
+    const [eventData, setEventData] = useState({})
     const listNames = [
         {listName: '活動時間'},
         {listName: '活動訂單編號'},
@@ -15,7 +17,7 @@ const EventData = ({eventData, setEventData}) => {
     useEffect(() => {
         ;(async () => {
             const obj = await (
-                await fetch('http://localhost:3001/user/member/MemberEventList', {
+                await fetch('http://localhost:3001/user/member/MemberEventCancel', {
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,
@@ -69,4 +71,4 @@ const EventData = ({eventData, setEventData}) => {
     )
 }
 
-export default EventData
+export default EventDataCancel

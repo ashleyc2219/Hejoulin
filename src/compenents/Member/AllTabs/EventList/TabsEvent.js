@@ -4,9 +4,11 @@ import TabContent from '../../TabComponent/TabContent'
 import '../../../../styles/Member/TabComponent/TabsEvent.scss'
 import EventData from './EventData'
 import TabPages from '../../TabComponent/TabPages'
+import EventDataAlready from "./EventDataAlready";
+import EventDataCancel from "./EventDataCancel";
 
 const TabsEvent = (props) => {
-  const { user, setUser } = props
+  const [eventData, setEventData] = useState({})
   const [activeTab, setActiveTab] = useState('tab1')
   return (
     <>
@@ -36,19 +38,13 @@ const TabsEvent = (props) => {
         </nav>
         <div className="outlet">
           <TabContent id="tab1" activeTab={activeTab}>
-            <EventData user={user} setUser={setUser} />
+            <EventData eventData={eventData} setEventData={setEventData} />
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <EventDataAlready  eventData={eventData} setEventData={setEventData} />
           </TabContent>
           <TabContent id="tab3" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
-          </TabContent>
-          <TabContent id="tab4" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
-          </TabContent>
-          <TabContent id="tab5" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <EventDataCancel eventData={eventData} setEventData={setEventData} />
           </TabContent>
         </div>
       </div>

@@ -29,7 +29,7 @@ const MemberMark = () => {
 
     const deleteMark = async () => {
         const data = {
-            mark_id: `${whichMark}`,
+            mark_id: whichMark,
         }
         console.log(data)
         const settings = {
