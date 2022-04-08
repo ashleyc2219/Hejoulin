@@ -7,7 +7,7 @@ const ListTableGift = (props) => {
     giftIncart,
     setGiftIncart,
     giftInfo,
-    member_id,
+    memberId,
     giftTotal,
     setGiftTotal,
   } = props
@@ -116,7 +116,7 @@ const ListTableGift = (props) => {
     setGiftTotal(newGiftTotal)
   }
   let data = {
-    member_id: member_id,
+    member_id: memberId,
     cart_gift_id: giftInfo.cart_gift_id,
   }
   const delGiftItem = async () => {
@@ -140,7 +140,7 @@ const ListTableGift = (props) => {
       setQuantity(quantity - 1)
       let data = {
         cart_quantity: quantity - 1,
-        member_id: member_id,
+        member_id: memberId,
         cart_gift_id: giftInfo.cart_gift_id,
       }
       const r1 = await fetch(fetchURL, {
@@ -159,7 +159,7 @@ const ListTableGift = (props) => {
     setQuantity(quantity + 1)
     let data = {
       cart_quantity: quantity + 1,
-      member_id: member_id,
+      member_id: memberId,
       cart_gift_id: giftInfo.cart_gift_id,
     }
     const r1 = await fetch(fetchURL, {

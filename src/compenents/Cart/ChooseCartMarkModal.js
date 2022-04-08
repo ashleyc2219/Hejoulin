@@ -4,7 +4,7 @@ import './ChooseCartMarkModal.scss'
 import ChooseMark from './ChooseMark'
 
 const ChooseCartMarkModal = (props) => {
-  const { sakeInfo, setChooseModalShow, setMarkPic } = props
+  const { sakeInfo, setChooseModalShow, setMarkPic, memberId } = props
   const [data, setData] = useState([])
   // 顯示酒標用
   const [check, setCheck] = useState('')
@@ -43,7 +43,7 @@ const ChooseCartMarkModal = (props) => {
     let a = true
     const fetchTop = async () => {
       const res = await fetch(
-        'http://localhost:3001/api/cart-list/mark?member_id=4'
+        `http://localhost:3001/api/cart-list/mark?member_id=${memberId}`
       )
       const fetchedData = await res.json()
       console.log(fetchedData)

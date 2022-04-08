@@ -11,6 +11,7 @@ import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import Spinner from '../compenents/Shared/Spinner'
+import FetchMemberId from '../compenents/Member/FetchMemberId'
 
 import { districtsData } from './../data/districts'
 
@@ -80,17 +81,25 @@ const CartInfo = (props) => {
   // 自動填寫
   const [autoBuyer, setAutoBuyer] = useState(false)
   const [autoReceiver, setAutoReceiver] = useState(false)
-  // 會員ID TODO: 之後要連動
-  const member_id = 4
+  const [memberId, setMemberId] = useState('')
+
   // TODO: store_id 要在做門市元件後換
   const store_id = ''
+
+  useEffect(() => {
+    ;(async () => {
+      let member_id = await FetchMemberId(localStorage.getItem('token'))
+      setMemberId(member_id)
+      console.log('member_id: ', member_id)
+    })()
+  }, [])
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
     let cartLength = 0
     ;(async () => {
       const r1 = await fetch(
-        `http://localhost:3001/api/cart-list/sake?member_id=${member_id}`,
+        `http://localhost:3001/api/cart-list/sake?member_id=${memberId}`,
         {
           method: 'GET',
           headers: {
@@ -108,7 +117,7 @@ const CartInfo = (props) => {
     })()
     ;(async () => {
       const rGift = await fetch(
-        `http://localhost:3001/api/cart-list/gift?member_id=${member_id}`,
+        `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
         {
           method: 'GET',
           headers: {
@@ -135,7 +144,7 @@ const CartInfo = (props) => {
           setCollapseClass('list-table morethantwo')
         }
       }
-      let memberInfoObj = await memberInfoGet(member_id)
+      let memberInfoObj = await memberInfoGet(memberId)
       console.log(memberInfoObj)
       if (a) {
         setGiftIncart(obj)
@@ -151,7 +160,7 @@ const CartInfo = (props) => {
     return () => {
       a = false
     }
-  }, [])
+  }, [memberId])
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
       return sakeIncart.map((sake, i) => {
@@ -337,7 +346,7 @@ const CartInfo = (props) => {
     }
     // insert order_main訂單資料 回傳的order_main_id要給之後的訂單明細用
     let [orderMainResult, order_main_id] = await orderMainInsert(
-      member_id,
+      memberId,
       buyerName,
       buyerMobileTidy,
       buyerEmail,
@@ -346,13 +355,13 @@ const CartInfo = (props) => {
 
     // insert sake mark訂單資料
     let orderSakeMarkResult = await orderSakeMarkInsert(
-      member_id,
+      memberId,
       order_main_id
     )
     // insert 禮盒 禮盒明細訂單資料
-    let orderGiftResult = await orderGiftGdInsert(member_id, order_main_id)
-    let cartSakeMarkDelResult = await cartSakeMarkDelete(member_id)
-    let cartGiftGdDelResult = await cartGiftGdDelete(member_id)
+    let orderGiftResult = await orderGiftGdInsert(memberId, order_main_id)
+    let cartSakeMarkDelResult = await cartSakeMarkDelete(memberId)
+    let cartGiftGdDelResult = await cartGiftGdDelete(memberId)
 
     // 整理地址加上市、區
     let receiverAddressTidy = receiverAddress

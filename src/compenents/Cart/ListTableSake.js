@@ -11,10 +11,11 @@ const ListTableSake = (props) => {
     sakeIncart,
     setSakeIncart,
     sakeInfo,
-    member_id,
+    memberId,
     sakeTotal,
     setSakeTotal,
   } = props
+  
   // setMarkPic(sakeInfo.pics)
 
   const [chooseModalShow, setChooseModalShow] = useState(false)
@@ -65,7 +66,7 @@ const ListTableSake = (props) => {
     gift_text = '製作禮盒'
   }
   let data = {
-    member_id: member_id,
+    member_id: memberId,
     cart_sake_id: sakeInfo.cart_sake_id,
     pro_id: sakeInfo.pro_id,
   }
@@ -106,7 +107,7 @@ const ListTableSake = (props) => {
       setQuantity(quantity - 1)
       let data = {
         cart_quantity: quantity - 1,
-        member_id: member_id,
+        member_id: memberId,
         cart_sake_id: sakeInfo.cart_sake_id,
         pro_id: sakeInfo.pro_id,
       }
@@ -127,7 +128,7 @@ const ListTableSake = (props) => {
     setQuantity(quantity + 1)
     let data = {
       cart_quantity: quantity + 1,
-      member_id: member_id,
+      member_id: memberId,
       cart_sake_id: sakeInfo.cart_sake_id,
       pro_id: sakeInfo.pro_id,
     }
@@ -153,6 +154,7 @@ const ListTableSake = (props) => {
           sakeInfo={sakeInfo}
           setChooseModalShow={setChooseModalShow}
           setMarkPic={setMarkPic}
+          memberId={memberId}
         />
       ) : (
         ''

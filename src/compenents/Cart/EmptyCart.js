@@ -9,7 +9,7 @@ const EmptyCart = (props) => {
     <>
       <div className="EmptyCart">
         <img src="/CartList/empty-cart.png" alt="" />
-        {memberId === 'noMemberId' ? (
+        {memberId !== 'noMemberId' ? (
           <Link to="/product/list">
             <button className="btn btn-secondary">購物去</button>
           </Link>

@@ -44,7 +44,7 @@ const CartVerify = () => {
     }
 
     const r1 = await fetch(
-      `http://localhost:3001/api/cart-verify/verify-code`,
+      `http://localhost:3001/api/cart-verify/code-verify`,
       {
         method: 'POST',
         headers: {
@@ -56,7 +56,7 @@ const CartVerify = () => {
     )
     const obj = await r1.json()
     if (obj.result === 'success') {
-      history.push('/sub/cart-order', { some: 'state' })
+      history.push('/cart/order', { some: 'state' })
     } else {
       setBtnText('驗證碼錯誤 按我重新發送')
     }
@@ -115,7 +115,7 @@ const CartVerify = () => {
                   <a href="#/">
                     <span>?</span> 說明
                   </a>
-                  <a href="#/">取消</a>
+                  <a href="/cart/order">取消</a>
                 </div>
               </div>
             </div>
