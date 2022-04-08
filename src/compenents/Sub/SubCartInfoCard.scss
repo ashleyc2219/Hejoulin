@@ -18,16 +18,15 @@
     background-color: $white;
     mix-blend-mode: multiply;
     position: relative;
+    img {
+      height: 90px;
+    }
     @include medium {
       width: 90px;
       height: 90px;
       img {
         height: 80px;
       }
-    }
-
-    img {
-      height: 90px;
     }
   }
   .item-product-info {
@@ -59,7 +58,7 @@
       margin: 0;
       color: $primary;
     }
-    
+
     p.price {
       @include medium {
         display: none;
@@ -73,7 +72,6 @@
         content: ' 個月';
       }
     }
-    
   }
   .item-subtotal {
     width: 22.35%;
