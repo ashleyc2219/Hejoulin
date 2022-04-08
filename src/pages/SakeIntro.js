@@ -1,16 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState} from 'react'
+
 //如果不是default export就要用花括號
 import './../styles/Sakeintro/Sakeintro.scss'
 import GuideButton from '../compenents/SakeGuide/Guide'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Spinner from '../compenents/Shared/Spinner'
 
 const SakeIntro = () => {
+
+  const [spin, setSpin] = useState(true)
   // use aos 初始化 動畫的時間長度
   useEffect(() => {
     AOS.init({
       duration: 2000,
     })
+
+    let a = true
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+
   }, [])
 
   return (
@@ -446,6 +458,7 @@ const SakeIntro = () => {
             </div>
           </div>
         </div>
+        {spin ? <Spinner /> : SakeIntro}
       </div>
     </>
   )
