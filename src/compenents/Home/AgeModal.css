@@ -1,27 +1,9 @@
-@-webkit-keyframes ageanimate {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes ageanimate {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
-  }
-}
-
-@-webkit-keyframes ageanimate2 {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
@@ -42,21 +24,13 @@
   top: 0;
   left: 0;
   z-index: 11;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   opacity: 1;
 }
 
 .AgeModal .react-date-picker {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   position: relative;
 }
@@ -65,7 +39,6 @@
 .AgeModal .react-date-picker *,
 .AgeModal .react-date-picker *:before,
 .AgeModal .react-date-picker *:after {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -75,25 +48,17 @@
 }
 
 .AgeModal .react-date-picker__wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
   border: thin solid #3d4349;
 }
 
 .AgeModal .react-date-picker__inputGroup {
   min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   padding: 0 2px;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .AgeModal .react-date-picker__inputGroup__divider {
@@ -109,8 +74,7 @@
   border: 0;
   background: none;
   font-family: 'Klee One', cursive;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   -moz-appearance: textfield;
 }
 
@@ -165,8 +129,7 @@
 .AgeModal .react-calendar {
   background: url("/public/Sake-background0310.jpg");
   border: 1px solid transparent;
-  -webkit-box-shadow: 2px 2px 4px #3d43498e;
-          box-shadow: 2px 2px 4px #3d43498e;
+  box-shadow: 2px 2px 4px #3d43498e;
   padding: 6px;
 }
 
@@ -227,12 +190,9 @@
 .AgeModal .comparepage {
   max-width: 800px;
   width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background: url("/public/Sake-background0310.jpg");
-  -webkit-box-shadow: 0px 0px 10px rgba(61, 67, 73, 0.623);
-          box-shadow: 0px 0px 10px rgba(61, 67, 73, 0.623);
+  box-shadow: 0px 0px 10px rgba(61, 67, 73, 0.623);
   position: relative;
 }
 
@@ -257,7 +217,7 @@
   }
 }
 
-.AgeModal .comparepage .Footer {
+.AgeModal .comparepage .footer {
   mix-blend-mode: multiply;
   width: 100%;
   position: relative;
@@ -265,7 +225,7 @@
   overflow: hidden;
 }
 
-.AgeModal .comparepage .Footer .wave-container {
+.AgeModal .comparepage .footer .wave-container {
   width: 100%;
   height: 350px;
   position: absolute;
@@ -274,12 +234,12 @@
 }
 
 @media (max-width: 768px) {
-  .AgeModal .comparepage .Footer .wave-container {
+  .AgeModal .comparepage .footer .wave-container {
     bottom: -130px;
   }
 }
 
-.AgeModal .comparepage .Footer .wave-container .waves {
+.AgeModal .comparepage .footer .wave-container .waves {
   overflow: hidden;
   width: 100%;
   position: absolute;
@@ -290,36 +250,23 @@
   position: absolute;
   top: 40%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  transform: translate(-50%, -50%);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .AgeModal .comparepage .Age-content .input-box {
   margin: 35px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  align-items: baseline;
   margin: 35px 0px;
 }
 
 @media (max-width: 768px) {
   .AgeModal .comparepage .Age-content .input-box {
     margin: 0px 0px;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     width: 192px;
   }
 }
@@ -343,12 +290,10 @@
 }
 
 .anistart {
-  -webkit-animation: ageanimate 1s;
-          animation: ageanimate 1s;
+  animation: ageanimate 1s;
 }
 
 .aniend {
-  -webkit-animation: ageanimate2 1s;
-          animation: ageanimate2 1s;
+  animation: ageanimate2 1s;
 }
 /*# sourceMappingURL=AgeModal.css.map */
