@@ -54,6 +54,15 @@ const Breadcrumb = () => {
         </React.Fragment>
       )
       break
+    case '/gift/':
+      bread = (
+        <React.Fragment>
+          <Link to="/gift">
+            <span className="current">禮盒系列</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
     case '/sake-guide':
       bread = (
         <React.Fragment>
