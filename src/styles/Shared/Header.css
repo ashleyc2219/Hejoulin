@@ -1,3 +1,12 @@
+@keyframes animate {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .Header {
   width: 100%;
 }
@@ -14,6 +23,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .Header .Header-container .logo-bread {
@@ -47,6 +57,10 @@
 .Header .Header-container .logo-bread .bread .current {
   color: #d26d54;
   font-weight: bold;
+}
+
+.Header .Header-container .logo-bread .bread .test {
+  display: none;
 }
 
 .Header .Header-container .navbar {
@@ -162,7 +176,7 @@
 }
 
 .Header .Header-container .navbar .icons .loginHover span {
-  transition: all .5s;
+  transition: all 0.5s;
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -171,6 +185,7 @@
   font-size: 15px;
   bottom: -5px;
   border-top: 2px solid #3d4349;
+  width: max-content;
 }
 
 .Header .Header-container .navbar .icons .cart {
@@ -199,6 +214,10 @@
   line-height: 20px;
   font-size: 12px;
   background-color: #d26d54;
+}
+
+.Header .Header-container .navbar .icons .cart .spanani {
+  animation: animate 0.3s forwards ease-in-out;
 }
 
 .Header .Header-container .navbar .icons .fav {
@@ -239,7 +258,7 @@
   background-color: #202326;
   opacity: 0.6;
   transition: 350ms;
-  z-index: 9;
+  z-index: 12;
 }
 
 .displayNone {
@@ -267,7 +286,7 @@
 
 @media (max-width: 768px) {
   .nav-menu {
-    width: 300px;
+    width: 100vw;
   }
 }
 
@@ -412,7 +431,7 @@
   opacity: 0;
   pointer-events: none;
   margin: 0;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .mobile-menu .menu ul .purchase-sake .dropdown-content li a {
