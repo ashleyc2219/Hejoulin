@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import TabNavItem from '../../TabComponent/TabNavItem'
 import TabContent from '../../TabComponent/TabContent'
 import '../../../../styles/Member/TabComponent/TabsSub.scss'
 import SubData from './SubData'
 import TabPages from '../../TabComponent/TabPages'
+import SubDataOver from "./SubDataOver";
 
-const TabsSub = (props) => {
-  const { user, setUser } = props
+const TabsSub = () => {
   const [activeTab, setActiveTab] = useState('tab1')
   const [subData, setSubData] = useState([])
+  const [subDataOver, setSubDataOver] = useState([])
+
   return (
     <>
       <div className="TabsSub">
-        <nav className="nav" style={{display: subData.length ? 'inline-block' : 'none'}}>
+        <nav className="nav" style={{display: subData ? 'inline-block' : 'none'}}>
           <TabNavItem
-            title="已過期"
+            title="已結束"
             id="tab1"
             activeTab={activeTab}
             setActiveTab={setActiveTab}
@@ -26,23 +28,14 @@ const TabsSub = (props) => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <TabPages />
+          {/*<TabPages />*/}
         </nav>
         <div className="outlet">
           <TabContent id="tab1" activeTab={activeTab}>
-            <SubData user={user} setUser={setUser} subData={subData} setSubData={setSubData}/>
+            <SubDataOver subDataOver={subDataOver} setSubDataOver={setSubDataOver}/>
           </TabContent>
           <TabContent id="tab2" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
-          </TabContent>
-          <TabContent id="tab3" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
-          </TabContent>
-          <TabContent id="tab4" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
-          </TabContent>
-          <TabContent id="tab5" activeTab={activeTab}>
-            {/*<EventData data={data} setData={setData} />*/}
+            <SubData subData={subData} setSubData={setSubData}/>
           </TabContent>
         </div>
       </div>

@@ -14,14 +14,19 @@
       border-bottom: 2px solid #bbbcbd;
 
       tr {
-        //width: 100%;
-        //vertical-align: center;
+        width: 100%;
+        display: flex;
+
         th {
-          padding-left: 32px;
-          padding-right: 50px;
+          //padding-left: 50px;
+          //padding-right: 50px;
           //width: 25%;
-          //font-size: 14px;
-          padding-bottom: 24px;
+          width: 20%;
+          font-size: 14px;
+          text-align: center;
+          height: 52px;
+          line-height: 52px;
+          //padding-bottom: 24px;
         }
       }
     }
@@ -30,30 +35,39 @@
       width: 100%;
 
       tr {
-        //width: 907px;
-        padding: 20px;
+        width: 100%;
         border-bottom: 2px solid #bbbcbd;
+        display: flex;
 
         td {
-          max-width: 150px;
-          text-align: center;
+          width: 20%;
           font-size: 14px;
-          height: 62px;
-        }
+          height: 58px;
+          line-height: 58px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-        button {
-         // width: 108%;
-         // margin: 8px 8px;
+          a {
+              height: fit-content;
+            button {
+              height: 48px;
+              font-size: 16px;
+              padding: 0;
+            }
+          }
         }
       }
+
       .noneSubData {
         margin: 130px 340px;
 
         h5 {
           margin-bottom: 30px;
         }
+
         a {
-         margin-left: 30px;
+          margin-left: 30px;
 
         }
       }

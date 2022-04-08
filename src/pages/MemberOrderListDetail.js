@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import ProgressBarM from '../compenents/Member/AllTabs/OrderList/ProgressBarM'
 import '../styles/Member/Member-Order/MemberOrderListDetail.scss'
 import {Link} from 'react-router-dom'
 
-const MemberOrderListDetail = ({detailData, setDetailData}) => {
+const MemberOrderListDetail = () => {
     const stepContent = ['訂單成立', '已出貨', '物流收件', '已送達']
+    // 訂單詳細資料
+    const [detailData, setDetailData] = useState({})
 
     useEffect(() => {
         setDetailData(JSON.parse(localStorage.getItem('orderDetail')))

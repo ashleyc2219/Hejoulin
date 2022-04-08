@@ -47,8 +47,6 @@ function App() {
   const [compare, setCompare] = useState([])
   const [cartCount, setCartCount] = useState(0)
   const [memberId, setMemberId] = useState({})
-  // 訂單詳細資料
-  const [detailData, setDetailData] = useState({})
   // 活動詳細資料
   const [eventDetailData, setEventDetailData] = useState({})
   // subPlan, subTime 溝通用的state
@@ -230,10 +228,7 @@ function App() {
             <MemberProfile />
           </Route>
           <Route exact path="/member/order-list/detail">
-            <MemberOrderListDetail
-              detailData={detailData}
-              setDetailData={setDetailData}
-            />
+            <MemberOrderListDetail />
           </Route>
           <Route exact path="/member/order-list">
             <MemberOrderList />
@@ -247,7 +242,7 @@ function App() {
           <Route exact path="/member/event-list">
             <MemberEventList />
           </Route>
-          <Route exact path="/member/sub-list/detail/:id">
+          <Route exact path="/member/sub-list/detail">
             <MemberSubListDetail />
           </Route>
           <Route exact path="/member/sub-list">

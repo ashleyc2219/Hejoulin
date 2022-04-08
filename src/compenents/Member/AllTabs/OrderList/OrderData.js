@@ -130,7 +130,10 @@ const OrderData = (props) => {
         } else {
             return (
                 <tr>
-                    <td></td>
+                    <td>您目前未有訂單</td>
+                    <Link>
+                        <button>前往選購商品</button>
+                    </Link>
                 </tr>
             )
         }
