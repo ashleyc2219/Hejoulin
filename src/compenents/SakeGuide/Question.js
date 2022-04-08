@@ -106,7 +106,6 @@ const Question = (props) => {
             setShow03={setShow03}
             setShow04={setShow04}
             plus={plus}
-
           />
         </section>
       </React.Fragment>

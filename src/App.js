@@ -176,6 +176,7 @@ function App() {
               subPlan={subPlan}
               subTimeTotal={subTimeTotal}
               subTimeMonth={subTimeMonth}
+              setSidebar={setSidebar}
             />
           </Route>
           <Route exact path="/sub/cart-list">
@@ -199,12 +200,7 @@ function App() {
             <EventList />
           </Route>
           <Route exact path="/cart/list">
-            <CartList
-              setCartSummary={setCartSummary}
-              loginModal={loginModal}
-              setLoginModal={setLoginModal}
-              setSidebar={setSidebar}
-            />
+            <CartList setCartSummary={setCartSummary} setSidebar={setSidebar} />
           </Route>
           <Route exact path="/cart/info">
             <CartSummary.Provider value={cartSummary}>

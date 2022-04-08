@@ -105,7 +105,7 @@ const Login = (props) => {
                                             className="btn btn-outline-primary register-btn"
                                             onClick={() => setRow('register')}
                                         >
-                                            註冊
+                                            前往註冊
                                         </button>
                                         <button type="submit" className="btn btn-primary login-btn">
                                             登入
@@ -133,7 +133,12 @@ const Login = (props) => {
                     setForgetPassData={setForgetPassData}
                 />
             ) : row === 'verify' ? (
-                <EmailVerify row={row} setRow={setRow}/>
+                <EmailVerify
+                    row={row}
+                    setRow={setRow}
+                    forgetPassData={forgetPassData}
+                    setForgetPassData={setForgetPassData}
+                />
             ) : row === 'verify2' ? (
                 <EmailVerify2
                     row={row}
@@ -143,7 +148,6 @@ const Login = (props) => {
                 />
             ) : row === 'finish' ? (
                 <FinishRegister
-                    row={row}
                     setRow={setRow}
                     sidebar={sidebar}
                     setSidebar={setSidebar}

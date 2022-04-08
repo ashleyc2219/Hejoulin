@@ -16,13 +16,13 @@ const SubCartInfoCard = (props) => {
     }
   }
   function calTotal() {
-    if (subMonth === 1) {
+    if (subMonth === '1') {
       return calPrice() * subMonth
     }
-    if (subMonth === 6) {
+    if (subMonth === '6') {
       return calPrice() * subMonth * 0.85
     }
-    if (subMonth === 12) {
+    if (subMonth === '12') {
       return calPrice() * subMonth * 0.8
     }
   }

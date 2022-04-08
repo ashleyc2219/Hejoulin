@@ -8,11 +8,11 @@ import Question from '../compenents/SakeGuide/Question'
 import MultiRangeSlider from '../compenents/RangeSlider/MultiRangeSlider'
 import useWindowDimensions from '../compenents/SakeGuide/WindowDim'
 import Spinner from '../compenents/Shared/Spinner'
-import { format } from 'prettier'
+import Finally from '../compenents/SakeGuide/Finally'
 
 const SakeGuide = () => {
   const [loading, setLoading] = useState(true)
-  const [content, setContent] = useState([])
+  // const [content, setContent] = useState([])
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
   const [thickness, setThickness] = useState('') //厚薄
@@ -38,36 +38,40 @@ const SakeGuide = () => {
     setWaveHeight(wrap.current - 1)
   }, [wrap.current])
 
-  const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
-  const sake = content.map((v, i) => {
-    return (
-      <React.Fragment key={i}>
-        <div className="box">
-          <Link to={'/product/detail/' + v.pro_id}>
-            <div className="sth">
-              <img
-                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
-                alt=""
-              />
-              <span>{v.pro_name}</span>
-            </div>
-          </Link>
-          <div className="sake_circle uno"></div>
-        </div>
-      </React.Fragment>
-    )
-  })
-  useEffect(() => {
-    const fetchItem = async () => {
-      const res = await fetch(url2)
-      const data = await res.json()
-      setContent(data)
-    }
-    fetchItem()
-    setTimeout(() => {
-      setLoading(false)
-    }, 1500)
-  }, [taste, temp, minPrice, maxPrice, gift])
+  // const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
+  // const sake = content.map((v, i) => {
+  //   return (
+  //     <React.Fragment key={i}>
+  //       <div className="box">
+  //         <Link to={'/product/detail/' + v.pro_id}>
+  //           <div className="sth">
+  //             <img
+  //               src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+  //               alt=""
+  //             />
+  //             <span>{v.pro_name}</span>
+  //           </div>
+  //         </Link>
+  //         <div className="sake_circle uno"></div>
+  //       </div>
+  //     </React.Fragment>
+  //   )
+  // })
+  // useEffect(() => {
+  //   const fetchItem = async () => {
+  //     const res = await fetch(url2)
+  //     const data = await res.json()
+  //     setContent(data)
+  //     console.log(data)
+  //   }
+  //   fetchItem()
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //   }, 1500)
+  // }, [ gift])
+  setTimeout(() => {
+    setLoading(false)
+  }, 1500)
 
   return (
     <>
@@ -173,7 +177,11 @@ const SakeGuide = () => {
                     //   'temp',
                     //   temp,
                     //   'gift',
-                    //   gift
+                    //   gift,
+                    //   'priceLow',
+                    //   minPrice,
+                    //   'priceHigh',
+                    //   maxPrice,
                     // )
                     setTimeout(() => {
                       window.scroll({
@@ -199,7 +207,16 @@ const SakeGuide = () => {
               <div className="title">
                 <h4>推薦酒款</h4>
               </div>
-              <div className="sakes">{sake}</div>
+              {/* <div className="sakes">{sake}</div> */}
+              <div className="sakes">
+                <Finally
+                  taste={taste}
+                  temp={temp}
+                  minPrice={minPrice}
+                  maxPrice={maxPrice}
+                  gift={gift}
+                />
+              </div>
               <div className="anime_bg">
                 <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
                 <div className="line_wave">
