@@ -16,9 +16,7 @@ const Header = (props) => {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [open, setOpen] = useState(false)
   const [ani, setAni] = useState('')
-
-  const location = useLocation()
-
+  const [Quantity, setQuantity] = useState('')
   const getQuantity = async () => {
     const getMember = await FetchMemberId(localStorage.getItem('token'))
 
@@ -44,7 +42,16 @@ const Header = (props) => {
       }
     }
   }
+
+  const location = useLocation()
+  if (Quantity !== location.pathname) {
+    getQuantity()
+    setQuantity(location.pathname)
+  }
+  console.log(location)
+
   useEffect(() => {
+    setQuantity(location.pathname)
     getQuantity()
   }, [])
 
