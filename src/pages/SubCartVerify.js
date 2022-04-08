@@ -6,11 +6,11 @@ import { SubCartVerifyInfo } from './../App'
 
 const SubCartVerify = () => {
   let subCartVerifyInfo = SubCartVerifyInfo._currentValue
-  console.log({
-    to: subCartVerifyInfo.email_account,
-    cardNum: subCartVerifyInfo.cardNum,
-    total: subCartVerifyInfo.total,
-  })
+  // console.log({
+  //   to: subCartVerifyInfo.email_account,
+  //   cardNum: subCartVerifyInfo.cardNum,
+  //   total: subCartVerifyInfo.total,
+  // })
   const [btnText, setBtnText] = useState('取得信箱傳送交易密碼')
   const [enterCode, setEnterCode] = useState('')
 

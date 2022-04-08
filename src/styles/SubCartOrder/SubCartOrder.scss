@@ -88,14 +88,14 @@
             width: 21.138%;
             background-color: $white;
             mix-blend-mode: multiply;
+            img {
+              height: 90px;
+            }
             @include medium {
               height: 90px;
               img {
-                height: 80px;
+                height: 75px;
               }
-            }
-            img {
-              height: 90px;
             }
           }
           .item-product-info {
@@ -116,34 +116,23 @@
               @include medium {
                 font-size: 16px;
                 line-height: 18px;
+                margin-bottom: 5px;
               }
             }
             p {
               font-size: 16px;
               line-height: 20px;
               margin: 0;
+              margin-bottom: 5px;
               color: $primary;
             }
             p.ml::after {
               content: ' ml';
             }
             p.price {
-              @include medium {
-                display: none;
-              }
               &::before {
                 content: '$ ';
               }
-            }
-            p.cmark {
-              visibility: hidden;
-              color: $secondary;
-              text-decoration: underline;
-              line-height: 42px;
-              flex-grow: 1;
-            }
-            p.cmark.true {
-              visibility: visible;
             }
             p.product-count {
               display: none;
