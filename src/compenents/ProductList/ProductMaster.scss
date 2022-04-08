@@ -20,6 +20,9 @@
       position: relative;
       opacity: 0;
       animation: ani 1s forwards;
+      @include medium(){
+        margin-bottom: 20px;
+      }
       img {
         width: 80px;
         position: absolute;
