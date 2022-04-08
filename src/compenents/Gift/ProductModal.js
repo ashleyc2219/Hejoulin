@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './ProductModal.scss'
 
-import SakeButton from './SakeButton'
+import Heart from '../Gift/Heart'
 
 const ProductModal = (props) => {
-  const { modalShow, closeHandle, id, kind } = props
+  const { modalShow, closeHandle, id, kind, setLoginModal } = props
 
   const [slidesRight, setSlidesRight] = useState(true)
   const [slidesLeft, setSlidesLeft] = useState(false)
@@ -12,6 +12,10 @@ const ProductModal = (props) => {
   const [moveLeft, setMoveLeft] = useState(false)
   const [linkFav, setLinkFav] = useState(0)
   const [detail, setDetail] = useState([])
+
+  const linkFavhandler = () => {
+    setLinkFav(linkFav + 1)
+  }
 
   const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
   const fetchData = async () => {
@@ -96,8 +100,14 @@ const ProductModal = (props) => {
               <p className="brand">{v.pro_brand}</p>
               <p className="level">{v.pro_level}</p>
               <div className="like">
-                <div className="heart_icon"></div>
-                <p>收藏</p>
+                <div className="heart_icon">
+                  <Heart
+                    id={v.pro_id}
+                    linkFav={linkFav}
+                    setLoginModal={setLoginModal}
+                  />
+                </div>
+                <p className="fav">收藏</p>
               </div>
               <div className="price">{v.pro_price}</div>
             </div>

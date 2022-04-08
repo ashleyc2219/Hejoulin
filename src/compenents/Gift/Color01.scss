@@ -79,6 +79,7 @@
   }
   .box01 {
     height: 450px;
+    filter: drop-shadow(4px 5px 0.25rem $gray-300);
     @include medium(){
         height: 335px;
     }

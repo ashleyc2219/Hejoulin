@@ -138,6 +138,10 @@ function App() {
             <Gift
               setCartCount={setCartCount}
               setAddcartmodal={setAddcartmodal}
+              sidebar={sidebar}
+              setSidebar={setSidebar}
+              loginModal={loginModal}
+              setLoginModal={setLoginModal}
             />
           </Route>
           <Route exact path="/mark/intro">
