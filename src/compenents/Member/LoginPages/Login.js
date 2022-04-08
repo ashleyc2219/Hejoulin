@@ -105,7 +105,7 @@ const Login = (props) => {
                                             className="btn btn-outline-primary register-btn"
                                             onClick={() => setRow('register')}
                                         >
-                                            註冊
+                                            前往註冊
                                         </button>
                                         <button type="submit" className="btn btn-primary login-btn">
                                             登入

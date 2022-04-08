@@ -226,6 +226,13 @@ const Register = (props) => {
                       }
                     </div>
                   </div>
+                  <button
+                      type="button"
+                      className="btn btn-outline-primary login-btn"
+                      onClick={() => setRow('login')}
+                  >
+                    已有帳號
+                  </button>
                   {newPwd === confPwd ? (
                     <button
                       type="submit"
@@ -244,14 +251,6 @@ const Register = (props) => {
                       檢查密碼
                     </button>
                   )}
-
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary login-btn"
-                    onClick={() => setRow('login')}
-                  >
-                    登入
-                  </button>
                 </form>
               </div>
             </div>
