@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import '../styles/SubCartOrder/SubCartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubOrderCard from '../compenents/Sub/SubCartOrderCard'
+import Spinner from '../compenents/Shared/Spinner'
 import { orderInfoGet } from './../compenents/SubCartFetch/SubCartOrderFetch'
 const SubCartOrder = () => {
+  const [spin, setSpin] = useState(true)
+
   const [orderInfo, setOrderInfo] = useState([])
   const [allSubInfo, setAllSubInfo] = useState([])
   // console.log(cartSummaryInfo.order_main_id)
@@ -29,6 +32,11 @@ const SubCartOrder = () => {
         setAllSubInfo(all_sub_info)
       }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
     return () => {
       a = false
     }
@@ -44,7 +52,9 @@ const SubCartOrder = () => {
   }
 
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="SubCartOrder">
       <ProgressBar step="three" content={stepContent} />
       <div className="container">

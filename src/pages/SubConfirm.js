@@ -1,12 +1,29 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import SubConfirmCard from '../compenents/Sub/SubComfirmCard'
 import './../styles/SubConfirm/SubConfirm.scss'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import Spinner from '../compenents/Shared/Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const SubConfirm = (props) => {
   const { subPlan, subTimeTotal, subTimeMonth } = props
+  const [spin, setSpin] = useState(true)
+
   // console.log(subPlan)
+  // use aos
+  useEffect(() => {
+    let a = true
+    AOS.init({
+      duration: 2000,
+    })
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+  }, [])
   let subPlanMap = subPlan
   subPlanMap.sort(function (a, b) {
     return a.length - b.length
@@ -21,8 +38,8 @@ const SubConfirm = (props) => {
   }
   return (
     <div className="SubConfirm">
-      <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
-      <div className="container">
+      <img className="LineBg" src="/Sub/LineBg.svg" alt="" data-aos="zoom-in" />
+      <div className="container" data-aos="fade-up">
         <ProgressBar step="three" content={stepContent} />
         <div className="main">
           <div className="top-order-list">{renderConfirmCard(subPlanMap)}</div>
