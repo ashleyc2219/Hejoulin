@@ -158,7 +158,7 @@ const ProductList = (props) => {
 
   const levelToLoad = () => {
     setProlist(false)
-    //setTitle(true)
+    setNoresult(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
@@ -184,7 +184,7 @@ const ProductList = (props) => {
   }
   const markToLoad = () => {
     setProlist(false)
-    // setTitle(true)
+    setNoresult(true)
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
