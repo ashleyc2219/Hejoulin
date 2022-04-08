@@ -88,14 +88,15 @@
             width: 21.138%;
             background-color: $white;
             mix-blend-mode: multiply;
+            
+            img {
+              height: 110px;
+            }
             @include medium {
               height: 90px;
               img {
                 height: 80px;
               }
-            }
-            img {
-              height: 110px;
             }
           }
           .item-product-info {
