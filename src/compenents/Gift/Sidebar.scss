@@ -24,7 +24,7 @@
     width: 175px;
     height: fit-content;
     margin-right: 30px;
-    // display: sticky;
+    z-index: 10;
     @include medium() {
       display: none;
     }

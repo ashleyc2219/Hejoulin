@@ -43,7 +43,7 @@ const AgeModal = (props) => {
       <div className={classname ? 'AgeModal anistart' : 'AgeModal aniend'}>
         <div className="comparepage">
           {/* 內容top */}
-          <div className="Footer">
+          <div className="footer">
             <div className="wave-container">
               <div className="waves">
                 <svg width="100%" height="350px" fill="none">

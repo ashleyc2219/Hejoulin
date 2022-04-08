@@ -30,10 +30,43 @@
   }
 }
 
+@keyframes waveShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes grow00 {
+  0% {
+    height: 0px;
+  }
+  95% {
+    height: 210px;
+  }
+  100% {
+    height: 198px;
+  }
+}
+@keyframes grow01 {
+  0% {
+    height: 198px;
+  }
+  5% {
+    height: 190px;
+  }
+  95% {
+    height: calc(205px + 13vh);
+  }
+  100% {
+    height: calc(198px + 13vh);
+  }
+}
 * {
   // outline: 1px solid red;
 }
-
 .SakeGuide {
   max-width: 100%;
   overflow: hidden;
@@ -42,6 +75,43 @@
   @include medium() {
     padding: 0 20px;
   }
+  .wave_test {
+    display: none;
+  }
+  .guide_wave {
+    position: absolute;
+    animation: waveShow 1s;
+
+    .wave_loca {
+      position: fixed;
+      bottom: 0%;
+      .wave {
+        overflow: hidden;
+        bottom: 199vh;
+        // height: 22%;
+        animation: grow00 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .upper {
+          &::before {
+            content: "";
+            position: absolute;
+            background-color: #ceb48d70;
+            left: 0%;
+            width: 100%;
+            height: 100vh;
+            transform: translateY(198px);
+          }
+          background: url('../../../public/SakeGuide/bg.svg') repeat-x;
+          top: 0;
+          width: 6200px;
+          height: 198px;
+          animation: move 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) 0s infinite
+            normal none running;
+          transform: translate3d(0px, 0px, 0px);
+
+        }
+      }
+    }
+  }
 
   .guide_container {
     padding-top: 40px;
@@ -49,6 +119,11 @@
     margin: 0 auto;
     height: fit-content;
     position: relative;
+
+    .guide_test {
+      display: none;
+    }
+
     .start {
       height: calc(100vh - 185px);
       position: relative;
@@ -77,7 +152,7 @@
       }
       .text {
         position: relative;
-        width: 960px;
+        min-width: 960px;
         z-index: 3;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -123,9 +198,6 @@
           z-index: 3;
           border: transparent;
           background-color: transparent;
-          display: flex;
-          flex-direction: column;
-          align-content: space-around;
           bottom: 30px;
           .line {
             height: 20px;
@@ -170,8 +242,10 @@
         }
       }
       .range {
-        margin: 30px 0;
+        margin: 30px 0 50px;
         height: fit-content;
+        display: flex;
+        justify-content: center;
       }
       .position {
         width: 100%;
@@ -180,34 +254,6 @@
         margin-top: 120px;
         .comfirm {
         }
-      }
-    }
-  }
-  .wave_loca {
-    position: absolute;
-    left: 0%;
-
-    .wave {
-      position: absolute;
-      // left: 0%;
-      overflow: hidden;
-      bottom: 199vh;
-      height: 198px;
-      .upper {
-        background: url(../../../public/SakeGuide/bg.svg) repeat-x;
-        top: 0;
-        width: 6200px;
-        height: 198px;
-        animation: move 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) 0s infinite
-          normal none running;
-        transform: translate3d(0px, 0px, 0px);
-      }
-
-      .down {
-        width: 100vw;
-        height: 2000px;
-        background-color: #ceb48d70;
-        bottom: 0px;
       }
     }
   }
