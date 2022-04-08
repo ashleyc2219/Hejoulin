@@ -42,6 +42,12 @@
   }
 }
 
+@mixin largesp {
+  @media (max-width: 1050px) {
+    @content;
+  }
+}
+
 // 最外面的容器
 .ProductList {
   width: 100%;
@@ -256,7 +262,7 @@
         .search-bar {
           width: 100%;
           animation: searchani 1s;
-          @include medium() {
+          @include largesp() {
             display: none;
           }
           height: 100px;
