@@ -42,9 +42,9 @@ const Login = (props) => {
             localStorage.setItem('token', obj.token)
             localStorage.setItem('account', obj.info)
         }
-        if (loginProcess === 'loginSuccess') {
-            setLoginModalShow((prev) => !prev)
-        }
+        // if (loginProcess === 'loginSuccess') {
+        //     setLoginModalShow((prev) => !prev)
+        // }
         if (loginProcess === 'finish') {
             // history.go(0)
         }

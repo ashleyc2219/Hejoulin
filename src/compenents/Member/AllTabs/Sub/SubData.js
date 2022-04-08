@@ -31,7 +31,7 @@ const SubData = (props) => {
   const renderSubItems = (subData) => {
     if (subData.data1) {
       return (
-        <tr key={'test' + subData.member_id}>
+        <tr key={subData.order_d_id}>
           <td>{subData.data1.order_d_id.slice(0, 8)}</td>
           <td>{subData.data2.sub_plan}</td>
           <td>{subData.data2.sub_price}</td>
