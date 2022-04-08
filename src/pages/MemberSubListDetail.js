@@ -11,8 +11,6 @@ const MemberSubListDetail = () => {
 
     useEffect(() => {
         const dataDetailSub = JSON.parse(localStorage.getItem('subDetail'))
-        console.log('hi')
-        console.log('dataDetailSub', dataDetailSub)
         setSubDData(dataDetailSub)
     }, [])
 
