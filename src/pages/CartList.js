@@ -13,7 +13,7 @@ import Spinner from '../compenents/Shared/Spinner'
 import FetchMemberId from '../compenents/Member/FetchMemberId'
 
 const CartList = (props) => {
-  const { setCartSummary, loginModal, setLoginModal, setSidebar } = props
+  const { setCartSummary, setSidebar } = props
   const [spin, setSpin] = useState(true)
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
   const [sakeIncart, setSakeIncart] = useState([])
@@ -125,8 +125,6 @@ const CartList = (props) => {
             setGiftTotal(initialGiftTotal(obj))
           }
         })()
-      } else {
-        setLoginModal(true)
       }
     })()
 
