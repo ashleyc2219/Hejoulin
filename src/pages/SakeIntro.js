@@ -27,8 +27,9 @@ const SakeIntro = () => {
 
   return (
     <>
-      <div className="sake-intro">
-        <div className="img-box"></div>
+
+      {spin ? <Spinner /> :       <div className="sake-intro">
+      <div className="img-box"></div>
         <div className="container">
           <GuideButton />
           <div className="sake-intro-container">
@@ -458,8 +459,8 @@ const SakeIntro = () => {
             </div>
           </div>
         </div>
-        {spin ? <Spinner /> : SakeIntro}
-      </div>
+       
+      </div>}
     </>
   )
 }

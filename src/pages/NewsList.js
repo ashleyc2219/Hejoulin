@@ -85,7 +85,7 @@ const NewsList = () => {
   return (
     <>
       <div className="news">
-        <div className=" news-container container-sm">
+      {spin ? <Spinner /> :         <div className=" news-container container-sm">
           <div className="">
             <div className="news-title">
               <h1>最新消息</h1>
@@ -103,8 +103,9 @@ const NewsList = () => {
             {/* 元件 */}
             {newslist}
           </div>
-        </div>
-        {spin ? <Spinner /> : NewsList}
+        </div>}
+
+        
       </div>
     </>
   )

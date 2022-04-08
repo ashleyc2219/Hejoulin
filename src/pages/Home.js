@@ -69,7 +69,8 @@ const Home = () => {
   //顯示頁面
   return (
     <>
-      <div className="home">
+
+      {spin ? <Spinner /> :       <div className="home">
         {localStorage.getItem('age') !== 'over 18' && modalShow ? (
           <AgeModal modalShow={modalShow} setModalShow={setModalShow} />
         ) : (
@@ -249,8 +250,8 @@ const Home = () => {
             <button className="btn btn-secondary">警示頁光箱測試</button>
           </Link>
         </div>
-        {spin ? <Spinner /> : Home}
-      </div>
+       
+      </div>}
     </>
   )
 }
