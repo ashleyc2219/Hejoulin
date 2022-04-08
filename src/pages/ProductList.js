@@ -308,7 +308,6 @@ const ProductList = (props) => {
   }
 
   const sorthandler = (e) => {
-    console.log('test')
     const sort = e.target.value
     if (sort === '1') {
       preToLoad()
