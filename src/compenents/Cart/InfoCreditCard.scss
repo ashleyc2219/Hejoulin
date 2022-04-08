@@ -2,8 +2,8 @@
 .credit-card-container {
   width: 100%;
   display: flex;
-justify-content: space-between;
-column-gap: 10px;
+  justify-content: space-between;
+  column-gap: 10px;
 
   .fix-new {
     width: 60%;
@@ -17,7 +17,7 @@ column-gap: 10px;
     }
   }
   .form-box {
-      width: 39%;
+    width: 39%;
     form {
       input::placeholder {
         color: $gray-200;
@@ -41,6 +41,26 @@ column-gap: 10px;
       .red {
         border: 1px solid $secondary;
       }
+    }
+  }
+}
+@include medium {
+  .credit-card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 10px;
+    .fix-new {
+      width: 100%;
+      .card-new {
+        max-width: 310px;
+        margin: auto;
+      }
+    }
+    .form-box {
+      width: 100%;
+      margin-top: 10px;
     }
   }
 }

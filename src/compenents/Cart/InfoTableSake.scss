@@ -18,13 +18,7 @@
     background-color: $white;
     mix-blend-mode: multiply;
     position: relative;
-    @include medium {
-      width: 90px;
-      height: 90px;
-      img {
-        height: 80px;
-      }
-    }
+
     .quantity {
       position: absolute;
       right: -8px;
@@ -40,9 +34,16 @@
       margin: 0;
       padding: 0;
     }
-     img {
-        height: 110px;
+    img {
+      height: 110px;
+    }
+    @include medium {
+      width: 90px;
+      height: 90px;
+      img {
+        height: 80px;
       }
+    }
   }
   .item-product-info {
     width: 44.18%;

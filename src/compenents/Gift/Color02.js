@@ -60,12 +60,12 @@ const Color02 = (props) => {
           className="box02"
         />
         <img
-          src={'http://localhost:3001/images/pro_img/' + img}
+          src={img ? 'http://localhost:3001/images/pro_img/' + img : ''}
           alt="sake"
           className="dou_sake"
         />
         <img
-          src={'http://localhost:3001/images/pro_img/' + img2}
+          src={img2 ? 'http://localhost:3001/images/pro_img/' + img2 : ''}
           alt="container"
           className="dou_other"
         />
@@ -78,12 +78,12 @@ const Color02 = (props) => {
             setStep('four')
             setBlock03(true)
             setTimeout(() => {
-                window.scroll({
-                  top: 3.2 * 714,
-                  left: 0,
-                  behavior: 'smooth',
-                })
-              }, 500)
+              window.scroll({
+                top: 3.2 * 714,
+                left: 0,
+                behavior: 'smooth',
+              })
+            }, 500)
           }}
         >
           下一步

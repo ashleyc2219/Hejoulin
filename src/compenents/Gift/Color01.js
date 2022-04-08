@@ -60,7 +60,7 @@ const Color01 = (props) => {
           className="box01"
         />
         <img
-          src={'http://localhost:3001/images/pro_img/' + img}
+          src={img ? 'http://localhost:3001/images/pro_img/' + img : ''}
           alt="sake"
           className="sake01"
         />

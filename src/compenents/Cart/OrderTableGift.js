@@ -21,7 +21,10 @@ const OrderTableGift = (props) => {
       <>
         <div className="table-item">
           <div className="item item-product-img">
-            <img src={'/CartList/Gift_' + giftInfo.gift_id + '.png'} alt="" />
+            <img
+              src={`/CartList/Gift_${giftInfo.gift_id}_${giftInfo.box_color}.png`}
+              alt=""
+            />
           </div>
           <div className="item item-product-info">
             <h5>{giftInfo.gift_name} 禮盒</h5>

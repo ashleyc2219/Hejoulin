@@ -38,37 +38,6 @@ const SakeGuide = () => {
     setWaveHeight(wrap.current - 1)
   }, [wrap.current])
 
-  // const url2 = `http://localhost:3001/api/product_guide?taste=${taste}&temp=${temp}&priceLow=${minPrice}&priceHigh=${maxPrice}&gift=${gift}`
-  // const sake = content.map((v, i) => {
-  //   return (
-  //     <React.Fragment key={i}>
-  //       <div className="box">
-  //         <Link to={'/product/detail/' + v.pro_id}>
-  //           <div className="sth">
-  //             <img
-  //               src={'http://localhost:3001/images/pro_img/' + v.pro_img}
-  //               alt=""
-  //             />
-  //             <span>{v.pro_name}</span>
-  //           </div>
-  //         </Link>
-  //         <div className="sake_circle uno"></div>
-  //       </div>
-  //     </React.Fragment>
-  //   )
-  // })
-  // useEffect(() => {
-  //   const fetchItem = async () => {
-  //     const res = await fetch(url2)
-  //     const data = await res.json()
-  //     setContent(data)
-  //     console.log(data)
-  //   }
-  //   fetchItem()
-  //   setTimeout(() => {
-  //     setLoading(false)
-  //   }, 1500)
-  // }, [ gift])
   setTimeout(() => {
     setLoading(false)
   }, 1500)
@@ -86,6 +55,7 @@ const SakeGuide = () => {
               </motion.div>
             </div>
           </section>
+
           <div className="guide_container">
             <section className="start">
               <img src="/Gift/bgelement.svg" alt="" className="one"></img>
@@ -125,10 +95,25 @@ const SakeGuide = () => {
                     }, 1000)
                   }}
                 >
-                  <p>立即開始</p>
-                  <span>scroll</span>
-                  <div className="line"></div>
-                  <div className="arrow"></div>
+                  <p className="chi">立即開始</p>
+                  <p className="eng">scroll</p>
+                  <div className="arrow">
+                    <img
+                      src="./SakeGuide/down.svg"
+                      alt=""
+                      className="down01 down"
+                    />
+                    <img
+                      src="./SakeGuide/down.svg"
+                      alt=""
+                      className="down02 down"
+                    />
+                    <img
+                      src="./SakeGuide/down.svg"
+                      alt=""
+                      className="down03 down"
+                    />
+                  </div>
                 </button>
               </div>
             </section>

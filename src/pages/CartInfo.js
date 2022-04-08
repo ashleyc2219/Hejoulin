@@ -97,60 +97,63 @@ const CartInfo = (props) => {
     let a = true
     window.scrollTo(0, 0)
     let cartLength = 0
-    ;(async () => {
-      const r1 = await fetch(
-        `http://localhost:3001/api/cart-list/sake?member_id=${memberId}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      const obj = await r1.json()
-      cartLength += obj.length
-      // console.log('obj.length', obj.length)
+    if (memberId !== '' && memberId !== 'noMemberId') {
+      ;(async () => {
+        const r1 = await fetch(
+          `http://localhost:3001/api/cart-list/sake?member_id=${memberId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        const obj = await r1.json()
+        cartLength += obj.length
+        // console.log('obj.length', obj.length)
 
-      if (a) {
-        setSakeIncart(obj)
-      }
-    })()
-    ;(async () => {
-      const rGift = await fetch(
-        `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        if (a) {
+          setSakeIncart(obj)
         }
-      )
-      const obj = await rGift.json()
-      cartLength += obj.length
-      // console.log(cartLength)
-      if (a) {
-        cartListAppearance(cartLength)
-      }
-      function cartListAppearance(cartLength) {
-        if (cartLength === 1) {
-          setCollapseClass('list-table one')
-          console.log('one', cartLength)
+      })()
+      ;(async () => {
+        const rGift = await fetch(
+          `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        const obj = await rGift.json()
+        cartLength += obj.length
+        // console.log(cartLength)
+        if (a) {
+          cartListAppearance(cartLength)
         }
-        if (cartLength === 2) {
-          setCollapseClass('list-table two')
-          console.log('two', cartLength)
+        function cartListAppearance(cartLength) {
+          if (cartLength === 1) {
+            setCollapseClass('list-table one')
+            console.log('one', cartLength)
+          }
+          if (cartLength === 2) {
+            setCollapseClass('list-table two')
+            console.log('two', cartLength)
+          }
+          if (cartLength > 2) {
+            setCollapseClass('list-table morethantwo')
+          }
         }
-        if (cartLength > 2) {
-          setCollapseClass('list-table morethantwo')
+        let memberInfoObj = await memberInfoGet(memberId)
+        // console.log(memberInfoObj)
+        if (a) {
+          setGiftIncart(obj)
+          setMemberInfo(memberInfoObj)
         }
-      }
-      let memberInfoObj = await memberInfoGet(memberId)
-      console.log(memberInfoObj)
-      if (a) {
-        setGiftIncart(obj)
-        setMemberInfo(memberInfoObj)
-      }
-    })()
+      })()
+    }
+    
     setTimeout(() => {
       if (a) {
         setSpin(false)
@@ -452,9 +455,9 @@ const CartInfo = (props) => {
               <p className="dollar-sign total">{cartSummaryInfo.allTotal}</p>
             </div>
           </div>
-          <div className="mobile-table-btn ">
+          {/* <div className="mobile-table-btn ">
             <span className="product-count">&darr; 共4件商品</span>
-          </div>
+          </div> */}
         </div>
         <div className="right-info">
           <div className="buyer">

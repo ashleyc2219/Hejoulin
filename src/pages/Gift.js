@@ -384,7 +384,11 @@ const Gift = (props) => {
                       )}
                       {kind === 1 && (
                         <img
-                          src={'http://localhost:3001/images/pro_img/' + img}
+                          src={
+                            img
+                              ? 'http://localhost:3001/images/pro_img/' + img
+                              : ''
+                          }
                           alt="final"
                           className="final-sake1"
                         />
@@ -392,12 +396,20 @@ const Gift = (props) => {
                       {kind === 2 && (
                         <>
                           <img
-                            src={'http://localhost:3001/images/pro_img/' + img}
+                            src={
+                              img
+                                ? 'http://localhost:3001/images/pro_img/' + img
+                                : ''
+                            }
                             alt="final"
                             className="final-sake2-1"
                           />
                           <img
-                            src={'http://localhost:3001/images/pro_img/' + img2}
+                            src={
+                              img2
+                                ? 'http://localhost:3001/images/pro_img/' + img2
+                                : ''
+                            }
                             alt="final"
                             className="final-sake2"
                           />
@@ -406,14 +418,20 @@ const Gift = (props) => {
                       {kind === 3 && (
                         <>
                           <img
-                            src={'http://localhost:3001/images/pro_img/' + img}
+                            src={
+                              img
+                                ? 'http://localhost:3001/images/pro_img/' + img
+                                : ''
+                            }
                             alt="final"
                             className="final-sake3-1"
                           />
                           <img
                             src={
-                              'http://localhost:3001/images/con_img/' +
                               conShadow
+                                ? 'http://localhost:3001/images/con_img/' +
+                                  conShadow
+                                : ''
                             }
                             alt="final"
                             className="final-con"
@@ -424,7 +442,6 @@ const Gift = (props) => {
                     <div className="content">
                       <h5 className="title">禮盒明細</h5>
                       <div className="sheet grid">
-                        {/* gift sake */}
                         <p className="text color">{name}</p>
                         <p className="quality color">{quality}瓶</p>
                         <div className="price color">{price * quality}</div>
@@ -439,17 +456,14 @@ const Gift = (props) => {
                             />
                           )}
                         </>
-                        {/* space */}
                         <p></p>
                         <p></p>
                         <div></div>
-                        {/* gift color */}
                         <p className="text color">禮盒顏色</p>
                         <p className="quality color">
                           {changeText(comfirmColor)}
                         </p>
                         <div className="price color">{200 * quality}</div>
-                        {/* gift total */}
                         <p className="text_total total">總價</p>
                         <p className="quality total">{quality}盒</p>
                         <div className="price total">

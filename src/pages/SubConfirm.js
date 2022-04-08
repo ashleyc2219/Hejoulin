@@ -117,7 +117,7 @@ const SubConfirm = (props) => {
                   localStorage.setItem('subCart', JSON.stringify(data))
                 }}
               >
-                前往結賬
+                前往結帳
               </button>
             </Link>
           )}
