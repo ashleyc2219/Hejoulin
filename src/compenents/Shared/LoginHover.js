@@ -46,7 +46,7 @@ const LoginHover = ({ showSidebar }) => {
           />
         </svg>
         {/* <span className='loginFont'>登入</span> */}
-        <span>登入</span>
+        <span>登入 / 註冊</span>
       </motion.div>
     </>
   )
