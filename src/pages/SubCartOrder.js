@@ -51,7 +51,7 @@ const SubCartOrder = () => {
     }
   }
 
-  const stepContent = ['購物車', '填寫資訊', '訂單成立']
+  const stepContent = ['確認方案', '填寫資訊', '訂單成立']
   return spin ? (
     <Spinner />
   ) : (
