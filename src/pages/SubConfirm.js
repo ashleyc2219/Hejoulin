@@ -13,6 +13,7 @@ const SubConfirm = (props) => {
   const { subPlan, subTimeTotal, subTimeMonth, setSidebar } = props
   const [spin, setSpin] = useState(true)
   const [memberId, setMemberId] = useState('')
+   window.scrollTo(0, 0)
   // use aos
   useEffect(() => {
     let a = true

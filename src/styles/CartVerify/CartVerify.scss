@@ -21,7 +21,6 @@
   }
 }
 
-
 .CreditCardVerified {
   position: fixed;
   top: 0;
@@ -137,6 +136,24 @@
         margin-left: auto;
         color: rgb(239, 101, 55);
         font-weight: 700;
+      }
+    }
+  }
+}
+
+@include medium {
+  .CreditCardVerified {
+    width: 100%;
+    .Verified-container {
+      width: 97vw;
+      .card-main {
+        .right {
+          .input {
+            input {
+              width: 115px;
+            }
+          }
+        }
       }
     }
   }

@@ -10,6 +10,7 @@ const SubCartOrder = () => {
 
   const [orderInfo, setOrderInfo] = useState([])
   const [allSubInfo, setAllSubInfo] = useState([])
+  // console.log(orderInfo)
   // console.log(cartSummaryInfo.order_main_id)
   let order_main_id = localStorage.getItem('sub_order_main_id')
   const order_id = order_main_id ? order_main_id : '20220406004'
@@ -59,11 +60,11 @@ const SubCartOrder = () => {
       <ProgressBar step="three" content={stepContent} />
       <div className="container">
         <div className="left-list">
-          <div className="mobile-table-btn ">
+          {/* <div className="mobile-table-btn ">
             <span className="total">
               訂單總計: $ {'cartSummaryInfo.allTotal'}
             </span>
-          </div>
+          </div> */}
           <div className="list-table">
             <div className="table-head ">
               <span className="title-product">商品</span>
@@ -80,7 +81,7 @@ const SubCartOrder = () => {
 
             <div className="table-row">
               <p>運費</p>
-              <p className="dollar-sign">{orderInfo.ship_fee}</p>
+              <p className="dollar-sign">0</p>
             </div>
 
             <div className="table-row">
