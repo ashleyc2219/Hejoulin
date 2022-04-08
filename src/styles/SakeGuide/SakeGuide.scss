@@ -50,23 +50,26 @@
     height: 198px;
   }
 }
-@keyframes grow01 {
-  0% {
-    height: 198px;
+
+@keyframes focus {
+  0%{
+    opacity: 0.3;
+    transform: translateY(0);
   }
-  5% {
-    height: 190px;
+  50%{
+    transform: translateY(-10px);
+    opacity: 1;
   }
-  95% {
-    height: calc(205px + 13vh);
+  75%{
+    opacity: 1;
+    transform: translateY(-10px);
   }
-  100% {
-    height: calc(198px + 13vh);
+  100%{
+    transform: translateY(0);
+    opacity: 0.3;
   }
 }
-* {
-  // outline: 1px solid red;
-}
+
 .SakeGuide {
   max-width: 100%;
   overflow: hidden;
@@ -89,7 +92,7 @@
         overflow: hidden;
         bottom: 199vh;
         // height: 22%;
-        animation: grow00 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: grow00 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         .upper {
           &::before {
             content: "";
@@ -198,11 +201,26 @@
           z-index: 3;
           border: transparent;
           background-color: transparent;
-          bottom: 30px;
-          .line {
-            height: 20px;
-            width: 1px;
-            border: 1px solid $primary;
+          bottom: 45px;
+          .chi{
+            margin: 0%;
+            // animation: focus 1s ease-in infinite;
+          }
+          .arrow {
+            display: flex;
+            flex-direction: column;
+            .down{
+              position: absolute;
+              margin: 0 auto;
+              left: 15px;
+              top: 40px;
+            }
+            .down02{
+              top: 46px;
+            }
+            .down03{
+              top: 52px;
+            }
           }
         }
       }

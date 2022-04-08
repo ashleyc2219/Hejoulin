@@ -12,7 +12,6 @@ const Color03 = (props) => {
     setComfirmColor,
     step,
     setStep,
-    GiftLink,
     setBlock03,
   } = props
   const [boxColor, setBoxColor] = useState('black')
@@ -61,12 +60,15 @@ const Color03 = (props) => {
           className="box03"
         />
         <img
-          src={'http://localhost:3001/images/pro_img/' + img}
+          src={img ? 'http://localhost:3001/images/pro_img/' + img : ''}
           alt="sake"
           className="tri_sake"
         />
+
         <img
-          src={'http://localhost:3001/images/con_img/' + conShadow}
+          src={
+            conShadow ? 'http://localhost:3001/images/con_img/' + conShadow : ''
+          }
           alt="container"
           className="tri_other"
         />
@@ -79,12 +81,12 @@ const Color03 = (props) => {
             setStep('four')
             setBlock03(true)
             setTimeout(() => {
-                window.scroll({
-                  top: 3.2 * 714,
-                  left: 0,
-                  behavior: 'smooth',
-                })
-              }, 500)
+              window.scroll({
+                top: 3.2 * 714,
+                left: 0,
+                behavior: 'smooth',
+              })
+            }, 500)
           }}
         >
           下一步
