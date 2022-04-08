@@ -5,7 +5,7 @@ const EmailVerify2 = (props) => {
   const { setRow, forgetPassData, setForgetPassData } = props
   const [verify2Correct, setVerify2Correct] = useState('')
   const [verifyData, setVerifyData] = useState({})
-  const APIVerify = 'http://localhost:3001/login/code/verify'
+  const APIVerify = 'http://localhost:3001/login/code/verify/passForget'
   const whenVerSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     setVerify2Correct('')
@@ -16,7 +16,7 @@ const EmailVerify2 = (props) => {
       fd.forEach(function (value, key) {
         obj[key] = value
       })
-      const  json = await obj
+      const json = await obj
       setVerifyData(json)
       console.log(json)
       const newData = {
@@ -38,7 +38,6 @@ const EmailVerify2 = (props) => {
       console.log(result.message)
       if (result.message === 'success') {
         setRow('setNewPass')
-        // setForgetPassData([])
       }
       if (result.message === 'codeError'){
       setVerify2Correct('error')

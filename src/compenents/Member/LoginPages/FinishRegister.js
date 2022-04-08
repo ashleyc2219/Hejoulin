@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../styles/Member/Member-Login/FinishRegister.scss'
 import { Link } from 'react-router-dom'
 
-const FinishRegister = ({ sidebar, setSidebar, row, setRow }) => {
+const FinishRegister = ({ sidebar, setSidebar, setRow }) => {
   const showSidebar = () => {
     setSidebar(!sidebar)
     setRow('login')

@@ -9,6 +9,7 @@ import TitleDecoPath from './../compenents/Home/TitleDecoPath'
 import SakeCarousel from '../compenents/Home/SakeCarousel'
 import GuideButton from '../compenents/SakeGuide/Guide'
 import AgeModal from './../compenents/Home/AgeModal.js'
+import Spinner from '../compenents/Shared/Spinner'
 
 const Home = () => {
   //年領警示光箱
@@ -30,6 +31,7 @@ const Home = () => {
     const pro = data
     setDetail(pro)
   }
+  const [spin, setSpin] = useState(true)
   const homeNewslist = detail.map((v, i) => {
     return (
       <React.Fragment key={i}>
@@ -53,6 +55,15 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     fetchData()
+    let a = true
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+
+
+
   }, [])
 
   //顯示頁面
@@ -238,6 +249,7 @@ const Home = () => {
             <button className="btn btn-secondary">警示頁光箱測試</button>
           </Link>
         </div>
+        {spin ? <Spinner /> : Home}
       </div>
     </>
   )

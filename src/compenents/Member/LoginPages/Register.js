@@ -14,6 +14,7 @@ const Register = (props) => {
 
   const whenRegSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
+    localStorage.setItem('email', document.querySelector('#user_account').value)
     const fd = new FormData(document.form1)
     const r = await fetch(APIRegister, {
       method: 'POST',
@@ -42,8 +43,8 @@ const Register = (props) => {
       const emailSend = await verify.json()
       console.log(emailSend)
       if (emailSend.message === 'success') {
-       localStorage.setItem('token', obj.token)
-        setUserToken(localStorage.getItem('token'))
+       // localStorage.setItem('token', obj.token)
+       //  setUserToken(localStorage.getItem('token'))
         setRow('verify')
       }
     } else {
@@ -226,6 +227,13 @@ const Register = (props) => {
                       }
                     </div>
                   </div>
+                  <button
+                      type="button"
+                      className="btn btn-outline-primary login-btn"
+                      onClick={() => setRow('login')}
+                  >
+                    已有帳號
+                  </button>
                   {newPwd === confPwd ? (
                     <button
                       type="submit"
@@ -244,14 +252,6 @@ const Register = (props) => {
                       檢查密碼
                     </button>
                   )}
-
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary login-btn"
-                    onClick={() => setRow('login')}
-                  >
-                    登入
-                  </button>
                 </form>
               </div>
             </div>
