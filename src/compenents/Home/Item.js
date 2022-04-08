@@ -11,7 +11,7 @@ class Item extends React.Component {
     this.itemClick = this.itemClick.bind(this)
   }
   itemClick() {
-    this.props.childClickChange(this.props.id + 1)
+    this.props.childClickChange(this.props.id -1)
   }
 
   render() {
@@ -19,7 +19,7 @@ class Item extends React.Component {
     let sakebig = 'min'
     let level = this.props.level
 
-    if (level == 2) {
+    if (level == 0) {
       sakebig = 'max'
     } else {
       sakebig = 'min'
