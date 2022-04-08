@@ -14,6 +14,7 @@ const Register = (props) => {
 
   const whenRegSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
+    localStorage.setItem('email', document.querySelector('#user_account').value)
     const fd = new FormData(document.form1)
     const r = await fetch(APIRegister, {
       method: 'POST',
@@ -42,8 +43,8 @@ const Register = (props) => {
       const emailSend = await verify.json()
       console.log(emailSend)
       if (emailSend.message === 'success') {
-       localStorage.setItem('token', obj.token)
-        setUserToken(localStorage.getItem('token'))
+       // localStorage.setItem('token', obj.token)
+       //  setUserToken(localStorage.getItem('token'))
         setRow('verify')
       }
     } else {
