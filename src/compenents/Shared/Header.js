@@ -76,6 +76,7 @@ const Header = (props) => {
     if (localStorage.getItem('token') !== null) {
       return <LogoutHover setSidebar={setSidebar} />
     } else {
+      setCartCount(0)
       return <LoginHover showSidebar={showSidebar} />
     }
   }
