@@ -8,6 +8,10 @@ class Item extends React.Component {
     this.state = {
       level: this.props.level,
     }
+    this.itemClick = this.itemClick.bind(this)
+  }
+  itemClick() {
+    this.props.childClickChange(this.props.id + 1)
   }
 
   render() {
@@ -21,7 +25,7 @@ class Item extends React.Component {
       sakebig = 'min'
     }
     return (
-      <div className={className}>
+      <div className={className} onClick={this.itemClick}>
         <img src={'/Home/sake/b' + sakebig + this.props.id + '.png'}></img>
       </div>
     )
