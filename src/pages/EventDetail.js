@@ -1,24 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import './../styles/EventDetail/EventDetail.scss'
 import { useParams } from 'react-router-dom'
+import Spinner from '../compenents/Shared/Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const EventDetail = () => {
   const [data, setData] = useState([])
   const { id } = useParams()
+  const [spin, setSpin] = useState(true)
   const url = 'http://localhost:3001/api/event?eventId=' + id
 
+  useEffect(() => {
+    let a = true
+
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+    AOS.init({
+      duration: 2000,
+    })
+    return () => {
+      a = false
+    }
+  }, [])
 
   const Detail = data.map((v) => {
     return (
       <React.Fragment key={v.event_id}>
-        <div className="main-container">
+        <div className="main-container" data-aos="fade-up">
           <img
             src={'http://localhost:3001/images/event_pic/' + v.event_cover}
             alt=""
           />
           <div className="event-info">{v.event_brief}</div>
         </div>
-        <div className="signup-container">
+        <div className="signup-container" data-aos="fade-left">
           <div className="title">{v.event_name}</div>
           <div className="dateinfo">
             <div className="datetitle">日期：</div>
@@ -32,9 +51,7 @@ const EventDetail = () => {
             <div className="loca">{v.event_location}</div>
           </div>
           <div className="price">NT${v.event_cost}</div>
-          <button className="btn btn-primary">
-            立即報名
-          </button>
+          <button className="btn btn-primary">立即報名</button>
         </div>
       </React.Fragment>
     )
@@ -58,7 +75,7 @@ const EventDetail = () => {
 
   return (
     <>
-      <div className="eventDetail">{Detail}</div>
+      <div className="eventDetail">{spin ? <Spinner /> : Detail}</div>
     </>
   )
 }

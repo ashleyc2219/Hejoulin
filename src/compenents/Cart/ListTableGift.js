@@ -7,12 +7,16 @@ const ListTableGift = (props) => {
     giftIncart,
     setGiftIncart,
     giftInfo,
-    member_id,
+    memberId,
     giftTotal,
     setGiftTotal,
   } = props
   const [quantity, setQuantity] = useState(giftInfo['cart_quantity'])
   let price = 0
+  useEffect(() => {
+    setQuantity(giftInfo['cart_quantity'])
+  }, [giftIncart])
+
   const fetchURL = 'http://localhost:3001/api/cart-list/gift'
   function renderGiftInfo(giftInfo) {
     if (giftInfo.gift_id === 3) {
@@ -112,7 +116,7 @@ const ListTableGift = (props) => {
     setGiftTotal(newGiftTotal)
   }
   let data = {
-    member_id: member_id,
+    member_id: memberId,
     cart_gift_id: giftInfo.cart_gift_id,
   }
   const delGiftItem = async () => {
@@ -129,14 +133,14 @@ const ListTableGift = (props) => {
       (gift) => gift['cart_gift_id'] !== giftInfo.cart_gift_id
     )
     setGiftIncart(newGiftInCart)
-    updateGiftTotal(price, 'del')
+    updateGiftTotal(price * quantity, 'del')
   }
   const minusQuantity = async () => {
     if (quantity > 1) {
       setQuantity(quantity - 1)
       let data = {
         cart_quantity: quantity - 1,
-        member_id: member_id,
+        member_id: memberId,
         cart_gift_id: giftInfo.cart_gift_id,
       }
       const r1 = await fetch(fetchURL, {
@@ -155,7 +159,7 @@ const ListTableGift = (props) => {
     setQuantity(quantity + 1)
     let data = {
       cart_quantity: quantity + 1,
-      member_id: member_id,
+      member_id: memberId,
       cart_gift_id: giftInfo.cart_gift_id,
     }
     const r1 = await fetch(fetchURL, {

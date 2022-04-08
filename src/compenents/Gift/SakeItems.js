@@ -42,6 +42,7 @@ const SakeItems = (props) => {
     setPrice,
     setImg,
     setBlock02,
+    setLoginModal,
   } = props
 
   const minus = () => {
@@ -105,6 +106,7 @@ const SakeItems = (props) => {
           closeHandle={closeHandle}
           id={id}
           kind={kind}
+          setLoginModal={setLoginModal}
         />
       )}
       {modalShow && <Backdrop closeHandle={closeHandle} />}

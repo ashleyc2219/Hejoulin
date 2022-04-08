@@ -4,10 +4,14 @@ import '../styles/CartOrder/CartOrder.scss'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import OrderTableGift from '../compenents/Cart/OrderTableGift'
 import OrderTableSake from '../compenents/Cart/OrderTableSake'
+import Spinner from '../compenents/Shared/Spinner'
+
 import { CartSummary } from '../App'
 const CartOrder = () => {
   let cartSummaryInfo = CartSummary._currentValue
   console.log(cartSummaryInfo.order_main_id)
+  const [spin, setSpin] = useState(true)
+
   const [sakeInOrder, setSakeInOrder] = useState([])
   const [giftInOrder, setGiftInOrder] = useState([])
   const [orderInfo, setOrderInfo] = useState([])
@@ -76,6 +80,11 @@ const CartOrder = () => {
         setOrderInfo(obj[0])
       }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
     return () => {
       a = false
     }
@@ -100,7 +109,9 @@ const CartOrder = () => {
     }
   }
   const stepContent = ['購物車', '填寫資訊', '訂單成立']
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="CartOrder">
       <ProgressBar step="three" content={stepContent} />
       <div className="container">

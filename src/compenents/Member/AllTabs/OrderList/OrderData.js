@@ -7,12 +7,7 @@ const OrderData = (props) => {
         pageData,
         setPageData,
         cPage,
-        currentRow,
-        setCurrentRow,
-        detailData,
-        setDetailData,
         status,
-        setStatus,
         setOrderData,
     } = props
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'

@@ -51,6 +51,7 @@
       height: 120%;
       overflow: hidden;
       position: absolute;
+      z-index: 1;
       @include medium() {
         display: none;
       }
@@ -141,9 +142,10 @@
               cursor: pointer;
 
               &:hover {
-                transform: translateY(-40px);
+                transform: translateY(-30px);
                 transition: 0.5s;
                 z-index: 5;
+                box-shadow: 1px 3px 0.2rem rgba(0, 0, 0, 0.2);
               }
 
               img {
@@ -281,11 +283,13 @@
                 justify-content: center;
               }
               .final-box1 {
+                filter: drop-shadow(4px 5px 0.1rem $gray-300);
                 @include medium() {
                   height: 250px;
                 }
               }
               .final-box2 {
+                filter: drop-shadow(4px 5px 0.1rem $gray-300);
                 @include medium() {
                   height: 250px;
                 }

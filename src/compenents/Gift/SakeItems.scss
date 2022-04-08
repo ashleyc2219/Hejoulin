@@ -38,6 +38,9 @@
     }
 
     &:hover {
+      transform: translateY(-3px);
+      transition: .5s;
+      box-shadow: 1px 3px 0.2rem rgba(0, 0, 0, 0.2);
       .original {
         display: none;
       }

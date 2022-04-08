@@ -4,10 +4,22 @@ import './Question.scss'
 import Answer from './Answer'
 
 const Question = (props) => {
-  const { setThickness, setSmooth, setSweet, setTemp, setGift } = props
+  const {
+    setThickness,
+    setSmooth,
+    setSweet,
+    setTemp,
+    setGift,
+    height,
+    first,
+    plus,
+  } = props
   const [content, setContent] = useState([])
   const [id, setId] = useState(0)
   const [answer, setAnswer] = useState([])
+  const [show02, setShow02] = useState(false)
+  const [show03, setShow03] = useState(false)
+  const [show04, setShow04] = useState(false)
 
   const url = 'http://localhost:3001/api/guide_q'
 
@@ -19,11 +31,6 @@ const Question = (props) => {
   }
   useEffect(() => {
     window.scroll(0, 0)
-    // setThickness('')
-    // setSmooth('')
-    // setSweet('')
-    // setTemp('')
-    // setGift('')
     fetchData()
   }, [])
 
@@ -37,7 +44,6 @@ const Question = (props) => {
         } else {
           setThickness('')
         }
-        console.log('success?')
         break
       case 2:
         if (answer === '濃烈') {
@@ -47,7 +53,6 @@ const Question = (props) => {
         } else {
           setSmooth('')
         }
-        console.log('success?')
         break
       case 3:
         if (answer === '甜') {
@@ -84,13 +89,24 @@ const Question = (props) => {
   const question = content.map((v, i) => {
     return (
       <React.Fragment key={i}>
-        <section className="main">
+        <section
+          className={`main 
+        ${first ? '' : 'guide_test'}
+        `}
+        >
           <p className="question">{v.q_des}</p>
           <Answer
             id={v.q_id}
             setAnswer={setAnswer}
             setId={setId}
             setData={setData}
+            height={height}
+            seq={i + 2}
+            setShow02={setShow02}
+            setShow03={setShow03}
+            setShow04={setShow04}
+            plus={plus}
+
           />
         </section>
       </React.Fragment>

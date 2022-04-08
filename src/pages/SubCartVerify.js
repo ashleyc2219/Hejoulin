@@ -1,9 +1,8 @@
 import React from 'react'
 import './../styles/CartVerify/CartVerify.scss'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { SubCartVerifyInfo } from './../App'
-import { createBrowserHistory } from 'history'
 
 const SubCartVerify = () => {
   let subCartVerifyInfo = SubCartVerifyInfo._currentValue
@@ -19,7 +18,7 @@ const SubCartVerify = () => {
   let date =
     today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate()
 
-  const history = createBrowserHistory()
+  let history = useHistory()
 
   const sendEmail = async function () {
     let data = {
@@ -45,7 +44,7 @@ const SubCartVerify = () => {
     }
 
     const r1 = await fetch(
-      `http://localhost:3001/api/cart-verify/verify-code`,
+      `http://localhost:3001/api/cart-verify/code-verify`,
       {
         method: 'POST',
         headers: {
@@ -56,7 +55,11 @@ const SubCartVerify = () => {
       }
     )
     const obj = await r1.json()
-    return obj.result
+    if (obj.result === 'success') {
+      history.push('/sub/cart-order', { some: 'state' })
+    } else {
+      setBtnText('驗證碼錯誤 按我重新發送')
+    }
   }
 
   return (
@@ -91,17 +94,14 @@ const SubCartVerify = () => {
                       setEnterCode(e.target.value)
                     }}
                   />
-                  <Link to="/sub/cart-order">
-                    <button
-                      onClick={() => {
-                        verifyTheCode()
-                          ? history.push('/sub/cart-order', { some: 'state' })
-                          : setBtnText('驗證碼錯誤 按我重新發送')
-                      }}
-                    >
-                      確認
-                    </button>
-                  </Link>
+
+                  <button
+                    onClick={() => {
+                      verifyTheCode()
+                    }}
+                  >
+                    確認
+                  </button>
                 </div>
                 <button
                   onClick={() => {

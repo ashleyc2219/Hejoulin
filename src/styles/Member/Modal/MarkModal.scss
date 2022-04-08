@@ -45,6 +45,8 @@
 
   .MarkModal {
     position: relative;
+    background-image: url('./../../../../public/Sake-background0310.jpg');
+    padding: 10px;
 
     .close-white {
       position: absolute;
@@ -55,7 +57,7 @@
       img {
         width: 24px;
         height: 24px;
-
+        
       }
     }
 
@@ -73,7 +75,7 @@
     img {
       width: 1077px;
       height: 696px;
-      object-fit: fill;
+      object-fit: contain;
     }
   }
 }

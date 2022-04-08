@@ -11,7 +11,10 @@ import SubCartInfoCard from '../compenents/Sub/SubCartInfoCard'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import { districts, townships } from './../data/districts'
 
-import { CartSummary } from './../App'
+import { SubCartVerifyInfo } from './../App'
+import Spinner from '../compenents/Shared/Spinner'
+import FetchMemberId from '../compenents/Member/FetchMemberId'
+
 // 信用卡
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
 import {
@@ -27,6 +30,8 @@ const SubCartInfo = (props) => {
   const subInCart = JSON.parse(localStorage.getItem('subCart'))
   // console.log(subInCart)
   const { setSubCartVerifyInfo } = props
+  const [spin, setSpin] = useState(true)
+
   const stepContent = ['確認方案', '填寫資訊', '訂單成立']
 
   const [memberInfo, setMemberInfo] = useState([])
@@ -65,24 +70,36 @@ const SubCartInfo = (props) => {
   // 自動填寫
   const [autoBuyer, setAutoBuyer] = useState(false)
   const [autoReceiver, setAutoReceiver] = useState(false)
-  // 會員ID TODO: 之後要連動
-  const member_id = 4
+  const [memberId, setMemberId] = useState('')
+
   // TODO: store_id 要在做門市元件後換
   const store_id = ''
+  useEffect(() => {
+    ;(async () => {
+      let member_id = await FetchMemberId(localStorage.getItem('token'))
+      setMemberId(member_id)
+      console.log('member_id: ', member_id)
+    })()
+  }, [])
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
     ;(async () => {
-      let memberInfoObj = await memberInfoGet(member_id)
+      let memberInfoObj = await memberInfoGet(memberId)
       if (a) {
         setMemberInfo(memberInfoObj)
       }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
 
     return () => {
       a = false
     }
-  }, [])
+  }, [memberId])
   const renderSubItems = (data) => {
     if (data.length) {
       return data.map((sp, i) => {
@@ -247,7 +264,7 @@ const SubCartInfo = (props) => {
     }
     // insert order_main訂單資料 回傳的order_main_id要給之後的訂單明細用
     let [orderMainResult, order_main_id] = await orderMainInsert(
-      member_id,
+      memberId,
       buyerName,
       buyerMobileTidy,
       buyerEmail,
@@ -290,12 +307,15 @@ const SubCartInfo = (props) => {
       'order_main_id: ',
       order_main_id
     )
+    localStorage.setItem('sub_order_main_id', order_main_id)
     console.log('order_main_id: ', order_main_id)
     console.log('shipmentResult: ', shipmentResult)
     console.log('paymentResult: ', paymentResult)
   }
 
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="SubCartInfo">
       <ProgressBar step="two" content={stepContent} />
       <div className="container">

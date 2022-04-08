@@ -129,6 +129,7 @@
                 }
                 img {
                   height: 450px;
+                  filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
                   @include medium() {
                     height: 200px;
                   }
@@ -206,15 +207,24 @@
             margin-top: 7px;
             position: relative;
             .brand,
-            .level {
+            .level{
               font-size: 14px;
               line-height: 18px;
               color: $gray-300;
+              margin-top: 5px;
               margin-right: 7px;
               padding: 1px 7px;
               border: 1px solid $gray-300;
             }
-            // TODO:收藏
+            .like{
+              font-size: 16px;
+              line-height: 18px;
+              color: $gray-200;
+              display: flex;
+              .fav{
+                margin-top: 5px;
+              }
+            }
             .price {
               font-size: 36px;
               line-height: 40px;

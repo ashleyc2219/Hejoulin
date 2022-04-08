@@ -10,9 +10,7 @@ const MemberOrderListDetail = ({detailData, setDetailData}) => {
         setDetailData(JSON.parse(localStorage.getItem('orderDetail')))
     }, [])
 
-    console.log(detailData)
     const renderDetailItem = (detailData) => {
-
         return (
             <div key={detailData.pro_img} className="renderDetailZone">
                 <div className="left-list">

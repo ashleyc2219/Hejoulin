@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './../styles/Gift/Gift.scss'
 
 //元件
+import Spinner from '../compenents/Shared/Spinner'
 import Sidebar from '../compenents/Gift/Sidebar'
 import StepBar from '../compenents/Gift/StepBar'
 import SakeItems from '../compenents/Gift/SakeItems'
@@ -10,11 +11,18 @@ import Color02 from '../compenents/Gift/Color02'
 import Color03 from '../compenents/Gift/Color03'
 import Detail from '../compenents/Gift/Detail'
 import AddCart from '../compenents/Gift/AddCart'
-
-// switch
+import AlertLoginModal from '../compenents/Shared/AlertLoginModal'
 
 const Gift = (props) => {
-  const { setCartCount, setAddcartmodal } = props
+  const {
+    setCartCount,
+    setAddcartmodal,
+    sidebar,
+    setSidebar,
+    loginModal,
+    setLoginModal,
+  } = props
+  const [loading, setLoading] = useState(true)
   const [block01, setBlock01] = useState(false)
   const [block02, setBlock02] = useState(false)
   const [block03, setBlock03] = useState(false)
@@ -142,6 +150,9 @@ const Gift = (props) => {
       giftId()
     }
     fetchSake()
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
   }, [kind])
 
   // 一種禮盒顏色圖片
@@ -157,6 +168,14 @@ const Gift = (props) => {
 
   return (
     <>
+      {loginModal ? (
+        <AlertLoginModal
+          setSidebar={setSidebar}
+          setLoginModal={setLoginModal}
+        />
+      ) : (
+        ''
+      )}
       <div className="Gift">
         <div className="gift_container">
           {/* background-patten */}
@@ -171,286 +190,301 @@ const Gift = (props) => {
 
           <div className="all">
             <StepBar content={stepContent} step={step} />
-            <main>
-              <section id="gift_kind">
-                <div className="gift_kind">
-                  <div
-                    className="kind"
-                    onClick={() => {
-                      setKind(1)
-                      setStep('two')
-                      reset()
-                      setBlock01(true)
-                      setTimeout(() => {
-                        window.scroll({
-                          top: 739,
-                          left: 0,
-                          behavior: 'smooth',
-                        })
-                      }, 500)
-                    }}
-                  >
-                    <img src="/Gift/1.png" alt="" />
-                    <span className="title">1入禮盒</span>
-                  </div>
-                  <div
-                    className="kind"
-                    onClick={() => {
-                      setKind(2)
-                      setStep('two')
-                      reset()
-                      setBlock01(true)
-                      setTimeout(() => {
-                        window.scroll({
-                          top: 739,
-                          left: 0,
-                          behavior: 'smooth',
-                        })
-                      }, 500)
-                    }}
-                  >
-                    <img src="/Gift/2.png" alt="" />
-                    <span className="title">2入禮盒</span>
-                  </div>
-                  <div
-                    className="kind"
-                    onClick={() => {
-                      setKind(3)
-                      setStep('two')
-                      reset()
-                      setBlock01(true)
-                      setTimeout(() => {
-                        window.scroll({
-                          top: 739,
-                          left: 0,
-                          behavior: 'smooth',
-                        })
-                      }, 500)
-                    }}
-                  >
-                    <img src="/Gift/3.png" alt="" />
-                    <span className="title">1+1 禮盒</span>
-                  </div>
-                </div>
-              </section>
-              <section id="gift_sake" className={`${block01 ? '' : 'login'}`}>
-                <div className="header">
-                  <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
-                </div>
-                {kind === 2 ? (
-                  <h4>請選擇 同一瓶 或 二瓶清酒商品</h4>
-                ) : (
-                  <h4>請選擇一瓶清酒商品</h4>
-                )}
-                <div className="grid gift_grid">
-                  <SakeItems
-                    container={container}
-                    setContainer={setContainer}
-                    modalShow={modalShow}
-                    showHandle={showHandle}
-                    closeHandle={closeHandle}
-                    kind={kind}
-                    sake={sake}
-                    id={id}
-                    setId={setId}
-                    sakeId={sakeId}
-                    sakeId2={sakeId2}
-                    conShadow={conShadow}
-                    setConShadow={setConShadow}
-                    value={value}
-                    currentId={currentId}
-                    setCurrentId={setCurrentId}
-                    currentCon={currentCon}
-                    setCurrentCon={setCurrentCon}
-                    currentImg={currentImg}
-                    setCurrentImg={setCurrentImg}
-                    currentName={currentName}
-                    setCurrentName={setCurrentName}
-                    currentPrice={currentPrice}
-                    setCurrentPrice={setCurrentPrice}
-                    setStep={setStep}
-                    setSakeId2={setSakeId2}
-                    setName2={setName2}
-                    setPrice2={setPrice2}
-                    setImg2={setImg2}
-                    setSakeId={setSakeId}
-                    setName={setName}
-                    setPrice={setPrice}
-                    setImg={setImg}
-                    setBlock02={setBlock02}
-                  />
-                </div>
-              </section>
-              <section id="gift_color" className={`${block02 ? '' : 'login'}`}>
-                <div className="header">
-                  <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
-                </div>
-                <h4>請選擇禮盒顏色</h4>
-                {kind === 1 ? (
-                  <Color01
-                    kind={kind}
-                    sakeId={sakeId}
-                    img={img}
-                    comfirmColor={comfirmColor}
-                    setComfirmColor={setComfirmColor}
-                    step={step}
-                    setStep={setStep}
-                    setBlock03={setBlock03}
-                  />
-                ) : (
-                  ''
-                )}
-                {kind === 2 ? (
-                  <Color02
-                    kind={kind}
-                    sakeId={sakeId}
-                    sakeId2={sakeId2}
-                    img={img}
-                    img2={img2}
-                    comfirmColor={comfirmColor}
-                    setComfirmColor={setComfirmColor}
-                    step={step}
-                    setStep={setStep}
-                    setBlock03={setBlock03}
-                  />
-                ) : (
-                  ''
-                )}
-                {kind === 3 ? (
-                  <Color03
-                    kind={kind}
-                    sakeId={sakeId}
-                    img={img}
-                    conShadow={conShadow}
-                    comfirmColor={comfirmColor}
-                    setComfirmColor={setComfirmColor}
-                    step={step}
-                    setStep={setStep}
-                    setBlock03={setBlock03}
-                  />
-                ) : (
-                  ''
-                )}
-              </section>
-              <section id="gift_detail" className={`${block03 ? '' : 'login'}`}>
-                <div className="header">
-                  <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
-                </div>
-                <h4>請確認禮盒明細數量</h4>
-                <div className="detail">
-                  <div className="final">
-                    {kind === 1 && (
-                      <img
-                        src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
-                        alt="final"
-                        className="final-box1"
-                      />
-                    )}
-                    {kind > 1 && (
-                      <img
-                        src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
-                        alt="final"
-                        className="final-box2"
-                      />
-                    )}
-                    {kind === 1 && (
-                      <img
-                        src={'http://localhost:3001/images/pro_img/' + img}
-                        alt="final"
-                        className="final-sake1"
-                      />
-                    )}
-                    {kind === 2 && (
-                      <>
-                        <img
-                          src={'http://localhost:3001/images/pro_img/' + img}
-                          alt="final"
-                          className="final-sake2-1"
-                        />
-                        <img
-                          src={'http://localhost:3001/images/pro_img/' + img2}
-                          alt="final"
-                          className="final-sake2"
-                        />
-                      </>
-                    )}
-                    {kind === 3 && (
-                      <>
-                        <img
-                          src={'http://localhost:3001/images/pro_img/' + img}
-                          alt="final"
-                          className="final-sake3-1"
-                        />
-                        <img
-                          src={
-                            'http://localhost:3001/images/con_img/' + conShadow
-                          }
-                          alt="final"
-                          className="final-con"
-                        />
-                      </>
-                    )}
-                  </div>
-                  <div className="content">
-                    <h5 className="title">禮盒明細</h5>
-                    <div className="sheet grid">
-                      {/* gift sake */}
-                      <p className="text color">{name}</p>
-                      <p className="quality color">{quality}瓶</p>
-                      <div className="price color">{price * quality}</div>
-                      <>
-                        {kind > 1 && (
-                          <Detail
-                            name2={name2}
-                            price2={price2}
-                            currentCon={currentCon}
-                            kind={kind}
-                            quality={quality}
-                          />
-                        )}
-                      </>
-                      {/* space */}
-                      <p></p>
-                      <p></p>
-                      <div></div>
-                      {/* gift color */}
-                      <p className="text color">禮盒顏色</p>
-                      <p className="quality color">
-                        {changeText(comfirmColor)}
-                      </p>
-                      <div className="price color">{200 * quality}</div>
-                      {/* gift total */}
-                      <p className="text_total total">總價</p>
-                      <p className="quality total">{quality}盒</p>
-                      <div className="price total">
-                        {kind === 1 && (price + 200) * quality}
-                        {kind === 2 && (price + price2 + 200) * quality}
-                        {kind === 3 && (price + 800) * quality}
-                      </div>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <main>
+                <section id="gift_kind">
+                  <div className="gift_kind">
+                    <div
+                      className="kind"
+                      onClick={() => {
+                        setKind(1)
+                        setStep('two')
+                        reset()
+                        setBlock01(true)
+                        setTimeout(() => {
+                          window.scroll({
+                            top: 739,
+                            left: 0,
+                            behavior: 'smooth',
+                          })
+                        }, 500)
+                      }}
+                    >
+                      <img src="/Gift/1.png" alt="" />
+                      <span className="title">1入禮盒</span>
                     </div>
-                    <h5 className="laststep">禮盒數量</h5>
-                    <div className="add-minus row">
-                      <div className="minus" onClick={remove}>
-                        <img src="/Gift/minus-circle.svg" alt="" />
-                      </div>
-                      <div className="number">{quality}</div>
-                      <div className="plus" onClick={add}>
-                        <img src="/ProductList/plus-circle.svg" alt="" />
-                      </div>
+                    <div
+                      className="kind"
+                      onClick={() => {
+                        setKind(2)
+                        setStep('two')
+                        reset()
+                        setBlock01(true)
+                        setTimeout(() => {
+                          window.scroll({
+                            top: 739,
+                            left: 0,
+                            behavior: 'smooth',
+                          })
+                        }, 500)
+                      }}
+                    >
+                      <img src="/Gift/2.png" alt="" />
+                      <span className="title">2入禮盒</span>
                     </div>
-                    <AddCart
-                      quality={quality}
+                    <div
+                      className="kind"
+                      onClick={() => {
+                        setKind(3)
+                        setStep('two')
+                        reset()
+                        setBlock01(true)
+                        setTimeout(() => {
+                          window.scroll({
+                            top: 739,
+                            left: 0,
+                            behavior: 'smooth',
+                          })
+                        }, 500)
+                      }}
+                    >
+                      <img src="/Gift/3.png" alt="" />
+                      <span className="title">1+1 禮盒</span>
+                    </div>
+                  </div>
+                </section>
+                <section id="gift_sake" className={`${block01 ? '' : 'login'}`}>
+                  <div className="header">
+                    <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
+                  </div>
+                  {kind === 2 ? (
+                    <h4>請選擇 同一瓶 或 二瓶清酒商品</h4>
+                  ) : (
+                    <h4>請選擇一瓶清酒商品</h4>
+                  )}
+                  <div className="grid gift_grid">
+                    <SakeItems
+                      container={container}
+                      setContainer={setContainer}
+                      modalShow={modalShow}
+                      showHandle={showHandle}
+                      closeHandle={closeHandle}
                       kind={kind}
-                      comfirmColor={comfirmColor}
+                      sake={sake}
+                      id={id}
+                      setId={setId}
                       sakeId={sakeId}
                       sakeId2={sakeId2}
-                      setCartCount={setCartCount}
-                      setAddcartmodal={setAddcartmodal}
+                      conShadow={conShadow}
+                      setConShadow={setConShadow}
+                      value={value}
+                      currentId={currentId}
+                      setCurrentId={setCurrentId}
+                      currentCon={currentCon}
+                      setCurrentCon={setCurrentCon}
+                      currentImg={currentImg}
+                      setCurrentImg={setCurrentImg}
+                      currentName={currentName}
+                      setCurrentName={setCurrentName}
+                      currentPrice={currentPrice}
+                      setCurrentPrice={setCurrentPrice}
+                      setStep={setStep}
+                      setSakeId2={setSakeId2}
+                      setName2={setName2}
+                      setPrice2={setPrice2}
+                      setImg2={setImg2}
+                      setSakeId={setSakeId}
+                      setName={setName}
+                      setPrice={setPrice}
+                      setImg={setImg}
+                      setBlock02={setBlock02}
+                      setLoginModal={setLoginModal}
                     />
                   </div>
-                </div>
-              </section>
-            </main>
+                </section>
+                <section
+                  id="gift_color"
+                  className={`${block02 ? '' : 'login'}`}
+                >
+                  <div className="header">
+                    <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
+                  </div>
+                  <h4>請選擇禮盒顏色</h4>
+                  {kind === 1 ? (
+                    <Color01
+                      kind={kind}
+                      sakeId={sakeId}
+                      img={img}
+                      comfirmColor={comfirmColor}
+                      setComfirmColor={setComfirmColor}
+                      step={step}
+                      setStep={setStep}
+                      setBlock03={setBlock03}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  {kind === 2 ? (
+                    <Color02
+                      kind={kind}
+                      sakeId={sakeId}
+                      sakeId2={sakeId2}
+                      img={img}
+                      img2={img2}
+                      comfirmColor={comfirmColor}
+                      setComfirmColor={setComfirmColor}
+                      step={step}
+                      setStep={setStep}
+                      setBlock03={setBlock03}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  {kind === 3 ? (
+                    <Color03
+                      kind={kind}
+                      sakeId={sakeId}
+                      img={img}
+                      conShadow={conShadow}
+                      comfirmColor={comfirmColor}
+                      setComfirmColor={setComfirmColor}
+                      step={step}
+                      setStep={setStep}
+                      setBlock03={setBlock03}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </section>
+                <section
+                  id="gift_detail"
+                  className={`${block03 ? '' : 'login'}`}
+                >
+                  <div className="header">
+                    <img src="/Gift/bgmark.svg" alt="" className="bgmark" />
+                  </div>
+                  <h4>請確認禮盒明細數量</h4>
+                  <div className="detail">
+                    <div className="final">
+                      {kind === 1 && (
+                        <img
+                          src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
+                          alt="final"
+                          className="final-box1"
+                        />
+                      )}
+                      {kind > 1 && (
+                        <img
+                          src={'/Gift/' + comfirmColor + '-' + kind + '.png'}
+                          alt="final"
+                          className="final-box2"
+                        />
+                      )}
+                      {kind === 1 && (
+                        <img
+                          src={'http://localhost:3001/images/pro_img/' + img}
+                          alt="final"
+                          className="final-sake1"
+                        />
+                      )}
+                      {kind === 2 && (
+                        <>
+                          <img
+                            src={'http://localhost:3001/images/pro_img/' + img}
+                            alt="final"
+                            className="final-sake2-1"
+                          />
+                          <img
+                            src={'http://localhost:3001/images/pro_img/' + img2}
+                            alt="final"
+                            className="final-sake2"
+                          />
+                        </>
+                      )}
+                      {kind === 3 && (
+                        <>
+                          <img
+                            src={'http://localhost:3001/images/pro_img/' + img}
+                            alt="final"
+                            className="final-sake3-1"
+                          />
+                          <img
+                            src={
+                              'http://localhost:3001/images/con_img/' +
+                              conShadow
+                            }
+                            alt="final"
+                            className="final-con"
+                          />
+                        </>
+                      )}
+                    </div>
+                    <div className="content">
+                      <h5 className="title">禮盒明細</h5>
+                      <div className="sheet grid">
+                        {/* gift sake */}
+                        <p className="text color">{name}</p>
+                        <p className="quality color">{quality}瓶</p>
+                        <div className="price color">{price * quality}</div>
+                        <>
+                          {kind > 1 && (
+                            <Detail
+                              name2={name2}
+                              price2={price2}
+                              currentCon={currentCon}
+                              kind={kind}
+                              quality={quality}
+                            />
+                          )}
+                        </>
+                        {/* space */}
+                        <p></p>
+                        <p></p>
+                        <div></div>
+                        {/* gift color */}
+                        <p className="text color">禮盒顏色</p>
+                        <p className="quality color">
+                          {changeText(comfirmColor)}
+                        </p>
+                        <div className="price color">{200 * quality}</div>
+                        {/* gift total */}
+                        <p className="text_total total">總價</p>
+                        <p className="quality total">{quality}盒</p>
+                        <div className="price total">
+                          {kind === 1 && (price + 200) * quality}
+                          {kind === 2 && (price + price2 + 200) * quality}
+                          {kind === 3 && (price + 800) * quality}
+                        </div>
+                      </div>
+                      <h5 className="laststep">禮盒數量</h5>
+                      <div className="add-minus row">
+                        <div className="minus" onClick={remove}>
+                          <img src="/Gift/minus-circle.svg" alt="" />
+                        </div>
+                        <div className="number">{quality}</div>
+                        <div className="plus" onClick={add}>
+                          <img src="/ProductList/plus-circle.svg" alt="" />
+                        </div>
+                      </div>
+                      <AddCart
+                        quality={quality}
+                        kind={kind}
+                        comfirmColor={comfirmColor}
+                        sakeId={sakeId}
+                        sakeId2={sakeId2}
+                        setCartCount={setCartCount}
+                        setAddcartmodal={setAddcartmodal}
+                        sidebar={sidebar}
+                        setSidebar={setSidebar}
+                        setLoginModal={setLoginModal}
+                      />
+                    </div>
+                  </div>
+                </section>
+              </main>
+            )}
           </div>
         </div>
       </div>
