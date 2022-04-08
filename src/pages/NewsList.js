@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react'
 // import { useParams } from 'react-router-dom'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import DetailModal from './../compenents/News/DetailModal.js'
+import Spinner from '../compenents/Shared/Spinner'
 
 const NewsList = () => {
   const [detail, setDetail] = useState([])
   const url = 'http://localhost:3001/api/news'
+
+  const [spin, setSpin] = useState(true)
 
   const fetchData = async () => {
     const res = await fetch(url)
@@ -65,19 +68,24 @@ const NewsList = () => {
 
   //生命週期 網頁載入完
   useEffect(() => {
+    let a = true
     window.scrollTo(0, 0)
+
     fetchData()
+
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
   }, [])
 
-  // useEffect(() => {
-  //   // openModal()
-  //   console.log(id)
-  // }, [id])
+
 
   return (
     <>
       <div className="news">
-        <div className=" news-container container-sm">
+      {spin ? <Spinner /> :         <div className=" news-container container-sm">
           <div className="">
             <div className="news-title">
               <h1>最新消息</h1>
@@ -95,7 +103,9 @@ const NewsList = () => {
             {/* 元件 */}
             {newslist}
           </div>
-        </div>
+        </div>}
+
+        
       </div>
     </>
   )
