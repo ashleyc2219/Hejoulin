@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const FinishRegister = ({ sidebar, setSidebar, setRow }) => {
   const showSidebar = () => {
-    setSidebar(!sidebar)
     setRow('login')
+    // setSidebar(!sidebar)
   }
   return (
     <>
