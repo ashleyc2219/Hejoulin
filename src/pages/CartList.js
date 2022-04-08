@@ -292,7 +292,7 @@ const CartList = (props) => {
         allTotal: allTotal,
       }
       setCartSummary(data)
-      console.log('setCartSummary')
+      // console.log('setCartSummary')
     }
   }
   function renderCart() {

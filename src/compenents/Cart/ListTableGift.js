@@ -102,7 +102,7 @@ const ListTableGift = (props) => {
   }
   function updateGiftTotal(price, action) {
     let newGiftTotal = giftTotal
-    console.log(action)
+    // console.log(action)
     if (action === 'add') {
       newGiftTotal += price
     }
@@ -112,7 +112,7 @@ const ListTableGift = (props) => {
     if (action === 'del') {
       newGiftTotal -= price
     }
-    console.log(newGiftTotal)
+    // console.log(newGiftTotal)
     setGiftTotal(newGiftTotal)
   }
   let data = {
