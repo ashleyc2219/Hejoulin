@@ -8,16 +8,22 @@
 
 
   .LoginContextBox {
-    padding-top: 14%;
+    padding-top: 10vh;
     padding-left: 26%;
     //text-align: center;
+    @include medium() {
+      padding-left: 5%;
+    }
 
     .login-title {
       text-align: center;
+      @include medium() {
+        
+      }
+  
     }
 
     .login-form-group {
-      padding-top: 25%;
       position: relative;
 
       .passwordInputBox {
