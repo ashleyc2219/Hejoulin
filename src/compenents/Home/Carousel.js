@@ -13,10 +13,11 @@ class Carousel extends React.Component {
     }
     this.rightClick = this.moveRight.bind(this)
     this.leftClick = this.moveLeft.bind(this)
+    this.childClickChange = this.childClickChange.bind(this)
   }
 
   componentDidMount() {
-    this.timeId = setInterval(this.rightClick, 5000)
+    this.timeId = setInterval(this.rightClick, 2000)
   }
 
   componentWillUnmount() {
@@ -41,7 +42,12 @@ class Carousel extends React.Component {
       // console.log(index)
 
       items.push(
-        <Item key={index} id={this.state.items[index]} level={level} />
+        <Item
+          key={index}
+          id={this.state.items[index]}
+          level={level}
+          childClickChange={this.childClickChange}
+        />
       )
     }
     return items
@@ -64,12 +70,19 @@ class Carousel extends React.Component {
     })
   }
 
+  childClickChange(activeItem) {
+    this.setState({
+      active: activeItem % this.state.items.length,
+      direction: 'right',
+    })
+  }
+
   render() {
     return (
       <div id="carousel" className="noselect">
-        <div className="arrow arrow-left" onClick={this.leftClick}>
+        {/* <div className="arrow arrow-left" onClick={this.leftClick}>
           <i className="fi-arrow-left"></i>
-        </div>
+        </div> */}
 
         <CSSTransitionGroup
           transitionName={this.state.direction}
@@ -78,9 +91,9 @@ class Carousel extends React.Component {
           {this.generateItems()}
         </CSSTransitionGroup>
 
-        <div className="arrow arrow-right" onClick={this.rightClick}>
+        {/* <div className="arrow arrow-right" onClick={this.rightClick}>
           <i className="fi-arrow-right"></i>
-        </div>
+        </div> */}
       </div>
     )
   }
