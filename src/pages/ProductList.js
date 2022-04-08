@@ -465,7 +465,7 @@ const ProductList = (props) => {
       ) : (
         ''
       )}
-      {catModal ? <MobileCatModal catModal={catModal} /> : ''}
+      {catModal ? <MobileCatModal mobilecat={mobilecat} catModal={catModal} /> : ''}
       {comparemodal ? (
         <CompareModal
           setComparemodel={setComparemodel}
