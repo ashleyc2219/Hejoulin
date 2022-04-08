@@ -11,6 +11,8 @@ import ListSelection from '../compenents/Cart/ListSelection'
 import EmptyCart from '../compenents/Cart/EmptyCart'
 import Spinner from '../compenents/Shared/Spinner'
 import FetchMemberId from '../compenents/Member/FetchMemberId'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const CartList = (props) => {
   const { setCartSummary, setSidebar } = props
@@ -42,8 +44,13 @@ const CartList = (props) => {
     ;(async () => {
       let member_id = await FetchMemberId(localStorage.getItem('token'))
       setMemberId(member_id)
-      console.log('member_id: ', member_id)
+      // console.log('member_id: ', member_id)
     })()
+  }, [])
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
   }, [])
 
   useEffect(() => {
@@ -55,7 +62,7 @@ const CartList = (props) => {
       }
     }, 1500)
     ;(async () => {
-      if (memberId !== 'noMemberId') {
+      if (memberId !== '' && memberId !== 'noMemberId') {
         // fetch 清酒資料
         ;(async () => {
           const r1 = await fetch(
@@ -68,7 +75,7 @@ const CartList = (props) => {
             }
           )
           const obj = await r1.json()
-          console.log(obj)
+          // console.log('清酒資料', obj)
 
           if (a) {
             setSakeIncart(obj)
@@ -97,7 +104,7 @@ const CartList = (props) => {
             }
           )
           const obj = await rGift.json()
-          console.log(obj)
+          // console.log('禮盒資料', obj)
 
           // console.log('obj', obj)
           if (a) {
@@ -293,7 +300,7 @@ const CartList = (props) => {
       return <EmptyCart memberId={memberId} setSidebar={setSidebar} />
     } else {
       ;<>
-        <div className="CartList">
+        <div className="CartList" data-aos="fade-up">
           <div className="CartList-container">
             <ProgressBar step="one" content={stepContent} />
             <div className="cart-list">

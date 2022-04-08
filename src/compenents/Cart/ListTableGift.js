@@ -180,7 +180,10 @@ const ListTableGift = (props) => {
           <img src="/CartList/trash.png" alt="" onClick={delGiftItem} />
         </div>
         <div className="item item-gift-img">
-          <img src={'/CartList/Gift_' + giftInfo.gift_id + '.png'} alt="" />
+          <img
+            src={`/CartList/Gift_${giftInfo.gift_id}_${giftInfo.box_color}.png`}
+            alt=""
+          />
           <p>{giftInfo.gift_name} 禮盒</p>
         </div>
         <div className="item item-gift-detail">{renderGiftInfo(giftInfo)}</div>
