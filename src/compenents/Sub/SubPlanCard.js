@@ -1,9 +1,17 @@
 import React from 'react'
 import './SubPlanCard.scss'
 import { motion, useAnimation } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const SubPlanCard = (props) => {
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+    })
+  }, [])
   const {
     planInfo,
     planSelections,
@@ -67,6 +75,9 @@ const SubPlanCard = (props) => {
     <motion.div
       className="planChoice-card"
       onTap={UpdatePlanSelections}
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
       // onClick={}
     >
       <div className="planImg-container">

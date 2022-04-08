@@ -1,6 +1,6 @@
 const memberInfoG = async function (member_id) {
   const r1 = await fetch(
-    `http://localhost:3001/api/cart-info/member?member_id=4`,
+    `http://localhost:3001/api/cart-info/member?member_id=${member_id}`,
     {
       method: 'GET',
       headers: {

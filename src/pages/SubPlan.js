@@ -3,16 +3,25 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/SubPlan/SubPlan.scss'
 import SubPlanCard from '../compenents/Sub/SubPlanCard'
+import Spinner from '../compenents/Shared/Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+
 import { useEffect, useState } from 'react'
 
 const SubPlan = (props) => {
   const { subPlan, setSubPlan, subPlanTotal, setSubPlanTotal } = props
+  const [spin, setSpin] = useState(true)
+
   const stepContent = ['選擇方案', '選擇週期', '確認方案']
   const [plans, setPlans] = useState([])
   // subPlan、subPlanCard溝通用的state
   const [planSelections, setPlanSelections] = useState([])
   const [planTotal, setPlanTotal] = useState(0)
   useEffect(() => {
+    let a = true
+    window.scrollTo(0, 0)
     ;(async () => {
       const r1 = await fetch(`http://localhost:3001/api/sub/sub-plan`, {
         method: 'GET',
@@ -21,8 +30,21 @@ const SubPlan = (props) => {
         },
       })
       const obj = await r1.json()
-      setPlans(obj)
+      if (a) {
+        setPlans(obj)
+      }
     })()
+    setTimeout(() => {
+      if (a) {
+        setSpin(false)
+      }
+    }, 1000)
+  }, [])
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
   }, [])
 
   const renderPlans = (plans) => {
@@ -43,11 +65,13 @@ const SubPlan = (props) => {
       return ''
     }
   }
-  return (
+  return spin ? (
+    <Spinner />
+  ) : (
     <div className="SubPlan">
-      <img className="LineBg" src="/Sub/LineBg.svg" alt="" />
+      <img className="LineBg" src="/Sub/LineBg.svg" alt="" data-aos="zoom-in" />
 
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <ProgressBar step="one" content={stepContent} />
         <div className="main">
           <div className="left-planInfo">

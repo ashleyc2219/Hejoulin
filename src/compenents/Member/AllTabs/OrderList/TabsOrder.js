@@ -8,7 +8,7 @@ import OrderDataCome from "./OrderDataCome";
 import OrderDataToget from "./OrderDataToget";
 import OrderDataCancel from "./OrderDataCancel";
 
-const TabsOrder = ({ detailData, setDetailData }) => {
+const TabsOrder = () => {
   const [activeTab, setActiveTab] = useState('tab1')
   const [pageData, setPageData] = useState({})
   const [cPage, setCPage] = useState(1)
@@ -58,8 +58,6 @@ const TabsOrder = ({ detailData, setDetailData }) => {
                     pageData={pageData}
                     setPageData={setPageData}
                     cPage={cPage}
-                    detailData={detailData}
-                    setDetailData={setDetailData}
                     setOrderData={setOrderData}
                 />
               </TabContent>

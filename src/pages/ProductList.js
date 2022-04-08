@@ -308,7 +308,6 @@ const ProductList = (props) => {
   }
 
   const sorthandler = (e) => {
-    console.log('test')
     const sort = e.target.value
     if (sort === '1') {
       preToLoad()
@@ -356,9 +355,10 @@ const ProductList = (props) => {
     let a = true
     const scroll = () => {
       if (a) {
-        //window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
       }
     }
+    scroll()
     setUp()
     /* 產地 */
     const fetchLoca = async () => {
