@@ -173,6 +173,9 @@
             line-height: 20px;
             font-size: 12px;
             background-color: $secondary;
+            @include medium(){
+              top: -2px;
+            }
           }
           .spanani{
             animation: animate 0.3s forwards ease-in-out;

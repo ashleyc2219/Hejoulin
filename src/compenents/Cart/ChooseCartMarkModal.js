@@ -72,16 +72,20 @@ const ChooseCartMarkModal = (props) => {
                 >
                   取消
                 </button>
-                <button
-                  className="btn btn-secondary "
-                  onClick={() => {
-                    MarkInsert()
-                    setMarkPic(check)
-                    setChooseModalShow(false)
-                  }}
-                >
-                  確認
-                </button>
+                {check === '' ? (
+                  <button className="btn btn-secondary ">確認</button>
+                ) : (
+                  <button
+                    className="btn btn-secondary "
+                    onClick={() => {
+                      MarkInsert()
+                      setMarkPic(check)
+                      setChooseModalShow(false)
+                    }}
+                  >
+                    確認
+                  </button>
+                )}
               </div>
             </>
           ) : (

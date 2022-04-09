@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import ImageEditor from '@toast-ui/react-image-editor'
 import 'tui-image-editor/dist/tui-image-editor.css'
@@ -25,6 +25,11 @@ const MarkEdit = () => {
   const tui = useRef()
 
   const [markname, setMarkname] = useState('')
+
+  //to top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const sendMark = async () => {
     let instance = tui.current.getInstance()
