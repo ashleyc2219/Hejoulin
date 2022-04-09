@@ -18,6 +18,11 @@ const RestaurantList = () => {
   const [bounds, setBounds] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  //to top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   // 初始經緯度
   const [coordinates, setCoordinates] = useState({
     lat: 25.047675,
