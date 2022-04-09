@@ -17,27 +17,27 @@ class Carousel extends React.Component {
     this.childClickChange = this.childClickChange.bind(this)
 
 
-    // this.start = this.start.bind(this)
-    // this.pause = this.pause.bind(this)
+    this.start = this.start.bind(this)
+    this.pause = this.pause.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.timeId = setInterval(this.rightClick, 2000)
-  //   this.setState({interval: this.timeId})
-  // }
+  componentDidMount() {
+    this.timeId = setInterval(this.rightClick, 2000)
+    this.setState({interval: this.timeId})
+  }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.timeId)
-  // }
+  componentWillUnmount() {
+    clearInterval(this.timeId)
+  }
 
-  // start() {
-  //   this.timeId = setInterval(this.rightClick, 2000)
-  //   this.setState({interval: this.timeId})
-  // }
+  start() {
+    this.timeId = setInterval(this.rightClick, 2000)
+    this.setState({interval: this.timeId})
+  }
 
-  // pause() {
-  //   clearInterval(this.state.interval)
-  // }
+  pause() {
+    clearInterval(this.state.interval)
+  }
 
   generateItems() {
     const items = []

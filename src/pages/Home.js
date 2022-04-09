@@ -70,6 +70,7 @@ const Home = () => {
         <Spinner />
       ) : (
         <div className="home">
+        
           {localStorage.getItem('age') !== 'over 18' && modalShow ? (
             <AgeModal modalShow={modalShow} setModalShow={setModalShow} />
           ) : (
@@ -93,7 +94,7 @@ const Home = () => {
           {/* ---線條--- */}
           <div className="Home_GuideBtn"></div>
 
-          <div className="homeimg">
+          <div className="homeimg container">
             <SakeCarousel />
           </div>
 

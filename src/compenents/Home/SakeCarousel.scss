@@ -9,7 +9,7 @@
     height: auto;
     width: 100%;
     margin: auto;
-    overflow-x: hidden;
+    overflow-x: visible;
     justify-content: space-between;
     align-items: center;
   }
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     justify-content: space-between;
 
     align-items: flex-end;
@@ -32,7 +32,7 @@
     position: absolute;
     width: 100px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0);
+    //background-color: rgba(255, 255, 255, 0);
     text-align: center;
     font-size: 25px;
 
@@ -49,20 +49,16 @@
   }
 
   .item {
-    // background-color: #c2bd37;
     cursor: pointer;
-
     text-align: center;
-    color: white;
-    font-size: 40px;
 
-    transition: height 2s, width 1s, left 1s, margin-top 2s, line-height 1s,
+    transition: height 2s, width 1.5s, left 1s, margin-bottom 3s, line-height 1s,
       background-color 1s;
 
     img {
       height: 100%;
       object-fit: cover;
-      transition: opacity 1s;
+      transition: opacity 2s;
     }
   }
 
@@ -80,6 +76,7 @@
   $level2-left: 50px;
 
   .level-5 {
+    //background-color: rgb(133, 28, 28);
     height: $level2-height;
     width: $level2-width;
     margin-top: 25px;
@@ -88,6 +85,7 @@
   }
 
   .level-4 {
+    //background-color: rgb(133, 84, 28);
     height: $level2-height;
     min-width: $level2-width;
     margin-top: 25px;
@@ -96,6 +94,7 @@
   }
 
   .level-3 {
+    //background-color: rgb(255, 209, 57);
     height: $level2-height;
     min-width: $level2-width;
     margin-top: 25px;
@@ -104,7 +103,7 @@
   }
 
   .level-2 {
-    background-color: rgb(28, 133, 37);
+    //background-color: rgb(28, 133, 37);
     height: $level2-height;
     min-width: $level2-width;
     margin-top: 25px;
@@ -113,7 +112,7 @@
   }
 
   .level-1 {
-    background-color: rgb(119, 15, 29);
+    //background-color: rgb(13, 239, 255);
     height: $level2-height;
     min-width: $level2-width;
 
@@ -124,7 +123,7 @@
 
   //主要的
   .level0 {
-    background-color: rgb(224, 159, 240);
+    //background-color: rgb(159, 160, 240);
     height: $level0-height;
     min-width: $level0-width;
     margin-bottom: 0px;
@@ -133,7 +132,7 @@
       line-height 1s;
   }
   .level1 {
-    background-color: rgb(159, 160, 240);
+    //background-color: rgb(233, 159, 240);
     height: $level2-height;
     min-width: $level2-width;
 
@@ -142,7 +141,7 @@
     margin-bottom: $level2-margin-bottom;
   }
   .level2 {
-    background-color: rgb(159, 240, 166);
+    //background-color: rgb(70, 9, 62);
     height: $level2-height;
     width: $level2-width;
     margin-top: 25px;
@@ -153,16 +152,22 @@
   //======下面轉場============
 
   .left-enter {
-    background-color: rgb(159, 240, 166);
+    //background-color: rgb(150, 150, 150);
     opacity: 0;
     height: $level2-height;
     width: 3px;
     margin-top: 25px;
     flex-grow: 0;
+
+    // //background-color: rgb(240, 159, 159);
+    // opacity: 0;
+    // height: $level2-height;
+    // width: 1px;
+    // flex-grow: 0;
   }
 
   .left-enter.left-enter-active {
-    background-color: rgb(248, 224, 8);
+    //background-color: rgb(90, 90, 89);
     opacity: 1;
     height: $level2-height;
     width: 3px;
@@ -173,7 +178,7 @@
   }
 
   .left-leave {
-    background-color: rgb(236, 131, 11);
+    //background-color: rgb(82, 73, 63);
     opacity: 1;
     height: $level2-height;
     width: 3px;
@@ -183,7 +188,7 @@
   }
 
   .left-leave.left-leave-active {
-    background-color: rgb(240, 159, 159);
+    //background-color: rgb(41, 37, 37);
     left: $level-2-left + $level2-width + 20;
     opacity: 0;
     height: $level2-height;
@@ -195,16 +200,15 @@
   }
 
   .right-enter {
-    background-color: rgb(240, 159, 159);
+    //background-color: rgb(0, 4, 255);
     opacity: 0;
-    left: $level-2-left + $level2-width;
     height: $level2-height;
     width: 1px;
     flex-grow: 0;
   }
 
   .right-enter.right-enter-active {
-    background-color: rgb(236, 131, 11);
+    //background-color: rgb(236, 131, 11);
     left: $level-2-left;
     opacity: 1;
     height: $level2-height;
