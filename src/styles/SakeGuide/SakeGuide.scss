@@ -75,6 +75,7 @@
   overflow: hidden;
   position: relative;
   padding-bottom: 100px;
+  transition: 0.3 ease-in;
   @include medium() {
     padding: 0 20px;
   }
@@ -89,9 +90,8 @@
       position: fixed;
       bottom: 0%;
       .wave {
-        overflow: hidden;
+        // overflow: hidden;
         bottom: 199vh;
-        // height: 22%;
         animation: grow00 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         .upper {
           &::before {
@@ -173,14 +173,14 @@
           h2 {
             @include kleeone();
             text-align: center;
-            color: $primary;
+            color: $dark;
             z-index: 3;
           }
         }
         .right {
           .intro {
             font-size: 16px;
-            line-height: 32px;
+            line-height: 28px;
             color: $gray-300;
           }
         }
@@ -204,7 +204,12 @@
           bottom: 45px;
           .chi{
             margin: 0%;
-            // animation: focus 1s ease-in infinite;
+            animation: focus 1.5s ease-in-out 1s infinite;
+            color:$primary;
+          }
+          .eng{
+            color:$primary;
+            animation: focus 1.5s ease-in-out 1.07s infinite;
           }
           .arrow {
             display: flex;
@@ -215,11 +220,16 @@
               left: 15px;
               top: 40px;
             }
+            .down01{
+              animation: focus 1.5s ease-in-out 1.14s infinite;
+            }
             .down02{
               top: 46px;
+              animation: focus 1.5s ease-in-out 1.21s infinite;
             }
             .down03{
               top: 52px;
+              animation: focus 1.5s ease-in-out 1.28s infinite;
             }
           }
         }

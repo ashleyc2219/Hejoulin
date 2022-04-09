@@ -11,6 +11,7 @@ const OrderData = (props) => {
         setOrderData,
     } = props
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
+    const APIGift = 'http://localhost:3001/api/cart-order-confirm/order-gift'
     const listNames = [
         {listName: '訂單日期'},
         {listName: '訂單編碼'},
@@ -88,8 +89,6 @@ const OrderData = (props) => {
     //         }
     //     }
     // }
-
-
     const renderOrderItems = (pageData, status) => {
 
         // filter 分頁籤
@@ -108,25 +107,51 @@ const OrderData = (props) => {
         //
         //     }
         // }
-
+        let groupData = {}
+        if(pageData && pageData.length) {
+             pageData.forEach((item) => {
+                let totalData = groupData[item.order_id] ||
+                    //如果沒有找到key才會變成的樣子
+                    {
+                        detail:[],
+                        price:0,
+                        date:item.order_date,
+                        status:item.order_state,
+                        id:item.order_id
+                    }
+                 totalData.price += item.order_d_price
+                 totalData.detail.push(item)
+                 groupData[item.order_id] = totalData
+            })
+        }
+        console.log(groupData)
         if (pageData && pageData.length) {
-            return pageData.map((el) => (
-                <tr key={el.order_d_id}>
-                    <td>{el.order_date}</td>
-                    <td>{el.order_id}</td>
-                    <td>{el.order_d_price}</td>
-                    <td>{el.order_state}</td>
+            let element = []
+            Object.keys(groupData).forEach((key)=>{
+                console.log(groupData[key].date)
+                element.push(
+                <tr key={key.toString()}>
+                    <td>{groupData[key].date}</td>
+                    <td>{groupData[key].id}</td>
+                    <td>{groupData[key].price}</td>
+                    <td>{groupData[key].status}</td>
                     <td className="button-g">
                         <Link to="/member/order-list/detail">
-                            <button className="btn btn-primary"
-                                    onClick={() => localStorage.setItem('orderDetail', JSON.stringify(el))}>查看訂單
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => localStorage.setItem('orderDetail', JSON.stringify([groupData[key]]))}>查看訂單
                             </button>
                         </Link>
                         {' '}
                         <button className="btn btn-secondary">再買一次</button>
                     </td>
                 </tr>
-            ))
+                )})
+            console.log(element)
+            return element
+            // return pageData.map((el) => (
+            //
+            // ))
         } else {
             return (
                 <tr>

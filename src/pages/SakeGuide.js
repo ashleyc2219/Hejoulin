@@ -28,14 +28,50 @@ const SakeGuide = () => {
   const [result, setResult] = useState(false)
 
   const [waveHeight, setWaveHeight] = useState(1)
-  const wrap = useRef(1)
+  const wrap = useRef(0)
   const plus = () => {
     wrap.current += 1
+    console.log(wrap)
   }
   const { height, width } = useWindowDimensions()
   const box = (198 / height) * 100
   useEffect(() => {
-    setWaveHeight(wrap.current - 1)
+    setWaveHeight(box + wrap.current * 20)
+  }, [wrap.current])
+  const controls = useAnimation()
+  useEffect(() => {
+    function growHeight() {
+      switch (wrap.current) {
+        case 0:
+          controls.start({
+            height: '198px',
+          })
+          break
+        case 1:
+          controls.start({
+            height: 'calc(198px + 20%)',
+          })
+          break
+        case 2:
+          controls.start({
+            height: '45%',
+          })
+          break
+        case 3:
+          controls.start({
+            height: '75%',
+          })
+          break
+        case 4:
+          controls.start({
+            height: '100%',
+          })
+          break
+        default:
+          break
+      }
+    }
+    growHeight()
   }, [wrap.current])
 
   setTimeout(() => {
@@ -49,11 +85,14 @@ const SakeGuide = () => {
       ) : (
         <div className="SakeGuide">
           <section className={`guide_wave ${wave ? '' : 'wave_test'}`}>
-            <div className="wave_loca">
-              <motion.div className="wave">
+            <motion.div
+              className="wave_loca"
+              // style={{ height: `${waveHeight} + '%' ` }}
+            >
+              <div className="wave">
                 <div className="upper"></div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </section>
 
           <div className="guide_container">
@@ -96,7 +135,7 @@ const SakeGuide = () => {
                   }}
                 >
                   <p className="chi">立即開始</p>
-                  <p className="eng">scroll</p>
+                  <p className="eng">start</p>
                   <div className="arrow">
                     <img
                       src="./SakeGuide/down.svg"
@@ -177,6 +216,7 @@ const SakeGuide = () => {
                     }, 500)
                     setTimeout(() => {
                       setResult(true)
+                      setWave(false)
                     }, 1000)
                   }}
                 >
