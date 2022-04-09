@@ -48,7 +48,6 @@ const Header = (props) => {
     getQuantity()
     setQuantity(location.pathname)
   }
-  console.log(location)
 
   useEffect(() => {
     setQuantity(location.pathname)
