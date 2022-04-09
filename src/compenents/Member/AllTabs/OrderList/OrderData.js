@@ -149,9 +149,7 @@ const OrderData = (props) => {
                 )})
             console.log(element)
             return element
-            // return pageData.map((el) => (
-            //
-            // ))
+
         } else {
             return (
                 <tr>

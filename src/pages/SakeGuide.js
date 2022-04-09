@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './../styles/SakeGuide/SakeGuide.scss'
 import { motion, useAnimation } from 'framer-motion'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 //元件
 import Question from '../compenents/SakeGuide/Question'
@@ -31,52 +33,23 @@ const SakeGuide = () => {
   const wrap = useRef(0)
   const plus = () => {
     wrap.current += 1
-    console.log(wrap)
   }
   const { height, width } = useWindowDimensions()
   const box = (198 / height) * 100
   useEffect(() => {
-    setWaveHeight(box + wrap.current * 20)
-  }, [wrap.current])
-  const controls = useAnimation()
-  useEffect(() => {
-    function growHeight() {
-      switch (wrap.current) {
-        case 0:
-          controls.start({
-            height: '198px',
-          })
-          break
-        case 1:
-          controls.start({
-            height: 'calc(198px + 20%)',
-          })
-          break
-        case 2:
-          controls.start({
-            height: '45%',
-          })
-          break
-        case 3:
-          controls.start({
-            height: '75%',
-          })
-          break
-        case 4:
-          controls.start({
-            height: '100%',
-          })
-          break
-        default:
-          break
-      }
-    }
-    growHeight()
+    setWaveHeight(wrap.current)
   }, [wrap.current])
 
   setTimeout(() => {
     setLoading(false)
   }, 1500)
+
+    // use aos
+    useEffect(() => {
+      AOS.init({
+        duration: 2000,
+      })
+    }, [])
 
   return (
     <>
@@ -86,8 +59,14 @@ const SakeGuide = () => {
         <div className="SakeGuide">
           <section className={`guide_wave ${wave ? '' : 'wave_test'}`}>
             <motion.div
-              className="wave_loca"
-              // style={{ height: `${waveHeight} + '%' ` }}
+              className={`wave_loca 
+              ${waveHeight === 0 ? 'wave_height00' : ''}${
+                waveHeight === 1 ? 'wave_height01' : ''
+              } ${waveHeight === 2 ? 'wave_height02' : ''}${
+                waveHeight === 3 ? 'wave_height03' : ''
+              }${waveHeight === 4 ? 'wave_height04' : ''}${
+                waveHeight === 5 ? 'wave_height04' : ''
+              }`}
             >
               <div className="wave">
                 <div className="upper"></div>
@@ -95,7 +74,7 @@ const SakeGuide = () => {
             </motion.div>
           </section>
 
-          <div className="guide_container">
+          <div className="guide_container" data-aos="fade-down">
             <section className="start">
               <img src="/Gift/bgelement.svg" alt="" className="one"></img>
               <img src="/Gift/bgelement.svg" alt="" className="two"></img>
@@ -166,6 +145,8 @@ const SakeGuide = () => {
               height={height}
               first={first}
               plus={plus}
+              wrap={wrap}
+              setWaveHeight={setWaveHeight}
             />
             <section className={`price ${first ? '' : 'guide_test'}`}>
               <div className="text">
@@ -191,29 +172,13 @@ const SakeGuide = () => {
                   className="comfirm btn btn-warning"
                   onClick={() => {
                     setTaste(thickness + smooth + sweet)
-                    // console.log(
-                    //   'thickness',
-                    //   thickness,
-                    //   'smooth',
-                    //   smooth,
-                    //   'sweet',
-                    //   sweet,
-                    //   'temp',
-                    //   temp,
-                    //   'gift',
-                    //   gift,
-                    //   'priceLow',
-                    //   minPrice,
-                    //   'priceHigh',
-                    //   maxPrice,
-                    // )
                     setTimeout(() => {
                       window.scroll({
                         top: height * 6,
                         left: 0,
                         behavior: 'smooth',
                       })
-                    }, 500)
+                    }, 1500)
                     setTimeout(() => {
                       setResult(true)
                       setWave(false)
@@ -229,11 +194,10 @@ const SakeGuide = () => {
           {/* <Finally /> */}
           <div className={result ? '' : 'wave_test'}>
             <section id="result">
-              <div className="title">
+              <div className="title" data-aos="fade-down">
                 <h4>推薦酒款</h4>
               </div>
               {/* <div className="sakes">{sake}</div> */}
-              <div className="sakes">
                 <Finally
                   taste={taste}
                   temp={temp}
@@ -241,7 +205,6 @@ const SakeGuide = () => {
                   maxPrice={maxPrice}
                   gift={gift}
                 />
-              </div>
               <div className="anime_bg">
                 <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
                 <div className="line_wave">
