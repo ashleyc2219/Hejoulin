@@ -126,6 +126,24 @@ const Breadcrumb = () => {
         </React.Fragment>
       )
       break
+    case '/sub/cart-list':
+      bread = (
+        <React.Fragment>
+          <Link to="/sub/cart-list">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
+    case '/sub/cart-info':
+      bread = (
+        <React.Fragment>
+          <Link to="/sub/cart-info">
+            <span className="current">購物車</span>
+          </Link>
+        </React.Fragment>
+      )
+      break
     case '/sub/cart-verify':
       bread = (
         <React.Fragment>

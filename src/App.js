@@ -160,7 +160,7 @@ function App() {
               subPlanTotal={subPlanTotal}
               setSubPlanTotal={setSubPlanTotal}
             />
-          </Route>
+          </Route> 
           <Route exact path="/sub/time">
             <SubTime
               subPlan={subPlan}
