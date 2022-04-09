@@ -50,7 +50,12 @@ const TabsOrder = () => {
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
               />
-              <TabPages pageData={pageData} setPageData={setPageData} cPage={cPage} setCPage={setCPage}/>
+              <TabPages
+                  pageData={pageData}
+                  setPageData={setPageData}
+                  cPage={cPage}
+                  setCPage={setCPage}
+              />
             </div>
             <div className="outlet">
               <TabContent id="tab1" activeTab={activeTab}>
@@ -58,6 +63,7 @@ const TabsOrder = () => {
                     pageData={pageData}
                     setPageData={setPageData}
                     cPage={cPage}
+                    dataOrder={dataOrder}
                     setOrderData={setOrderData}
                 />
               </TabContent>
