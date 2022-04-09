@@ -132,6 +132,7 @@ const Gift = (props) => {
     setName2('')
     setPrice2('')
     setImg2('')
+    setQuality(1)
     value.current = 0
   }
 

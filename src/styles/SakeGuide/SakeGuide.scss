@@ -338,9 +338,9 @@
       margin: 50px auto 50px;
       display: flex;
 
-      h4 {
-        font-size: 20px;
-        line-height: 40px;
+      h2 {
+        // font-size: 20px;
+        // line-height: 40px;
         font-weight: 700;
         color: $gray-400;
         margin: auto;
@@ -407,20 +407,20 @@
           top: 150px;
           z-index: 1;
         }
-        .uno {
+        .uno0 {
           background-color: $warning;
         }
-        .dos {
+        .uno1 {
           background-color: $light;
         }
-        .tres {
+        .uno2 {
           background-color: $success;
         }
       }
     }
     .restart{
       z-index: 10;
-      margin-bottom: -30px;
+      margin-bottom: -45px;
       .startBtn{
       color: $gray-300
       }
@@ -443,7 +443,7 @@
       }
       .turtle {
         position: inherit;
-        left: 45%;
+        right: 5%;
         top: 25%;
       }
 
@@ -452,6 +452,7 @@
         height: 340px;
         position: inherit;
         top: 55%;
+        opacity: 0.3;
         img {
           width: 100%;
           position: absolute;
