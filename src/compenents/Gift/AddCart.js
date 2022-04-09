@@ -1,5 +1,4 @@
-import React from 'react'
-import smooth from 'react-scroll/modules/mixins/smooth'
+import React, { useState } from 'react'
 import { CartCount } from '../../App'
 import FetchMemberId from '../Member/FetchMemberId'
 
@@ -30,7 +29,6 @@ const AddCart = ({
 
   const addcart = async (num) => {
     const getMember = await FetchMemberId(localStorage.getItem('token'))
-    console.log(getMember)
 
     if (getMember !== 'noMemberId') {
       const a = quality + num
