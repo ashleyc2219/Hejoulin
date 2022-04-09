@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './../styles/SakeGuide/SakeGuide.scss'
-import { motion, useAnimation } from 'framer-motion'
+
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -83,7 +83,7 @@ const SakeGuide = () => {
       ) : (
         <div className="SakeGuide">
           <section className={`guide_wave ${wave ? '' : 'wave_test'}`}>
-            <motion.div
+            <div
               className={`wave_loca 
               ${waveHeight === 0 ? 'wave_height00' : ''}${
                 waveHeight === 1 ? 'wave_height01' : ''
@@ -96,7 +96,7 @@ const SakeGuide = () => {
               <div className="wave">
                 <div className="upper"></div>
               </div>
-            </motion.div>
+            </div>
           </section>
 
           <div className="guide_container" data-aos="fade-down">
@@ -222,7 +222,7 @@ const SakeGuide = () => {
           <div className={result ? '' : 'wave_test'}>
             <section id="result">
               <div className="title" data-aos="fade-down">
-                <h4>推薦酒款</h4>
+                <h2>推薦酒款</h2>
               </div>
               <Finally
                 taste={taste}

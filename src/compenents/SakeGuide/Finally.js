@@ -19,7 +19,7 @@ const Finally = (props) => {
               <span>{v.pro_name}</span>
             </div>
           </Link>
-          <div className="sake_circle uno"></div>
+          <div className={`sake_circle ${'uno'+i}`}></div>
         </div>
       </React.Fragment>
     )
