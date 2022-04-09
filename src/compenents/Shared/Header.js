@@ -10,7 +10,7 @@ import AddCartModal from '../ProductList/AddCartModal'
 import LogoutHover from './LogoutHover'
 import FetchMemberId from '../Member/FetchMemberId'
 
-const Header = (props) => {
+const Header = (props) => { 
   const { user, setUser, setCartCount, addcartmodal, sidebar, setSidebar } =
     props
   const [mobileMenu, setMobileMenu] = useState(false)
