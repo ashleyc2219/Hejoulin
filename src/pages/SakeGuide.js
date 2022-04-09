@@ -14,7 +14,6 @@ import Finally from '../compenents/SakeGuide/Finally'
 
 const SakeGuide = () => {
   const [loading, setLoading] = useState(true)
-  // const [content, setContent] = useState([])
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
   const [thickness, setThickness] = useState('') //厚薄
@@ -28,6 +27,7 @@ const SakeGuide = () => {
   const [first, setfirst] = useState(false)
   const [wave, setWave] = useState(false)
   const [result, setResult] = useState(false)
+  const [reset, setReset] = useState(false)
 
   const [waveHeight, setWaveHeight] = useState(1)
   const wrap = useRef(0)
@@ -40,16 +40,41 @@ const SakeGuide = () => {
     setWaveHeight(wrap.current)
   }, [wrap.current])
 
+  function refreshPage() {
+    window.location.reload(false)
+  }
+
+  useEffect(() => {
+    wrap.current = 0
+    setMinPrice('')
+    setMaxPrice('')
+    setThickness('')
+    setSmooth('')
+    setSweet('')
+    setTaste('')
+    setTemp('')
+    setGift(false)
+    setResult(false)
+    window.scroll({
+      top: height * 1,
+      left: 0,
+      behavior: 'smooth',
+    })
+    setTimeout(() => {
+      setReset(false)
+    }, 500)
+  }, [reset])
+
   setTimeout(() => {
     setLoading(false)
   }, 1500)
 
-    // use aos
-    useEffect(() => {
-      AOS.init({
-        duration: 2000,
-      })
-    }, [])
+  // use aos
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, [])
 
   return (
     <>
@@ -147,6 +172,7 @@ const SakeGuide = () => {
               plus={plus}
               wrap={wrap}
               setWaveHeight={setWaveHeight}
+              reset={reset}
             />
             <section className={`price ${first ? '' : 'guide_test'}`}>
               <div className="text">
@@ -172,6 +198,7 @@ const SakeGuide = () => {
                   className="comfirm btn btn-warning"
                   onClick={() => {
                     setTaste(thickness + smooth + sweet)
+                    plus()
                     setTimeout(() => {
                       window.scroll({
                         top: height * 6,
@@ -197,14 +224,24 @@ const SakeGuide = () => {
               <div className="title" data-aos="fade-down">
                 <h4>推薦酒款</h4>
               </div>
-              {/* <div className="sakes">{sake}</div> */}
-                <Finally
-                  taste={taste}
-                  temp={temp}
-                  minPrice={minPrice}
-                  maxPrice={maxPrice}
-                  gift={gift}
-                />
+              <Finally
+                taste={taste}
+                temp={temp}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                gift={gift}
+              />
+              <div className="restart">
+                <button
+                  className="btn startBtn"
+                  onClick={() => {
+                    window.scroll(0, 0)
+                    refreshPage()
+                  }}
+                >
+                  再測一次
+                </button>
+              </div>
               <div className="anime_bg">
                 <img className="turtle" src="/SakeGuide/turtle.svg" alt="" />
                 <div className="line_wave">
