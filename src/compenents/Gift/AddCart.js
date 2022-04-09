@@ -35,13 +35,12 @@ const AddCart = ({
       setCartCount(a)
 
       const data = {
-        member_id: 4,
+        member_id: getMember,
         cart_quantity: quality,
         gift_id: kind + 1,
         box_color: comfirmColor,
         pro_id: [`${sakeId}`, `${sakeId2}`],
       }
-      console.log(data)
 
       const settings = {
         method: 'POST',
