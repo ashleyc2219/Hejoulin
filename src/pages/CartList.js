@@ -142,7 +142,7 @@ const CartList = (props) => {
   // 當狀態變動時
   useEffect(() => {
     let total = Math.round((sakeTotal + giftTotal) * discountPerscent + shipFee)
-    if (total < 1000 && shipMethod !== 'pick') {
+    if (total - shipFee < 1000 && shipMethod !== 'pick') {
       setShipFee(60)
     } else {
       setShipFee(0)
