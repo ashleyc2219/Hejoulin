@@ -47,7 +47,7 @@ const CartInfo = (props) => {
   const [giftIncart, setGiftIncart] = useState([])
   const [memberInfo, setMemberInfo] = useState([])
   // 左邊清單的收合
-  const [collapseClass, setCollapseClass] = useState('')
+  const [collapseClass, setCollapseClass] = useState('list-table')
   // 表單資料 接資料
   const [buyerName, setBuyerName] = useState('')
   const [buyerMobile, setBuyerMobile] = useState('')
