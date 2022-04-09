@@ -18,7 +18,7 @@ const AddCartBtn = ({
       setCartCount(a)
 
       const data = {
-        member_id: 4,
+        member_id: getMember,
         pro_id: `${pro_id}`,
         cart_quantity: `${count}`,
       }
