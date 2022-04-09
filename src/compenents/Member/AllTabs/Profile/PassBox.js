@@ -175,7 +175,7 @@ const PassBox = () => {
                 ? '應包含大寫'
                 : // : isSpecial(newPwd) === false
                   // ? '含有特殊字元'
-                  'OK'}
+                  '密碼格式正確'}
             </div>
           </div>
           <div className="mb-3 PassBoxConfNew">
