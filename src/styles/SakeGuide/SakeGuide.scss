@@ -52,19 +52,19 @@
 }
 
 @keyframes focus {
-  0%{
+  0% {
     opacity: 0.3;
     transform: translateY(0);
   }
-  50%{
+  50% {
     transform: translateY(-10px);
     opacity: 1;
   }
-  75%{
+  75% {
     opacity: 1;
     transform: translateY(-10px);
   }
-  100%{
+  100% {
     transform: translateY(0);
     opacity: 0.3;
   }
@@ -85,17 +85,58 @@
   .guide_wave {
     position: absolute;
     animation: waveShow 1s;
-
+    .wave_height00 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.5s ease-in-out;
+      animation: grow00 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100%;
+    }
+    .wave_height01 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.7s ease-in-out 0.5s;
+      height: 40%;
+      width: 100%;
+    }
+    .wave_height02 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.7s ease-in-out 0.5s;
+      height: 65%;
+      width: 100%;
+    }
+    .wave_height03 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.7s ease-in-out 0.5s;
+      height: 85%;
+      width: 100%;
+    }
+    .wave_height04 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.7s ease-in-out 0.5s;
+      height: 95%;
+      width: 100%;
+    }
+    .wave_height05 {
+      position: fixed;
+      bottom: 0%;
+      transition: all 0.7s ease-in-out;
+      height:100%;
+      width: 100%;
+      opacity: 0.5;
+    }
     .wave_loca {
       position: fixed;
       bottom: 0%;
       .wave {
         // overflow: hidden;
         bottom: 199vh;
-        animation: grow00 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         .upper {
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             background-color: #ceb48d70;
             left: 0%;
@@ -110,7 +151,6 @@
           animation: move 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) 0s infinite
             normal none running;
           transform: translate3d(0px, 0px, 0px);
-
         }
       }
     }
@@ -202,32 +242,32 @@
           border: transparent;
           background-color: transparent;
           bottom: 45px;
-          .chi{
+          .chi {
             margin: 0%;
             animation: focus 1.5s ease-in-out 1s infinite;
-            color:$primary;
+            color: $primary;
           }
-          .eng{
-            color:$primary;
+          .eng {
+            color: $primary;
             animation: focus 1.5s ease-in-out 1.07s infinite;
           }
           .arrow {
             display: flex;
             flex-direction: column;
-            .down{
+            .down {
               position: absolute;
               margin: 0 auto;
               left: 15px;
               top: 40px;
             }
-            .down01{
+            .down01 {
               animation: focus 1.5s ease-in-out 1.14s infinite;
             }
-            .down02{
+            .down02 {
               top: 46px;
               animation: focus 1.5s ease-in-out 1.21s infinite;
             }
-            .down03{
+            .down03 {
               top: 52px;
               animation: focus 1.5s ease-in-out 1.28s infinite;
             }

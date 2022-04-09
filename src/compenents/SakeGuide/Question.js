@@ -13,6 +13,8 @@ const Question = (props) => {
     height,
     first,
     plus,
+    wrap,
+    setWaveHeight,
   } = props
   const [content, setContent] = useState([])
   const [id, setId] = useState(0)
@@ -106,6 +108,8 @@ const Question = (props) => {
             setShow03={setShow03}
             setShow04={setShow04}
             plus={plus}
+            wrap={wrap}
+            setWaveHeight={setWaveHeight}
           />
         </section>
       </React.Fragment>
