@@ -37,21 +37,17 @@
         }
       }
     }
-    .list-table.one {
-      height: 210px;
-      overflow: hidden;
-    }
-    .list-table.two {
-      height: 360px;
-      overflow: hidden;
-    }
-    .list-table.morethantwo {
-      height: 360px;
-      overflow: hidden;
-      padding-bottom: 378px;
-      margin-bottom: 0;
-    }
+    .table-head {
+        width: 100%;
+        background-color: rgba(187, 188, 189, 0.5);
+        padding: 10px;
+        margin-top: 2px;
+        margin-bottom: 5px;
 
+        display: flex;
+        justify-content: space-between;}
+    
+// 展開的樣子
     .list-table {
       width: 100%;
       // margin-bottom: -28px;
@@ -81,6 +77,24 @@
           width: 22.35%;
         }
       }
+    }
+// 只有一個
+    .list-table.one {
+      height: 210px;
+      overflow: hidden;
+    }
+// 有兩個
+    .list-table.two {
+      height: 360px;
+      overflow: hidden;
+    }
+// 大於兩個
+    .list-table.morethantwo {
+      height: 360px;
+      overflow: hidden;
+      padding-bottom: 378px;
+      margin-bottom: 0;
+      
     }
     .list-summary {
       width: 100%;
