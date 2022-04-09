@@ -13,6 +13,7 @@ const MarkIntro = () => {
       history.push('/mark/edit')
     }
   }
+  
 
   // use aos
   useEffect(() => {

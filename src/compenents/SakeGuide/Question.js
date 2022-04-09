@@ -15,7 +15,6 @@ const Question = (props) => {
     plus,
     wrap,
     setWaveHeight,
-    reset,
   } = props
   const [content, setContent] = useState([])
   const [id, setId] = useState(0)
@@ -35,7 +34,7 @@ const Question = (props) => {
   useEffect(() => {
     window.scroll(0, 0)
     fetchData()
-  }, [reset])
+  }, [])
 
   const setData = () => {
     switch (id) {
