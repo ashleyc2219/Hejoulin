@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
-import FetchMemberId from "../../FetchMemberId"
 
 const OrderData = (props) => {
     const {
@@ -156,7 +155,7 @@ const OrderData = (props) => {
                  groupData[item.order_id] = totalData
             })
         }
-        console.log(groupData)
+        console.log('sakeData',groupData)
         if (pageData && pageData.length) {
             let element = []
             Object.keys(groupData).forEach((key)=>{

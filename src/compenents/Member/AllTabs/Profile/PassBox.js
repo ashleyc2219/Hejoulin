@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../../../../styles/Member/Member-ProfileBox/PassBox.scss'
-import UpdateModal from "./UpdateModal";
+import UpdateModalPass from "./UpdateModalPass";
 
 const PassBox = () => {
   const [showP, setShowP] = useState(false)
@@ -114,6 +114,7 @@ const PassBox = () => {
       })
       const rs = await r.json()
       if (rs.success === true) {
+        // 更新成功
         setPassRs(rs)
         setPassModalShow((prev) => !prev)
       }
@@ -211,7 +212,7 @@ const PassBox = () => {
           )}
         </form>
         {passModalShow ? (
-            <UpdateModal
+            <UpdateModalPass
                 passModalShow={passModalShow}
                 setPassModalShow={setPassModalShow}
                 passRs={passRs}

@@ -1,18 +1,19 @@
 import React from "react";
-import '../../../../styles/Member/Modal/UpdateModal.scss'
+import '../../../../styles/Member/Modal/UpdateModalPass.scss'
 
 
-const UpdateModal = (props) => {
+const UpdateModalPass = (props) => {
     const {
-        setPModalShow,
-        rs,
+        passModalShow,
+        setPassModalShow,
+        passRs,
     } = props
     const openModal = () => {
-        setPModalShow((prev) => !prev)
+        setPassModalShow((prev) => !prev)
     }
 
     function resultCheck() {
-        if (rs && rs.success === true) {
+        if (passRs && passRs.success === true) {
             return 'grey'
         } else {
             return 'red'
@@ -37,7 +38,7 @@ const UpdateModal = (props) => {
                             display: resultCheck() === 'grey' ? 'inline-block' : 'none',
                         }}
                     >
-                        <p>修改成功!</p>
+                        <p>修改密碼成功!</p>
                     </div>
                 </div>
             </div>
@@ -45,4 +46,4 @@ const UpdateModal = (props) => {
     )
 }
 
-export default UpdateModal
+export default UpdateModalPass
