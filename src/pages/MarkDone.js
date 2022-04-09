@@ -6,6 +6,11 @@ const MarkDone = () => {
   const markId = localStorage.getItem('markid')
   const [markImg, setMarkImg] = useState([])
 
+  //to top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   useEffect(() => {
     document.addEventListener('mousemove', parallax)
     function parallax(e) {
