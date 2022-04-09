@@ -82,6 +82,7 @@ const CartInfo = (props) => {
   const [autoBuyer, setAutoBuyer] = useState(false)
   const [autoReceiver, setAutoReceiver] = useState(false)
   const [memberId, setMemberId] = useState('')
+  const [cartLength, setCartLength] = useState(0)
 
   // TODO: store_id 要在做門市元件後換
   const store_id = ''
@@ -96,7 +97,7 @@ const CartInfo = (props) => {
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
-    let cartLength = 0
+    let length = 0
     if (memberId !== '' && memberId !== 'noMemberId') {
       ;(async () => {
         const r1 = await fetch(
@@ -109,11 +110,13 @@ const CartInfo = (props) => {
           }
         )
         const obj = await r1.json()
-        cartLength += obj.length
-        // console.log('obj.length', obj.length)
+        length += obj.length
+        // console.log('sake length', obj.length)
+        // console.log('length', length)
 
         if (a) {
           setSakeIncart(obj)
+          setCartLength(length)
         }
       })()
       ;(async () => {
@@ -127,33 +130,36 @@ const CartInfo = (props) => {
           }
         )
         const obj = await rGift.json()
-        cartLength += obj.length
-        // console.log(cartLength)
-        if (a) {
-          cartListAppearance(cartLength)
-        }
-        function cartListAppearance(cartLength) {
-          if (cartLength === 1) {
-            setCollapseClass('list-table one')
-            console.log('one', cartLength)
-          }
-          if (cartLength === 2) {
-            setCollapseClass('list-table two')
-            console.log('two', cartLength)
-          }
-          if (cartLength > 2) {
-            setCollapseClass('list-table morethantwo')
-          }
-        }
+        length += obj.length
+        // console.log('gift length', obj.length)
+        // console.log('length', length)
+
         let memberInfoObj = await memberInfoGet(memberId)
         // console.log(memberInfoObj)
         if (a) {
           setGiftIncart(obj)
           setMemberInfo(memberInfoObj)
+          setCartLength(length)
         }
       })()
+      ;(async () => {
+        function cartListAppearance(cartLength) {
+          if (cartLength === 1) {
+            setCollapseClass('list-table one')
+            // console.log('one', cartLength)
+          }
+          if (cartLength === 2) {
+            setCollapseClass('list-table two')
+            // console.log('two', cartLength)
+          }
+          if (cartLength > 2) {
+            setCollapseClass('list-table morethantwo')
+          }
+        }
+        cartListAppearance(length)
+      })()
     }
-    
+
     setTimeout(() => {
       if (a) {
         setSpin(false)
@@ -164,6 +170,23 @@ const CartInfo = (props) => {
       a = false
     }
   }, [memberId])
+  useEffect(() => {
+    function cartListAppearance(cartLength) {
+      // console.log('useeffect')
+      if (cartLength === 1) {
+        setCollapseClass('list-table one')
+        // console.log('one', cartLength)
+      }
+      if (cartLength === 2) {
+        setCollapseClass('list-table two')
+        // console.log('two', cartLength)
+      }
+      if (cartLength > 2) {
+        setCollapseClass('list-table morethantwo')
+      }
+    }
+    cartListAppearance(cartLength)
+  }, [cartLength])
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
       return sakeIncart.map((sake, i) => {
@@ -341,7 +364,7 @@ const CartInfo = (props) => {
       cardNum: cardNum,
     }
 
-    console.log(data)
+    // console.log(data)
     // 將手機號碼 +886轉成 0
     let buyerMobileTidy = buyerMobile
     if (buyerMobileTidy.includes('+886')) {
@@ -357,10 +380,7 @@ const CartInfo = (props) => {
     )
 
     // insert sake mark訂單資料
-    let orderSakeMarkResult = await orderSakeMarkInsert(
-      memberId,
-      order_main_id
-    )
+    let orderSakeMarkResult = await orderSakeMarkInsert(memberId, order_main_id)
     // insert 禮盒 禮盒明細訂單資料
     let orderGiftResult = await orderGiftGdInsert(memberId, order_main_id)
     let cartSakeMarkDelResult = await cartSakeMarkDelete(memberId)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../../../../styles/Member/Member-ProfileBox/PassBox.scss'
-import UpdateModal from "./UpdateModal";
+import UpdateModalPass from "./UpdateModalPass";
 
 const PassBox = () => {
   const [showP, setShowP] = useState(false)
@@ -114,6 +114,7 @@ const PassBox = () => {
       })
       const rs = await r.json()
       if (rs.success === true) {
+        // 更新成功
         setPassRs(rs)
         setPassModalShow((prev) => !prev)
       }
@@ -175,7 +176,7 @@ const PassBox = () => {
                 ? '應包含大寫'
                 : // : isSpecial(newPwd) === false
                   // ? '含有特殊字元'
-                  'OK'}
+                  '密碼格式正確'}
             </div>
           </div>
           <div className="mb-3 PassBoxConfNew">
@@ -211,7 +212,7 @@ const PassBox = () => {
           )}
         </form>
         {passModalShow ? (
-            <UpdateModal
+            <UpdateModalPass
                 passModalShow={passModalShow}
                 setPassModalShow={setPassModalShow}
                 passRs={passRs}

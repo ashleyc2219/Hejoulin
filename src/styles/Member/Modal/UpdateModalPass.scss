@@ -1,0 +1,88 @@
+@import '../../mixin.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  //outline: 0.5px solid gray;
+}
+
+@mixin exlarge {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+.displayBlock {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+
+  .profileModal {
+    position: relative;
+
+    .close-white {
+      position: absolute;
+      top: -14%;
+      right: -12%;
+      cursor: pointer;
+      z-index: 55;
+
+      img {
+        width: 24px;
+        height: 24px;
+
+      }
+    }
+
+    .mobile-close {
+      display: none;
+      @include medium() {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        z-index: 55;
+      }
+    }
+
+    .rsMsg {
+      width: 220px;
+      height: 100px;
+      background: url("../../../../public/Sake-background0310.jpg") ;
+      text-align: center;
+      z-index: 50;
+
+      p {
+        margin: 13%;
+        font-size: 25px;
+      }
+    }
+  }
+}

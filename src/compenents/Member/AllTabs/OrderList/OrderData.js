@@ -8,10 +8,12 @@ const OrderData = (props) => {
         setPageData,
         cPage,
         status,
+        dataOrder,
         setOrderData,
     } = props
+    const [giftData, setGiftData] = useState([])
+    const [orderId, setOrderId] = useState([])
     const APIMOrder = 'http://localhost:3001/user/member/MemberOrderList'
-    const APIGift = 'http://localhost:3001/api/cart-order-confirm/order-gift'
     const listNames = [
         {listName: '訂單日期'},
         {listName: '訂單編碼'},
@@ -45,7 +47,29 @@ const OrderData = (props) => {
         page(cPage)
     }, [cPage])
 
+    console.log("orderId",orderId)
 
+    // 跑迴圈拿出不同order_id的禮盒資料
+    useEffect( ()=> {
+        let orderIdData = []
+        orderId.forEach((id) => {
+            (async () => {
+                const obj = await (
+                    await fetch(`http://localhost:3001/api/cart-order-confirm/order-gift?order_id=${id}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                ).json()
+                console.log(obj)
+                orderIdData.push(obj)
+            })()
+        })
+        setGiftData(orderIdData)
+
+    }, [orderId])
+    console.log('giftData',giftData)
     useEffect(() => {
         ;(async () => {
             const obj = await (
@@ -58,6 +82,14 @@ const OrderData = (props) => {
                 })
             ).json()
             console.log(obj)
+
+            let allOrderId = []
+            obj.rows?.forEach(item=>{
+                if(!allOrderId.includes(item.order_id)) {
+                    allOrderId.push(item.order_id)
+                }
+            })
+            setOrderId(allOrderId)
             setOrderData(obj.rows)
         })()
         ;(async () => {
@@ -90,7 +122,6 @@ const OrderData = (props) => {
     //     }
     // }
     const renderOrderItems = (pageData, status) => {
-
         // filter 分頁籤
         // const filterData = []
         // switch (status) {
@@ -124,11 +155,10 @@ const OrderData = (props) => {
                  groupData[item.order_id] = totalData
             })
         }
-        console.log(groupData)
+        console.log('sakeData',groupData)
         if (pageData && pageData.length) {
             let element = []
             Object.keys(groupData).forEach((key)=>{
-                console.log(groupData[key].date)
                 element.push(
                 <tr key={key.toString()}>
                     <td>{groupData[key].date}</td>
@@ -149,7 +179,6 @@ const OrderData = (props) => {
                 )})
             console.log(element)
             return element
-
         } else {
             return (
                 <tr>

@@ -15,6 +15,11 @@ const MarkIntro = () => {
   }
   
 
+  //to top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   // use aos
   useEffect(() => {
     AOS.init({
