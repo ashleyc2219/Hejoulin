@@ -67,9 +67,9 @@ const Question = (props) => {
         break
       case 5:
         if (answer === '送禮') {
-          setGift(true)
-        } else {
-          setGift(false)
+          setGift(0)
+        } else if (answer === '自飲') {
+          setGift(1)
         }
         break
       case 6:
