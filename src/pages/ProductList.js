@@ -560,11 +560,9 @@ const ProductList = (props) => {
                 </div>
                 <div className="filter" onClick={mobilefilter}>
                   <div className="title">篩選</div>
-                  <div className="state"></div>
                 </div>
                 <div className="sort" onClick={mobileSort}>
                   <div className="title">排序</div>
-                  <div className="state"></div>
                 </div>
                 <div
                   className="compare"
