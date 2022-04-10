@@ -22,7 +22,7 @@ const SakeGuide = () => {
   //一定要照上面的順序
   const [taste, setTaste] = useState('') //最後的taste ?
   const [temp, setTemp] = useState('') //溫度
-  const [gift, setGift] = useState(false) //送禮
+  const [gift, setGift] = useState(1) //送禮
 
   const [first, setfirst] = useState(false)
   const [wave, setWave] = useState(false)
@@ -43,31 +43,12 @@ const SakeGuide = () => {
     window.location.reload(false)
   }
 
-  // useEffect(() => {
-  //   wrap.current = 0
-  //   setMinPrice('')
-  //   setMaxPrice('')
-  //   setThickness('')
-  //   setSmooth('')
-  //   setSweet('')
-  //   setTaste('')
-  //   setTemp('')
-  //   setGift(false)
-  //   setResult(false)
-  //   window.scroll({
-  //     top: height * 1,
-  //     left: 0,
-  //     behavior: 'smooth',
-  //   })
-  //   setTimeout(() => {
-  //     setReset(false)
-  //   }, 500)
-  // }, [reset])
-
   setTimeout(() => {
     setLoading(false)
   }, 1500)
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   // use aos
   useEffect(() => {
     AOS.init({
