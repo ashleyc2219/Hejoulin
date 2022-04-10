@@ -51,7 +51,9 @@ const OrderData = (props) => {
                         <td className="button-g">
                             <Link to="/member/order-list/detail">
                                 <button
-                                    className="btn btn-primary">
+                                    className="btn btn-primary"
+                                    onClick={()=>localStorage.setItem('orderId',JSON.stringify(el.order_id))}
+                                >
                                   查看訂單
                                 </button>
                             </Link>
