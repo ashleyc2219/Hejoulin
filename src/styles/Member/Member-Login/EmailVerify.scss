@@ -1,43 +1,53 @@
-@import "../../mixin.scss";
+@import '../../mixin.scss';
 
 .EmailVerify {
   display: flex;
   margin: 0 auto;
   width: 650px;
   height: 900px;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
 
   .EmailVerifyBox {
-    padding-top: 25%;
-    padding-left: 36%;
+    /* padding-top: 25%;
+    padding-left: 36%; */
 
+    .formV {
+      display: flex;
+      justify-content: center;
+    }
     label {
+      width: 100%;
       text-align: center;
+      margin-bottom: 25px;
     }
 
     .inputGroup {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
-        margin-top: 3%;
-        margin-left: 3%;
+        margin: 10px 20px;
       }
 
       input {
-        width: 17%;
-        margin-left: 3%;
-        margin-top: 3%;
+        width: 25%;
       }
 
-      .errMsg {
-        color: red;
-        position: absolute;
-        top: 80px;
-        left: 13px;
-      }
+    }
+    .errMsg {
+      color: red;
+      width: 100%;
+      text-align: center;
+      margin-top: 25px;
     }
 
     .reSendTag {
-      margin-top: 10%;
+      margin-top: 25px;
+      text-align: center;
 
       .resendBtn {
         border: none;
@@ -45,8 +55,15 @@
       }
     }
 
-    .btn {
-      margin-top: 10%;
+    .button {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .btn {
+        margin-top: 10%;
+        margin: 0 auto;
+      }
     }
   }
 }

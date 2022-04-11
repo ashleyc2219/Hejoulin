@@ -83,7 +83,7 @@ const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
         <>
             <div className="EmailVerify">
                 <div className="EmailVerifyBox">
-                    <div className="mb-3">
+                    
                         <form name="formV" onSubmit={whenVerSubmit}>
                             <label className="form-label">請輸入郵箱驗證碼</label>
                             <div className="inputGroup row">
@@ -104,6 +104,7 @@ const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
                                     key="verifyCodeLast"
                                     maxLength="3"
                                 />
+                            </div>
                                 <div
                                     className="errMsg"
                                     style={{
@@ -113,18 +114,20 @@ const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
                                 >
                                     驗證碼輸入錯誤
                                 </div>
-                            </div>
                             <div className="form-text reSendTag">
                                 沒有收到 ? <button className="resendBtn" onClick={() => reSend()}>
                                 <CountdownTimer totalSec={5 * 1000} />
                             </button>
                                 {resendBtn === 'alreadyResend' ? <div className="resendMsg">已重新寄出</div> : null}
                             </div>
+                            <div className="button">
+
                             <button type="submit" className="btn btn-sm btn-primary">
                                 送出
                             </button>
+                            </div>
                         </form>
-                    </div>
+                    
                 </div>
             </div>
         </>
