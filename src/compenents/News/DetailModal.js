@@ -1,5 +1,5 @@
 import React from 'react'
-import './DetailModal.css'
+import './DetailModal.scss'
 import { useEffect, useState } from 'react'
 
 const DetailModal = (props) => {
