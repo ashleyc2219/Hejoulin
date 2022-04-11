@@ -89,15 +89,23 @@ const TabsOrder = () => {
                 {/*    cPage={cPage}*/}
                 {/*    setOrderData={setOrderData}*/}
                 {/*/>*/}
+                <OrderData
+                    pageData={pageData}
+                    setPageData={setPageData}
+                    cPage={cPage}
+                    dataOrder={dataOrder}
+                    setOrderData={setOrderData}
+                />
               </TabContent>
               {/*<TabContent id="tab4" activeTab={activeTab}>*/}
               {/*  <OrderData />*/}
               {/*</TabContent>*/}
               <TabContent id="tab5" activeTab={activeTab}>
-                <OrderDataCancel
+                <OrderData
                     pageData={pageData}
                     setPageData={setPageData}
                     cPage={cPage}
+                    dataOrder={dataOrder}
                     setOrderData={setOrderData}
                 />
               </TabContent>
