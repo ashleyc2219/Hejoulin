@@ -9,8 +9,19 @@ body {
 }
 
 .home {
+  @include medium() {
+  overflow: hidden;  
+  }
+  
+  
+  
+  
+  
   // .Guide 和 .loca都是為了解決位置的問題，在這2個地方改就可以了，記得順便看 mobile的版本
   // position: sticky 會因為父層用 overflow:hidden等問題不能用
+
+
+
 
   .Guide {
     position: sticky;
@@ -247,6 +258,7 @@ body {
   }
   .logo_1 {
     position: relative;
+    margin-top: 27px;
     .logo {
       position: absolute;
       left: 60%;
@@ -270,6 +282,8 @@ body {
     width: 100%;
     height: auto;
     margin-bottom: 100px;
+    @include medium() {
+    margin-top: 205px;}
   }
   .container_home {
     display: flex;
