@@ -85,6 +85,19 @@ const MemberOrderListDetail = () => {
             )
         }
     }
+
+    function boxColor(color) {
+        if (color === 'white') {
+            return '英石白'
+        }
+        if (color === 'gold') {
+            return '流沙金'
+        }
+        if (color === 'black') {
+            return '曜岩黑'
+        }
+    }
+
     const renderGiftDetail = (detailDataGift) => {
         if (detailDataGift && detailDataGift.length) {
             return detailDataGift.map((el) => (
@@ -95,7 +108,7 @@ const MemberOrderListDetail = () => {
                         </div>
                         <div className="item item-product-info">
                             <h5>{el.gift_name}禮盒</h5>
-                            <span>曜岩黑</span>
+                            <span>{boxColor(el.box_color)}</span>
                             <p>{el.pro_name}</p>
                             <p className="product-count">x{el.order_quantity}</p>
                         </div>
@@ -113,61 +126,61 @@ const MemberOrderListDetail = () => {
     const renderInfoDetail = (detailDataInfo) => {
         if (detailDataInfo && detailDataInfo.length) {
             return detailDataInfo.map((el, i) => (
-                        <div className="order-container" key={i}>
-                            <img src="/CartList/orderBg.png" alt=""/>
-                            <div className="order-title">
-                                <div className="form-lab">訂單編碼 {el.order_id}</div>
-                                <span>{el.order_date}</span>
+                    <div className="order-container" key={i}>
+                        <img src="/CartList/orderBg.png" alt=""/>
+                        <div className="order-title">
+                            <div className="form-lab">訂單編碼 {el.order_id}</div>
+                            <span>{el.order_date}</span>
+                        </div>
+                        <div className="order-row">
+                            <div className="row-head">
+                                <p>購買人資訊</p>
                             </div>
-                            <div className="order-row">
-                                <div className="row-head">
-                                    <p>購買人資訊</p>
-                                </div>
-                                <div className="row-data">
-                                    <p>{el.order_name}</p>
-                                    <p>{el.order_mobile}</p>
-                                    <p>{el.order_email}</p>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className="order-row">
-                                <div className="row-head">
-                                    <p>收件人資訊</p>
-                                </div>
-                                <div className="row-data">
-                                    <p>{el.order_name}</p>
-                                    <p>{el.order_mobile}</p>
-                                    <p>{el.order_email}</p>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className="order-row">
-                                <div className="row-head">
-                                    <p>貨運資訊</p>
-                                </div>
-                                <div className="row-data">
-                                    <p>{el.shipment_method}</p>
-                                    <p>{el.shipment_address}</p>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div className="order-row">
-                                <div className="row-head">
-                                    <p>付款資訊</p>
-                                </div>
-                                <div className="row-data payment">
-                                    <p>信用卡付款</p>
-                                    <p>卡號末四碼 {el.card_num}</p>
-                                </div>
+                            <div className="row-data">
+                                <p>{el.order_name}</p>
+                                <p>{el.order_mobile}</p>
+                                <p>{el.order_email}</p>
                             </div>
                         </div>
+                        <hr/>
+                        <div className="order-row">
+                            <div className="row-head">
+                                <p>收件人資訊</p>
+                            </div>
+                            <div className="row-data">
+                                <p>{el.order_name}</p>
+                                <p>{el.order_mobile}</p>
+                                <p>{el.order_email}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div className="order-row">
+                            <div className="row-head">
+                                <p>貨運資訊</p>
+                            </div>
+                            <div className="row-data">
+                                <p>{el.shipment_method}</p>
+                                <p>{el.shipment_address}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div className="order-row">
+                            <div className="row-head">
+                                <p>付款資訊</p>
+                            </div>
+                            <div className="row-data payment">
+                                <p>信用卡付款</p>
+                                <p>卡號末四碼 {el.card_num}</p>
+                            </div>
+                        </div>
+                    </div>
                 )
             )
         }
     }
 
-    const sumData = _.sumBy([...detailDataSake,...detailDataGift],'order_d_price')
-    console.log('sum',sumData)
+    const sumData = _.sumBy([...detailDataSake, ...detailDataGift], 'order_d_price')
+    const usedCode = JSON.parse(localStorage.getItem('orderUsedCode'))
     const renderSummary = (detailDataSake, detailDataGift) => {
         if (detailDataSake && detailDataGift) {
             return (
@@ -178,7 +191,7 @@ const MemberOrderListDetail = () => {
                     </div>
                     <div className="table-row">
                         <p>折扣碼</p>
-                        <p>{''}</p>
+                        <p>{usedCode}</p>
                     </div>
                     <div className="table-row">
                         <p>運費</p>
@@ -196,32 +209,32 @@ const MemberOrderListDetail = () => {
     const renderDetailData = () => {
         return (
             <>
-            <div className="renderDetailZone">
-                <div className="left-list">
-                    <div className="mobile-table-btn ">
-                        <span className="total">訂單總計: $ {'el?.order_d_price'}</span>
-                    </div>
-                    <div className="list-table">
-                        <div className="table-head ">
-                            <span className="title-product">商品</span>
-                            <span className="title-quantity">數量</span>
-                            <span className="title-subtotal">小計</span>
+                <div className="renderDetailZone">
+                    <div className="left-list">
+                        <div className="mobile-table-btn ">
+                            <span className="total">訂單總計: $ {'el?.order_d_price'}</span>
                         </div>
-                        {renderSakeDetail(detailDataSake)}
-                        {renderGiftDetail(detailDataGift)}
+                        <div className="list-table">
+                            <div className="table-head ">
+                                <span className="title-product">商品</span>
+                                <span className="title-quantity">數量</span>
+                                <span className="title-subtotal">小計</span>
+                            </div>
+                            {renderSakeDetail(detailDataSake)}
+                            {renderGiftDetail(detailDataGift)}
+                        </div>
+                        {renderSummary(detailDataSake, detailDataGift)}
                     </div>
-                    {renderSummary(detailDataSake, detailDataGift)}
+                    <div className="rightOrder">
+                        {renderInfoDetail(detailDataInfo)}
+                        <Link to="/member/order-list">
+                            <button className="btn btn-secondary">返回</button>
+                        </Link>
+                    </div>
                 </div>
-                <div className="rightOrder">
-                    {renderInfoDetail(detailDataInfo)}
-                    <Link to="/member/order-list">
-                        <button className="btn btn-secondary">返回</button>
-                    </Link>
-                </div>
-            </div>
 
-    </>
-    )
+            </>
+        )
     }
     return (
         <>
