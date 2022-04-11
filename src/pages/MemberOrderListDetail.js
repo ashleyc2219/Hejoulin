@@ -15,17 +15,25 @@ const MemberOrderListDetail = () => {
     const APIInfo = 'http://localhost:3001/user/order-info'
     useEffect(() => {
         const orderId = JSON.parse(localStorage.getItem('orderId'))
+        console.log('order_id:', orderId)
+        const order_id = {
+            order_id: orderId,
+        }
+        const jsonOrderId = JSON.stringify(order_id)
+        console.log('oid:', jsonOrderId)
         ;(async () => {
             const objSake = await (
                 await fetch(APISake, {
                     method: 'POST',
                     headers: {
-                        Authorization: 'Bearer ' + localStorage.token,
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
-                    body: orderId,
+                    body: jsonOrderId,
                 })
             ).json()
             const rs = await (objSake)
+            console.log('rs',rs)
             setDetailDataSake(rs)
         })()
         ;(async () => {
@@ -33,9 +41,10 @@ const MemberOrderListDetail = () => {
                 await fetch(APIGift, {
                     method: 'POST',
                     headers: {
-                        Authorization: 'Bearer ' + localStorage.token,
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
-                    body: orderId,
+                    body: jsonOrderId,
                 })
             ).json()
             const rs = await (objSake)
@@ -46,9 +55,10 @@ const MemberOrderListDetail = () => {
                 await fetch(APIInfo, {
                     method: 'POST',
                     headers: {
-                        Authorization: 'Bearer ' + localStorage.token,
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
-                    body: orderId,
+                    body: jsonOrderId,
                 })
             ).json()
             const rs = await (objSake)
@@ -59,7 +69,9 @@ const MemberOrderListDetail = () => {
     console.log('sakeData', detailDataSake)
     console.log('giftData', detailDataGift)
     console.log('infoData', detailDataInfo)
-
+    function countPriceSake(price, quantity) {
+        return price * quantity
+    }
     const renderSakeDetail = (detailDataSake) => {
         if (detailDataSake && detailDataGift.length) {
             return detailDataSake.map((el) => (
@@ -78,7 +90,7 @@ const MemberOrderListDetail = () => {
                             <p>{el.order_quantity}</p>
                         </div>
                         <div className="item item-subtotal">
-                            <p>{el.order_d_price}</p>
+                            <p>{countPriceSake(el.order_d_price,el.order_quantity)}</p>
                         </div>
                     </div>
                 )
@@ -96,6 +108,10 @@ const MemberOrderListDetail = () => {
         if (color === 'black') {
             return '曜岩黑'
         }
+    }
+
+    function countPriceGift(price1, price2, quantity) {
+        return (price1+price2) * quantity
     }
 
     const renderGiftDetail = (detailDataGift) => {
@@ -116,7 +132,7 @@ const MemberOrderListDetail = () => {
                             <p>{el.order_quantity}</p>
                         </div>
                         <div className="item item-subtotal">
-                            <p>{el.order_d_price}</p>
+                            <p>{countPriceGift(el.pro_one.pro_price,el.pro_two.pro_price, el.order_quantity)}</p>
                         </div>
                     </div>
                 )
