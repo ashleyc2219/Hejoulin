@@ -92,9 +92,19 @@ const ChooseCartMarkModal = (props) => {
             <div className="nomark">
               <p>沒有酒標作品</p>
 
-              <Link to="/mark/intro">
-                <button className="btn btn-primary">前去製作</button>
-              </Link>
+              <div className="btn-group">
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    setChooseModalShow(false)
+                  }}
+                >
+                  取消
+                </button>
+                <Link to="/mark/intro">
+                  <button className="btn btn-primary">前去製作</button>
+                </Link>
+              </div>
             </div>
           )}
         </div>
