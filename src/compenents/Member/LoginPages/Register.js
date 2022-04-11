@@ -26,7 +26,10 @@ const Register = (props) => {
 
     const obj = await r.json()
     console.log(obj)
-    console.log(obj.info)
+    // console.log(obj.info)
+    if (obj.success !== true) {
+      setFailMsg('used')
+    }
     let userData = {
       userId: obj.uId.userId,
       userAccount: obj.info.userAccount,
@@ -46,12 +49,11 @@ const Register = (props) => {
         // localStorage.setItem('token', obj.token)
         //  setUserToken(localStorage.getItem('token'))
         setRow('verify')
-      }
-    } else {
-      if (obj.error === 'Email 已被使用過') {
-        setFailMsg('used')
+        setFailMsg('good')
       }
     }
+
+    console.log(failMsg)
   }
 
   function changeShowPass() {
@@ -122,11 +124,11 @@ const Register = (props) => {
     }
   }
 
-  function registerRsColor() {
-    if (failMsg === 'used') {
-      return 'red'
-    }
-  }
+  // function registerRsColor() {
+  //   if (failMsg === 'used') {
+  //     return 'red'
+  //   }
+  // }
 
   return (
     <>
@@ -150,6 +152,16 @@ const Register = (props) => {
                       key="account"
                       required
                     />
+                    <div
+                        className="form-text errorMsg"
+                        id="checkPass"
+                        style={{
+                          color: 'red',
+                          display: failMsg === 'used' ? 'inline-block' : 'none',
+                        }}
+                    >
+                      您註冊的Email已被使用過
+                    </div>
                   </div>
                   <div className="mb-4 pass-g">
                     <label htmlFor="user_pass" className="form-label">
@@ -214,16 +226,6 @@ const Register = (props) => {
                       onChange={handleInputChangeConfPwd}
                       required
                     />
-                    <div
-                      className="form-text errorMsg"
-                      id="checkPass"
-                      style={{
-                        color: registerRsColor(),
-                        display: failMsg === 'used' ? 'inline-block' : 'none',
-                      }}
-                    >
-                      {failMsg === 'used' ? '您註冊的Email已被使用過' : ''}
-                    </div>
                   </div>
                   <button
                     type="button"
