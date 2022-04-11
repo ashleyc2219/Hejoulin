@@ -324,9 +324,9 @@ const CartInfo = (props) => {
   ])
   useEffect(() => {
     if (autoBuyer) {
-      setBuyerName(memberInfo.member_name)
-      setBuyerMobile(memberInfo.member_mob)
-      setBuyerEmail(memberInfo.user_account)
+      if (memberInfo.member_name) setBuyerName(memberInfo.member_name)
+      if (memberInfo.member_mob) setBuyerMobile(memberInfo.member_mob)
+      if (memberInfo.user_account) setBuyerEmail(memberInfo.user_account)
     } else {
       setBuyerName('')
       setBuyerMobile('')
@@ -335,8 +335,8 @@ const CartInfo = (props) => {
   }, [autoBuyer])
   useEffect(() => {
     if (autoReceiver) {
-      setReceiverName(buyerName)
-      setReceiverMobile(buyerMobile)
+      if (buyerName) setReceiverName(buyerName)
+      if (buyerMobile) setReceiverMobile(buyerMobile)
     } else {
       setReceiverName('')
       setReceiverMobile('')
