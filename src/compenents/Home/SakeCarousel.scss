@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
+
+
+@mixin medium {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
 // * {
 //   outline:1 solid red;
 // }
@@ -12,6 +20,11 @@
     overflow-x: visible;
     justify-content: space-between;
     align-items: center;
+    left: 0px;
+    @include medium() {
+      left: -69px;
+    
+    }
   }
 
   .flex01 {
@@ -51,6 +64,7 @@
   .item {
     cursor: pointer;
     text-align: center;
+    position:relative;
 
     transition: height 2s, width 1.5s, left 1s, margin-bottom 3s, line-height 1s,
       background-color 1s;
@@ -59,6 +73,18 @@
       height: 100%;
       object-fit: cover;
       transition: opacity 2s;
+
+    }
+
+    .gif{
+      position:absolute;
+      left:7px;
+      bottom:0;
+      opacity: 1;
+      transition: opacity 1.2s;
+    
+      
+
     }
   }
 

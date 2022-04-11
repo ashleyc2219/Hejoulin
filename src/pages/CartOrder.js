@@ -9,7 +9,7 @@ import Spinner from '../compenents/Shared/Spinner'
 import { CartSummary } from '../App'
 const CartOrder = () => {
   let cartSummaryInfo = CartSummary._currentValue
-  console.log(cartSummaryInfo.order_main_id)
+  console.log('cartSummaryInfo', cartSummaryInfo.order_main_id)
   const [spin, setSpin] = useState(true)
 
   const [sakeInOrder, setSakeInOrder] = useState([])
@@ -21,6 +21,12 @@ const CartOrder = () => {
 
   // 訂單編號 產生 訂單日期字串
   function genDate(order_id) {
+    // console.log('order_id', order_id)
+    // console.log('type', typeof order_id)
+    order_id = order_id.toString()
+    // console.log('type 2', typeof order_id)
+
+
     let year = order_id.slice(0, 4)
     let month = order_id.slice(4, 6)
     let date = order_id.slice(6, 8)
@@ -99,7 +105,7 @@ const CartOrder = () => {
     }
   }
   const renderGiftItems = (giftIncart) => {
-    console.log(giftIncart.length)
+    // console.log(giftIncart.length)
     if (giftIncart.length && giftIncart[0].order_quantity !== null) {
       return giftIncart.map((gift, i) => {
         return <OrderTableGift key={i} giftInfo={gift} />

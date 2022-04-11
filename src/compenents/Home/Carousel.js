@@ -10,20 +10,19 @@ class Carousel extends React.Component {
       items: this.props.items,
       active: this.props.active,
       direction: '',
-      interval: 0
+      interval: 0,
     }
     this.rightClick = this.moveRight.bind(this)
     this.leftClick = this.moveLeft.bind(this)
     this.childClickChange = this.childClickChange.bind(this)
-
 
     this.start = this.start.bind(this)
     this.pause = this.pause.bind(this)
   }
 
   componentDidMount() {
-    this.timeId = setInterval(this.rightClick, 2000)
-    this.setState({interval: this.timeId})
+    this.timeId = setInterval(this.rightClick, 2500)
+    this.setState({ interval: this.timeId })
   }
 
   componentWillUnmount() {
@@ -31,8 +30,8 @@ class Carousel extends React.Component {
   }
 
   start() {
-    this.timeId = setInterval(this.rightClick, 2000)
-    this.setState({interval: this.timeId})
+    this.timeId = setInterval(this.rightClick, 2500)
+    this.setState({ interval: this.timeId })
   }
 
   pause() {
@@ -94,7 +93,12 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <div id="carousel" className="noselect" onMouseEnter={this.pause} onMouseLeave={this.start}>
+      <div
+        id="carousel"
+        className="noselect"
+        onMouseEnter={this.pause}
+        onMouseLeave={this.start}
+      >
         {/* <div className="arrow arrow-left" onClick={this.leftClick}>
           <i className="fi-arrow-left"></i>
         </div> */}
