@@ -1,13 +1,13 @@
-@import "../../mixin.scss";
+@import '../../mixin.scss';
 
 .RegisterContext {
   display: flex;
   margin: 0 auto;
   width: 650px;
-  height: 900px;
+  height: 100vh;
 
   .RegisterContextBox {
-    padding-top: 14%;
+    // padding-top: 14%;
     padding-left: 26%;
 
     .register-title {
@@ -15,16 +15,18 @@
     }
 
     .register-form-group {
-      padding-top: 25%;
+      // padding-top: 25%;
       position: relative;
       .account-g {
-
       }
       .pass-g {
+        .try {
+          display: flex;
+          align-items: center;
+        }
 
         .passHideIcon {
           right: 8px;
-          top: 238px;
           position: absolute;
           img {
             width: 40px;
@@ -32,14 +34,11 @@
           }
         }
         .errorMsg {
-
         }
       }
 
       .passConf-g {
-
         .errorMsg {
-
         }
       }
       .login-btn {

@@ -29,7 +29,7 @@ const Register = (props) => {
     console.log(obj.info)
     let userData = {
       userId: obj.uId.userId,
-      userAccount: obj.info.userAccount
+      userAccount: obj.info.userAccount,
     }
     console.log(userData)
     if (obj.success === true) {
@@ -43,13 +43,13 @@ const Register = (props) => {
       const emailSend = await verify.json()
       console.log(emailSend)
       if (emailSend.message === 'success') {
-       // localStorage.setItem('token', obj.token)
-       //  setUserToken(localStorage.getItem('token'))
+        // localStorage.setItem('token', obj.token)
+        //  setUserToken(localStorage.getItem('token'))
         setRow('verify')
       }
     } else {
-      if (obj.error === "Email 已被使用過") {
-         setFailMsg('used')
+      if (obj.error === 'Email 已被使用過') {
+        setFailMsg('used')
       }
     }
   }
@@ -155,26 +155,28 @@ const Register = (props) => {
                     <label htmlFor="user_pass" className="form-label">
                       密碼
                     </label>
-                    <input
-                      type={showPass ? 'text' : 'password'}
-                      className="form-control"
-                      id="user_pass"
-                      name="user_pass"
-                      key="password"
-                      placeholder="請輸入8個英數字大小寫混合密碼"
-                      onChange={handleInputChangePwd}
-                      required
-                    />
-                    <div className="passHideIcon">
-                      <img
-                        src={
-                          showPass
-                            ? '/Member/hidePass.svg'
-                            : '/Member/showPass.svg'
-                        }
-                        onClick={changeShowPass}
-                        alt=""
+                    <div className="try">
+                      <input
+                        type={showPass ? 'text' : 'password'}
+                        className="form-control"
+                        id="user_pass"
+                        name="user_pass"
+                        key="password"
+                        placeholder="請輸入8個英數字大小寫混合密碼"
+                        onChange={handleInputChangePwd}
+                        required
                       />
+                      <div className="passHideIcon">
+                        <img
+                          src={
+                            showPass
+                              ? '/Member/hidePass.svg'
+                              : '/Member/showPass.svg'
+                          }
+                          onClick={changeShowPass}
+                          alt=""
+                        />
+                      </div>
                     </div>
                     <div
                       className="form-text errorMsg"
@@ -213,24 +215,20 @@ const Register = (props) => {
                       required
                     />
                     <div
-                        className="form-text errorMsg"
-                        id="checkPass"
-                        style={{
-                            color: registerRsColor(),
-                            display:
-                                failMsg === 'used' ? 'inline-block' : 'none',
-                        }}
+                      className="form-text errorMsg"
+                      id="checkPass"
+                      style={{
+                        color: registerRsColor(),
+                        display: failMsg === 'used' ? 'inline-block' : 'none',
+                      }}
                     >
-                      {failMsg === 'used'
-                          ? '您註冊的Email已被使用過'
-                          : ''
-                      }
+                      {failMsg === 'used' ? '您註冊的Email已被使用過' : ''}
                     </div>
                   </div>
                   <button
-                      type="button"
-                      className="btn btn-outline-primary login-btn"
-                      onClick={() => setRow('login')}
+                    type="button"
+                    className="btn btn-outline-primary login-btn"
+                    onClick={() => setRow('login')}
                   >
                     已有帳號
                   </button>
