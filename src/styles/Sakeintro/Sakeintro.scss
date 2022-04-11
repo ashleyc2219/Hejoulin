@@ -12,6 +12,7 @@
 .sake-intro {
   p {
     color: $gray-300;
+    line-height: 2em;
   }
 
   h1,
@@ -186,7 +187,7 @@
       margin: 3% 6%;
       min-width: 400px;
 
-      height: 400px;
+      height: 475px;
       .pic {
         //outline: 3px solid rgb(230, 107, 6);
         width: 70%;
@@ -463,6 +464,7 @@
     .up {
       p {
         margin-bottom: 1rem;
+        line-height: 1em;
       }
     }
   }
