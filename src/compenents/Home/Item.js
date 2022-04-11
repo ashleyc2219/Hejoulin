@@ -11,21 +11,25 @@ class Item extends React.Component {
     this.itemClick = this.itemClick.bind(this)
   }
   itemClick() {
-    this.props.childClickChange(this.props.id -1)
+    this.props.childClickChange(this.props.id - 1)
   }
 
   render() {
     let className = 'item level' + this.props.level
     let sakebig = 'min'
     let level = this.props.level
+    let mark = ''
 
     if (level == 0) {
       sakebig = 'max'
+      mark = <img className="gif" src="/Home/sake/marrk.gif"></img>
     } else {
       sakebig = 'min'
     }
     return (
       <div className={className} onClick={this.itemClick}>
+        {mark}
+
         <img src={'/Home/sake/b' + sakebig + this.props.id + '.png'}></img>
       </div>
     )
