@@ -1,17 +1,10 @@
 @import "../mixin.scss";
-
 .MemberMark {
   display: flex;
   width: 1200px;
   margin: 0 auto;
   position: relative;
 
-  .SakeBg {
-    position: absolute;
-    right: 5%;
-    top: -50px;
-    z-index: 1;
-  }
 
   .MemberMarkBox {
     width: 100%;
@@ -30,16 +23,10 @@
     .MemberMarkItems {
       width: 100%;
       display: flex;
-      margin-top: 9%;
-      align-items: center;
-      position: relative;
-
-      .bgImg img {
-        position: absolute;
-        left: 41%;
-        top: -15px;
-        pointer-events: none;
-        z-index: -1;
+      align-items: flex-start;
+      .sake{
+        width: 20%;
+        text-align: center;
       }
     }
   }

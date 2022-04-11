@@ -1,13 +1,13 @@
 @import '../../mixin.scss';
 
 .MarkItem {
-  width: 760px;
+  width: 80%;
   display: flex;
   //overflow: clip;
   flex-wrap: wrap;
   column-gap: 46px;
   row-gap: 65px;
-
+  margin-top: 50px;
   .MarkItemAdd {
     width: 343px;
     height: 214px;
