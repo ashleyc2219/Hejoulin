@@ -1,12 +1,12 @@
 import React from 'react'
-import './DetailModal.css'
+import './DetailModal.scss'
 import { useEffect, useState } from 'react'
 
 const DetailModal = (props) => {
   const { modalShow, setModalShow, id } = props
   console.log(id)
 
-  const [detail, setDetail] = useState([])
+  const [detail, setDetail] = useState([]) 
   const url = 'http://localhost:3001/api/news?newsId=' + id
 
   const fetchData = async () => {
