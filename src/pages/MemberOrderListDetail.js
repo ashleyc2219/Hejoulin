@@ -15,12 +15,10 @@ const MemberOrderListDetail = () => {
     const APIInfo = 'http://localhost:3001/user/order-info'
     useEffect(() => {
         const orderId = JSON.parse(localStorage.getItem('orderId'))
-        console.log('order_id:', orderId)
         const order_id = {
             order_id: orderId,
         }
         const jsonOrderId = JSON.stringify(order_id)
-        console.log('oid:', jsonOrderId)
         ;(async () => {
             const objSake = await (
                 await fetch(APISake, {
@@ -66,9 +64,9 @@ const MemberOrderListDetail = () => {
         })()
     }, [])
 
-    console.log('sakeData', detailDataSake)
-    console.log('giftData', detailDataGift)
-    console.log('infoData', detailDataInfo)
+    // console.log('sakeData', detailDataSake)
+    // console.log('giftData', detailDataGift)
+    // console.log('infoData', detailDataInfo)
     function countPriceSake(price, quantity) {
         return price * quantity
     }
