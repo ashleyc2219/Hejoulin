@@ -127,7 +127,7 @@
 }
 @keyframes cloud02 {
   0% {
-    transform: translateX(-75px);
+    transform: translateX(-80px);
     opacity: 0.5;
   }
   25% {
@@ -138,7 +138,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-75px);
+    transform: translateX(-80px);
     opacity: 1;
   }
 }
@@ -232,7 +232,7 @@
 }
 .bg {
   position: absolute;
-  z-index: 10;
+  z-index: 5;
   bottom: calc(50% - 240px);
   #color {
     opacity: 0;
@@ -269,7 +269,7 @@
   left: calc(50% - 320px);
   #cloud02 {
     opacity: 0.5;
-    transform: translateX(-75px);
+    transform: translateX(-80px);
     animation: cloud02 4s ease-in 14.25s alternate forwards;
   }
 }
