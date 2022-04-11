@@ -238,6 +238,17 @@ const Breadcrumb = () => {
         </React.Fragment>
       )
       break
+    case '/member/order-list/detail':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">訂單詳細</span>
+        </React.Fragment>
+      )
+      break
     case '/member/event-list':
       bread = (
         <React.Fragment>
@@ -246,6 +257,17 @@ const Breadcrumb = () => {
           </Link>
           <img src="/Shared/rightArrow.svg" alt="" />
           <span className="current">活動紀錄</span>
+        </React.Fragment>
+      )
+      break
+    case '/member/event-list/detail':
+      bread = (
+        <React.Fragment>
+          <Link to="/member/profile">
+            <span className="">會員中心</span>
+          </Link>
+          <img src="/Shared/rightArrow.svg" alt="" />
+          <span className="current">活動訂單詳細</span>
         </React.Fragment>
       )
       break

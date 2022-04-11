@@ -22,7 +22,7 @@ class Item extends React.Component {
 
     if (level == 0) {
       sakebig = 'max'
-      mark = <img className="gif" src="/Home/sake/marrk.gif"></img>
+      mark = <img className="gif" src="/Home/sake/marrk.png"></img>
     } else {
       sakebig = 'min'
     }
