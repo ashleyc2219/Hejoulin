@@ -52,7 +52,10 @@ const OrderData = (props) => {
                             <Link to="/member/order-list/detail">
                                 <button
                                     className="btn btn-primary"
-                                    onClick={()=>localStorage.setItem('orderId',JSON.stringify(el.order_id))}
+                                    onClick={()=> {
+                                        localStorage.setItem('orderId',JSON.stringify(el.order_id))
+                                        localStorage.setItem('orderUsedCode',JSON.stringify(el.used_code))
+                                    }}
                                 >
                                   查看訂單
                                 </button>
