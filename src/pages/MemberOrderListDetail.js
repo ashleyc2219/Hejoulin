@@ -31,7 +31,7 @@ const MemberOrderListDetail = () => {
                 })
             ).json()
             const rs = await (objSake)
-            console.log('rs',rs)
+            console.log('rs', rs)
             setDetailDataSake(rs)
         })()
         ;(async () => {
@@ -64,12 +64,10 @@ const MemberOrderListDetail = () => {
         })()
     }, [])
 
-    // console.log('sakeData', detailDataSake)
-    // console.log('giftData', detailDataGift)
-    // console.log('infoData', detailDataInfo)
-    function countPriceSake(price, quantity) {
-        return price * quantity
-    }
+    console.log('sakeData', detailDataSake)
+    console.log('giftData', detailDataGift)
+    console.log('infoData', detailDataInfo)
+
     const renderSakeDetail = (detailDataSake) => {
         if (detailDataSake && detailDataGift.length) {
             return detailDataSake.map((el) => (
@@ -88,7 +86,7 @@ const MemberOrderListDetail = () => {
                             <p>{el.order_quantity}</p>
                         </div>
                         <div className="item item-subtotal">
-                            <p>{countPriceSake(el.order_d_price,el.order_quantity)}</p>
+                            <p>{el.order_d_price}</p>
                         </div>
                     </div>
                 )
@@ -108,9 +106,6 @@ const MemberOrderListDetail = () => {
         }
     }
 
-    function countPriceGift(price1, price2, quantity) {
-        return (price1+price2) * quantity
-    }
 
     const renderGiftDetail = (detailDataGift) => {
         if (detailDataGift && detailDataGift.length) {
@@ -124,13 +119,14 @@ const MemberOrderListDetail = () => {
                             <h5>{el.gift_name}禮盒</h5>
                             <span>{boxColor(el.box_color)}</span>
                             <p>{el.pro_name}</p>
+                            <p>{el.pro_price}</p>
                             <p className="product-count">x{el.order_quantity}</p>
                         </div>
                         <div className="item item-quantity">
                             <p>{el.order_quantity}</p>
                         </div>
                         <div className="item item-subtotal">
-                            <p>{countPriceGift(el.pro_one.pro_price,el.pro_two.pro_price, el.order_quantity)}</p>
+                            <p>{el.order_d_price}</p>
                         </div>
                     </div>
                 )
@@ -192,7 +188,6 @@ const MemberOrderListDetail = () => {
             )
         }
     }
-
     const sumData = _.sumBy([...detailDataSake, ...detailDataGift], 'order_d_price')
     const usedCode = JSON.parse(localStorage.getItem('orderUsedCode'))
     const renderSummary = (detailDataSake, detailDataGift) => {
