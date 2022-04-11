@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import './../styles/Mark/MarkIntro.scss'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Anime from '../compenents/Mark/Anime'
 
 const MarkIntro = () => {
   const history = useHistory()
@@ -40,13 +41,13 @@ const MarkIntro = () => {
               <h2 className="mark_title title_bottom">從此刻誕生</h2>
             </div>
             <div className="anime">
-              <img src="" alt="" className="intro_anime" />
               <img
                 src="/Mark/1.png"
                 alt=""
                 className="fake"
                 data-aos="fade-up"
               ></img>
+              <Anime />
             </div>
             <div className="mark_intro" data-aos="fade-up" data-aos-delay="300">
               <h2 className="mark_title">世界上只專屬於你的酒</h2>

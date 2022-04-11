@@ -21,10 +21,6 @@
   }
 }
 
-* {
-  //   outline: 1px solid $secondary;
-}
-
 .MarkIntro {
   max-width: 100%;
   position: relative;
@@ -40,7 +36,7 @@
 
     main {
       width: 100%;
-      padding: 140px 110px 0;
+      padding: 50px 110px 0;
       display: flex;
       @include medium() {
         padding: 0;

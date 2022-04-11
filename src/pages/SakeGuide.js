@@ -22,12 +22,11 @@ const SakeGuide = () => {
   //一定要照上面的順序
   const [taste, setTaste] = useState('') //最後的taste ?
   const [temp, setTemp] = useState('') //溫度
-  const [gift, setGift] = useState(false) //送禮
+  const [gift, setGift] = useState(1) //送禮
 
   const [first, setfirst] = useState(false)
   const [wave, setWave] = useState(false)
   const [result, setResult] = useState(false)
-  const [reset, setReset] = useState(false)
 
   const [waveHeight, setWaveHeight] = useState(1)
   const wrap = useRef(0)
@@ -44,31 +43,12 @@ const SakeGuide = () => {
     window.location.reload(false)
   }
 
-  useEffect(() => {
-    wrap.current = 0
-    setMinPrice('')
-    setMaxPrice('')
-    setThickness('')
-    setSmooth('')
-    setSweet('')
-    setTaste('')
-    setTemp('')
-    setGift(false)
-    setResult(false)
-    window.scroll({
-      top: height * 1,
-      left: 0,
-      behavior: 'smooth',
-    })
-    setTimeout(() => {
-      setReset(false)
-    }, 500)
-  }, [reset])
-
   setTimeout(() => {
     setLoading(false)
   }, 1500)
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   // use aos
   useEffect(() => {
     AOS.init({
@@ -172,7 +152,6 @@ const SakeGuide = () => {
               plus={plus}
               wrap={wrap}
               setWaveHeight={setWaveHeight}
-              reset={reset}
             />
             <section className={`price ${first ? '' : 'guide_test'}`}>
               <div className="text">
@@ -198,6 +177,7 @@ const SakeGuide = () => {
                   className="comfirm btn btn-warning"
                   onClick={() => {
                     setTaste(thickness + smooth + sweet)
+                    // console.log(minPrice, maxPrice)
                     plus()
                     setTimeout(() => {
                       window.scroll({

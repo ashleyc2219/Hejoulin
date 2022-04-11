@@ -286,7 +286,7 @@ const ProductDetail = (props) => {
                   <span>容量：</span> {v.pro_capacity}ml
                 </p>
                 <p>
-                  <span>酒精度：</span> {v.alco}%
+                  <span>酒精度：</span> {v.pro_alco}%
                 </p>
               </div>
             </div>

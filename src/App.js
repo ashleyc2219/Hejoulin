@@ -135,14 +135,16 @@ function App() {
             <SakeGuide />
           </Route>
           <Route exact path="/gift">
-            <Gift
-              setCartCount={setCartCount}
-              setAddcartmodal={setAddcartmodal}
-              sidebar={sidebar}
-              setSidebar={setSidebar}
-              loginModal={loginModal}
-              setLoginModal={setLoginModal}
-            />
+            <CartCount.Provider value={cartCount}>
+              <Gift
+                setCartCount={setCartCount}
+                setAddcartmodal={setAddcartmodal}
+                sidebar={sidebar}
+                setSidebar={setSidebar}
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
+              />
+            </CartCount.Provider>
           </Route>
           <Route exact path="/mark/intro">
             <MarkIntro />
@@ -160,7 +162,7 @@ function App() {
               subPlanTotal={subPlanTotal}
               setSubPlanTotal={setSubPlanTotal}
             />
-          </Route> 
+          </Route>
           <Route exact path="/sub/time">
             <SubTime
               subPlan={subPlan}

@@ -17,6 +17,7 @@ const SubCartOrder = () => {
 
   // 訂單編號 產生 訂單日期字串
   function genDate(order_id) {
+    order_id = order_id.toString()
     let year = order_id.slice(0, 4)
     let month = order_id.slice(4, 6)
     let date = order_id.slice(6, 8)

@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import '../../../styles/Member/Member-Login/EmailVerify.scss'
+import CountdownTimer from "./CountdownTimer";
 
 const EmailVerify2 = (props) => {
   const { setRow, forgetPassData, setForgetPassData } = props
   const [verify2Correct, setVerify2Correct] = useState('')
   const [verifyData, setVerifyData] = useState({})
+  const [resendBtn2, setResendBtn2] = useState('')
   const APIVerify = 'http://localhost:3001/login/code/verify/passForget'
+  const APIResend = 'http://localhost:3001/login/resend-email'
   const whenVerSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     setVerify2Correct('')
@@ -46,14 +49,25 @@ const EmailVerify2 = (props) => {
   }
 
  async function reSend() {
-    await fetch(APIVerify, {
+    const emailAddress = localStorage.getItem('email')
+    const userAccount = {
+      userAccount: emailAddress,
+    }
+    const sendRs =  await fetch(APIResend, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(forgetPassData),
+      body: JSON.stringify(userAccount),
     })
+   const rs = await sendRs.json()
+   if (rs.message === 'success') {
+     setResendBtn2('alreadyResend')
+   }
+   if (rs.message === 'codeError'){
+     setVerify2Correct('error')
+   }
   }
   return (
     <>
@@ -92,7 +106,10 @@ const EmailVerify2 = (props) => {
                 </div>
               </div>
               <div className="form-text reSendTag">
-                沒有收到 ? <button onClick={() => reSend()}>重新發送</button>
+                沒有收到 ? <button className="resendBtn" onClick={() => reSend()}>
+                <CountdownTimer totalSec={5 * 1000} />
+              </button>
+                {resendBtn2 === 'alreadyResend' ? <div className="resendMsg">已重新寄出</div> : null}
               </div>
               <button type="submit" className="btn btn-sm btn-primary">
                 送出

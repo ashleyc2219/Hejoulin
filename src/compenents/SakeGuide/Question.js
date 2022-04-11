@@ -15,7 +15,6 @@ const Question = (props) => {
     plus,
     wrap,
     setWaveHeight,
-    reset,
   } = props
   const [content, setContent] = useState([])
   const [id, setId] = useState(0)
@@ -35,7 +34,7 @@ const Question = (props) => {
   useEffect(() => {
     window.scroll(0, 0)
     fetchData()
-  }, [reset])
+  }, [])
 
   const setData = () => {
     switch (id) {
@@ -68,9 +67,9 @@ const Question = (props) => {
         break
       case 5:
         if (answer === '送禮') {
-          setGift(true)
-        } else {
-          setGift(false)
+          setGift(0)
+        } else if (answer === '自飲') {
+          setGift(1)
         }
         break
       case 6:

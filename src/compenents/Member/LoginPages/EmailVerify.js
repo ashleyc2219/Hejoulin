@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import '../../../styles/Member/Member-Login/EmailVerify.scss'
+import CountdownTimer from "./CountdownTimer";
 
 const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
     const APIVerify = 'http://localhost:3001/login/code/verify/register'
     const APIGetId = 'http://localhost:3001/login/getId'
+    const APIResend = 'http://localhost:3001/login/resend-email'
     const [verifyCorrect, setVerifyCorrect] = useState('')
     const [verifyData2, setVerifyData2] = useState({})
+    const [resendBtn, setResendBtn] = useState('')
     const whenVerSubmit = async (event) => {
         event.preventDefault() //避免傳統方式送出表單
         if (verifyCorrect === '') {
@@ -56,14 +59,25 @@ const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
         }
     }
     async function reSend() {
-        await fetch(APIVerify, {
+        const emailAddress = localStorage.getItem('email')
+        const userAccount = {
+            userAccount: emailAddress,
+        }
+        const sendRs =  await fetch(APIResend, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(forgetPassData),
+            body: JSON.stringify(userAccount),
         })
+        const rs = await sendRs.json()
+        if (rs.message === 'success') {
+            setResendBtn('alreadyResend')
+        }
+        if (rs.message === 'codeError'){
+            setVerifyCorrect('error')
+        }
     }
     return (
         <>
@@ -101,7 +115,10 @@ const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
                                 </div>
                             </div>
                             <div className="form-text reSendTag">
-                                沒有收到 ? <button onClick={() => reSend()}>重新發送</button>
+                                沒有收到 ? <button className="resendBtn" onClick={() => reSend()}>
+                                <CountdownTimer totalSec={5 * 1000} />
+                            </button>
+                                {resendBtn === 'alreadyResend' ? <div className="resendMsg">已重新寄出</div> : null}
                             </div>
                             <button type="submit" className="btn btn-sm btn-primary">
                                 送出

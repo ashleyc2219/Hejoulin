@@ -346,6 +346,10 @@
               transform: translateY(-50%);
             }
           }
+          .filter,
+          .sort {
+            justify-content: center;
+          }
           .compare {
             &::before {
               background: transparent;
