@@ -71,6 +71,7 @@ const MemberOrderListDetail = () => {
     const renderSakeDetail = (detailDataSake) => {
         if (detailDataSake && detailDataGift.length) {
             return detailDataSake.map((el) => (
+                <>
                     <div className="table-item" key={el.pro_img}>
                         <div className="item item-product-img">
                             <img src={'http://localhost:3001/images/pro_img/' + el?.pro_img}
@@ -89,7 +90,9 @@ const MemberOrderListDetail = () => {
                             <p>{el.order_d_price}</p>
                         </div>
                     </div>
-                )
+                    <hr />
+                </>
+                    )
             )
         }
     }
@@ -110,6 +113,7 @@ const MemberOrderListDetail = () => {
     const renderGiftDetail = (detailDataGift) => {
         if (detailDataGift && detailDataGift.length) {
             return detailDataGift.map((el) => (
+                <>
                     <div className="table-item" key={el.pro_img}>
                         <div className="item item-product-img">
                             <img src={`/CartList/Gift_${el.gift_id}_${el.box_color}.png`}
@@ -129,6 +133,8 @@ const MemberOrderListDetail = () => {
                             <p>{el.order_d_price}</p>
                         </div>
                     </div>
+                   <hr />
+                </>
                 )
             )
         }
