@@ -68,6 +68,7 @@ export default function Map({
           ])
         }}
       >
+        {/* 可以用cluster的話, 71-89 註解 */}
         {displayPlaces.map((displayPlace) => {
           return (
             <Marker
