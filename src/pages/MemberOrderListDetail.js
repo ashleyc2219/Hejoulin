@@ -90,7 +90,7 @@ const MemberOrderListDetail = () => {
             return detailDataGift.map((el) => (
                     <div className="table-item" key={el.pro_img}>
                         <div className="item item-product-img">
-                            <img src={'http://localhost:3001/images/pro_img/' + el?.pro_img}
+                            <img src={`/CartList/Gift_${el.gift_id}_${el.box_color}.png`}
                                  alt=""/>
                         </div>
                         <div className="item item-product-info">

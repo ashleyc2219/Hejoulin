@@ -8,6 +8,8 @@
   }
 }
 
+
+
 // * {
 //   outline:1 solid red;
 // }
@@ -70,18 +72,29 @@
       background-color 1s;
 
     img {
+      
       height: 100%;
       object-fit: cover;
       transition: opacity 2s;
+      
 
     }
 
     .gif{
+      
       position:absolute;
-      left:7px;
+      left:0px;
+
+      
+
+
       bottom:0;
-      opacity: 1;
+      opacity: 0;
       transition: opacity 1.2s;
+
+      &:hover{
+        opacity: 1;
+      }
     
       
 
@@ -272,4 +285,12 @@
     -ms-user-select: none;
     user-select: none;
   }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .SakeCarousel .item .gif {
+    left: 38px;
+  }
+
 }

@@ -78,8 +78,8 @@ const NavFav = (props) => {
     <>
       <div className="MemberFavBar">
         <div className="search-icon-fav">
-          <img src="/ProductList/search.svg" alt="" />
-          <input onKeyPress={keypress} type="text" name="" id="" />
+          <img src="/ProductList/search.svg" alt="" hidden/>
+          <input onKeyPress={keypress} type="text" name="" id="" hidden/>
         </div>
         <div className="MemberFavBar-right">
           <div className="countItemsTotal">收藏商品 {favData.length}</div>
