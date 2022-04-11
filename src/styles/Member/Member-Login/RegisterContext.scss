@@ -1,55 +1,70 @@
-@import "../../mixin.scss";
+@import '../../mixin.scss';
 
 .RegisterContext {
   display: flex;
   margin: 0 auto;
   width: 650px;
-  height: 900px;
+  height: 100vh;
 
   .RegisterContextBox {
-    padding-top: 14%;
-    padding-left: 26%;
-
-    .register-title {
-      text-align: center;
+    // padding-top: 14%;
+    // padding-left: 26%;
+    @include medium {
     }
-
-    .register-form-group {
-      padding-top: 25%;
-      position: relative;
-      .account-g {
-
+    .registerPage {
+      margin: 0 auto;
+      @include medium {
+        width: 99vw;
+        margin: 0;
       }
-      .pass-g {
 
-        .passHideIcon {
-          right: 8px;
-          top: 238px;
-          position: absolute;
-          img {
-            width: 40px;
-            height: 30px;
+      .register-title {
+        text-align: center;
+      }
+
+      .register-form-group {
+        // padding-top: 25%;
+        position: relative;
+        @include medium{
+          display: flex;
+          justify-content: center;
+        }
+        .account-g {
+        }
+        .pass-g {
+          .try {
+            display: flex;
+            align-items: center;
+          }
+
+          .passHideIcon {
+            right: 8px;
+            position: absolute;
+            @include medium{
+              right: 24px
+            }
+            img {
+              width: 40px;
+              height: 30px;
+            }
+          }
+          .errorMsg {
           }
         }
-        .errorMsg {
 
+        .passConf-g {
+          .errorMsg {
+          }
         }
-      }
-
-      .passConf-g {
-
-        .errorMsg {
-
+        .login-btn {
+          margin-left: 10.5%;
+          margin-top: 8%;
         }
-      }
-      .login-btn {
-        margin-left: 10.5%;
-        margin-top: 8%;
-      }
 
-      .register-btn {
-        margin-left: 12%;
-        margin-top: 8%;
+        .register-btn {
+          margin-left: 12%;
+          margin-top: 8%;
+        }
       }
     }
   }
