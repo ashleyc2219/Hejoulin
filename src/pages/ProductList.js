@@ -111,14 +111,12 @@ const ProductList = (props) => {
   }
   const preToLoad = () => {
     setProlist(false)
-    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
   }
 
   const sidebarToLoad1 = () => {
     setProlist(false)
-    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setNoresult(true)
@@ -131,7 +129,6 @@ const ProductList = (props) => {
   }
   const sidebarToLoad2 = () => {
     setProlist(false)
-    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setNoresult(true)
@@ -144,7 +141,6 @@ const ProductList = (props) => {
   }
   const sidebarToLoad3 = () => {
     setProlist(false)
-    //setTitle(true)
     setSpinTop(true)
     setLoad(false)
     setNoresult(true)
@@ -162,7 +158,6 @@ const ProductList = (props) => {
     setSpinTop(true)
     setLoad(false)
     setTimeout(() => {
-      //setTitle(false)
       setProlist(true)
       setResultTitle4(false)
       setSpinTop(false)
@@ -301,7 +296,6 @@ const ProductList = (props) => {
       setResultTitle2(true)
       setTimeout(() => {
         setSpinTop(false)
-        //setResultTitle2(true)
         setProlist(true)
       }, 1000)
     }
@@ -396,23 +390,6 @@ const ProductList = (props) => {
     }
   }, [])
 
-  /*  const handleScroll = () => {
-    if (compare.length > 1) {
-      if (window.scrollY >= 100) {
-        setUp(true)
-      }else{
-        setUp(false)
-      }
-      if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 200
-      ) {
-        setUp(true)
-      } else {
-        setUp(false)
-      }
-    }
-  } */
 
   // 手機版的篩選排序光箱
   const mobilecat = () => {
