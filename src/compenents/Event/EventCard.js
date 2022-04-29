@@ -8,6 +8,7 @@ const EventCard = ({ sort, searchword }) => {
   const event_card = data.map((v, i) => {
     let a
     let b
+    // 設定活動分類對應的顏色
     if (v.event_cat_id === 1) {
       a = 'cat1'
       b = 'hover1'
@@ -98,6 +99,7 @@ const EventCard = ({ sort, searchword }) => {
       a = false
     }
   }, [sort, searchword])
+  
   return <>{noresult ? <NoResult /> : event_card}</>
 }
 
