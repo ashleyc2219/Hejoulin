@@ -1,7 +1,6 @@
 import React from 'react'
 // 用來做貨運資訊的連動選單
 import { islands, townships } from '../../data/cart-list-select'
-import { useState, useEffect } from 'react'
 const ListSelection = (props) => {
   const {
     shipMethod,

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import '../styles/CartList/CartList.scss'
-import { islands, townships } from './../data/cart-list-select'
+// 連動下拉選單用的資料
+import { townships } from './../data/cart-list-select'
 import ProgressBar from '../compenents/Cart/ProgressBar'
 import ListTableSake from '../compenents/Cart/ListTableSake'
 import ListTableGift from '../compenents/Cart/ListTableGift'
@@ -39,7 +40,14 @@ const CartList = (props) => {
   const [twoWarning, setTwoWarning] = useState(true)
   // 檢查是否登入
   const [memberId, setMemberId] = useState('')
+  // 動畫
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    })
+  }, [])
 
+  // 確定是否有會員登入---
   useEffect(() => {
     ;(async () => {
       let member_id = await FetchMemberId(localStorage.getItem('token'))
@@ -47,12 +55,9 @@ const CartList = (props) => {
       // console.log('member_id: ', member_id)
     })()
   }, [])
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    })
-  }, [])
 
+  // 從後端fetch 商品、禮盒的資料---
+  // 相依狀態memberId
   useEffect(() => {
     let a = true
     window.scrollTo(0, 0)
@@ -61,6 +66,7 @@ const CartList = (props) => {
         setSpin(false)
       }
     }, 1500)
+    // 確認有登入後再去fetch清酒、禮盒資料
     ;(async () => {
       if (memberId !== '' && memberId !== 'noMemberId') {
         // fetch 清酒資料
@@ -80,6 +86,7 @@ const CartList = (props) => {
           if (a) {
             setSakeIncart(obj)
           }
+          // 計算清酒總額
           function initialSakeTotal(obj) {
             let total = 0
             for (const sake of obj) {
@@ -92,7 +99,7 @@ const CartList = (props) => {
             setSakeTotal(initialSakeTotal(obj))
           }
         })()
-        // fetch 禮盒資料
+        // 確認有登入後再去fetch禮盒資料
         ;(async () => {
           const rGift = await fetch(
             `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
@@ -110,6 +117,7 @@ const CartList = (props) => {
           if (a) {
             setGiftIncart(obj)
           }
+          // 禮盒總額
           function initialGiftTotal(obj) {
             let total = 0
             for (const gift of obj) {
@@ -139,9 +147,10 @@ const CartList = (props) => {
       a = false
     }
   }, [memberId])
-  // 當狀態變動時
+  // 相依狀態會改變總額，所以要重新計算
   useEffect(() => {
     let total = Math.round((sakeTotal + giftTotal) * discountPerscent + shipFee)
+    // 滿千免運
     if (sakeTotal + giftTotal < 1000 && shipMethod !== 'pick') {
       setShipFee(60)
     } else {
@@ -150,12 +159,13 @@ const CartList = (props) => {
     setAllTotal(total)
   }, [sakeTotal, giftTotal, discountPerscent, shipFee, shipMethod, sakeIncart])
 
-  // 折扣碼 enter 輸入
+  // 折扣碼 按 enter 即可輸入---
   const enter = (e) => {
     if (e.key === 'Enter') {
       fetchDiscountCode(discountCode)
     }
   }
+  // fetch折扣碼 查看是否相符
   async function fetchDiscountCode(code) {
     let data = {
       discountCode: code,
@@ -169,19 +179,21 @@ const CartList = (props) => {
       body: JSON.stringify(data),
     })
     const obj = await r1.json()
+    // 若相符就顯示折扣數
     if (obj.length) {
       const result = obj[0]
       let perscentString = result.perscentString
       let msg = result.discount_info + ' ' + perscentString + '折'
       setDiscountMsg(msg)
       setDiscountPerscent(result.perscent)
+      // 不相符就顯示折扣碼無效
     } else {
       setDiscountMsg('折扣碼無效')
       setDiscountCode('')
       setDiscountPerscent(1)
     }
   }
-
+  // 渲染頁面 清酒商品、禮盒 元件---
   const renderSakeItems = (sakeIncart) => {
     if (sakeIncart.length) {
       return (
@@ -244,6 +256,8 @@ const CartList = (props) => {
       return ''
     }
   }
+
+  // 進行表單檢查
   useEffect(() => {
     function formCheck() {
       if (island !== -1 && township !== -1 && township !== undefined) {
@@ -295,127 +309,11 @@ const CartList = (props) => {
       // console.log('setCartSummary')
     }
   }
-  function renderCart() {
-    if (sakeIncart.length === 0 && giftIncart.length === 0) {
-      return <EmptyCart memberId={memberId} setSidebar={setSidebar} />
-    } else {
-      ;<>
-        <div className="CartList" data-aos="fade-up">
-          <div className="CartList-container">
-            <ProgressBar step="one" content={stepContent} />
-            <div className="cart-list">
-              {/* {console.log('list: ', sakeIncart)} */}
-              {renderSakeItems(sakeIncart)}
-              {renderGiftItems(giftIncart)}
-            </div>
-            <div className="cart-form">
-              <div className="form-left">
-                <div className="shipment">
-                  <ListSelection
-                    shipMethod={shipMethod}
-                    setShipMethod={setShipMethod}
-                    island={island}
-                    setIsland={setIsland}
-                    township={township}
-                    setTownship={setTownship}
-                    oneWarning={oneWarning}
-                    twoWarning={twoWarning}
-                  />
-                </div>
-
-                <div className="discount">
-                  <h5>折扣碼</h5>
-                  <div className="discount-container">
-                    <div className="discount-input">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="輸入折扣碼"
-                        onChange={(e) => {
-                          setDiscountCode(e.target.value)
-                        }}
-                        onKeyPress={enter}
-                      />
-                      {discountMsg !== 0 ? (
-                        <div className="form-text">{discountMsg}</div>
-                      ) : (
-                        <div className="form-text"></div>
-                      )}
-                    </div>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        fetchDiscountCode(discountCode)
-                      }}
-                    >
-                      使用折扣碼
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="form-right">
-                <div className="order-summary">
-                  <h5>訂單資訊</h5>
-                  <div className="order-summary-table">
-                    <div className="table-row">
-                      <p>小計</p>
-                      <p className="dollar-sign">{sakeTotal + giftTotal}</p>
-                    </div>
-                    <div className="table-row">
-                      <p>折扣碼</p>
-                      <p>{discountPerscent !== 1 ? discountMsg : ''}</p>
-                    </div>
-                    <div className="table-row">
-                      <p>運費</p>
-                      <p className="dollar-sign">{shipFee}</p>
-                    </div>
-                    <div className="table-row">
-                      <p>總計</p>
-                      <p className="dollar-sign total">{allTotal}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="buttons">
-                  <Link to="/product/list">
-                    <button className="btn btn-primary">繼續購物</button>
-                  </Link>
-
-                  {passThrough === true ? (
-                    <Link to="/cart/info">
-                      <button
-                        className="btn btn-secondary"
-                        onClick={CartSummaryData}
-                      >
-                        結帳
-                      </button>
-                    </Link>
-                  ) : (
-                    <button className="btn btn-secondary" onClick={warningRed}>
-                      結帳
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    }
-  }
   // 兩個三元判斷
   // 先1秒的spinner
   // 再判斷有沒有商品在購物車裡
   return (
     <>
-      {/* {loginModal ? (
-        <AlertLoginModal
-          setSidebar={setSidebar}
-          setLoginModal={setLoginModal}
-        />
-      ) : (
-        ''
-      )} */}
-      {/* {spin ? <Spinner /> : renderCart()} */}
       {spin ? (
         <Spinner />
       ) : sakeIncart.length === 0 && giftIncart.length === 0 ? (

@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom'
 // 驗證電子信箱 電話號碼套件
 import validator from 'validator'
 
-import ProgressBar from '../compenents/Cart/ProgressBar'
 import '../styles/CartInfo/CartInfo.scss'
+import ProgressBar from '../compenents/Cart/ProgressBar'
 import InfoTableSake from '../compenents/Cart/InfoTableSake'
 import InfoTableGift from '../compenents/Cart/InfoTableGift'
 import InfoCreditCard from '../compenents/Cart/InfoCreditCard'
 import Spinner from '../compenents/Shared/Spinner'
 import FetchMemberId from '../compenents/Member/FetchMemberId'
 
+
+// 地區下拉選單 資料
 import { districtsData } from './../data/districts'
 
 import { CartSummary } from './../App'
@@ -87,6 +89,7 @@ const CartInfo = (props) => {
   // TODO: store_id 要在做門市元件後換
   const store_id = ''
 
+  // 檢查是否有會員登入
   useEffect(() => {
     ;(async () => {
       let member_id = await FetchMemberId(localStorage.getItem('token'))
