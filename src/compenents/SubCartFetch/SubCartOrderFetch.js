@@ -1,6 +1,6 @@
 const orderInfoG = async function (order_id) {
   const r1 = await fetch(
-    `http://localhost:3001/api/sub/order-sub?order_id=${order_id}`,
+    `${process.env.REACT_APP_BACKEND_URL}}/api/sub/order-sub?order_id=${order_id}`,
     {
       method: 'GET',
       headers: {

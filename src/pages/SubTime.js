@@ -33,7 +33,7 @@ const SubTime = (props) => {
   useEffect(() => {
     let a = true
     ;(async () => {
-      const r1 = await fetch(`http://localhost:3001/api/sub/sub-time`, {
+      const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/sub/sub-time`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

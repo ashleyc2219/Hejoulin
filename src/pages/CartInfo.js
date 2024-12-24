@@ -104,7 +104,7 @@ const CartInfo = (props) => {
     if (memberId !== '' && memberId !== 'noMemberId') {
       ;(async () => {
         const r1 = await fetch(
-          `http://localhost:3001/api/cart-list/sake?member_id=${memberId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/sake?member_id=${memberId}`,
           {
             method: 'GET',
             headers: {
@@ -124,7 +124,7 @@ const CartInfo = (props) => {
       })()
       ;(async () => {
         const rGift = await fetch(
-          `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/gift?member_id=${memberId}`,
           {
             method: 'GET',
             headers: {

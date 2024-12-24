@@ -31,7 +31,7 @@ const AddCartIcon = ({
       }
       try {
         const fetchResponse = await fetch(
-          'http://localhost:3001/api/products-addcart',
+          `${process.env.REACT_APP_BACKEND_URL}/api/products-addcart`,
           settings
         )
         const data = await fetchResponse.json()

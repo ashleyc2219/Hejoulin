@@ -20,7 +20,7 @@ const MarkModal = (props) => {
             <img src="/ProductList/close-black.svg" alt="" />
           </div>
           <img
-              src={'http://localhost:3001/images/mark_pic/' + modalContent}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + modalContent}
               alt=""
           />
 

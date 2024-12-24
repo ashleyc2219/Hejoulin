@@ -1,6 +1,6 @@
 const memberInfoG = async function (member_id) {
   const r1 = await fetch(
-    `http://localhost:3001/api/cart-info/member?member_id=${member_id}`,
+    `${process.env.REACT_APP_BACKEND_URL}/api/cart-info/member?member_id=${member_id}`,
     {
       method: 'GET',
       headers: {
@@ -27,7 +27,7 @@ const orderMainI = async function (
     used_code: used_code,
   }
 
-  const r1 = await fetch(`http://localhost:3001/api/cart-order/order-main`, {
+  const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/cart-order/order-main`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -44,7 +44,7 @@ const orderSakeMarkI = async function (member_id, order_id) {
     order_id: order_id,
   }
   const r1 = await fetch(
-    `http://localhost:3001/api/cart-order/order-sake-mark`,
+    `${process.env.REACT_APP_BACKEND_URL}}/api/cart-order/order-sake-mark`,
     {
       method: 'POST',
       headers: {
@@ -62,7 +62,7 @@ const orderGiftGdI = async function (member_id, order_id) {
     member_id: member_id,
     order_id: order_id,
   }
-  const r1 = await fetch(`http://localhost:3001/api/cart-order/order-gift-d`, {
+  const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/cart-order/order-gift-d`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -78,7 +78,7 @@ const cartSakeMarkD = async function (member_id) {
     member_id: member_id,
   }
   const r1 = await fetch(
-    `http://localhost:3001/api/cart-order/cart-sake-mark`,
+    `${process.env.REACT_APP_BACKEND_URL}/api/cart-order/cart-sake-mark`,
     {
       method: 'DELETE',
       headers: {
@@ -96,7 +96,7 @@ const cartGiftGdD = async function (member_id, order_id) {
     member_id: member_id,
   }
   const r1 = await fetch(
-    `http://localhost:3001/api/cart-order/cart-gift-gdtail`,
+    `${process.env.REACT_APP_BACKEND_URL}}/api/cart-order/cart-gift-gdtail`,
     {
       method: 'DELETE',
       headers: {
@@ -127,7 +127,7 @@ const shipmentI = async function (
     shipment_address: shipment_address,
     shipment_note: shipment_note ? shipment_note : '',
   }
-  const r1 = await fetch(`http://localhost:3001/api/cart-info/shipment`, {
+  const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/cart-info/shipment`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -143,7 +143,7 @@ const paymentI = async function (order_id, card_num) {
     order_id: order_id,
     card_num: card_num,
   }
-  const r1 = await fetch(`http://localhost:3001/api/cart-info/payment`, {
+  const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/cart-info/payment`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

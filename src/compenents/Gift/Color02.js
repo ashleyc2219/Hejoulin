@@ -50,7 +50,7 @@ const Color02 = (props) => {
       <div className="gift_image">
         <img
           src={
-            'http://localhost:3001/images/gift_img/' +
+            `${process.env.REACT_APP_BACKEND_URL}/images/gift_img/` +
             boxColor +
             '-' +
             kind +
@@ -60,12 +60,12 @@ const Color02 = (props) => {
           className="box02"
         />
         <img
-          src={img ? 'http://localhost:3001/images/pro_img/' + img : ''}
+          src={img ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img : ''}
           alt="sake"
           className="dou_sake"
         />
         <img
-          src={img2 ? 'http://localhost:3001/images/pro_img/' + img2 : ''}
+          src={img2 ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img2 : ''}
           alt="container"
           className="dou_other"
         />

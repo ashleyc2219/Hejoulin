@@ -21,7 +21,7 @@ const CompareBlock = ({
   let product1 = comparePro1.map(function (v, i) {
     return (
       <div key={i} className="product">
-        <img src={'http://localhost:3001/images/pro_img/' + v.pro_img} alt="" />
+        <img src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img} alt="" />
         <p className="name">{v.pro_name}</p>
         <div className="shadow"></div>
         <img
@@ -39,7 +39,7 @@ const CompareBlock = ({
   let product2 = comparePro2.map(function (v, i) {
     return (
       <div key={i} className="product">
-        <img src={'http://localhost:3001/images/pro_img/' + v.pro_img} alt="" />
+        <img src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img} alt="" />
         <p className="name">{v.pro_name}</p>
         <div className="shadow"></div>
         <img
@@ -57,7 +57,7 @@ const CompareBlock = ({
   let product3 = comparePro3.map(function (v, i) {
     return (
       <div key={i} className="product">
-        <img src={'http://localhost:3001/images/pro_img/' + v.pro_img} alt="" />
+        <img src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img} alt="" />
         <p className="name">{v.pro_name}</p>
         <div className="shadow"></div>
         <img
@@ -147,7 +147,7 @@ const CompareBlock = ({
       if (compare[0] === undefined || compare[0] === []) return false
 
       const url =
-        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-sake/item-detail?pro_id=` +
         compare[0]
 
       const res = await fetch(url)
@@ -160,7 +160,7 @@ const CompareBlock = ({
     const fetch2 = async () => {
       if (compare[1] === undefined || compare[1] === '') return false
       const url =
-        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-sake/item-detail?pro_id=` +
         compare[1]
 
       const res = await fetch(url)
@@ -173,7 +173,7 @@ const CompareBlock = ({
     const fetch3 = async () => {
       if (compare[2] === undefined || compare[2] === '') return false
       const url =
-        'http://localhost:3001/api/products-sake/item-detail?pro_id=' +
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-sake/item-detail?pro_id=` +
         compare[2]
 
       const res = await fetch(url)

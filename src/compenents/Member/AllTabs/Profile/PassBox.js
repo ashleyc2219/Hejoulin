@@ -9,8 +9,8 @@ const PassBox = () => {
   const [passModalShow, setPassModalShow] = useState(false)
   const [passRs, setPassRs] = useState(undefined)
 
-  const APISetNewPass = 'http://localhost:3001/user/member/passChange'
-  const APICheckPass = 'http://localhost:3001/user/pass/check'
+  const APISetNewPass = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/passChange`
+  const APICheckPass = `${process.env.REACT_APP_BACKEND_URL}/api/user/pass/check`
 
   function changeShowPass() {
     setShowP(!showP)

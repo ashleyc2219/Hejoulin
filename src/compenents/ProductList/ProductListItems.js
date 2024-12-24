@@ -37,7 +37,7 @@ const ProductListItems = (props) => {
     setLoginModal,
   } = props
 
-  let url = `http://localhost:3001/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
+  let url = `${process.env.REACT_APP_BACKEND_URL}/api/products-sake-filter?perpage=${page}&search=${search}&pro_loca=${locasort}&pro_brand=${brandsort}&order=${sort}&pro_level=${level}&pro_price=${price}&pro_mark=${mark}`
 
   const product = list.map((v, i) => {
     return (
@@ -47,7 +47,7 @@ const ProductListItems = (props) => {
             <div className="img-wrap">
               <img
                 className="product-img"
-                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
                 alt=""
               />
             </div>

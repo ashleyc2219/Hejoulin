@@ -21,7 +21,7 @@ const CompareModal = ({
       <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
-            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
             alt=""
           />
           <div className="pro-name">{v.pro_name}</div>
@@ -60,7 +60,7 @@ const CompareModal = ({
       <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
-            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
             alt=""
           />
           <div className="pro-name">{v.pro_name}</div>
@@ -99,7 +99,7 @@ const CompareModal = ({
       <div key={v.pro_id} className="com-pro">
         <div className="pro-wrap">
           <img
-            src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
             alt=""
           />
           <div className="pro-name">{v.pro_name}</div>

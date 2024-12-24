@@ -17,7 +17,7 @@ const ListTableGift = (props) => {
     setQuantity(giftInfo['cart_quantity'])
   }, [giftIncart])
 
-  const fetchURL = 'http://localhost:3001/api/cart-list/gift'
+  const fetchURL = `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/gift`
   function renderGiftInfo(giftInfo) {
     if (giftInfo.gift_id === 3) {
       price = giftInfo.pro_one.pro_price + giftInfo.pro_two.pro_price + 200

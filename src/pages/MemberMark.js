@@ -8,8 +8,8 @@ import { useHistory } from 'react-router-dom'
 const MemberMark = () => {
   const [markData, setMarkData] = useState([])
   const [whichMark, setWhichMark] = useState([])
-  const APIDelMark = 'http://localhost:3001/user/member/MemberMarkDelete'
-  const APIMark = 'http://localhost:3001/user/member/MemberMark'
+  const APIDelMark = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberMarkDelete`
+  const APIMark = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberMark`
   const history = useHistory()
 
   useEffect(() => {

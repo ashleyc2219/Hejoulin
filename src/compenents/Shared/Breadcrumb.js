@@ -344,7 +344,7 @@ const Breadcrumb = () => {
 
   /* const formatTextLocale = (pathname) => {
     // '/product/baby/birth' -> ['','product','baby', 'birth']
-    const pathArray = pathname.split('/')
+    const pathArray = pathname.split('/`)
 
     // to ['','產品','嬰兒', '初生兒']
     const pathArrayLocale = pathArray.map((v, i) => {
@@ -365,7 +365,7 @@ const Breadcrumb = () => {
       if (i === array.length - 1) {
         return (
           <React.Fragment key={i}>
-            <Link to={pathArray.slice(0, i + 1).join('/')}>
+            <Link to={pathArray.slice(0, i + 1).join('/`)}>
               <span className="current">{v}</span>
             </Link>
           </React.Fragment>
@@ -375,7 +375,7 @@ const Breadcrumb = () => {
       // 其它中間樣式
       return (
         <React.Fragment key={i}>
-          <Link to={pathArray.slice(0, i + 1).join('/')}>
+          <Link to={pathArray.slice(0, i + 1).join('/`)}>
             <span className="current">{v}</span>
           </Link>
         </React.Fragment>

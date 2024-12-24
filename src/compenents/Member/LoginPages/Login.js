@@ -17,7 +17,7 @@ const Login = (props) => {
     const [loginModalShow, setLoginModalShow] = useState(false)
     const [loginProcess, setLoginProcess] = useState('default')
     const [forgetPassData, setForgetPassData] = useState([])
-    const APILogin = 'http://localhost:3001/login/login'
+    const APILogin = `${process.env.REACT_APP_BACKEND_URL}/api/login/login`
     let history = useHistory()
 
     const whenLoginSubmit = async (event) => {

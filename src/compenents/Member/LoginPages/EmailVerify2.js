@@ -7,8 +7,8 @@ const EmailVerify2 = (props) => {
   const [verify2Correct, setVerify2Correct] = useState('')
   const [verifyData, setVerifyData] = useState({})
   const [resendBtn2, setResendBtn2] = useState('')
-  const APIVerify = 'http://localhost:3001/login/code/verify/passForget'
-  const APIResend = 'http://localhost:3001/login/resend-email'
+  const APIVerify = `${process.env.REACT_APP_BACKEND_URL}/login/code/verify/passForget`
+  const APIResend = `${process.env.REACT_APP_BACKEND_URL}/login/resend-email`
   const whenVerSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單
     setVerify2Correct('')

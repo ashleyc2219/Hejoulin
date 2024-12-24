@@ -14,7 +14,7 @@ const InfoTableSake = (props) => {
             ''
           )}
           <img
-            src={'http://localhost:3001/images/pro_img/' + sakeInfo.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + sakeInfo.pro_img}
             alt=""
           />
         </div>

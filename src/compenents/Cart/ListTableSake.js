@@ -21,7 +21,7 @@ const ListTableSake = (props) => {
   const [chooseModalShow, setChooseModalShow] = useState(false)
   const [markModalShow, setMarkModalShow] = useState(false)
   const [markPic, setMarkPic] = useState(sakeInfo.pics)
-  const fetchURL = 'http://localhost:3001/api/cart-list/sake'
+  const fetchURL = `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/sake`
   const [quantity, setQuantity] = useState(sakeInfo['cart_quantity'])
   let pro_gift = 'false'
   let gift_text = '不提供禮盒'
@@ -38,7 +38,7 @@ const ListTableSake = (props) => {
             onClick={() => {
               setMarkModalShow(true)
             }}
-            src={'http://localhost:3001/images/mark_pic/' + markPic}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + markPic}
             alt=""
           />
         </div>
@@ -175,7 +175,7 @@ const ListTableSake = (props) => {
         </div>
         <div className="item item-product-img">
           <img
-            src={'http://localhost:3001/images/pro_img/' + sakeInfo.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + sakeInfo.pro_img}
             alt=""
           />
         </div>

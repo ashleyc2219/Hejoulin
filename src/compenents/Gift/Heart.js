@@ -50,7 +50,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3001/api/products-fav/insert',
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-fav/insert`,
         settings
       )
       const data = await fetchResponse.json()
@@ -71,7 +71,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3001/api/products-fav/delete',
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-fav/delete`,
         settings
       )
       const data = await fetchResponse.json()
@@ -92,7 +92,7 @@ const Heart = (props) => {
     }
     try {
       const fetchResponse = await fetch(
-        'http://localhost:3001/api/products-fav/search',
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-fav/search`,
         settings
       )
       const data = await fetchResponse.json()
@@ -122,7 +122,7 @@ const Heart = (props) => {
         }
         try {
           const fetchResponse = await fetch(
-            'http://localhost:3001/api/products-fav/search',
+            `${process.env.REACT_APP_BACKEND_URL}/api/products-fav/search`,
             settings
           )
           const data = await fetchResponse.json()

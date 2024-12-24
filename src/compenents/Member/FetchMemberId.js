@@ -2,7 +2,7 @@ import React from 'react'
 
 const FetchMemberId = async (token) => {
   const data = { token: token }
-  const res = await fetch('http://localhost:3001/user/memberId', {
+  const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/memberId`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

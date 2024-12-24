@@ -27,7 +27,7 @@ const SubCartVerify = () => {
       total: subCartVerifyInfo.total,
     }
 
-    const r1 = await fetch(`http://localhost:3001/api/cart-verify/send-email`, {
+    const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/cart-verify/send-email`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -44,7 +44,7 @@ const SubCartVerify = () => {
     }
 
     const r1 = await fetch(
-      `http://localhost:3001/api/cart-verify/code-verify`,
+      `${process.env.REACT_APP_BACKEND_URL}}/api/cart-verify/code-verify`,
       {
         method: 'POST',
         headers: {

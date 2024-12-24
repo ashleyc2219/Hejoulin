@@ -17,7 +17,7 @@ const ProductModal = (props) => {
     setLinkFav(linkFav + 1)
   }
 
-  const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/products-sake/item-detail?pro_id=` + id
   const fetchData = async () => {
     const res = await fetch(url)
     const data = await res.json()
@@ -62,7 +62,7 @@ const ProductModal = (props) => {
               >
                 <div className="wrap uno">
                   <img
-                    src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                    src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
                     alt=""
                     className="modal_sake"
                   />
@@ -71,7 +71,7 @@ const ProductModal = (props) => {
                   <div className="wrap dos">
                     <img
                       src={
-                        'http://localhost:3001/images/con_img/' +
+                        `${process.env.REACT_APP_BACKEND_URL}/images/con_img/` +
                         v.container_id +
                         '-o.png'
                       }

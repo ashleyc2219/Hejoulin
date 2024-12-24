@@ -3,8 +3,8 @@ import '../../../styles/Member/Member-Login/AccountCheck.scss'
 
 const AccountCheck = (props) => {
   const { forgetPassData, setForgetPassData, setRow  } = props
-  const APICheck = 'http://localhost:3001/login/account-check'
-  const APISendEmail = 'http://localhost:3001/login/send-email'
+  const APICheck = `${process.env.REACT_APP_BACKEND_URL}/login/account-check`
+  const APISendEmail = `${process.env.REACT_APP_BACKEND_URL}/login/send-email`
 
   const whenACSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單

@@ -60,7 +60,7 @@ const ProductDetail = (props) => {
     }
   }
 
-  const url = 'http://localhost:3001/api/products-sake/item-detail?pro_id=' + id
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/products-sake/item-detail?pro_id=` + id
 
   const productDetail = detail.map((v, i) => {
     return (
@@ -76,7 +76,7 @@ const ProductDetail = (props) => {
         <div className="product-wrap">
           <div className="product-img">
             <img
-              src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
               alt=""
             />
           </div>

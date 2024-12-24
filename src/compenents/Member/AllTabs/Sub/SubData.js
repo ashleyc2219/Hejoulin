@@ -15,7 +15,7 @@ const SubData = ({subData, setSubData}) => {
     useEffect(() => {
         ;(async () => {
             const obj = await (
-                await fetch('http://localhost:3001/user/member/MemberSublist', {
+                await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberSublist`, {
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,

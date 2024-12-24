@@ -3,9 +3,9 @@ import '../../../styles/Member/Member-Login/EmailVerify.scss'
 import CountdownTimer from "./CountdownTimer";
 
 const EmailVerify = ({row, setRow, forgetPassData, setForgetPassData}) => {
-    const APIVerify = 'http://localhost:3001/login/code/verify/register'
-    const APIGetId = 'http://localhost:3001/login/getId'
-    const APIResend = 'http://localhost:3001/login/resend-email'
+    const APIVerify = `${process.env.REACT_APP_BACKEND_URL}/login/code/verify/register`
+    const APIGetId = `${process.env.REACT_APP_BACKEND_URL}/login/getId`
+    const APIResend = `${process.env.REACT_APP_BACKEND_URL}/login/resend-email`
     const [verifyCorrect, setVerifyCorrect] = useState('')
     const [verifyData2, setVerifyData2] = useState({})
     const [resendBtn, setResendBtn] = useState('')

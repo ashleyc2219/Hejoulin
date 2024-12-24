@@ -27,7 +27,7 @@ const MarkDone = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('http://localhost:3001/api/mark?markId=' + markId)
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/mark?markId=` + markId)
       const data = await res.json()
       setMarkImg(data)
     }
@@ -39,7 +39,7 @@ const MarkDone = () => {
 
   const downloadImg = () => {
     let img = document.createElement('a')
-    img.href = 'http://localhost:3001/images/mark_pic/' + markImg[0]?.pics
+    img.href = `${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + markImg[0]?.pics
     img.download = 'mark.png'
     document.body.appendChild(img)
     img.click()
@@ -80,7 +80,7 @@ const MarkDone = () => {
                 <img src="/Mark/1.png" alt="" className="bottle image" />
                 <img
                   src={
-                    'http://localhost:3001/images/mark_pic/' + markImg[0]?.pics
+                    `${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + markImg[0]?.pics
                   }
                   alt=""
                   className="sticker image "

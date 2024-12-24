@@ -9,7 +9,7 @@ import Spinner from '../compenents/Shared/Spinner'
 
 const NewsList = () => {
   const [detail, setDetail] = useState([])
-  const url = 'http://localhost:3001/api/news'
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/news`
 
   const [spin, setSpin] = useState(true)
 

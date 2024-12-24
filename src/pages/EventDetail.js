@@ -9,7 +9,7 @@ const EventDetail = () => {
   const [data, setData] = useState([])
   const { id } = useParams()
   const [spin, setSpin] = useState(true)
-  const url = 'http://localhost:3001/api/event?eventId=' + id
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/event?eventId=` + id
 
   useEffect(() => {
     let a = true
@@ -32,7 +32,7 @@ const EventDetail = () => {
       <React.Fragment key={v.event_id}>
         <div className="main-container" data-aos="fade-up">
           <img
-            src={'http://localhost:3001/images/event_pic/' + v.event_cover}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/event_pic/` + v.event_cover}
             alt=""
           />
           <div className="event-info">{v.event_brief}</div>
