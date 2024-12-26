@@ -29,7 +29,7 @@ const MarkImgItem = (props) => {
                         setModalContent(el.pics)
                     }} >
                         <img
-                            src={'http://localhost:3001/images/mark_pic/' + el.pics}
+                            src={`${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + el.pics}
                             alt=""
                         />
                     </div>

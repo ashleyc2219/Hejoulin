@@ -52,7 +52,7 @@ const AddCart = ({
       }
       try {
         const fetchResponse = await fetch(
-          'http://localhost:3001/api/gift_addcart',
+          `${process.env.REACT_APP_BACKEND_URL}/api/gift_addcart`,
           settings
         )
         const data = await fetchResponse.json()

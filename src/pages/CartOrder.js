@@ -39,7 +39,7 @@ const CartOrder = () => {
     // 清酒訂單
     ;(async () => {
       const r1 = await fetch(
-        `http://localhost:3001/api/cart-order-confirm/order-sake?order_id=${order_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}}/api/cart-order-confirm/order-sake?order_id=${order_id}`,
         {
           method: 'GET',
           headers: {
@@ -56,7 +56,7 @@ const CartOrder = () => {
     // 禮盒訂單
     ;(async () => {
       const r1 = await fetch(
-        `http://localhost:3001/api/cart-order-confirm/order-gift?order_id=${order_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}}/api/cart-order-confirm/order-gift?order_id=${order_id}`,
         {
           method: 'GET',
           headers: {
@@ -72,7 +72,7 @@ const CartOrder = () => {
     // 訂單資料
     ;(async () => {
       const r1 = await fetch(
-        `http://localhost:3001/api/cart-order-confirm/order-info?order_id=${order_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}}/api/cart-order-confirm/order-info?order_id=${order_id}`,
         {
           method: 'GET',
           headers: {

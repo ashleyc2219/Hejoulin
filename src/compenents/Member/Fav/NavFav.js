@@ -5,7 +5,7 @@ const NavFav = (props) => {
   const { favData, setFavData, optionChose, setOptionChose } = props
   const [noResult, setNoResult] = useState(true) //如果沒有搜尋結果會顯示的文字
   const [search, setSearch] = useState('') // 設定搜尋的文字傳到子層重新fetch商品列表
-  const APIFav = 'http://localhost:3001/user/member/MemberFav'
+  const APIFav = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberFav`
 
   const keypress = (e) => {
     const searchWord = e.target.value.trim()

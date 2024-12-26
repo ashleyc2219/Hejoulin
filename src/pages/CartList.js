@@ -72,7 +72,7 @@ const CartList = (props) => {
         // fetch 清酒資料
         ;(async () => {
           const r1 = await fetch(
-            `http://localhost:3001/api/cart-list/sake?member_id=${memberId}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/sake?member_id=${memberId}`,
             {
               method: 'GET',
               headers: {
@@ -102,7 +102,7 @@ const CartList = (props) => {
         // 確認有登入後再去fetch禮盒資料
         ;(async () => {
           const rGift = await fetch(
-            `http://localhost:3001/api/cart-list/gift?member_id=${memberId}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/gift?member_id=${memberId}`,
             {
               method: 'GET',
               headers: {
@@ -170,7 +170,7 @@ const CartList = (props) => {
     let data = {
       discountCode: code,
     }
-    const r1 = await fetch(`http://localhost:3001/api/cart-list/discount`, {
+    const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/cart-list/discount`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

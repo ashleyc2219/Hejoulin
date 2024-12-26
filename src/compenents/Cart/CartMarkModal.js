@@ -7,7 +7,7 @@ const CartMarkModal = (props) => {
     let data = {
       cart_sake_id: sakeInfo.cart_sake_id,
     }
-    const r1 = await fetch('http://localhost:3001/api/cart-list/mark', {
+    const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/cart-list/mark`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
@@ -25,7 +25,7 @@ const CartMarkModal = (props) => {
         <div className="markmodal">
           <div className="img">
             <img
-              src={`http://localhost:3001/images/mark_pic/${markPic}`}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/${markPic}`}
               alt=""
             />
           </div>

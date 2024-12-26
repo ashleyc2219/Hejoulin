@@ -357,7 +357,7 @@ const ProductList = (props) => {
     /* 產地 */
     const fetchLoca = async () => {
       const res = await fetch(
-        'http://localhost:3001/api/products-condition/location'
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-condition/location`
       )
       const fetchedData = await res.json()
       const test = fetchedData
@@ -368,7 +368,7 @@ const ProductList = (props) => {
     /* 品牌 */
     const fetchBrand = async () => {
       const res = await fetch(
-        'http://localhost:3001/api/products-condition/brand'
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-condition/brand`
       )
       const fetchedData = await res.json()
       if (a) {

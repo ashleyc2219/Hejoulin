@@ -23,7 +23,7 @@ const SubPlan = (props) => {
     let a = true
     window.scrollTo(0, 0)
     ;(async () => {
-      const r1 = await fetch(`http://localhost:3001/api/sub/sub-plan`, {
+      const r1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}}/api/sub/sub-plan`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

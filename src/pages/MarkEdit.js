@@ -39,7 +39,7 @@ const MarkEdit = () => {
     formData.append('mark', file, 'image.png')
     formData.append('markname', markname)
 
-    fetch('http://localhost:3001/api/mark', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/mark`, {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + localStorage.token,

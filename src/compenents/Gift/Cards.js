@@ -77,7 +77,7 @@ const Cards = (props) => {
         }}
       >
         <img
-          src={'http://localhost:3001/images/pro_img/' + img}
+          src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img}
           alt=""
           className="original"
         />
@@ -89,21 +89,21 @@ const Cards = (props) => {
           />
           {kind === 1 && (
             <img
-              src={'http://localhost:3001/images/pro_img/' + img}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img}
               alt=""
               className="sake1"
             />
           )}
           {kind > 1 && (
             <img
-              src={'http://localhost:3001/images/pro_img/' + img}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img}
               alt=""
               className="sake2"
             />
           )}
           {kind === 3 && (
             <img
-              src={'http://localhost:3001/images/con_img/' + conImgShadow}
+              src={`${process.env.REACT_APP_BACKEND_URL}/images/con_img/` + conImgShadow}
               alt=""
               className="sake_con"
             />

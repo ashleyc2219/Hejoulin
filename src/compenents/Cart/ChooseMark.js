@@ -15,7 +15,7 @@ const ChooseMark = (props) => {
         <div className="markname">{mark_info.mark_name}</div>
         <div className="markpic">
           <img
-            src={'http://localhost:3001/images/mark_pic/' + mark_info.pics}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/mark_pic/` + mark_info.pics}
             alt=""
           />
         </div>

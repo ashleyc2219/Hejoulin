@@ -32,7 +32,7 @@ const Header = (props) => {
       }
       try {
         const fetchResponse = await fetch(
-          'http://localhost:3001/api/products-cart-quantity',
+          `${process.env.REACT_APP_BACKEND_URL}/api/products-cart-quantity`,
           settings
         )
         const data = await fetchResponse.json()

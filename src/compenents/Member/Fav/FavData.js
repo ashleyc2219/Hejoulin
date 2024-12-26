@@ -8,8 +8,8 @@ const FavData = (props) => {
   const { favData, setFavData } = props
   const [favModalShow, setFavModalShow] = useState(false)
   const [favRs, setFavRs] = useState(undefined)
-  const APIFav = 'http://localhost:3001/user/member/MemberFav'
-  const APIDel = 'http://localhost:3001/user/member/MemberFav/delete'
+  const APIFav = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberFav`
+  const APIDel = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberFav/delete`
   const history = useHistory()
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const FavData = (props) => {
       }
       try {
         const fetchResponse = await fetch(
-          'http://localhost:3001/api/products-fav/insert',
+          `${process.env.REACT_APP_BACKEND_URL}/api/products-fav/insert`,
           settings
         )
         const data = await fetchResponse.json()
@@ -118,7 +118,7 @@ const FavData = (props) => {
               >
                 <img
                   className="product-img"
-                  src={'http://localhost:3001/images/pro_img/' + el.pro_img}
+                  src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + el.pro_img}
                   alt=""
                 />
               </div>

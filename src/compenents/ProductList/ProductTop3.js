@@ -19,7 +19,7 @@ const ProductTop3 = ({
   /* 人氣之選 */
   /* const fetchTop = async () => {
     const res = await fetch(
-      'http://localhost:3001/api/products-condition/top-three'
+      `${process.env.REACT_APP_BACKEND_URL}/api/products-condition/top-three`
     )
     const fetchedData = await res.json()
     const test = fetchedData
@@ -32,7 +32,7 @@ const ProductTop3 = ({
     let a = true
     const fetchTop = async () => {
       const res = await fetch(
-        'http://localhost:3001/api/products-condition/top-three'
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-condition/top-three`
       )
       const fetchedData = await res.json()
       const test = fetchedData
@@ -54,7 +54,7 @@ const ProductTop3 = ({
             <div className="img-wrap">
               <img
                 className="product-img"
-                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
                 alt=""
               />
             </div>

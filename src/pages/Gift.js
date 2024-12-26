@@ -136,8 +136,8 @@ const Gift = (props) => {
     value.current = 0
   }
 
-  const url01 = 'http://localhost:3001/api/gift' //禮盒顏色
-  let url02 = `http://localhost:3001/api/product_gift`
+  const url01 = `${process.env.REACT_APP_BACKEND_URL}/api/gift` //禮盒顏色
+  let url02 = `${process.env.REACT_APP_BACKEND_URL}/api/product_gift`
   //不同禮盒的酒類資訊
 
   useEffect(() => {
@@ -387,7 +387,7 @@ const Gift = (props) => {
                         <img
                           src={
                             img
-                              ? 'http://localhost:3001/images/pro_img/' + img
+                              ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img
                               : ''
                           }
                           alt="final"
@@ -399,7 +399,7 @@ const Gift = (props) => {
                           <img
                             src={
                               img
-                                ? 'http://localhost:3001/images/pro_img/' + img
+                                ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img
                                 : ''
                             }
                             alt="final"
@@ -408,7 +408,7 @@ const Gift = (props) => {
                           <img
                             src={
                               img2
-                                ? 'http://localhost:3001/images/pro_img/' + img2
+                                ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img2
                                 : ''
                             }
                             alt="final"
@@ -421,7 +421,7 @@ const Gift = (props) => {
                           <img
                             src={
                               img
-                                ? 'http://localhost:3001/images/pro_img/' + img
+                                ? `${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + img
                                 : ''
                             }
                             alt="final"
@@ -430,7 +430,7 @@ const Gift = (props) => {
                           <img
                             src={
                               conShadow
-                                ? 'http://localhost:3001/images/con_img/' +
+                                ? `${process.env.REACT_APP_BACKEND_URL}/images/con_img/` +
                                   conShadow
                                 : ''
                             }

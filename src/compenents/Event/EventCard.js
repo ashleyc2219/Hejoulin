@@ -25,7 +25,7 @@ const EventCard = ({ sort, searchword }) => {
       <div key={i} className="event-card">
         <Link className={b} to={'/event/detail/' + v.event_id}>
           <img
-            src={'http://localhost:3001/images/event_pic/' + v.event_cover}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/event_pic/` + v.event_cover}
             alt=""
           />
           <div className="info">
@@ -43,7 +43,7 @@ const EventCard = ({ sort, searchword }) => {
     let a = true
 
     const fetchData = async () => {
-      const res = await fetch('http://localhost:3001/api/event')
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/event`)
       const obj = await res.json()
       const obj1 = obj
       if (a) {
@@ -60,7 +60,7 @@ const EventCard = ({ sort, searchword }) => {
     let a = true
 
     const fetchData = async () => {
-      const res = await fetch('http://localhost:3001/api/event')
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/event`)
       let obj = await res.json()
 
       if (sort === '品酒會') {

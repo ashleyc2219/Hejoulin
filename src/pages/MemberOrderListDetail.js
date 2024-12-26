@@ -10,9 +10,9 @@ const MemberOrderListDetail = () => {
     const [detailDataSake, setDetailDataSake] = useState([])
     const [detailDataGift, setDetailDataGift] = useState([])
     const [detailDataInfo, setDetailDataInfo] = useState([])
-    const APISake = 'http://localhost:3001/user/order-sake'
-    const APIGift = 'http://localhost:3001/user/order-gift'
-    const APIInfo = 'http://localhost:3001/user/order-info'
+    const APISake = `${process.env.REACT_APP_BACKEND_URL}/api/user/order-sake`
+    const APIGift = `${process.env.REACT_APP_BACKEND_URL}/api/user/order-gift`
+    const APIInfo = `${process.env.REACT_APP_BACKEND_URL}/api/user/order-info`
     useEffect(() => {
         const orderId = JSON.parse(localStorage.getItem('orderId'))
         const order_id = {
@@ -74,7 +74,7 @@ const MemberOrderListDetail = () => {
                 <>
                     <div className="table-item" key={el.pro_img}>
                         <div className="item item-product-img">
-                            <img src={'http://localhost:3001/images/pro_img/' + el?.pro_img}
+                            <img src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + el?.pro_img}
                                  alt=""/>
                         </div>
                         <div className="item item-product-info">

@@ -17,7 +17,7 @@ const EventDataAlready = (props) => {
     useEffect(() => {
         ;(async () => {
             const obj = await (
-                await fetch('http://localhost:3001/user/member/MemberEventAlready', {
+                await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberEventAlready`, {
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,

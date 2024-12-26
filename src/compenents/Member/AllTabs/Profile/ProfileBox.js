@@ -3,7 +3,7 @@ import '../../../../styles/Member/Member-ProfileBox/ProfileBox.scss'
 import UpdateModal from "./UpdateModal";
 
 const ProfileBox = ({memberData, setMemberData}) => {
-    const APIUpdate = 'http://localhost:3001/user/member/Change'
+    const APIUpdate = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/Change`
 
     const [valueY, setValueY] = useState('')
     const [valueM, setValueM] = useState('')
@@ -16,7 +16,7 @@ const ProfileBox = ({memberData, setMemberData}) => {
     useEffect(() => {
         ;(async () => {
             const obj = await (
-                await fetch('http://localhost:3001/user/member', {
+                await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/member`, {
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,

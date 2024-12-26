@@ -4,7 +4,7 @@ import UpdateModal from "./UpdateModal";
 
 
 const AddressBox = ({memberData, setMemberData}) => {
-    const APIUpdateAddr = 'http://localhost:3001/user/member/addressChange'
+    const APIUpdateAddr = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/addressChange`
 
     const [city, setCity] = useState('')
     const [zip, setZip] = useState('')
@@ -19,7 +19,7 @@ const AddressBox = ({memberData, setMemberData}) => {
     useEffect(() => {
         ;(async () => {
             const obj = await (
-                await fetch('http://localhost:3001/user/member', {
+                await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/member`, {
                     method: 'POST',
                     headers: {
                         Authorization: 'Bearer ' + localStorage.token,

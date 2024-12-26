@@ -27,7 +27,7 @@ const ChooseCartMarkModal = (props) => {
       mark_id: markId,
       cart_sake_id: sakeInfo.cart_sake_id,
     }
-    const r1 = await fetch('http://localhost:3001/api/cart-list/mark', {
+    const r1 = await fetch('/api/cart-list/mark', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -43,7 +43,7 @@ const ChooseCartMarkModal = (props) => {
     let a = true
     const fetchTop = async () => {
       const res = await fetch(
-        `http://localhost:3001/api/cart-list/mark?member_id=${memberId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/cart-list/mark?member_id=${memberId}`
       )
       const fetchedData = await res.json()
       console.log(fetchedData)

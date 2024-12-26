@@ -9,7 +9,7 @@ const SetNewPass = (props) => {
   const [newConfPass, setConfNewPass] = useState('')
   const [pass, setPass] = useState(false)
 
-  const APISetPass = 'http://localhost:3001/user/member/forgetPassChange'
+  const APISetPass = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/forgetPassChange`
 
   function changeShowPass() {
     setSPass(!sPass)

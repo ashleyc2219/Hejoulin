@@ -23,7 +23,7 @@ const ProductMaster = ({
             <div className="img-wrap">
               <img
                 className="product-img"
-                src={'http://localhost:3001/images/pro_img/' + v.pro_img}
+                src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + v.pro_img}
                 alt=""
               />
             </div>
@@ -75,7 +75,7 @@ const ProductMaster = ({
 
     const fetchMaster = async () => {
       const res = await fetch(
-        'http://localhost:3001/api/products-condition/random-three'
+        `${process.env.REACT_APP_BACKEND_URL}/api/products-condition/random-three`
       )
       const fetchedData = await res.json()
       const test = fetchedData

@@ -9,8 +9,8 @@ const Register = (props) => {
   const [newPwd, setNewPwd] = useState('')
   const [confPwd, setConfPwd] = useState('')
   const [failMsg, setFailMsg] = useState('')
-  const APIRegister = 'http://localhost:3001/login/register'
-  const APISendEmail = 'http://localhost:3001/login/send-email'
+  const APIRegister = `${process.env.REACT_APP_BACKEND_URL}/login/register`
+  const APISendEmail = `${process.env.REACT_APP_BACKEND_URL}/login/send-email`
 
   const whenRegSubmit = async (event) => {
     event.preventDefault() //避免傳統方式送出表單

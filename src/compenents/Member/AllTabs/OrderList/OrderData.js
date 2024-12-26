@@ -11,7 +11,7 @@ const OrderData = (props) => {
         dataOrder,
         setOrderData,
     } = props
-    const APIOrderTotal = 'http://localhost:3001/user/member/MemberOrderListTotal'
+    const APIOrderTotal = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/MemberOrderListTotal`
     const listNames = [
         {listName: '訂單日期'},
         {listName: '訂單編碼'},

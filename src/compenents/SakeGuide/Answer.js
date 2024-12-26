@@ -17,7 +17,7 @@ const Answer = (props) => {
   const [color, setColor] = useState(false)
   const [item, setItem] = useState(0)
 
-  const url = 'http://localhost:3001/api/guide_a'
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/guide_a`
 
   const fetchData = async () => {
     const res = await fetch(url + '?id=' + id)

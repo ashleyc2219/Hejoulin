@@ -9,7 +9,7 @@ const OrderTableSake = (props) => {
       <div className="table-item">
         <div className="item item-product-img">
           <img
-            src={'http://localhost:3001/images/pro_img/' + sakeInfo.pro_img}
+            src={`${process.env.REACT_APP_BACKEND_URL}/images/pro_img/` + sakeInfo.pro_img}
             alt=""
           />
         </div>

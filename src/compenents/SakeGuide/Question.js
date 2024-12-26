@@ -23,7 +23,7 @@ const Question = (props) => {
   const [show03, setShow03] = useState(false)
   const [show04, setShow04] = useState(false)
 
-  const url = 'http://localhost:3001/api/guide_q'
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/guide_q`
 
   const fetchData = async () => {
     const res = await fetch(url)

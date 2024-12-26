@@ -3,7 +3,7 @@ import '../../../../styles/Member/Member-Order/OrderData.scss'
 import {Link} from "react-router-dom";
 
 const OrderDataCome = ({pageData, setPageData, cPage, setOrderData}) => {
-    const APIMOrderCome = 'http://localhost:3001/user/member/orderListTab1'
+    const APIMOrderCome = `${process.env.REACT_APP_BACKEND_URL}/api/user/member/orderListTab1`
     const listNames = [
         {listName: '訂單日期'},
         {listName: '訂單編碼'},

@@ -23,7 +23,7 @@ const Home = () => {
 
   //最新消息
   const [detail, setDetail] = useState([])
-  const url = 'http://localhost:3001/api/news'
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/news`
 
   const fetchData = async () => {
     const res = await fetch(url)
