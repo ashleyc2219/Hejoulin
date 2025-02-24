@@ -23,14 +23,12 @@ export default ({ menuPic }) => {
         <img
           style={{ width: '100%', cursor: 'pointer' }}
           src={
-            process.env.REACT_APP_SERVER + 'images/menu_pic/' + v.menu_pic_name
+            `${process.env.REACT_APP_BACKEND_URL}/images/menu_pic/${v.menu_pic_name}`
           }
           alt=""
           onClick={() => {
             setTempImg(
-              process.env.REACT_APP_SERVER +
-                'images/menu_pic/' +
-                v.menu_pic_name
+              `${process.env.REACT_APP_BACKEND_URL}/images/menu_pic/${v.menu_pic_name}`
             )
             handleShow()
           }}

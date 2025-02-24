@@ -37,7 +37,7 @@ const RestaurantDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        process.env.REACT_APP_SERVER + 'api/restaurant?resId=' + id
+        `${process.env.REACT_APP_BACKEND_URL}/api/restaurant?resId=${id}`
       )
       const obj = await res.json()
       setRestaurant(obj[0])
@@ -52,7 +52,7 @@ const RestaurantDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        process.env.REACT_APP_SERVER + 'api/restaurant-pic?resId=' + id
+        `${process.env.REACT_APP_BACKEND_URL}/api/restaurant-pic?resId=${id}`
       )
       const obj = await res.json()
       setRestaurantPic(obj)
@@ -64,7 +64,7 @@ const RestaurantDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        process.env.REACT_APP_SERVER + 'api/spmenu?resId=' + id
+        `{process.env.REACT_APP_BACKEND_URL}/api/spmenu?resId=` + id
       )
       const obj = await res.json()
       setSpMenu(obj)
@@ -76,7 +76,7 @@ const RestaurantDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        process.env.REACT_APP_SERVER + 'api/menu-pic?resId=' + id
+        `${process.env.REACT_APP_BACKEND_URL}/api/menu-pic?resId=` + id
       )
       const obj = await res.json()
       setMenuPic(obj)
@@ -90,7 +90,7 @@ const RestaurantDetail = () => {
         <img
           className="d-block w-100"
           src={
-            process.env.REACT_APP_SERVER + 'images/res_pic/' + v.res_pic_name
+            `${process.env.REACT_APP_BACKEND_URL}/images/res_pic` + v.res_pic_name
           }
           alt=""
         />

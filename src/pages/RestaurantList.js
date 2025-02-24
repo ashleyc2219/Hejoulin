@@ -48,7 +48,8 @@ const RestaurantList = () => {
   // 接餐廳資料
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(process.env.REACT_APP_SERVER + 'api/restaurant')
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/restaurant`)
+      console.log("Hello")
       const obj = await res.json()
       setPlaces(obj)
       setDisplayPlaces(obj)
@@ -63,7 +64,7 @@ const RestaurantList = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        process.env.REACT_APP_SERVER + 'api/restaurant-pic'
+        `${process.env.REACT_APP_BACKEND_URL}/api/restaurant-pic`
       )
       const obj = await res.json()
       setPlacesPics(obj)
