@@ -19,7 +19,7 @@ export default ({ resPic, place }) => {
           <img
             style={{ width: '100%' }}
             src={
-              process.env.REACT_APP_SERVER + 'images/res_pic/' + v.res_pic_name
+              `${process.env.REACT_APP_BACKEND_URL}/images/res_pic/` + v.res_pic_name
             }
             alt=""
           />
