@@ -64,7 +64,7 @@ const RestaurantDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `{process.env.REACT_APP_BACKEND_URL}/api/spmenu?resId=` + id
+        `${process.env.REACT_APP_BACKEND_URL}/api/spmenu?resId=` + id
       )
       const obj = await res.json()
       setSpMenu(obj)
@@ -105,11 +105,11 @@ const RestaurantDetail = () => {
           className="d-block w-100"
           style={{ cursor: 'pointer' }}
           src={
-            process.env.REACT_APP_SERVER + 'images/menu_pic/' + v.menu_pic_name
+            process.env.REACT_APP_BACKEND_URL + 'images/menu_pic/' + v.menu_pic_name
           }
           onClick={() => {
             setTempImg(
-              process.env.REACT_APP_SERVER +
+              process.env.REACT_APP_BACKEND_URL +
                 'images/menu_pic/' +
                 v.menu_pic_name
             )
@@ -220,8 +220,8 @@ const RestaurantDetail = () => {
                 <img
                   src={
                     spMenu.length &&
-                    process.env.REACT_APP_SERVER +
-                      'images/sp_menu/' +
+                    process.env.REACT_APP_BACKEND_URL +
+                      '/images/sp_menu/' +
                       spMenu[0].sp_menu_pic_name
                   }
                   alt=""
@@ -232,8 +232,8 @@ const RestaurantDetail = () => {
                 <img
                   src={
                     spMenu.length &&
-                    process.env.REACT_APP_SERVER +
-                      'images/sp_menu/' +
+                    process.env.REACT_APP_BACKEND_URL +
+                      '/images/sp_menu/' +
                       spMenu[1].sp_menu_pic_name
                   }
                   alt=""
