@@ -6,7 +6,7 @@ const DetailModal = (props) => {
   const { modalShow, setModalShow, id } = props
   console.log(id)
 
-  const [detail, setDetail] = useState([]) 
+  const [detail, setDetail] = useState([])
   const url = `${process.env.REACT_APP_BACKEND_URL}/api/news?newsId=` + id
 
   const fetchData = async () => {
@@ -23,7 +23,7 @@ const DetailModal = (props) => {
           <div className="news-item-pic">
             <div className="news-pic">
               <div className="news-item-pic-box">
-                <img src={'/News/img/' + v.pics} alt="" />
+                <img src={'/news/img/' + v.pics} alt="" />
               </div>
             </div>
           </div>
