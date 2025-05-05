@@ -35,7 +35,7 @@ const NewsList = () => {
           <div className="news-item-pic">
             <div className="news-pic">
               <div className="news-item-pic-box">
-                <img src={'/News/img/' + v.pics} alt="" />
+                <img src={'/news/img/' + v.pics} alt="" />
               </div>
             </div>
           </div>
@@ -80,32 +80,32 @@ const NewsList = () => {
     }, 1000)
   }, [])
 
-
-
   return (
     <>
       <div className="news">
-      {spin ? <Spinner /> :         <div className=" news-container container-sm">
-          <div className="">
-            <div className="news-title">
-              <h1>最新消息</h1>
+        {spin ? (
+          <Spinner />
+        ) : (
+          <div className=" news-container container-sm">
+            <div className="">
+              <div className="news-title">
+                <h1>最新消息</h1>
+              </div>
+              <div className="container"></div>
+              {modalShow ? (
+                <DetailModal
+                  modalShow={modalShow}
+                  setModalShow={setModalShow}
+                  id={id}
+                />
+              ) : (
+                ''
+              )}
+              {/* 元件 */}
+              {newslist}
             </div>
-            <div className="container"></div>
-            {modalShow ? (
-              <DetailModal
-                modalShow={modalShow}
-                setModalShow={setModalShow}
-                id={id}
-              />
-            ) : (
-              ''
-            )}
-            {/* 元件 */}
-            {newslist}
           </div>
-        </div>}
-
-        
+        )}
       </div>
     </>
   )
