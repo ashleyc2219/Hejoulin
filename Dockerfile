@@ -9,16 +9,17 @@ COPY package*.json ./
 # Install dependencies with legacy peer deps flag
 RUN npm install --legacy-peer-deps
 
-# Copy source code excluding .env file
+# Copy .env file BEFORE build (重要！)
+COPY .env ./
+
+# Copy source code
 COPY src ./src
 COPY public ./public
 COPY tsconfig*.json ./
 # Add any other necessary config files you need to copy
 
-# Build the application
+# Build the application (現在可以讀取 .env)
 RUN npm run build
-
-COPY . .
 
 # Production stage
 FROM nginx:alpine
